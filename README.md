@@ -17,7 +17,7 @@ Android-Apps, gebaut mit Flutter, für Google Play.
 ## 🎣 Austro Angler – was drin ist
 
 **Ohne Konto (funktioniert immer):**
-- **Gewässer**: 30 Gewässer in allen 9 Bundesländern mit Preisen, Kartenverkauf und Suche. Pro Gewässer gibt es aktuelles Wetter, Luftdruck, Sonnenauf- und -untergang und die Mondphase. Dazu "Was brauche ich zum Fischen?" für jedes Bundesland.
+- **Gewässer**: 29 Gewässer in allen 9 Bundesländern mit Preisen, Kartenverkauf und Suche. Pro Gewässer gibt es aktuelles Wetter, Luftdruck, Sonnenauf- und -untergang und die Mondphase. Dazu "Was brauche ich zum Fischen?" für jedes Bundesland.
 - **Karte**: alle Gewässer auf der Karte. Lange drücken speichert einen eigenen Angelplatz, der immer privat auf dem Handy bleibt.
 - **Fangbuch**: Fänge mit Statistik. Es warnt bei Schonzeit oder wenn ein Fisch unter dem Brittelmaß liegt, und zwar für das Bundesland des Fangs.
 - **Fischlexikon**: 19 Fischarten mit Schonzeit und Brittelmaß für alle 9 Bundesländer.
