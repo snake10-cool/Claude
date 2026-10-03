@@ -11,8 +11,8 @@ on:
       plattform:
         description: 'Was soll gebaut werden?'
         type: choice
-        options: [pc, handy, beide]
-        default: pc
+        options: [handy, pc, beide]
+        default: handy
 
 permissions:
   contents: write
@@ -25,10 +25,10 @@ env:
   FLUTTER_VERSION: '3.47.6'
 
 jobs:
-  # Standard (bei jedem Push) ist nur die PC-Version. Handy auf Wunsch:
-  # Actions → Apps bauen → Run workflow → "handy" oder "beide".
+  # Standard (bei jedem Push) ist nur die Handy-Version (APK). PC auf Wunsch:
+  # Actions → Apps bauen → Run workflow → "pc" oder "beide".
   android:
-    if: github.event_name == 'workflow_dispatch' && inputs.plattform != 'pc'
+    if: github.event_name != 'workflow_dispatch' || inputs.plattform != 'pc'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -72,7 +72,7 @@ jobs:
           path: ausgabe/*
 
   windows:
-    if: github.event_name != 'workflow_dispatch' || inputs.plattform != 'handy'
+    if: github.event_name == 'workflow_dispatch' && inputs.plattform != 'handy'
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
