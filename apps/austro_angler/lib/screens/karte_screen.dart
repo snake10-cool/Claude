@@ -6,7 +6,10 @@ import '../data/gewaesser.dart';
 import '../main.dart';
 import '../models/fang.dart';
 import '../models/gewaesser.dart';
+import '../data/fische.dart';
+import '../services/fang_dienst.dart';
 import 'gewaesser_screen.dart';
+import 'widgets.dart';
 
 class KarteScreen extends StatelessWidget {
   const KarteScreen({super.key});
@@ -117,6 +120,7 @@ class KarteScreen extends StatelessWidget {
                     ),
                 ],
               ),
+              const _MeineFaenge(),
               const RichAttributionWidget(
                 attributions: [
                   TextSourceAttribution('© OpenStreetMap-Mitwirkende'),
@@ -132,7 +136,8 @@ class KarteScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  'Lange drücken, um einen eigenen Angelplatz zu speichern.',
+                  'Lange drücken: eigenen Angelplatz speichern. Rote Punkte: '
+                  'deine Fänge mit Fangort (nur du siehst sie).',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
@@ -163,6 +168,67 @@ class _Pin extends StatelessWidget {
           boxShadow: const [BoxShadow(blurRadius: 4, color: Colors.black26)],
         ),
         child: Icon(icon, color: Colors.white, size: 20),
+      ),
+    );
+  }
+}
+
+/// Eigene Fänge mit gewähltem Fangort (nur für einen selbst sichtbar).
+class _MeineFaenge extends StatefulWidget {
+  const _MeineFaenge();
+
+  @override
+  State<_MeineFaenge> createState() => _MeineFaengeState();
+}
+
+class _MeineFaengeState extends State<_MeineFaenge> {
+  String? _uid;
+  Stream<Map<String, LatLng>>? _orte;
+  Stream<List<Fang>>? _faenge;
+
+  @override
+  Widget build(BuildContext context) {
+    final uid = KontoScope.of(context)?.uid;
+    if (uid == null) return const SizedBox.shrink();
+    if (uid != _uid) {
+      _uid = uid;
+      _orte = fangDienst.fangorte(uid);
+      _faenge = fangDienst.meineFaenge(uid);
+    }
+    return StreamBuilder<Map<String, LatLng>>(
+      stream: _orte,
+      builder: (context, orteSnap) => StreamBuilder<List<Fang>>(
+        stream: _faenge,
+        builder: (context, faengeSnap) {
+          final orte = orteSnap.data ?? const {};
+          final faenge = {for (final f in faengeSnap.data ?? <Fang>[]) f.id: f};
+          return MarkerLayer(markers: [
+            for (final e in orte.entries)
+              if (faenge[e.key] case final f?)
+                Marker(
+                  point: e.value,
+                  width: 36,
+                  height: 36,
+                  child: GestureDetector(
+                    onTap: () => meldung(
+                      context,
+                      '${fischById(f.fischId)?.name ?? f.fischId}'
+                      '${f.laengeCm == null ? '' : ', ${f.laengeCm!.toStringAsFixed(0)} cm'}'
+                      ' · ${datumText(f.datum)}',
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.red.shade600,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 2),
+                      ),
+                      child: const Icon(Icons.set_meal,
+                          color: Colors.white, size: 18),
+                    ),
+                  ),
+                ),
+          ]);
+        },
       ),
     );
   }

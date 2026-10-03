@@ -40,6 +40,7 @@ class Gewaesser {
     required this.quelle,
     required this.stand,
     this.hinweis,
+    this.lizenzUrl,
   });
 
   final String id;
@@ -61,6 +62,9 @@ class Gewaesser {
   final String quelle;
   final String stand;
   final String? hinweis;
+
+  /// Seite, auf der man die Lizenz kaufen oder Infos bekommt.
+  final String? lizenzUrl;
 
   String get preisKurz {
     if (preise.isEmpty) return 'Preis unbekannt';

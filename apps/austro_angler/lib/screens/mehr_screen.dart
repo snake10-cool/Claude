@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../main.dart';
+import 'checkliste_screen.dart';
+import 'faq_screen.dart';
 import 'kalender_screen.dart';
+import 'statistik_screen.dart';
 import 'knoten_screen.dart';
 import 'konto_screen.dart';
 import 'lexikon_screen.dart';
@@ -40,6 +43,15 @@ class MehrScreen extends StatelessWidget {
           const SizedBox(height: 8),
           const BundeslandWahl(),
           const SizedBox(height: 8),
+          _Eintrag(Icons.help_outline, 'FAQ – Fragen & Antworten',
+              'Alles erklärt: wieso, weshalb, warum', () => _oeffnen(context,
+                  const FaqScreen())),
+          _Eintrag(Icons.bar_chart, 'Statistik & Abzeichen',
+              'Rekorde, Auswertungen, PDF-Export', () => _oeffnen(context,
+                  const StatistikScreen())),
+          _Eintrag(Icons.checklist, 'Ausrüstungs-Checkliste',
+              'Nichts vergessen vor dem Losfahren', () => _oeffnen(context,
+                  const ChecklisteScreen())),
           _Eintrag(Icons.set_meal, 'Fischlexikon',
               'Schonzeiten & Brittelmaße', () => _oeffnen(context,
                   const LexikonScreen())),
@@ -54,7 +66,7 @@ class MehrScreen extends StatelessWidget {
               () => showAboutDialog(
                     context: context,
                     applicationName: 'Austro Angler',
-                    applicationVersion: '0.3',
+                    applicationVersion: '0.4',
                     children: const [
                       Text(
                         'Alle Angaben zu Schonzeiten, Brittelmaßen und Preisen '

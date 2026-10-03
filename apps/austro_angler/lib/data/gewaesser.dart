@@ -26,6 +26,7 @@ const gewaesserListe = <Gewaesser>[
         'Fa. Hauser, Salzburgerstraße 5, Braunau – oder online über hejfish.',
     quelle: 'Oö. Landesfischereiverband (lfvooe.at)',
     stand: '2026',
+    lizenzUrl: 'https://www.lfvooe.at/reviere-und-gewaesser/inn-braunau/innfluss-bei-braunau/',
   ),
   Gewaesser(
     id: 'mattig-schalchen',
@@ -44,6 +45,7 @@ const gewaesserListe = <Gewaesser>[
         'Baggersee Pfaffstätt oder online über hejfish.',
     quelle: 'lfvooe.at / sac-schalchen.com',
     stand: '2026',
+    lizenzUrl: 'https://www.sac-schalchen.com/bestimmungen-tageskarten-und-preise/mattig/',
   ),
   Gewaesser(
     id: 'schwemmbach',
@@ -60,6 +62,7 @@ const gewaesserListe = <Gewaesser>[
     quelle: 'lfvooe.at',
     stand: '2026',
     hinweis: 'Preis bitte beim SAC Schalchen erfragen – gerne melden!',
+    lizenzUrl: 'https://www.lfvooe.at/reviere-und-gewaesser/mattig/',
   ),
   Gewaesser(
     id: 'enknach',
@@ -76,6 +79,7 @@ const gewaesserListe = <Gewaesser>[
         'hejfish.',
     quelle: 'sac-mattig.at / hejfish.com',
     stand: 'Saison 16.3. – 30.11.',
+    lizenzUrl: 'https://www.hejfish.com/d/1125-enknach-bach',
   ),
   Gewaesser(
     id: 'enknach-teiche',
@@ -93,6 +97,7 @@ const gewaesserListe = <Gewaesser>[
         'hejfish.',
     quelle: 'sac-mattig.at / hejfish.com',
     stand: 'Ganzjährig, im Mai Fischverbot',
+    lizenzUrl: 'https://www.hejfish.com/d/1126-enknach-teiche',
   ),
   Gewaesser(
     id: 'baggersee-pfaffstaett',
@@ -114,6 +119,7 @@ const gewaesserListe = <Gewaesser>[
         'Mattighofen oder online.',
     quelle: 'sac-schalchen.com',
     stand: '2026',
+    lizenzUrl: 'https://www.sac-schalchen.com/bestimmungen-tageskarten-und-preise/baggersee/',
   ),
   Gewaesser(
     id: 'kuehbach-moserweiher',
@@ -132,6 +138,7 @@ const gewaesserListe = <Gewaesser>[
     kartenverkauf: 'Fotostudio Fesl Mattighofen oder online.',
     quelle: 'sac-schalchen.com',
     stand: '2026',
+    lizenzUrl: 'https://www.sac-schalchen.com/bestimmungen-tageskarten-und-preise/kartenpreise/',
   ),
   Gewaesser(
     id: 'holzoestersee',
@@ -155,6 +162,7 @@ const gewaesserListe = <Gewaesser>[
     kartenverkauf: 'Gemeindeamt Franking, Mo – Fr 8 – 12 Uhr.',
     quelle: 'franking.ooe.gv.at',
     stand: '2026, ganzjährig',
+    lizenzUrl: 'https://www.franking.ooe.gv.at/Unser_Ort/Fischen_am_Holzoestersee',
   ),
   Gewaesser(
     id: 'muehlheimer-ache',
@@ -172,6 +180,7 @@ const gewaesserListe = <Gewaesser>[
     quelle: 'zillners-einkehr.at',
     stand: 'Saison Anfang April – Ende November',
     hinweis: 'Nur Fliegenfischen (Trockenfliege oder Nymphe).',
+    lizenzUrl: 'https://www.zillners-einkehr.at/muehlheimer-ache/',
   ),
   Gewaesser(
     id: 'antiesen',
@@ -189,6 +198,7 @@ const gewaesserListe = <Gewaesser>[
     quelle: 'lfvooe.at',
     stand: '–',
     hinweis: 'Preise fehlen noch – gerne melden!',
+    lizenzUrl: 'https://www.lfvooe.at/reviere-und-gewaesser/antiesen-gurtenbach/',
   ),
   Gewaesser(
     id: 'inn-schaerding',
@@ -220,6 +230,7 @@ const gewaesserListe = <Gewaesser>[
     kartenverkauf: 'Angelsport Kinzl',
     quelle: 'angelsport-kinzl.at',
     stand: '2026',
+    lizenzUrl: 'https://www.angelsport-kinzl.at/gew%C3%A4sserinfo-angelkarten/salzach/',
   ),
   Gewaesser(
     id: 'hoellerersee',
@@ -242,6 +253,7 @@ const gewaesserListe = <Gewaesser>[
     kartenverkauf: 'Oö. Landesfischereiverband / hejfish',
     quelle: 'Oö. Landesfischereiverband (lfvooe.at)',
     stand: '2026',
+    lizenzUrl: 'https://www.lfvooe.at/reviere-und-gewaesser/salzach/hoellerersee-2/',
   ),
   Gewaesser(
     id: 'ibmer-moor',
@@ -275,6 +287,7 @@ const gewaesserListe = <Gewaesser>[
         'oder online über hejfish.',
     quelle: 'sac-mattig.at / hejfish.com',
     stand: 'Saison 16.3. – 31.10.',
+    lizenzUrl: 'https://sac-mattig.at/karten/',
   ),
   Gewaesser(
     id: 'mondsee',
@@ -291,6 +304,7 @@ const gewaesserListe = <Gewaesser>[
     quelle: 'fischereiverein-salzkammergut.at',
     stand: '2026',
     hinweis: 'Preis bitte prüfen.',
+    lizenzUrl: 'https://www.fischereiverein-salzkammergut.at/lizenzen-und-preise/',
   ),
   Gewaesser(
     id: 'attersee',
@@ -307,6 +321,7 @@ const gewaesserListe = <Gewaesser>[
     quelle: 'fischereirevier-attersee.at',
     stand: '2026',
     hinweis: 'Preise siehe Revier-Website.',
+    lizenzUrl: 'https://fischereirevier-attersee.at/lizenzpreise/',
   ),
   // ── Salzburg ──
   Gewaesser(
@@ -324,6 +339,7 @@ const gewaesserListe = <Gewaesser>[
     quelle: 'Salzburger Fischereiverband',
     stand: 'Saison 1.5. – 31.10.2026',
     hinweis: 'Zusätzlich nötig: Salzburger Fischerkarte oder Gastfischerkarte.',
+    lizenzUrl: 'https://fischen.fischereiverband.at/flachgau',
   ),
   Gewaesser(
     id: 'mattsee',
@@ -340,6 +356,7 @@ const gewaesserListe = <Gewaesser>[
     quelle: 'fischerinnung-mattsee.at',
     stand: 'Saison 1.5. – 31.10.2026',
     hinweis: 'Zusätzlich nötig: Salzburger Fischerkarte oder Gastfischerkarte.',
+    lizenzUrl: 'https://www.fischerinnung-mattsee.at/',
   ),
   Gewaesser(
     id: 'grabensee',
@@ -371,6 +388,7 @@ const gewaesserListe = <Gewaesser>[
     kartenverkauf: 'Siehe o-fischer.at',
     quelle: 'o-fischer.at',
     stand: '2026',
+    lizenzUrl: 'https://o-fischer.at/fischen-angeln-wallersee/',
   ),
   Gewaesser(
     id: 'fuschlsee',
@@ -387,6 +405,7 @@ const gewaesserListe = <Gewaesser>[
     quelle: 'Salzburger Fischereiverband',
     stand: 'Saison 2023 (5:00 – 21:00 Uhr)',
     hinweis: 'Preis von 2023 – kann sich geändert haben.',
+    lizenzUrl: 'https://fischen.fischereiverband.at/node/73',
   ),
 ];
 

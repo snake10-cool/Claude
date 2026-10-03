@@ -27,6 +27,12 @@ class Konto extends ChangeNotifier {
   /// Wird true, sobald Firebase gemeldet hat, ob jemand angemeldet ist.
   bool bereit = false;
 
+  /// Bis wann Premium gilt (z. B. als Challenge-Gewinn), sonst null.
+  DateTime? premiumBis;
+
+  bool get istPremium =>
+      premiumBis != null && premiumBis!.isAfter(DateTime.now());
+
   bool get angemeldet => nutzer != null;
   String? get uid => nutzer?.uid;
   bool get emailBestaetigt => nutzer?.emailVerified ?? false;
@@ -37,11 +43,13 @@ class Konto extends ChangeNotifier {
     bereit = true;
     nutzer = u;
     name = null;
+    premiumBis = null;
     notifyListeners();
     if (u == null) return;
     try {
       final doc = await _db.doc('nutzer/${u.uid}').get();
       name = (doc.data()?['name'] as String?) ?? name;
+      premiumBis = await fangDienst.premiumBis(u.uid);
     } catch (_) {
       // Offline – der Name kommt beim nächsten Mal.
     }

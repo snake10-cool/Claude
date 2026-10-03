@@ -59,9 +59,17 @@ Schon eingerichtet:
 - Sicherheitsregeln aus `apps/austro_angler/firestore.rules`. Nach Änderungen müssen sie neu veröffentlicht werden.
 - Android-App (`com.snake10.austroangler`) und PC-App (Web-App-Daten)
 
-Einmal von Hand: **Authentication → Jetzt starten → E-Mail/Passwort aktivieren → Speichern**
+E-Mail/Passwort-Anmeldung ist aktiv.
 
 Alles läuft im **kostenlosen Spark-Tarif**. Fotos werden deshalb verkleinert direkt in Firestore gespeichert.
+
+## ⭐ Abo (beschlossen, kommt mit dem Play-Store-Start)
+
+- **3,99 € im Monat oder 29,99 € im Jahr**, davor 7 Tage gratis testen. Es gibt keinen Gründer-Bonus.
+- **Gratis bleiben:** Gewässer, Preise, Karte, Wetter, Lexikon, Schonzeiten, Fangbuch, die ganze Community, Knoten, Checkliste und der Prüfungstrainer.
+- **Premium (⭐):** Beißzeit für die nächsten Tage, Statistik-Auswertungen, Wasserführungs-Verlauf, Schonzeit-Wecker ohne Limit, PDF-Export, unbegrenzte Fotos, Prüfungsmodus und besondere Abzeichen.
+- **Monats-Challenge:** Der Gewinner bekommt 1 Monat Premium. Der Admin vergibt den Gewinn in der App, gespeichert wird er in `premium/{uid}`.
+- Bis zum Start sind alle ⭐-Funktionen für alle freigeschaltet.
 
 ## Nächste Schritte
 

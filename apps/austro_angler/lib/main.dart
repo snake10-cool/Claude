@@ -11,10 +11,13 @@ import 'screens/mehr_screen.dart';
 import 'screens/wuensche_screen.dart';
 import 'services/konto.dart';
 import 'services/speicher.dart';
+import 'services/wecker.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final speicher = await Speicher.oeffnen();
+  // Schonzeit-Wecker für das nächste Jahr neu planen (im Hintergrund).
+  Wecker.instanz.alleEinplanen(speicher.bundesland).catchError((_) {});
   Konto? konto;
   if (firebaseKonfiguriert) {
     try {

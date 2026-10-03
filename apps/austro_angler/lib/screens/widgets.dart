@@ -169,3 +169,45 @@ class QuellenBild extends StatelessWidget {
     );
   }
 }
+
+/// Kennzeichnet Premium-Funktionen. Bis das Abo im Play Store kommt, sind sie
+/// für alle freigeschaltet.
+class PremiumMarke extends StatelessWidget {
+  const PremiumMarke({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: 'Premium-Funktion – zurzeit für alle gratis',
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+        decoration: BoxDecoration(
+          color: Colors.amber.shade600,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: const Text('⭐ Premium',
+            style: TextStyle(fontSize: 11, color: Colors.black,
+                fontWeight: FontWeight.w600)),
+      ),
+    );
+  }
+}
+
+/// Überschrift mit optionaler Premium-Marke.
+class Titel extends StatelessWidget {
+  const Titel(this.text, {super.key, this.premium = false});
+
+  final String text;
+  final bool premium;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Flexible(
+            child: Text(text, style: Theme.of(context).textTheme.titleMedium)),
+        if (premium) ...[const SizedBox(width: 8), const PremiumMarke()],
+      ],
+    );
+  }
+}

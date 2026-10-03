@@ -113,6 +113,16 @@ class _Profil extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         Text(konto.nutzer?.email ?? '', textAlign: TextAlign.center),
+        if (konto.istPremium)
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Center(
+              child: Chip(
+                avatar: const Text('⭐'),
+                label: Text('Premium bis ${datumText(konto.premiumBis!)}'),
+              ),
+            ),
+          ),
         if (konto.istAdmin)
           const Padding(
             padding: EdgeInsets.only(top: 8),

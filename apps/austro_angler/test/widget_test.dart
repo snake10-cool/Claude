@@ -117,10 +117,9 @@ void main() {
       await tester.tap(find.text(tab).last);
       await tester.pumpAndSettle();
     }
-    expect(find.text('Schonzeit-Kalender'), findsOneWidget);
-
-    await tester.tap(find.text('Schonzeit-Kalender'));
+    expect(find.text('FAQ – Fragen & Antworten'), findsOneWidget);
+    await tester.tap(find.text('FAQ – Fragen & Antworten'));
     await tester.pumpAndSettle();
-    expect(find.text('Hecht'), findsOneWidget);
+    expect(find.text('Was ist Austro Angler?'), findsOneWidget);
   });
 }

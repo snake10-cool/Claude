@@ -25,7 +25,8 @@ service cloud.firestore {
     function gueltigerFang(d) {
       return d.keys().hasOnly(['fischId', 'laengeCm', 'gewichtG', 'gewaesser',
                'bundesland', 'koeder', 'notiz', 'zurueckgesetzt', 'datum',
-               'uid', 'nutzerName', 'hatFoto', 'petriHeil', 'erstellt'])
+               'uid', 'nutzerName', 'hatFoto', 'petriHeil', 'erstellt',
+               'wetter'])
           && d.uid == request.auth.uid
           && d.fischId is string && d.fischId.size() < 40
           && d.notiz is string && d.notiz.size() <= 500
@@ -47,6 +48,28 @@ service cloud.firestore {
         allow read, delete: if ich(uid);
         allow create, update: if ich(uid)
             && request.resource.data.keys().hasOnly(['name', 'seit']);
+      }
+
+      // Fangorte: immer privat.
+      match /fangorte/{fangId} {
+        allow read, delete: if ich(uid);
+        allow create, update: if ich(uid)
+            && request.resource.data.keys().hasOnly(['lat', 'lng'])
+            && request.resource.data.lat is number
+            && request.resource.data.lng is number;
+      }
+
+      // Neuigkeiten (Petri Heil, Kommentare) – schreiben dürfen andere,
+      // lesen nur der Besitzer.
+      match /aktivitaeten/{id} {
+        allow read, delete: if ich(uid);
+        allow create: if angemeldet()
+            && request.resource.data.keys().hasOnly(['von', 'nutzerName',
+                 'typ', 'text', 'bezug', 'erstellt'])
+            && request.resource.data.von == request.auth.uid
+            && request.resource.data.typ in ['petri', 'kommentar']
+            && request.resource.data.text is string
+            && request.resource.data.text.size() <= 150;
       }
 
       // Private Fänge: nur für den Besitzer.
@@ -95,6 +118,21 @@ service cloud.firestore {
           );
 
       allow delete: if ich(resource.data.uid) || istAdmin();
+
+      // Kommentare unter öffentlichen Fängen.
+      match /kommentare/{kommentarId} {
+        allow read: if true;
+        allow create: if angemeldet()
+            && request.resource.data.keys()
+                 .hasOnly(['uid', 'nutzerName', 'text', 'erstellt'])
+            && request.resource.data.uid == request.auth.uid
+            && request.resource.data.text is string
+            && request.resource.data.text.size() > 0
+            && request.resource.data.text.size() <= 500;
+        allow delete: if ich(resource.data.uid) || istAdmin()
+            || get(/databases/$(database)/documents/faenge/$(fangId)).data.uid
+               == request.auth.uid;
+      }
     }
 
     // Fotos (verkleinert, Base64).
@@ -141,6 +179,31 @@ service cloud.firestore {
 
     // Vom Admin freigegebene Preise: alle lesen, nur der Admin schreibt.
     match /gepruefte_preise/{gewaesserId} {
+      allow read: if true;
+      allow write: if istAdmin();
+    }
+
+    // Gemeinsame Angeltage.
+    match /treffen/{id} {
+      allow read: if angemeldet();
+      allow create: if angemeldet()
+          && request.resource.data.keys().hasOnly(['uid', 'nutzerName',
+               'gewaesser', 'zeit', 'text', 'zusagen'])
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.zeit is timestamp
+          && request.resource.data.text.size() <= 300
+          && request.resource.data.zusagen.keys().hasOnly([request.auth.uid]);
+      // Zusagen/Absagen: nur den eigenen Eintrag ändern.
+      allow update: if angemeldet()
+          && request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['zusagen'])
+          && request.resource.data.zusagen.diff(resource.data.zusagen)
+               .affectedKeys().hasOnly([request.auth.uid]);
+      allow delete: if ich(resource.data.uid) || istAdmin();
+    }
+
+    // Premium (z. B. Challenge-Gewinn): alle lesen, nur der Admin vergibt.
+    match /premium/{uid} {
       allow read: if true;
       allow write: if istAdmin();
     }

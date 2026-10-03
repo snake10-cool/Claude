@@ -9,6 +9,10 @@ import '../services/konto.dart';
 import 'fangbuch_screen.dart';
 import 'melden.dart';
 import 'profil_screen.dart';
+import 'aktivitaeten_screen.dart';
+import 'challenge_screen.dart';
+import 'kommentare_screen.dart';
+import 'treffen_screen.dart';
 import 'widgets.dart';
 
 class CommunityScreen extends StatelessWidget {
@@ -32,23 +36,35 @@ class CommunityScreen extends StatelessWidget {
       );
     }
     return DefaultTabController(
-      length: 4,
+      length: 6,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Community'),
+          actions: [
+            if (konto.angemeldet)
+              IconButton(
+                tooltip: 'Neuigkeiten',
+                icon: const Icon(Icons.notifications_outlined),
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => const AktivitaetenScreen())),
+              ),
+          ],
           bottom: const TabBar(
             isScrollable: true,
             tabAlignment: TabAlignment.center,
             tabs: [
               Tab(icon: Icon(Icons.dynamic_feed), text: 'Neu'),
               Tab(icon: Icon(Icons.people), text: 'Freunde'),
+              Tab(icon: Icon(Icons.event), text: 'Angeltage'),
+              Tab(icon: Icon(Icons.flag_circle), text: 'Challenge'),
               Tab(icon: Icon(Icons.leaderboard), text: 'Rangliste'),
               Tab(icon: Icon(Icons.emoji_events), text: 'Rekorde'),
             ],
           ),
         ),
         body: const TabBarView(
-            children: [_Feed(), _FreundeFeed(), _Rangliste(), _Rekorde()]),
+            children: [_Feed(), _FreundeFeed(), TreffenListe(), ChallengeListe(),
+              _Rangliste(), _Rekorde()]),
       ),
     );
   }
@@ -299,9 +315,18 @@ class _Aktionen extends StatelessWidget {
         TextButton.icon(
           onPressed: uid == null || eigener
               ? null
-              : () => fangDienst.petriHeil(fang, uid, an: !gegeben),
+              : () => fangDienst.petriHeil(fang, uid,
+                  an: !gegeben, name: konto.name ?? ''),
           icon: Icon(gegeben ? Icons.thumb_up : Icons.thumb_up_outlined),
           label: Text('Petri Heil! ${fang.petriHeil.length}'),
+        ),
+        IconButton(
+          tooltip: 'Kommentare',
+          icon: const Icon(Icons.chat_bubble_outline, size: 20),
+          onPressed: uid == null
+              ? null
+              : () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => KommentareScreen(fang))),
         ),
         const Spacer(),
         if (konto.istAdmin && !eigener)

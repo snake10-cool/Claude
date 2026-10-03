@@ -7,6 +7,7 @@ import '../data/gewaesser.dart';
 import '../main.dart';
 import '../models/gewaesser.dart';
 import '../services/fang_dienst.dart';
+import '../services/beisszeit.dart';
 import '../services/wetter.dart';
 import 'konto_screen.dart';
 import 'melden.dart';
@@ -181,6 +182,9 @@ class GewaesserDetail extends StatelessWidget {
           ],
           const SizedBox(height: 12),
           WetterKarte(g),
+          BeisszeitKarte(g),
+          if (g.typ == GewaesserTyp.fluss || g.typ == GewaesserTyp.bach)
+            AbflussKarte(g),
           const SizedBox(height: 16),
           Text('Preise', style: text.titleMedium),
           if (g.preise.isEmpty)
@@ -206,6 +210,16 @@ class GewaesserDetail extends StatelessWidget {
           Text('Karten bekommst du hier', style: text.titleMedium),
           const SizedBox(height: 4),
           Text(g.kartenverkauf),
+          if (g.lizenzUrl != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: FilledButton.tonalIcon(
+                onPressed: () => launchUrl(Uri.parse(g.lizenzUrl!),
+                    mode: LaunchMode.externalApplication),
+                icon: const Icon(Icons.shopping_cart_outlined),
+                label: const Text('Lizenz kaufen / Infos (Website)'),
+              ),
+            ),
           const SizedBox(height: 16),
           Text('Fischarten (${g.land.name})', style: text.titleMedium),
           const SizedBox(height: 4),
@@ -483,5 +497,185 @@ Future<void> preisErgaenzen(BuildContext context, Gewaesser g) async {
     }
   } catch (_) {
     if (context.mounted) meldung(context, 'Senden fehlgeschlagen.');
+  }
+}
+
+class BeisszeitKarte extends StatefulWidget {
+  const BeisszeitKarte(this.g, {super.key});
+
+  final Gewaesser g;
+
+  @override
+  State<BeisszeitKarte> createState() => _BeisszeitKarteState();
+}
+
+class _BeisszeitKarteState extends State<BeisszeitKarte> {
+  late final Future<List<BeissTag>> _tage =
+      stundenWetter(widget.g.position).then(beisszeit);
+
+  static const _wochentage = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: FutureBuilder<List<BeissTag>>(
+          future: _tage,
+          builder: (context, snap) {
+            if (snap.hasError) {
+              return const Text('Beißzeit gerade nicht verfügbar.');
+            }
+            if (!snap.hasData) {
+              return const SizedBox(
+                  height: 40, child: Center(child: CircularProgressIndicator()));
+            }
+            final tage = snap.data!;
+            if (tage.isEmpty) return const Text('Keine Daten.');
+            final heute = tage.first;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Titel('🎯 Beißzeit-Prognose'),
+                const SizedBox(height: 6),
+                Text('Heute: ${heute.fische}  (${heute.punkte}/5)',
+                    style: Theme.of(context).textTheme.titleLarge),
+                for (final g in heute.gruende) Text('• $g'),
+                const Text('• Beste Zeiten: Morgen- und Abenddämmerung'),
+                const SizedBox(height: 8),
+                const Row(children: [
+                  Text('Nächste Tage  '),
+                  PremiumMarke(),
+                ]),
+                const SizedBox(height: 4),
+                Row(
+                  children: [
+                    for (final t in tage.skip(1))
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(_wochentage[t.tag.weekday - 1]),
+                            Text(t.fische, style: const TextStyle(fontSize: 11)),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 6),
+                Text('Faustregel aus Luftdruck, Mond, Wolken und Wind – '
+                    'keine Garantie 😉',
+                    style: Theme.of(context).textTheme.bodySmall),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class AbflussKarte extends StatefulWidget {
+  const AbflussKarte(this.g, {super.key});
+
+  final Gewaesser g;
+
+  @override
+  State<AbflussKarte> createState() => _AbflussKarteState();
+}
+
+class _AbflussKarteState extends State<AbflussKarte> {
+  late final Future<Abfluss> _abfluss = abflussLaden(widget.g.position);
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: FutureBuilder<Abfluss>(
+          future: _abfluss,
+          builder: (context, snap) {
+            final a = snap.data;
+            final link = TextButton.icon(
+              onPressed: () => launchUrl(Uri.parse('https://ehyd.gv.at'),
+                  mode: LaunchMode.externalApplication),
+              icon: const Icon(Icons.open_in_new, size: 18),
+              label: const Text('Offizielle Pegel (eHYD)'),
+            );
+            if (snap.hasError || (a != null && a.werte.isEmpty)) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [const Text('💧 Abfluss gerade nicht verfügbar.'), link],
+              );
+            }
+            if (a == null) {
+              return const SizedBox(
+                  height: 40, child: Center(child: CircularProgressIndicator()));
+            }
+            // Index von heute: 7 Tage Vergangenheit, dann heute.
+            final heuteIdx = a.werte.length > 7 ? 7 : a.werte.length - 1;
+            final heute = a.werte[heuteIdx];
+            final gestern = heuteIdx > 0 ? a.werte[heuteIdx - 1] : heute;
+            final trend = heute > gestern * 1.05
+                ? '↗ steigend'
+                : heute < gestern * 0.95
+                    ? '↘ fallend'
+                    : '→ gleichbleibend';
+            final verhaeltnis = a.mittel == null || a.mittel == 0
+                ? null
+                : heute / a.mittel!;
+            final hoch = a.werte.reduce((x, y) => x > y ? x : y);
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Titel('💧 Wasserführung'),
+                const SizedBox(height: 6),
+                Text('Heute ca. ${heute.toStringAsFixed(heute < 10 ? 1 : 0)} m³/s  $trend',
+                    style: text.titleMedium),
+                if (verhaeltnis != null)
+                  Text(verhaeltnis > 1.5
+                      ? 'Deutlich mehr Wasser als üblich – Vorsicht, oft trüb.'
+                      : verhaeltnis < 0.6
+                          ? 'Weniger Wasser als üblich.'
+                          : 'Etwa normale Wasserführung.'),
+                const SizedBox(height: 8),
+                const Row(children: [Text('Verlauf 14 Tage  '), PremiumMarke()]),
+                const SizedBox(height: 4),
+                SizedBox(
+                  height: 50,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      for (var i = 0; i < a.werte.length; i++)
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 1),
+                            height: hoch == 0 ? 2 : 4 + 46 * a.werte[i] / hoch,
+                            color: i == heuteIdx
+                                ? Theme.of(context).colorScheme.primary
+                                : i > heuteIdx
+                                    ? Theme.of(context)
+                                        .colorScheme
+                                        .primary
+                                        .withValues(alpha: 0.35)
+                                    : Theme.of(context)
+                                        .colorScheme
+                                        .primary
+                                        .withValues(alpha: 0.6),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+                Text('Links vergangene Woche, rechts Vorhersage. Modelldaten '
+                    '(Open-Meteo/GloFAS), bei kleinen Bächen ungenau.',
+                    style: text.bodySmall),
+                link,
+              ],
+            );
+          },
+        ),
+      ),
+    );
   }
 }

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../data/bilder.dart';
 import '../data/fische.dart';
 import '../data/gewaesser.dart';
+import '../data/koeder.dart';
+import '../services/wecker.dart';
 import '../main.dart';
 import '../models/fisch.dart';
 import '../models/gewaesser.dart';
@@ -140,6 +142,24 @@ class FischDetail extends StatelessWidget {
           const SizedBox(height: 12),
           _Abschnitt('Lebensraum', fisch.lebensraum),
           _Abschnitt('Köder', fisch.koeder),
+          if (koederTipps[fisch.id] case final tipps?) ...[
+            Text('Köder-Ratgeber nach Jahreszeit', style: text.titleMedium),
+            const SizedBox(height: 4),
+            for (var i = 0; i < 4; i++)
+              Card(
+                color: i == jahreszeit(DateTime.now())
+                    ? Theme.of(context).colorScheme.primaryContainer
+                    : null,
+                child: ListTile(
+                  dense: true,
+                  title: Text(jahreszeitNamen[i] +
+                      (i == jahreszeit(DateTime.now()) ? '  (jetzt)' : '')),
+                  subtitle: Text(tipps[i]),
+                ),
+              ),
+            const SizedBox(height: 12),
+          ],
+          if (Wecker.unterstuetzt) _WeckerKnopf(fisch),
           Text('Wo gibt es ihn?', style: text.titleMedium),
           const SizedBox(height: 4),
           if (gewaesserMit(fisch).isEmpty)
@@ -239,6 +259,56 @@ class _Zelle extends StatelessWidget {
       child: Text(
         text,
         style: fett ? const TextStyle(fontWeight: FontWeight.bold) : null,
+      ),
+    );
+  }
+}
+
+class _WeckerKnopf extends StatefulWidget {
+  const _WeckerKnopf(this.fisch);
+
+  final Fisch fisch;
+
+  @override
+  State<_WeckerKnopf> createState() => _WeckerKnopfState();
+}
+
+class _WeckerKnopfState extends State<_WeckerKnopf> {
+  bool? _an;
+
+  @override
+  void initState() {
+    super.initState();
+    Wecker.instanz.fische().then((f) {
+      if (mounted) setState(() => _an = f.contains(widget.fisch.id));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final land = SpeicherScope.of(context).bundesland;
+    final regel = widget.fisch.regel(land);
+    if (regel.von == null || regel.bis == null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: SwitchListTile(
+        contentPadding: EdgeInsets.zero,
+        secondary: const Icon(Icons.alarm),
+        title: const Row(children: [
+          Flexible(child: Text('Schonzeit-Wecker')),
+          SizedBox(width: 8),
+          PremiumMarke(),
+        ]),
+        subtitle: Text('Erinnerung um 8 Uhr am Tag nach dem ${regel.bis}, wenn die '
+            'Schonzeit in ${land.name} endet'),
+        value: _an ?? false,
+        onChanged: _an == null
+            ? null
+            : (_) async {
+                final an =
+                    await Wecker.instanz.umschalten(widget.fisch.id, land);
+                if (mounted) setState(() => _an = an);
+              },
       ),
     );
   }

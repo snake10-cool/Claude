@@ -66,6 +66,29 @@ class CommunityPreis {
   final DateTime datum;
 }
 
+class Treffen {
+  Treffen(DocumentSnapshot<Map<String, dynamic>> doc)
+      : id = doc.id,
+        uid = doc.data()?['uid'] as String? ?? '',
+        nutzerName = doc.data()?['nutzerName'] as String? ?? '',
+        gewaesser = doc.data()?['gewaesser'] as String? ?? '',
+        text = doc.data()?['text'] as String? ?? '',
+        zeit = (doc.data()?['zeit'] as Timestamp?)?.toDate() ?? DateTime.now(),
+        zusagen = (doc.data()?['zusagen'] as Map?)?.map(
+                (k, v) => MapEntry(k as String, v as String)) ??
+            const {};
+
+  final String id;
+  final String uid;
+  final String nutzerName;
+  final String gewaesser;
+  final String text;
+  final DateTime zeit;
+
+  /// uid → @Name.
+  final Map<String, String> zusagen;
+}
+
 /// Wird erst benutzt, wenn Firebase eingerichtet ist (Dart-Globals sind lazy).
 final fangDienst = FangDienst();
 
@@ -215,11 +238,131 @@ class FangDienst {
     _fotoCache.remove(fang.id);
   }
 
-  Future<void> petriHeil(Fang fang, String uid, {required bool an}) =>
-      _oeff.doc(fang.id).update({
-        'petriHeil':
-            an ? FieldValue.arrayUnion([uid]) : FieldValue.arrayRemove([uid]),
+  Future<void> petriHeil(Fang fang, String uid,
+      {required bool an, String name = ''}) async {
+    await _oeff.doc(fang.id).update({
+      'petriHeil':
+          an ? FieldValue.arrayUnion([uid]) : FieldValue.arrayRemove([uid]),
+    });
+    if (an) await _aktivitaet(fang, uid, name, 'petri', '');
+  }
+
+  // ── Kommentare ──
+
+  CollectionReference<Map<String, dynamic>> _kommentare(String fangId) =>
+      _db.collection('faenge/$fangId/kommentare');
+
+  Stream<List<Eintrag>> kommentare(String fangId) => _kommentare(fangId)
+      .orderBy('erstellt')
+      .snapshots()
+      .map((s) => s.docs.map(Eintrag.new).toList());
+
+  Future<void> kommentieren(Fang fang, String uid, String name, String text) async {
+    await _kommentare(fang.id).add({
+      'uid': uid,
+      'nutzerName': name,
+      'text': text,
+      'erstellt': FieldValue.serverTimestamp(),
+    });
+    await _aktivitaet(fang, uid, name, 'kommentar', text);
+  }
+
+  Future<void> kommentarLoeschen(String fangId, String id) =>
+      _kommentare(fangId).doc(id).delete();
+
+  // ── Aktivitäten (Benachrichtigungen in der App) ──
+
+  CollectionReference<Map<String, dynamic>> _aktivitaeten(String uid) =>
+      _db.collection('nutzer/$uid/aktivitaeten');
+
+  Future<void> _aktivitaet(
+      Fang fang, String von, String name, String typ, String text) async {
+    if (fang.uid == von) return; // Keine Nachricht an sich selbst.
+    try {
+      await _aktivitaeten(fang.uid).add({
+        'von': von,
+        'nutzerName': name,
+        'typ': typ,
+        'text': text.length > 100 ? '${text.substring(0, 100)}…' : text,
+        'bezug': fang.fischId,
+        'erstellt': FieldValue.serverTimestamp(),
       });
+    } catch (_) {
+      // Nicht schlimm, wenn die Benachrichtigung fehlschlägt.
+    }
+  }
+
+  Stream<List<Eintrag>> aktivitaeten(String uid) => _aktivitaeten(uid)
+      .orderBy('erstellt', descending: true)
+      .limit(50)
+      .snapshots()
+      .map((s) => s.docs.map(Eintrag.new).toList());
+
+  Future<void> aktivitaetenLeeren(String uid) async {
+    for (final d in (await _aktivitaeten(uid).get()).docs) {
+      await d.reference.delete();
+    }
+  }
+
+  // ── Angeltage ──
+
+  CollectionReference<Map<String, dynamic>> get _treffen =>
+      _db.collection('treffen');
+
+  Stream<List<Treffen>> kommendeTreffen() => _treffen
+      .where('zeit',
+          isGreaterThan: Timestamp.fromDate(
+              DateTime.now().subtract(const Duration(hours: 6))))
+      .orderBy('zeit')
+      .limit(50)
+      .snapshots()
+      .map((s) => s.docs.map(Treffen.new).toList());
+
+  Future<void> treffenAnlegen({
+    required String uid,
+    required String name,
+    required String gewaesser,
+    required DateTime zeit,
+    required String text,
+  }) =>
+      _treffen.add({
+        'uid': uid,
+        'nutzerName': name,
+        'gewaesser': gewaesser,
+        'zeit': Timestamp.fromDate(zeit),
+        'text': text,
+        'zusagen': {uid: name},
+      });
+
+  Future<void> zusagen(String treffenId, String uid, String name,
+          {required bool dabei}) =>
+      _treffen.doc(treffenId).update({
+        'zusagen.$uid': dabei ? name : FieldValue.delete(),
+      });
+
+  Future<void> treffenLoeschen(String id) => _treffen.doc(id).delete();
+
+  // ── Premium (z. B. als Gewinn der Monats-Challenge) ──
+
+  Future<DateTime?> premiumBis(String uid) async {
+    try {
+      final d = await _db.doc('premium/$uid').get();
+      return (d.data()?['bis'] as Timestamp?)?.toDate();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Nur der Admin darf das (siehe Regeln).
+  Future<void> premiumVergeben(String uid, String grund, {int tage = 31}) async {
+    final jetzt = DateTime.now();
+    final bisher = await premiumBis(uid);
+    final start = bisher != null && bisher.isAfter(jetzt) ? bisher : jetzt;
+    await _db.doc('premium/$uid').set({
+      'bis': Timestamp.fromDate(start.add(Duration(days: tage))),
+      'grund': grund,
+    });
+  }
 
   Future<Uint8List?> foto(String fangId) async {
     if (_fotoCache.containsKey(fangId)) return _fotoCache[fangId];
@@ -416,8 +559,10 @@ class FangDienst {
   Future<void> allesLoeschen(String uid, String? name) async {
     final oeff = await _oeff.where('uid', isEqualTo: uid).get();
     final privat = await _privat(uid).get();
-    for (final d in (await _fangorte(uid).get()).docs) {
-      await d.reference.delete();
+    for (final sammlung in [_fangorte(uid), _aktivitaeten(uid), _freunde(uid)]) {
+      for (final d in (await sammlung.get()).docs) {
+        await d.reference.delete();
+      }
     }
     for (final doc in [...oeff.docs, ...privat.docs]) {
       if (doc.data()['hatFoto'] == true) await _fotos.doc(doc.id).delete();

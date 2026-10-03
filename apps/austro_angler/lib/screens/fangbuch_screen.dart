@@ -13,6 +13,7 @@ import '../services/fang_dienst.dart';
 import '../services/wetter.dart';
 import 'gewaesser_screen.dart';
 import 'ort_waehlen.dart';
+import 'statistik_screen.dart';
 import 'widgets.dart';
 
 class FangbuchScreen extends StatefulWidget {
@@ -41,7 +42,18 @@ class _FangbuchScreenState extends State<FangbuchScreen> {
     final online = konto?.angemeldet ?? false;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Mein Fangbuch')),
+      appBar: AppBar(
+        title: const Text('Mein Fangbuch'),
+        actions: [
+          IconButton(
+            tooltip: 'Statistik & Abzeichen',
+            icon: const Icon(Icons.bar_chart),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const StatistikScreen()),
+            ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => Navigator.of(context).push(
           MaterialPageRoute(builder: (_) => const FangFormular()),

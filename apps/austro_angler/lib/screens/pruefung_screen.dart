@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../data/fragen.dart';
 import '../main.dart';
+import 'pruefungsmodus_screen.dart';
 import 'widgets.dart';
 
 const _fragenProRunde = 10;
@@ -96,6 +97,13 @@ class _PruefungScreenState extends State<PruefungScreen> {
           onPressed: _start,
           icon: const Icon(Icons.play_arrow),
           label: const Text('Runde starten'),
+        ),
+        const SizedBox(height: 8),
+        OutlinedButton.icon(
+          onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => const PruefungsModusScreen())),
+          icon: const Icon(Icons.timer_outlined),
+          label: const Text('⭐ Prüfungsmodus (25 Fragen, 15 Minuten)'),
         ),
         const Spacer(),
         const HinweisKarte(
