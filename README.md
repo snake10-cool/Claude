@@ -50,24 +50,21 @@ Beim ersten Start am PC zeigt Windows eventuell "Der Computer wurde durch Window
 
 Daten bearbeiten: `apps/austro_angler/lib/data/`. Wo nichts gefunden wurde, steht in der App "unbekannt – bitte prüfen".
 
-## 🔥 Firebase einrichten (geht auch am Handy, ca. 10 Minuten)
+## 🔥 Firebase
 
-1. **console.firebase.google.com** öffnen, am besten in der Desktop-Ansicht des Browsers, und mit dem Google-Konto anmelden.
-2. **Projekt hinzufügen**: Name `austro-angler`, Google Analytics kann aus bleiben.
-3. **Build → Authentication → Jetzt starten**, dann unter "Anmeldemethode" **E-Mail/Passwort** aktivieren.
-4. **Build → Firestore Database → Datenbank erstellen**: Standort `europe-west` (EU), dann den **Produktionsmodus** wählen.
-5. In Firestore auf **Regeln** gehen, den ganzen Inhalt von [`apps/austro_angler/firestore.rules`](apps/austro_angler/firestore.rules) einfügen und **Veröffentlichen**.
-6. In der **Projektübersicht → App hinzufügen → Android**:
-   - Paketname: `com.snake10.austroangler`
-   - SHA-1 wird **nicht** gebraucht
-   - Die Datei `google-services.json` herunterladen
-7. Den Inhalt von `google-services.json` an Claude schicken. Claude trägt die Werte in `lib/firebase_options.dart` ein. Diese Werte sind nicht geheim, den Schutz übernehmen die Regeln aus Schritt 5.
+Projekt: **austro-angler-202495bd** (Konto u3206495666@gmail.com), Konsole: https://console.firebase.google.com/project/austro-angler-202495bd
 
-Alles läuft im **kostenlosen Spark-Tarif**, eine Kreditkarte ist nicht nötig. Fotos werden deshalb verkleinert direkt in Firestore gespeichert, nicht in Cloud Storage.
+Schon eingerichtet:
+- Firestore-Datenbank (europe-west3, Frankfurt)
+- Sicherheitsregeln aus `apps/austro_angler/firestore.rules`. Nach Änderungen müssen sie neu veröffentlicht werden.
+- Android-App (`com.snake10.austroangler`) und PC-App (Web-App-Daten)
+
+Einmal von Hand: **Authentication → Jetzt starten → E-Mail/Passwort aktivieren → Speichern**
+
+Alles läuft im **kostenlosen Spark-Tarif**. Fotos werden deshalb verkleinert direkt in Firestore gespeichert.
 
 ## Nächste Schritte
 
-1. Firebase einrichten (siehe oben).
 2. Testen und die Gewässerdaten prüfen lassen.
 3. **Google-Play-Konto** (25 $ einmalig, unter 18 über die Eltern).
 4. **Upload-Schlüssel und AAB-Datei** für den Play Store.

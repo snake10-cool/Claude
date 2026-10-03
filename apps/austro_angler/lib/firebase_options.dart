@@ -7,19 +7,19 @@ import 'package:flutter/foundation.dart';
 ///
 /// Solange die Werte leer sind, läuft die App ohne Online-Funktionen.
 const _android = FirebaseOptions(
-  apiKey: '',
-  appId: '',
-  messagingSenderId: '',
-  projectId: '',
+  apiKey: 'AIzaSyCM_Y2UqxFRnLdBVpDJAzCUoTZltZyOJik',
+  appId: '1:914404478547:android:dfa419e8f4fbe931ac00a6',
+  messagingSenderId: '914404478547',
+  projectId: 'austro-angler-202495bd',
 );
 
 /// Windows nutzt die Daten der Web-App des Projekts.
 const _windows = FirebaseOptions(
-  apiKey: '',
-  appId: '',
-  messagingSenderId: '',
-  projectId: '',
-  authDomain: '',
+  apiKey: 'AIzaSyBLmDOQ0D88kWLveUr7SCh9SmGghMvcQxs',
+  appId: '1:914404478547:web:acc309690683c05fac00a6',
+  messagingSenderId: '914404478547',
+  projectId: 'austro-angler-202495bd',
+  authDomain: 'austro-angler-202495bd.firebaseapp.com',
 );
 
 FirebaseOptions get firebaseOptionen =>
