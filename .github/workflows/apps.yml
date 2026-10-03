@@ -153,12 +153,16 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           ls -la ausgabe
-          gh release delete test-build --yes --cleanup-tag || true
-          gh release create test-build ausgabe/* \
-            --prerelease \
-            --target "$GITHUB_SHA" \
-            --title "Testversion (${GITHUB_REF_NAME})" \
-            --notes "Automatisch gebaut aus ${GITHUB_SHA::7}.
+          NOTIZ="Zuletzt aktualisiert aus ${GITHUB_SHA::7}.
 
-          📱 Handy: AustroAngler.apk antippen und installieren (falls dabei).
-          💻 PC (falls dabei): AustroAngler-Setup.exe herunterladen und starten. Bei der Windows-Warnung auf \"Weitere Informationen\" → \"Trotzdem ausführen\" klicken. Ohne Installation: AustroAngler-Windows.zip entpacken und AustroAngler.exe starten."
+          📱 Handy: AustroAngler.apk antippen und installieren.
+          💻 PC: AustroAngler-Setup.exe herunterladen und starten. Bei der Windows-Warnung auf \"Weitere Informationen\" → \"Trotzdem ausführen\" klicken. Ohne Installation: AustroAngler-Windows.zip entpacken und AustroAngler.exe starten."
+          # Vorhandene Dateien der anderen Plattform bleiben erhalten, nur die
+          # neu gebauten werden ersetzt.
+          if gh release view test-build >/dev/null 2>&1; then
+            gh release upload test-build ausgabe/* --clobber
+            gh release edit test-build --notes "$NOTIZ" --title "Testversion (${GITHUB_REF_NAME})"
+          else
+            gh release create test-build ausgabe/* --prerelease --target "$GITHUB_SHA" \
+              --title "Testversion (${GITHUB_REF_NAME})" --notes "$NOTIZ"
+          fi
