@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -58,13 +60,71 @@ class Wecker {
     return an;
   }
 
-  /// Plant für alle gewählten Fische die nächste Erinnerung neu.
+  // ── Lizenzen ──
+
+  Future<List<Lizenz>> lizenzen() async {
+    final p = await SharedPreferences.getInstance();
+    final roh = p.getString('lizenzen');
+    if (roh == null) return [];
+    return [
+      for (final j in jsonDecode(roh) as List)
+        Lizenz(j['name'] as String, DateTime.parse(j['ablauf'] as String)),
+    ]..sort((a, b) => a.ablauf.compareTo(b.ablauf));
+  }
+
+  Future<void> lizenzenSpeichern(List<Lizenz> liste, Bundesland land) async {
+    final p = await SharedPreferences.getInstance();
+    await p.setString(
+        'lizenzen',
+        jsonEncode([
+          for (final l in liste)
+            {'name': l.name, 'ablauf': l.ablauf.toIso8601String()},
+        ]));
+    if (unterstuetzt && liste.isNotEmpty) {
+      await _starten();
+      await _plugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.requestNotificationsPermission();
+    }
+    await alleEinplanen(land);
+  }
+
+  /// Plant alle Erinnerungen (Schonzeiten und Lizenzen) neu.
   Future<void> alleEinplanen(Bundesland land) async {
     if (!unterstuetzt) return;
     await _starten();
     await _plugin.cancelAll();
     final jetzt = DateTime.now();
     var id = 0;
+    for (final l in await lizenzen()) {
+      for (final (tageVorher, text) in [
+        (14, 'läuft in 2 Wochen ab'),
+        (1, 'läuft morgen ab'),
+      ]) {
+        final tag = l.ablauf.subtract(Duration(days: tageVorher));
+        final termin = tz.TZDateTime(tz.local, tag.year, tag.month, tag.day, 9);
+        if (termin.isBefore(tz.TZDateTime.now(tz.local))) continue;
+        await _plugin.zonedSchedule(
+          id: 1000 + id++,
+          title: '🪪 ${l.name} $text',
+          body: 'Gültig bis ${l.ablauf.day}.${l.ablauf.month}.${l.ablauf.year} '
+              '– rechtzeitig verlängern!',
+          scheduledDate: termin,
+          notificationDetails: const NotificationDetails(
+            android: AndroidNotificationDetails(
+              'lizenzen',
+              'Lizenz-Erinnerung',
+              channelDescription: 'Erinnert vor dem Ablauf von Lizenzen',
+              importance: Importance.high,
+              priority: Priority.high,
+            ),
+          ),
+          androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        );
+      }
+    }
+    id = 0;
     for (final fischId in await fische()) {
       final fisch = fischById(fischId);
       final ende = fisch == null ? null : _naechstesEnde(fisch.regel(land), jetzt);
@@ -100,4 +160,11 @@ class Wecker {
     }
     return null;
   }
+}
+
+class Lizenz {
+  const Lizenz(this.name, this.ablauf);
+
+  final String name;
+  final DateTime ablauf;
 }

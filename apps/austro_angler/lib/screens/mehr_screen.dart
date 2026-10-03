@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../main.dart';
+import 'ausfluege_screen.dart';
 import 'checkliste_screen.dart';
+import 'koeder_screen.dart';
+import 'lizenzen_screen.dart';
+import 'quiz_screen.dart';
+import 'vereine_screen.dart';
 import 'faq_screen.dart';
 import 'kalender_screen.dart';
 import 'statistik_screen.dart';
@@ -49,6 +54,21 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.bar_chart, 'Statistik & Abzeichen',
               'Rekorde, Auswertungen, PDF-Export', () => _oeffnen(context,
                   const StatistikScreen())),
+          _Eintrag(Icons.event_available, 'Meine Angeltage ⭐',
+              'Ganze Tage erfassen, auch Schneidertage', () => _oeffnen(context,
+                  const AusfluegeScreen())),
+          _Eintrag(Icons.phishing, 'Köder-Box',
+              'Deine Köder mit Foto', () => _oeffnen(context,
+                  const KoederScreen())),
+          _Eintrag(Icons.badge, 'Meine Lizenzen',
+              'Ablaufdatum und Erinnerung', () => _oeffnen(context,
+                  const LizenzenScreen())),
+          _Eintrag(Icons.groups_2, 'Vereine & Verbände',
+              'Vereine der Region, Gewässer, Termine', () => _oeffnen(context,
+                  const VereineScreen())),
+          _Eintrag(Icons.quiz, 'Fisch-Quiz',
+              'Erkennst du alle Fische?', () => _oeffnen(context,
+                  const FischQuizScreen())),
           _Eintrag(Icons.checklist, 'Ausrüstungs-Checkliste',
               'Nichts vergessen vor dem Losfahren', () => _oeffnen(context,
                   const ChecklisteScreen())),
@@ -66,7 +86,7 @@ class MehrScreen extends StatelessWidget {
               () => showAboutDialog(
                     context: context,
                     applicationName: 'Austro Angler',
-                    applicationVersion: '0.4',
+                    applicationVersion: '0.5',
                     children: const [
                       Text(
                         'Alle Angaben zu Schonzeiten, Brittelmaßen und Preisen '

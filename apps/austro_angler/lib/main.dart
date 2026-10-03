@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +24,11 @@ Future<void> main() async {
   if (firebaseKonfiguriert) {
     try {
       await Firebase.initializeApp(options: firebaseOptionen);
+      // Offline-Modus: Daten bleiben am Gerät und werden später synchronisiert.
+      FirebaseFirestore.instance.settings = const Settings(
+        persistenceEnabled: true,
+        cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
+      );
       konto = Konto();
     } catch (e) {
       debugPrint('Firebase nicht verfügbar: $e');
@@ -129,7 +136,12 @@ class _StartseiteState extends State<Startseite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: _index, children: _seiten),
+      body: Column(
+        children: [
+          const _OfflineHinweis(),
+          Expanded(child: IndexedStack(index: _index, children: _seiten)),
+        ],
+      ),
       // Große Systemschrift nur begrenzt übernehmen, sonst bricht die
       // Beschriftung bei sechs Tabs um.
       bottomNavigationBar: MediaQuery.withClampedTextScaling(
@@ -151,6 +163,47 @@ class _StartseiteState extends State<Startseite> {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Zeigt oben einen Streifen, wenn kein Internet da ist.
+class _OfflineHinweis extends StatelessWidget {
+  const _OfflineHinweis();
+
+  static final _stream = Connectivity().onConnectivityChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<List<ConnectivityResult>>(
+      stream: _stream,
+      builder: (context, snap) {
+        final offline = snap.data != null &&
+            snap.data!.every((r) => r == ConnectivityResult.none);
+        if (!offline) return const SizedBox.shrink();
+        return Material(
+          color: Colors.orange.shade700,
+          child: SafeArea(
+            bottom: false,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              child: Row(
+                children: const [
+                  Icon(Icons.cloud_off, color: Colors.white, size: 18),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Offline – Fänge werden gespeichert und später '
+                      'hochgeladen.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

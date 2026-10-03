@@ -5,9 +5,12 @@ import 'package:url_launcher/url_launcher.dart';
 import '../data/fische.dart';
 import '../data/gewaesser.dart';
 import '../main.dart';
+import '../models/fang.dart';
 import '../models/gewaesser.dart';
 import '../services/fang_dienst.dart';
 import '../services/beisszeit.dart';
+import '../services/sonne.dart';
+import '../data/fische.dart' show fischById;
 import '../services/wetter.dart';
 import 'konto_screen.dart';
 import 'melden.dart';
@@ -183,6 +186,8 @@ class GewaesserDetail extends StatelessWidget {
           const SizedBox(height: 12),
           WetterKarte(g),
           BeisszeitKarte(g),
+          DaemmerungKarte(g),
+          if (KontoScope.of(context) != null) WasBeisstKarte(g),
           if (g.typ == GewaesserTyp.fluss || g.typ == GewaesserTyp.bach)
             AbflussKarte(g),
           const SizedBox(height: 16),
@@ -257,6 +262,8 @@ class GewaesserDetail extends StatelessWidget {
             icon: const Icon(Icons.flag_outlined),
             label: const Text('Falsche oder fehlende Info melden'),
           ),
+          const SizedBox(height: 16),
+          if (KontoScope.of(context) != null) BewertungenKarte(g),
           const SizedBox(height: 16),
           Text('Quelle: ${g.quelle} · Stand: ${g.stand}', style: text.bodySmall),
         ],
@@ -676,6 +683,236 @@ class _AbflussKarteState extends State<AbflussKarte> {
           },
         ),
       ),
+    );
+  }
+}
+
+class DaemmerungKarte extends StatelessWidget {
+  const DaemmerungKarte(this.g, {super.key});
+
+  final Gewaesser g;
+
+  @override
+  Widget build(BuildContext context) {
+    final z = sonnenZeiten(DateTime.now(), g.position.latitude,
+        g.position.longitude);
+    String u(DateTime? t) => t == null ? '–' : uhrText(t);
+    Widget zeile(String icon, String text, String zeit) => Padding(
+          padding: const EdgeInsets.symmetric(vertical: 2),
+          child: Row(children: [
+            SizedBox(width: 28, child: Text(icon)),
+            Expanded(child: Text(text)),
+            Text(zeit, style: const TextStyle(fontWeight: FontWeight.w600)),
+          ]),
+        );
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Titel('🌅 Dämmerung & Sonne heute', premium: true),
+            const SizedBox(height: 6),
+            zeile('🌌', 'Morgendämmerung beginnt', u(z.morgendaemmerung)),
+            zeile('🌅', 'Sonnenaufgang', u(z.aufgang)),
+            zeile('📸', 'Goldene Stunde bis', u(z.goldeneStundeMorgenEnde)),
+            zeile('📸', 'Goldene Stunde ab', u(z.goldeneStundeAbendBeginn)),
+            zeile('🌇', 'Sonnenuntergang', u(z.untergang)),
+            zeile('🌌', 'Abenddämmerung endet', u(z.abenddaemmerung)),
+            const SizedBox(height: 4),
+            Text('Die Dämmerung ist meist die beste Beißzeit – vor allem für '
+                'Zander, Hecht und Forelle.',
+                style: Theme.of(context).textTheme.bodySmall),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WasBeisstKarte extends StatefulWidget {
+  const WasBeisstKarte(this.g, {super.key});
+
+  final Gewaesser g;
+
+  @override
+  State<WasBeisstKarte> createState() => _WasBeisstKarteState();
+}
+
+class _WasBeisstKarteState extends State<WasBeisstKarte> {
+  late final _faenge = fangDienst.faengeAn(widget.g.name);
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: FutureBuilder<List<Fang>>(
+          future: _faenge,
+          builder: (context, snap) {
+            if (snap.hasError) return const Text('🎣 Fänge gerade nicht verfügbar.');
+            if (!snap.hasData) {
+              return const SizedBox(
+                  height: 40, child: Center(child: CircularProgressIndicator()));
+            }
+            final grenze = DateTime.now().subtract(const Duration(days: 14));
+            final neu = snap.data!.where((f) => f.datum.isAfter(grenze)).toList();
+            final proArt = <String, int>{};
+            final koeder = <String, int>{};
+            for (final f in neu) {
+              proArt[f.fischId] = (proArt[f.fischId] ?? 0) + 1;
+              if (f.koeder.isNotEmpty) {
+                koeder[f.koeder] = (koeder[f.koeder] ?? 0) + 1;
+              }
+            }
+            String top(Map<String, int> m, String Function(String) name) =>
+                (m.entries.toList()..sort((a, b) => b.value.compareTo(a.value)))
+                    .take(3)
+                    .map((e) => '${name(e.key)} (${e.value})')
+                    .join(', ');
+            final letzter = snap.data!.isEmpty ? null : snap.data!.first;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Titel('🎣 Was beißt gerade?'),
+                const SizedBox(height: 6),
+                if (letzter == null)
+                  const Text('Hier wurde noch nichts geteilt – sei die oder '
+                      'der Erste!')
+                else
+                  Text('Letzter Fang: ${fischById(letzter.fischId)?.name ?? ''}'
+                      '${letzter.laengeCm == null ? '' : ', ${letzter.laengeCm!.toStringAsFixed(0)} cm'}'
+                      ' am ${datumText(letzter.datum)} von ${at(letzter.nutzerName)}'),
+                if (neu.isNotEmpty) ...[
+                  const SizedBox(height: 8),
+                  const Row(children: [
+                    Text('Letzte 14 Tage  '),
+                    PremiumMarke(),
+                  ]),
+                  Text('${neu.length} Fänge · Fische: '
+                      '${top(proArt, (id) => fischById(id)?.name ?? id)}'),
+                  if (koeder.isNotEmpty) Text('Köder: ${top(koeder, (k) => k)}'),
+                ],
+                const SizedBox(height: 4),
+                Text('Aus öffentlich geteilten Fängen der Community.',
+                    style: text.bodySmall),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class BewertungenKarte extends StatefulWidget {
+  const BewertungenKarte(this.g, {super.key});
+
+  final Gewaesser g;
+
+  @override
+  State<BewertungenKarte> createState() => _BewertungenKarteState();
+}
+
+class _BewertungenKarteState extends State<BewertungenKarte> {
+  late final _stream = fangDienst.bewertungen(widget.g.id);
+
+  Future<void> _bewerten(Bewertung? alt) async {
+    final konto = KontoScope.of(context)!;
+    if (!konto.angemeldet) return;
+    var sterne = alt?.sterne ?? 5;
+    final tipp = TextEditingController(text: alt?.tipp ?? '');
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: Text('${widget.g.name} bewerten'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  for (var i = 1; i <= 5; i++)
+                    IconButton(
+                      onPressed: () => setState(() => sterne = i),
+                      icon: Icon(i <= sterne ? Icons.star : Icons.star_border,
+                          color: Colors.amber.shade700, size: 32),
+                    ),
+                ],
+              ),
+              TextField(
+                controller: tipp,
+                maxLines: 3,
+                maxLength: 300,
+                decoration: const InputDecoration(
+                  hintText: 'Tipp für andere, z. B. Parkplatz, beste Stelle, '
+                      'Köder …',
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: const Text('Abbrechen')),
+            FilledButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: const Text('Speichern')),
+          ],
+        ),
+      ),
+    );
+    if (ok != true) return;
+    await fangDienst.bewerten(
+        widget.g.id, konto.uid!, konto.name ?? '', sterne, tipp.text.trim());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final konto = KontoScope.of(context)!;
+    final text = Theme.of(context).textTheme;
+    return StreamBuilder<List<Bewertung>>(
+      stream: _stream,
+      builder: (context, snap) {
+        final liste = snap.data ?? const <Bewertung>[];
+        final eigene = liste.where((b) => b.uid == konto.uid).firstOrNull;
+        final schnitt = liste.isEmpty
+            ? 0.0
+            : liste.map((b) => b.sterne).reduce((a, b) => a + b) / liste.length;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('⭐ Bewertungen', style: text.titleMedium),
+            const SizedBox(height: 4),
+            Text(liste.isEmpty
+                ? 'Noch keine Bewertungen.'
+                : '${schnitt.toStringAsFixed(1).replaceAll('.', ',')} von 5 '
+                    'Sternen (${liste.length})'),
+            TextButton.icon(
+              onPressed: () => _bewerten(eigene),
+              icon: const Icon(Icons.rate_review_outlined),
+              label: Text(eigene == null ? 'Bewerten' : 'Meine Bewertung ändern'),
+            ),
+            for (final b in liste.take(20))
+              ListTile(
+                dense: true,
+                contentPadding: EdgeInsets.zero,
+                title: Text('${'★' * b.sterne}${'☆' * (5 - b.sterne)}  '
+                    '${at(b.nutzerName)}'),
+                subtitle: b.tipp.isEmpty ? null : Text(b.tipp),
+                trailing: b.uid == konto.uid || konto.istAdmin
+                    ? IconButton(
+                        icon: const Icon(Icons.delete_outline, size: 18),
+                        onPressed: () =>
+                            fangDienst.bewertungLoeschen(widget.g.id, b.uid),
+                      )
+                    : null,
+              ),
+          ],
+        );
+      },
     );
   }
 }

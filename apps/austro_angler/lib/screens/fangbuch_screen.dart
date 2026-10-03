@@ -12,8 +12,10 @@ import '../models/fang.dart';
 import '../services/fang_dienst.dart';
 import '../services/wetter.dart';
 import 'gewaesser_screen.dart';
+import 'koeder_screen.dart';
 import 'ort_waehlen.dart';
 import 'statistik_screen.dart';
+import 'story_screen.dart';
 import 'widgets.dart';
 
 class FangbuchScreen extends StatefulWidget {
@@ -466,6 +468,13 @@ class _FangFormularState extends State<FangFormular> {
         actions: [
           if (widget.fang != null)
             IconButton(
+              tooltip: 'Als Bild teilen',
+              icon: const Icon(Icons.share_outlined),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => StoryScreen(widget.fang!))),
+            ),
+          if (widget.fang != null)
+            IconButton(
               icon: const Icon(Icons.delete_outline),
               onPressed: _loeschen,
             ),
@@ -573,7 +582,23 @@ class _FangFormularState extends State<FangFormular> {
           const SizedBox(height: 12),
           TextField(
             controller: _koeder,
-            decoration: const InputDecoration(labelText: 'Köder'),
+            decoration: InputDecoration(
+              labelText: 'Köder',
+              suffixIcon: online
+                  ? IconButton(
+                      tooltip: 'Aus der Köder-Box',
+                      icon: const Icon(Icons.phishing),
+                      onPressed: () async {
+                        final k = await Navigator.of(context).push<String>(
+                          MaterialPageRoute(
+                              builder: (_) =>
+                                  const KoederScreen(auswahl: true)),
+                        );
+                        if (k != null) setState(() => _koeder.text = k);
+                      },
+                    )
+                  : null,
+            ),
           ),
           const SizedBox(height: 12),
           Row(

@@ -118,7 +118,7 @@ Future<Map<String, num>?> wetterZurZeit(LatLng p, DateTime zeit) async {
     },
   );
   try {
-    final antwort = await http.get(uri).timeout(const Duration(seconds: 10));
+    final antwort = await http.get(uri).timeout(const Duration(seconds: 5));
     if (antwort.statusCode != 200) return null;
     final h = (jsonDecode(antwort.body) as Map<String, dynamic>)['hourly']
         as Map<String, dynamic>;

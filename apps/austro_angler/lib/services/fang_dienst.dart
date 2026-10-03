@@ -89,6 +89,82 @@ class Treffen {
   final Map<String, String> zusagen;
 }
 
+class Bewertung {
+  Bewertung(DocumentSnapshot<Map<String, dynamic>> doc)
+      : uid = doc.id,
+        nutzerName = doc.data()?['nutzerName'] as String? ?? '',
+        sterne = (doc.data()?['sterne'] as num?)?.toInt() ?? 0,
+        tipp = doc.data()?['tipp'] as String? ?? '',
+        erstellt =
+            (doc.data()?['erstellt'] as Timestamp?)?.toDate() ?? DateTime.now();
+
+  final String uid;
+  final String nutzerName;
+  final int sterne;
+  final String tipp;
+  final DateTime erstellt;
+}
+
+class Koeder {
+  Koeder({
+    this.id = '',
+    required this.name,
+    this.art = '',
+    this.notiz = '',
+    this.foto,
+  });
+
+  Koeder.ausDoc(DocumentSnapshot<Map<String, dynamic>> doc)
+      : id = doc.id,
+        name = doc.data()?['name'] as String? ?? '',
+        art = doc.data()?['art'] as String? ?? '',
+        notiz = doc.data()?['notiz'] as String? ?? '',
+        foto = doc.data()?['foto'] as String?;
+
+  final String id;
+  final String name;
+  final String art;
+  final String notiz;
+
+  /// Kleines Foto als Base64.
+  final String? foto;
+
+  Map<String, dynamic> daten() =>
+      {'name': name, 'art': art, 'notiz': notiz, 'foto': foto};
+}
+
+class Ausflug {
+  Ausflug({
+    this.id = '',
+    required this.gewaesser,
+    required this.start,
+    required this.ende,
+    this.notiz = '',
+  });
+
+  Ausflug.ausDoc(DocumentSnapshot<Map<String, dynamic>> doc)
+      : id = doc.id,
+        gewaesser = doc.data()?['gewaesser'] as String? ?? '',
+        start = (doc.data()?['start'] as Timestamp?)?.toDate() ?? DateTime.now(),
+        ende = (doc.data()?['ende'] as Timestamp?)?.toDate() ?? DateTime.now(),
+        notiz = doc.data()?['notiz'] as String? ?? '';
+
+  final String id;
+  final String gewaesser;
+  final DateTime start;
+  final DateTime ende;
+  final String notiz;
+
+  Duration get dauer => ende.difference(start);
+
+  Map<String, dynamic> daten() => {
+        'gewaesser': gewaesser,
+        'start': Timestamp.fromDate(start),
+        'ende': Timestamp.fromDate(ende),
+        'notiz': notiz,
+      };
+}
+
 /// Wird erst benutzt, wenn Firebase eingerichtet ist (Dart-Globals sind lazy).
 final fangDienst = FangDienst();
 
@@ -99,6 +175,14 @@ final fangDienst = FangDienst();
 /// verkleinert als Base64 in `fotos/{fangId}` (funktioniert im Gratis-Tarif).
 class FangDienst {
   final _db = FirebaseFirestore.instance;
+
+  /// Ohne Netz bestätigt Firestore Schreibvorgänge erst, wenn wieder Empfang
+  /// da ist. Die Änderung ist aber schon lokal gespeichert und wird später
+  /// automatisch hochgeladen – deshalb nicht ewig warten.
+  static Future<void> _offline(Future<void> schreiben) => schreiben.timeout(
+        const Duration(seconds: 4),
+        onTimeout: () {},
+      );
   final _fotoCache = <String, Uint8List?>{};
 
   CollectionReference<Map<String, dynamic>> get _oeff =>
@@ -180,31 +264,31 @@ class FangDienst {
     final daten = fang.kopie(id: id, hatFoto: hatFoto).toFirestore();
 
     if (vorher != null && vorher.oeffentlich == fang.oeffentlich) {
-      await ziel.doc(id).update(daten);
+      await _offline(ziel.doc(id).update(daten));
     } else {
       if (vorher != null) {
         final alt = vorher.oeffentlich ? _oeff : _privat(vorher.uid);
-        await alt.doc(id).delete();
+        await _offline(alt.doc(id).delete());
       }
-      await ziel.doc(id).set({
+      await _offline(ziel.doc(id).set({
         ...daten,
         'petriHeil': <String>[],
         'erstellt': FieldValue.serverTimestamp(),
-      });
+      }));
     }
 
     if (foto != null) {
-      await _fotos.doc(id).set({
+      await _offline(_fotos.doc(id).set({
         'uid': fang.uid,
         'oeffentlich': fang.oeffentlich,
         'daten': base64Encode(foto),
-      });
+      }));
       _fotoCache[id] = foto;
     } else if (fotoEntfernen) {
-      await _fotos.doc(id).delete();
+      await _offline(_fotos.doc(id).delete());
       _fotoCache.remove(id);
     } else if (hatFoto && vorher?.oeffentlich != fang.oeffentlich) {
-      await _fotos.doc(id).update({'oeffentlich': fang.oeffentlich});
+      await _offline(_fotos.doc(id).update({'oeffentlich': fang.oeffentlich}));
     }
     return id;
   }
@@ -214,13 +298,13 @@ class FangDienst {
   CollectionReference<Map<String, dynamic>> _fangorte(String uid) =>
       _db.collection('nutzer/$uid/fangorte');
 
-  Future<void> fangortSpeichern(String uid, String fangId, LatLng? ort) => ort ==
-          null
-      ? _fangorte(uid).doc(fangId).delete()
-      : _fangorte(uid).doc(fangId).set({
-          'lat': ort.latitude,
-          'lng': ort.longitude,
-        });
+  Future<void> fangortSpeichern(String uid, String fangId, LatLng? ort) =>
+      _offline(ort == null
+          ? _fangorte(uid).doc(fangId).delete()
+          : _fangorte(uid).doc(fangId).set({
+              'lat': ort.latitude,
+              'lng': ort.longitude,
+            }));
 
   /// Fang-ID → Ort, nur für den Besitzer lesbar.
   Stream<Map<String, LatLng>> fangorte(String uid) =>
@@ -494,6 +578,91 @@ class FangDienst {
         'preise': FieldValue.arrayRemove([p.roh]),
       });
 
+  // ── Gewässer: Bewertungen und aktuelle Fänge ──
+
+  CollectionReference<Map<String, dynamic>> _bewertungen(String gewaesserId) =>
+      _db.collection('gewaesser/$gewaesserId/bewertungen');
+
+  /// Eine Bewertung pro Nutzer (Dokument-ID = uid).
+  Stream<List<Bewertung>> bewertungen(String gewaesserId) =>
+      _bewertungen(gewaesserId)
+          .orderBy('erstellt', descending: true)
+          .limit(100)
+          .snapshots()
+          .map((s) => s.docs.map(Bewertung.new).toList());
+
+  Future<void> bewerten(String gewaesserId, String uid, String name,
+          int sterne, String tipp) =>
+      _offline(_bewertungen(gewaesserId).doc(uid).set({
+        'nutzerName': name,
+        'sterne': sterne,
+        'tipp': tipp,
+        'erstellt': FieldValue.serverTimestamp(),
+      }));
+
+  Future<void> bewertungLoeschen(String gewaesserId, String uid) =>
+      _bewertungen(gewaesserId).doc(uid).delete();
+
+  /// Öffentliche Fänge an einem Gewässer, neueste zuerst.
+  Future<List<Fang>> faengeAn(String gewaesserName) async {
+    final s = await _oeff.where('gewaesser', isEqualTo: gewaesserName).get();
+    return s.docs.map((d) => Fang.fromFirestore(d, oeffentlich: true)).toList()
+      ..sort((a, b) => b.datum.compareTo(a.datum));
+  }
+
+  // ── Köder-Box (privat) ──
+
+  CollectionReference<Map<String, dynamic>> _koeder(String uid) =>
+      _db.collection('nutzer/$uid/koeder');
+
+  Stream<List<Koeder>> koederBox(String uid) => _koeder(uid)
+      .orderBy('name')
+      .snapshots()
+      .map((s) => s.docs.map(Koeder.ausDoc).toList());
+
+  Future<void> koederSpeichern(String uid, Koeder k) => _offline((k.id.isEmpty
+          ? _koeder(uid).doc()
+          : _koeder(uid).doc(k.id))
+      .set(k.daten()));
+
+  Future<void> koederLoeschen(String uid, String id) =>
+      _offline(_koeder(uid).doc(id).delete());
+
+  // ── Angel-Ausflüge (privat) ──
+
+  CollectionReference<Map<String, dynamic>> _ausfluege(String uid) =>
+      _db.collection('nutzer/$uid/ausfluege');
+
+  Stream<List<Ausflug>> ausfluege(String uid) => _ausfluege(uid)
+      .orderBy('start', descending: true)
+      .snapshots()
+      .map((s) => s.docs.map(Ausflug.ausDoc).toList());
+
+  Future<void> ausflugSpeichern(String uid, Ausflug a) => _offline(
+      (a.id.isEmpty ? _ausfluege(uid).doc() : _ausfluege(uid).doc(a.id))
+          .set(a.daten()));
+
+  Future<void> ausflugLoeschen(String uid, String id) =>
+      _offline(_ausfluege(uid).doc(id).delete());
+
+  // ── Vereins-Termine (nur der Admin schreibt) ──
+
+  Stream<List<Eintrag>> vereinsTermine(String vereinId) => _db
+      .collection('vereine/$vereinId/termine')
+      .orderBy('erstellt')
+      .snapshots()
+      .map((s) => s.docs.map(Eintrag.new).toList());
+
+  Future<void> vereinsTerminAnlegen(String vereinId, String text, String datum) =>
+      _db.collection('vereine/$vereinId/termine').add({
+        'text': text,
+        'bezug': datum,
+        'erstellt': FieldValue.serverTimestamp(),
+      });
+
+  Future<void> vereinsTerminLoeschen(String vereinId, String id) =>
+      _db.doc('vereine/$vereinId/termine/$id').delete();
+
   // ── Wünsche ──
 
   CollectionReference<Map<String, dynamic>> get _wuensche =>
@@ -559,7 +728,8 @@ class FangDienst {
   Future<void> allesLoeschen(String uid, String? name) async {
     final oeff = await _oeff.where('uid', isEqualTo: uid).get();
     final privat = await _privat(uid).get();
-    for (final sammlung in [_fangorte(uid), _aktivitaeten(uid), _freunde(uid)]) {
+    for (final sammlung in [_fangorte(uid), _aktivitaeten(uid), _freunde(uid),
+        _koeder(uid), _ausfluege(uid)]) {
       for (final d in (await sammlung.get()).docs) {
         await d.reference.delete();
       }

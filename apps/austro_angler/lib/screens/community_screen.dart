@@ -12,6 +12,7 @@ import 'profil_screen.dart';
 import 'aktivitaeten_screen.dart';
 import 'challenge_screen.dart';
 import 'kommentare_screen.dart';
+import 'story_screen.dart';
 import 'treffen_screen.dart';
 import 'widgets.dart';
 
@@ -319,6 +320,12 @@ class _Aktionen extends StatelessWidget {
                   an: !gegeben, name: konto.name ?? ''),
           icon: Icon(gegeben ? Icons.thumb_up : Icons.thumb_up_outlined),
           label: Text('Petri Heil! ${fang.petriHeil.length}'),
+        ),
+        IconButton(
+          tooltip: 'Als Bild teilen',
+          icon: const Icon(Icons.share_outlined, size: 20),
+          onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => StoryScreen(fang))),
         ),
         IconButton(
           tooltip: 'Kommentare',
