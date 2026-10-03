@@ -1,0 +1,73 @@
+name: Apps bauen
+
+on:
+  push:
+    paths:
+      - 'apps/**'
+      - '.github/workflows/apps.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apps-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bauen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.6'
+          channel: stable
+          cache: true
+
+      - name: Petri prüfen und bauen
+        working-directory: apps/petri
+        run: |
+          flutter pub get
+          flutter analyze
+          flutter test
+          flutter build apk --release
+
+      - name: Lernfuchs prüfen und bauen
+        working-directory: apps/lernapp
+        run: |
+          flutter pub get
+          flutter analyze
+          flutter test
+          flutter build apk --release
+
+      - name: APKs einsammeln
+        run: |
+          mkdir -p ausgabe
+          cp apps/petri/build/app/outputs/flutter-apk/app-release.apk ausgabe/Petri.apk
+          cp apps/lernapp/build/app/outputs/flutter-apk/app-release.apk ausgabe/Lernfuchs.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: apps
+          path: ausgabe/*.apk
+
+      # Ein Release lässt sich am Handy viel leichter herunterladen als ein
+      # Artefakt (keine ZIP-Datei, kein Login nötig bei öffentlichem Repo).
+      - name: Test-Release aktualisieren
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete test-build --yes --cleanup-tag || true
+          gh release create test-build ausgabe/Petri.apk ausgabe/Lernfuchs.apk \
+            --prerelease \
+            --target "$GITHUB_SHA" \
+            --title "Testversion (${GITHUB_REF_NAME})" \
+            --notes "Automatisch gebaut aus ${GITHUB_SHA::7}. Zum Testen: APK am Handy antippen und installieren."
