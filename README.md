@@ -9,7 +9,7 @@ Android-Apps, gebaut mit Flutter, für Google Play.
 
 ## Testversion holen
 
-Nach jeder Änderung baut GitHub die Apps automatisch (Tab **Actions**, ca. 15 Minuten). Danach liegen alle Dateien unter **Releases → Testversion**:
+Nach jeder Änderung baut GitHub automatisch die **PC-Version** (Tab **Actions**, ca. 8 Minuten). Die Android-Version gibt es nur auf Wunsch: Actions → "Apps bauen" → Run workflow → Häkchen bei "android". Danach liegen alle Dateien unter **Releases → Testversion**:
 
 | Datei | Für |
 |---|---|

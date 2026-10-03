@@ -7,6 +7,11 @@ on:
       - 'installer/**'
       - '.github/workflows/apps.yml'
   workflow_dispatch:
+    inputs:
+      android:
+        description: 'Auch die Android-Version (APK) bauen'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -19,7 +24,10 @@ env:
   FLUTTER_VERSION: '3.47.6'
 
 jobs:
+  # Android wird im Moment nur auf Wunsch gebaut (Actions → Run workflow →
+  # Häkchen bei "android"). Standard ist nur die PC-Version.
   android:
+    if: github.event_name == 'workflow_dispatch' && inputs.android
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -79,11 +87,11 @@ jobs:
           flutter pub get
           flutter build windows --release
 
-      - name: Lernfuchs für Windows bauen
-        working-directory: apps/lernapp
+      - name: Austro Angler prüfen
+        working-directory: apps/austro_angler
         run: |
-          flutter pub get
-          flutter build windows --release
+          flutter analyze
+          flutter test
 
       - name: Setup-Dateien und ZIPs erstellen
         shell: pwsh
@@ -95,9 +103,11 @@ jobs:
           }
           $apps = @(
             @{ Ordner = 'austro_angler'; Name = 'Austro Angler'; Exe = 'AustroAngler'; Version = '0.3.0';
-               Id = '93e17986-f912-479c-bb0f-e9f15600a317' },
-            @{ Ordner = 'lernapp'; Name = 'Lernfuchs'; Exe = 'Lernfuchs'; Version = '0.1.0';
-               Id = 'dd53bab1-fa0c-40ea-a1da-3d66c0849b2a' }
+               Id = '93e17986-f912-479c-bb0f-e9f15600a317' }
+            # Lernfuchs ist pausiert. Zum Wiederaufnehmen: Build-Schritt oben
+            # ergänzen und diese Zeile einfügen:
+            # @{ Ordner = 'lernapp'; Name = 'Lernfuchs'; Exe = 'Lernfuchs'; Version = '0.1.0';
+            #    Id = 'dd53bab1-fa0c-40ea-a1da-3d66c0849b2a' }
           )
           foreach ($a in $apps) {
             $quelle = "apps\$($a.Ordner)\build\windows\x64\runner\Release"
@@ -120,6 +130,8 @@ jobs:
 
   release:
     needs: [android, windows]
+    # Läuft auch, wenn Android übersprungen wurde.
+    if: always() && needs.windows.result == 'success' && needs.android.result != 'failure'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
@@ -142,5 +154,4 @@ jobs:
             --title "Testversion (${GITHUB_REF_NAME})" \
             --notes "Automatisch gebaut aus ${GITHUB_SHA::7}.
 
-          📱 Handy: AustroAngler.apk antippen und installieren.
           💻 PC: AustroAngler-Setup.exe herunterladen und starten. Bei der Windows-Warnung auf \"Weitere Informationen\" → \"Trotzdem ausführen\" klicken. Ohne Installation: AustroAngler-Windows.zip entpacken und AustroAngler.exe starten."
