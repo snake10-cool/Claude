@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../data/fische.dart';
+import '../data/gewaesser.dart';
 import '../main.dart';
 import '../models/fisch.dart';
+import '../models/gewaesser.dart';
+import 'gewaesser_screen.dart';
 import 'widgets.dart';
+
+/// Gewässer, in denen es diesen Fisch gibt – das nächste zu Braunau zuerst.
+List<Gewaesser> gewaesserMit(Fisch fisch) =>
+    gewaesserListe.where((g) => g.fischarten.contains(fisch.id)).toList()
+      ..sort((a, b) => kmVonBraunau(a).compareTo(kmVonBraunau(b)));
 
 class LexikonScreen extends StatelessWidget {
   const LexikonScreen({super.key});
@@ -26,7 +34,8 @@ class LexikonScreen extends StatelessWidget {
                 title: Text(f.name),
                 subtitle: Text(
                   'Schonzeit: ${f.regel(land).schonzeitText}\n'
-                  'Brittelmaß: ${f.regel(land).mindestmassText}',
+                  'Brittelmaß: ${f.regel(land).mindestmassText} · '
+                  'in ${gewaesserMit(f).length} Gewässern',
                 ),
                 isThreeLine: true,
                 trailing: _StatusPunkt(f.regel(land).istGeschont(heute)),
@@ -88,7 +97,37 @@ class FischDetail extends StatelessWidget {
           _Abschnitt('Erkennungsmerkmale', fisch.merkmale),
           _Abschnitt('Lebensraum', fisch.lebensraum),
           _Abschnitt('Köder', fisch.koeder),
-          const SizedBox(height: 8),
+          Text('Wo gibt es ihn?', style: text.titleMedium),
+          const SizedBox(height: 4),
+          if (gewaesserMit(fisch).isEmpty)
+            const Padding(
+              padding: EdgeInsets.only(bottom: 16),
+              child: Text('In keinem eingetragenen Gewässer.'),
+            )
+          else ...[
+            for (final g in gewaesserMit(fisch))
+              Card(
+                child: ListTile(
+                  dense: true,
+                  leading: Icon(
+                    g.typ == GewaesserTyp.fluss || g.typ == GewaesserTyp.bach
+                        ? Icons.waves
+                        : Icons.water,
+                  ),
+                  title: Text(g.name),
+                  subtitle: Text('${g.typ.name} · ${g.ort} · '
+                      '${kmVonBraunau(g)} km'),
+                  trailing: Text(
+                    g.preise.isEmpty ? '?' : g.preise.first.euroText,
+                    style: text.titleSmall,
+                  ),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => GewaesserDetail(g)),
+                  ),
+                ),
+              ),
+            const SizedBox(height: 16),
+          ],
           Text('Schonzeit & Brittelmaß', style: text.titleMedium),
           const SizedBox(height: 8),
           Table(
