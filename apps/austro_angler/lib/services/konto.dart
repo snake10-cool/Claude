@@ -24,6 +24,9 @@ class Konto extends ChangeNotifier {
   User? nutzer;
   String? name;
 
+  /// Wird true, sobald Firebase gemeldet hat, ob jemand angemeldet ist.
+  bool bereit = false;
+
   bool get angemeldet => nutzer != null;
   String? get uid => nutzer?.uid;
   bool get emailBestaetigt => nutzer?.emailVerified ?? false;
@@ -31,6 +34,7 @@ class Konto extends ChangeNotifier {
       emailBestaetigt && nutzer?.email?.toLowerCase() == adminEmail;
 
   Future<void> _nutzerGeaendert(User? u) async {
+    bereit = true;
     nutzer = u;
     name = null;
     notifyListeners();

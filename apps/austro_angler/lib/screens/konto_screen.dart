@@ -23,7 +23,7 @@ class KontoScreen extends StatelessWidget {
             )
           : konto.angemeldet
               ? _Profil(konto)
-              : const _Anmelden(),
+              : const AnmeldeFormular(),
     );
   }
 }
@@ -90,7 +90,10 @@ class _Profil extends StatelessWidget {
     if (ok != true) return;
     try {
       await konto.kontoLoeschen(passwort.text);
-      if (context.mounted) meldung(context, 'Dein Konto wurde gelöscht.');
+      if (context.mounted) {
+        meldung(context, 'Dein Konto wurde gelöscht.');
+        Navigator.of(context).popUntil((r) => r.isFirst);
+      }
     } catch (e) {
       if (context.mounted) meldung(context, e.toString());
     }
@@ -175,7 +178,10 @@ class _Profil extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.logout),
           title: const Text('Abmelden'),
-          onTap: konto.abmelden,
+          onTap: () {
+            Navigator.of(context).popUntil((r) => r.isFirst);
+            konto.abmelden();
+          },
         ),
         ListTile(
           leading: Icon(Icons.delete_forever,
@@ -188,14 +194,14 @@ class _Profil extends StatelessWidget {
   }
 }
 
-class _Anmelden extends StatefulWidget {
-  const _Anmelden();
+class AnmeldeFormular extends StatefulWidget {
+  const AnmeldeFormular({super.key});
 
   @override
-  State<_Anmelden> createState() => _AnmeldenState();
+  State<AnmeldeFormular> createState() => _AnmeldenState();
 }
 
-class _AnmeldenState extends State<_Anmelden> {
+class _AnmeldenState extends State<AnmeldeFormular> {
   bool _neu = false;
   bool _laedt = false;
   bool _agb = false;
@@ -326,6 +332,34 @@ class _AnmeldenState extends State<_Anmelden> {
           'Karte bleiben immer privat auf deinem Handy.',
         ),
       ],
+    );
+  }
+}
+
+/// Startbildschirm: Ohne Anmeldung kommt man nicht in die App.
+class AnmeldeSeite extends StatelessWidget {
+  const AnmeldeSeite({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 480),
+            child: Column(
+              children: [
+                const SizedBox(height: 24),
+                const Text('🎣', style: TextStyle(fontSize: 56)),
+                Text('Austro Angler', style: text.headlineMedium),
+                const Text('Fischen im Bezirk Braunau und Umgebung'),
+                const Expanded(child: AnmeldeFormular()),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

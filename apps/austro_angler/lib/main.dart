@@ -6,6 +6,7 @@ import 'screens/community_screen.dart';
 import 'screens/fangbuch_screen.dart';
 import 'screens/gewaesser_screen.dart';
 import 'screens/karte_screen.dart';
+import 'screens/konto_screen.dart';
 import 'screens/mehr_screen.dart';
 import 'screens/wuensche_screen.dart';
 import 'services/konto.dart';
@@ -69,10 +70,25 @@ class AustroAnglerApp extends StatelessWidget {
             brightness: Brightness.dark,
             useMaterial3: true,
           ),
-          home: const Startseite(),
+          home: const _Weiche(),
         ),
       ),
     );
+  }
+}
+
+/// Mit Online-Funktionen muss man angemeldet sein, um die App zu nutzen.
+class _Weiche extends StatelessWidget {
+  const _Weiche();
+
+  @override
+  Widget build(BuildContext context) {
+    final konto = KontoScope.of(context);
+    if (konto == null) return const Startseite();
+    if (!konto.bereit) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    return konto.angemeldet ? const Startseite() : const AnmeldeSeite();
   }
 }
 
