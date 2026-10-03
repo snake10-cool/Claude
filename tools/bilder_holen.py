@@ -29,14 +29,15 @@ UA = 'AustroAngler/0.3 (https://github.com/snake10-cool/Claude; Lern-Projekt)'
 FISCHE = {
     'bachforelle': [('de', 'Bachforelle'), ('en', 'Brown trout')],
     'regenbogenforelle': [('de', 'Regenbogenforelle'), ('en', 'Rainbow trout')],
-    'seeforelle': [('de', 'Seeforelle'), ('en', 'Lake trout (Salmo trutta lacustris)')],
+    # Der deutsche Artikel zeigt nur Eier, daher der italienische zuerst.
+    'seeforelle': [('it', 'Salmo trutta lacustris'), ('fr', 'Truite lacustre')],
     'bachsaibling': [('de', 'Bachsaibling'), ('en', 'Brook trout')],
     'seesaibling': [('de', 'Seesaibling'), ('en', 'Arctic char')],
     'aesche': [('de', 'Äsche'), ('en', 'Grayling (species)')],
     'huchen': [('de', 'Huchen'), ('en', 'Huchen')],
     'reinanke': [('de', 'Große Schwebrenke'), ('en', 'Coregonus lavaretus')],
     'hecht': [('de', 'Hecht'), ('en', 'Northern pike')],
-    'zander': [('de', 'Zander'), ('en', 'Zander')],
+    'zander': [('en', 'Zander'), ('fr', 'Sandre'), ('de', 'Zander')],
     'flussbarsch': [('de', 'Flussbarsch'), ('en', 'European perch')],
     'wels': [('de', 'Europäischer Wels'), ('en', 'Wels catfish')],
     'aalrutte': [('de', 'Quappe'), ('en', 'Burbot')],
@@ -50,8 +51,8 @@ FISCHE = {
     'rotauge': [('de', 'Plötze'), ('en', 'Common roach')],
     'rotfeder': [('de', 'Rotfeder'), ('en', 'Common rudd')],
     'laube': [('de', 'Ukelei'), ('en', 'Common bleak')],
-    'seelaube': [('de', 'Mairenke'), ('en', 'Alburnus mento')],
-    'giebel': [('de', 'Giebel'), ('en', 'Prussian carp')],
+    'seelaube': [('en', 'Alburnus mento'), ('de', 'Mairenke')],
+    'giebel': [('de', 'Giebel (Fisch)'), ('en', 'Prussian carp')],
     'karausche': [('de', 'Karausche'), ('en', 'Crucian carp')],
     'perlfisch': [('de', 'Perlfisch'), ('en', 'Rutilus meidingeri')],
     'kaulbarsch': [('de', 'Kaulbarsch'), ('en', 'Eurasian ruffe')],
@@ -64,7 +65,6 @@ KNOTEN = {
     'clinch': [('en', 'Improved clinch knot'), ('en', 'Clinch knot')],
     'palomar': [('en', 'Palomar knot')],
     'grinner': [('en', 'Uni knot')],
-    'doppelter_grinner': [('en', 'Double uni knot'), ('en', 'Uni knot')],
     'chirurgenschlaufe': [('en', "Surgeon's loop")],
 }
 
@@ -155,6 +155,7 @@ def verarbeiten(gruppe, eintraege):
 
 
 def dart_string(s):
+    s = ' '.join(s.split())
     return "'" + s.replace('\\', '\\\\').replace("'", "\\'").replace('$', '\\$') + "'"
 
 

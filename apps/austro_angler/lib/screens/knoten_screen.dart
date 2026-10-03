@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../data/bilder.dart';
 import '../data/knoten.dart';
+import 'widgets.dart';
 
 class KnotenScreen extends StatelessWidget {
   const KnotenScreen({super.key});
@@ -22,6 +24,10 @@ class KnotenScreen extends StatelessWidget {
                 childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                 expandedCrossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (knotenBilder[k.id] case final bild?) ...[
+                    QuellenBild(bild, hoehe: 240),
+                    const SizedBox(height: 12),
+                  ],
                   for (var i = 0; i < k.schritte.length; i++)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),

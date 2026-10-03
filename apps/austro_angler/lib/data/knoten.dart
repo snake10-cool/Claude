@@ -1,6 +1,8 @@
 class Knoten {
-  const Knoten(this.name, this.wofuer, this.schritte, {this.tipp});
+  const Knoten(this.id, this.name, this.wofuer, this.schritte, {this.tipp});
 
+  /// Schlüssel für das Bild in `bilder.dart`.
+  final String id;
   final String name;
   final String wofuer;
   final List<String> schritte;
@@ -9,6 +11,7 @@ class Knoten {
 
 const knotenListe = <Knoten>[
   Knoten(
+    'clinch',
     'Verbesserter Clinchknoten',
     'Haken, Wirbel oder Kunstköder an monofiler Schnur befestigen.',
     [
@@ -22,6 +25,7 @@ const knotenListe = <Knoten>[
     tipp: 'Bei dicker Schnur weniger Windungen nehmen.',
   ),
   Knoten(
+    'palomar',
     'Palomarknoten',
     'Sehr fester Knoten für Haken und Wirbel, gut für geflochtene Schnur.',
     [
@@ -33,6 +37,7 @@ const knotenListe = <Knoten>[
     ],
   ),
   Knoten(
+    'grinner',
     'Grinner (Uni-Knoten)',
     'Universeller Knoten für Haken und Wirbel.',
     [
@@ -45,6 +50,7 @@ const knotenListe = <Knoten>[
     ],
   ),
   Knoten(
+    'doppelter_grinner',
     'Doppelter Grinner',
     'Zwei Schnüre miteinander verbinden, z. B. Hauptschnur und Vorfach.',
     [
@@ -56,6 +62,7 @@ const knotenListe = <Knoten>[
     ],
   ),
   Knoten(
+    'chirurgenschlaufe',
     'Chirurgenschlaufe',
     'Schnelle, feste Schlaufe am Schnurende, z. B. für Vorfächer.',
     [

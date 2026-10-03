@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 
 import '../main.dart';
+import '../data/bilder.dart';
 import '../models/bundesland.dart';
 import '../services/fang_dienst.dart';
 import 'konto_screen.dart';
@@ -130,3 +131,38 @@ String datumText(DateTime d) => '${d.day}.${d.month}.${d.year}';
 
 void meldung(BuildContext context, String text) =>
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
+
+/// Bild aus den App-Daten mit Quellenangabe darunter.
+class QuellenBild extends StatelessWidget {
+  const QuellenBild(this.quelle, {super.key, this.hoehe = 200});
+
+  final BildQuelle quelle;
+  final double hoehe;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            color: Colors.white,
+            height: hoehe,
+            child: Image.asset(
+              quelle.pfad,
+              fit: BoxFit.contain,
+              errorBuilder: (_, _, _) =>
+                  const Center(child: Icon(Icons.image_not_supported)),
+            ),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(quelle.text,
+            style: Theme.of(context).textTheme.bodySmall,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis),
+      ],
+    );
+  }
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/bilder.dart';
 import '../data/fische.dart';
 import '../data/gewaesser.dart';
 import '../main.dart';
@@ -7,6 +8,20 @@ import '../models/fisch.dart';
 import '../models/gewaesser.dart';
 import 'gewaesser_screen.dart';
 import 'widgets.dart';
+
+/// Teilt den Merkmal-Text in einzelne Punkte (an Kommas und Satzenden).
+List<String> merkmalPunkte(String text) {
+  final punkte = <String>[];
+  for (final satz in text.split(RegExp(r'(?<=[.!])\s+'))) {
+    final teile = satz.replaceAll(RegExp(r'[.!]$'), '').split(RegExp(r',\s+'));
+    // Kurze Sätze ohne Aufzählung bleiben zusammen.
+    punkte.addAll(teile.where((t) => t.trim().isNotEmpty).map((t) {
+      final s = t.trim();
+      return s[0].toUpperCase() + s.substring(1);
+    }));
+  }
+  return punkte;
+}
 
 /// Gewässer, in denen es diesen Fisch gibt – das nächste zu Braunau zuerst.
 List<Gewaesser> gewaesserMit(Fisch fisch) =>
@@ -31,6 +46,17 @@ class LexikonScreen extends StatelessWidget {
           for (final f in fische)
             Card(
               child: ListTile(
+                leading: fischBilder[f.id] == null
+                    ? const CircleAvatar(child: Icon(Icons.set_meal))
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          fischBilder[f.id]!.pfad,
+                          width: 56,
+                          height: 40,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                 title: Text(f.name),
                 subtitle: Text(
                   'Schonzeit: ${f.regel(land).schonzeitText}\n'
@@ -94,7 +120,24 @@ class FischDetail extends StatelessWidget {
             style: text.labelLarge,
           ),
           const SizedBox(height: 16),
-          _Abschnitt('Erkennungsmerkmale', fisch.merkmale),
+          if (fischBilder[fisch.id] case final bild?) ...[
+            QuellenBild(bild, hoehe: 220),
+            const SizedBox(height: 16),
+          ],
+          Text('Erkennungsmerkmale', style: text.titleMedium),
+          const SizedBox(height: 4),
+          for (final m in merkmalPunkte(fisch.merkmale))
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('✔  '),
+                  Expanded(child: Text(m)),
+                ],
+              ),
+            ),
+          const SizedBox(height: 12),
           _Abschnitt('Lebensraum', fisch.lebensraum),
           _Abschnitt('Köder', fisch.koeder),
           Text('Wo gibt es ihn?', style: text.titleMedium),
