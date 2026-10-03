@@ -1,7 +1,7 @@
 name: austro_angler
 description: "Austro Angler – Angel-App für ganz Österreich."
 publish_to: 'none'
-version: 0.5.0+5
+version: 1.0.0+6
 
 environment:
   sdk: ^3.13.5
@@ -38,6 +38,7 @@ flutter:
   assets:
     - assets/bilder/fische/
     - assets/bilder/knoten/
+    - assets/icon/app.png
 
 flutter_launcher_icons:
   android: true

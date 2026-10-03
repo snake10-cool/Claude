@@ -1,7 +1,16 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+}
+
+// Upload-Schlüssel für Google Play. android/key.properties wird nie
+// eingecheckt – in GitHub Actions entsteht sie aus den Secrets.
+val schluessel = Properties().apply {
+    val datei = rootProject.file("key.properties")
+    if (datei.exists()) datei.inputStream().use { load(it) }
 }
 
 android {
@@ -17,7 +26,6 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.snake10.austroangler"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
@@ -31,11 +39,23 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        if (schluessel.containsKey("storeFile")) {
+            create("upload") {
+                storeFile = rootProject.file(schluessel.getProperty("storeFile"))
+                storePassword = schluessel.getProperty("storePassword")
+                keyAlias = schluessel.getProperty("keyAlias")
+                keyPassword = schluessel.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            // Mit Upload-Schlüssel, falls vorhanden – sonst Debug-Schlüssel
+            // (reicht für Test-APKs).
+            signingConfig = signingConfigs.findByName("upload")
+                ?: signingConfigs.getByName("debug")
         }
     }
 }

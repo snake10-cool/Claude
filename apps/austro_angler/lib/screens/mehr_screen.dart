@@ -82,22 +82,32 @@ class MehrScreen extends StatelessWidget {
               () => _oeffnen(context, const PruefungScreen())),
           _Eintrag(Icons.gesture, 'Knoten', 'Die wichtigsten Angelknoten',
               () => _oeffnen(context, const KnotenScreen())),
-          _Eintrag(Icons.info_outline, 'Über die App', 'Quellen & Datenschutz',
+          _Eintrag(Icons.privacy_tip_outlined, 'Datenschutz',
+              'Welche Daten wofür gespeichert werden',
+              () => webseiteOeffnen('datenschutz')),
+          _Eintrag(Icons.gavel, 'Nutzungsbedingungen & Regeln',
+              'Community-Regeln, Premium, Haftung',
+              () => webseiteOeffnen('nutzungsbedingungen')),
+          _Eintrag(Icons.info_outline, 'Über die App', 'Impressum & Quellen',
               () => showAboutDialog(
                     context: context,
                     applicationName: 'Austro Angler',
-                    applicationVersion: '0.5',
-                    children: const [
-                      Text(
+                    applicationVersion: '1.0',
+                    applicationIcon: Image.asset('assets/icon/app.png',
+                        width: 48, height: 48),
+                    children: [
+                      const Text(
                         'Alle Angaben zu Schonzeiten, Brittelmaßen und Preisen '
                         'ohne Gewähr. Es gelten immer die Landesgesetze und '
                         'die Lizenzbedingungen des Reviers.\n\n'
                         'Kartendaten © OpenStreetMap-Mitwirkende. '
                         'Wetter von Open-Meteo.\n\n'
-                        'Mit Konto werden Nutzername, E-Mail und deine Fänge '
-                        'bei Google Firebase gespeichert. Öffentliche Fänge '
-                        'sind für alle sichtbar. Dein Konto und alle Daten '
-                        'kannst du jederzeit unter "Konto" löschen.',
+                        'Dein Konto und alle Daten kannst du jederzeit unter '
+                        '"Konto" löschen.',
+                      ),
+                      TextButton(
+                        onPressed: () => webseiteOeffnen('impressum'),
+                        child: const Text('Impressum'),
                       ),
                     ],
                   )),

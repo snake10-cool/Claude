@@ -52,6 +52,28 @@ jobs:
           flutter test
           flutter build apk --release
 
+      # Play-Store-Paket (AAB), signiert mit dem Upload-Schlüssel. Läuft nur,
+      # wenn die Secrets ANDROID_KEYSTORE_BASE64 und ANDROID_KEYSTORE_PASSWORT
+      # angelegt sind (siehe docs/play-store.md). Die Test-APK oben bleibt mit
+      # dem Debug-Schlüssel signiert, damit Updates darüber weiter klappen.
+      - name: Austro Angler AAB für Google Play
+        working-directory: apps/austro_angler
+        env:
+          KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          PASSWORT: ${{ secrets.ANDROID_KEYSTORE_PASSWORT }}
+        run: |
+          if [ -z "$KEYSTORE" ] || [ -z "$PASSWORT" ]; then
+            echo "Keine Signier-Secrets – AAB wird übersprungen."
+            exit 0
+          fi
+          echo "$KEYSTORE" | base64 -d > android/upload.jks
+          printf 'storeFile=upload.jks\nstorePassword=%s\nkeyAlias=upload\nkeyPassword=%s\n' \
+            "$PASSWORT" "$PASSWORT" > android/key.properties
+          flutter build appbundle --release
+          rm android/key.properties android/upload.jks
+          mkdir -p ../../ausgabe
+          cp build/app/outputs/bundle/release/app-release.aab ../../ausgabe/AustroAngler-PlayStore.aab
+
       - name: Lernfuchs prüfen und bauen
         working-directory: apps/lernapp
         run: |
@@ -104,7 +126,7 @@ jobs:
             $env:Path += ";C:\Program Files (x86)\Inno Setup 6"
           }
           $apps = @(
-            @{ Ordner = 'austro_angler'; Name = 'Austro Angler'; Exe = 'AustroAngler'; Version = '0.3.0';
+            @{ Ordner = 'austro_angler'; Name = 'Austro Angler'; Exe = 'AustroAngler'; Version = '1.0.0';
                Id = '93e17986-f912-479c-bb0f-e9f15600a317' }
             # Lernfuchs ist pausiert. Zum Wiederaufnehmen: Build-Schritt oben
             # ergänzen und diese Zeile einfügen:

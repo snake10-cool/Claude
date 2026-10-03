@@ -1,12 +1,21 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 import '../data/bilder.dart';
 import '../models/bundesland.dart';
 import '../services/fang_dienst.dart';
 import 'konto_screen.dart';
+
+/// Webseite mit Datenschutz, Nutzungsbedingungen, Impressum usw.
+const webseite = 'https://austro-angler-202495bd.web.app';
+
+/// Öffnet eine Unterseite der Webseite, z. B. `datenschutz`.
+Future<void> webseiteOeffnen(String seite) => launchUrl(
+    Uri.parse('$webseite/$seite'),
+    mode: LaunchMode.externalApplication);
 
 /// Auswahl des Bundeslands, die dauerhaft gespeichert wird.
 class BundeslandWahl extends StatelessWidget {

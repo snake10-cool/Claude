@@ -328,9 +328,25 @@ class _AnmeldenState extends State<AnmeldeFormular> {
             value: _agb,
             onChanged: (v) => setState(() => _agb = v ?? false),
             title: const Text(
-              'Ich halte mich an die Regeln: keine Beleidigungen, nur eigene '
-              'Fotos, keine untermaßigen oder geschonten Fische entnehmen.',
+              'Ich akzeptiere die Nutzungsbedingungen und halte mich an die '
+              'Regeln: keine Beleidigungen, nur eigene Fotos, keine '
+              'untermaßigen oder geschonten Fische entnehmen. Ich bin '
+              'mindestens 14 oder habe die Erlaubnis meiner Eltern.',
             ),
+          ),
+        if (_neu)
+          Wrap(
+            spacing: 8,
+            children: [
+              TextButton(
+                onPressed: () => webseiteOeffnen('nutzungsbedingungen'),
+                child: const Text('Nutzungsbedingungen'),
+              ),
+              TextButton(
+                onPressed: () => webseiteOeffnen('datenschutz'),
+                child: const Text('Datenschutz'),
+              ),
+            ],
           ),
         if (_fehler != null) ...[
           const SizedBox(height: 12),
@@ -354,7 +370,7 @@ class _AnmeldenState extends State<AnmeldeFormular> {
         const HinweisKarte(
           'Deine Fänge sind standardmäßig öffentlich – mit Nutzername, '
           'Fischart, Größe und Gewässer. Deine eigenen Angelplätze auf der '
-          'Karte bleiben immer privat auf deinem Handy.',
+          'Karte sind immer privat – nur du siehst sie.',
         ),
       ],
     );

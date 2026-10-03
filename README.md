@@ -71,10 +71,20 @@ Alles läuft im **kostenlosen Spark-Tarif**. Fotos werden deshalb verkleinert di
 - **Monats-Challenge:** Der Gewinner bekommt 1 Monat Premium. Der Admin vergibt den Gewinn in der App, gespeichert wird er in `premium/{uid}`.
 - Bis zum Start sind alle ⭐-Funktionen für alle freigeschaltet.
 
-## Nächste Schritte
+## 🚀 Play-Store-Start (Version 1.0)
 
-2. Testen und die Gewässerdaten prüfen lassen.
-3. **Google-Play-Konto** (25 $ einmalig, unter 18 über die Eltern).
-4. **Upload-Schlüssel und AAB-Datei** für den Play Store.
-5. **Datenschutzerklärung** (Pflicht, weil es Konten und öffentliche Inhalte gibt).
-6. Später: Premium-Abo, mehr Gewässer, Moderation der Meldungen.
+Fertig: App-Icon, Splash-Screen, Melden und Blockieren, Webseiten
+([Datenschutz](https://austro-angler-202495bd.web.app/datenschutz),
+[Nutzungsbedingungen](https://austro-angler-202495bd.web.app/nutzungsbedingungen),
+[Konto löschen](https://austro-angler-202495bd.web.app/konto-loeschen),
+[Impressum](https://austro-angler-202495bd.web.app/impressum)),
+Store-Texte, Feature-Grafik und die AAB-Signierung im Build.
+
+**Anleitung mit allen Schritten:** [`apps/austro_angler/docs/play-store.md`](apps/austro_angler/docs/play-store.md)
+
+Offen (geht nur mit dir bzw. deinen Eltern):
+1. Name und Adresse für das Impressum
+2. Google-Play-Entwicklerkonto (25 $, über die Eltern)
+3. GitHub-Secrets `ANDROID_KEYSTORE_BASE64` und `ANDROID_KEYSTORE_PASSWORT`
+4. Geschlossener Test mit 12 Testern für 14 Tage
+5. Abo in der Play Console anlegen, danach baut Claude Google Play Billing ein
