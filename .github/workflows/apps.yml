@@ -31,8 +31,8 @@ jobs:
           channel: stable
           cache: true
 
-      - name: Petri prüfen und bauen
-        working-directory: apps/petri
+      - name: Austro Angler prüfen und bauen
+        working-directory: apps/austro_angler
         run: |
           flutter pub get
           flutter analyze
@@ -50,7 +50,7 @@ jobs:
       - name: APKs einsammeln
         run: |
           mkdir -p ausgabe
-          cp apps/petri/build/app/outputs/flutter-apk/app-release.apk ausgabe/Petri.apk
+          cp apps/austro_angler/build/app/outputs/flutter-apk/app-release.apk ausgabe/AustroAngler.apk
           cp apps/lernapp/build/app/outputs/flutter-apk/app-release.apk ausgabe/Lernfuchs.apk
 
       - uses: actions/upload-artifact@v4
@@ -66,7 +66,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete test-build --yes --cleanup-tag || true
-          gh release create test-build ausgabe/Petri.apk ausgabe/Lernfuchs.apk \
+          gh release create test-build ausgabe/AustroAngler.apk ausgabe/Lernfuchs.apk \
             --prerelease \
             --target "$GITHUB_SHA" \
             --title "Testversion (${GITHUB_REF_NAME})" \
