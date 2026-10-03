@@ -110,7 +110,59 @@ class _Profil extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         Text(konto.nutzer?.email ?? '', textAlign: TextAlign.center),
+        if (konto.istAdmin)
+          const Padding(
+            padding: EdgeInsets.only(top: 8),
+            child: Center(
+              child: Chip(
+                avatar: Icon(Icons.admin_panel_settings, size: 18),
+                label: Text('Administrator'),
+              ),
+            ),
+          ),
         const SizedBox(height: 24),
+        if (!konto.emailBestaetigt)
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('📧 Bitte bestätige deine E-Mail-Adresse. Wir '
+                      'haben dir einen Link geschickt (auch im Spam-Ordner '
+                      'schauen).'),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      FilledButton.tonal(
+                        onPressed: () async {
+                          await konto.neuLaden();
+                          if (context.mounted && !konto.emailBestaetigt) {
+                            meldung(context, 'Noch nicht bestätigt.');
+                          }
+                        },
+                        child: const Text('Ich habe bestätigt'),
+                      ),
+                      TextButton(
+                        onPressed: () async {
+                          try {
+                            await konto.bestaetigungSenden();
+                            if (context.mounted) {
+                              meldung(context, 'E-Mail erneut gesendet.');
+                            }
+                          } catch (e) {
+                            if (context.mounted) meldung(context, '$e');
+                          }
+                        },
+                        child: const Text('Erneut senden'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         if (lokal > 0)
           Card(
             child: ListTile(

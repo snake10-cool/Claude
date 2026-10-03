@@ -11,7 +11,7 @@ import 'gewaesser_screen.dart';
 class KarteScreen extends StatelessWidget {
   const KarteScreen({super.key});
 
-  static const _start = LatLng(47.60, 13.80); // Mitte Österreichs
+  static const _start = LatLng(48.12, 13.10); // Bezirk Braunau
 
   Future<void> _spotAnlegen(BuildContext context, LatLng punkt) async {
     final speicher = SpeicherScope.of(context);
@@ -77,7 +77,7 @@ class KarteScreen extends StatelessWidget {
           FlutterMap(
             options: MapOptions(
               initialCenter: _start,
-              initialZoom: 7,
+              initialZoom: 9.5,
               onLongPress: (_, punkt) => _spotAnlegen(context, punkt),
             ),
             children: [

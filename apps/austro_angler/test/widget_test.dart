@@ -74,12 +74,12 @@ void main() {
       datum: DateTime(2026, 6, 1),
       laengeCm: 72,
       gewichtG: 2500,
-      bundesland: 'Kärnten',
+      bundesland: 'Salzburg',
     );
     final zurueck = Fang.fromJson(f.toJson());
     expect(zurueck.fischId, 'hecht');
     expect(zurueck.laengeCm, 72);
-    expect(zurueck.bundesland, 'Kärnten');
+    expect(zurueck.bundesland, 'Salzburg');
   });
 
   test('Mondphase', () {
@@ -100,11 +100,11 @@ void main() {
         find.byWidgetPredicate((w) =>
             w is TextField &&
             (w.decoration?.hintText?.startsWith('Gewässer') ?? false)),
-        'Achen');
+        'Enknach');
     await tester.pumpAndSettle();
-    expect(find.text('Achensee'), findsOneWidget);
+    expect(find.text('Enknach (Bach)'), findsOneWidget);
 
-    for (final tab in ['Fangbuch', 'Community', 'Mehr']) {
+    for (final tab in ['Fangbuch', 'Community', 'Wünsche', 'Mehr']) {
       await tester.tap(find.text(tab).last);
       await tester.pumpAndSettle();
     }

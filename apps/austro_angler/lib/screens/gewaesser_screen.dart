@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../data/fische.dart';
@@ -16,22 +17,27 @@ class GewaesserScreen extends StatefulWidget {
   State<GewaesserScreen> createState() => _GewaesserScreenState();
 }
 
+/// Mittelpunkt der App: Braunau am Inn.
+const braunau = LatLng(48.258, 13.040);
+
+int kmVonBraunau(Gewaesser g) =>
+    const Distance().as(LengthUnit.Kilometer, braunau, g.position).round();
+
 class _GewaesserScreenState extends State<GewaesserScreen> {
   String _suche = '';
-  bool _ganzOesterreich = false;
 
   @override
   Widget build(BuildContext context) {
     final land = SpeicherScope.of(context).bundesland;
     final suche = _suche.toLowerCase();
-    final liste = gewaesserListe.where((g) {
-      if (suche.isNotEmpty) {
-        return g.name.toLowerCase().contains(suche) ||
+    final liste = gewaesserListe
+        .where((g) =>
+            suche.isEmpty ||
+            g.name.toLowerCase().contains(suche) ||
             g.ort.toLowerCase().contains(suche) ||
-            g.land.name.toLowerCase().contains(suche);
-      }
-      return _ganzOesterreich || g.land == land;
-    }).toList();
+            g.typ.name.toLowerCase().contains(suche))
+        .toList()
+      ..sort((a, b) => kmVonBraunau(a).compareTo(kmVonBraunau(b)));
     final karte = fischerkarten.firstWhere((k) => k.land == land);
 
     return Scaffold(
@@ -44,19 +50,13 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
           TextField(
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.search),
-              hintText: 'Gewässer oder Ort suchen (ganz Österreich)',
+              hintText: 'Gewässer, Ort oder "Bach" suchen',
               border: OutlineInputBorder(),
             ),
             onChanged: (v) => setState(() => _suche = v.trim()),
           ),
+          const SizedBox(height: 8),
           if (_suche.isEmpty)
-            SwitchListTile(
-              contentPadding: EdgeInsets.zero,
-              title: const Text('Alle Bundesländer zeigen'),
-              value: _ganzOesterreich,
-              onChanged: (v) => setState(() => _ganzOesterreich = v),
-            ),
-          if (_suche.isEmpty && !_ganzOesterreich)
             Card(
               child: ExpansionTile(
                 leading: const Icon(Icons.badge_outlined),
@@ -122,12 +122,16 @@ class _GewaesserKachel extends StatelessWidget {
         leading: CircleAvatar(
           backgroundColor: farben.primaryContainer,
           child: Icon(
-            g.typ == GewaesserTyp.fluss ? Icons.waves : Icons.water,
+            switch (g.typ) {
+              GewaesserTyp.fluss || GewaesserTyp.bach => Icons.waves,
+              GewaesserTyp.teich => Icons.water_drop,
+              _ => Icons.water,
+            },
             color: farben.onPrimaryContainer,
           ),
         ),
         title: Text(g.name),
-        subtitle: Text('${g.typ.name} · ${g.ort} · ${g.land.kurz}'),
+        subtitle: Text('${g.typ.name} · ${g.ort} · ${kmVonBraunau(g)} km'),
         trailing: Text(
           tag?.euroText ?? '?',
           style: Theme.of(context).textTheme.titleMedium,

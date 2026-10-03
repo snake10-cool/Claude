@@ -4,7 +4,7 @@ Android-Apps, gebaut mit Flutter, für Google Play.
 
 | App | Ordner | Inhalt |
 |---|---|---|
-| 🎣 **Austro Angler** | `apps/austro_angler` | Angel-App für ganz Österreich mit Community |
+| 🎣 **Austro Angler** | `apps/austro_angler` | Angel-App für Bezirk Braunau und Umgebung (Innviertel und Flachgau) mit Community |
 | 🦊 **Lernfuchs** (Arbeitsname, pausiert) | `apps/lernapp` | Lern-App für Volksschule 1–4 und Mittelschule 1–4 |
 
 ## Testversion aufs Handy holen (ohne PC)
@@ -17,10 +17,10 @@ Android-Apps, gebaut mit Flutter, für Google Play.
 ## 🎣 Austro Angler – was drin ist
 
 **Ohne Konto (funktioniert immer):**
-- **Gewässer**: 29 Gewässer in allen 9 Bundesländern mit Preisen, Kartenverkauf und Suche. Pro Gewässer gibt es aktuelles Wetter, Luftdruck, Sonnenauf- und -untergang und die Mondphase. Dazu "Was brauche ich zum Fischen?" für jedes Bundesland.
+- **Gewässer**: 22 Gewässer rund um Braunau, sortiert nach Entfernung. Dabei sind kleine Bäche (Enknach, Mattig, Schwemmbach, Mühlheimer Ache, Antiesen), Teiche und Baggerseen (Enknach-Teiche, Baggersee Pfaffstätt, Kühbach), die Innviertler Seen, der Inn und die Salzburger Seen. Jedes Gewässer hat Preise, Kartenverkauf, Wetter und Mondphase.
 - **Karte**: alle Gewässer auf der Karte. Lange drücken speichert einen eigenen Angelplatz, der immer privat auf dem Handy bleibt.
 - **Fangbuch**: Fänge mit Statistik. Es warnt bei Schonzeit oder wenn ein Fisch unter dem Brittelmaß liegt, und zwar für das Bundesland des Fangs.
-- **Fischlexikon**: 19 Fischarten mit Schonzeit und Brittelmaß für alle 9 Bundesländer.
+- **Fischlexikon**: 31 Fischarten mit Schonzeit und Brittelmaß für OÖ und Salzburg.
 - **Schonzeit-Kalender**: Monatsübersicht, welcher Fisch wann offen ist.
 - **Prüfungstrainer** mit 37 Fragen und **Knoten-Anleitungen**.
 
@@ -28,7 +28,9 @@ Android-Apps, gebaut mit Flutter, für Google Play.
 - Registrieren mit E-Mail, Passwort und öffentlichem Nutzernamen.
 - Fänge in der Cloud, mit **Foto**, und auf allen Geräten verfügbar.
 - Fänge sind **standardmäßig öffentlich**, lassen sich aber pro Fang auf privat stellen.
-- **Community**: Feed mit den neuesten Fängen, "Petri Heil!"-Knopf und **Rekorde** pro Fischart.
+- **Community**: Feed mit den neuesten Fängen, "Petri Heil!"-Knopf, **Rangliste** (meiste Fänge, meiste Petri Heil, größter Fisch) und **Rekorde** pro Fischart.
+- **Wünsche**: Nutzer schicken Wünsche für die App und sehen, ob sie geplant oder erledigt sind und was geantwortet wurde.
+- **Administrator** `snakejoni10@yahoo.com`: sieht alle Wünsche und Meldungen, kann antworten, den Status setzen und unpassende Fänge entfernen. Das klappt erst, wenn die **E-Mail-Adresse bestätigt** ist, also nach Registrierung mit dieser Adresse den Link in der Bestätigungs-Mail anklicken.
 - **Melden**: falsche Gewässer-Infos, neue Gewässer und unpassende Fänge. Die Meldungen landen in Firestore unter `meldungen`.
 - **Konto löschen** mit allen Daten (Pflicht für den Play Store).
 

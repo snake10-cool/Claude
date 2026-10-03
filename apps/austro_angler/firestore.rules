@@ -13,6 +13,14 @@ service cloud.firestore {
       return angemeldet() && request.auth.uid == uid;
     }
 
+    // Administrator (muss mit adminEmail in lib/services/konto.dart
+    // übereinstimmen). Nur mit bestätigter E-Mail-Adresse.
+    function istAdmin() {
+      return angemeldet()
+          && request.auth.token.email == 'snakejoni10@yahoo.com'
+          && request.auth.token.email_verified == true;
+    }
+
     // Felder, die ein Fang haben darf.
     function gueltigerFang(d) {
       return d.keys().hasOnly(['fischId', 'laengeCm', 'gewichtG', 'gewaesser',
@@ -79,7 +87,7 @@ service cloud.firestore {
                 == [request.auth.uid].toSet()
           );
 
-      allow delete: if ich(resource.data.uid);
+      allow delete: if ich(resource.data.uid) || istAdmin();
     }
 
     // Fotos (verkleinert, Base64).
@@ -94,15 +102,33 @@ service cloud.firestore {
       allow update: if ich(resource.data.uid)
           && request.resource.data.uid == resource.data.uid
           && request.resource.data.daten.size() < 500000;
-      allow delete: if ich(resource.data.uid);
+      allow delete: if ich(resource.data.uid) || istAdmin();
     }
 
-    // Meldungen: nur anlegen, lesen nur in der Konsole.
+    // Meldungen: alle Angemeldeten dürfen melden, nur der Admin liest.
     match /meldungen/{id} {
       allow create: if angemeldet()
           && request.resource.data.uid == request.auth.uid
           && request.resource.data.text is string
           && request.resource.data.text.size() <= 1000;
+      allow read, delete: if istAdmin();
+    }
+
+    // Wünsche: jeder sieht seine eigenen, der Admin sieht alle und antwortet.
+    match /wuensche/{id} {
+      allow create: if angemeldet()
+          && request.resource.data.keys()
+               .hasOnly(['uid', 'nutzerName', 'text', 'status', 'erstellt'])
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.status == 'neu'
+          && request.resource.data.text is string
+          && request.resource.data.text.size() <= 1000;
+      allow read: if istAdmin() || ich(resource.data.uid);
+      allow update: if istAdmin()
+          && request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['status', 'antwort']);
+      allow delete: if istAdmin()
+          || (ich(resource.data.uid) && resource.data.status == 'neu');
     }
   }
 }

@@ -4,7 +4,9 @@ import 'bundesland.dart';
 
 enum GewaesserTyp {
   fluss('Fluss'),
+  bach('Bach'),
   see('See'),
+  teich('Teich'),
   moor('Moorgebiet');
 
   const GewaesserTyp(this.name);

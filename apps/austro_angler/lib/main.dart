@@ -7,6 +7,7 @@ import 'screens/fangbuch_screen.dart';
 import 'screens/gewaesser_screen.dart';
 import 'screens/karte_screen.dart';
 import 'screens/mehr_screen.dart';
+import 'screens/wuensche_screen.dart';
 import 'services/konto.dart';
 import 'services/speicher.dart';
 
@@ -90,6 +91,7 @@ class _StartseiteState extends State<Startseite> {
     KarteScreen(),
     FangbuchScreen(),
     CommunityScreen(),
+    WuenscheScreen(),
     MehrScreen(),
   ];
 
@@ -98,6 +100,7 @@ class _StartseiteState extends State<Startseite> {
     return Scaffold(
       body: IndexedStack(index: _index, children: _seiten),
       bottomNavigationBar: NavigationBar(
+        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         selectedIndex: _index,
         onDestinationSelected: (i) => setState(() => _index = i),
         destinations: const [
@@ -105,6 +108,8 @@ class _StartseiteState extends State<Startseite> {
           NavigationDestination(icon: Icon(Icons.map), label: 'Karte'),
           NavigationDestination(icon: Icon(Icons.book), label: 'Fangbuch'),
           NavigationDestination(icon: Icon(Icons.groups), label: 'Community'),
+          NavigationDestination(
+              icon: Icon(Icons.lightbulb_outline), label: 'Wünsche'),
           NavigationDestination(icon: Icon(Icons.menu), label: 'Mehr'),
         ],
       ),

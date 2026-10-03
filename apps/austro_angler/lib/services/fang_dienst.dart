@@ -6,6 +6,31 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/fang.dart';
 
+/// Ein Wunsch oder eine Meldung.
+class Eintrag {
+  Eintrag(DocumentSnapshot<Map<String, dynamic>> doc)
+      : id = doc.id,
+        uid = doc.data()?['uid'] as String? ?? '',
+        nutzerName = doc.data()?['nutzerName'] as String? ?? '',
+        text = doc.data()?['text'] as String? ?? '',
+        typ = doc.data()?['typ'] as String? ?? '',
+        bezug = doc.data()?['bezug'] as String? ?? '',
+        status = doc.data()?['status'] as String? ?? 'neu',
+        antwort = doc.data()?['antwort'] as String?,
+        erstellt =
+            (doc.data()?['erstellt'] as Timestamp?)?.toDate() ?? DateTime.now();
+
+  final String id;
+  final String uid;
+  final String nutzerName;
+  final String text;
+  final String typ;
+  final String bezug;
+  final String status;
+  final String? antwort;
+  final DateTime erstellt;
+}
+
 /// Wird erst benutzt, wenn Firebase eingerichtet ist (Dart-Globals sind lazy).
 final fangDienst = FangDienst();
 
@@ -147,6 +172,61 @@ class FangDienst {
       return null;
     }
   }
+
+  /// Die neuesten öffentlichen Fänge für die Rangliste.
+  Future<List<Fang>> neuesteFaenge({int anzahl = 500}) async {
+    final s = await _oeff
+        .orderBy('erstellt', descending: true)
+        .limit(anzahl)
+        .get();
+    return s.docs.map((d) => Fang.fromFirestore(d, oeffentlich: true)).toList();
+  }
+
+  // ── Wünsche ──
+
+  CollectionReference<Map<String, dynamic>> get _wuensche =>
+      _db.collection('wuensche');
+
+  Future<void> wunschSenden({
+    required String uid,
+    required String nutzerName,
+    required String text,
+  }) =>
+      _wuensche.add({
+        'uid': uid,
+        'nutzerName': nutzerName,
+        'text': text,
+        'status': 'neu',
+        'erstellt': FieldValue.serverTimestamp(),
+      });
+
+  /// Eigene Wünsche – oder alle, wenn [admin] true ist.
+  Stream<List<Eintrag>> wuensche({required String uid, required bool admin}) {
+    final abfrage = admin
+        ? _wuensche.orderBy('erstellt', descending: true).limit(200)
+        : _wuensche.where('uid', isEqualTo: uid);
+    return abfrage.snapshots().map((s) => s.docs.map(Eintrag.new).toList()
+      ..sort((a, b) => b.erstellt.compareTo(a.erstellt)));
+  }
+
+  Future<void> wunschBeantworten(String id, {String? status, String? antwort}) =>
+      _wuensche.doc(id).update({
+        'status': ?status,
+        'antwort': ?antwort,
+      });
+
+  Future<void> wunschLoeschen(String id) => _wuensche.doc(id).delete();
+
+  /// Alle Meldungen (nur für den Administrator lesbar).
+  Stream<List<Eintrag>> meldungen() => _db
+      .collection('meldungen')
+      .orderBy('erstellt', descending: true)
+      .limit(200)
+      .snapshots()
+      .map((s) => s.docs.map(Eintrag.new).toList());
+
+  Future<void> meldungLoeschen(String id) =>
+      _db.doc('meldungen/$id').delete();
 
   /// Meldung an den Betreiber (falsche Infos, neues Gewässer, Missbrauch).
   Future<void> melden({

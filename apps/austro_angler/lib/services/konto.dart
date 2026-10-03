@@ -6,6 +6,11 @@ import 'package:flutter/foundation.dart';
 
 import 'fang_dienst.dart';
 
+/// Administrator: sieht Wünsche und Meldungen und kann Fänge entfernen.
+/// Muss mit `firestore.rules` übereinstimmen. Gilt erst, wenn die E-Mail
+/// bestätigt ist – sonst könnte sich jemand anderer damit registrieren.
+const adminEmail = 'snakejoni10@yahoo.com';
+
 /// Anmeldung mit E-Mail und Passwort sowie der öffentliche Nutzername.
 class Konto extends ChangeNotifier {
   Konto() {
@@ -21,6 +26,9 @@ class Konto extends ChangeNotifier {
 
   bool get angemeldet => nutzer != null;
   String? get uid => nutzer?.uid;
+  bool get emailBestaetigt => nutzer?.emailVerified ?? false;
+  bool get istAdmin =>
+      emailBestaetigt && nutzer?.email?.toLowerCase() == adminEmail;
 
   Future<void> _nutzerGeaendert(User? u) async {
     nutzer = u;
@@ -68,6 +76,23 @@ class Konto extends ChangeNotifier {
       throw KontoFehler('Der Name "$n" ist schon vergeben.');
     }
     this.name = n;
+    notifyListeners();
+    try {
+      await cred.user!.sendEmailVerification();
+    } catch (_) {
+      // Kann später im Konto erneut gesendet werden.
+    }
+  }
+
+  Future<void> bestaetigungSenden() =>
+      _fehlerUebersetzen(() => nutzer!.sendEmailVerification());
+
+  /// Lädt den Nutzer neu, z. B. nachdem die E-Mail bestätigt wurde.
+  Future<void> neuLaden() async {
+    await nutzer?.reload();
+    nutzer = _auth.currentUser;
+    // Neues Token, damit die Regeln die Bestätigung sehen.
+    await nutzer?.getIdToken(true);
     notifyListeners();
   }
 

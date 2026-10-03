@@ -29,18 +29,19 @@ class CommunityScreen extends StatelessWidget {
       );
     }
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Community'),
           bottom: const TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.dynamic_feed), text: 'Neueste Fänge'),
+              Tab(icon: Icon(Icons.dynamic_feed), text: 'Neu'),
+              Tab(icon: Icon(Icons.leaderboard), text: 'Rangliste'),
               Tab(icon: Icon(Icons.emoji_events), text: 'Rekorde'),
             ],
           ),
         ),
-        body: const TabBarView(children: [_Feed(), _Rekorde()]),
+        body: const TabBarView(children: [_Feed(), _Rangliste(), _Rekorde()]),
       ),
     );
   }
@@ -120,6 +121,31 @@ class _Aktionen extends StatelessWidget {
           label: Text('Petri Heil! ${fang.petriHeil.length}'),
         ),
         const Spacer(),
+        if (konto.istAdmin && !eigener)
+          IconButton(
+            tooltip: 'Als Admin entfernen',
+            icon: const Icon(Icons.delete_outline, size: 20),
+            onPressed: () async {
+              final ok = await showDialog<bool>(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Fang entfernen?'),
+                  content: Text('Fang von ${fang.nutzerName} löschen.'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, false),
+                      child: const Text('Abbrechen'),
+                    ),
+                    FilledButton(
+                      onPressed: () => Navigator.pop(context, true),
+                      child: const Text('Löschen'),
+                    ),
+                  ],
+                ),
+              );
+              if (ok == true) await fangDienst.loeschen(fang);
+            },
+          ),
         if (!eigener)
           IconButton(
             tooltip: 'Melden',
@@ -134,6 +160,135 @@ class _Aktionen extends StatelessWidget {
             ),
           ),
       ],
+    );
+  }
+}
+
+enum _Wertung { faenge, petriHeil, groesster }
+
+class _Platz {
+  _Platz(this.name);
+
+  final String name;
+  int faenge = 0;
+  int petriHeil = 0;
+  double groesster = 0;
+}
+
+class _Rangliste extends StatefulWidget {
+  const _Rangliste();
+
+  @override
+  State<_Rangliste> createState() => _RanglisteState();
+}
+
+class _RanglisteState extends State<_Rangliste> {
+  late Future<List<Fang>> _faenge = fangDienst.neuesteFaenge();
+  _Wertung _wertung = _Wertung.faenge;
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    final eigeneUid = KontoScope.of(context)?.uid;
+    return RefreshIndicator(
+      onRefresh: () async {
+        setState(() => _faenge = fangDienst.neuesteFaenge());
+        await _faenge;
+      },
+      child: FutureBuilder<List<Fang>>(
+        future: _faenge,
+        builder: (context, snap) {
+          if (snap.hasError) {
+            return ListView(children: const [
+              Padding(
+                padding: EdgeInsets.all(32),
+                child: Text('Rangliste konnte nicht laden.'),
+              ),
+            ]);
+          }
+          if (!snap.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          final plaetze = <String, _Platz>{};
+          for (final f in snap.data!) {
+            final p = plaetze.putIfAbsent(f.uid, () => _Platz(f.nutzerName));
+            p.faenge++;
+            p.petriHeil += f.petriHeil.length;
+            if ((f.laengeCm ?? 0) > p.groesster) p.groesster = f.laengeCm!;
+          }
+          num wert(_Platz p) => switch (_wertung) {
+                _Wertung.faenge => p.faenge,
+                _Wertung.petriHeil => p.petriHeil,
+                _Wertung.groesster => p.groesster,
+              };
+          final liste = plaetze.entries.toList()
+            ..sort((a, b) => wert(b.value).compareTo(wert(a.value)));
+          final top = liste.take(50).toList();
+
+          return ListView(
+            padding: const EdgeInsets.all(12),
+            children: [
+              SegmentedButton<_Wertung>(
+                showSelectedIcon: false,
+                segments: const [
+                  ButtonSegment(value: _Wertung.faenge, label: Text('Fänge')),
+                  ButtonSegment(
+                      value: _Wertung.petriHeil, label: Text('Petri Heil')),
+                  ButtonSegment(
+                      value: _Wertung.groesster, label: Text('Größter')),
+                ],
+                selected: {_wertung},
+                onSelectionChanged: (s) => setState(() => _wertung = s.first),
+              ),
+              const SizedBox(height: 12),
+              if (top.isEmpty)
+                const Padding(
+                  padding: EdgeInsets.all(24),
+                  child: Text('Noch niemand in der Rangliste.'),
+                ),
+              for (var i = 0; i < top.length; i++)
+                Card(
+                  color: top[i].key == eigeneUid
+                      ? Theme.of(context).colorScheme.primaryContainer
+                      : null,
+                  child: ListTile(
+                    leading: SizedBox(
+                      width: 36,
+                      child: Center(
+                        child: Text(
+                          switch (i) {
+                            0 => '🥇',
+                            1 => '🥈',
+                            2 => '🥉',
+                            _ => '${i + 1}.',
+                          },
+                          style: i < 3
+                              ? const TextStyle(fontSize: 26)
+                              : text.titleMedium,
+                        ),
+                      ),
+                    ),
+                    title: Text(top[i].value.name),
+                    subtitle: Text('${top[i].value.faenge} Fänge · '
+                        '${top[i].value.petriHeil} × Petri Heil'),
+                    trailing: Text(
+                      switch (_wertung) {
+                        _Wertung.faenge => '${top[i].value.faenge}',
+                        _Wertung.petriHeil => '${top[i].value.petriHeil}',
+                        _Wertung.groesster =>
+                          '${top[i].value.groesster.toStringAsFixed(0)} cm',
+                      },
+                      style: text.titleLarge,
+                    ),
+                  ),
+                ),
+              const SizedBox(height: 8),
+              Text('Aus den letzten 500 geteilten Fängen.',
+                  style: text.bodySmall),
+            ],
+          );
+        },
+      ),
     );
   }
 }

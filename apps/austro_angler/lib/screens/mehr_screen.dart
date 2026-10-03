@@ -54,7 +54,7 @@ class MehrScreen extends StatelessWidget {
               () => showAboutDialog(
                     context: context,
                     applicationName: 'Austro Angler',
-                    applicationVersion: '0.2',
+                    applicationVersion: '0.3',
                     children: const [
                       Text(
                         'Alle Angaben zu Schonzeiten, Brittelmaßen und Preisen '
