@@ -2,6 +2,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:latlong2/latlong.dart';
 
 import '../data/fische.dart';
 import '../data/gewaesser.dart';
@@ -9,6 +10,9 @@ import '../main.dart';
 import '../models/bundesland.dart';
 import '../models/fang.dart';
 import '../services/fang_dienst.dart';
+import '../services/wetter.dart';
+import 'gewaesser_screen.dart';
+import 'ort_waehlen.dart';
 import 'widgets.dart';
 
 class FangbuchScreen extends StatefulWidget {
@@ -247,11 +251,13 @@ class FangKarte extends StatelessWidget {
                   Text(
                     [
                       if (fang.nutzerName.isNotEmpty) at(fang.nutzerName),
-                      datumText(fang.datum),
+                      '${datumText(fang.datum)} ${uhrText(fang.datum)}',
                       if (ort.isNotEmpty) ort,
                     ].join(' · '),
                     style: text.bodySmall,
                   ),
+                  if (fang.wetter case final w?)
+                    Text(wetterKurz(w), style: text.bodySmall),
                   if (fang.notiz.isNotEmpty) ...[
                     const SizedBox(height: 4),
                     Text(fang.notiz),
@@ -299,6 +305,30 @@ class _FangFormularState extends State<FangFormular> {
   Uint8List? _neuesFoto;
   bool _fotoEntfernen = false;
   bool _speichert = false;
+  LatLng? _ort;
+  bool _ortGeaendert = false;
+
+  @override
+  void initState() {
+    super.initState();
+    final f = widget.fang;
+    if (f != null && f.uid.isNotEmpty) {
+      fangDienst.fangorte(f.uid).first.then((orte) {
+        if (mounted && orte[f.id] != null && !_ortGeaendert) {
+          setState(() => _ort = orte[f.id]);
+        }
+      }).catchError((_) {});
+    }
+  }
+
+  /// Ort für das Wetter: eigener Fangort, sonst das Gewässer, sonst Braunau.
+  LatLng get _wetterOrt {
+    if (_ort != null) return _ort!;
+    for (final g in gewaesserListe) {
+      if (g.name == _gewaesser.text.trim()) return g.position;
+    }
+    return braunau;
+  }
 
   bool get _online => KontoScope.of(context)?.angemeldet ?? false;
 
@@ -363,6 +393,7 @@ class _FangFormularState extends State<FangFormular> {
       uid: konto?.uid ?? '',
       nutzerName: konto?.name ?? '',
       oeffentlich: _oeffentlich,
+      wetter: widget.fang?.datum == _datum ? widget.fang?.wetter : null,
     );
   }
 
@@ -370,12 +401,21 @@ class _FangFormularState extends State<FangFormular> {
     setState(() => _speichert = true);
     try {
       if (_online) {
-        await fangDienst.speichern(
-          _ausFormular(widget.fang?.id ?? ''),
+        var fang = _ausFormular(widget.fang?.id ?? '');
+        // Wetter zur Fangzeit automatisch dazuholen (wenn noch keins da ist).
+        if (fang.wetter == null || _ortGeaendert) {
+          final w = await wetterZurZeit(_wetterOrt, _datum);
+          if (w != null) fang = fang.kopie(wetter: w);
+        }
+        final id = await fangDienst.speichern(
+          fang,
           vorher: widget.fang,
           foto: _neuesFoto,
           fotoEntfernen: _fotoEntfernen,
         );
+        if (_ortGeaendert) {
+          await fangDienst.fangortSpeichern(fang.uid, id, _ort);
+        }
       } else {
         final speicher = SpeicherScope.of(context);
         await speicher.fangSpeichern(
@@ -524,20 +564,83 @@ class _FangFormularState extends State<FangFormular> {
             decoration: const InputDecoration(labelText: 'Köder'),
           ),
           const SizedBox(height: 12),
-          ListTile(
-            contentPadding: EdgeInsets.zero,
-            leading: const Icon(Icons.calendar_today),
-            title: Text('Datum: ${datumText(_datum)}'),
-            onTap: () async {
-              final d = await showDatePicker(
-                context: context,
-                initialDate: _datum,
-                firstDate: DateTime(2000),
-                lastDate: DateTime.now(),
-              );
-              if (d != null) setState(() => _datum = d);
-            },
+          Row(
+            children: [
+              Expanded(
+                child: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.calendar_today),
+                  title: Text(datumText(_datum)),
+                  subtitle: const Text('Datum'),
+                  onTap: () async {
+                    final d = await showDatePicker(
+                      context: context,
+                      initialDate: _datum,
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime.now(),
+                    );
+                    if (d != null) {
+                      setState(() => _datum = DateTime(d.year, d.month, d.day,
+                          _datum.hour, _datum.minute));
+                    }
+                  },
+                ),
+              ),
+              Expanded(
+                child: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.schedule),
+                  title: Text(uhrText(_datum)),
+                  subtitle: const Text('Uhrzeit'),
+                  onTap: () async {
+                    final t = await showTimePicker(
+                      context: context,
+                      initialTime: TimeOfDay.fromDateTime(_datum),
+                    );
+                    if (t != null) {
+                      setState(() => _datum = DateTime(_datum.year,
+                          _datum.month, _datum.day, t.hour, t.minute));
+                    }
+                  },
+                ),
+              ),
+            ],
           ),
+          if (online)
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.place_outlined),
+              title: Text(_ort == null
+                  ? 'Fangort auf der Karte wählen (optional)'
+                  : 'Fangort gewählt ✓'),
+              subtitle: const Text('Bleibt privat – nur du siehst ihn'),
+              trailing: _ort == null
+                  ? const Icon(Icons.chevron_right)
+                  : IconButton(
+                      tooltip: 'Ort entfernen',
+                      icon: const Icon(Icons.close),
+                      onPressed: () => setState(() {
+                        _ort = null;
+                        _ortGeaendert = true;
+                      }),
+                    ),
+              onTap: () async {
+                final p = await Navigator.of(context).push<LatLng>(
+                  MaterialPageRoute(builder: (_) => OrtWaehlen(start: _ort)),
+                );
+                if (p != null) {
+                  setState(() {
+                    _ort = p;
+                    _ortGeaendert = true;
+                  });
+                }
+              },
+            ),
+          if (widget.fang?.wetter case final w?)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text('Wetter beim Fang: ${wetterKurz(w)}'),
+            ),
           SwitchListTile(
             contentPadding: EdgeInsets.zero,
             title: const Text('Zurückgesetzt'),

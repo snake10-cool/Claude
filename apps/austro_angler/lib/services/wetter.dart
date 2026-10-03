@@ -95,3 +95,127 @@ double mondphase(DateTime zeit) {
 /// Beleuchteter Anteil des Mondes in Prozent.
 int mondBeleuchtung(double phase) =>
     ((1 - cos(2 * pi * phase)) / 2 * 100).round();
+
+/// Wetter zu einem bestimmten Zeitpunkt (für das Fangbuch).
+///
+/// Bis 90 Tage zurück kommt es aus der Vorhersage-API, ältere Tage aus dem
+/// Archiv von Open-Meteo.
+Future<Map<String, num>?> wetterZurZeit(LatLng p, DateTime zeit) async {
+  final tag = '${zeit.year.toString().padLeft(4, '0')}-'
+      '${zeit.month.toString().padLeft(2, '0')}-'
+      '${zeit.day.toString().padLeft(2, '0')}';
+  final alt = DateTime.now().difference(zeit).inDays > 85;
+  final uri = Uri.https(
+    alt ? 'archive-api.open-meteo.com' : 'api.open-meteo.com',
+    alt ? '/v1/archive' : '/v1/forecast',
+    {
+      'latitude': p.latitude.toStringAsFixed(3),
+      'longitude': p.longitude.toStringAsFixed(3),
+      'hourly': 'temperature_2m,surface_pressure,wind_speed_10m,weather_code',
+      'timezone': 'Europe/Vienna',
+      'start_date': tag,
+      'end_date': tag,
+    },
+  );
+  try {
+    final antwort = await http.get(uri).timeout(const Duration(seconds: 10));
+    if (antwort.statusCode != 200) return null;
+    final h = (jsonDecode(antwort.body) as Map<String, dynamic>)['hourly']
+        as Map<String, dynamic>;
+    final i = zeit.hour.clamp(0, (h['time'] as List).length - 1);
+    num? wert(String key) => (h[key] as List?)?[i] as num?;
+    final temp = wert('temperature_2m');
+    if (temp == null) return null;
+    return {
+      'temp': temp,
+      'druck': wert('surface_pressure') ?? 0,
+      'wind': wert('wind_speed_10m') ?? 0,
+      'code': wert('weather_code') ?? 0,
+    };
+  } catch (_) {
+    return null;
+  }
+}
+
+String wetterKurz(Map<String, num> w) {
+  final (icon, text) = Wetter(
+    temperatur: 0,
+    wind: 0,
+    luftdruck: 0,
+    code: w['code']?.toInt() ?? 0,
+    sonnenaufgang: null,
+    sonnenuntergang: null,
+  ).beschreibung;
+  return '$icon $text, ${w['temp']?.toStringAsFixed(0)} °C, '
+      '${w['druck']?.toStringAsFixed(0)} hPa, Wind ${w['wind']?.toStringAsFixed(0)} km/h';
+}
+
+class Stunde {
+  const Stunde(this.zeit, this.druck, this.temp, this.wolken, this.wind);
+
+  final DateTime zeit;
+  final double druck;
+  final double temp;
+  final double wolken;
+  final double wind;
+}
+
+/// Stündliches Wetter von gestern bis in 3 Tagen (für die Beißzeit).
+Future<List<Stunde>> stundenWetter(LatLng p) async {
+  final uri = Uri.https('api.open-meteo.com', '/v1/forecast', {
+    'latitude': p.latitude.toStringAsFixed(3),
+    'longitude': p.longitude.toStringAsFixed(3),
+    'hourly': 'surface_pressure,temperature_2m,cloud_cover,wind_speed_10m',
+    'timezone': 'Europe/Vienna',
+    'past_days': '1',
+    'forecast_days': '4',
+  });
+  final antwort = await http.get(uri).timeout(const Duration(seconds: 10));
+  if (antwort.statusCode != 200) throw Exception('Wetter nicht verfügbar');
+  final h = (jsonDecode(antwort.body) as Map<String, dynamic>)['hourly']
+      as Map<String, dynamic>;
+  final zeiten = (h['time'] as List).cast<String>();
+  double d(String key, int i) => ((h[key] as List)[i] as num?)?.toDouble() ?? 0;
+  return [
+    for (var i = 0; i < zeiten.length; i++)
+      Stunde(DateTime.parse(zeiten[i]), d('surface_pressure', i),
+          d('temperature_2m', i), d('cloud_cover', i), d('wind_speed_10m', i)),
+  ];
+}
+
+/// Abfluss eines Flusses in m³/s (Open-Meteo Flood API, Modelldaten).
+class Abfluss {
+  const Abfluss(this.tage, this.werte, this.mittel);
+
+  final List<DateTime> tage;
+  final List<double> werte;
+  final double? mittel;
+}
+
+Future<Abfluss> abflussLaden(LatLng p) async {
+  final uri = Uri.https('flood-api.open-meteo.com', '/v1/flood', {
+    'latitude': p.latitude.toStringAsFixed(3),
+    'longitude': p.longitude.toStringAsFixed(3),
+    'daily': 'river_discharge,river_discharge_mean',
+    'past_days': '7',
+    'forecast_days': '7',
+  });
+  final antwort = await http.get(uri).timeout(const Duration(seconds: 10));
+  if (antwort.statusCode != 200) throw Exception('Abfluss nicht verfügbar');
+  final d = (jsonDecode(antwort.body) as Map<String, dynamic>)['daily']
+      as Map<String, dynamic>;
+  final werte = [
+    for (final w in d['river_discharge'] as List) (w as num?)?.toDouble() ?? 0,
+  ];
+  final mittel = (d['river_discharge_mean'] as List?)
+      ?.whereType<num>()
+      .map((e) => e.toDouble())
+      .toList();
+  return Abfluss(
+    [for (final t in d['time'] as List) DateTime.parse(t as String)],
+    werte,
+    mittel == null || mittel.isEmpty
+        ? null
+        : mittel.reduce((a, b) => a + b) / mittel.length,
+  );
+}

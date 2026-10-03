@@ -129,6 +129,9 @@ String at(String name) => name.isEmpty ? '' : '@$name';
 
 String datumText(DateTime d) => '${d.day}.${d.month}.${d.year}';
 
+String uhrText(DateTime d) =>
+    '${d.hour.toString().padLeft(2, '0')}:${d.minute.toString().padLeft(2, '0')}';
+
 void meldung(BuildContext context, String text) =>
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
 

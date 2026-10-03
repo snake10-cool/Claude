@@ -18,6 +18,7 @@ class Fang {
     this.oeffentlich = true,
     this.hatFoto = false,
     this.petriHeil = const [],
+    this.wetter,
   });
 
   final String id;
@@ -42,12 +43,17 @@ class Fang {
   /// UIDs der Nutzer, die "Petri Heil!" gesagt haben.
   final List<String> petriHeil;
 
+  /// Wetter zur Fangzeit (automatisch geholt), z. B.
+  /// {temp: 14.2, druck: 1018, wind: 9, code: 3}.
+  final Map<String, num>? wetter;
+
   Fang kopie({
     String? id,
     String? uid,
     String? nutzerName,
     bool? oeffentlich,
     bool? hatFoto,
+    Map<String, num>? wetter,
   }) =>
       Fang(
         id: id ?? this.id,
@@ -65,6 +71,7 @@ class Fang {
         oeffentlich: oeffentlich ?? this.oeffentlich,
         hatFoto: hatFoto ?? this.hatFoto,
         petriHeil: petriHeil,
+        wetter: wetter ?? this.wetter,
       );
 
   Map<String, dynamic> _basis() => {
@@ -76,6 +83,7 @@ class Fang {
         'koeder': koeder,
         'notiz': notiz,
         'zurueckgesetzt': zurueckgesetzt,
+        'wetter': wetter,
       };
 
   /// Für die lokale Speicherung (ohne Konto).
@@ -96,7 +104,12 @@ class Fang {
         koeder: j['koeder'] as String? ?? '',
         notiz: j['notiz'] as String? ?? '',
         zurueckgesetzt: j['zurueckgesetzt'] as bool? ?? false,
+        wetter: _wetter(j['wetter']),
       );
+
+  static Map<String, num>? _wetter(Object? roh) => roh is Map
+      ? {for (final e in roh.entries) e.key as String: e.value as num}
+      : null;
 
   /// Für Firestore. `petriHeil` und `erstellt` setzt der Dienst.
   Map<String, dynamic> toFirestore() => {
@@ -128,6 +141,7 @@ class Fang {
       oeffentlich: oeffentlich,
       hatFoto: j['hatFoto'] as bool? ?? false,
       petriHeil: (j['petriHeil'] as List?)?.cast<String>() ?? const [],
+      wetter: _wetter(j['wetter']),
     );
   }
 }

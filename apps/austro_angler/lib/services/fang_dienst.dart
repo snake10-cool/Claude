@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:latlong2/latlong.dart';
 
 import '../models/fang.dart';
 
@@ -143,7 +144,8 @@ class FangDienst {
   ///
   /// [vorher] ist der alte Stand beim Bearbeiten (für den Wechsel
   /// öffentlich ↔ privat).
-  Future<void> speichern(
+  /// Gibt die ID des Fangs zurück.
+  Future<String> speichern(
     Fang fang, {
     Fang? vorher,
     Uint8List? foto,
@@ -181,11 +183,34 @@ class FangDienst {
     } else if (hatFoto && vorher?.oeffentlich != fang.oeffentlich) {
       await _fotos.doc(id).update({'oeffentlich': fang.oeffentlich});
     }
+    return id;
   }
+
+  // ── Fangorte (immer privat) ──
+
+  CollectionReference<Map<String, dynamic>> _fangorte(String uid) =>
+      _db.collection('nutzer/$uid/fangorte');
+
+  Future<void> fangortSpeichern(String uid, String fangId, LatLng? ort) => ort ==
+          null
+      ? _fangorte(uid).doc(fangId).delete()
+      : _fangorte(uid).doc(fangId).set({
+          'lat': ort.latitude,
+          'lng': ort.longitude,
+        });
+
+  /// Fang-ID → Ort, nur für den Besitzer lesbar.
+  Stream<Map<String, LatLng>> fangorte(String uid) =>
+      _fangorte(uid).snapshots().map((s) => {
+            for (final d in s.docs)
+              d.id: LatLng((d.data()['lat'] as num).toDouble(),
+                  (d.data()['lng'] as num).toDouble()),
+          });
 
   Future<void> loeschen(Fang fang) async {
     final ort = fang.oeffentlich ? _oeff : _privat(fang.uid);
     await ort.doc(fang.id).delete();
+    await _fangorte(fang.uid).doc(fang.id).delete().catchError((_) {});
     if (fang.hatFoto) await _fotos.doc(fang.id).delete();
     _fotoCache.remove(fang.id);
   }
@@ -391,6 +416,9 @@ class FangDienst {
   Future<void> allesLoeschen(String uid, String? name) async {
     final oeff = await _oeff.where('uid', isEqualTo: uid).get();
     final privat = await _privat(uid).get();
+    for (final d in (await _fangorte(uid).get()).docs) {
+      await d.reference.delete();
+    }
     for (final doc in [...oeff.docs, ...privat.docs]) {
       if (doc.data()['hatFoto'] == true) await _fotos.doc(doc.id).delete();
       await doc.reference.delete();
