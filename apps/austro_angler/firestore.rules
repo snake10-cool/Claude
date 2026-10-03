@@ -39,9 +39,15 @@ service cloud.firestore {
       allow create, update: if ich(uid)
           && request.resource.data.keys().hasOnly(['name', 'erstellt'])
           && request.resource.data.name is string
-          && request.resource.data.name.size() >= 3
-          && request.resource.data.name.size() <= 20;
+          && request.resource.data.name.matches('^[a-z0-9_.]{3,20}$');
       allow delete: if ich(uid);
+
+      // Freundesliste: nur der Besitzer.
+      match /freunde/{freundUid} {
+        allow read, delete: if ich(uid);
+        allow create, update: if ich(uid)
+            && request.resource.data.keys().hasOnly(['name', 'seit']);
+      }
 
       // Private Fänge: nur für den Besitzer.
       match /privat/{fangId} {
@@ -55,6 +61,7 @@ service cloud.firestore {
     match /namen/{name} {
       allow read: if true;
       allow create: if angemeldet()
+          && name.matches('^[a-z0-9_.]{3,20}$')
           && request.resource.data.keys().hasOnly(['uid'])
           && request.resource.data.uid == request.auth.uid;
       allow delete: if angemeldet() && resource.data.uid == request.auth.uid;
@@ -112,6 +119,30 @@ service cloud.firestore {
           && request.resource.data.text is string
           && request.resource.data.text.size() <= 1000;
       allow read, delete: if istAdmin();
+    }
+
+    // Preisvorschläge: Nutzer schlagen vor, der Admin prüft.
+    match /preisvorschlaege/{id} {
+      allow create: if angemeldet()
+          && request.resource.data.keys().hasOnly(['uid', 'nutzerName',
+               'gewaesserId', 'gewaesserName', 'art', 'euro', 'notiz',
+               'erstellt'])
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.euro is number
+          && request.resource.data.euro >= 0
+          && request.resource.data.euro <= 5000
+          && request.resource.data.art is string
+          && request.resource.data.art.size() <= 50
+          && request.resource.data.notiz is string
+          && request.resource.data.notiz.size() <= 300;
+      allow read: if istAdmin() || ich(resource.data.uid);
+      allow delete: if istAdmin();
+    }
+
+    // Vom Admin freigegebene Preise: alle lesen, nur der Admin schreibt.
+    match /gepruefte_preise/{gewaesserId} {
+      allow read: if true;
+      allow write: if istAdmin();
     }
 
     // Wünsche: jeder sieht seine eigenen, der Admin sieht alle und antwortet.

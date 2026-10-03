@@ -105,7 +105,7 @@ class _Profil extends StatelessWidget {
         const Icon(Icons.account_circle, size: 72),
         const SizedBox(height: 8),
         Text(
-          konto.name ?? '…',
+          at(konto.name ?? '…'),
           style: Theme.of(context).textTheme.headlineSmall,
           textAlign: TextAlign.center,
         ),
@@ -271,8 +271,9 @@ class _AnmeldenState extends State<_Anmelden> {
           TextField(
             controller: _name,
             decoration: const InputDecoration(
-              labelText: 'Nutzername (öffentlich sichtbar)',
-              helperText: 'Kein echter Name nötig, z. B. "HechtJäger99"',
+              labelText: 'Dein @Name (einzigartig, öffentlich)',
+              prefixText: '@',
+              helperText: 'Kein echter Name nötig, z. B. hechtjaeger99',
             ),
           ),
           const SizedBox(height: 12),

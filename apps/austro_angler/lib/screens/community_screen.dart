@@ -1,11 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../data/fische.dart';
 import '../main.dart';
 import '../models/fang.dart';
 import '../services/fang_dienst.dart';
+import '../services/konto.dart';
 import 'fangbuch_screen.dart';
 import 'melden.dart';
+import 'profil_screen.dart';
 import 'widgets.dart';
 
 class CommunityScreen extends StatelessWidget {
@@ -29,19 +32,21 @@ class CommunityScreen extends StatelessWidget {
       );
     }
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Community'),
           bottom: const TabBar(
             tabs: [
               Tab(icon: Icon(Icons.dynamic_feed), text: 'Neu'),
+              Tab(icon: Icon(Icons.people), text: 'Freunde'),
               Tab(icon: Icon(Icons.leaderboard), text: 'Rangliste'),
               Tab(icon: Icon(Icons.emoji_events), text: 'Rekorde'),
             ],
           ),
         ),
-        body: const TabBarView(children: [_Feed(), _Rangliste(), _Rekorde()]),
+        body: const TabBarView(
+            children: [_Feed(), _FreundeFeed(), _Rangliste(), _Rekorde()]),
       ),
     );
   }
@@ -90,9 +95,185 @@ class _FeedState extends State<_Feed> with AutomaticKeepAliveClientMixin {
                   textAlign: TextAlign.center,
                 ),
               ),
-            for (final f in faenge)
-              FangKarte(f, unten: _Aktionen(f)),
+            for (final f in faenge) _FeedKarte(f),
           ],
+        );
+      },
+    );
+  }
+}
+
+/// Fang im Feed: Antippen öffnet das Profil des Fängers.
+class _FeedKarte extends StatelessWidget {
+  const _FeedKarte(this.fang);
+
+  final Fang fang;
+
+  @override
+  Widget build(BuildContext context) => FangKarte(
+        fang,
+        unten: _Aktionen(fang),
+        onTap: fang.nutzerName.isEmpty
+            ? null
+            : () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) =>
+                      ProfilScreen(uid: fang.uid, name: fang.nutzerName),
+                )),
+      );
+}
+
+class _FreundeFeed extends StatefulWidget {
+  const _FreundeFeed();
+
+  @override
+  State<_FreundeFeed> createState() => _FreundeFeedState();
+}
+
+class _FreundeFeedState extends State<_FreundeFeed>
+    with AutomaticKeepAliveClientMixin {
+  final _eingabe = TextEditingController();
+  Stream<Map<String, String>>? _freunde;
+  String? _uid;
+  Future<List<Fang>>? _feed;
+  Set<String> _feedFuer = {};
+
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  void dispose() {
+    _eingabe.dispose();
+    super.dispose();
+  }
+
+  Future<void> _hinzufuegen() async {
+    final handle = Konto.handle(_eingabe.text);
+    if (handle.isEmpty) return;
+    try {
+      await fangDienst.freundHinzufuegen(_uid!, handle);
+      _eingabe.clear();
+      if (mounted) meldung(context, '${at(handle)} ist jetzt dein Freund. 🎣');
+    } catch (e) {
+      if (mounted) meldung(context, '$e'.replaceFirst('Exception: ', ''));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    final konto = KontoScope.of(context)!;
+    if (!konto.angemeldet) {
+      return ListView(
+        padding: const EdgeInsets.all(12),
+        children: const [
+          AnmeldenKarte('Melde dich an, um Freunde über ihren @Namen '
+              'hinzuzufügen und ihre Fänge zu sehen.'),
+        ],
+      );
+    }
+    if (_uid != konto.uid) {
+      _uid = konto.uid;
+      _freunde = fangDienst.freunde(_uid!);
+    }
+    return StreamBuilder<Map<String, String>>(
+      stream: _freunde,
+      builder: (context, snap) {
+        final freunde = snap.data ?? const <String, String>{};
+        // Feed neu laden, wenn sich die Freundesliste ändert.
+        if (!setEquals(_feedFuer, freunde.keys.toSet())) {
+          _feedFuer = freunde.keys.toSet();
+          _feed = fangDienst.freundeFeed(_feedFuer);
+        }
+        return RefreshIndicator(
+          onRefresh: () async {
+            setState(() => _feed = fangDienst.freundeFeed(_feedFuer));
+            await _feed;
+          },
+          child: ListView(
+            padding: const EdgeInsets.all(12),
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _eingabe,
+                      decoration: const InputDecoration(
+                        prefixText: '@',
+                        hintText: 'Freund über @Namen hinzufügen',
+                        border: OutlineInputBorder(),
+                        isDense: true,
+                      ),
+                      onSubmitted: (_) => _hinzufuegen(),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  IconButton.filled(
+                    onPressed: _hinzufuegen,
+                    icon: const Icon(Icons.person_add),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Text('Dein Name zum Teilen: ${at(konto.name ?? '')}',
+                  style: Theme.of(context).textTheme.bodySmall),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 6,
+                runSpacing: 6,
+                children: [
+                  for (final e in freunde.entries)
+                    ActionChip(
+                      avatar: const Icon(Icons.person, size: 18),
+                      label: Text(at(e.value)),
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              ProfilScreen(uid: e.key, name: e.value),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              if (freunde.isEmpty)
+                const Padding(
+                  padding: EdgeInsets.all(24),
+                  child: Text(
+                    'Noch keine Freunde. Frag deine Angel-Kollegen nach '
+                    'ihrem @Namen!',
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              else
+                FutureBuilder<List<Fang>>(
+                  future: _feed,
+                  builder: (context, f) {
+                    if (f.hasError) {
+                      return const Text('Laden fehlgeschlagen.');
+                    }
+                    if (!f.hasData) {
+                      return const Padding(
+                        padding: EdgeInsets.all(24),
+                        child: Center(child: CircularProgressIndicator()),
+                      );
+                    }
+                    if (f.data!.isEmpty) {
+                      return const Padding(
+                        padding: EdgeInsets.all(24),
+                        child: Text('Deine Freunde haben noch nichts geteilt.',
+                            textAlign: TextAlign.center),
+                      );
+                    }
+                    return Column(
+                      children: [
+                        for (final fang in f.data!.take(100))
+                          _FeedKarte(fang),
+                      ],
+                    );
+                  },
+                ),
+            ],
+          ),
         );
       },
     );
@@ -130,7 +311,7 @@ class _Aktionen extends StatelessWidget {
                 context: context,
                 builder: (context) => AlertDialog(
                   title: const Text('Fang entfernen?'),
-                  content: Text('Fang von ${fang.nutzerName} löschen.'),
+                  content: Text('Fang von ${at(fang.nutzerName)} löschen.'),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context, false),
@@ -211,7 +392,7 @@ class _RanglisteState extends State<_Rangliste> {
           }
           final plaetze = <String, _Platz>{};
           for (final f in snap.data!) {
-            final p = plaetze.putIfAbsent(f.uid, () => _Platz(f.nutzerName));
+            final p = plaetze.putIfAbsent(f.uid, () => _Platz(at(f.nutzerName)));
             p.faenge++;
             p.petriHeil += f.petriHeil.length;
             if ((f.laengeCm ?? 0) > p.groesster) p.groesster = f.laengeCm!;
@@ -347,7 +528,7 @@ class _RekordeState extends State<_Rekorde> {
                     leading: const Text('🏆', style: TextStyle(fontSize: 28)),
                     title: Text(fisch.name),
                     subtitle: Text([
-                      rekorde[fisch.id]!.nutzerName,
+                      at(rekorde[fisch.id]!.nutzerName),
                       if (rekorde[fisch.id]!.gewaesser.isNotEmpty)
                         rekorde[fisch.id]!.gewaesser,
                       datumText(rekorde[fisch.id]!.datum),

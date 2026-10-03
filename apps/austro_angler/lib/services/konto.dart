@@ -44,21 +44,28 @@ class Konto extends ChangeNotifier {
     notifyListeners();
   }
 
-  static String? nameProblem(String name) {
-    final n = name.trim();
+  /// Macht aus einer Eingabe wie " @HechtJäger " den Handle "hechtjäger".
+  static String handle(String eingabe) {
+    var n = eingabe.trim().toLowerCase();
+    if (n.startsWith('@')) n = n.substring(1);
+    return n;
+  }
+
+  static String? nameProblem(String eingabe) {
+    final n = handle(eingabe);
     if (n.length < 3) return 'Mindestens 3 Zeichen';
     if (n.length > 20) return 'Höchstens 20 Zeichen';
-    if (!RegExp(r'^[A-Za-z0-9ÄÖÜäöüß_.\-]+$').hasMatch(n)) {
-      return 'Nur Buchstaben, Zahlen, _ . -';
+    if (!RegExp(r'^[a-z0-9_.]+$').hasMatch(n)) {
+      return 'Nur a–z, 0–9, _ und . (keine Umlaute oder Leerzeichen)';
     }
     return null;
   }
 
   Future<void> registrieren(String email, String passwort, String name) async {
-    final n = name.trim();
-    final schluessel = n.toLowerCase();
+    final n = handle(name);
+    final schluessel = n;
     final vergeben = await _db.doc('namen/$schluessel').get();
-    if (vergeben.exists) throw KontoFehler('Der Name "$n" ist schon vergeben.');
+    if (vergeben.exists) throw KontoFehler('@$n ist schon vergeben.');
 
     final cred = await _fehlerUebersetzen(() =>
         _auth.createUserWithEmailAndPassword(email: email.trim(), password: passwort));
@@ -73,7 +80,7 @@ class Konto extends ChangeNotifier {
       await batch.commit();
     } catch (_) {
       await cred.user!.delete();
-      throw KontoFehler('Der Name "$n" ist schon vergeben.');
+      throw KontoFehler('@$n ist schon vergeben.');
     }
     this.name = n;
     notifyListeners();

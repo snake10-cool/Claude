@@ -31,6 +31,40 @@ class Eintrag {
   final DateTime erstellt;
 }
 
+class PreisVorschlag {
+  PreisVorschlag(DocumentSnapshot<Map<String, dynamic>> doc)
+      : id = doc.id,
+        nutzerName = doc.data()?['nutzerName'] as String? ?? '',
+        gewaesserId = doc.data()?['gewaesserId'] as String? ?? '',
+        gewaesserName = doc.data()?['gewaesserName'] as String? ?? '',
+        art = doc.data()?['art'] as String? ?? '',
+        euro = (doc.data()?['euro'] as num?)?.toDouble() ?? 0,
+        notiz = doc.data()?['notiz'] as String? ?? '';
+
+  final String id;
+  final String nutzerName;
+  final String gewaesserId;
+  final String gewaesserName;
+  final String art;
+  final double euro;
+  final String notiz;
+}
+
+class CommunityPreis {
+  CommunityPreis(this.roh)
+      : art = roh['art'] as String? ?? '',
+        euro = (roh['euro'] as num?)?.toDouble() ?? 0,
+        von = roh['von'] as String? ?? '',
+        datum = DateTime.fromMillisecondsSinceEpoch(
+            (roh['datum'] as num?)?.toInt() ?? 0);
+
+  final Map<String, dynamic> roh;
+  final String art;
+  final double euro;
+  final String von;
+  final DateTime datum;
+}
+
 /// Wird erst benutzt, wenn Firebase eingerichtet ist (Dart-Globals sind lazy).
 final fangDienst = FangDienst();
 
@@ -181,6 +215,116 @@ class FangDienst {
         .get();
     return s.docs.map((d) => Fang.fromFirestore(d, oeffentlich: true)).toList();
   }
+
+  // ── Freunde ──
+
+  CollectionReference<Map<String, dynamic>> _freunde(String uid) =>
+      _db.collection('nutzer/$uid/freunde');
+
+  /// Freunde als Map uid → @Name.
+  Stream<Map<String, String>> freunde(String uid) =>
+      _freunde(uid).snapshots().map((s) => {
+            for (final d in s.docs) d.id: d.data()['name'] as String? ?? '',
+          });
+
+  /// Fügt einen Freund über seinen @Namen hinzu. Gibt den Namen zurück.
+  Future<String> freundHinzufuegen(String meineUid, String handle) async {
+    final doc = await _db.doc('namen/$handle').get();
+    final uid = doc.data()?['uid'] as String?;
+    if (uid == null) throw Exception('@$handle gibt es nicht.');
+    if (uid == meineUid) throw Exception('Das bist du selbst 😉');
+    await _freunde(meineUid).doc(uid).set({
+      'name': handle,
+      'seit': FieldValue.serverTimestamp(),
+    });
+    return handle;
+  }
+
+  Future<void> freundEntfernen(String meineUid, String freundUid) =>
+      _freunde(meineUid).doc(freundUid).delete();
+
+  /// Öffentliche Fänge eines Nutzers, neueste zuerst.
+  Future<List<Fang>> faengeVon(String uid) async {
+    final s = await _oeff.where('uid', isEqualTo: uid).get();
+    return s.docs.map((d) => Fang.fromFirestore(d, oeffentlich: true)).toList()
+      ..sort((a, b) => b.datum.compareTo(a.datum));
+  }
+
+  /// Die neuesten Fänge aller Freunde.
+  Future<List<Fang>> freundeFeed(Iterable<String> uids) async {
+    final listen = await Future.wait(uids.map(faengeVon));
+    return listen.expand((l) => l).toList()
+      ..sort((a, b) => b.datum.compareTo(a.datum));
+  }
+
+  // ── Preisvorschläge ──
+
+  Future<void> preisVorschlagen({
+    required String uid,
+    required String nutzerName,
+    required String gewaesserId,
+    required String gewaesserName,
+    required String art,
+    required double euro,
+    required String notiz,
+  }) =>
+      _db.collection('preisvorschlaege').add({
+        'uid': uid,
+        'nutzerName': nutzerName,
+        'gewaesserId': gewaesserId,
+        'gewaesserName': gewaesserName,
+        'art': art,
+        'euro': euro,
+        'notiz': notiz,
+        'erstellt': FieldValue.serverTimestamp(),
+      });
+
+  /// Offene Vorschläge (nur für den Administrator).
+  Stream<List<PreisVorschlag>> preisVorschlaege() => _db
+      .collection('preisvorschlaege')
+      .orderBy('erstellt', descending: true)
+      .limit(200)
+      .snapshots()
+      .map((s) => s.docs.map(PreisVorschlag.new).toList());
+
+  /// Gibt einen Vorschlag frei: der Preis erscheint bei allen in der App.
+  Future<void> preisFreigeben(PreisVorschlag v) async {
+    final batch = _db.batch()
+      ..set(
+        _db.doc('gepruefte_preise/${v.gewaesserId}'),
+        {
+          'preise': FieldValue.arrayUnion([
+            {
+              'art': v.art,
+              'euro': v.euro,
+              'von': v.nutzerName,
+              'datum': DateTime.now().millisecondsSinceEpoch,
+            },
+          ]),
+        },
+        SetOptions(merge: true),
+      )
+      ..delete(_db.doc('preisvorschlaege/${v.id}'));
+    await batch.commit();
+  }
+
+  Future<void> preisAblehnen(PreisVorschlag v) =>
+      _db.doc('preisvorschlaege/${v.id}').delete();
+
+  /// Geprüfte Community-Preise eines Gewässers.
+  Stream<List<CommunityPreis>> gepruefteCommunityPreise(String gewaesserId) => _db
+      .doc('gepruefte_preise/$gewaesserId')
+      .snapshots()
+      .map((d) => [
+            for (final p in (d.data()?['preise'] as List?) ?? const [])
+              CommunityPreis(p as Map<String, dynamic>),
+          ]);
+
+  /// Admin: einen freigegebenen Preis wieder entfernen.
+  Future<void> gepruefterPreisEntfernen(String gewaesserId, CommunityPreis p) =>
+      _db.doc('gepruefte_preise/$gewaesserId').update({
+        'preise': FieldValue.arrayRemove([p.roh]),
+      });
 
   // ── Wünsche ──
 

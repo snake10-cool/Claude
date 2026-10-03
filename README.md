@@ -25,12 +25,14 @@ Android-Apps, gebaut mit Flutter, für Google Play.
 - **Prüfungstrainer** mit 37 Fragen und **Knoten-Anleitungen**.
 
 **Mit Konto (sobald Firebase eingerichtet ist):**
-- Registrieren mit E-Mail, Passwort und öffentlichem Nutzernamen.
+- Registrieren mit E-Mail, Passwort und einzigartigem **@Namen** (z. B. `@hechtjaeger99`).
+- **Freunde** über ihren @Namen hinzufügen. Im Tab **Community → Freunde** erscheinen dann ihre neuesten Fänge, und ein Antippen öffnet ihr Profil.
+- **Preis ergänzen** bei jedem Gewässer: Der Admin prüft den Vorschlag, nach der Freigabe sehen ihn alle sofort, ohne App-Update.
 - Fänge in der Cloud, mit **Foto**, und auf allen Geräten verfügbar.
 - Fänge sind **standardmäßig öffentlich**, lassen sich aber pro Fang auf privat stellen.
 - **Community**: Feed mit den neuesten Fängen, "Petri Heil!"-Knopf, **Rangliste** (meiste Fänge, meiste Petri Heil, größter Fisch) und **Rekorde** pro Fischart.
 - **Wünsche**: Nutzer schicken Wünsche für die App und sehen, ob sie geplant oder erledigt sind und was geantwortet wurde.
-- **Administrator** `snakejoni10@yahoo.com`: sieht alle Wünsche und Meldungen, kann antworten, den Status setzen und unpassende Fänge entfernen. Das klappt erst, wenn die **E-Mail-Adresse bestätigt** ist, also nach Registrierung mit dieser Adresse den Link in der Bestätigungs-Mail anklicken.
+- **Administrator** `snakejoni10@yahoo.com`: sieht alle Wünsche, Preisvorschläge und Meldungen, gibt Preise frei, kann antworten, den Status setzen und unpassende Fänge entfernen. Das klappt erst, wenn die **E-Mail-Adresse bestätigt** ist, also nach Registrierung mit dieser Adresse den Link in der Bestätigungs-Mail anklicken.
 - **Melden**: falsche Gewässer-Infos, neue Gewässer und unpassende Fänge. Die Meldungen landen in Firestore unter `meldungen`.
 - **Konto löschen** mit allen Daten (Pflicht für den Play Store).
 

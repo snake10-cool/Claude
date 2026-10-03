@@ -6,7 +6,9 @@ import '../data/fische.dart';
 import '../data/gewaesser.dart';
 import '../main.dart';
 import '../models/gewaesser.dart';
+import '../services/fang_dienst.dart';
 import '../services/wetter.dart';
+import 'konto_screen.dart';
 import 'melden.dart';
 import 'widgets.dart';
 
@@ -191,6 +193,12 @@ class GewaesserDetail extends StatelessWidget {
                 title: Text(p.art),
                 trailing: Text(p.euroText, style: text.titleMedium),
               ),
+          if (KontoScope.of(context) != null) _CommunityPreise(g),
+          TextButton.icon(
+            onPressed: () => preisErgaenzen(context, g),
+            icon: const Icon(Icons.add_card),
+            label: const Text('Preis ergänzen'),
+          ),
           const SizedBox(height: 8),
           Text('Karten bekommst du hier', style: text.titleMedium),
           const SizedBox(height: 4),
@@ -323,5 +331,154 @@ class _WetterKarteState extends State<WetterKarte> {
         ),
       ),
     );
+  }
+}
+
+/// Von Nutzern vorgeschlagene und vom Admin geprüfte Preise.
+class _CommunityPreise extends StatefulWidget {
+  const _CommunityPreise(this.g);
+
+  final Gewaesser g;
+
+  @override
+  State<_CommunityPreise> createState() => _CommunityPreiseState();
+}
+
+class _CommunityPreiseState extends State<_CommunityPreise> {
+  late final _stream = fangDienst.gepruefteCommunityPreise(widget.g.id);
+
+  @override
+  Widget build(BuildContext context) {
+    final admin = KontoScope.of(context)?.istAdmin ?? false;
+    final text = Theme.of(context).textTheme;
+    return StreamBuilder<List<CommunityPreis>>(
+      stream: _stream,
+      builder: (context, snap) {
+        final preise = snap.data ?? const <CommunityPreis>[];
+        if (preise.isEmpty) return const SizedBox.shrink();
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 4),
+            Text('✓ Von der Community ergänzt (geprüft)',
+                style: text.labelLarge),
+            for (final p in preise)
+              ListTile(
+                dense: true,
+                contentPadding: EdgeInsets.zero,
+                title: Text(p.art),
+                subtitle: Text('${at(p.von)} · ${datumText(p.datum)}'),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(Preis(p.art, p.euro).euroText,
+                        style: text.titleMedium),
+                    if (admin)
+                      IconButton(
+                        tooltip: 'Entfernen',
+                        icon: const Icon(Icons.close, size: 18),
+                        onPressed: () => fangDienst.gepruefterPreisEntfernen(
+                            widget.g.id, p),
+                      ),
+                  ],
+                ),
+              ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+/// Dialog zum Vorschlagen eines Preises. Der Admin prüft ihn vor dem
+/// Veröffentlichen.
+Future<void> preisErgaenzen(BuildContext context, Gewaesser g) async {
+  final konto = KontoScope.of(context);
+  if (konto == null) {
+    meldung(context, 'Geht erst, wenn die Online-Funktionen aktiv sind.');
+    return;
+  }
+  if (!konto.angemeldet) {
+    await Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => const KontoScreen()));
+    return;
+  }
+  const arten = ['Tageskarte', 'Wochenkarte', 'Monatskarte', 'Jahreskarte',
+    'Nachtkarte', 'Tageskarte Jugend', 'Tageskarte Mitglieder'];
+  var art = arten.first;
+  final euro = TextEditingController();
+  final notiz = TextEditingController();
+  final ok = await showDialog<bool>(
+    context: context,
+    builder: (context) => StatefulBuilder(
+      builder: (context, setState) => AlertDialog(
+        title: Text('Preis für ${g.name}'),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              DropdownButtonFormField<String>(
+                initialValue: art,
+                decoration: const InputDecoration(labelText: 'Karte'),
+                items: [
+                  for (final a in arten)
+                    DropdownMenuItem(value: a, child: Text(a)),
+                ],
+                onChanged: (v) => setState(() => art = v!),
+              ),
+              TextField(
+                controller: euro,
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                decoration: const InputDecoration(
+                    labelText: 'Preis', suffixText: '€'),
+              ),
+              TextField(
+                controller: notiz,
+                maxLength: 300,
+                decoration: const InputDecoration(
+                  labelText: 'Woher weißt du das? (optional)',
+                  hintText: 'z. B. Aushang am Gewässer, Website, Jahr',
+                ),
+              ),
+              const Text('Ein Admin prüft den Preis, bevor er für alle '
+                  'sichtbar wird.'),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Abbrechen'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Vorschlagen'),
+          ),
+        ],
+      ),
+    ),
+  );
+  final betrag = double.tryParse(euro.text.replaceAll(',', '.').trim());
+  if (ok != true) return;
+  if (betrag == null || betrag < 0 || betrag > 5000) {
+    if (context.mounted) meldung(context, 'Bitte einen gültigen Preis eingeben.');
+    return;
+  }
+  try {
+    await fangDienst.preisVorschlagen(
+      uid: konto.uid!,
+      nutzerName: konto.name ?? '',
+      gewaesserId: g.id,
+      gewaesserName: g.name,
+      art: art,
+      euro: betrag,
+      notiz: notiz.text.trim(),
+    );
+    if (context.mounted) {
+      meldung(context, 'Danke! Der Preis wird geprüft und dann freigeschaltet.');
+    }
+  } catch (_) {
+    if (context.mounted) meldung(context, 'Senden fehlgeschlagen.');
   }
 }

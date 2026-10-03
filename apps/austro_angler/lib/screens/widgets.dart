@@ -123,6 +123,9 @@ class FangFoto extends StatelessWidget {
   }
 }
 
+/// Nutzername mit @ davor.
+String at(String name) => name.isEmpty ? '' : '@$name';
+
 String datumText(DateTime d) => '${d.day}.${d.month}.${d.year}';
 
 void meldung(BuildContext context, String text) =>

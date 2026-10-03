@@ -6,6 +6,7 @@ import 'package:austro_angler/models/bundesland.dart';
 import 'package:austro_angler/models/fang.dart';
 import 'package:austro_angler/models/fisch.dart';
 import 'package:austro_angler/screens/kalender_screen.dart';
+import 'package:austro_angler/services/konto.dart';
 import 'package:austro_angler/services/speicher.dart';
 import 'package:austro_angler/services/wetter.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +81,14 @@ void main() {
     expect(zurueck.fischId, 'hecht');
     expect(zurueck.laengeCm, 72);
     expect(zurueck.bundesland, 'Salzburg');
+  });
+
+  test('@Namen', () {
+    expect(Konto.handle(' @HechtJaeger99 '), 'hechtjaeger99');
+    expect(Konto.nameProblem('@max_1'), isNull);
+    expect(Konto.nameProblem('ab'), isNotNull);
+    expect(Konto.nameProblem('Jäger'), isNotNull);
+    expect(Konto.nameProblem('mit leer'), isNotNull);
   });
 
   test('Mondphase', () {

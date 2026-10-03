@@ -59,13 +59,14 @@ class _AdminAnsicht extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Admin 🛡️'),
           bottom: const TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.lightbulb), text: 'Alle Wünsche'),
+              Tab(icon: Icon(Icons.lightbulb), text: 'Wünsche'),
+              Tab(icon: Icon(Icons.euro), text: 'Preise'),
               Tab(icon: Icon(Icons.flag), text: 'Meldungen'),
             ],
           ),
@@ -73,6 +74,7 @@ class _AdminAnsicht extends StatelessWidget {
         body: TabBarView(
           children: [
             _WunschListe(konto, admin: true),
+            const _PreisPruefung(),
             const _MeldungenListe(),
           ],
         ),
@@ -218,7 +220,7 @@ class _WunschListeState extends State<_WunschListe>
                             child: Text(
                               [
                                 _status[w.status]?.$2 ?? w.status,
-                                if (widget.admin) w.nutzerName,
+                                if (widget.admin) at(w.nutzerName),
                                 datumText(w.erstellt),
                               ].join(' · '),
                               style: text.labelMedium,
@@ -332,6 +334,85 @@ class _MeldungenListeState extends State<_MeldungenListe>
                     tooltip: 'Erledigt',
                     icon: const Icon(Icons.check),
                     onPressed: () => fangDienst.meldungLoeschen(m.id),
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+/// Admin: vorgeschlagene Preise freigeben oder ablehnen.
+class _PreisPruefung extends StatefulWidget {
+  const _PreisPruefung();
+
+  @override
+  State<_PreisPruefung> createState() => _PreisPruefungState();
+}
+
+class _PreisPruefungState extends State<_PreisPruefung>
+    with AutomaticKeepAliveClientMixin {
+  final _stream = fangDienst.preisVorschlaege();
+
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    final text = Theme.of(context).textTheme;
+    return StreamBuilder<List<PreisVorschlag>>(
+      stream: _stream,
+      builder: (context, snap) {
+        if (snap.hasError) {
+          return const Center(child: Text('Laden fehlgeschlagen.'));
+        }
+        if (!snap.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        final liste = snap.data!;
+        if (liste.isEmpty) {
+          return const Center(child: Text('Keine Preise zu prüfen. 👍'));
+        }
+        return ListView(
+          padding: const EdgeInsets.all(12),
+          children: [
+            for (final v in liste)
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(v.gewaesserName, style: text.titleMedium),
+                      Text('${v.art}: € ${v.euro.toStringAsFixed(2).replaceAll('.', ',')}',
+                          style: text.titleLarge),
+                      Text('von ${at(v.nutzerName)}', style: text.bodySmall),
+                      if (v.notiz.isNotEmpty) Text('Quelle: ${v.notiz}'),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          FilledButton.icon(
+                            onPressed: () async {
+                              await fangDienst.preisFreigeben(v);
+                              if (context.mounted) {
+                                meldung(context, 'Freigegeben ✓');
+                              }
+                            },
+                            icon: const Icon(Icons.check),
+                            label: const Text('Freigeben'),
+                          ),
+                          const SizedBox(width: 8),
+                          OutlinedButton.icon(
+                            onPressed: () => fangDienst.preisAblehnen(v),
+                            icon: const Icon(Icons.close),
+                            label: const Text('Ablehnen'),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),

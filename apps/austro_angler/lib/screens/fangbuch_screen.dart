@@ -246,7 +246,7 @@ class FangKarte extends StatelessWidget {
                   if (details.isNotEmpty) Text(details),
                   Text(
                     [
-                      if (fang.nutzerName.isNotEmpty) fang.nutzerName,
+                      if (fang.nutzerName.isNotEmpty) at(fang.nutzerName),
                       datumText(fang.datum),
                       if (ort.isNotEmpty) ort,
                     ].join(' · '),
