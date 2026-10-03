@@ -37,6 +37,8 @@ class CommunityScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Community'),
           bottom: const TabBar(
+            isScrollable: true,
+            tabAlignment: TabAlignment.center,
             tabs: [
               Tab(icon: Icon(Icons.dynamic_feed), text: 'Neu'),
               Tab(icon: Icon(Icons.people), text: 'Freunde'),

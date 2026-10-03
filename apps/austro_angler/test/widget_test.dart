@@ -113,7 +113,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Enknach (Bach)'), findsOneWidget);
 
-    for (final tab in ['Fangbuch', 'Community', 'Wünsche', 'Mehr']) {
+    for (final tab in ['Fangbuch', 'Feed', 'Wünsche', 'Mehr']) {
       await tester.tap(find.text(tab).last);
       await tester.pumpAndSettle();
     }

@@ -42,11 +42,27 @@ class SpeicherScope extends InheritedNotifier<Speicher> {
 /// Macht das [Konto] verfügbar – `null`, wenn Firebase nicht eingerichtet ist.
 class KontoScope extends InheritedNotifier<Konto> {
   const KontoScope({super.key, required Konto? konto, required super.child})
-      : super(notifier: konto);
+    : super(notifier: konto);
 
   static Konto? of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<KontoScope>()?.notifier;
 }
+
+ThemeData _thema(Color farbe, Brightness helligkeit) => ThemeData(
+  colorSchemeSeed: farbe,
+  brightness: helligkeit,
+  useMaterial3: true,
+  // Kleinere Beschriftung, damit "Gewässer" & Co. nicht umbrechen.
+  navigationBarTheme: const NavigationBarThemeData(
+    labelTextStyle: WidgetStatePropertyAll(
+      TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
+    ),
+  ),
+  tabBarTheme: const TabBarThemeData(
+    labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+    unselectedLabelStyle: TextStyle(fontSize: 13),
+  ),
+);
 
 class AustroAnglerApp extends StatelessWidget {
   const AustroAnglerApp({super.key, required this.speicher, this.konto});
@@ -64,12 +80,8 @@ class AustroAnglerApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Austro Angler',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(colorSchemeSeed: farbe, useMaterial3: true),
-          darkTheme: ThemeData(
-            colorSchemeSeed: farbe,
-            brightness: Brightness.dark,
-            useMaterial3: true,
-          ),
+          theme: _thema(farbe, Brightness.light),
+          darkTheme: _thema(farbe, Brightness.dark),
           home: const _Weiche(),
         ),
       ),
@@ -115,19 +127,26 @@ class _StartseiteState extends State<Startseite> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: _index, children: _seiten),
-      bottomNavigationBar: NavigationBar(
-        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-        selectedIndex: _index,
-        onDestinationSelected: (i) => setState(() => _index = i),
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.water), label: 'Gewässer'),
-          NavigationDestination(icon: Icon(Icons.map), label: 'Karte'),
-          NavigationDestination(icon: Icon(Icons.book), label: 'Fangbuch'),
-          NavigationDestination(icon: Icon(Icons.groups), label: 'Community'),
-          NavigationDestination(
-              icon: Icon(Icons.lightbulb_outline), label: 'Wünsche'),
-          NavigationDestination(icon: Icon(Icons.menu), label: 'Mehr'),
-        ],
+      // Große Systemschrift nur begrenzt übernehmen, sonst bricht die
+      // Beschriftung bei sechs Tabs um.
+      bottomNavigationBar: MediaQuery.withClampedTextScaling(
+        maxScaleFactor: 1.1,
+        child: NavigationBar(
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+          selectedIndex: _index,
+          onDestinationSelected: (i) => setState(() => _index = i),
+          destinations: const [
+            NavigationDestination(icon: Icon(Icons.water), label: 'Gewässer'),
+            NavigationDestination(icon: Icon(Icons.map), label: 'Karte'),
+            NavigationDestination(icon: Icon(Icons.book), label: 'Fangbuch'),
+            NavigationDestination(icon: Icon(Icons.groups), label: 'Feed'),
+            NavigationDestination(
+              icon: Icon(Icons.lightbulb_outline),
+              label: 'Wünsche',
+            ),
+            NavigationDestination(icon: Icon(Icons.menu), label: 'Mehr'),
+          ],
+        ),
       ),
     );
   }

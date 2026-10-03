@@ -64,6 +64,8 @@ class _AdminAnsicht extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Admin 🛡️'),
           bottom: const TabBar(
+            isScrollable: true,
+            tabAlignment: TabAlignment.center,
             tabs: [
               Tab(icon: Icon(Icons.lightbulb), text: 'Wünsche'),
               Tab(icon: Icon(Icons.euro), text: 'Preise'),
