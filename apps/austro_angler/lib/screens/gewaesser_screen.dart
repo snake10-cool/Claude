@@ -153,8 +153,11 @@ class GewaesserDetail extends StatelessWidget {
 
   Future<void> _navigation() async {
     final p = g.position;
-    final uri = Uri.parse('geo:${p.latitude},${p.longitude}?q='
-        '${p.latitude},${p.longitude}(${Uri.encodeComponent(g.name)})');
+    // Öffnet am Handy die Karten-App, am PC den Browser.
+    final uri = Uri.https('www.google.com', '/maps/search/', {
+      'api': '1',
+      'query': '${p.latitude},${p.longitude}',
+    });
     await launchUrl(uri, mode: LaunchMode.externalApplication);
   }
 

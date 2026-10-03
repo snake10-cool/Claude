@@ -7,7 +7,19 @@ Android-Apps, gebaut mit Flutter, für Google Play.
 | 🎣 **Austro Angler** | `apps/austro_angler` | Angel-App für Bezirk Braunau und Umgebung (Innviertel und Flachgau) mit Community |
 | 🦊 **Lernfuchs** (Arbeitsname, pausiert) | `apps/lernapp` | Lern-App für Volksschule 1–4 und Mittelschule 1–4 |
 
-## Testversion aufs Handy holen (ohne PC)
+## Testversion holen
+
+Nach jeder Änderung baut GitHub die Apps automatisch (Tab **Actions**, ca. 15 Minuten). Danach liegen alle Dateien unter **Releases → Testversion**:
+
+| Datei | Für |
+|---|---|
+| `AustroAngler.apk` | Android-Handy |
+| `AustroAngler-Setup.exe` | Windows-PC (Installation mit Startmenü- und Desktop-Symbol) |
+| `AustroAngler-Windows.zip` | Windows-PC ohne Installation: entpacken und `AustroAngler.exe` starten |
+
+Beim ersten Start am PC zeigt Windows eventuell "Der Computer wurde durch Windows geschützt", weil die App noch nicht signiert ist. Dann auf **Weitere Informationen → Trotzdem ausführen** klicken.
+
+### Am Handy
 
 1. Nach jeder Änderung baut GitHub die Apps automatisch (Tab **Actions**, dauert ca. 10 Minuten).
 2. Danach im Repo auf **Releases → Testversion** gehen.

@@ -1,5 +1,5 @@
-import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -302,6 +302,11 @@ class _FangFormularState extends State<FangFormular> {
 
   bool get _online => KontoScope.of(context)?.angemeldet ?? false;
 
+  /// Am PC gibt es nur die Bildauswahl, keine Kamera.
+  bool get _hatKamera =>
+      defaultTargetPlatform == TargetPlatform.android ||
+      defaultTargetPlatform == TargetPlatform.iOS;
+
   @override
   void dispose() {
     for (final c in [_laenge, _gewicht, _gewaesser, _koeder, _notiz]) {
@@ -431,11 +436,12 @@ class _FangFormularState extends State<FangFormular> {
               ),
             Row(
               children: [
-                TextButton.icon(
-                  onPressed: () => _fotoWaehlen(ImageSource.camera),
-                  icon: const Icon(Icons.photo_camera),
-                  label: const Text('Foto'),
-                ),
+                if (_hatKamera)
+                  TextButton.icon(
+                    onPressed: () => _fotoWaehlen(ImageSource.camera),
+                    icon: const Icon(Icons.photo_camera),
+                    label: const Text('Foto'),
+                  ),
                 TextButton.icon(
                   onPressed: () => _fotoWaehlen(ImageSource.gallery),
                   icon: const Icon(Icons.photo_library),

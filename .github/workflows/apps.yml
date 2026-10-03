@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'apps/**'
+      - 'installer/**'
       - '.github/workflows/apps.yml'
   workflow_dispatch:
 
@@ -14,8 +15,11 @@ concurrency:
   group: apps-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  FLUTTER_VERSION: '3.47.6'
+
 jobs:
-  bauen:
+  android:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,7 +31,7 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.47.6'
+          flutter-version: ${{ env.FLUTTER_VERSION }}
           channel: stable
           cache: true
 
@@ -55,19 +59,88 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: apps
-          path: ausgabe/*.apk
+          name: android
+          path: ausgabe/*
 
-      # Ein Release lässt sich am Handy viel leichter herunterladen als ein
-      # Artefakt (keine ZIP-Datei, kein Login nötig bei öffentlichem Repo).
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Austro Angler für Windows bauen
+        working-directory: apps/austro_angler
+        run: |
+          flutter pub get
+          flutter build windows --release
+
+      - name: Lernfuchs für Windows bauen
+        working-directory: apps/lernapp
+        run: |
+          flutter pub get
+          flutter build windows --release
+
+      - name: Setup-Dateien und ZIPs erstellen
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force ausgabe | Out-Null
+          if (-not (Get-Command iscc -ErrorAction SilentlyContinue)) {
+            choco install innosetup -y --no-progress
+            $env:Path += ";C:\Program Files (x86)\Inno Setup 6"
+          }
+          $apps = @(
+            @{ Ordner = 'austro_angler'; Name = 'Austro Angler'; Exe = 'AustroAngler'; Version = '0.3.0';
+               Id = '93e17986-f912-479c-bb0f-e9f15600a317' },
+            @{ Ordner = 'lernapp'; Name = 'Lernfuchs'; Exe = 'Lernfuchs'; Version = '0.1.0';
+               Id = 'dd53bab1-fa0c-40ea-a1da-3d66c0849b2a' }
+          )
+          foreach ($a in $apps) {
+            $quelle = "apps\$($a.Ordner)\build\windows\x64\runner\Release"
+            # Visual-C++-Laufzeit mitliefern, damit die App auf jedem PC startet.
+            foreach ($dll in 'msvcp140.dll', 'vcruntime140.dll', 'vcruntime140_1.dll') {
+              Copy-Item "C:\Windows\System32\$dll" $quelle -ErrorAction SilentlyContinue
+            }
+            Compress-Archive -Path "$quelle\*" -DestinationPath "ausgabe\$($a.Exe)-Windows.zip" -Force
+            iscc "/DAppName=$($a.Name)" "/DAppExe=$($a.Exe).exe" "/DAppId=$($a.Id)" `
+              "/DSourceDir=..\$quelle" "/DOutputName=$($a.Exe)-Setup" "/DAppVersion=$($a.Version)" `
+              installer\setup.iss
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
+          Get-ChildItem ausgabe
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: ausgabe/*
+
+  release:
+    needs: [android, windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: ausgabe
+          merge-multiple: true
+
+      # Ein Release lässt sich viel leichter herunterladen als ein Artefakt
+      # (keine ZIP-Hülle, kein Login nötig bei öffentlichem Repo).
       - name: Test-Release aktualisieren
-        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
+          ls -la ausgabe
           gh release delete test-build --yes --cleanup-tag || true
-          gh release create test-build ausgabe/AustroAngler.apk ausgabe/Lernfuchs.apk \
+          gh release create test-build ausgabe/* \
             --prerelease \
             --target "$GITHUB_SHA" \
             --title "Testversion (${GITHUB_REF_NAME})" \
-            --notes "Automatisch gebaut aus ${GITHUB_SHA::7}. Zum Testen: APK am Handy antippen und installieren."
+            --notes "Automatisch gebaut aus ${GITHUB_SHA::7}.
+
+          📱 Handy: AustroAngler.apk antippen und installieren.
+          💻 PC: AustroAngler-Setup.exe herunterladen und starten. Bei der Windows-Warnung auf \"Weitere Informationen\" → \"Trotzdem ausführen\" klicken. Ohne Installation: AustroAngler-Windows.zip entpacken und AustroAngler.exe starten."
