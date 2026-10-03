@@ -663,6 +663,26 @@ class FangDienst {
   Future<void> vereinsTerminLoeschen(String vereinId, String id) =>
       _db.doc('vereine/$vereinId/termine/$id').delete();
 
+  // ── Blockieren ──
+
+  CollectionReference<Map<String, dynamic>> _blockiert(String uid) =>
+      _db.collection('nutzer/$uid/blockiert');
+
+  /// uid → @Name der blockierten Nutzer.
+  Stream<Map<String, String>> blockiert(String uid) =>
+      _blockiert(uid).snapshots().map((s) => {
+            for (final d in s.docs) d.id: d.data()['name'] as String? ?? '',
+          });
+
+  Future<void> blockieren(String uid, String andere, String name) async {
+    await _offline(_blockiert(uid).doc(andere).set({'name': name}));
+    // Blockierte sind auch keine Freunde mehr.
+    await _offline(_freunde(uid).doc(andere).delete());
+  }
+
+  Future<void> entblocken(String uid, String andere) =>
+      _offline(_blockiert(uid).doc(andere).delete());
+
   // ── Wünsche ──
 
   CollectionReference<Map<String, dynamic>> get _wuensche =>
@@ -729,7 +749,7 @@ class FangDienst {
     final oeff = await _oeff.where('uid', isEqualTo: uid).get();
     final privat = await _privat(uid).get();
     for (final sammlung in [_fangorte(uid), _aktivitaeten(uid), _freunde(uid),
-        _koeder(uid), _ausfluege(uid)]) {
+        _koeder(uid), _ausfluege(uid), _blockiert(uid)]) {
       for (final d in (await sammlung.get()).docs) {
         await d.reference.delete();
       }

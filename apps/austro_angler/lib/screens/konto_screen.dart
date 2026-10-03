@@ -185,6 +185,21 @@ class _Profil extends StatelessWidget {
               onTap: () => _hochladen(context),
             ),
           ),
+        if (konto.blockiert.isNotEmpty)
+          ExpansionTile(
+            leading: const Icon(Icons.block),
+            title: Text('Blockierte Nutzer (${konto.blockiert.length})'),
+            children: [
+              for (final e in konto.blockiert.entries)
+                ListTile(
+                  title: Text(at(e.value)),
+                  trailing: TextButton(
+                    onPressed: () => fangDienst.entblocken(konto.uid!, e.key),
+                    child: const Text('Aufheben'),
+                  ),
+                ),
+            ],
+          ),
         ListTile(
           leading: const Icon(Icons.logout),
           title: const Text('Abmelden'),

@@ -55,3 +55,31 @@ Future<void> meldenDialog(
     if (context.mounted) meldung(context, 'Senden fehlgeschlagen.');
   }
 }
+
+/// Blockiert einen Nutzer: seine Fänge, Kommentare und Angeltage werden
+/// ausgeblendet.
+Future<void> blockierenDialog(
+    BuildContext context, String andereUid, String name) async {
+  final konto = KontoScope.of(context);
+  if (konto?.uid == null) return;
+  final ok = await showDialog<bool>(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text('${at(name)} blockieren?'),
+      content: const Text('Du siehst dann keine Fänge, Kommentare und '
+          'Angeltage mehr von dieser Person. Du kannst das unter Konto → '
+          'Blockierte Nutzer wieder aufheben.'),
+      actions: [
+        TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Abbrechen')),
+        FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Blockieren')),
+      ],
+    ),
+  );
+  if (ok != true) return;
+  await fangDienst.blockieren(konto!.uid!, andereUid, name);
+  if (context.mounted) meldung(context, '${at(name)} ist blockiert.');
+}

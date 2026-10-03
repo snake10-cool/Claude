@@ -93,6 +93,14 @@ service cloud.firestore {
             && request.resource.data.ende is timestamp;
       }
 
+      // Blockierte Nutzer (nur für den Besitzer sichtbar).
+      match /blockiert/{andere} {
+        allow read, delete: if ich(uid);
+        allow create, update: if ich(uid)
+            && request.resource.data.keys().hasOnly(['name'])
+            && request.resource.data.name is string;
+      }
+
       // Private Fänge: nur für den Besitzer.
       match /privat/{fangId} {
         allow read, delete: if ich(uid);

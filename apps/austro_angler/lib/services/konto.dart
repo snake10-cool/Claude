@@ -27,6 +27,12 @@ class Konto extends ChangeNotifier {
   /// Wird true, sobald Firebase gemeldet hat, ob jemand angemeldet ist.
   bool bereit = false;
 
+  /// uid → @Name der Nutzer, die ich blockiert habe.
+  Map<String, String> blockiert = const {};
+  StreamSubscription<Map<String, String>>? _blockAbo;
+
+  bool istBlockiert(String uid) => blockiert.containsKey(uid);
+
   /// Bis wann Premium gilt (z. B. als Challenge-Gewinn), sonst null.
   DateTime? premiumBis;
 
@@ -44,6 +50,14 @@ class Konto extends ChangeNotifier {
     nutzer = u;
     name = null;
     premiumBis = null;
+    await _blockAbo?.cancel();
+    blockiert = const {};
+    if (u != null) {
+      _blockAbo = fangDienst.blockiert(u.uid).listen((b) {
+        blockiert = b;
+        notifyListeners();
+      }, onError: (_) {});
+    }
     notifyListeners();
     if (u == null) return;
     try {
@@ -155,6 +169,7 @@ class Konto extends ChangeNotifier {
   @override
   void dispose() {
     _abo.cancel();
+    _blockAbo?.cancel();
     super.dispose();
   }
 }

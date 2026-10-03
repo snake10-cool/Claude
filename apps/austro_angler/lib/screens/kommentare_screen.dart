@@ -33,7 +33,11 @@ class _KommentareScreenState extends State<KommentareScreen> {
     setState(() => _sendet = true);
     try {
       await fangDienst.kommentieren(
-          widget.fang, konto.uid!, konto.name ?? '', text);
+        widget.fang,
+        konto.uid!,
+        konto.name ?? '',
+        text,
+      );
       _eingabe.clear();
     } catch (_) {
       if (mounted) meldung(context, 'Senden fehlgeschlagen.');
@@ -67,26 +71,37 @@ class _KommentareScreenState extends State<KommentareScreen> {
                     else if (liste.isEmpty)
                       const Padding(
                         padding: EdgeInsets.all(16),
-                        child: Text('Noch keine Kommentare. Schreib den ersten!',
-                            textAlign: TextAlign.center),
+                        child: Text(
+                          'Noch keine Kommentare. Schreib den ersten!',
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     for (final k in liste)
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        leading: const CircleAvatar(child: Icon(Icons.person)),
-                        title: Text(at(k.nutzerName), style: text.labelLarge),
-                        subtitle: Text(k.text),
-                        trailing: k.uid == konto.uid ||
-                                konto.istAdmin ||
-                                widget.fang.uid == konto.uid
-                            ? IconButton(
-                                tooltip: 'Löschen',
-                                icon: const Icon(Icons.delete_outline, size: 20),
-                                onPressed: () => fangDienst.kommentarLoeschen(
-                                    widget.fang.id, k.id),
-                              )
-                            : null,
-                      ),
+                      if (!konto.istBlockiert(k.uid))
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const CircleAvatar(
+                            child: Icon(Icons.person),
+                          ),
+                          title: Text(at(k.nutzerName), style: text.labelLarge),
+                          subtitle: Text(k.text),
+                          trailing:
+                              k.uid == konto.uid ||
+                                  konto.istAdmin ||
+                                  widget.fang.uid == konto.uid
+                              ? IconButton(
+                                  tooltip: 'Löschen',
+                                  icon: const Icon(
+                                    Icons.delete_outline,
+                                    size: 20,
+                                  ),
+                                  onPressed: () => fangDienst.kommentarLoeschen(
+                                    widget.fang.id,
+                                    k.id,
+                                  ),
+                                )
+                              : null,
+                        ),
                   ],
                 );
               },

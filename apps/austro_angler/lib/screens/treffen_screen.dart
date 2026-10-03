@@ -60,28 +60,39 @@ class _TreffenListeState extends State<TreffenListe>
                     );
                     if (d == null || !context.mounted) return;
                     final t = await showTimePicker(
-                        context: context,
-                        initialTime: TimeOfDay.fromDateTime(zeit));
-                    setState(() => zeit = DateTime(d.year, d.month, d.day,
-                        t?.hour ?? zeit.hour, t?.minute ?? zeit.minute));
+                      context: context,
+                      initialTime: TimeOfDay.fromDateTime(zeit),
+                    );
+                    setState(
+                      () => zeit = DateTime(
+                        d.year,
+                        d.month,
+                        d.day,
+                        t?.hour ?? zeit.hour,
+                        t?.minute ?? zeit.minute,
+                      ),
+                    );
                   },
                 ),
                 TextField(
                   controller: text,
                   maxLength: 300,
                   decoration: const InputDecoration(
-                      labelText: 'Infos (z. B. Treffpunkt, Zielfisch)'),
+                    labelText: 'Infos (z. B. Treffpunkt, Zielfisch)',
+                  ),
                 ),
               ],
             ),
           ),
           actions: [
             TextButton(
-                onPressed: () => Navigator.pop(context, false),
-                child: const Text('Abbrechen')),
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Abbrechen'),
+            ),
             FilledButton(
-                onPressed: () => Navigator.pop(context, true),
-                child: const Text('Veröffentlichen')),
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Veröffentlichen'),
+            ),
           ],
         ),
       ),
@@ -134,55 +145,66 @@ class _TreffenListeState extends State<TreffenListe>
                   ),
                 ),
               for (final t in liste)
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '${_tage[t.zeit.weekday - 1]}, ${datumText(t.zeit)} '
-                          'um ${uhrText(t.zeit)}',
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        Text('📍 ${t.gewaesser}'),
-                        if (t.text.isNotEmpty) Text(t.text),
-                        Text('Geplant von ${at(t.nutzerName)}',
-                            style: Theme.of(context).textTheme.bodySmall),
-                        const SizedBox(height: 6),
-                        Text('Dabei (${t.zusagen.length}): '
-                            '${t.zusagen.values.map(at).join(', ')}'),
-                        const SizedBox(height: 6),
-                        Row(
-                          children: [
-                            if (t.zusagen.containsKey(konto.uid))
-                              OutlinedButton(
-                                onPressed: () => fangDienst.zusagen(
-                                    t.id, konto.uid!, konto.name ?? '',
-                                    dabei: false),
-                                child: const Text('Doch nicht'),
-                              )
-                            else
-                              FilledButton(
-                                onPressed: () => fangDienst.zusagen(
-                                    t.id, konto.uid!, konto.name ?? '',
-                                    dabei: true),
-                                child: const Text('Bin dabei! 🙋'),
-                              ),
-                            const Spacer(),
-                            if (t.uid == konto.uid || konto.istAdmin)
-                              IconButton(
-                                tooltip: 'Absagen/Löschen',
-                                icon: const Icon(Icons.delete_outline),
-                                onPressed: () =>
-                                    fangDienst.treffenLoeschen(t.id),
-                              ),
-                          ],
-                        ),
-                      ],
+                if (!konto.istBlockiert(t.uid))
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${_tage[t.zeit.weekday - 1]}, ${datumText(t.zeit)} '
+                            'um ${uhrText(t.zeit)}',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          Text('📍 ${t.gewaesser}'),
+                          if (t.text.isNotEmpty) Text(t.text),
+                          Text(
+                            'Geplant von ${at(t.nutzerName)}',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            'Dabei (${t.zusagen.length}): '
+                            '${t.zusagen.values.map(at).join(', ')}',
+                          ),
+                          const SizedBox(height: 6),
+                          Row(
+                            children: [
+                              if (t.zusagen.containsKey(konto.uid))
+                                OutlinedButton(
+                                  onPressed: () => fangDienst.zusagen(
+                                    t.id,
+                                    konto.uid!,
+                                    konto.name ?? '',
+                                    dabei: false,
+                                  ),
+                                  child: const Text('Doch nicht'),
+                                )
+                              else
+                                FilledButton(
+                                  onPressed: () => fangDienst.zusagen(
+                                    t.id,
+                                    konto.uid!,
+                                    konto.name ?? '',
+                                    dabei: true,
+                                  ),
+                                  child: const Text('Bin dabei! 🙋'),
+                                ),
+                              const Spacer(),
+                              if (t.uid == konto.uid || konto.istAdmin)
+                                IconButton(
+                                  tooltip: 'Absagen/Löschen',
+                                  icon: const Icon(Icons.delete_outline),
+                                  onPressed: () =>
+                                      fangDienst.treffenLoeschen(t.id),
+                                ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
               const HinweisKarte(
                 'Angeltage sehen alle angemeldeten Austro Angler. Trefft '
                 'euch an öffentlichen Plätzen und sagt jemandem Bescheid, '

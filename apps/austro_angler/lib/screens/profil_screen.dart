@@ -4,6 +4,7 @@ import '../main.dart';
 import '../models/fang.dart';
 import '../services/fang_dienst.dart';
 import 'fangbuch_screen.dart';
+import 'melden.dart';
 import 'widgets.dart';
 
 /// Öffentliches Profil eines Nutzers mit seinen geteilten Fängen.
@@ -77,8 +78,30 @@ class _ProfilScreenState extends State<ProfilScreen> {
                     );
                   },
                 ),
+              if (ich != null && ich != widget.uid)
+                Center(
+                  child: konto!.istBlockiert(widget.uid)
+                      ? TextButton.icon(
+                          onPressed: () =>
+                              fangDienst.entblocken(ich, widget.uid),
+                          icon: const Icon(Icons.lock_open),
+                          label: const Text('Blockierung aufheben'),
+                        )
+                      : TextButton.icon(
+                          onPressed: () => blockierenDialog(
+                              context, widget.uid, widget.name),
+                          icon: const Icon(Icons.block),
+                          label: const Text('Blockieren'),
+                        ),
+                ),
               const SizedBox(height: 12),
-              if (snap.connectionState != ConnectionState.done)
+              if (konto?.istBlockiert(widget.uid) ?? false)
+                const Padding(
+                  padding: EdgeInsets.all(24),
+                  child: Text('Du hast diese Person blockiert.',
+                      textAlign: TextAlign.center),
+                )
+              else if (snap.connectionState != ConnectionState.done)
                 const Center(child: CircularProgressIndicator())
               else if (faenge.isEmpty)
                 const Padding(
@@ -86,7 +109,8 @@ class _ProfilScreenState extends State<ProfilScreen> {
                   child: Text('Noch keine geteilten Fänge.',
                       textAlign: TextAlign.center),
                 ),
-              for (final f in faenge) FangKarte(f),
+              if (!(konto?.istBlockiert(widget.uid) ?? false))
+                for (final f in faenge) FangKarte(f),
             ],
           );
         },

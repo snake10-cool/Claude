@@ -114,7 +114,8 @@ class _FeedState extends State<_Feed> with AutomaticKeepAliveClientMixin {
                   textAlign: TextAlign.center,
                 ),
               ),
-            for (final f in faenge) _FeedKarte(f),
+            for (final f in faenge)
+              if (!konto.istBlockiert(f.uid)) _FeedKarte(f),
           ],
         );
       },
@@ -286,7 +287,7 @@ class _FreundeFeedState extends State<_FreundeFeed>
                     return Column(
                       children: [
                         for (final fang in f.data!.take(100))
-                          _FeedKarte(fang),
+                          if (!konto.istBlockiert(fang.uid)) _FeedKarte(fang),
                       ],
                     );
                   },
@@ -361,18 +362,29 @@ class _Aktionen extends StatelessWidget {
               if (ok == true) await fangDienst.loeschen(fang);
             },
           ),
-        if (!eigener)
-          IconButton(
-            tooltip: 'Melden',
-            icon: const Icon(Icons.flag_outlined, size: 20),
-            onPressed: () => meldenDialog(
-              context,
-              typ: 'fang',
-              bezug: fang.id,
-              titel: 'Fang melden',
-              hinweis: 'Was ist das Problem? (z. B. beleidigend, fremdes '
-                  'Foto, geschonter Fisch entnommen)',
-            ),
+        if (!eigener && uid != null)
+          PopupMenuButton<String>(
+            tooltip: 'Mehr',
+            icon: const Icon(Icons.more_vert, size: 20),
+            onSelected: (wahl) async {
+              if (wahl == 'melden') {
+                await meldenDialog(
+                  context,
+                  typ: 'fang',
+                  bezug: fang.id,
+                  titel: 'Fang melden',
+                  hinweis: 'Was ist das Problem? (z. B. beleidigend, fremdes '
+                      'Foto, geschonter Fisch entnommen)',
+                );
+              } else if (wahl == 'blockieren') {
+                await blockierenDialog(context, fang.uid, fang.nutzerName);
+              }
+            },
+            itemBuilder: (_) => const [
+              PopupMenuItem(value: 'melden', child: Text('🚩 Melden')),
+              PopupMenuItem(
+                  value: 'blockieren', child: Text('🚫 Nutzer blockieren')),
+            ],
           ),
       ],
     );
