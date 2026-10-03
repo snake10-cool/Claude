@@ -1,0 +1,33 @@
+name: Bilder holen
+
+# Lädt Fisch- und Knotenbilder von Wikimedia Commons und legt sie ins Projekt.
+# Nur von Hand starten: Actions → Bilder holen → Run workflow.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  holen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Bilder laden
+        run: |
+          pip install pillow
+          python tools/bilder_holen.py
+
+      - name: Ins Repo übernehmen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/austro_angler/assets/bilder apps/austro_angler/lib/data/bilder.dart
+          git diff --cached --quiet && { echo "Keine Änderungen"; exit 0; }
+          git commit -m "Bilder von Wikimedia Commons aktualisiert"
+          git push
