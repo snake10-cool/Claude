@@ -7,6 +7,7 @@ import '../main.dart';
 import '../data/bilder.dart';
 import '../models/bundesland.dart';
 import '../models/gewaesser.dart';
+import '../services/abo.dart';
 import '../services/alle_gewaesser.dart';
 import '../services/fang_dienst.dart';
 import 'konto_screen.dart';
@@ -189,7 +190,9 @@ class PremiumMarke extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: 'Premium-Funktion – zurzeit für alle gratis',
+      message: premiumPflicht
+          ? 'Premium-Funktion'
+          : 'Premium-Funktion – zurzeit für alle gratis',
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
         decoration: BoxDecoration(

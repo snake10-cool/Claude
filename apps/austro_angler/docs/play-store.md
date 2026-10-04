@@ -63,30 +63,40 @@ Austro Angler ist die Angel-App für ganz Österreich – mit Schwerpunkt Bezirk
 🎣 GEWÄSSER
 • Über 22.000 Flüsse, Bäche, Seen und Teiche in ganz Österreich – filtern nach Bundesland, Bezirk und Ort
 • Geprüfte Gewässer rund um Braunau mit Lizenz, Kartenverkauf und Preisen
-• Wetter, Beißzeit-Prognose, Sonnenauf- und -untergang und Abfluss
-• Bewertungen und Preise aus der Community (vom Admin geprüft)
+• Wetter, Beißzeit-Prognose, Sonnenauf- und -untergang, Abfluss und Wassertemperatur
+• Angelgeschäfte mit Adresse und Öffnungszeiten
+• Bewertungen, Preise und Infos aus der Community (vom Admin geprüft)
+• Heimatort selbst wählen und nach Entfernung sortieren – ohne GPS
+• Offline-Karte: angesehene Kartenausschnitte gehen auch ohne Netz
 
 📖 FANGBUCH
-• Fänge mit Foto, Länge, Gewicht, Köder, Datum und Uhrzeit
-• Wetter zur Fangzeit wird automatisch gespeichert
+• Fänge mit Foto, kurzem Video, Länge, Gewicht, Köder, Ausrüstung, Datum und Uhrzeit
+• Länge per Foto messen, Wetter zur Fangzeit automatisch
 • Eigene Angelplätze auf der Karte – immer privat
-• Statistik, Rekorde, Abzeichen und PDF-Export
+• Statistik, Rekorde, Abzeichen, Wochen-Challenges und PDF-Export
+• Fangstatistik fürs Revier als PDF zum Abgeben
+• „Dein Angeljahr“ – Jahresrückblick zum Teilen
 
 🐟 FISCHLEXIKON
-• 83 Fischarten Österreichs mit Merkmalen – suchen und filtern, mit Liste der Gewässer, wo es sie gibt
-• Schonzeiten und Brittelmaße für OÖ und Salzburg
-• Schonzeit-Kalender und Erinnerung, wenn die Saison wieder aufgeht
+• 83 Fischarten Österreichs mit Bild und Merkmalen – suchen und filtern
+• Bestimmungshilfe: „Welcher Fisch ist das?“
+• Bei jedem Fisch: alle Gewässer, wo es ihn gibt – sicher oder nur typisch
+• Schonzeiten und Brittelmaße, Schonzeit-Countdown, Kalender und Erinnerung
+• Jungangler-Modus mit Angel-Wörterbuch
 
 🎓 FISCHERPRÜFUNG
 • Übungsfragen und Prüfungsmodus mit Zeitlimit
 • Die wichtigsten Angelknoten mit Bildern
 
 👥 COMMUNITY
-• Feed mit „Petri Heil“ und Kommentaren
-• Freunde per @Name hinzufügen
-• Gemeinsame Angeltage planen
-• Monats-Challenge und Rangliste
+• Feed mit „Petri Heil“, Kommentaren und Fang-Geschichten
+• Profile mit Statistik und Abzeichen, Freundschaftsanfragen
+• Gemeinsame Angeltage mit Fahrgemeinschaften und Unwetter-Warnung
+• Monats-Challenge, Rangliste und Vereins-Rangliste
 • Melden und Blockieren für eine faire Community
+
+📱 WIDGET
+• Beißzeit und Wetter an deinem Heimatort direkt am Startbildschirm
 
 ⭐ PREMIUM
 Die Grundfunktionen sind gratis. Mit Premium (3,99 € im Monat oder 29,99 € im Jahr, 7 Tage gratis testen) bekommst du Extras wie die Beißzeit für die nächsten Tage, Statistik mit Wetter-Auswertung, Wasserführungs-Verlauf, PDF-Export und den Prüfungsmodus.
@@ -115,8 +125,9 @@ Alle Angaben ohne Gewähr – es gelten immer das Landesfischereigesetz und die 
 | Persönliche Infos → E-Mail-Adresse | ja | Pflicht | Kontoverwaltung |
 | Persönliche Infos → Nutzer-IDs (@Name, ID) | ja | Pflicht | App-Funktionen, Kontoverwaltung |
 | Fotos und Videos → Fotos | ja | optional | App-Funktionen |
+| Fotos und Videos → Videos (mit Ton) | ja | optional | App-Funktionen |
 | Nachrichten → andere Nachrichten in der App (Kommentare) | ja | optional | App-Funktionen |
-| Von Nutzern erstellte Inhalte (Fänge, Bewertungen, Wünsche) | ja | optional | App-Funktionen |
+| Von Nutzern erstellte Inhalte (Fänge, Geschichten, Bewertungen, Wünsche, Wassertemperaturen, Fahrgemeinschaften, Verein) | ja | optional | App-Funktionen |
 | Standort | **nein** (Orte werden selbst ausgewählt, nicht per GPS) | – | – |
 | App-Aktivität, Absturzberichte, Geräte-IDs | **nein** | – | – |
 
@@ -153,3 +164,20 @@ Alle Angaben ohne Gewähr – es gelten immer das Landesfischereigesetz und die 
    beantragen und die Fragen zum Test beantworten.
 
 Tipp: Im SAC Mattig oder Schalchner Angler Club fragen. Angler testen gern.
+
+## Abo (Google Play Billing)
+
+Der Code ist fertig (`lib/services/abo.dart`, Bildschirm `Mehr → ⭐ Premium`).
+In der Play Console unter **Monetarisieren → Abos** anlegen:
+
+| Produkt-ID | Name | Basis-Abo | Preis | Angebot |
+|------------|------|-----------|-------|---------|
+| `premium_monat` | Premium Monat | monatlich, verlängert sich automatisch | 3,99 € | 7 Tage kostenloser Test |
+| `premium_jahr` | Premium Jahr | jährlich, verlängert sich automatisch | 29,99 € | 7 Tage kostenloser Test |
+
+Die IDs müssen genau so heißen. Danach testen mit „Lizenztestern“
+(Play Console → Einstellungen → Lizenztests), dann zahlt man nichts.
+
+**Zum Start:** In `lib/services/abo.dart` `premiumPflicht = true` setzen –
+dann sind die ⭐-Funktionen nur noch mit Abo oder Challenge-Gewinn offen.
+Bis dahin ist alles für alle frei.

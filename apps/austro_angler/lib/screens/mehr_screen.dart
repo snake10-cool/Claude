@@ -7,6 +7,7 @@ import 'bestimmung_screen.dart';
 import 'checkliste_screen.dart';
 import 'einstellungen_screen.dart';
 import 'glossar_screen.dart';
+import 'premium_screen.dart';
 import 'geschaefte_screen.dart';
 import 'heimat_screen.dart';
 import 'koeder_screen.dart';
@@ -54,6 +55,9 @@ class MehrScreen extends StatelessWidget {
           const SizedBox(height: 8),
           const BundeslandWahl(),
           const SizedBox(height: 8),
+          _Eintrag(Icons.workspace_premium_outlined, '⭐ Premium',
+              'Was Premium bringt', () => _oeffnen(context,
+                  const PremiumScreen())),
           _Eintrag(Icons.settings_outlined, 'Einstellungen',
               'Heimatort, Jungangler-Modus, Countdown, Offline-Karte',
               () => _oeffnen(context, const EinstellungenScreen())),

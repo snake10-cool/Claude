@@ -391,6 +391,60 @@ const gewaesserListe = <Gewaesser>[
     lizenzUrl: 'https://o-fischer.at/fischen-angeln-wallersee/',
   ),
   Gewaesser(
+    id: 'fischach-seekirchen',
+    name: 'Fischach (Seekirchen)',
+    typ: GewaesserTyp.fluss,
+    land: Bundesland.sbg,
+    ort: 'Seekirchen am Wallersee',
+    position: LatLng(47.8985, 13.1270),
+    beschreibung: 'Abfluss des Wallersees. Revier des Fischereivereins '
+        'Seekirchen vom Wehr bis zur Marktbrücke; mit der Karte darf man auch '
+        'am Bootssteg des Bootsverleihs und links vom Strandbad-Steg fischen. '
+        'Nachtfischen erlaubt, kein Bootsfischen. Kein lebender Köderfisch, '
+        'höchstens 3 Raubfische (Hecht, Zander, Seeforelle) pro Tag.',
+    fischarten: ['hecht', 'flussbarsch', 'bachforelle', 'regenbogenforelle',
+      'seeforelle', 'aesche', 'aal', 'karpfen', 'schleie', 'aitel',
+      'rotauge'],
+    preise: [
+      Preis('Tageskarte', 22),
+      Preis('2-Wochen-Karte', 42.5),
+      Preis('4-Wochen-Karte', 59),
+      Preis('Jahreskarte', 165),
+    ],
+    kartenverkauf: 'Frisch-Fisch-Ladl Kapeller, Kapellerweg 9, 5201 '
+        'Seekirchen – oder online bei hejfish. Gastfischer brauchen '
+        'zusätzlich die Salzburger Gastfischerkarte.',
+    quelle: 'Fischereiverein Seekirchen, o-fischer.at (über Suchergebnisse)',
+    stand: 'Recherche Oktober 2026',
+    hinweis: 'Preise aus der Recherche, das Jahr war nicht eindeutig – bitte '
+        'vor dem Kauf prüfen.',
+    lizenzUrl: 'http://fischereiverein-seekirchen.at/lizenzen/',
+  ),
+  Gewaesser(
+    id: 'fischach-ssfv',
+    name: 'Fischach (SSFV, Tuffern – Maria Sorg)',
+    typ: GewaesserTyp.fluss,
+    land: Bundesland.sbg,
+    ort: 'Eugendorf – Bergheim',
+    position: LatLng(47.8460, 13.0760),
+    beschreibung: 'Seit 2025 SSFV-Revier 19: vom Wehr Tuffern bei Hallwang bis '
+        'zum Kloster Maria Sorg. Natürliches Fließgewässer mit gutem '
+        'Bachforellen-Bestand, für Fliegen- und Spinnfischer. Fischen nur vom '
+        '1.3. bis 30.9., höchstens 2 Fische pro Tag und 160 pro Jahr.',
+    fischarten: ['bachforelle', 'regenbogenforelle', 'aesche', 'aitel',
+      'koppe'],
+    preise: [
+      Preis('Gast-Tageskarte', 35),
+      Preis('Saisonkarte', 250),
+    ],
+    kartenverkauf: 'Salzburger Sportfischerei-Verein (SSFV) – Karten über '
+        'die SSFV-Website. Saisonkarten gelten bis 31.12.2026 auch im '
+        'SSFV-Revier Salzach Salzburg.',
+    quelle: 'ssfv.at (Kartenpreise 2026)',
+    stand: '2026',
+    lizenzUrl: 'https://www.ssfv.at/kartenpreise-2026/',
+  ),
+  Gewaesser(
     id: 'fuschlsee',
     name: 'Fuschlsee',
     typ: GewaesserTyp.see,
@@ -517,5 +571,7 @@ const zuordnung = <String, Zuordnung>{
   'mattsee': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Mattsee', 'Niedertrumer See'], gemeinden: ['Mattsee']),
   'grabensee': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Grabensee'], gemeinden: ['Perwang am Grabensee']),
   'wallersee': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Wallersee'], gemeinden: ['Seekirchen am Wallersee']),
+  'fischach-seekirchen': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Fischach'], gemeinden: ['Seekirchen am Wallersee']),
+  'fischach-ssfv': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Fischach'], gemeinden: ['Eugendorf', 'Bergheim', 'Elixhausen']),
   'fuschlsee': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Fuschlsee'], gemeinden: ['Fuschl am See']),
 };

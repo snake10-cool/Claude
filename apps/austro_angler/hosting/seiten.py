@@ -1,5 +1,5 @@
 """Erzeugt die rechtlichen Webseiten in public/ (python3 seiten.py)."""
-STAND = '3. Oktober 2026'
+STAND = '4. Oktober 2026'
 KONTAKT = 'snakejoni10@yahoo.com'
 P = lambda t: f'<span class="platzhalter">[{t}]</span>'
 
@@ -58,12 +58,25 @@ verarbeitet, wofür und welche Rechte du hast.</p>
 <tr><td>Freundesliste, blockierte Nutzer</td><td>Freunde-Feed, Blockieren</td><td>Nur du</td></tr>
 <tr><td>Wünsche, Preisvorschläge, Meldungen</td><td>Verbesserung der App, Moderation</td><td>Betreiber (Wünsche auch andere Nutzer)</td></tr>
 <tr><td>Premium-Status</td><td>Freischalten von Premium-Funktionen</td><td>Nur du und der Betreiber</td></tr>
+<tr><td>Videos zu Fängen (max. 10 Sekunden, komprimiert)</td><td>Fangbuch, Feed</td><td>Wie der Fang: öffentlich oder nur du</td></tr>
+<tr><td>Fang-Geschichten, Ausrüstung beim Fang</td><td>Fangbuch, Feed, Statistik</td><td>Wie der Fang</td></tr>
+<tr><td>Verein (freiwillig)</td><td>Profil, Vereins-Rangliste</td><td>Alle angemeldeten Nutzer</td></tr>
+<tr><td>Freundschaftsanfragen</td><td>Freunde finden</td><td>Du und die angefragte Person</td></tr>
+<tr><td>Ranglisten-Eintrag (Anzahl Fänge, größter Fang, Petri Heil, Verein) – aus deinen öffentlichen Fängen berechnet</td><td>Rangliste, Monats-Challenge</td><td>Alle angemeldeten Nutzer</td></tr>
+<tr><td>Ausrüstungs-Liste</td><td>Dein Ausrüstungs-Tagebuch</td><td>Nur du</td></tr>
+<tr><td>Gemessene Wassertemperaturen, Fahrgemeinschafts-Angebote, Gewässer-Infos und Preisvorschläge</td><td>Community-Infos zu Gewässern und Angeltagen</td><td>Alle angemeldeten Nutzer (Infos und Preise erst nach Prüfung)</td></tr>
 </table>
 <p><b>Standort:</b> Die App fragt <b>nie</b> nach deinem GPS-Standort und
 verfolgt dich nicht. Orte wählst du immer selbst aus.</p>
 <p><b>Auf dem Handy</b> (nicht in der Cloud) bleiben: Einstellungen
-(z. B. Bundesland), Checkliste, Lizenzen mit Ablaufdatum und
-Erinnerungen.</p>
+(z. B. Bundesland, selbst gewählter Heimatort, Jungangler-Modus),
+Checkliste, Lizenzen mit Ablaufdatum, Erinnerungen, Wochen-Challenges,
+gespeicherte Kartenausschnitte (Offline-Karte) und die Daten für das
+Startbildschirm-Widget.</p>
+<p><b>Kamera und Fotos:</b> Die App greift nur auf Kamera, Mikrofon (bei
+Videos) und Galerie zu, wenn du selbst ein Foto oder Video auswählst. Für
+"Länge per Foto messen" wird das Foto nur auf dem Handy ausgewertet und
+nicht hochgeladen.</p>
 <p><b>Keine Werbung, kein Tracking, kein Verkauf von Daten.</b></p>
 
 <h2>3. Rechtsgrundlagen</h2>
@@ -90,7 +103,8 @@ Google. Wir bekommen dabei keine Zahlungsdaten.</li>
 
 <h2>5. Wie lange</h2>
 <p>Solange du ein Konto hast. Wenn du dein Konto löschst, werden dein Profil,
-deine Fänge, Fotos, privaten Daten, Freunde- und Blockierlisten sofort
+deine Fänge, Fotos, Videos, privaten Daten, Ausrüstung, Freunde-,
+Anfrage- und Blockierlisten sowie deine Ranglisten-Einträge sofort
 gelöscht. Kommentare bei anderen und Meldungen können bis zu 30 Tage
 länger bestehen bleiben, bis sie bereinigt sind.</p>
 
@@ -202,14 +216,16 @@ Konto innerhalb von 30 Tagen.</p>
 <h2>Was gelöscht wird</h2>
 <ul>
 <li>Anmeldedaten (E-Mail, Passwort) und dein @Nutzername</li>
-<li>Alle öffentlichen und privaten Fänge samt Fotos</li>
-<li>Angelplätze, Köder-Box, Angeltage, Freunde, blockierte Nutzer,
-Aktivitäten</li>
+<li>Alle öffentlichen und privaten Fänge samt Fotos und Videos</li>
+<li>Angelplätze, Köder-Box, Ausrüstung, Angeltage, Freunde,
+Freundschaftsanfragen, blockierte Nutzer, Aktivitäten</li>
+<li>Deine Einträge in Rangliste und Monats-Challenge</li>
 </ul>
 <h2>Was bleiben kann</h2>
 <ul>
-<li>Kommentare unter Fängen anderer, Wünsche und Gewässerbewertungen
-werden innerhalb von 30 Tagen entfernt oder anonymisiert.</li>
+<li>Kommentare unter Fängen anderer, Wünsche, Gewässerbewertungen,
+gemessene Wassertemperaturen und Fahrgemeinschafts-Einträge werden
+innerhalb von 30 Tagen entfernt oder anonymisiert.</li>
 <li>Meldungen über Regelverstöße bis zu 6 Monate (zum Schutz der
 Community).</li>
 <li>Daten, die nur auf deinem Handy liegen, löschst du durch Deinstallieren

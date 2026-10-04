@@ -11,6 +11,7 @@ import 'screens/karte_screen.dart';
 import 'screens/konto_screen.dart';
 import 'screens/mehr_screen.dart';
 import 'screens/wuensche_screen.dart';
+import 'services/abo.dart';
 import 'services/alle_gewaesser.dart';
 import 'services/hintergrund.dart';
 import 'services/konto.dart';
@@ -148,6 +149,7 @@ class _StartseiteState extends State<Startseite> {
       if (!mounted) return;
       final konto = KontoScope.of(context);
       angeltageWarnen(konto);
+      aboDienst.starten();
       startbildschirmAktualisieren(SpeicherScope.of(context));
     });
   }
