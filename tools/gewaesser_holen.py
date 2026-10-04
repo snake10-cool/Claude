@@ -1,5 +1,4 @@
-"""Erzeugt die Liste aller Gewässer Österreichs aus OpenStreetMap: alle
-benannten Fließgewässer und alle stehenden Gewässer ab 250 m².
+"""Erzeugt die Liste aller benannten Gewässer Österreichs aus OpenStreetMap.
 
 Läuft in GitHub Actions (Workflow "Gewässer holen"):
   1. austria-latest.osm.pbf von Geofabrik laden
@@ -38,7 +37,6 @@ LAENDER = ['Wien', 'Niederösterreich', 'Burgenland', 'Oberösterreich',
 
 FLIESS = {'river': 'f', 'stream': 'b', 'canal': 'k'}
 RANG = {'b': 0, 'k': 1, 'f': 2}
-# Stehende Gewässer ab 250 m², auch ohne Namen.
 # Flächen mit diesen water=-Werten sind keine eigenen Angelgewässer
 # (Flussflächen haben schon ihre Linie) oder kein Fischgewässer.
 OHNE = {'river', 'stream', 'canal', 'wastewater', 'lock', 'fountain',
@@ -82,14 +80,14 @@ def main(eingabe, ausgabe):
             feat = json.loads(zeile)
             p = feat.get('properties') or {}
             name = (p.get('name') or '').strip()
+            if not name:
+                continue
             g = feat.get('geometry')
             if not g:
                 continue
             gtyp = g['type']
             osmid = f"{p.get('@type', 'x')[:1]}{p.get('@id', '')}"
             if p.get('boundary') == 'administrative' and gtyp in ('Polygon', 'MultiPolygon'):
-                if not name:
-                    continue
                 try:
                     lvl = int(p.get('admin_level', '0'))
                 except ValueError:
@@ -100,8 +98,6 @@ def main(eingabe, ausgabe):
                 continue
             ww = p.get('waterway')
             if ww in FLIESS and gtyp == 'LineString':
-                if not name:
-                    continue
                 linien.append((name, FLIESS[ww], shape(g), osmid))
                 continue
             if gtyp in ('Polygon', 'MultiPolygon') and (
@@ -248,7 +244,7 @@ def main(eingabe, ausgabe):
         if b is None:
             continue
         ha = hektar(geom)
-        if ha < 0.025:         # unter 250 m²
+        if ha < 0.05:          # unter 500 m²: Biotop, Löschteich …
             continue
         if water == 'pond':
             typ = 's' if ha >= 20 else 't'
@@ -256,15 +252,7 @@ def main(eingabe, ausgabe):
             typ = 's' if ha >= 1 else 't'
         else:
             typ = 's' if ha >= 5 else 't'
-        if not name:
-            # Namenlose Teiche und Seen: jeder ist ein eigener Eintrag.
-            if water == 'reservoir' or landuse == 'reservoir':
-                name = 'Namenloser Stausee' if ha >= 5 else 'Namenloser Speicherteich'
-            else:
-                name = 'Namenloser See' if typ == 's' else 'Namenloser Teich'
-            schl = (osmid,)
-        else:
-            schl = (name.lower(), g if g is not None else -1 - b)
+        schl = (name.lower(), g if g is not None else -1 - b)
         alt = beste.get(schl)
         if alt is None or ha > alt[6]:
             beste[schl] = [osmid, name, typ, round(pt.y, 4), round(pt.x, 4),
