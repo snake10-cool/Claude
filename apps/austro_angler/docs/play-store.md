@@ -1,14 +1,14 @@
 # Austro Angler in den Google Play Store bringen
 
 Alles, was die App selbst braucht, ist fertig. Was noch fehlt, geht nur mit
-deinem Google-Konto (und wegen des Alters mit deinen Eltern).
+deinem Google-Konto.
 
 ## Checkliste
 
 | # | Schritt | Wer |
 |---|---------|-----|
 | 1 | Impressum und Datenschutz: Name und Adresse eintragen (`hosting/seiten.py`, Platzhalter in Gelb) | du + Claude |
-| 2 | Google-Play-Entwicklerkonto anlegen (einmalig 25 $). Unter 18 → ein Elternteil legt es an. | Eltern |
+| 2 | Google-Play-Entwicklerkonto anlegen (einmalig 25 $) | du |
 | 3 | GitHub-Secrets für den Upload-Schlüssel anlegen (siehe unten) | du |
 | 4 | App in der Play Console anlegen, Texte und Bilder aus diesem Ordner einfügen | du |
 | 5 | Geschlossener Test: **mindestens 12 Tester, 14 Tage lang** (Pflicht für neue private Konten) | du + Freunde |

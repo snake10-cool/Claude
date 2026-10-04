@@ -91,9 +91,9 @@ Store-Texte, Feature-Grafik und die AAB-Signierung im Build.
 
 **Anleitung mit allen Schritten:** [`apps/austro_angler/docs/play-store.md`](apps/austro_angler/docs/play-store.md)
 
-Offen (geht nur mit dir bzw. deinen Eltern):
+Offen (geht nur mit deinem Konto):
 1. Name und Adresse für das Impressum
-2. Google-Play-Entwicklerkonto (25 $, über die Eltern)
+2. Google-Play-Entwicklerkonto (25 $)
 3. GitHub-Secrets `ANDROID_KEYSTORE_BASE64` und `ANDROID_KEYSTORE_PASSWORT`
 4. Geschlossener Test mit 12 Testern für 14 Tage
 5. Abo in der Play Console anlegen, danach baut Claude Google Play Billing ein
