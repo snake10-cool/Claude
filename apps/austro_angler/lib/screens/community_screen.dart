@@ -499,21 +499,33 @@ class _Rangliste extends StatefulWidget {
 }
 
 class _RanglisteState extends State<_Rangliste> {
-  late Future<List<Fang>> _faenge = fangDienst.neuesteFaenge();
   _Wertung _wertung = _Wertung.faenge;
   bool _vereine = false;
+  bool _gesamt = false;
+  final _cache = <String, Future<Map<String, RangEintrag>>>{};
+
+  String get _zeitraum =>
+      _gesamt ? 'gesamt' : FangDienst.monatsSchluessel(DateTime.now());
+
+  Future<Map<String, RangEintrag>> _laden({bool neu = false}) {
+    if (neu) _cache.remove(_zeitraum);
+    return _cache[_zeitraum] ??= fangDienst.rangliste(_zeitraum);
+  }
 
   @override
   Widget build(BuildContext context) {
     final text = Theme.of(context).textTheme;
-    final eigeneUid = KontoScope.of(context)?.uid;
+    final konto = KontoScope.of(context);
+    final eigeneUid = konto?.uid;
+    final future = _laden();
     return RefreshIndicator(
       onRefresh: () async {
-        setState(() => _faenge = fangDienst.neuesteFaenge());
-        await _faenge;
+        setState(() {});
+        await _laden(neu: true);
+        if (mounted) setState(() {});
       },
-      child: FutureBuilder<List<Fang>>(
-        future: _faenge,
+      child: FutureBuilder<Map<String, RangEintrag>>(
+        future: future,
         builder: (context, snap) {
           if (snap.hasError) {
             return ListView(children: const [
@@ -527,15 +539,16 @@ class _RanglisteState extends State<_Rangliste> {
             return const Center(child: CircularProgressIndicator());
           }
           final plaetze = <String, _Platz>{};
-          for (final f in snap.data!) {
-            if (_vereine && f.verein.isEmpty) continue;
+          for (final e in snap.data!.values) {
+            if (e.faenge == 0 || (konto?.istBlockiert(e.uid) ?? false)) continue;
+            if (_vereine && e.verein.isEmpty) continue;
             final p = _vereine
-                ? plaetze.putIfAbsent(f.verein.toLowerCase(), () => _Platz(f.verein))
-                : plaetze.putIfAbsent(f.uid, () => _Platz(at(f.nutzerName)));
-            p.mitglieder.add(f.uid);
-            p.faenge++;
-            p.petriHeil += f.petriHeil.length;
-            if ((f.laengeCm ?? 0) > p.groesster) p.groesster = f.laengeCm!;
+                ? plaetze.putIfAbsent(e.verein.toLowerCase(), () => _Platz(e.verein))
+                : plaetze.putIfAbsent(e.uid, () => _Platz(at(e.name)));
+            p.mitglieder.add(e.uid);
+            p.faenge += e.faenge;
+            p.petriHeil += e.petri;
+            if (e.groesster > p.groesster) p.groesster = e.groesster;
           }
           num wert(_Platz p) => switch (_wertung) {
                 _Wertung.faenge => p.faenge,
@@ -549,20 +562,37 @@ class _RanglisteState extends State<_Rangliste> {
           return ListView(
             padding: const EdgeInsets.all(12),
             children: [
-              SegmentedButton<bool>(
-                showSelectedIcon: false,
-                segments: const [
-                  ButtonSegment(
-                      value: false,
-                      icon: Icon(Icons.person),
-                      label: Text('Angler')),
-                  ButtonSegment(
-                      value: true,
-                      icon: Icon(Icons.groups_2),
-                      label: Text('Vereine')),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                alignment: WrapAlignment.center,
+                children: [
+                  SegmentedButton<bool>(
+                    showSelectedIcon: false,
+                    segments: const [
+                      ButtonSegment(value: false, label: Text('Dieser Monat')),
+                      ButtonSegment(value: true, label: Text('Gesamt')),
+                    ],
+                    selected: {_gesamt},
+                    onSelectionChanged: (s) => setState(() => _gesamt = s.first),
+                  ),
+                  SegmentedButton<bool>(
+                    showSelectedIcon: false,
+                    segments: const [
+                      ButtonSegment(
+                          value: false,
+                          icon: Icon(Icons.person),
+                          label: Text('Angler')),
+                      ButtonSegment(
+                          value: true,
+                          icon: Icon(Icons.groups_2),
+                          label: Text('Vereine')),
+                    ],
+                    selected: {_vereine},
+                    onSelectionChanged: (s) =>
+                        setState(() => _vereine = s.first),
+                  ),
                 ],
-                selected: {_vereine},
-                onSelectionChanged: (s) => setState(() => _vereine = s.first),
               ),
               const SizedBox(height: 8),
               SegmentedButton<_Wertung>(
@@ -628,8 +658,11 @@ class _RanglisteState extends State<_Rangliste> {
                   ),
                 ),
               const SizedBox(height: 8),
-              Text('Aus den letzten 500 geteilten Fängen.',
-                  style: text.bodySmall),
+              Text(
+                'Aus allen öffentlich geteilten Fängen. Jeder Eintrag wird '
+                'aktualisiert, wenn die Person ihr Fangbuch öffnet.',
+                style: text.bodySmall,
+              ),
             ],
           );
         },
@@ -653,7 +686,7 @@ class _RekordeState extends State<_Rekorde> {
     final text = Theme.of(context).textTheme;
     return RefreshIndicator(
       onRefresh: () async {
-        setState(() => _faenge = fangDienst.laengsteFaenge());
+        setState(() => _faenge = fangDienst.laengsteFaenge(neu: true));
         await _faenge;
       },
       child: FutureBuilder<List<Fang>>(

@@ -12,6 +12,8 @@ import '../models/fang.dart';
 import '../services/fang_dienst.dart';
 import '../services/wetter.dart';
 import '../services/wochen_challenges.dart';
+import '../services/konto.dart';
+import 'challenge_screen.dart';
 import 'gewaesser_screen.dart';
 import 'messen_screen.dart';
 import 'profil_screen.dart';
@@ -32,6 +34,23 @@ class FangbuchScreen extends StatefulWidget {
 class _FangbuchScreenState extends State<FangbuchScreen> {
   String? _uid;
   Stream<List<Fang>>? _stream;
+
+  /// Eigener Eintrag in Rangliste und Challenge (nur bei Änderungen).
+  void _ranglistePflegen(Konto konto, List<Fang> faenge) {
+    final name = konto.name;
+    if (name == null || name.isEmpty || konto.uid == null) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      fangDienst
+          .ranglistePflegen(
+            uid: konto.uid!,
+            name: name,
+            verein: konto.verein,
+            alle: faenge,
+            challengeFisch: challengeFisch,
+          )
+          .catchError((Object e) => debugPrint('Rangliste: $e'));
+    });
+  }
 
   /// Den Stream nur neu anlegen, wenn sich der Nutzer ändert.
   Stream<List<Fang>> _streamFuer(String uid) {
@@ -77,6 +96,7 @@ class _FangbuchScreenState extends State<FangbuchScreen> {
                 if (!snap.hasData) {
                   return const Center(child: CircularProgressIndicator());
                 }
+                _ranglistePflegen(konto, snap.data!);
                 return _FangListe(snap.data!);
               },
             )

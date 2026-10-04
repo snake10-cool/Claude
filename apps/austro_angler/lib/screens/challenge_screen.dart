@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../data/fische.dart';
 import '../main.dart';
 import '../models/bundesland.dart';
-import '../models/fang.dart';
 import '../services/fang_dienst.dart';
+import 'profil_screen.dart';
 import 'widgets.dart';
 
 /// Fische, die sich für eine Challenge eignen. Pro Monat wird einer gewählt,
@@ -26,18 +26,15 @@ String challengeFisch(DateTime monat) {
 const _monate = ['Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli',
   'August', 'September', 'Oktober', 'November', 'Dezember'];
 
-/// Bester Fang pro Nutzer im Monat für den Challenge-Fisch.
-List<Fang> challengeWertung(List<Fang> faenge, DateTime monat) {
+/// Bester Fang pro Nutzer im Monat für den Challenge-Fisch (aus der
+/// Monats-Rangliste, ein Lesezugriff).
+List<RangEintrag> challengeWertung(
+    Map<String, RangEintrag> eintraege, DateTime monat) {
   final fisch = challengeFisch(monat);
-  final beste = <String, Fang>{};
-  for (final f in faenge) {
-    if (f.fischId != fisch || f.laengeCm == null) continue;
-    if (f.datum.year != monat.year || f.datum.month != monat.month) continue;
-    final alt = beste[f.uid];
-    if (alt == null || f.laengeCm! > alt.laengeCm!) beste[f.uid] = f;
-  }
-  return beste.values.toList()
-    ..sort((a, b) => b.laengeCm!.compareTo(a.laengeCm!));
+  return eintraege.values
+      .where((e) => e.challengeFisch == fisch && e.challengeLaenge != null)
+      .toList()
+    ..sort((a, b) => b.challengeLaenge!.compareTo(a.challengeLaenge!));
 }
 
 class ChallengeListe extends StatefulWidget {
@@ -48,13 +45,25 @@ class ChallengeListe extends StatefulWidget {
 }
 
 class _ChallengeListeState extends State<ChallengeListe> {
-  late Future<List<Fang>> _faenge = fangDienst.neuesteFaenge();
+  late Future<List<Map<String, RangEintrag>>> _daten = _laden();
 
-  Widget _wertung(BuildContext context, List<Fang> faenge, DateTime monat,
+  static Future<List<Map<String, RangEintrag>>> _laden() {
+    final jetzt = DateTime.now();
+    return Future.wait([
+      fangDienst.rangliste(FangDienst.monatsSchluessel(jetzt)),
+      fangDienst.rangliste(
+          FangDienst.monatsSchluessel(DateTime(jetzt.year, jetzt.month - 1))),
+    ]);
+  }
+
+  Widget _wertung(BuildContext context, Map<String, RangEintrag> eintraege,
+      DateTime monat,
       {required bool aktuell}) {
     final konto = KontoScope.of(context)!;
     final fisch = fischById(challengeFisch(monat))!;
-    final liste = challengeWertung(faenge, monat);
+    final liste = challengeWertung(eintraege, monat)
+        .where((e) => !konto.istBlockiert(e.uid))
+        .toList();
     final text = Theme.of(context).textTheme;
     return Card(
       child: Padding(
@@ -81,10 +90,16 @@ class _ChallengeListeState extends State<ChallengeListe> {
                   i == 0 ? '🥇' : i == 1 ? '🥈' : i == 2 ? '🥉' : '${i + 1}.',
                   style: const TextStyle(fontSize: 22),
                 ),
-                title: Text(at(liste[i].nutzerName)),
-                subtitle: Text('${datumText(liste[i].datum)}'
-                    '${liste[i].gewaesser.isEmpty ? '' : ' · ${liste[i].gewaesser}'}'),
-                trailing: Text('${liste[i].laengeCm!.toStringAsFixed(0)} cm',
+                title: NutzerLink(liste[i].uid, liste[i].name,
+                    stil: text.bodyLarge),
+                subtitle: Text([
+                  if (liste[i].challengeDatum != null)
+                    datumText(liste[i].challengeDatum!),
+                  if (liste[i].challengeGewaesser.isNotEmpty)
+                    liste[i].challengeGewaesser,
+                ].join(' · ')),
+                trailing: Text(
+                    '${liste[i].challengeLaenge!.toStringAsFixed(0)} cm',
                     style: text.titleMedium),
               ),
             if (!aktuell && konto.istAdmin && liste.isNotEmpty)
@@ -95,7 +110,7 @@ class _ChallengeListeState extends State<ChallengeListe> {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text('Gewinn vergeben?'),
-                      content: Text('${at(sieger.nutzerName)} bekommt 1 Monat '
+                      content: Text('${at(sieger.name)} bekommt 1 Monat '
                           'Premium.'),
                       actions: [
                         TextButton(
@@ -133,11 +148,11 @@ class _ChallengeListeState extends State<ChallengeListe> {
     final vormonat = DateTime(jetzt.year, jetzt.month - 1);
     return RefreshIndicator(
       onRefresh: () async {
-        setState(() => _faenge = fangDienst.neuesteFaenge());
-        await _faenge;
+        setState(() => _daten = _laden());
+        await _daten;
       },
-      child: FutureBuilder<List<Fang>>(
-        future: _faenge,
+      child: FutureBuilder<List<Map<String, RangEintrag>>>(
+        future: _daten,
         builder: (context, snap) {
           if (snap.hasError) {
             return ListView(children: const [
@@ -152,8 +167,8 @@ class _ChallengeListeState extends State<ChallengeListe> {
           return ListView(
             padding: const EdgeInsets.all(12),
             children: [
-              _wertung(context, snap.data!, jetzt, aktuell: true),
-              _wertung(context, snap.data!, vormonat, aktuell: false),
+              _wertung(context, snap.data![0], jetzt, aktuell: true),
+              _wertung(context, snap.data![1], vormonat, aktuell: false),
             ],
           );
         },

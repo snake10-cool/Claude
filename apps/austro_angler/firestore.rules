@@ -273,6 +273,21 @@ service cloud.firestore {
       }
     }
 
+    // Ranglisten: ein Dokument pro Zeitraum, jeder pflegt nur seinen Eintrag.
+    match /rangliste/{zeitraum} {
+      allow read: if angemeldet();
+      allow create: if angemeldet()
+          && request.resource.data.keys().hasOnly(['eintraege'])
+          && request.resource.data.eintraege.keys().hasOnly([request.auth.uid]);
+      allow update: if istAdmin()
+          || (angemeldet()
+              && request.resource.data.diff(resource.data).affectedKeys()
+                   .hasOnly(['eintraege'])
+              && request.resource.data.eintraege.diff(resource.data.eintraege)
+                   .affectedKeys().hasOnly([request.auth.uid]));
+      allow delete: if istAdmin();
+    }
+
     // Selbst gemessene Wassertemperaturen.
     match /wassertemp/{gewaesserId}/messungen/{id} {
       allow read: if angemeldet();

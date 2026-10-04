@@ -132,6 +132,37 @@ class Messung {
   final DateTime zeit;
 }
 
+class RangEintrag {
+  RangEintrag(this.uid, Map roh)
+      : name = roh['name'] as String? ?? '',
+        verein = roh['verein'] as String? ?? '',
+        faenge = (roh['faenge'] as num?)?.toInt() ?? 0,
+        arten = (roh['arten'] as num?)?.toInt() ?? 0,
+        groesster = (roh['groesster'] as num?)?.toDouble() ?? 0,
+        petri = (roh['petri'] as num?)?.toInt() ?? 0,
+        challengeLaenge =
+            ((roh['challenge'] as Map?)?['laenge'] as num?)?.toDouble(),
+        challengeFisch = (roh['challenge'] as Map?)?['fisch'] as String?,
+        challengeGewaesser =
+            (roh['challenge'] as Map?)?['gewaesser'] as String? ?? '',
+        challengeDatum = ((roh['challenge'] as Map?)?['datum'] as num?) == null
+            ? null
+            : DateTime.fromMillisecondsSinceEpoch(
+                ((roh['challenge'] as Map)['datum'] as num).toInt());
+
+  final String uid;
+  final String name;
+  final String verein;
+  final int faenge;
+  final int arten;
+  final double groesster;
+  final int petri;
+  final double? challengeLaenge;
+  final String? challengeFisch;
+  final String challengeGewaesser;
+  final DateTime? challengeDatum;
+}
+
 class CommunityPreis {
   CommunityPreis(this.roh)
       : art = roh['art'] as String? ?? '',
@@ -340,13 +371,30 @@ class FangDienst {
           .toList());
 
   /// Die längsten öffentlichen Fänge (für Rekorde pro Fischart).
-  Future<List<Fang>> laengsteFaenge({int anzahl = 300}) async {
-    final s = await _oeff
+  /// Wird 15 Minuten zwischengespeichert, um Lesezugriffe zu sparen.
+  Future<List<Fang>> laengsteFaenge({int anzahl = 150, bool neu = false}) {
+    final jetzt = DateTime.now();
+    if (!neu &&
+        _rekordeCache != null &&
+        jetzt.difference(_rekordeZeit) < const Duration(minutes: 15)) {
+      return _rekordeCache!;
+    }
+    _rekordeZeit = jetzt;
+    return _rekordeCache = _oeff
         .orderBy('laengeCm', descending: true)
         .limit(anzahl)
-        .get();
-    return s.docs.map((d) => Fang.fromFirestore(d, oeffentlich: true)).toList();
+        .get()
+        .then((s) => s.docs
+            .map((d) => Fang.fromFirestore(d, oeffentlich: true))
+            .toList())
+      ..catchError((Object _) {
+        _rekordeCache = null;
+        return <Fang>[];
+      });
   }
+
+  Future<List<Fang>>? _rekordeCache;
+  DateTime _rekordeZeit = DateTime(2000);
 
   /// Speichert einen neuen oder geänderten Fang.
   ///
@@ -593,12 +641,113 @@ class FangDienst {
   }
 
   /// Die neuesten öffentlichen Fänge für die Rangliste.
-  Future<List<Fang>> neuesteFaenge({int anzahl = 500}) async {
-    final s = await _oeff
-        .orderBy('erstellt', descending: true)
-        .limit(anzahl)
-        .get();
-    return s.docs.map((d) => Fang.fromFirestore(d, oeffentlich: true)).toList();
+
+
+  // ── Ranglisten: ein Dokument pro Zeitraum statt hunderter Fänge ──
+  //
+  // Jeder pflegt nur seinen eigenen Eintrag (beim Öffnen des Fangbuchs).
+  // Die Rangliste braucht so nur einen einzigen Lesezugriff.
+
+  static String monatsSchluessel(DateTime d) =>
+      '${d.year}-${d.month.toString().padLeft(2, '0')}';
+
+  Future<Map<String, RangEintrag>> rangliste(String zeitraum) async {
+    final d = await _db.doc('rangliste/$zeitraum').get();
+    final roh = (d.data()?['eintraege'] as Map?) ?? const {};
+    return {
+      for (final e in roh.entries)
+        if (e.value is Map)
+          e.key as String: RangEintrag(e.key as String, e.value as Map),
+    };
+  }
+
+  final _zuletztGeschrieben = <String, String>{};
+
+  /// Berechnet meine Einträge (gesamt, dieser und letzter Monat) aus meinen
+  /// öffentlichen Fängen und schreibt sie, wenn sich etwas geändert hat.
+  Future<void> ranglistePflegen({
+    required String uid,
+    required String name,
+    required String verein,
+    required List<Fang> alle,
+    required String Function(DateTime monat) challengeFisch,
+  }) async {
+    final oeffentlich = alle.where((f) => f.oeffentlich).toList();
+    final jetzt = DateTime.now();
+    final monate = [DateTime(jetzt.year, jetzt.month),
+      DateTime(jetzt.year, jetzt.month - 1)];
+    final zeitraeume = <String, List<Fang>>{
+      'gesamt': oeffentlich,
+      for (final m in monate)
+        monatsSchluessel(m): oeffentlich
+            .where((f) => f.datum.year == m.year && f.datum.month == m.month)
+            .toList(),
+    };
+    for (final e in zeitraeume.entries) {
+      final monat = e.key == 'gesamt'
+          ? null
+          : monate.firstWhere((m) => monatsSchluessel(m) == e.key);
+      final eintrag = _rangEintrag(
+          e.value, name, verein, monat == null ? null : challengeFisch(monat));
+      final json = jsonEncode(eintrag);
+      final schluessel = '$uid/${e.key}';
+      if (_zuletztGeschrieben[schluessel] == json) continue;
+      if (e.value.isEmpty && !_zuletztGeschrieben.containsKey(schluessel)) {
+        // Nichts zu melden – nur schreiben, falls früher etwas drin stand.
+        final alt = await _db.doc('rangliste/${e.key}').get();
+        if ((alt.data()?['eintraege'] as Map?)?.containsKey(uid) != true) {
+          _zuletztGeschrieben[schluessel] = json;
+          continue;
+        }
+      }
+      await _offline(_db.doc('rangliste/${e.key}').set({
+        'eintraege': {uid: eintrag},
+      }, SetOptions(merge: true)));
+      _zuletztGeschrieben[schluessel] = json;
+    }
+  }
+
+  static Map<String, Object?> _rangEintrag(
+      List<Fang> f, String name, String verein, String? challengeFisch) {
+    var groesster = 0.0;
+    var petri = 0;
+    Fang? bester;
+    for (final x in f) {
+      if ((x.laengeCm ?? 0) > groesster) groesster = x.laengeCm!;
+      petri += x.petriHeil.length;
+      if (x.fischId == challengeFisch &&
+          x.laengeCm != null &&
+          (bester == null || x.laengeCm! > bester.laengeCm!)) {
+        bester = x;
+      }
+    }
+    return {
+      'name': name,
+      'verein': verein,
+      'faenge': f.length,
+      'arten': f.map((x) => x.fischId).toSet().length,
+      'groesster': groesster,
+      'petri': petri,
+      'challenge': bester == null
+          ? null
+          : {
+              'fisch': challengeFisch,
+              'laenge': bester.laengeCm,
+              'datum': bester.datum.millisecondsSinceEpoch,
+              'gewaesser': bester.gewaesser,
+            },
+    };
+  }
+
+  /// Beim Löschen des Kontos: eigene Ranglisten-Einträge entfernen.
+  Future<void> _ranglisteEntfernen(String uid) async {
+    final jetzt = DateTime.now();
+    for (final z in ['gesamt', monatsSchluessel(jetzt),
+      monatsSchluessel(DateTime(jetzt.year, jetzt.month - 1))]) {
+      try {
+        await _db.doc('rangliste/$z').update({'eintraege.$uid': FieldValue.delete()});
+      } catch (_) {}
+    }
   }
 
   // ── Freunde ──
@@ -876,15 +1025,18 @@ class FangDienst {
     return {for (final d in s.docs) d.id};
   }
 
+  final _fangCache = <String, Map<String, int>>{};
+
   /// Gewässernamen, an denen [fischId] schon gefangen wurde (öffentliche Fänge).
   Future<Map<String, int>> gewaesserMitFang(String fischId) async {
-    final s = await _oeff.where('fischId', isEqualTo: fischId).limit(500).get();
+    if (_fangCache[fischId] case final c?) return c;
+    final s = await _oeff.where('fischId', isEqualTo: fischId).limit(150).get();
     final zaehler = <String, int>{};
     for (final d in s.docs) {
       final g = (d.data()['gewaesser'] as String? ?? '').trim();
       if (g.isNotEmpty) zaehler[g] = (zaehler[g] ?? 0) + 1;
     }
-    return zaehler;
+    return _fangCache[fischId] = zaehler;
   }
 
   // ── Videos (in Teilen, weil ein Dokument max. 1 MB groß sein darf) ──
@@ -1148,6 +1300,7 @@ class FangDienst {
 
   /// Entfernt alle Daten eines Nutzers (vor dem Löschen des Kontos).
   Future<void> allesLoeschen(String uid, String? name) async {
+    await _ranglisteEntfernen(uid);
     final oeff = await _oeff.where('uid', isEqualTo: uid).get();
     final privat = await _privat(uid).get();
     for (final sammlung in [_fangorte(uid), _aktivitaeten(uid), _freunde(uid),
