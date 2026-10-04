@@ -20,6 +20,7 @@ class Fang {
     this.nutzerName = '',
     this.oeffentlich = true,
     this.hatFoto = false,
+    this.hatVideo = false,
     this.petriHeil = const [],
     this.wetter,
   });
@@ -51,6 +52,7 @@ class Fang {
   final String nutzerName;
   final bool oeffentlich;
   final bool hatFoto;
+  final bool hatVideo;
 
   /// UIDs der Nutzer, die "Petri Heil!" gesagt haben.
   final List<String> petriHeil;
@@ -65,6 +67,7 @@ class Fang {
     String? nutzerName,
     bool? oeffentlich,
     bool? hatFoto,
+    bool? hatVideo,
     Map<String, num>? wetter,
   }) =>
       Fang(
@@ -85,6 +88,7 @@ class Fang {
         nutzerName: nutzerName ?? this.nutzerName,
         oeffentlich: oeffentlich ?? this.oeffentlich,
         hatFoto: hatFoto ?? this.hatFoto,
+        hatVideo: hatVideo ?? this.hatVideo,
         petriHeil: petriHeil,
         wetter: wetter ?? this.wetter,
       );
@@ -138,6 +142,7 @@ class Fang {
         'uid': uid,
         'nutzerName': nutzerName,
         'hatFoto': hatFoto,
+        if (hatVideo) 'hatVideo': true,
       };
 
   factory Fang.fromFirestore(
@@ -163,6 +168,7 @@ class Fang {
       nutzerName: j['nutzerName'] as String? ?? '',
       oeffentlich: oeffentlich,
       hatFoto: j['hatFoto'] as bool? ?? false,
+      hatVideo: j['hatVideo'] as bool? ?? false,
       petriHeil: (j['petriHeil'] as List?)?.cast<String>() ?? const [],
       wetter: _wetter(j['wetter']),
     );

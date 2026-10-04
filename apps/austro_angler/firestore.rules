@@ -26,7 +26,7 @@ service cloud.firestore {
       return d.keys().hasOnly(['fischId', 'laengeCm', 'gewichtG', 'gewaesser',
                'bundesland', 'koeder', 'notiz', 'zurueckgesetzt', 'datum',
                'uid', 'nutzerName', 'hatFoto', 'petriHeil', 'erstellt',
-               'wetter', 'geschichte', 'ausruestung', 'verein'])
+               'wetter', 'geschichte', 'ausruestung', 'verein', 'hatVideo'])
           && d.get('geschichte', '') is string
           && d.get('geschichte', '').size() <= 3000
           && d.get('ausruestung', '') is string
@@ -245,6 +245,32 @@ service cloud.firestore {
     match /gepruefte_preise/{gewaesserId} {
       allow read: if true;
       allow write: if istAdmin();
+    }
+
+    // Videos zu Fängen, in Teilen zu je max. 600 KB.
+    match /videos/{fangId} {
+      allow read: if resource.data.oeffentlich == true
+          || (angemeldet() && resource.data.uid == request.auth.uid);
+      allow create, update: if angemeldet()
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.keys().hasOnly(['uid', 'oeffentlich',
+               'teile', 'groesse'])
+          && request.resource.data.teile is int
+          && request.resource.data.teile <= 6;
+      allow delete: if angemeldet()
+          && (resource.data.uid == request.auth.uid || istAdmin());
+
+      match /teile/{nr} {
+        allow read: if get(/databases/$(database)/documents/videos/$(fangId)).data.oeffentlich == true
+            || (angemeldet() && resource.data.uid == request.auth.uid);
+        allow create, update: if angemeldet()
+            && request.resource.data.uid == request.auth.uid
+            && request.resource.data.keys().hasOnly(['uid', 'daten'])
+            && request.resource.data.daten is string
+            && request.resource.data.daten.size() < 900000;
+        allow delete: if angemeldet()
+            && (resource.data.uid == request.auth.uid || istAdmin());
+      }
     }
 
     // Selbst gemessene Wassertemperaturen.

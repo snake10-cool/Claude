@@ -15,6 +15,7 @@ import '../services/wochen_challenges.dart';
 import 'gewaesser_screen.dart';
 import 'messen_screen.dart';
 import 'profil_screen.dart';
+import 'video.dart';
 import 'koeder_screen.dart';
 import 'ort_waehlen.dart';
 import 'statistik_screen.dart';
@@ -314,6 +315,27 @@ class FangKarte extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             if (fang.hatFoto) FangFoto(fang.id),
+            if (fang.hatVideo)
+              Material(
+                color: Colors.black87,
+                child: InkWell(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => VideoScreen(fang.id,
+                          titel: fisch?.name ?? 'Video'))),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.play_circle_fill, color: Colors.white),
+                        SizedBox(width: 8),
+                        Text('Video ansehen',
+                            style: TextStyle(color: Colors.white)),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
@@ -430,6 +452,26 @@ class _FangFormularState extends State<FangFormular> {
   List<String> _meineAusruestung = const [];
   Uint8List? _neuesFoto;
   bool _fotoEntfernen = false;
+  Uint8List? _neuesVideo;
+  bool _videoEntfernen = false;
+  bool _videoLaedt = false;
+
+  Future<void> _videoAufnehmen(ImageSource quelle) async {
+    setState(() => _videoLaedt = true);
+    try {
+      final bytes = await videoWaehlen(quelle);
+      if (bytes != null && mounted) {
+        setState(() {
+          _neuesVideo = bytes;
+          _videoEntfernen = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) meldung(context, '$e'.replaceFirst('Exception: ', ''));
+    } finally {
+      if (mounted) setState(() => _videoLaedt = false);
+    }
+  }
   bool _speichert = false;
   LatLng? _ort;
   bool _ortGeaendert = false;
@@ -548,6 +590,8 @@ class _FangFormularState extends State<FangFormular> {
           vorher: widget.fang,
           foto: _neuesFoto,
           fotoEntfernen: _fotoEntfernen,
+          video: _neuesVideo,
+          videoEntfernen: _videoEntfernen,
         );
         if (_ortGeaendert) {
           await fangDienst.fangortSpeichern(fang.uid, id, _ort);
@@ -641,6 +685,52 @@ class _FangFormularState extends State<FangFormular> {
                   ),
               ],
             ),
+            if (videoMoeglich) ...[
+              if (_neuesVideo != null)
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: VideoAbspieler(
+                      key: ValueKey(_neuesVideo!.length), bytes: _neuesVideo),
+                )
+              else if (widget.fang?.hatVideo == true && !_videoEntfernen)
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 4),
+                  child: Text('🎬 Dieser Fang hat ein Video.'),
+                ),
+              Row(
+                children: [
+                  if (_videoLaedt)
+                    const Padding(
+                      padding: EdgeInsets.all(12),
+                      child: SizedBox.square(
+                          dimension: 20,
+                          child: CircularProgressIndicator(strokeWidth: 2)),
+                    )
+                  else ...[
+                    TextButton.icon(
+                      onPressed: () => _videoAufnehmen(ImageSource.camera),
+                      icon: const Icon(Icons.videocam),
+                      label: const Text('Video (max. 10 s)'),
+                    ),
+                    TextButton.icon(
+                      onPressed: () => _videoAufnehmen(ImageSource.gallery),
+                      icon: const Icon(Icons.video_library),
+                      label: const Text('Aus Galerie'),
+                    ),
+                  ],
+                  if (_neuesVideo != null ||
+                      (widget.fang?.hatVideo == true && !_videoEntfernen))
+                    IconButton(
+                      tooltip: 'Video entfernen',
+                      onPressed: () => setState(() {
+                        _neuesVideo = null;
+                        _videoEntfernen = true;
+                      }),
+                      icon: const Icon(Icons.videocam_off_outlined),
+                    ),
+                ],
+              ),
+            ],
           ],
           DropdownButtonFormField<String>(
             initialValue: _fischId,

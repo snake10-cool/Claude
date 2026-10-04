@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../services/fang_dienst.dart';
 import '../services/konto.dart';
+import 'profil_screen.dart';
 import 'vereine_screen.dart';
 import 'widgets.dart';
 
@@ -186,6 +187,15 @@ class _Profil extends StatelessWidget {
               onTap: () => _hochladen(context),
             ),
           ),
+        Card(
+          child: ListTile(
+            leading: const Icon(Icons.badge_outlined),
+            title: const Text('Mein öffentliches Profil'),
+            subtitle: const Text('So sehen dich andere'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => profilOeffnen(context, konto.uid!, konto.name ?? ''),
+          ),
+        ),
         Card(
           child: ListTile(
             leading: const Icon(Icons.groups_2_outlined),

@@ -358,11 +358,16 @@ class FangDienst {
     Fang? vorher,
     Uint8List? foto,
     bool fotoEntfernen = false,
+    Uint8List? video,
+    bool videoEntfernen = false,
   }) async {
     final ziel = fang.oeffentlich ? _oeff : _privat(fang.uid);
     final hatFoto = foto != null || (!fotoEntfernen && (vorher?.hatFoto ?? false));
     final id = vorher?.id ?? ziel.doc().id;
-    final daten = fang.kopie(id: id, hatFoto: hatFoto).toFirestore();
+    final hatVideo =
+        video != null || (!videoEntfernen && (vorher?.hatVideo ?? false));
+    final daten =
+        fang.kopie(id: id, hatFoto: hatFoto, hatVideo: hatVideo).toFirestore();
 
     if (vorher != null && vorher.oeffentlich == fang.oeffentlich) {
       await _offline(ziel.doc(id).update(daten));
@@ -390,6 +395,13 @@ class FangDienst {
       _fotoCache.remove(id);
     } else if (hatFoto && vorher?.oeffentlich != fang.oeffentlich) {
       await _offline(_fotos.doc(id).update({'oeffentlich': fang.oeffentlich}));
+    }
+    if (video != null) {
+      await videoSpeichern(id, fang.uid, fang.oeffentlich, video);
+    } else if (videoEntfernen && (vorher?.hatVideo ?? false)) {
+      await videoLoeschen(id);
+    } else if (hatVideo && vorher?.oeffentlich != fang.oeffentlich) {
+      await videoSichtbarkeit(id, fang.oeffentlich);
     }
     return id;
   }
@@ -420,6 +432,7 @@ class FangDienst {
     await ort.doc(fang.id).delete();
     await _fangorte(fang.uid).doc(fang.id).delete().catchError((_) {});
     if (fang.hatFoto) await _fotos.doc(fang.id).delete();
+    if (fang.hatVideo) await videoLoeschen(fang.id).catchError((_) {});
     _fotoCache.remove(fang.id);
   }
 
@@ -874,6 +887,58 @@ class FangDienst {
     return zaehler;
   }
 
+  // ── Videos (in Teilen, weil ein Dokument max. 1 MB groß sein darf) ──
+
+  static const _videoTeil = 600000;
+  final _videoCache = <String, Uint8List>{};
+
+  Future<void> videoSpeichern(
+      String fangId, String uid, bool oeffentlich, Uint8List daten) async {
+    final teile = (daten.length / _videoTeil).ceil();
+    final meta = _db.doc('videos/$fangId');
+    await _offline(meta.set({
+      'uid': uid,
+      'oeffentlich': oeffentlich,
+      'teile': teile,
+      'groesse': daten.length,
+    }));
+    for (var i = 0; i < teile; i++) {
+      final ende = (i + 1) * _videoTeil;
+      await _offline(meta.collection('teile').doc('$i').set({
+        'uid': uid,
+        'daten': base64Encode(daten.sublist(
+            i * _videoTeil, ende > daten.length ? daten.length : ende)),
+      }));
+    }
+    _videoCache[fangId] = daten;
+  }
+
+  Future<Uint8List?> videoLaden(String fangId) async {
+    if (_videoCache[fangId] case final v?) return v;
+    final meta = await _db.doc('videos/$fangId').get();
+    final teile = (meta.data()?['teile'] as num?)?.toInt() ?? 0;
+    if (teile == 0) return null;
+    final bytes = BytesBuilder(copy: false);
+    for (var i = 0; i < teile; i++) {
+      final t = await _db.doc('videos/$fangId/teile/$i').get();
+      bytes.add(base64Decode(t.data()?['daten'] as String? ?? ''));
+    }
+    return _videoCache[fangId] = bytes.takeBytes();
+  }
+
+  Future<void> videoLoeschen(String fangId) async {
+    final meta = _db.doc('videos/$fangId');
+    final teile = await meta.collection('teile').get();
+    for (final t in teile.docs) {
+      await t.reference.delete();
+    }
+    await meta.delete();
+    _videoCache.remove(fangId);
+  }
+
+  Future<void> videoSichtbarkeit(String fangId, bool oeffentlich) =>
+      _db.doc('videos/$fangId').update({'oeffentlich': oeffentlich});
+
   // ── Wassertemperatur (von Anglern gemessen) ──
 
   CollectionReference<Map<String, dynamic>> _messungen(String gewaesserId) =>
@@ -1094,6 +1159,7 @@ class FangDienst {
     }
     for (final doc in [...oeff.docs, ...privat.docs]) {
       if (doc.data()['hatFoto'] == true) await _fotos.doc(doc.id).delete();
+      if (doc.data()['hatVideo'] == true) await videoLoeschen(doc.id);
       await doc.reference.delete();
     }
     if (name != null) await _db.doc('namen/${name.toLowerCase()}').delete();
