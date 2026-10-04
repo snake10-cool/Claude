@@ -6,7 +6,9 @@ import '../models/fang.dart';
 import '../services/abzeichen.dart';
 import '../services/fang_dienst.dart';
 import '../services/pdf_export.dart';
+import 'angeljahr_screen.dart';
 import 'widgets.dart';
+import 'zuruecksetzen_screen.dart';
 
 class StatistikScreen extends StatefulWidget {
   const StatistikScreen({super.key});
@@ -40,7 +42,18 @@ class _StatistikScreenState extends State<StatistikScreen> {
           return ListView(
             padding: const EdgeInsets.all(12),
             children: [
+              Card(
+                child: ListTile(
+                  leading: const Text('🎁', style: TextStyle(fontSize: 28)),
+                  title: const Text('Dein Angeljahr ⭐'),
+                  subtitle: const Text('Jahresrückblick zum Teilen'),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => AngeljahrScreen(f))),
+                ),
+              ),
               _Abzeichen(f),
+              _CatchRelease(f),
               _Rekorde(f),
               _Balken('📅 Fänge pro Monat (${DateTime.now().year})',
                   _proMonat(f), premium: true),
@@ -51,6 +64,7 @@ class _StatistikScreenState extends State<StatistikScreen> {
               _Balken('🕐 Beste Uhrzeit', _uhrzeiten(f), premium: true),
               _Balken('🌤️ Wetter bei deinen Fängen', _wetter(f), premium: true),
               _Export(f, konto?.name ?? ''),
+              _RevierStatistik(f, konto?.name ?? ''),
             ],
           );
         },
@@ -300,6 +314,132 @@ class _Export extends StatelessWidget {
                     label: Text('$j'),
                   ),
               ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CatchRelease extends StatelessWidget {
+  const _CatchRelease(this.faenge);
+
+  final List<Fang> faenge;
+
+  @override
+  Widget build(BuildContext context) {
+    final zurueck = faenge.where((f) => f.zurueckgesetzt).length;
+    final quote = faenge.isEmpty ? 0 : (zurueck * 100 / faenge.length).round();
+    final proArt = <String, (int, int)>{};
+    for (final f in faenge) {
+      final (z, g) = proArt[f.fischId] ?? (0, 0);
+      proArt[f.fischId] = (z + (f.zurueckgesetzt ? 1 : 0), g + 1);
+    }
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Titel('🤝 Catch & Release'),
+            const SizedBox(height: 6),
+            Text('$zurueck von ${faenge.length} Fischen zurückgesetzt ($quote %)'),
+            const SizedBox(height: 6),
+            LinearProgressIndicator(value: quote / 100, minHeight: 8),
+            const SizedBox(height: 8),
+            for (final e in proArt.entries.where((e) => e.value.$1 > 0))
+              Text('${fischById(e.key)?.name ?? e.key}: '
+                  '${e.value.$1} von ${e.value.$2} zurück'),
+            TextButton.icon(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => const ZuruecksetzenScreen())),
+              icon: const Icon(Icons.tips_and_updates_outlined),
+              label: const Text('Tipps: schonend zurücksetzen'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _RevierStatistik extends StatefulWidget {
+  const _RevierStatistik(this.faenge, this.name);
+
+  final List<Fang> faenge;
+  final String name;
+
+  @override
+  State<_RevierStatistik> createState() => _RevierStatistikState();
+}
+
+class _RevierStatistikState extends State<_RevierStatistik> {
+  late int _jahr = DateTime.now().year;
+  String? _gewaesser;
+
+  @override
+  Widget build(BuildContext context) {
+    final jahre = {
+      DateTime.now().year,
+      ...widget.faenge.map((f) => f.datum.year),
+    }.toList()
+      ..sort((a, b) => b.compareTo(a));
+    final gewaesser = widget.faenge
+        .where((f) => f.datum.year == _jahr && f.gewaesser.isNotEmpty)
+        .map((f) => f.gewaesser)
+        .toSet()
+        .toList()
+      ..sort();
+    final gewaehlt = gewaesser.contains(_gewaesser) ? _gewaesser : null;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Titel('📝 Fangstatistik fürs Revier', premium: true),
+            const SizedBox(height: 4),
+            const Text('Viele Vereine wollen am Saisonende wissen, was du '
+                'entnommen hast. Die App füllt das Formular aus deinem '
+                'Fangbuch aus.'),
+            const SizedBox(height: 8),
+            Wrap(
+              spacing: 6,
+              children: [
+                for (final j in jahre.take(4))
+                  ChoiceChip(
+                    label: Text('$j'),
+                    selected: j == _jahr,
+                    onSelected: (_) => setState(() => _jahr = j),
+                  ),
+              ],
+            ),
+            DropdownButton<String>(
+              isExpanded: true,
+              value: gewaehlt,
+              hint: Text(gewaesser.isEmpty
+                  ? 'Keine Fänge mit Gewässer in $_jahr'
+                  : 'Gewässer wählen'),
+              items: [
+                for (final g in gewaesser)
+                  DropdownMenuItem(value: g, child: Text(g)),
+              ],
+              onChanged: (g) => setState(() => _gewaesser = g),
+            ),
+            FilledButton.tonalIcon(
+              onPressed: gewaehlt == null
+                  ? null
+                  : () async {
+                      try {
+                        await revierStatistikPdf(
+                            widget.faenge, _jahr, gewaehlt, widget.name);
+                      } catch (e) {
+                        if (context.mounted) meldung(context, 'PDF-Fehler: $e');
+                      }
+                    },
+              icon: const Icon(Icons.picture_as_pdf),
+              label: const Text('PDF erstellen'),
             ),
           ],
         ),

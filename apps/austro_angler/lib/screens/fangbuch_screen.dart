@@ -668,6 +668,7 @@ class _FangFormularState extends State<FangFormular> {
           SwitchListTile(
             contentPadding: EdgeInsets.zero,
             title: const Text('Zurückgesetzt'),
+            subtitle: const Text('Catch & Release – Tipps unter Statistik'),
             value: _zurueck,
             onChanged: (v) => setState(() => _zurueck = v),
           ),
