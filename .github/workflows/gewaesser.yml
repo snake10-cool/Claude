@@ -1,0 +1,63 @@
+name: Gewässer holen
+
+# Lädt alle benannten Gewässer Österreichs aus OpenStreetMap (Geofabrik) und
+# legt sie als apps/austro_angler/assets/daten/gewaesser_at.json.gz ab.
+# Von Hand starten: Actions → Gewässer holen → Run workflow.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tools/gewaesser_holen.py'
+      - '.github/workflows/gewaesser.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gewaesser-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  holen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Werkzeuge
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq osmium-tool
+          pip install shapely numpy
+
+      - name: OSM-Daten laden und filtern
+        run: |
+          curl -sSL --retry 3 -o austria.osm.pbf https://download.geofabrik.de/europe/austria-latest.osm.pbf
+          ls -la austria.osm.pbf
+          osmium tags-filter austria.osm.pbf \
+            w/waterway=river,stream,canal \
+            wr/natural=water wr/landuse=reservoir \
+            r/boundary=administrative \
+            -o gefiltert.osm.pbf
+          osmium export gefiltert.osm.pbf -f geojsonseq -a type,id \
+            --geometry-types=linestring,polygon -o daten.geojsonseq
+          ls -la gefiltert.osm.pbf daten.geojsonseq
+
+      - name: Gewässer zuordnen
+        run: |
+          mkdir -p apps/austro_angler/assets/daten
+          python tools/gewaesser_holen.py daten.geojsonseq apps/austro_angler/assets/daten/gewaesser_at.json.gz
+          ls -la apps/austro_angler/assets/daten
+
+      - name: Ins Repo übernehmen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/austro_angler/assets/daten
+          git diff --cached --quiet && { echo "Keine Änderungen"; exit 0; }
+          git commit -m "Gewässer Österreich aus OpenStreetMap aktualisiert"
+          git pull --rebase
+          git push
