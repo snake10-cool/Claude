@@ -26,6 +26,23 @@ class Speicher extends ChangeNotifier {
   String bezirk = 'Braunau';
   String gemeinde = '';
 
+  /// Selbst gewählter Heimatort (kein GPS): "Land|Bezirk|Gemeinde".
+  String heimat = '';
+  double? heimatLat;
+  double? heimatLon;
+
+  /// Einfachere Texte und Erklärungen für Kinder und Anfänger.
+  bool jungangler = false;
+
+  /// Fische für den Schonzeit-Countdown.
+  List<String> lieblingsfische = const ['hecht', 'zander', 'bachforelle',
+    'karpfen'];
+
+  /// Erledigte Wochen-Challenges, z. B. "2026-40".
+  List<String> erledigteChallenges = const [];
+
+  String get heimatName => heimat.isEmpty ? '' : heimat.split('|').last;
+
   void _laden() {
     faenge.addAll(_liste('faenge').map(Fang.fromJson));
     faenge.sort((a, b) => b.datum.compareTo(a.datum));
@@ -36,6 +53,54 @@ class Speicher extends ChangeNotifier {
     bezirk = _prefs.getString('bezirk') ??
         (bundesland == Bundesland.ooe ? 'Braunau' : '');
     gemeinde = _prefs.getString('gemeinde') ?? '';
+    heimat = _prefs.getString('heimat') ?? '';
+    heimatLat = _prefs.getDouble('heimatLat');
+    heimatLon = _prefs.getDouble('heimatLon');
+    jungangler = _prefs.getBool('jungangler') ?? false;
+    lieblingsfische =
+        _prefs.getStringList('lieblingsfische') ?? lieblingsfische;
+    erledigteChallenges = _prefs.getStringList('challenges') ?? const [];
+  }
+
+  Future<void> heimatSetzen(String wert, double lat, double lon) async {
+    heimat = wert;
+    heimatLat = lat;
+    heimatLon = lon;
+    notifyListeners();
+    await _prefs.setString('heimat', wert);
+    await _prefs.setDouble('heimatLat', lat);
+    await _prefs.setDouble('heimatLon', lon);
+  }
+
+  Future<void> heimatLoeschen() async {
+    heimat = '';
+    heimatLat = null;
+    heimatLon = null;
+    notifyListeners();
+    await _prefs.remove('heimat');
+    await _prefs.remove('heimatLat');
+    await _prefs.remove('heimatLon');
+  }
+
+  Future<void> junganglerSetzen(bool an) async {
+    jungangler = an;
+    notifyListeners();
+    await _prefs.setBool('jungangler', an);
+  }
+
+  Future<void> lieblingsfischUmschalten(String id) async {
+    final neu = [...lieblingsfische];
+    neu.contains(id) ? neu.remove(id) : neu.add(id);
+    lieblingsfische = neu;
+    notifyListeners();
+    await _prefs.setStringList('lieblingsfische', neu);
+  }
+
+  Future<void> challengeErledigt(String schluessel) async {
+    if (erledigteChallenges.contains(schluessel)) return;
+    erledigteChallenges = [...erledigteChallenges, schluessel];
+    notifyListeners();
+    await _prefs.setStringList('challenges', erledigteChallenges);
   }
 
   List<Map<String, dynamic>> _liste(String key) {

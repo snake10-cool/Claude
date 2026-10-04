@@ -32,6 +32,15 @@ class AlleGewaesser extends ChangeNotifier {
 
   final Map<String, Gewaesser> _nachName = {};
 
+  /// Mittelpunkt je "Bundesland|Bezirk|Gemeinde".
+  final Map<String, LatLng> ortMitte = {};
+
+  /// Angelgeschäfte aus OpenStreetMap.
+  List<Angelgeschaeft> geschaefte = const [];
+
+  LatLng? mitteVon(Bundesland land, String bezirk, String gemeinde) =>
+      ortMitte['${land.name}|$bezirk|$gemeinde'];
+
   Future<void>? _laden;
 
   Future<void> laden() => _laden ??= _ladeJetzt();
@@ -70,6 +79,27 @@ class AlleGewaesser extends ChangeNotifier {
     final gem = [
       for (final g in roh['gemeinden'] as List)
         (name: g[0] as String, bezirk: g[1] as int),
+    ];
+    for (final g in roh['gemeinden'] as List) {
+      final b = bez[g[1] as int];
+      if (b.land == null || (g as List).length < 4) continue;
+      ortMitte['${b.land!.name}|${b.name}|${g[0]}'] =
+          LatLng((g[2] as num).toDouble(), (g[3] as num).toDouble());
+    }
+    geschaefte = [
+      for (final l in (roh['geschaefte'] as List?) ?? const [])
+        if (bez[l[4] as int].land case final land?)
+          Angelgeschaeft(
+            name: l[0] as String,
+            position: LatLng((l[1] as num).toDouble(), (l[2] as num).toDouble()),
+            land: land,
+            bezirk: bez[l[4] as int].name,
+            ort: (l[3] as int) >= 0 ? gem[l[3] as int].name : '',
+            website: l[5] as String,
+            telefon: l[6] as String,
+            oeffnungszeiten: l[7] as String,
+            adresse: l[8] as String,
+          ),
     ];
 
     // Geprüfte Gewässer ersetzen gleichnamige OSM-Einträge im selben Bezirk
@@ -203,3 +233,27 @@ String _schluessel(String s) => s
     .replaceAll('ß', 'ss');
 
 int deutschSortieren(String a, String b) => _deutsch(a, b);
+
+class Angelgeschaeft {
+  const Angelgeschaeft({
+    required this.name,
+    required this.position,
+    required this.land,
+    required this.bezirk,
+    required this.ort,
+    required this.website,
+    required this.telefon,
+    required this.oeffnungszeiten,
+    required this.adresse,
+  });
+
+  final String name;
+  final LatLng position;
+  final Bundesland land;
+  final String bezirk;
+  final String ort;
+  final String website;
+  final String telefon;
+  final String oeffnungszeiten;
+  final String adresse;
+}

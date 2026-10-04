@@ -4,6 +4,8 @@ import '../main.dart';
 import 'ausfluege_screen.dart';
 import 'bestimmung_screen.dart';
 import 'checkliste_screen.dart';
+import 'geschaefte_screen.dart';
+import 'heimat_screen.dart';
 import 'koeder_screen.dart';
 import 'lizenzen_screen.dart';
 import 'quiz_screen.dart';
@@ -64,6 +66,14 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.badge, 'Meine Lizenzen',
               'Ablaufdatum und Erinnerung', () => _oeffnen(context,
                   const LizenzenScreen())),
+          _Eintrag(Icons.home_outlined, 'Mein Heimatort',
+              SpeicherScope.of(context).heimat.isEmpty
+                  ? 'Selbst wählen – ohne GPS'
+                  : SpeicherScope.of(context).heimatName,
+              () => _oeffnen(context, const HeimatScreen())),
+          _Eintrag(Icons.storefront, 'Angelgeschäfte',
+              'Geschäfte mit Adresse und Öffnungszeiten', () => _oeffnen(context,
+                  const GeschaefteScreen())),
           _Eintrag(Icons.groups_2, 'Vereine & Verbände',
               'Vereine der Region, Gewässer, Termine', () => _oeffnen(context,
                   const VereineScreen())),

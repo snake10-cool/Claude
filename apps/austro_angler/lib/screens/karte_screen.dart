@@ -9,6 +9,7 @@ import '../models/gewaesser.dart';
 import '../data/fische.dart';
 import '../services/alle_gewaesser.dart';
 import '../services/fang_dienst.dart';
+import 'geschaefte_screen.dart';
 import 'gewaesser_screen.dart';
 import 'widgets.dart';
 
@@ -90,6 +91,24 @@ class KarteScreen extends StatelessWidget {
                 userAgentPackageName: 'com.snake10.austroangler',
               ),
               const _AlleGewaesserLayer(),
+              ListenableBuilder(
+                listenable: alleGewaesser,
+                builder: (context, _) => MarkerLayer(
+                  markers: [
+                    for (final l in alleGewaesser.geschaefte)
+                      Marker(
+                        point: l.position,
+                        width: 34,
+                        height: 34,
+                        child: _Pin(
+                          icon: Icons.storefront,
+                          farbe: Colors.deepPurple,
+                          onTap: () => geschaeftZeigen(context, l),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
               MarkerLayer(
                 markers: [
                   for (final g in gewaesserListe)
@@ -139,7 +158,7 @@ class KarteScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: Text(
                   'Grün: geprüfte Gewässer. Hineinzoomen zeigt alle anderen '
-                  '(grau). Lange drücken: eigenen Angelplatz speichern. Rote '
+                  '(grau). Lila: Angelgeschäfte. Lange drücken: eigenen Angelplatz speichern. Rote '
                   'Punkte: deine Fänge mit Fangort (nur du siehst sie).',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),

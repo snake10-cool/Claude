@@ -13,6 +13,7 @@ import '../services/speicher.dart';
 import '../services/beisszeit.dart';
 import '../services/sonne.dart';
 import '../services/wetter.dart';
+import 'heimat_screen.dart';
 import 'konto_screen.dart';
 import 'melden.dart';
 import 'widgets.dart';
@@ -30,12 +31,12 @@ const braunau = LatLng(48.258, 13.040);
 int kmVonBraunau(Gewaesser g) =>
     const Distance().as(LengthUnit.Kilometer, braunau, g.position).round();
 
-enum _Sortierung { groesse, name, entfernung }
+enum _Sortierung { groesse, name, entfernung, heimat }
 
 class _GewaesserScreenState extends State<GewaesserScreen> {
   String _suche = '';
   GewaesserTyp? _typ;
-  var _sortierung = _Sortierung.groesse;
+  _Sortierung? _sortierung;
 
   @override
   void initState() {
@@ -70,7 +71,15 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
           g.name.toLowerCase().contains(suche) ||
           g.ort.toLowerCase().contains(suche);
     }).toList();
-    int vergleich(Gewaesser a, Gewaesser b) => switch (_sortierung) {
+    final sortierung = _sortierungVon(speicher);
+    final heimat = speicher.heimatLat == null
+        ? null
+        : LatLng(speicher.heimatLat!, speicher.heimatLon!);
+    const distanz = Distance();
+    double km(Gewaesser g) =>
+        heimat == null ? 0 : distanz.as(LengthUnit.Meter, heimat, g.position);
+    int vergleich(Gewaesser a, Gewaesser b) => switch (sortierung) {
+          _Sortierung.heimat => km(a).compareTo(km(b)),
           _Sortierung.name => deutschSortieren(a.name, b.name),
           _Sortierung.entfernung => kmVonBraunau(a).compareTo(kmVonBraunau(b)),
           _Sortierung.groesse => _gewicht(b).compareTo(_gewicht(a)),
@@ -81,6 +90,10 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
         : (a.ausOsm ? 1 : -1));
     return liste;
   }
+
+  _Sortierung _sortierungVon(Speicher speicher) =>
+      _sortierung ??
+      (speicher.heimat.isNotEmpty ? _Sortierung.heimat : _Sortierung.groesse);
 
   /// Seen zählen pro Hektar mehr als Bäche pro Kilometer.
   static double _gewicht(Gewaesser g) {
@@ -201,13 +214,25 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
           ),
           PopupMenuButton<_Sortierung>(
             tooltip: 'Sortieren',
-            initialValue: _sortierung,
-            onSelected: (s) => setState(() => _sortierung = s),
-            itemBuilder: (_) => const [
+            initialValue: _sortierungVon(speicher),
+            onSelected: (s) async {
+              if (s == _Sortierung.heimat && speicher.heimat.isEmpty) {
+                await Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => const HeimatScreen()));
+              }
+              setState(() => _sortierung = s);
+            },
+            itemBuilder: (_) => [
               PopupMenuItem(
+                  value: _Sortierung.heimat,
+                  child: Text(speicher.heimat.isEmpty
+                      ? 'Nähe zu meinem Ort …'
+                      : 'Nähe zu ${speicher.heimatName}')),
+              const PopupMenuItem(
                   value: _Sortierung.groesse, child: Text('Größte zuerst')),
-              PopupMenuItem(value: _Sortierung.name, child: Text('Name A–Z')),
-              PopupMenuItem(
+              const PopupMenuItem(
+                  value: _Sortierung.name, child: Text('Name A–Z')),
+              const PopupMenuItem(
                   value: _Sortierung.entfernung,
                   child: Text('Nähe zu Braunau')),
             ],
@@ -296,7 +321,10 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 12),
             sliver: SliverList.builder(
               itemCount: liste.length,
-              itemBuilder: (_, i) => _GewaesserKachel(liste[i]),
+              itemBuilder: (_, i) => _GewaesserKachel(liste[i],
+                  heimat: speicher.heimatLat == null
+                      ? null
+                      : LatLng(speicher.heimatLat!, speicher.heimatLon!)),
             ),
           ),
           SliverPadding(
@@ -310,9 +338,10 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
 }
 
 class _GewaesserKachel extends StatelessWidget {
-  const _GewaesserKachel(this.g);
+  const _GewaesserKachel(this.g, {this.heimat});
 
   final Gewaesser g;
+  final LatLng? heimat;
 
   @override
   Widget build(BuildContext context) {
@@ -344,7 +373,8 @@ class _GewaesserKachel extends StatelessWidget {
         ),
         title: Text(g.ausOsm ? g.name : '✅ ${g.name}'),
         subtitle: Text(
-          '${g.typ.name}$groesse · ${g.ort}',
+          '${g.typ.name}$groesse · ${g.ort}'
+          '${heimat == null ? '' : ' · ${const Distance().as(LengthUnit.Kilometer, heimat!, g.position).round()} km'}',
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
