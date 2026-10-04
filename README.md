@@ -50,6 +50,15 @@ Beim ersten Start am PC zeigt Windows eventuell "Der Computer wurde durch Window
 
 Daten bearbeiten: `apps/austro_angler/lib/data/`. Wo nichts gefunden wurde, steht in der App "unbekannt – bitte prüfen".
 
+## 🆕 Runde 3 & 4
+
+Heimatort ohne GPS · Angelgeschäfte (OSM) auf Karte und Liste · Fisch-Bestimmungshilfe ·
+Offline-Karte (angesehene Kacheln) · „Dein Angeljahr" zum Teilen · Catch & Release mit Tipps ·
+Startbildschirm-Widget (Android) · Unwetter-Warnung für Angeltage · Wochen-Challenges ·
+Länge per Foto messen · Jungangler-Modus mit Wörterbuch · Fangstatistik-PDF fürs Revier ·
+Fahrgemeinschaften · Ausrüstungs-Tagebuch · Wassertemperatur (Schätzung + Messungen) ·
+Vereins-Rangliste · Fang-Geschichten · Schonzeit-Countdown.
+
 ## 🔥 Firebase
 
 Projekt: **austro-angler-202495bd** (Konto u3206495666@gmail.com), Konsole: https://console.firebase.google.com/project/austro-angler-202495bd

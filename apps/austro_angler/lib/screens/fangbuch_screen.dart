@@ -13,6 +13,7 @@ import '../services/fang_dienst.dart';
 import '../services/wetter.dart';
 import '../services/wochen_challenges.dart';
 import 'gewaesser_screen.dart';
+import 'messen_screen.dart';
 import 'koeder_screen.dart';
 import 'ort_waehlen.dart';
 import 'statistik_screen.dart';
@@ -655,7 +656,21 @@ class _FangFormularState extends State<FangFormular> {
                 child: TextField(
                   controller: _laenge,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(labelText: 'Länge (cm)'),
+                  decoration: InputDecoration(
+                    labelText: 'Länge (cm)',
+                    suffixIcon: IconButton(
+                      tooltip: 'Per Foto messen',
+                      icon: const Icon(Icons.straighten),
+                      onPressed: () async {
+                        final cm = await Navigator.of(context).push<double>(
+                            MaterialPageRoute(
+                                builder: (_) => const MessenScreen()));
+                        if (cm != null) {
+                          setState(() => _laenge.text = cm.toStringAsFixed(0));
+                        }
+                      },
+                    ),
+                  ),
                   onChanged: (_) => setState(() {}),
                 ),
               ),

@@ -231,6 +231,19 @@ service cloud.firestore {
       allow write: if istAdmin();
     }
 
+    // Selbst gemessene Wassertemperaturen.
+    match /wassertemp/{gewaesserId}/messungen/{id} {
+      allow read: if angemeldet();
+      allow create: if angemeldet()
+          && request.resource.data.keys().hasOnly(['uid', 'nutzerName',
+               'grad', 'zeit'])
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.grad is number
+          && request.resource.data.grad >= -1
+          && request.resource.data.grad <= 35;
+      allow delete: if ich(resource.data.uid) || istAdmin();
+    }
+
     // Infos von Anglern zu Gewässern: erst prüft der Administrator.
     match /gewaesser_infos/{id} {
       allow create: if angemeldet()

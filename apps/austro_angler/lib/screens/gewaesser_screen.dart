@@ -444,6 +444,7 @@ class GewaesserDetail extends StatelessWidget {
           WetterKarte(g),
           BeisszeitKarte(g),
           DaemmerungKarte(g),
+          WassertempKarte(g),
           if (KontoScope.of(context) != null) WasBeisstKarte(g),
           if (g.typ.fliesst) AbflussKarte(g),
           const SizedBox(height: 16),
@@ -1556,6 +1557,134 @@ class SchonzeitCountdown extends StatelessWidget {
                   ),
                 ),
               ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+/// Geschätzte und gemessene Wassertemperatur.
+class WassertempKarte extends StatefulWidget {
+  const WassertempKarte(this.g, {super.key});
+
+  final Gewaesser g;
+
+  @override
+  State<WassertempKarte> createState() => _WassertempKarteState();
+}
+
+class _WassertempKarteState extends State<WassertempKarte> {
+  late final _schaetzung = wassertemperaturSchaetzung(
+    widget.g.position,
+    fliesst: widget.g.typ.fliesst,
+    klein: widget.g.typ == GewaesserTyp.bach ||
+        (widget.g.typ.fliesst && (widget.g.groesse ?? 99) < 15),
+    see: widget.g.typ == GewaesserTyp.see,
+  ).catchError((_) => null);
+  Stream<List<Messung>>? _messungen;
+
+  Future<void> _melden() async {
+    final konto = KontoScope.of(context);
+    if (konto?.uid == null) return;
+    final eingabe = TextEditingController();
+    final grad = await showDialog<double>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Wassertemperatur gemessen'),
+        content: TextField(
+          controller: eingabe,
+          autofocus: true,
+          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+          decoration: const InputDecoration(suffixText: '°C'),
+        ),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Abbrechen')),
+          FilledButton(
+            onPressed: () => Navigator.pop(context,
+                double.tryParse(eingabe.text.replaceAll(',', '.'))),
+            child: const Text('Speichern'),
+          ),
+        ],
+      ),
+    );
+    if (grad == null || grad < -1 || grad > 35) return;
+    try {
+      await fangDienst.wassertemperaturMelden(
+          widget.g.id, konto!.uid!, konto.name ?? '', grad);
+    } catch (_) {
+      if (mounted) meldung(context, 'Speichern fehlgeschlagen.');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final konto = KontoScope.of(context);
+    if (konto?.angemeldet ?? false) {
+      _messungen ??= fangDienst.wassertemperaturen(widget.g.id);
+    }
+    final text = Theme.of(context).textTheme;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Titel('🌡️ Wassertemperatur'),
+            const SizedBox(height: 6),
+            StreamBuilder<List<Messung>>(
+              stream: _messungen,
+              builder: (context, snap) {
+                final messungen = (snap.data ?? const <Messung>[])
+                    .where((m) =>
+                        DateTime.now().difference(m.zeit).inDays < 3)
+                    .toList();
+                return FutureBuilder<double?>(
+                  future: _schaetzung,
+                  builder: (context, s) {
+                    final gemessen =
+                        messungen.isEmpty ? null : messungen.first.grad;
+                    final wert = gemessen ?? s.data;
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (gemessen != null)
+                          Text(
+                              '${gemessen.toStringAsFixed(1).replaceAll('.', ',')} °C '
+                              'gemessen von ${at(messungen.first.nutzerName)} '
+                              '(${datumText(messungen.first.zeit)})',
+                              style: text.titleMedium),
+                        if (s.data != null)
+                          Text(
+                              'Geschätzt aus dem Wetter: ca. '
+                              '${s.data!.round()} °C',
+                              style: gemessen == null
+                                  ? text.titleMedium
+                                  : text.bodySmall),
+                        if (s.connectionState == ConnectionState.waiting &&
+                            gemessen == null)
+                          const LinearProgressIndicator(),
+                        if (wert != null) ...[
+                          const SizedBox(height: 4),
+                          Text(wassertemperaturTipp(wert)),
+                        ],
+                      ],
+                    );
+                  },
+                );
+              },
+            ),
+            if (konto?.angemeldet ?? false)
+              TextButton.icon(
+                onPressed: _melden,
+                icon: const Icon(Icons.thermostat, size: 18),
+                label: const Text('Selbst gemessen? Eintragen'),
+              ),
+            Text('Die Schätzung ist nur ein grober Richtwert.',
+                style: text.bodySmall),
           ],
         ),
       ),

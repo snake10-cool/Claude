@@ -117,6 +117,21 @@ class Ausruestung {
   final String notiz;
 }
 
+class Messung {
+  Messung(DocumentSnapshot<Map<String, dynamic>> doc)
+      : id = doc.id,
+        uid = doc.data()?['uid'] as String? ?? '',
+        nutzerName = doc.data()?['nutzerName'] as String? ?? '',
+        grad = (doc.data()?['grad'] as num?)?.toDouble() ?? 0,
+        zeit = (doc.data()?['zeit'] as Timestamp?)?.toDate() ?? DateTime.now();
+
+  final String id;
+  final String uid;
+  final String nutzerName;
+  final double grad;
+  final DateTime zeit;
+}
+
 class CommunityPreis {
   CommunityPreis(this.roh)
       : art = roh['art'] as String? ?? '',
@@ -787,6 +802,30 @@ class FangDienst {
     }
     return zaehler;
   }
+
+  // ── Wassertemperatur (von Anglern gemessen) ──
+
+  CollectionReference<Map<String, dynamic>> _messungen(String gewaesserId) =>
+      _db.collection('wassertemp/$gewaesserId/messungen');
+
+  Stream<List<Messung>> wassertemperaturen(String gewaesserId) =>
+      _messungen(gewaesserId)
+          .orderBy('zeit', descending: true)
+          .limit(5)
+          .snapshots()
+          .map((s) => s.docs.map(Messung.new).toList());
+
+  Future<void> wassertemperaturMelden(
+          String gewaesserId, String uid, String name, double grad) =>
+      _offline(_messungen(gewaesserId).add({
+        'uid': uid,
+        'nutzerName': name,
+        'grad': grad,
+        'zeit': FieldValue.serverTimestamp(),
+      }));
+
+  Future<void> messungLoeschen(String gewaesserId, String id) =>
+      _messungen(gewaesserId).doc(id).delete();
 
   // ── Gewässer: Bewertungen und aktuelle Fänge ──
 

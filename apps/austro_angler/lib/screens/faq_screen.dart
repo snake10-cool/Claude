@@ -21,6 +21,14 @@ const _themen = <String, List<_Faq>>{
             'und Ort kannst du filtern. Rund um Braunau gibt es zusätzlich '
             'geprüfte Gewässer (✅) mit Lizenzinfos und Preisen. Bei allen '
             'anderen fehlen Lizenz und Preis noch: Hilf mit und ergänze sie!'),
+    _Faq('Fragt die App nach meinem Standort?',
+        'Nein, nie. Deinen Heimatort wählst du selbst (Mehr → Einstellungen). '
+            'Danach kannst du Gewässer und Angelgeschäfte nach Entfernung '
+            'sortieren, und das Widget zeigt Wetter und Beißzeit dort.'),
+    _Faq('Funktioniert die Karte ohne Netz?',
+        'Ja, für alles, was du dir vorher angesehen hast: Jeder '
+            'Kartenausschnitt wird auf dem Handy gespeichert. Tipp: Vor dem '
+            'Losfahren die Gegend auf der Karte einmal anschauen.'),
     _Faq('Warum fehlt bei einem Gewässer der Preis?',
         'Für so viele Gewässer gibt es keine öffentliche Preisliste. Die '
             'Lizenz vergibt meist ein Verein, die Gemeinde oder ein '
