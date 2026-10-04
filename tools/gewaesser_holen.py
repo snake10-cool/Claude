@@ -163,6 +163,21 @@ def main(eingabe, ausgabe):
     for name, geom in admin[9]:
         if land_von(geom) == wien:
             gemeinde_dazu(name, geom)
+    # Statutarstädte (Linz, Graz …) haben keine Gemeinden auf Ebene 8:
+    # die Stadt selbst ist dann der Ort. Gleichnamige Bezirke (St. Pölten,
+    # Wiener Neustadt) bekommen den Zusatz "(Stadt)".
+    namen = defaultdict(int)
+    for b in bezirke:
+        namen[b[0]] += 1
+    mit_gemeinden = {g[1] for g in gemeinden}
+    for i, b in enumerate(bezirke):
+        if i in mit_gemeinden:
+            continue
+        if namen[b[0]] > 1:
+            b[0] = f'{b[0]} (Stadt)'
+        gem_index[(b[0], i)] = len(gemeinden)
+        gemeinden.append([b[0], i])
+        gemeinde_geoms.append(bezirk_geoms[i])
     gemeinde_baum = STRtree(gemeinde_geoms)
     print(f'Bezirke: {len(bezirke)}, Gemeinden: {len(gemeinden)}')
 
