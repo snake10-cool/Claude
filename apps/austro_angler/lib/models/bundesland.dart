@@ -1,7 +1,14 @@
-/// Schwerpunkt: Bezirk Braunau und Umgebung (Innviertel und Flachgau).
+/// Alle neun Bundesländer. Schwerpunkt bleibt Braunau (OÖ) und Salzburg.
 enum Bundesland {
+  wien('Wien', 'W'),
+  noe('Niederösterreich', 'NÖ'),
+  bgld('Burgenland', 'Bgld'),
   ooe('Oberösterreich', 'OÖ'),
-  sbg('Salzburg', 'Sbg');
+  sbg('Salzburg', 'Sbg'),
+  stmk('Steiermark', 'Stmk'),
+  ktn('Kärnten', 'Ktn'),
+  tirol('Tirol', 'T'),
+  vbg('Vorarlberg', 'Vbg');
 
   const Bundesland(this.name, this.kurz);
 

@@ -6,6 +6,7 @@ import 'package:austro_angler/models/bundesland.dart';
 import 'package:austro_angler/models/fang.dart';
 import 'package:austro_angler/models/fisch.dart';
 import 'package:austro_angler/screens/kalender_screen.dart';
+import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/konto.dart';
 import 'package:austro_angler/services/speicher.dart';
 import 'package:austro_angler/services/wetter.dart';
@@ -48,7 +49,9 @@ void main() {
     final ids = fische.map((f) => f.id).toSet();
     expect(ids.length, fische.length, reason: 'Fisch-IDs doppelt');
     for (final f in fische) {
-      expect(f.regeln.keys.toSet(), Bundesland.values.toSet(), reason: f.name);
+      // OÖ und Salzburg sind Pflicht, fehlende Länder gelten als "unbekannt".
+      expect(f.regeln.keys,
+          containsAll([Bundesland.ooe, Bundesland.sbg]), reason: f.name);
     }
     final gIds = gewaesserListe.map((g) => g.id).toSet();
     expect(gIds.length, gewaesserListe.length, reason: 'Gewässer-IDs doppelt');
@@ -57,9 +60,10 @@ void main() {
         expect(ids, contains(id), reason: '${g.name}: $id');
       }
     }
+    for (final g in gewaesserListe) {
+      expect(zuordnung, contains(g.id), reason: 'Bezirk fehlt: ${g.name}');
+    }
     for (final land in Bundesland.values) {
-      expect(gewaesserListe.where((g) => g.land == land), isNotEmpty,
-          reason: 'Keine Gewässer in ${land.name}');
       expect(fischerkarten.where((k) => k.land == land), hasLength(1),
           reason: 'Fischerkarte ${land.name}');
     }
@@ -101,9 +105,16 @@ void main() {
       (tester) async {
     SharedPreferences.setMockInitialValues({});
     final speicher = await Speicher.oeffnen();
+    await tester.runAsync(alleGewaesser.laden);
     await tester.pumpWidget(AustroAnglerApp(speicher: speicher));
     expect(find.text('Wo darf ich fischen?'), findsOneWidget);
-    expect(find.text('Inn bei Braunau'), findsOneWidget);
+    expect(alleGewaesser.geladen, isTrue);
+    expect(find.textContaining(RegExp(r'^\d+ Gewässer$')), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('✅ Inn bei Braunau'), 200,
+        scrollable: find.byType(Scrollable).first);
+    expect(find.text('✅ Inn bei Braunau'), findsOneWidget);
+    await tester.drag(find.byType(Scrollable).first, const Offset(0, 5000));
+    await tester.pumpAndSettle();
 
     await tester.enterText(
         find.byWidgetPredicate((w) =>
@@ -111,7 +122,9 @@ void main() {
             (w.decoration?.hintText?.startsWith('Gewässer') ?? false)),
         'Enknach');
     await tester.pumpAndSettle();
-    expect(find.text('Enknach (Bach)'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('✅ Enknach (Bach)'), 200,
+        scrollable: find.byType(Scrollable).first);
+    expect(find.text('✅ Enknach (Bach)'), findsOneWidget);
 
     for (final tab in ['Fangbuch', 'Feed', 'Wünsche', 'Mehr']) {
       await tester.tap(find.text(tab).last);

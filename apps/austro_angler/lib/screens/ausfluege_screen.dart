@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../data/gewaesser.dart';
 import '../main.dart';
 import '../models/fang.dart';
 import '../services/fang_dienst.dart';
@@ -39,7 +38,7 @@ class _AusfluegeScreenState extends State<AusfluegeScreen> {
 
   Future<void> _bearbeiten(String uid, [Ausflug? alt]) async {
     final jetzt = DateTime.now();
-    var gewaesser = alt?.gewaesser ?? gewaesserListe.first.name;
+    var gewaesser = alt?.gewaesser ?? '';
     var start = alt?.start ?? DateTime(jetzt.year, jetzt.month, jetzt.day, 6);
     var ende = alt?.ende ?? DateTime(jetzt.year, jetzt.month, jetzt.day, 10);
     final notiz = TextEditingController(text: alt?.notiz ?? '');
@@ -52,17 +51,9 @@ class _AusfluegeScreenState extends State<AusfluegeScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                DropdownButtonFormField<String>(
-                  initialValue: gewaesserListe.any((g) => g.name == gewaesser)
-                      ? gewaesser
-                      : null,
-                  isExpanded: true,
-                  decoration: const InputDecoration(labelText: 'Gewässer'),
-                  items: [
-                    for (final g in gewaesserListe)
-                      DropdownMenuItem(value: g.name, child: Text(g.name)),
-                  ],
-                  onChanged: (v) => setState(() => gewaesser = v!),
+                GewaesserFeld(
+                  anfang: gewaesser,
+                  geaendert: (name, _) => gewaesser = name,
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,

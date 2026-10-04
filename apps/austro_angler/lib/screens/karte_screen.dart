@@ -7,6 +7,7 @@ import '../main.dart';
 import '../models/fang.dart';
 import '../models/gewaesser.dart';
 import '../data/fische.dart';
+import '../services/alle_gewaesser.dart';
 import '../services/fang_dienst.dart';
 import 'gewaesser_screen.dart';
 import 'widgets.dart';
@@ -88,6 +89,7 @@ class KarteScreen extends StatelessWidget {
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 userAgentPackageName: 'com.snake10.austroangler',
               ),
+              const _AlleGewaesserLayer(),
               MarkerLayer(
                 markers: [
                   for (final g in gewaesserListe)
@@ -136,13 +138,52 @@ class KarteScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  'Lange drücken: eigenen Angelplatz speichern. Rote Punkte: '
-                  'deine Fänge mit Fangort (nur du siehst sie).',
+                  'Grün: geprüfte Gewässer. Hineinzoomen zeigt alle anderen '
+                  '(grau). Lange drücken: eigenen Angelplatz speichern. Rote '
+                  'Punkte: deine Fänge mit Fangort (nur du siehst sie).',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Gewässer aus OpenStreetMap: erst beim Hineinzoomen, damit die Karte
+/// flüssig bleibt.
+class _AlleGewaesserLayer extends StatelessWidget {
+  const _AlleGewaesserLayer();
+
+  @override
+  Widget build(BuildContext context) {
+    final kamera = MapCamera.of(context);
+    if (kamera.zoom < 11) return const SizedBox.shrink();
+    final grenzen = kamera.visibleBounds;
+    return ListenableBuilder(
+      listenable: alleGewaesser,
+      builder: (context, _) => MarkerLayer(
+        markers: [
+          for (final g in alleGewaesser.liste
+              .where((g) => g.ausOsm && grenzen.contains(g.position))
+              .take(300))
+            Marker(
+              point: g.position,
+              width: 30,
+              height: 30,
+              child: Tooltip(
+                message: g.name,
+                child: _Pin(
+                  icon: g.typ.fliesst ? Icons.waves : Icons.water,
+                  farbe: Colors.blueGrey,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => GewaesserDetail(g)),
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );

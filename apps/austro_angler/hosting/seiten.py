@@ -23,8 +23,8 @@ def seite(datei, titel, inhalt):
 
 seite('index', 'Start', f'''
 <h1>Austro Angler</h1>
-<p>Die Angel-App für den Bezirk Braunau und Umgebung (Oberösterreich und
-Salzburg): Gewässer mit Lizenzinfos und Preisen, Fangbuch, Karte,
+<p>Die Angel-App für ganz Österreich mit Schwerpunkt Bezirk Braunau:
+über 22.000 Gewässer mit Lizenzinfos und Preisen, Fangbuch, Karte,
 Fischlexikon mit Schonzeiten und Brittelmaßen, Fischerprüfung üben und eine
 Community für Petri Heil unter Anglern.</p>
 <p>Ohne Werbung. Keine Standortverfolgung – Orte gibst du immer selbst an.</p>
@@ -124,7 +124,7 @@ seite('nutzungsbedingungen', 'Nutzungsbedingungen', f'''
 
 <h2>1. Worum es geht</h2>
 <p>Austro Angler ist eine Info- und Community-App für Angler in
-Oberösterreich und Salzburg. Mit dem Erstellen eines Kontos stimmst du
+Österreich. Mit dem Erstellen eines Kontos stimmst du
 diesen Bedingungen zu.</p>
 
 <h2>2. Ohne Gewähr</h2>
@@ -228,13 +228,13 @@ seite('impressum', 'Impressum', f'''
 E-Mail: <a href="mailto:{KONTAKT}">{KONTAKT}</a>
 </div>
 <p><b>Grundlegende Richtung:</b> Informationen rund ums Angeln in
-Oberösterreich und Salzburg sowie eine Community für Angler.</p>
+Österreich sowie eine Community für Angler.</p>
 <p><b>Haftung für Inhalte:</b> Alle Angaben ohne Gewähr. Für Inhalte
 von Nutzern sind diese selbst verantwortlich. Für Inhalte verlinkter
 Seiten sind deren Betreiber verantwortlich.</p>
 <p><b>Bildnachweise:</b> Fisch- und Knotenbilder von Wikimedia Commons
 (Urheber und Lizenz stehen in der App beim jeweiligen Bild).
-Kartendaten © OpenStreetMap-Mitwirkende. Wetterdaten: Open-Meteo.com
+Karten- und Gewässerdaten © OpenStreetMap-Mitwirkende (ODbL). Wetterdaten: Open-Meteo.com
 (CC BY 4.0).</p>
 ''')
 print('fertig')

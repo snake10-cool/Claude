@@ -165,7 +165,7 @@ class FischDetail extends StatelessWidget {
           if (gewaesserMit(fisch).isEmpty)
             const Padding(
               padding: EdgeInsets.only(bottom: 16),
-              child: Text('In keinem eingetragenen Gewässer.'),
+              child: Text('In keinem geprüften Gewässer eingetragen.'),
             )
           else ...[
             for (final g in gewaesserMit(fisch))

@@ -10,14 +10,22 @@ class _Faq {
 const _themen = <String, List<_Faq>>{
   '🎣 Allgemein': [
     _Faq('Was ist Austro Angler?',
-        'Eine Angel-App für den Bezirk Braunau und die Umgebung (Innviertel '
-            'und Salzburger Flachgau). Sie zeigt dir, wo du fischen darfst, was '
-            'die Karten kosten, welche Schonzeiten und Brittelmaße gelten, und '
-            'du kannst deine Fänge eintragen und mit Freunden teilen.'),
-    _Faq('Warum nur Braunau und Umgebung?',
-        'Lieber eine Region richtig gut als ganz Österreich halb. Hier '
-            'kennen wir die Bäche, Teiche und Seen genau. Fehlt dir ein '
-            'Gewässer? Schlag es unter "Gewässer" vor!'),
+        'Eine Angel-App für ganz Österreich mit Schwerpunkt Bezirk Braunau und '
+            'Umgebung (Innviertel und Salzburger Flachgau). Sie zeigt dir, wo '
+            'du fischen darfst, was die Karten kosten, welche Schonzeiten und '
+            'Brittelmaße gelten, und du kannst deine Fänge eintragen und mit '
+            'Freunden teilen.'),
+    _Faq('Sind wirklich alle Gewässer drin?',
+        'Alle Bäche, Flüsse, Kanäle, Seen und Teiche, die in OpenStreetMap '
+            'einen Namen haben – über 22.000 in ganz Österreich. Mit Bezirk '
+            'und Ort kannst du filtern. Rund um Braunau gibt es zusätzlich '
+            'geprüfte Gewässer (✅) mit Lizenzinfos und Preisen. Bei allen '
+            'anderen fehlen Lizenz und Preis noch: Hilf mit und ergänze sie!'),
+    _Faq('Warum fehlt bei einem Gewässer der Preis?',
+        'Für so viele Gewässer gibt es keine öffentliche Preisliste. Die '
+            'Lizenz vergibt meist ein Verein, die Gemeinde oder ein '
+            'Grundbesitzer. Wenn du den Preis kennst, tipp beim Gewässer auf '
+            '"Preis ergänzen" – nach der Prüfung sehen ihn alle.'),
     _Faq('Stimmen alle Angaben?',
         'Wir recherchieren sorgfältig, aber alle Angaben sind ohne Gewähr. Es '
             'gelten immer die Landesgesetze und die Lizenzbedingungen des '

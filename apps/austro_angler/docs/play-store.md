@@ -48,21 +48,21 @@ danach veröffentlicht Claude sie neu auf Firebase Hosting.
 
 ## Store-Eintrag
 
-**App-Name** (max. 30): `Austro Angler – Angeln Braunau`
+**App-Name** (max. 30): `Austro Angler – Angeln in AT`
 
 **Kurzbeschreibung** (max. 80):
-`Gewässer, Fangbuch & Schonzeiten für Angler im Bezirk Braunau, OÖ und Salzburg`
+`22.000 Gewässer, Fangbuch & Schonzeiten für Angler in ganz Österreich`
 
 **Kategorie:** Sport · **Tags:** Angeln, Fischen, Outdoor
 
 **Ausführliche Beschreibung** (max. 4000):
 
 ```
-Austro Angler ist die Angel-App für den Bezirk Braunau und Umgebung – für Oberösterreich und Salzburg. Ohne Werbung, ohne Standortverfolgung.
+Austro Angler ist die Angel-App für ganz Österreich – mit Schwerpunkt Bezirk Braunau, Innviertel und Salzburger Flachgau. Ohne Werbung, ohne Standortverfolgung.
 
 🎣 GEWÄSSER
-• Über 20 Flüsse, Bäche, Seen und Teiche rund um Braunau, Mattighofen und das Salzburger Seenland
-• Wo du fischen darfst, wer die Lizenz ausgibt und was sie kostet
+• Über 22.000 Flüsse, Bäche, Seen und Teiche in ganz Österreich – filtern nach Bundesland, Bezirk und Ort
+• Geprüfte Gewässer rund um Braunau mit Lizenz, Kartenverkauf und Preisen
 • Wetter, Beißzeit-Prognose, Sonnenauf- und -untergang und Abfluss
 • Bewertungen und Preise aus der Community (vom Admin geprüft)
 

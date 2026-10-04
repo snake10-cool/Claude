@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../data/fische.dart';
-import '../data/gewaesser.dart';
+import '../services/alle_gewaesser.dart';
 import '../main.dart';
 import '../models/bundesland.dart';
 import '../models/fang.dart';
@@ -338,10 +338,7 @@ class _FangFormularState extends State<FangFormular> {
   /// Ort für das Wetter: eigener Fangort, sonst das Gewässer, sonst Braunau.
   LatLng get _wetterOrt {
     if (_ort != null) return _ort!;
-    for (final g in gewaesserListe) {
-      if (g.name == _gewaesser.text.trim()) return g.position;
-    }
-    return braunau;
+    return alleGewaesser.zuName(_gewaesser.text)?.position ?? braunau;
   }
 
   bool get _online => KontoScope.of(context)?.angemeldet ?? false;
@@ -551,22 +548,12 @@ class _FangFormularState extends State<FangFormular> {
             ],
           ),
           const SizedBox(height: 12),
-          Autocomplete<String>(
-            initialValue: TextEditingValue(text: _gewaesser.text),
-            optionsBuilder: (v) => gewaesserListe
-                .map((g) => g.name)
-                .where((n) => n.toLowerCase().contains(v.text.toLowerCase())),
-            onSelected: (v) {
-              _gewaesser.text = v;
-              final g = gewaesserListe.firstWhere((g) => g.name == v);
-              setState(() => _land = g.land);
+          GewaesserFeld(
+            anfang: _gewaesser.text,
+            geaendert: (name, g) {
+              _gewaesser.text = name;
+              if (g != null && g.land != _land) setState(() => _land = g.land);
             },
-            fieldViewBuilder: (context, controller, focus, _) => TextField(
-              controller: controller,
-              focusNode: focus,
-              decoration: const InputDecoration(labelText: 'Gewässer'),
-              onChanged: (v) => _gewaesser.text = v,
-            ),
           ),
           const SizedBox(height: 12),
           DropdownButtonFormField<Bundesland>(

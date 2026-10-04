@@ -4,7 +4,7 @@ Android-Apps, gebaut mit Flutter, für Google Play.
 
 | App | Ordner | Inhalt |
 |---|---|---|
-| 🎣 **Austro Angler** | `apps/austro_angler` | Angel-App für Bezirk Braunau und Umgebung (Innviertel und Flachgau) mit Community |
+| 🎣 **Austro Angler** | `apps/austro_angler` | Angel-App für ganz Österreich (über 22.000 Gewässer, Filter nach Bezirk und Ort), Schwerpunkt Braunau, mit Community |
 | 🦊 **Lernfuchs** (Arbeitsname, pausiert) | `apps/lernapp` | Lern-App für Volksschule 1–4 und Mittelschule 1–4 |
 
 ## Testversion holen

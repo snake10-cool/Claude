@@ -421,6 +421,21 @@ const _immer = 'Immer zwei Dinge: eine amtliche Fischerkarte (oder '
     'Gastkarte) UND eine Erlaubnis (Lizenz/Tageskarte) für das Gewässer.';
 
 const fischerkarten = <Fischerkarte>[
+  Fischerkarte(Bundesland.wien, [
+    _immer,
+    'Mit Prüfung: Wiener Fischerkarte.',
+    'Ohne Prüfung: Gastkarte ca. € 4,72, gültig 3 Wochen, ab 14 Jahren.',
+  ]),
+  Fischerkarte(Bundesland.noe, [
+    _immer,
+    'Mit Prüfung: NÖ Fischerkarte.',
+    'Ohne Prüfung: Fischergastkarte ca. € 16, gültig 30 Tage, ab 10 Jahren.',
+  ]),
+  Fischerkarte(Bundesland.bgld, [
+    _immer,
+    'Mit Prüfung: Burgenländische Fischerkarte.',
+    'Ohne Prüfung: Als Gast bis zu 14 Tage mit Gastfischerkarte.',
+  ]),
   Fischerkarte(Bundesland.ooe, [
     _immer,
     'Jahresfischerkarte: ab 12 Jahren, Fischerkurs (mind. 10 Stunden, auch '
@@ -435,4 +450,72 @@ const fischerkarten = <Fischerkarte>[
     'Ohne Prüfung: Gastfischerkarte – € 10 (1 Tag), € 25 (7 Tage), '
         '€ 34 (14 Tage).',
   ]),
+  Fischerkarte(Bundesland.stmk, [
+    _immer,
+    'Mit Prüfung: Steirische Fischerkarte.',
+    'Ohne Prüfung: Fischergastkarte, gültig 4 Wochen in einem Bezirk – '
+        'Preis bitte beim Verband prüfen.',
+  ]),
+  Fischerkarte(Bundesland.ktn, [
+    _immer,
+    'Mit Prüfung: Kärntner Fischerkarte.',
+    'Ohne Prüfung: Fischergastkarte für ganz Kärnten, 1 Woche oder 4 Wochen.',
+  ]),
+  Fischerkarte(Bundesland.tirol, [
+    _immer,
+    'Mit Prüfung: Tiroler Fischerkarte.',
+    'Ohne Prüfung: Fischergastkarte – Details beim Tiroler Fischereiverband.',
+  ]),
+  Fischerkarte(Bundesland.vbg, [
+    _immer,
+    'Mit Prüfung: Vorarlberger Fischerkarte.',
+    'Ohne Prüfung: Gast-Erlaubnis für höchstens 2 Wochen.',
+  ]),
 ];
+
+/// Landesfischereiverbände: erste Anlaufstelle für Lizenzen an Gewässern,
+/// zu denen die App noch keine genauen Infos hat.
+const landesverbaende = <Bundesland, (String, String)>{
+  Bundesland.wien: ('Wiener Fischereiausschuss', 'https://www.fischereiausschuss.at/'),
+  Bundesland.noe: ('NÖ Landesfischereiverband', 'https://www.noe-lfv.at/'),
+  Bundesland.bgld: ('Burgenländischer Fischereiverband', 'https://www.fischereiverband-burgenland.at/'),
+  Bundesland.ooe: ('Oö. Landesfischereiverband', 'https://www.lfvooe.at/'),
+  Bundesland.sbg: ('Salzburger Fischereiverband', 'https://www.fischereiverband.at/'),
+  Bundesland.stmk: ('Steirischer Fischereiverband', 'https://www.fischereiverband.at/stmk/'),
+  Bundesland.ktn: ('Kärntner Landesfischereiverband', 'https://www.kaerntner-fischerei.at/'),
+  Bundesland.tirol: ('Tiroler Fischereiverband', 'https://www.tiroler-fischereiverband.at/'),
+  Bundesland.vbg: ('Vorarlberger Fischereiverband', 'https://www.vlfv.at/'),
+};
+
+/// Zuordnung der geprüften Gewässer zu Bezirk und gleichnamigen
+/// OpenStreetMap-Einträgen (die dann ausgeblendet werden).
+typedef Zuordnung = ({
+  String bezirk,
+  List<String> osmNamen,
+  List<String> gemeinden,
+});
+
+const zuordnung = <String, Zuordnung>{
+  'inn-braunau': (bezirk: 'Braunau', osmNamen: ['Inn'], gemeinden: ['Braunau am Inn']),
+  'mattig-schalchen': (bezirk: 'Braunau', osmNamen: ['Mattig'], gemeinden: ['Schalchen', 'Mattighofen']),
+  'schwemmbach': (bezirk: 'Braunau', osmNamen: ['Schwemmbach', 'Scheiterbach'], gemeinden: ['Uttendorf']),
+  'enknach': (bezirk: 'Braunau', osmNamen: ['Enknach'], gemeinden: ['Braunau am Inn']),
+  'enknach-teiche': (bezirk: 'Braunau', osmNamen: [], gemeinden: ['Braunau am Inn']),
+  'baggersee-pfaffstaett': (bezirk: 'Braunau', osmNamen: ['Baggersee Pfaffstätt'], gemeinden: ['Pfaffstätt']),
+  'kuehbach-moserweiher': (bezirk: 'Braunau', osmNamen: ['Kühbach', 'Moserweiher'], gemeinden: ['Schalchen']),
+  'holzoestersee': (bezirk: 'Braunau', osmNamen: ['Holzöstersee', 'Holzöster See'], gemeinden: ['Franking']),
+  'muehlheimer-ache': (bezirk: 'Braunau', osmNamen: ['Mühlheimer Ache', 'Waldzeller Ache'], gemeinden: ['Altheim']),
+  'antiesen': (bezirk: 'Ried', osmNamen: ['Antiesen'], gemeinden: []),
+  'inn-schaerding': (bezirk: 'Schärding', osmNamen: ['Inn'], gemeinden: ['Schärding']),
+  'salzach-ooe': (bezirk: 'Braunau', osmNamen: ['Salzach'], gemeinden: ['Ostermiething', 'Hochburg-Ach']),
+  'hoellerersee': (bezirk: 'Braunau', osmNamen: ['Höllerersee', 'Höllerer See'], gemeinden: []),
+  'ibmer-moor': (bezirk: 'Braunau', osmNamen: ['Heratinger See', 'Ibmer See'], gemeinden: ['Eggelsberg', 'Franking']),
+  'mattig': (bezirk: 'Braunau', osmNamen: ['Mattig'], gemeinden: ['Mattighofen', 'Braunau am Inn']),
+  'mondsee': (bezirk: 'Vöcklabruck', osmNamen: ['Mondsee'], gemeinden: ['Mondsee']),
+  'attersee': (bezirk: 'Vöcklabruck', osmNamen: ['Attersee'], gemeinden: ['Seewalchen am Attersee', 'Unterach am Attersee']),
+  'obertrumer-see': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Obertrumer See'], gemeinden: ['Obertrum am See']),
+  'mattsee': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Mattsee', 'Niedertrumer See'], gemeinden: ['Mattsee']),
+  'grabensee': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Grabensee'], gemeinden: ['Perwang am Grabensee']),
+  'wallersee': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Wallersee'], gemeinden: ['Seekirchen am Wallersee']),
+  'fuschlsee': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Fuschlsee'], gemeinden: ['Fuschl am See']),
+};

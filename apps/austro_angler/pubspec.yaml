@@ -39,6 +39,7 @@ flutter:
     - assets/bilder/fische/
     - assets/bilder/knoten/
     - assets/icon/app.png
+    - assets/daten/gewaesser_at.json.gz
 
 flutter_launcher_icons:
   android: true

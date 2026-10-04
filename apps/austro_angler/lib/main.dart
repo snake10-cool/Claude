@@ -11,6 +11,7 @@ import 'screens/karte_screen.dart';
 import 'screens/konto_screen.dart';
 import 'screens/mehr_screen.dart';
 import 'screens/wuensche_screen.dart';
+import 'services/alle_gewaesser.dart';
 import 'services/konto.dart';
 import 'services/speicher.dart';
 import 'services/wecker.dart';
@@ -20,6 +21,8 @@ Future<void> main() async {
   final speicher = await Speicher.oeffnen();
   // Schonzeit-Wecker für das nächste Jahr neu planen (im Hintergrund).
   Wecker.instanz.alleEinplanen(speicher.bundesland).catchError((_) {});
+  // Alle Gewässer Österreichs im Hintergrund laden.
+  alleGewaesser.laden();
   Konto? konto;
   if (firebaseKonfiguriert) {
     try {

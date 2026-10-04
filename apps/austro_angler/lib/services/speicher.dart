@@ -22,6 +22,10 @@ class Speicher extends ChangeNotifier {
   Bundesland bundesland = Bundesland.ooe;
   int besteQuizPunkte = 0;
 
+  /// Filter im Gewässer-Tab ('' = alle).
+  String bezirk = 'Braunau';
+  String gemeinde = '';
+
   void _laden() {
     faenge.addAll(_liste('faenge').map(Fang.fromJson));
     faenge.sort((a, b) => b.datum.compareTo(a.datum));
@@ -29,6 +33,9 @@ class Speicher extends ChangeNotifier {
     bundesland =
         Bundesland.ausName(_prefs.getString('bundesland')) ?? Bundesland.ooe;
     besteQuizPunkte = _prefs.getInt('besteQuizPunkte') ?? 0;
+    bezirk = _prefs.getString('bezirk') ??
+        (bundesland == Bundesland.ooe ? 'Braunau' : '');
+    gemeinde = _prefs.getString('gemeinde') ?? '';
   }
 
   List<Map<String, dynamic>> _liste(String key) {
@@ -78,9 +85,23 @@ class Speicher extends ChangeNotifier {
   }
 
   Future<void> bundeslandSetzen(Bundesland land) async {
+    if (land != bundesland) {
+      bezirk = '';
+      gemeinde = '';
+      await _prefs.setString('bezirk', '');
+      await _prefs.setString('gemeinde', '');
+    }
     bundesland = land;
     notifyListeners();
     await _prefs.setString('bundesland', land.name);
+  }
+
+  Future<void> ortSetzen({required String bezirk, String gemeinde = ''}) async {
+    this.bezirk = bezirk;
+    this.gemeinde = gemeinde;
+    notifyListeners();
+    await _prefs.setString('bezirk', bezirk);
+    await _prefs.setString('gemeinde', gemeinde);
   }
 
   Future<void> quizErgebnis(int punkte) async {

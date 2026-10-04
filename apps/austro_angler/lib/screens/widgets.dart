@@ -6,6 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
 import '../data/bilder.dart';
 import '../models/bundesland.dart';
+import '../models/gewaesser.dart';
+import '../services/alle_gewaesser.dart';
 import '../services/fang_dienst.dart';
 import 'konto_screen.dart';
 
@@ -217,6 +219,68 @@ class Titel extends StatelessWidget {
             child: Text(text, style: Theme.of(context).textTheme.titleMedium)),
         if (premium) ...[const SizedBox(width: 8), const PremiumMarke()],
       ],
+    );
+  }
+}
+
+
+/// Eingabefeld mit Vorschlägen aus allen Gewässern Österreichs.
+/// Freier Text ist auch erlaubt (z. B. privater Teich).
+class GewaesserFeld extends StatelessWidget {
+  const GewaesserFeld({
+    super.key,
+    required this.anfang,
+    required this.geaendert,
+    this.label = 'Gewässer',
+  });
+
+  final String anfang;
+  final void Function(String name, Gewaesser? gewaesser) geaendert;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Autocomplete<Gewaesser>(
+      initialValue: TextEditingValue(text: anfang),
+      displayStringForOption: (g) => g.anzeigeName,
+      optionsBuilder: (v) => alleGewaesser.suchen(v.text),
+      optionsViewBuilder: (context, auswaehlen, optionen) => Align(
+        alignment: Alignment.topLeft,
+        child: Material(
+          elevation: 4,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 280, maxWidth: 420),
+            child: ListView(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              children: [
+                for (final g in optionen)
+                  ListTile(
+                    dense: true,
+                    title: Text(g.ausOsm ? g.name : '✅ ${g.name}'),
+                    subtitle: Text(
+                      '${g.typ.name} · ${g.ort}'
+                      '${g.bezirk.isEmpty ? '' : ' · ${g.bezirk}'}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    onTap: () => auswaehlen(g),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      onSelected: (g) => geaendert(g.anzeigeName, g),
+      fieldViewBuilder: (context, controller, focus, _) => TextField(
+        controller: controller,
+        focusNode: focus,
+        decoration: InputDecoration(
+          labelText: label,
+          hintText: 'Name eintippen, z. B. Mattig',
+        ),
+        onChanged: (v) => geaendert(v.trim(), alleGewaesser.zuName(v)),
+      ),
     );
   }
 }

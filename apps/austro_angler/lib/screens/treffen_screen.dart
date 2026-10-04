@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../data/gewaesser.dart';
 import '../main.dart';
 import '../services/fang_dienst.dart';
 import 'widgets.dart';
@@ -24,7 +23,7 @@ class _TreffenListeState extends State<TreffenListe>
 
   Future<void> _neu() async {
     final konto = KontoScope.of(context)!;
-    var gewaesser = gewaesserListe.first.name;
+    var gewaesser = '';
     var zeit = DateTime.now().add(const Duration(days: 1));
     zeit = DateTime(zeit.year, zeit.month, zeit.day, 6);
     final text = TextEditingController();
@@ -37,15 +36,9 @@ class _TreffenListeState extends State<TreffenListe>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                DropdownButtonFormField<String>(
-                  initialValue: gewaesser,
-                  isExpanded: true,
-                  decoration: const InputDecoration(labelText: 'Gewässer'),
-                  items: [
-                    for (final g in gewaesserListe)
-                      DropdownMenuItem(value: g.name, child: Text(g.name)),
-                  ],
-                  onChanged: (v) => setState(() => gewaesser = v!),
+                GewaesserFeld(
+                  anfang: gewaesser,
+                  geaendert: (name, _) => gewaesser = name,
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
@@ -98,6 +91,10 @@ class _TreffenListeState extends State<TreffenListe>
       ),
     );
     if (ok != true) return;
+    if (gewaesser.isEmpty) {
+      if (mounted) meldung(context, 'Bitte ein Gewässer angeben.');
+      return;
+    }
     try {
       await fangDienst.treffenAnlegen(
         uid: konto.uid!,

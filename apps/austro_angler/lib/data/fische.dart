@@ -4,12 +4,20 @@ import '../models/fisch.dart';
 /// Stand der Schonbestimmungen (Recherche Oktober 2026).
 ///
 /// Quellen: Oö. Landesfischereiverband (Tabelle ab 1.10.2020), Salzburger
-/// Fischereiverband, Vereinsseiten. Viele Reviere haben strengere Regeln.
+/// Fischereiverband, Landesverordnungen der anderen Bundesländer (RIS),
+/// Vereinsseiten. Viele Reviere haben strengere Regeln.
 /// Wo nichts gefunden wurde, steht `Regel.unbekannt()`.
 const schonzeitenStand = 'Stand: Oktober 2026 – ohne Gewähr';
 
+const _w = Bundesland.wien;
+const _noe = Bundesland.noe;
+const _bgld = Bundesland.bgld;
 const _ooe = Bundesland.ooe;
 const _sbg = Bundesland.sbg;
+const _stmk = Bundesland.stmk;
+const _ktn = Bundesland.ktn;
+const _t = Bundesland.tirol;
+const _vbg = Bundesland.vbg;
 
 const _keine = Regel();
 const _unbekannt = Regel.unbekannt();
@@ -27,6 +35,16 @@ const fische = <Fisch>[
       _ooe: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 22),
       _sbg: Regel(von: Tag(1, 10), bis: Tag(28, 2), mindestmassCm: 25,
           hinweis: 'Über 800 m Seehöhe gilt 22 cm.'),
+      _w: Regel(von: Tag(1, 9), bis: Tag(15, 3), mindestmassCm: 26),
+      _noe: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 25),
+      _bgld: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 25),
+      _stmk: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 23),
+      _ktn: Regel(von: Tag(1, 10), bis: Tag(31, 3), mindestmassCm: 22),
+      _t: Regel(von: Tag(1, 10), bis: Tag(28, 2), mindestmassCm: 25,
+          hinweis: 'Bezirk Lienz: Schonzeit bis 15.3.'),
+      _vbg: Regel(von: Tag(1, 10), bis: Tag(28, 2), mindestmassCm: 22,
+          hinweis: 'Je nach Gewässertyp abweichend, z. B. 1.11. – 28.2. '
+              'und 25 cm.'),
     },
   ),
   Fisch(
@@ -41,6 +59,14 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(1, 12), bis: Tag(15, 3), mindestmassCm: 22),
       _sbg: _keine,
+      _w: Regel(von: Tag(1, 1), bis: Tag(15, 3), mindestmassCm: 26),
+      _noe: Regel(von: Tag(1, 1), bis: Tag(15, 3), mindestmassCm: 30),
+      _bgld: Regel(von: Tag(1, 1), bis: Tag(15, 3), mindestmassCm: 25),
+      _stmk: Regel(von: Tag(1, 1), bis: Tag(15, 3), mindestmassCm: 23),
+      _ktn: Regel(von: Tag(1, 1), bis: Tag(31, 3), mindestmassCm: 24),
+      _t: Regel(mindestmassCm: 30),
+      _vbg: Regel(von: Tag(1, 10), bis: Tag(28, 2),
+          hinweis: 'Je nach Gewässertyp abweichend.'),
     },
   ),
   Fisch(
@@ -54,6 +80,14 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 50),
       _sbg: Regel(von: Tag(1, 10), bis: Tag(31, 12), mindestmassCm: 50),
+      _w: _unbekannt,
+      _noe: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 50),
+      _bgld: _unbekannt,
+      _stmk: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 50),
+      _ktn: Regel(von: Tag(1, 10), bis: Tag(28, 2), mindestmassCm: 60),
+      _t: Regel(von: Tag(1, 10), bis: Tag(31, 12), mindestmassCm: 50),
+      _vbg: Regel(von: Tag(1, 10), bis: Tag(28, 2), mindestmassCm: 60,
+          hinweis: 'Bodensee: eigene Bestimmungen.'),
     },
   ),
   Fisch(
@@ -68,6 +102,14 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 22),
       _sbg: _keine,
+      _w: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 22),
+      _noe: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 22),
+      _bgld: _unbekannt,
+      _stmk: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 23),
+      _ktn: Regel(von: Tag(1, 10), bis: Tag(31, 3), mindestmassCm: 22),
+      _t: Regel(von: Tag(1, 10), bis: Tag(31, 3), mindestmassCm: 22,
+          hinweis: 'Bezirk Lienz: Schonzeit bis 15.3.'),
+      _vbg: _keine,
     },
   ),
   Fisch(
@@ -81,6 +123,15 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 22),
       _sbg: Regel(von: Tag(16, 10), bis: Tag(31, 12), mindestmassCm: 25),
+      _w: _unbekannt,
+      _noe: _unbekannt,
+      _bgld: _unbekannt,
+      _stmk: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 28),
+      _ktn: Regel(von: Tag(1, 10), bis: Tag(28, 2), mindestmassCm: 30),
+      _t: Regel(von: Tag(1, 10), bis: Tag(28, 2), mindestmassCm: 25,
+          hinweis: 'Bezirk Lienz: Schonzeit bis 15.3.'),
+      _vbg: Regel(von: Tag(1, 10), bis: Tag(31, 1), mindestmassCm: 25,
+          hinweis: 'Gilt für stehende Gewässer; Fließgewässer 1.11. – 31.12.'),
     },
   ),
   Fisch(
@@ -94,6 +145,14 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(1, 3), bis: Tag(30, 4), mindestmassCm: 30),
       _sbg: Regel(von: Tag(1, 1), bis: Tag(31, 5), mindestmassCm: 33),
+      _w: Regel(von: Tag(1, 3), bis: Tag(30, 4), mindestmassCm: 30),
+      _noe: Regel(von: Tag(1, 3), bis: Tag(30, 4), mindestmassCm: 30),
+      _bgld: Regel(von: Tag(1, 3), bis: Tag(30, 4), mindestmassCm: 30),
+      _stmk: Regel(von: Tag(15, 2), bis: Tag(15, 6), mindestmassCm: 32),
+      _ktn: Regel(von: Tag(1, 1), bis: Tag(31, 5), mindestmassCm: 35),
+      _t: Regel(von: Tag(1, 1), bis: Tag(15, 5), mindestmassCm: 42,
+          hinweis: 'Bezirk Lienz: 1.12. – 15.6.'),
+      _vbg: Regel(von: Tag(1, 2), bis: Tag(30, 4), mindestmassCm: 35),
     },
   ),
   Fisch(
@@ -108,6 +167,14 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(16, 2), bis: Tag(31, 5), mindestmassCm: 85),
       _sbg: Regel(von: Tag(1, 2), bis: Tag(31, 5), mindestmassCm: 85),
+      _w: Regel.ganzjaehrig(),
+      _noe: Regel(von: Tag(1, 3), bis: Tag(31, 5), mindestmassCm: 75),
+      _bgld: Regel(von: Tag(1, 3), bis: Tag(30, 6), mindestmassCm: 75),
+      _stmk: Regel(von: Tag(1, 3), bis: Tag(30, 6), mindestmassCm: 85),
+      _ktn: Regel(von: Tag(1, 2), bis: Tag(31, 5), mindestmassCm: 85),
+      _t: Regel(von: Tag(1, 3), bis: Tag(31, 5), mindestmassCm: 80,
+          hinweis: 'Bezirk Lienz: 1.2. – 31.5. und 100 cm.'),
+      _vbg: _unbekannt,
     },
   ),
   Fisch(
@@ -120,6 +187,14 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(16, 10), bis: Tag(31, 12), mindestmassCm: 30),
       _sbg: _unbekannt,
+      _w: _unbekannt,
+      _noe: _unbekannt,
+      _bgld: _unbekannt,
+      _stmk: _unbekannt,
+      _ktn: Regel(von: Tag(1, 11), bis: Tag(28, 2), mindestmassCm: 30),
+      _t: Regel(von: Tag(1, 11), bis: Tag(31, 1), mindestmassCm: 30,
+          hinweis: 'Für einzelne Coregonen-Arten abweichende Zeiten.'),
+      _vbg: _unbekannt,
     },
   ),
   Fisch(
@@ -134,6 +209,15 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(1, 2), bis: Tag(30, 4), mindestmassCm: 60),
       _sbg: Regel(von: Tag(1, 2), bis: Tag(30, 4), mindestmassCm: 50),
+      _w: Regel(von: Tag(1, 2), bis: Tag(30, 4), mindestmassCm: 55),
+      _noe: Regel(von: Tag(1, 2), bis: Tag(30, 4), mindestmassCm: 50),
+      _bgld: Regel(von: Tag(1, 2), bis: Tag(30, 4), mindestmassCm: 50,
+          hinweis: 'Neusiedler See: Schonzeit 1.2. – 31.3.'),
+      _stmk: Regel(von: Tag(1, 1), bis: Tag(15, 5), mindestmassCm: 40),
+      _ktn: Regel(von: Tag(1, 1), bis: Tag(30, 4), mindestmassCm: 55,
+          hinweis: 'Ossiacher See, Feldsee, Afritzer See: 70 cm.'),
+      _t: Regel(von: Tag(1, 3), bis: Tag(30, 4), mindestmassCm: 50),
+      _vbg: Regel(von: Tag(1, 4), bis: Tag(30, 4), mindestmassCm: 40),
     },
   ),
   Fisch(
@@ -148,6 +232,14 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(1, 3), bis: Tag(30, 4), mindestmassCm: 50),
       _sbg: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 40),
+      _w: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 45),
+      _noe: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 35),
+      _bgld: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 35,
+          hinweis: 'Neusiedler See: 1.4. – 30.4. und 45 cm.'),
+      _stmk: Regel(von: Tag(1, 3), bis: Tag(31, 5), mindestmassCm: 40),
+      _ktn: Regel(von: Tag(1, 1), bis: Tag(31, 5), mindestmassCm: 45),
+      _t: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 45),
+      _vbg: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 40),
     },
   ),
   Fisch(
@@ -162,6 +254,13 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(1, 3), bis: Tag(30, 4), mindestmassCm: 10),
       _sbg: _unbekannt,
+      _w: Regel(von: Tag(1, 3), bis: Tag(31, 5)),
+      _noe: Regel(von: Tag(1, 3), bis: Tag(31, 5)),
+      _bgld: Regel(von: Tag(1, 3), bis: Tag(31, 5)),
+      _stmk: Regel(von: Tag(1, 4), bis: Tag(30, 6)),
+      _ktn: Regel(von: Tag(1, 1), bis: Tag(31, 5)),
+      _t: Regel(mindestmassCm: 10),
+      _vbg: Regel(von: Tag(1, 4), bis: Tag(20, 5)),
     },
   ),
   Fisch(
@@ -176,6 +275,13 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(1, 6), bis: Tag(30, 6), mindestmassCm: 80),
       _sbg: _keine,
+      _w: Regel(von: Tag(1, 6), bis: Tag(30, 6), mindestmassCm: 85),
+      _noe: Regel(von: Tag(1, 6), bis: Tag(30, 6), mindestmassCm: 60),
+      _bgld: Regel(von: Tag(15, 5), bis: Tag(15, 6), mindestmassCm: 60),
+      _stmk: Regel(von: Tag(15, 4), bis: Tag(30, 6), mindestmassCm: 70),
+      _ktn: Regel(von: Tag(1, 1), bis: Tag(31, 5), mindestmassCm: 70),
+      _t: Regel(von: Tag(1, 5), bis: Tag(31, 7)),
+      _vbg: _keine,
     },
   ),
   Fisch(
@@ -190,6 +296,13 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(16, 11), bis: Tag(28, 2), mindestmassCm: 40),
       _sbg: Regel(von: Tag(1, 12), bis: Tag(31, 3), mindestmassCm: 35),
+      _w: Regel(von: Tag(1, 12), bis: Tag(29, 2), mindestmassCm: 35),
+      _noe: Regel(von: Tag(1, 12), bis: Tag(29, 2), mindestmassCm: 35),
+      _bgld: Regel(von: Tag(1, 12), bis: Tag(29, 2), mindestmassCm: 35),
+      _stmk: Regel(von: Tag(1, 1), bis: Tag(15, 3), mindestmassCm: 35),
+      _ktn: Regel(von: Tag(1, 12), bis: Tag(28, 2), mindestmassCm: 35),
+      _t: Regel(von: Tag(1, 12), bis: Tag(31, 3), mindestmassCm: 35),
+      _vbg: Regel(von: Tag(15, 12), bis: Tag(15, 3), mindestmassCm: 35),
     },
   ),
   Fisch(
@@ -203,6 +316,15 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(1, 5), bis: Tag(31, 5), mindestmassCm: 35),
       _sbg: _keine,
+      _w: Regel(von: Tag(1, 5), bis: Tag(30, 6), mindestmassCm: 35,
+          hinweis: 'Gilt für die Wildform; Zuchtkarpfen ohne Schonzeit.'),
+      _noe: Regel(mindestmassCm: 35),
+      _bgld: Regel(von: Tag(15, 5), bis: Tag(30, 6), mindestmassCm: 35,
+          hinweis: 'Neusiedler See: 1.5. – 31.5.'),
+      _stmk: Regel(von: Tag(15, 5), bis: Tag(30, 6), mindestmassCm: 35),
+      _ktn: Regel(mindestmassCm: 35),
+      _t: Regel(mindestmassCm: 35),
+      _vbg: Regel(von: Tag(1, 5), bis: Tag(31, 5), mindestmassCm: 35),
     },
   ),
   Fisch(
@@ -216,6 +338,13 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(1, 5), bis: Tag(30, 6), mindestmassCm: 25),
       _sbg: Regel(von: Tag(1, 6), bis: Tag(31, 7), mindestmassCm: 25),
+      _w: Regel(von: Tag(1, 6), bis: Tag(15, 7), mindestmassCm: 30),
+      _noe: Regel(von: Tag(1, 6), bis: Tag(30, 6), mindestmassCm: 25),
+      _bgld: Regel(von: Tag(1, 5), bis: Tag(30, 6), mindestmassCm: 25),
+      _stmk: Regel(von: Tag(1, 5), bis: Tag(30, 6), mindestmassCm: 25),
+      _ktn: Regel(von: Tag(1, 6), bis: Tag(30, 6), mindestmassCm: 25),
+      _t: Regel(von: Tag(1, 6), bis: Tag(31, 7), mindestmassCm: 30),
+      _vbg: Regel(von: Tag(1, 5), bis: Tag(15, 6), mindestmassCm: 25),
     },
   ),
   Fisch(
@@ -228,6 +357,13 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(1, 5), bis: Tag(31, 5), mindestmassCm: 25),
       _sbg: _unbekannt,
+      _w: Regel(von: Tag(1, 5), bis: Tag(31, 5), mindestmassCm: 30),
+      _noe: Regel(von: Tag(1, 5), bis: Tag(31, 5), mindestmassCm: 25),
+      _bgld: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 25),
+      _stmk: Regel(von: Tag(1, 4), bis: Tag(30, 5), mindestmassCm: 25),
+      _ktn: Regel(mindestmassCm: 30),
+      _t: _unbekannt,
+      _vbg: _unbekannt,
     },
   ),
   Fisch(
@@ -240,6 +376,13 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(16, 4), bis: Tag(31, 5), mindestmassCm: 35),
       _sbg: Regel(von: Tag(1, 5), bis: Tag(15, 6), mindestmassCm: 35),
+      _w: Regel(von: Tag(1, 5), bis: Tag(15, 6), mindestmassCm: 35),
+      _noe: Regel(von: Tag(1, 5), bis: Tag(15, 6), mindestmassCm: 30),
+      _bgld: Regel(von: Tag(1, 5), bis: Tag(15, 6), mindestmassCm: 30),
+      _stmk: Regel(von: Tag(1, 4), bis: Tag(30, 6), mindestmassCm: 30),
+      _ktn: Regel(von: Tag(1, 1), bis: Tag(31, 7), mindestmassCm: 35),
+      _t: Regel(von: Tag(1, 5), bis: Tag(15, 6), mindestmassCm: 40),
+      _vbg: Regel(von: Tag(1, 5), bis: Tag(15, 6), mindestmassCm: 40),
     },
   ),
   Fisch(
@@ -253,6 +396,13 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 35),
       _sbg: Regel.ganzjaehrig(),
+      _w: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 35),
+      _noe: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 35),
+      _bgld: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 35),
+      _stmk: Regel(von: Tag(15, 3), bis: Tag(31, 5), mindestmassCm: 30),
+      _ktn: Regel.ganzjaehrig(),
+      _t: Regel(von: Tag(15, 3), bis: Tag(31, 5), mindestmassCm: 40),
+      _vbg: _unbekannt,
     },
   ),
   Fisch(
@@ -265,6 +415,13 @@ const fische = <Fisch>[
     regeln: {
       _ooe: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 25),
       _sbg: _keine,
+      _w: Regel(von: Tag(1, 5), bis: Tag(31, 5)),
+      _noe: _keine,
+      _bgld: _keine,
+      _stmk: _keine,
+      _ktn: Regel(von: Tag(1, 1), bis: Tag(31, 5)),
+      _t: _keine,
+      _vbg: _unbekannt,
     },
   ),
   Fisch(

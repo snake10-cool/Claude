@@ -7,7 +7,9 @@ import '../data/gewaesser.dart';
 import '../main.dart';
 import '../models/fang.dart';
 import '../models/gewaesser.dart';
+import '../services/alle_gewaesser.dart';
 import '../services/fang_dienst.dart';
+import '../services/speicher.dart';
 import '../services/beisszeit.dart';
 import '../services/sonne.dart';
 import '../data/fische.dart' show fischById;
@@ -29,84 +31,278 @@ const braunau = LatLng(48.258, 13.040);
 int kmVonBraunau(Gewaesser g) =>
     const Distance().as(LengthUnit.Kilometer, braunau, g.position).round();
 
+enum _Sortierung { groesse, name, entfernung }
+
 class _GewaesserScreenState extends State<GewaesserScreen> {
   String _suche = '';
+  GewaesserTyp? _typ;
+  var _sortierung = _Sortierung.groesse;
+
+  @override
+  void initState() {
+    super.initState();
+    alleGewaesser.addListener(_neu);
+  }
+
+  @override
+  void dispose() {
+    alleGewaesser.removeListener(_neu);
+    super.dispose();
+  }
+
+  void _neu() => setState(() {});
+
+  List<Gewaesser> _gefiltert(Speicher speicher) {
+    final suche = _suche.toLowerCase();
+    final liste = alleGewaesser.liste.where((g) {
+      if (g.land != speicher.bundesland) return false;
+      if (speicher.bezirk.isNotEmpty && g.bezirk != speicher.bezirk) {
+        return false;
+      }
+      if (speicher.gemeinde.isNotEmpty && !g.liegtIn(speicher.gemeinde)) {
+        return false;
+      }
+      if (_typ != null &&
+          g.typ != _typ &&
+          !(_typ == GewaesserTyp.teich && g.typ == GewaesserTyp.moor)) {
+        return false;
+      }
+      return suche.isEmpty ||
+          g.name.toLowerCase().contains(suche) ||
+          g.ort.toLowerCase().contains(suche);
+    }).toList();
+    int vergleich(Gewaesser a, Gewaesser b) => switch (_sortierung) {
+          _Sortierung.name => deutschSortieren(a.name, b.name),
+          _Sortierung.entfernung => kmVonBraunau(a).compareTo(kmVonBraunau(b)),
+          _Sortierung.groesse => _gewicht(b).compareTo(_gewicht(a)),
+        };
+    // Geprüfte Gewässer mit Lizenzinfos immer zuerst.
+    liste.sort((a, b) => a.ausOsm == b.ausOsm
+        ? vergleich(a, b)
+        : (a.ausOsm ? 1 : -1));
+    return liste;
+  }
+
+  /// Seen zählen pro Hektar mehr als Bäche pro Kilometer.
+  static double _gewicht(Gewaesser g) {
+    final z = g.groesse ?? 0;
+    return switch (g.typ) {
+      GewaesserTyp.see || GewaesserTyp.teich || GewaesserTyp.moor => z * 2,
+      GewaesserTyp.fluss => z * 3,
+      _ => z,
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
-    final land = SpeicherScope.of(context).bundesland;
-    final suche = _suche.toLowerCase();
-    final liste = gewaesserListe
-        .where((g) =>
-            suche.isEmpty ||
-            g.name.toLowerCase().contains(suche) ||
-            g.ort.toLowerCase().contains(suche) ||
-            g.typ.name.toLowerCase().contains(suche))
-        .toList()
-      ..sort((a, b) => kmVonBraunau(a).compareTo(kmVonBraunau(b)));
+    final speicher = SpeicherScope.of(context);
+    final land = speicher.bundesland;
+    final liste = _gefiltert(speicher);
     final karte = fischerkarten.firstWhere((k) => k.land == land);
+    final bezirke = alleGewaesser.bezirke[land] ?? const <String>[];
+    final gemeinden = speicher.bezirk.isEmpty
+        ? const <String>[]
+        : alleGewaesser.gemeindenVon(land, speicher.bezirk);
+    final text = Theme.of(context).textTheme;
+
+    final kopf = <Widget>[
+      const BundeslandWahl(),
+      const SizedBox(height: 8),
+      if (bezirke.isNotEmpty)
+        LayoutBuilder(
+          builder: (context, c) {
+            final breite = (c.maxWidth - 8) / 2;
+            return Row(
+              children: [
+                DropdownMenu<String>(
+                  key: ValueKey('bezirk-${land.name}-${speicher.bezirk}'),
+                  width: breite,
+                  initialSelection: speicher.bezirk,
+                  label: const Text('Bezirk'),
+                  enableFilter: true,
+                  requestFocusOnTap: true,
+                  menuHeight: 360,
+                  dropdownMenuEntries: [
+                    const DropdownMenuEntry(value: '', label: 'Alle Bezirke'),
+                    for (final b in bezirke)
+                      DropdownMenuEntry(value: b, label: b),
+                  ],
+                  onSelected: (b) {
+                    if (b != null) speicher.ortSetzen(bezirk: b);
+                  },
+                ),
+                const SizedBox(width: 8),
+                DropdownMenu<String>(
+                  key: ValueKey('ort-${speicher.bezirk}-${speicher.gemeinde}'),
+                  width: breite,
+                  enabled: gemeinden.isNotEmpty,
+                  initialSelection: speicher.gemeinde,
+                  label: const Text('Ort'),
+                  enableFilter: true,
+                  requestFocusOnTap: true,
+                  menuHeight: 360,
+                  dropdownMenuEntries: [
+                    const DropdownMenuEntry(value: '', label: 'Alle Orte'),
+                    for (final g in gemeinden)
+                      DropdownMenuEntry(value: g, label: g),
+                  ],
+                  onSelected: (g) {
+                    if (g != null) {
+                      speicher.ortSetzen(bezirk: speicher.bezirk, gemeinde: g);
+                    }
+                  },
+                ),
+              ],
+            );
+          },
+        ),
+      const SizedBox(height: 8),
+      TextField(
+        decoration: const InputDecoration(
+          prefixIcon: Icon(Icons.search),
+          hintText: 'Gewässer suchen',
+          border: OutlineInputBorder(),
+          isDense: true,
+        ),
+        onChanged: (v) => setState(() => _suche = v.trim()),
+      ),
+      const SizedBox(height: 4),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            for (final t in [
+              null,
+              GewaesserTyp.fluss,
+              GewaesserTyp.bach,
+              GewaesserTyp.see,
+              GewaesserTyp.teich,
+              GewaesserTyp.kanal,
+            ])
+              Padding(
+                padding: const EdgeInsets.only(right: 6),
+                child: ChoiceChip(
+                  label: Text(t?.name ?? 'Alle'),
+                  selected: _typ == t,
+                  onSelected: (_) => setState(() => _typ = t),
+                ),
+              ),
+          ],
+        ),
+      ),
+      Row(
+        children: [
+          Expanded(
+            child: Text(
+              alleGewaesser.geladen
+                  ? '${liste.length} Gewässer'
+                  : 'Lade alle Gewässer …',
+              style: text.labelLarge,
+            ),
+          ),
+          PopupMenuButton<_Sortierung>(
+            tooltip: 'Sortieren',
+            initialValue: _sortierung,
+            onSelected: (s) => setState(() => _sortierung = s),
+            itemBuilder: (_) => const [
+              PopupMenuItem(
+                  value: _Sortierung.groesse, child: Text('Größte zuerst')),
+              PopupMenuItem(value: _Sortierung.name, child: Text('Name A–Z')),
+              PopupMenuItem(
+                  value: _Sortierung.entfernung,
+                  child: Text('Nähe zu Braunau')),
+            ],
+            child: const Padding(
+              padding: EdgeInsets.all(8),
+              child: Icon(Icons.sort),
+            ),
+          ),
+        ],
+      ),
+      if (_suche.isEmpty)
+        Card(
+          child: ExpansionTile(
+            leading: const Icon(Icons.badge_outlined),
+            title: const Text('Was brauche ich zum Fischen?'),
+            subtitle: Text(land.name),
+            childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+            children: [
+              for (final p in karte.punkte)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('•  '),
+                      Expanded(child: Text(p)),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ),
+      if (!alleGewaesser.geladen)
+        const Padding(
+          padding: EdgeInsets.all(24),
+          child: Center(child: CircularProgressIndicator()),
+        )
+      else if (liste.isEmpty)
+        const Padding(
+          padding: EdgeInsets.all(24),
+          child: Text('Nichts gefunden.', textAlign: TextAlign.center),
+        ),
+    ];
+
+    final fuss = <Widget>[
+      const SizedBox(height: 8),
+      OutlinedButton.icon(
+        onPressed: () => meldenDialog(
+          context,
+          typ: 'neues-gewaesser',
+          bezug: '${land.name} ${speicher.bezirk} ${speicher.gemeinde}',
+          titel: 'Gewässer vorschlagen',
+          hinweis: 'Name, Ort, Preise der Tageskarte und wo man sie '
+              'bekommt.',
+        ),
+        icon: const Icon(Icons.add_location_alt_outlined),
+        label: const Text('Gewässer fehlt? Vorschlagen'),
+      ),
+      const SizedBox(height: 8),
+      const HinweisKarte(
+        '✅ = geprüft mit Lizenz- und Preisinfos. Alle anderen Gewässer '
+        'stammen aus OpenStreetMap – dort fehlen Lizenz und Preis noch. '
+        'Alles ohne Gewähr: Vor dem Fischen immer die Lizenzbedingungen '
+        'des Reviers lesen.',
+      ),
+      if (alleGewaesser.stand.isNotEmpty)
+        Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Text(
+            'Gewässerdaten © OpenStreetMap-Mitwirkende (ODbL), Stand '
+            '${alleGewaesser.stand}',
+            style: text.bodySmall,
+          ),
+        ),
+    ];
 
     return Scaffold(
       appBar: AppBar(title: const Text('Wo darf ich fischen?')),
-      body: ListView(
-        padding: const EdgeInsets.all(12),
-        children: [
-          const BundeslandWahl(),
-          const SizedBox(height: 12),
-          TextField(
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.search),
-              hintText: 'Gewässer, Ort oder "Bach" suchen',
-              border: OutlineInputBorder(),
-            ),
-            onChanged: (v) => setState(() => _suche = v.trim()),
+      body: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+            sliver: SliverList.list(children: kopf),
           ),
-          const SizedBox(height: 8),
-          if (_suche.isEmpty)
-            Card(
-              child: ExpansionTile(
-                leading: const Icon(Icons.badge_outlined),
-                title: const Text('Was brauche ich zum Fischen?'),
-                subtitle: Text(land.name),
-                childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-                children: [
-                  for (final p in karte.punkte)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 6),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text('•  '),
-                          Expanded(child: Text(p)),
-                        ],
-                      ),
-                    ),
-                ],
-              ),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            sliver: SliverList.builder(
+              itemCount: liste.length,
+              itemBuilder: (_, i) => _GewaesserKachel(liste[i]),
             ),
-          if (liste.isEmpty)
-            const Padding(
-              padding: EdgeInsets.all(24),
-              child: Text('Nichts gefunden.', textAlign: TextAlign.center),
-            ),
-          for (final g in liste) _GewaesserKachel(g),
-          const SizedBox(height: 8),
-          OutlinedButton.icon(
-            onPressed: () => meldenDialog(
-              context,
-              typ: 'neues-gewaesser',
-              bezug: land.name,
-              titel: 'Gewässer vorschlagen',
-              hinweis: 'Name, Ort, Preise der Tageskarte und wo man sie '
-                  'bekommt.',
-            ),
-            icon: const Icon(Icons.add_location_alt_outlined),
-            label: const Text('Gewässer fehlt? Vorschlagen'),
           ),
-          const SizedBox(height: 8),
-          const HinweisKarte(
-            'Alle Preise und Regeln ohne Gewähr. Vor dem Fischen immer die '
-            'Lizenzbedingungen des Reviers lesen.',
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(12, 0, 12, 24),
+            sliver: SliverList.list(children: fuss),
           ),
         ],
       ),
@@ -123,31 +319,52 @@ class _GewaesserKachel extends StatelessWidget {
   Widget build(BuildContext context) {
     final farben = Theme.of(context).colorScheme;
     final tag = g.preise.isEmpty ? null : g.preise.first;
+    final groesse = g.groesse == null
+        ? ''
+        : g.typ.fliesst
+            ? ' · ${_zahl(g.groesse!)} km'
+            : ' · ${_zahl(g.groesse!)} ha';
     return Card(
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: farben.primaryContainer,
+          backgroundColor:
+              g.ausOsm ? farben.surfaceContainerHighest : farben.primaryContainer,
           child: Icon(
             switch (g.typ) {
-              GewaesserTyp.fluss || GewaesserTyp.bach => Icons.waves,
+              GewaesserTyp.fluss ||
+              GewaesserTyp.bach ||
+              GewaesserTyp.kanal =>
+                Icons.waves,
               GewaesserTyp.teich => Icons.water_drop,
               _ => Icons.water,
             },
-            color: farben.onPrimaryContainer,
+            color: g.ausOsm
+                ? farben.onSurfaceVariant
+                : farben.onPrimaryContainer,
           ),
         ),
-        title: Text(g.name),
-        subtitle: Text('${g.typ.name} · ${g.ort} · ${kmVonBraunau(g)} km'),
-        trailing: Text(
-          tag?.euroText ?? '?',
-          style: Theme.of(context).textTheme.titleMedium,
+        title: Text(g.ausOsm ? g.name : '✅ ${g.name}'),
+        subtitle: Text(
+          '${g.typ.name}$groesse · ${g.ort}',
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
         ),
+        trailing: g.ausOsm
+            ? null
+            : Text(
+                tag?.euroText ?? '?',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
         onTap: () => Navigator.of(context).push(
           MaterialPageRoute(builder: (_) => GewaesserDetail(g)),
         ),
       ),
     );
   }
+
+  static String _zahl(double z) =>
+      (z >= 10 ? z.toStringAsFixed(0) : z.toStringAsFixed(1))
+          .replaceAll('.', ',');
 }
 
 class GewaesserDetail extends StatelessWidget {
@@ -175,7 +392,13 @@ class GewaesserDetail extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Text('${g.typ.name} · ${g.ort} · ${g.land.name}',
+          Text(
+              [
+                g.typ.name,
+                g.ort,
+                if (g.bezirk.isNotEmpty && g.bezirk != g.ort) 'Bezirk ${g.bezirk}',
+                g.land.name,
+              ].join(' · '),
               style: text.labelLarge),
           const SizedBox(height: 8),
           Text(g.beschreibung),
@@ -188,8 +411,7 @@ class GewaesserDetail extends StatelessWidget {
           BeisszeitKarte(g),
           DaemmerungKarte(g),
           if (KontoScope.of(context) != null) WasBeisstKarte(g),
-          if (g.typ == GewaesserTyp.fluss || g.typ == GewaesserTyp.bach)
-            AbflussKarte(g),
+          if (g.typ.fliesst) AbflussKarte(g),
           const SizedBox(height: 16),
           Text('Preise', style: text.titleMedium),
           if (g.preise.isEmpty)
@@ -215,6 +437,17 @@ class GewaesserDetail extends StatelessWidget {
           Text('Karten bekommst du hier', style: text.titleMedium),
           const SizedBox(height: 4),
           Text(g.kartenverkauf),
+          if (g.lizenzUrl == null && landesverbaende[g.land] != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: FilledButton.tonalIcon(
+                onPressed: () => launchUrl(
+                    Uri.parse(landesverbaende[g.land]!.$2),
+                    mode: LaunchMode.externalApplication),
+                icon: const Icon(Icons.open_in_new),
+                label: Text(landesverbaende[g.land]!.$1),
+              ),
+            ),
           if (g.lizenzUrl != null)
             Padding(
               padding: const EdgeInsets.only(top: 8),
@@ -226,7 +459,11 @@ class GewaesserDetail extends StatelessWidget {
               ),
             ),
           const SizedBox(height: 16),
-          Text('Fischarten (${g.land.name})', style: text.titleMedium),
+          Text(
+              g.ausOsm
+                  ? 'Typisch für einen ${g.typ.name} (nicht geprüft)'
+                  : 'Fischarten (${g.land.name})',
+              style: text.titleMedium),
           const SizedBox(height: 4),
           Wrap(
             spacing: 6,
