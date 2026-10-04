@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import 'ausfluege_screen.dart';
+import 'bestimmung_screen.dart';
 import 'checkliste_screen.dart';
 import 'koeder_screen.dart';
 import 'lizenzen_screen.dart';
@@ -72,6 +73,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.checklist, 'Ausrüstungs-Checkliste',
               'Nichts vergessen vor dem Losfahren', () => _oeffnen(context,
                   const ChecklisteScreen())),
+          _Eintrag(Icons.manage_search, 'Welcher Fisch ist das?',
+              'Bestimmungshilfe mit ein paar Fragen', () => _oeffnen(context,
+                  const BestimmungScreen())),
           _Eintrag(Icons.set_meal, 'Fischlexikon',
               'Schonzeiten & Brittelmaße', () => _oeffnen(context,
                   const LexikonScreen())),

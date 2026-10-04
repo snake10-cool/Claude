@@ -11,6 +11,7 @@ import '../services/wecker.dart';
 import '../main.dart';
 import '../models/fisch.dart';
 import '../models/gewaesser.dart';
+import 'bestimmung_screen.dart';
 import 'gewaesser_screen.dart';
 import 'widgets.dart';
 
@@ -81,7 +82,17 @@ class _LexikonScreenState extends State<LexikonScreen> {
     }).toList();
 
     return Scaffold(
-      appBar: AppBar(title: Text('Fischlexikon (${fische.length} Arten)')),
+      appBar: AppBar(
+        title: Text('Fischlexikon (${fische.length} Arten)'),
+        actions: [
+          IconButton(
+            tooltip: 'Welcher Fisch ist das?',
+            icon: const Icon(Icons.manage_search),
+            onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const BestimmungScreen())),
+          ),
+        ],
+      ),
       body: ListView(
         padding: const EdgeInsets.all(12),
         children: [
