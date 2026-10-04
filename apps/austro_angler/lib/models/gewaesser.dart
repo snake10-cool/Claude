@@ -17,6 +17,20 @@ enum GewaesserTyp {
   final String name;
 }
 
+/// Wie sicher die Fischarten eines Gewässers sind.
+enum FischQuelle {
+  geprueft('✅', 'Geprüft (Verein/Lizenz)'),
+  bekannt('📚', 'Aus Fachquellen'),
+  typisch('❔', 'Nur typisch für den Gewässertyp');
+
+  const FischQuelle(this.zeichen, this.text);
+
+  final String zeichen;
+  final String text;
+
+  bool get sicher => this != typisch;
+}
+
 class Preis {
   const Preis(this.art, this.euro);
 
@@ -48,6 +62,7 @@ class Gewaesser {
     this.gemeinden = const [],
     this.groesse,
     this.ausOsm = false,
+    this.fischQuelle = FischQuelle.geprueft,
   });
 
   /// Automatisch aus OpenStreetMap: ohne geprüfte Lizenz- und Preisinfos.
@@ -61,9 +76,12 @@ class Gewaesser {
     required this.position,
     required double this.groesse,
     required this.stand,
+    List<String>? bekannteFische,
   })  : ort = gemeinden.isEmpty ? bezirk : gemeinden.join(', '),
         beschreibung = _osmText(name, typ, bezirk, gemeinden, groesse),
-        fischarten = typischeFische[typ] ?? const [],
+        fischarten = bekannteFische ?? typischeFische[typ] ?? const [],
+        fischQuelle =
+            bekannteFische != null ? FischQuelle.bekannt : FischQuelle.typisch,
         preise = const [],
         kartenverkauf = 'Die Lizenz vergibt der Fischereiberechtigte – oft '
             'ein Verein, eine Gemeinde oder ein Grundbesitzer. Frag im '
@@ -149,6 +167,8 @@ class Gewaesser {
 
   /// Aus OpenStreetMap, ohne geprüfte Infos.
   final bool ausOsm;
+
+  final FischQuelle fischQuelle;
 
   /// Eindeutiger Name für Fangbuch und Angeltage, z. B. "Mühlbach (Lochen)".
   String get anzeigeName {

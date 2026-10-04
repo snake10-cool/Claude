@@ -212,6 +212,33 @@ service cloud.firestore {
       allow write: if istAdmin();
     }
 
+    // Infos von Anglern zu Gewässern: erst prüft der Administrator.
+    match /gewaesser_infos/{id} {
+      allow create: if angemeldet()
+          && request.resource.data.keys().hasOnly(['uid', 'nutzerName',
+               'gewaesserId', 'gewaesserName', 'fische', 'verkauf', 'url',
+               'text', 'erstellt'])
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.gewaesserId is string
+          && request.resource.data.gewaesserId.size() <= 100
+          && request.resource.data.gewaesserName is string
+          && request.resource.data.gewaesserName.size() <= 200
+          && request.resource.data.fische is list
+          && request.resource.data.fische.size() <= 60
+          && request.resource.data.verkauf is string
+          && request.resource.data.verkauf.size() <= 300
+          && request.resource.data.url is string
+          && request.resource.data.url.size() <= 300
+          && request.resource.data.text is string
+          && request.resource.data.text.size() <= 1000;
+      allow read, delete: if istAdmin();
+    }
+
+    match /gepruefte_infos/{gewaesserId} {
+      allow read: if true;
+      allow write: if istAdmin();
+    }
+
     // Bewertungen von Gewässern: eine pro Nutzer (Dokument-ID = uid).
     match /gewaesser/{gewaesserId}/bewertungen/{uid} {
       allow read: if true;
@@ -261,9 +288,13 @@ service cloud.firestore {
     match /wuensche/{id} {
       allow create: if angemeldet()
           && request.resource.data.keys()
-               .hasOnly(['uid', 'nutzerName', 'text', 'status', 'erstellt'])
+               .hasOnly(['uid', 'nutzerName', 'text', 'status', 'erstellt',
+                         'typ', 'bezug'])
           && request.resource.data.uid == request.auth.uid
           && request.resource.data.status == 'neu'
+          && request.resource.data.get('typ', '') in ['', 'infos']
+          && request.resource.data.get('bezug', '') is string
+          && request.resource.data.get('bezug', '').size() <= 100
           && request.resource.data.text is string
           && request.resource.data.text.size() <= 1000;
       allow read: if istAdmin() || ich(resource.data.uid);

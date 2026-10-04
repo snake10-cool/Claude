@@ -32,7 +32,7 @@ Beim ersten Start am PC zeigt Windows eventuell "Der Computer wurde durch Window
 - **Gewässer**: 22 Gewässer rund um Braunau, sortiert nach Entfernung. Dabei sind kleine Bäche (Enknach, Mattig, Schwemmbach, Mühlheimer Ache, Antiesen), Teiche und Baggerseen (Enknach-Teiche, Baggersee Pfaffstätt, Kühbach), die Innviertler Seen, der Inn und die Salzburger Seen. Jedes Gewässer hat Preise, Kartenverkauf, Wetter und Mondphase.
 - **Karte**: alle Gewässer auf der Karte. Lange drücken speichert einen eigenen Angelplatz, der immer privat auf dem Handy bleibt.
 - **Fangbuch**: Fänge mit Statistik. Es warnt bei Schonzeit oder wenn ein Fisch unter dem Brittelmaß liegt, und zwar für das Bundesland des Fangs.
-- **Fischlexikon**: 31 Fischarten mit Schonzeit und Brittelmaß für OÖ und Salzburg.
+- **Fischlexikon**: 83 Fischarten Österreichs (inkl. Neunaugen, geschützter, eingeschleppter und ausgestorbener Arten), Suche und Filter, Gewässerliste je Fisch (sicher / nicht sicher). Schonzeiten für 19 Arten in allen 9 Ländern, sonst OÖ und Salzburg.
 - **Schonzeit-Kalender**: Monatsübersicht, welcher Fisch wann offen ist.
 - **Prüfungstrainer** mit 37 Fragen und **Knoten-Anleitungen**.
 

@@ -51,6 +51,50 @@ class PreisVorschlag {
   final String notiz;
 }
 
+/// Von Anglern eingereichte Infos zu einem Gewässer (wartet auf Prüfung).
+class InfoVorschlag {
+  InfoVorschlag(DocumentSnapshot<Map<String, dynamic>> doc)
+      : id = doc.id,
+        nutzerName = doc.data()?['nutzerName'] as String? ?? '',
+        gewaesserId = doc.data()?['gewaesserId'] as String? ?? '',
+        gewaesserName = doc.data()?['gewaesserName'] as String? ?? '',
+        fische = [
+          for (final f in (doc.data()?['fische'] as List?) ?? const [])
+            f as String,
+        ],
+        verkauf = doc.data()?['verkauf'] as String? ?? '',
+        url = doc.data()?['url'] as String? ?? '',
+        text = doc.data()?['text'] as String? ?? '';
+
+  final String id;
+  final String nutzerName;
+  final String gewaesserId;
+  final String gewaesserName;
+  final List<String> fische;
+  final String verkauf;
+  final String url;
+  final String text;
+}
+
+/// Geprüfte Community-Infos zu einem Gewässer.
+class GepruefteInfos {
+  GepruefteInfos(Map<String, dynamic>? d)
+      : fische = [
+          for (final f in (d?['fische'] as List?) ?? const []) f as String,
+        ],
+        eintraege = [
+          for (final e in (d?['eintraege'] as List?) ?? const [])
+            e as Map<String, dynamic>,
+        ];
+
+  final List<String> fische;
+
+  /// {verkauf, url, text, von, datum}
+  final List<Map<String, dynamic>> eintraege;
+
+  bool get leer => fische.isEmpty && eintraege.isEmpty;
+}
+
 class CommunityPreis {
   CommunityPreis(this.roh)
       : art = roh['art'] as String? ?? '',
@@ -577,6 +621,111 @@ class FangDienst {
       _db.doc('gepruefte_preise/$gewaesserId').update({
         'preise': FieldValue.arrayRemove([p.roh]),
       });
+
+  // ── Gewässer-Infos von Anglern ──
+
+  /// "Mehr Infos gewünscht": landet als Wunsch beim Administrator.
+  Future<void> infosWuenschen({
+    required String uid,
+    required String nutzerName,
+    required String gewaesserId,
+    required String gewaesserName,
+  }) =>
+      _offline(_wuensche.add({
+        'uid': uid,
+        'nutzerName': nutzerName,
+        'text': '@$nutzerName wünscht sich mehr Infos zum Gewässer '
+            '"$gewaesserName" (Fischarten, Lizenz, Preise).',
+        'typ': 'infos',
+        'bezug': gewaesserId,
+        'status': 'neu',
+        'erstellt': FieldValue.serverTimestamp(),
+      }));
+
+  Future<void> infosVorschlagen({
+    required String uid,
+    required String nutzerName,
+    required String gewaesserId,
+    required String gewaesserName,
+    required List<String> fische,
+    required String verkauf,
+    required String url,
+    required String text,
+  }) =>
+      _offline(_db.collection('gewaesser_infos').add({
+        'uid': uid,
+        'nutzerName': nutzerName,
+        'gewaesserId': gewaesserId,
+        'gewaesserName': gewaesserName,
+        'fische': fische,
+        'verkauf': verkauf,
+        'url': url,
+        'text': text,
+        'erstellt': FieldValue.serverTimestamp(),
+      }));
+
+  /// Offene Info-Vorschläge (nur für den Administrator).
+  Stream<List<InfoVorschlag>> infoVorschlaege() => _db
+      .collection('gewaesser_infos')
+      .orderBy('erstellt', descending: true)
+      .limit(200)
+      .snapshots()
+      .map((s) => s.docs.map(InfoVorschlag.new).toList());
+
+  Future<void> infoFreigeben(InfoVorschlag v) async {
+    final eintrag = {
+      if (v.verkauf.isNotEmpty) 'verkauf': v.verkauf,
+      if (v.url.isNotEmpty) 'url': v.url,
+      if (v.text.isNotEmpty) 'text': v.text,
+      'von': v.nutzerName,
+      'datum': DateTime.now().millisecondsSinceEpoch,
+    };
+    final batch = _db.batch()
+      ..set(
+        _db.doc('gepruefte_infos/${v.gewaesserId}'),
+        {
+          'name': v.gewaesserName,
+          if (v.fische.isNotEmpty) 'fische': FieldValue.arrayUnion(v.fische),
+          if (eintrag.length > 2) 'eintraege': FieldValue.arrayUnion([eintrag]),
+        },
+        SetOptions(merge: true),
+      )
+      ..delete(_db.doc('gewaesser_infos/${v.id}'));
+    await batch.commit();
+  }
+
+  Future<void> infoAblehnen(InfoVorschlag v) =>
+      _db.doc('gewaesser_infos/${v.id}').delete();
+
+  Stream<GepruefteInfos> gepruefteInfos(String gewaesserId) => _db
+      .doc('gepruefte_infos/$gewaesserId')
+      .snapshots()
+      .map((d) => GepruefteInfos(d.data()));
+
+  /// Admin: geprüfte Infos eines Gewässers ganz entfernen.
+  Future<void> gepruefteInfosLoeschen(String gewaesserId) =>
+      _db.doc('gepruefte_infos/$gewaesserId').delete();
+
+  /// IDs der Gewässer, bei denen Angler [fischId] eingetragen haben (geprüft).
+  Future<Set<String>> gewaesserMitFischLautInfos(String fischId) async {
+    final s = await _db
+        .collection('gepruefte_infos')
+        .where('fische', arrayContains: fischId)
+        .limit(500)
+        .get();
+    return {for (final d in s.docs) d.id};
+  }
+
+  /// Gewässernamen, an denen [fischId] schon gefangen wurde (öffentliche Fänge).
+  Future<Map<String, int>> gewaesserMitFang(String fischId) async {
+    final s = await _oeff.where('fischId', isEqualTo: fischId).limit(500).get();
+    final zaehler = <String, int>{};
+    for (final d in s.docs) {
+      final g = (d.data()['gewaesser'] as String? ?? '').trim();
+      if (g.isNotEmpty) zaehler[g] = (zaehler[g] ?? 0) + 1;
+    }
+    return zaehler;
+  }
 
   // ── Gewässer: Bewertungen und aktuelle Fänge ──
 

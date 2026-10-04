@@ -1,9 +1,27 @@
+import 'package:austro_angler/data/bekannte_fische.dart';
+import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/models/bundesland.dart';
+import 'package:austro_angler/models/gewaesser.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  test('Fischarten der großen Gewässer gibt es alle im Lexikon', () {
+    final ids = fische.map((f) => f.id).toSet();
+    expect(fische.length, greaterThanOrEqualTo(80));
+    for (final e in bekannteFische.entries) {
+      for (final id in e.value.fische) {
+        expect(ids, contains(id), reason: '${e.key}: $id');
+      }
+    }
+    for (final l in typischeFische.values) {
+      for (final id in l) {
+        expect(ids, contains(id));
+      }
+    }
+  });
 
   test('Alle Gewässer Österreichs werden geladen und zugeordnet', () async {
     await alleGewaesser.laden();
@@ -27,6 +45,11 @@ void main() {
     final mattighofen =
         alleGewaesser.liste.where((g) => g.liegtIn('Mattighofen')).toList();
     expect(mattighofen.length, greaterThan(3));
+
+    // Große Gewässer haben Fischarten aus Fachquellen.
+    final donau = alleGewaesser.liste.firstWhere((g) => g.name == 'Donau');
+    expect(donau.fischQuelle, FischQuelle.bekannt);
+    expect(donau.fischarten, contains('huchen'));
 
     // Suche nach Anzeigenamen klappt.
     final g = alleGewaesser.liste.firstWhere((g) => g.ausOsm);

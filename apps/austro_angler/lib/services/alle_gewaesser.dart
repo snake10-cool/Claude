@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../data/bekannte_fische.dart';
 import '../data/gewaesser.dart';
 import '../models/bundesland.dart';
 import '../models/gewaesser.dart';
@@ -101,6 +102,13 @@ class AlleGewaesser extends ChangeNotifier {
         gemZusatz[ersetztDurch]!.addAll(orte.map((o) => o.name));
         continue;
       }
+      BekannteFische? bekannt;
+      for (final teil in _teile(name)) {
+        final b = bekannteFische[teil];
+        if (b != null && (b.land == null || b.land == land)) {
+          bekannt ??= b;
+        }
+      }
       osm.add(Gewaesser.osm(
         id: e[0] as String,
         name: name,
@@ -117,6 +125,7 @@ class AlleGewaesser extends ChangeNotifier {
         position: LatLng((e[3] as num).toDouble(), (e[4] as num).toDouble()),
         groesse: (e[6] as num).toDouble(),
         stand: stand,
+        bekannteFische: bekannt?.fische,
       ));
     }
 

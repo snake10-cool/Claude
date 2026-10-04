@@ -12,7 +12,6 @@ import '../services/fang_dienst.dart';
 import '../services/speicher.dart';
 import '../services/beisszeit.dart';
 import '../services/sonne.dart';
-import '../data/fische.dart' show fischById;
 import '../services/wetter.dart';
 import 'konto_screen.dart';
 import 'melden.dart';
@@ -459,11 +458,10 @@ class GewaesserDetail extends StatelessWidget {
               ),
             ),
           const SizedBox(height: 16),
-          Text(
-              g.ausOsm
-                  ? 'Typisch für einen ${g.typ.name} (nicht geprüft)'
-                  : 'Fischarten (${g.land.name})',
-              style: text.titleMedium),
+          Text('Fischarten (${g.land.name})', style: text.titleMedium),
+          Text('${g.fischQuelle.zeichen} ${g.fischQuelle.text}'
+              '${g.fischQuelle == FischQuelle.typisch ? ' – nicht sicher' : ''}',
+              style: text.bodySmall),
           const SizedBox(height: 4),
           Wrap(
             spacing: 6,
@@ -481,6 +479,11 @@ class GewaesserDetail extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text('⛔ = heute Schonzeit', style: text.bodySmall),
+          if (KontoScope.of(context) != null) ...[
+            const SizedBox(height: 12),
+            GepruefteInfosKarte(g),
+            InfoKnoepfe(g),
+          ],
           const SizedBox(height: 16),
           FilledButton.icon(
             onPressed: _navigation,
@@ -977,7 +980,7 @@ class WasBeisstKarte extends StatefulWidget {
 }
 
 class _WasBeisstKarteState extends State<WasBeisstKarte> {
-  late final _faenge = fangDienst.faengeAn(widget.g.name);
+  late final _faenge = fangDienst.faengeAn(widget.g.anzeigeName);
 
   @override
   Widget build(BuildContext context) {
@@ -1009,6 +1012,10 @@ class _WasBeisstKarteState extends State<WasBeisstKarte> {
                     .map((e) => '${name(e.key)} (${e.value})')
                     .join(', ');
             final letzter = snap.data!.isEmpty ? null : snap.data!.first;
+            final alleArten = <String, int>{};
+            for (final f in snap.data!) {
+              alleArten[f.fischId] = (alleArten[f.fischId] ?? 0) + 1;
+            }
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -1030,6 +1037,24 @@ class _WasBeisstKarteState extends State<WasBeisstKarte> {
                   Text('${neu.length} Fänge · Fische: '
                       '${top(proArt, (id) => fischById(id)?.name ?? id)}'),
                   if (koeder.isNotEmpty) Text('Köder: ${top(koeder, (k) => k)}'),
+                ],
+                if (alleArten.isNotEmpty) ...[
+                  const SizedBox(height: 8),
+                  const Text('Hier schon gefangen:'),
+                  const SizedBox(height: 4),
+                  Wrap(
+                    spacing: 6,
+                    runSpacing: 6,
+                    children: [
+                      for (final e in alleArten.entries.toList()
+                        ..sort((a, b) => b.value.compareTo(a.value)))
+                        Chip(
+                          visualDensity: VisualDensity.compact,
+                          label: Text(
+                              '🎣 ${fischById(e.key)?.name ?? e.key} (${e.value})'),
+                        ),
+                    ],
+                  ),
                 ],
                 const SizedBox(height: 4),
                 Text('Aus öffentlich geteilten Fängen der Community.',
@@ -1150,6 +1175,297 @@ class _BewertungenKarteState extends State<BewertungenKarte> {
           ],
         );
       },
+    );
+  }
+}
+
+
+/// Von Anglern ergänzte und vom Administrator geprüfte Infos.
+class GepruefteInfosKarte extends StatefulWidget {
+  const GepruefteInfosKarte(this.g, {super.key});
+
+  final Gewaesser g;
+
+  @override
+  State<GepruefteInfosKarte> createState() => _GepruefteInfosKarteState();
+}
+
+class _GepruefteInfosKarteState extends State<GepruefteInfosKarte> {
+  late final _infos = fangDienst.gepruefteInfos(widget.g.id);
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    final admin = KontoScope.of(context)?.istAdmin ?? false;
+    return StreamBuilder<GepruefteInfos>(
+      stream: _infos,
+      builder: (context, snap) {
+        final infos = snap.data;
+        if (infos == null || infos.leer) return const SizedBox.shrink();
+        return Card(
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    const Expanded(
+                        child: Titel('🙋 Von Anglern ergänzt (geprüft)')),
+                    if (admin)
+                      IconButton(
+                        tooltip: 'Alle entfernen',
+                        icon: const Icon(Icons.delete_outline),
+                        onPressed: () =>
+                            fangDienst.gepruefteInfosLoeschen(widget.g.id),
+                      ),
+                  ],
+                ),
+                if (infos.fische.isNotEmpty) ...[
+                  const SizedBox(height: 6),
+                  Wrap(
+                    spacing: 6,
+                    runSpacing: 6,
+                    children: [
+                      for (final id in infos.fische)
+                        Chip(
+                          visualDensity: VisualDensity.compact,
+                          label: Text('✅ ${fischById(id)?.name ?? id}'),
+                        ),
+                    ],
+                  ),
+                ],
+                for (final e in infos.eintraege) ...[
+                  const Divider(),
+                  if (e['verkauf'] case final String v) Text('🎫 $v'),
+                  if (e['text'] case final String t) Text(t),
+                  if (e['url'] case final String u)
+                    TextButton.icon(
+                      onPressed: () => launchUrl(Uri.parse(u),
+                          mode: LaunchMode.externalApplication),
+                      icon: const Icon(Icons.open_in_new, size: 18),
+                      label: Text(u, overflow: TextOverflow.ellipsis),
+                    ),
+                  Text('von ${at(e['von'] as String? ?? '')}',
+                      style: text.bodySmall),
+                ],
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// "Mehr Infos wünschen" und "Infos ergänzen".
+class InfoKnoepfe extends StatelessWidget {
+  const InfoKnoepfe(this.g, {super.key});
+
+  final Gewaesser g;
+
+  Future<bool> _angemeldet(BuildContext context) async {
+    final konto = KontoScope.of(context);
+    if (konto?.angemeldet ?? false) return true;
+    await Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => const KontoScreen()));
+    return false;
+  }
+
+  Future<void> _wuenschen(BuildContext context) async {
+    if (!await _angemeldet(context) || !context.mounted) return;
+    final konto = KontoScope.of(context)!;
+    try {
+      await fangDienst.infosWuenschen(
+        uid: konto.uid!,
+        nutzerName: konto.name ?? '',
+        gewaesserId: g.id,
+        gewaesserName: '${g.anzeigeName}, ${g.bezirk.isEmpty ? g.land.name : 'Bezirk ${g.bezirk}'}',
+      );
+      if (context.mounted) {
+        meldung(context, 'Danke! Dein Wunsch ist beim Team angekommen.');
+      }
+    } catch (_) {
+      if (context.mounted) meldung(context, 'Senden fehlgeschlagen.');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (g.ausOsm)
+            const HinweisKarte(
+              'Zu diesem Gewässer fehlen noch sichere Infos. Weißt du mehr? '
+              'Ergänze es – oder wünsch dir, dass wir nachforschen.',
+              icon: Icons.help_outline,
+            ),
+          Row(
+            children: [
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () => _wuenschen(context),
+                  icon: const Icon(Icons.record_voice_over_outlined),
+                  label: const Text('Mehr Infos wünschen'),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: FilledButton.tonalIcon(
+                  onPressed: () async {
+                    if (!await _angemeldet(context) || !context.mounted) return;
+                    await Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => InfosErgaenzenScreen(g)));
+                  },
+                  icon: const Icon(Icons.edit_note),
+                  label: const Text('Infos ergänzen'),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Formular: Fischarten, Kartenverkauf, Website und Notiz einreichen.
+class InfosErgaenzenScreen extends StatefulWidget {
+  const InfosErgaenzenScreen(this.g, {super.key});
+
+  final Gewaesser g;
+
+  @override
+  State<InfosErgaenzenScreen> createState() => _InfosErgaenzenScreenState();
+}
+
+class _InfosErgaenzenScreenState extends State<InfosErgaenzenScreen> {
+  final _fische = <String>{};
+  final _verkauf = TextEditingController();
+  final _url = TextEditingController();
+  final _text = TextEditingController();
+  String _suche = '';
+  bool _sendet = false;
+
+  @override
+  void dispose() {
+    _verkauf.dispose();
+    _url.dispose();
+    _text.dispose();
+    super.dispose();
+  }
+
+  Future<void> _senden() async {
+    final konto = KontoScope.of(context)!;
+    var url = _url.text.trim();
+    if (url.isNotEmpty && !url.startsWith('http')) url = 'https://$url';
+    if (_fische.isEmpty &&
+        _verkauf.text.trim().isEmpty &&
+        url.isEmpty &&
+        _text.text.trim().isEmpty) {
+      meldung(context, 'Bitte mindestens eine Info eintragen.');
+      return;
+    }
+    setState(() => _sendet = true);
+    try {
+      await fangDienst.infosVorschlagen(
+        uid: konto.uid!,
+        nutzerName: konto.name ?? '',
+        gewaesserId: widget.g.id,
+        gewaesserName: widget.g.anzeigeName,
+        fische: _fische.toList(),
+        verkauf: _verkauf.text.trim(),
+        url: url,
+        text: _text.text.trim(),
+      );
+      if (!mounted) return;
+      meldung(context, 'Danke! Nach der Prüfung sehen es alle.');
+      Navigator.pop(context);
+    } catch (_) {
+      if (mounted) meldung(context, 'Senden fehlgeschlagen.');
+    } finally {
+      if (mounted) setState(() => _sendet = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    final suche = _suche.toLowerCase();
+    final auswahl = fische
+        .where((f) => !f.ausgestorben)
+        .where((f) =>
+            _fische.contains(f.id) || f.name.toLowerCase().contains(suche))
+        .toList();
+    return Scaffold(
+      appBar: AppBar(title: Text('Infos: ${widget.g.name}')),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          Text('Welche Fische gibt es hier?', style: text.titleMedium),
+          const SizedBox(height: 6),
+          TextField(
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.search),
+              hintText: 'Fisch suchen',
+              isDense: true,
+            ),
+            onChanged: (v) => setState(() => _suche = v.trim()),
+          ),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: [
+              for (final f in auswahl)
+                FilterChip(
+                  label: Text(f.name),
+                  selected: _fische.contains(f.id),
+                  onSelected: (an) => setState(
+                      () => an ? _fische.add(f.id) : _fische.remove(f.id)),
+                ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            controller: _verkauf,
+            maxLength: 300,
+            decoration: const InputDecoration(
+              labelText: 'Wo gibt es die Lizenz / Tageskarte?',
+              hintText: 'z. B. Gasthaus Post, Verein XY, hejfish',
+            ),
+          ),
+          TextField(
+            controller: _url,
+            maxLength: 300,
+            keyboardType: TextInputType.url,
+            decoration: const InputDecoration(labelText: 'Website (optional)'),
+          ),
+          TextField(
+            controller: _text,
+            maxLength: 1000,
+            maxLines: 4,
+            decoration: const InputDecoration(
+              labelText: 'Sonstiges (Regeln, Tipps, Preise …)',
+            ),
+          ),
+          const SizedBox(height: 8),
+          FilledButton.icon(
+            onPressed: _sendet ? null : _senden,
+            icon: const Icon(Icons.send),
+            label: const Text('Zur Prüfung schicken'),
+          ),
+          const SizedBox(height: 8),
+          const HinweisKarte(
+            'Das Team prüft deine Angaben, bevor sie für alle sichtbar werden. '
+            'Preise kannst du auch direkt beim Gewässer unter "Preis ergänzen" '
+            'eintragen.',
+          ),
+        ],
+      ),
     );
   }
 }

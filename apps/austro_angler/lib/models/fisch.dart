@@ -74,6 +74,9 @@ class Fisch {
     required this.koeder,
     required this.regeln,
     this.raubfisch = false,
+    this.geschuetzt = false,
+    this.eingeschleppt = false,
+    this.ausgestorben = false,
   });
 
   final String id;
@@ -83,6 +86,15 @@ class Fisch {
   final String lebensraum;
   final String koeder;
   final bool raubfisch;
+
+  /// FFH-Art, darf nicht entnommen werden.
+  final bool geschuetzt;
+
+  /// Nicht heimisch (eingesetzt oder eingeschleppt).
+  final bool eingeschleppt;
+
+  /// In Österreich ausgestorben oder verschollen.
+  final bool ausgestorben;
   final Map<Bundesland, Regel> regeln;
 
   Regel regel(Bundesland land) => regeln[land] ?? const Regel.unbekannt();

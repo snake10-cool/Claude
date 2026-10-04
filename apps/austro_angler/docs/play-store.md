@@ -73,7 +73,7 @@ Austro Angler ist die Angel-App für ganz Österreich – mit Schwerpunkt Bezirk
 • Statistik, Rekorde, Abzeichen und PDF-Export
 
 🐟 FISCHLEXIKON
-• 31 heimische Fischarten mit Bild und Merkmalen
+• 83 Fischarten Österreichs mit Merkmalen – suchen und filtern, mit Liste der Gewässer, wo es sie gibt
 • Schonzeiten und Brittelmaße für OÖ und Salzburg
 • Schonzeit-Kalender und Erinnerung, wenn die Saison wieder aufgeht
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../main.dart';
+import '../data/fische.dart';
 import '../services/fang_dienst.dart';
 import '../services/konto.dart';
 import 'widgets.dart';
@@ -59,7 +60,7 @@ class _AdminAnsicht extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Admin 🛡️'),
@@ -69,6 +70,7 @@ class _AdminAnsicht extends StatelessWidget {
             tabs: [
               Tab(icon: Icon(Icons.lightbulb), text: 'Wünsche'),
               Tab(icon: Icon(Icons.euro), text: 'Preise'),
+              Tab(icon: Icon(Icons.water), text: 'Infos'),
               Tab(icon: Icon(Icons.flag), text: 'Meldungen'),
             ],
           ),
@@ -77,6 +79,7 @@ class _AdminAnsicht extends StatelessWidget {
           children: [
             _WunschListe(konto, admin: true),
             const _PreisPruefung(),
+            const _InfoPruefung(),
             const _MeldungenListe(),
           ],
         ),
@@ -409,6 +412,87 @@ class _PreisPruefungState extends State<_PreisPruefung>
                           const SizedBox(width: 8),
                           OutlinedButton.icon(
                             onPressed: () => fangDienst.preisAblehnen(v),
+                            icon: const Icon(Icons.close),
+                            label: const Text('Ablehnen'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+/// Admin: von Anglern ergänzte Gewässer-Infos prüfen.
+class _InfoPruefung extends StatefulWidget {
+  const _InfoPruefung();
+
+  @override
+  State<_InfoPruefung> createState() => _InfoPruefungState();
+}
+
+class _InfoPruefungState extends State<_InfoPruefung>
+    with AutomaticKeepAliveClientMixin {
+  final _stream = fangDienst.infoVorschlaege();
+
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    final text = Theme.of(context).textTheme;
+    return StreamBuilder<List<InfoVorschlag>>(
+      stream: _stream,
+      builder: (context, snap) {
+        if (snap.hasError) {
+          return const Center(child: Text('Laden fehlgeschlagen.'));
+        }
+        if (!snap.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        final liste = snap.data!;
+        if (liste.isEmpty) {
+          return const Center(child: Text('Keine Gewässer-Infos zu prüfen. 👍'));
+        }
+        return ListView(
+          padding: const EdgeInsets.all(12),
+          children: [
+            for (final v in liste)
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(v.gewaesserName, style: text.titleMedium),
+                      Text('von ${at(v.nutzerName)}', style: text.bodySmall),
+                      if (v.fische.isNotEmpty)
+                        Text('🐟 ${v.fische.map((id) => fischById(id)?.name ?? id).join(', ')}'),
+                      if (v.verkauf.isNotEmpty) Text('🎫 ${v.verkauf}'),
+                      if (v.url.isNotEmpty) Text('🔗 ${v.url}'),
+                      if (v.text.isNotEmpty) Text(v.text),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          FilledButton.icon(
+                            onPressed: () async {
+                              await fangDienst.infoFreigeben(v);
+                              if (context.mounted) {
+                                meldung(context, 'Freigegeben ✓');
+                              }
+                            },
+                            icon: const Icon(Icons.check),
+                            label: const Text('Freigeben'),
+                          ),
+                          const SizedBox(width: 8),
+                          OutlinedButton.icon(
+                            onPressed: () => fangDienst.infoAblehnen(v),
                             icon: const Icon(Icons.close),
                             label: const Text('Ablehnen'),
                           ),
