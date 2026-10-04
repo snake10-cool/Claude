@@ -26,7 +26,13 @@ service cloud.firestore {
       return d.keys().hasOnly(['fischId', 'laengeCm', 'gewichtG', 'gewaesser',
                'bundesland', 'koeder', 'notiz', 'zurueckgesetzt', 'datum',
                'uid', 'nutzerName', 'hatFoto', 'petriHeil', 'erstellt',
-               'wetter'])
+               'wetter', 'geschichte', 'ausruestung', 'verein'])
+          && d.get('geschichte', '') is string
+          && d.get('geschichte', '').size() <= 3000
+          && d.get('ausruestung', '') is string
+          && d.get('ausruestung', '').size() <= 100
+          && d.get('verein', '') is string
+          && d.get('verein', '').size() <= 60
           && d.uid == request.auth.uid
           && d.fischId is string && d.fischId.size() < 40
           && d.notiz is string && d.notiz.size() <= 500
@@ -38,7 +44,9 @@ service cloud.firestore {
     match /nutzer/{uid} {
       allow read: if true;
       allow create, update: if ich(uid)
-          && request.resource.data.keys().hasOnly(['name', 'erstellt'])
+          && request.resource.data.keys().hasOnly(['name', 'erstellt', 'verein'])
+          && request.resource.data.get('verein', '') is string
+          && request.resource.data.get('verein', '').size() <= 60
           && request.resource.data.name is string
           && request.resource.data.name.matches('^[a-z0-9_.]{3,20}$');
       allow delete: if ich(uid);
@@ -99,6 +107,17 @@ service cloud.firestore {
         allow create, update: if ich(uid)
             && request.resource.data.keys().hasOnly(['name'])
             && request.resource.data.name is string;
+      }
+
+      // Ausrüstung (privat).
+      match /ausruestung/{id} {
+        allow read, delete: if ich(uid);
+        allow create, update: if ich(uid)
+            && request.resource.data.keys().hasOnly(['name', 'art', 'notiz'])
+            && request.resource.data.name is string
+            && request.resource.data.name.size() <= 100
+            && request.resource.data.notiz is string
+            && request.resource.data.notiz.size() <= 300;
       }
 
       // Private Fänge: nur für den Besitzer.

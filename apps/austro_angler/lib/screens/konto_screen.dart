@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../services/fang_dienst.dart';
 import '../services/konto.dart';
+import 'vereine_screen.dart';
 import 'widgets.dart';
 
 class KontoScreen extends StatelessWidget {
@@ -185,6 +186,17 @@ class _Profil extends StatelessWidget {
               onTap: () => _hochladen(context),
             ),
           ),
+        Card(
+          child: ListTile(
+            leading: const Icon(Icons.groups_2_outlined),
+            title: const Text('Mein Verein'),
+            subtitle: Text(konto.verein.isEmpty
+                ? 'Freiwillig – für die Vereins-Rangliste'
+                : konto.verein),
+            trailing: const Icon(Icons.edit_outlined),
+            onTap: () => _vereinWaehlen(context, konto),
+          ),
+        ),
         if (konto.blockiert.isNotEmpty)
           ExpansionTile(
             leading: const Icon(Icons.block),
@@ -402,5 +414,53 @@ class AnmeldeSeite extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+
+Future<void> _vereinWaehlen(BuildContext context, Konto konto) async {
+  final eingabe = TextEditingController(text: konto.verein);
+  final neu = await showDialog<String>(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: const Text('Mein Verein'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Autocomplete<String>(
+            initialValue: TextEditingValue(text: konto.verein),
+            optionsBuilder: (v) => vereine
+                .map((x) => x.name)
+                .where((n) => n.toLowerCase().contains(v.text.toLowerCase())),
+            onSelected: (v) => eingabe.text = v,
+            fieldViewBuilder: (context, controller, focus, _) => TextField(
+              controller: controller,
+              focusNode: focus,
+              maxLength: 60,
+              decoration: const InputDecoration(
+                hintText: 'z. B. SAC Mattig Braunau',
+              ),
+              onChanged: (v) => eingabe.text = v,
+            ),
+          ),
+          const Text('Leer lassen = kein Verein. Ab jetzt zählen deine '
+              'neuen Fänge für deinen Verein.'),
+        ],
+      ),
+      actions: [
+        TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Abbrechen')),
+        FilledButton(
+            onPressed: () => Navigator.pop(context, eingabe.text.trim()),
+            child: const Text('Speichern')),
+      ],
+    ),
+  );
+  if (neu == null) return;
+  try {
+    await konto.vereinSetzen(neu);
+  } catch (_) {
+    if (context.mounted) meldung(context, 'Speichern fehlgeschlagen.');
   }
 }

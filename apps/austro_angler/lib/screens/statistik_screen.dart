@@ -59,6 +59,8 @@ class _StatistikScreenState extends State<StatistikScreen> {
                   _proMonat(f), premium: true),
               _Balken('🪱 Beste Köder', _top(f.map((x) => x.koeder)),
                   premium: true),
+              _Balken('🧰 Beste Ausrüstung', _top(f.map((x) => x.ausruestung)),
+                  premium: true),
               _Balken('📍 Beste Gewässer', _top(f.map((x) => x.gewaesser)),
                   premium: true),
               _Balken('🕐 Beste Uhrzeit', _uhrzeiten(f), premium: true),

@@ -11,6 +11,7 @@ import '../models/bundesland.dart';
 import '../models/fang.dart';
 import '../services/fang_dienst.dart';
 import '../services/wetter.dart';
+import '../services/wochen_challenges.dart';
 import 'gewaesser_screen.dart';
 import 'koeder_screen.dart';
 import 'ort_waehlen.dart';
@@ -112,6 +113,7 @@ class _FangListe extends StatelessWidget {
           )
         else ...[
           _Statistik(faenge),
+          WochenChallengeKarte(faenge),
           for (final f in faenge)
             FangKarte(
               f,
@@ -121,6 +123,69 @@ class _FangListe extends StatelessWidget {
             ),
         ],
       ],
+    );
+  }
+}
+
+/// Zwei persönliche Aufgaben pro Woche.
+class WochenChallengeKarte extends StatelessWidget {
+  const WochenChallengeKarte(this.faenge, {super.key});
+
+  final List<Fang> faenge;
+
+  @override
+  Widget build(BuildContext context) {
+    final speicher = SpeicherScope.of(context);
+    final jetzt = DateTime.now();
+    final start = wochenbeginn(jetzt);
+    final woche = faenge.where((f) => !f.datum.isBefore(start)).toList();
+    final frueher = faenge.where((f) => f.datum.isBefore(start)).toList();
+    final text = Theme.of(context).textTheme;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Expanded(child: Titel('🎯 Wochen-Challenges')),
+                Text('⭐ ${speicher.erledigteChallenges.length}',
+                    style: text.titleMedium),
+              ],
+            ),
+            for (final c in challengesDerWoche(jetzt)) ...[
+              const SizedBox(height: 8),
+              Builder(builder: (context) {
+                final stand = c.zaehlen(woche, frueher).clamp(0, c.ziel);
+                final fertig = stand >= c.ziel;
+                final schluessel = challengeSchluessel(jetzt, c);
+                if (fertig && !speicher.erledigteChallenges.contains(schluessel)) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    speicher.challengeErledigt(schluessel);
+                    if (context.mounted) {
+                      meldung(context, 'Challenge geschafft: ${c.titel} ⭐');
+                    }
+                  });
+                }
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('${fertig ? '✅' : c.symbol} ${c.titel}'),
+                    const SizedBox(height: 4),
+                    LinearProgressIndicator(
+                        value: stand / c.ziel, minHeight: 6),
+                    Text('$stand / ${c.ziel}', style: text.bodySmall),
+                  ],
+                );
+              }),
+            ],
+            const SizedBox(height: 4),
+            Text('Neue Aufgaben jeden Montag. ⭐ = geschaffte Challenges.',
+                style: text.bodySmall),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -224,14 +289,23 @@ class FangKarte extends StatelessWidget {
       if (fang.laengeCm != null) '${fang.laengeCm!.toStringAsFixed(0)} cm',
       if (fang.gewichtG != null) _gewicht(fang.gewichtG!),
       if (fang.koeder.isNotEmpty) 'Köder: ${fang.koeder}',
+      if (fang.ausruestung.isNotEmpty) '🧰 ${fang.ausruestung}',
     ].join(' · ');
     final ort = [
       if (fang.gewaesser.isNotEmpty) fang.gewaesser,
       if (fang.bundesland.isNotEmpty) fang.bundesland,
     ].join(', ');
 
+    final geschichte = fang.geschichte.isNotEmpty;
     return Card(
       clipBehavior: Clip.antiAlias,
+      shape: geschichte
+          ? RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+              side: BorderSide(
+                  color: Theme.of(context).colorScheme.tertiary, width: 2),
+            )
+          : null,
       child: InkWell(
         onTap: onTap,
         child: Column(
@@ -276,6 +350,36 @@ class FangKarte extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(fang.notiz),
                   ],
+                  if (geschichte) ...[
+                    const SizedBox(height: 6),
+                    Text('📖 Fang-Geschichte', style: text.labelLarge),
+                    Text(
+                      fang.geschichte,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    if (fang.geschichte.length > 150)
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton(
+                          onPressed: () => showDialog<void>(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text('📖 ${fisch?.name ?? ''}'),
+                              content: SingleChildScrollView(
+                                  child: Text(fang.geschichte)),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: const Text('Schließen'),
+                                ),
+                              ],
+                            ),
+                          ),
+                          child: const Text('Weiterlesen'),
+                        ),
+                      ),
+                  ],
                   ?unten,
                 ],
               ),
@@ -316,6 +420,11 @@ class _FangFormularState extends State<FangFormular> {
       TextEditingController(text: widget.fang?.gewaesser ?? '');
   late final _koeder = TextEditingController(text: widget.fang?.koeder ?? '');
   late final _notiz = TextEditingController(text: widget.fang?.notiz ?? '');
+  late final _ausruestung =
+      TextEditingController(text: widget.fang?.ausruestung ?? '');
+  late final _geschichte =
+      TextEditingController(text: widget.fang?.geschichte ?? '');
+  List<String> _meineAusruestung = const [];
   Uint8List? _neuesFoto;
   bool _fotoEntfernen = false;
   bool _speichert = false;
@@ -325,6 +434,15 @@ class _FangFormularState extends State<FangFormular> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final uid = KontoScope.of(context)?.uid;
+      if (uid == null) return;
+      fangDienst.ausruestung(uid).first.then((l) {
+        if (mounted) {
+          setState(() => _meineAusruestung = [for (final a in l) a.name]);
+        }
+      }).catchError((_) {});
+    });
     final f = widget.fang;
     if (f != null && f.uid.isNotEmpty) {
       fangDienst.fangorte(f.uid).first.then((orte) {
@@ -350,7 +468,8 @@ class _FangFormularState extends State<FangFormular> {
 
   @override
   void dispose() {
-    for (final c in [_laenge, _gewicht, _gewaesser, _koeder, _notiz]) {
+    for (final c in [_laenge, _gewicht, _gewaesser, _koeder, _notiz,
+        _ausruestung, _geschichte]) {
       c.dispose();
     }
     super.dispose();
@@ -401,6 +520,9 @@ class _FangFormularState extends State<FangFormular> {
       koeder: _koeder.text.trim(),
       notiz: _notiz.text.trim(),
       zurueckgesetzt: _zurueck,
+      ausruestung: _ausruestung.text.trim(),
+      geschichte: _geschichte.text.trim(),
+      verein: konto?.verein ?? '',
       uid: konto?.uid ?? '',
       nutzerName: konto?.name ?? '',
       oeffentlich: _oeffentlich,
@@ -685,6 +807,43 @@ class _FangFormularState extends State<FangFormular> {
             maxLines: 3,
             maxLength: 500,
             decoration: const InputDecoration(labelText: 'Notiz (Wetter …)'),
+          ),
+          Autocomplete<String>(
+            initialValue: TextEditingValue(text: _ausruestung.text),
+            optionsBuilder: (v) => _meineAusruestung.where((n) =>
+                n.toLowerCase().contains(v.text.toLowerCase())),
+            onSelected: (v) => _ausruestung.text = v,
+            fieldViewBuilder: (context, controller, focus, _) => TextField(
+              controller: controller,
+              focusNode: focus,
+              maxLength: 100,
+              decoration: const InputDecoration(
+                labelText: 'Ausrüstung (optional)',
+                hintText: 'z. B. Spinnrute 2,40 m',
+                counterText: '',
+              ),
+              onChanged: (v) => _ausruestung.text = v,
+            ),
+          ),
+          const SizedBox(height: 8),
+          ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            initiallyExpanded: _geschichte.text.isNotEmpty,
+            leading: const Icon(Icons.auto_stories_outlined),
+            title: const Text('Fang-Geschichte erzählen (optional)'),
+            children: [
+              TextField(
+                controller: _geschichte,
+                maxLines: 8,
+                minLines: 4,
+                maxLength: 3000,
+                decoration: const InputDecoration(
+                  hintText: 'Wie war der Drill? Was ist passiert? '
+                      'Geschichten werden im Feed hervorgehoben.',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ],
           ),
           if (warnung != null) ...[
             const SizedBox(height: 12),

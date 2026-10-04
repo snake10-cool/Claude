@@ -95,6 +95,28 @@ class GepruefteInfos {
   bool get leer => fische.isEmpty && eintraege.isEmpty;
 }
 
+class Ausruestung {
+  const Ausruestung({
+    this.id = '',
+    required this.name,
+    this.art = 'Rute',
+    this.notiz = '',
+  });
+
+  factory Ausruestung.ausDoc(DocumentSnapshot<Map<String, dynamic>> d) =>
+      Ausruestung(
+        id: d.id,
+        name: d.data()?['name'] as String? ?? '',
+        art: d.data()?['art'] as String? ?? 'Rute',
+        notiz: d.data()?['notiz'] as String? ?? '',
+      );
+
+  final String id;
+  final String name;
+  final String art;
+  final String notiz;
+}
+
 class CommunityPreis {
   CommunityPreis(this.roh)
       : art = roh['art'] as String? ?? '',
@@ -759,6 +781,23 @@ class FangDienst {
       ..sort((a, b) => b.datum.compareTo(a.datum));
   }
 
+  // ── Ausrüstung (privat) ──
+
+  CollectionReference<Map<String, dynamic>> _ausruestung(String uid) =>
+      _db.collection('nutzer/$uid/ausruestung');
+
+  Stream<List<Ausruestung>> ausruestung(String uid) => _ausruestung(uid)
+      .orderBy('name')
+      .snapshots()
+      .map((s) => s.docs.map(Ausruestung.ausDoc).toList());
+
+  Future<void> ausruestungSpeichern(String uid, Ausruestung a) => _offline(
+      (a.id.isEmpty ? _ausruestung(uid).doc() : _ausruestung(uid).doc(a.id))
+          .set({'name': a.name, 'art': a.art, 'notiz': a.notiz}));
+
+  Future<void> ausruestungLoeschen(String uid, String id) =>
+      _offline(_ausruestung(uid).doc(id).delete());
+
   // ── Köder-Box (privat) ──
 
   CollectionReference<Map<String, dynamic>> _koeder(String uid) =>
@@ -898,7 +937,7 @@ class FangDienst {
     final oeff = await _oeff.where('uid', isEqualTo: uid).get();
     final privat = await _privat(uid).get();
     for (final sammlung in [_fangorte(uid), _aktivitaeten(uid), _freunde(uid),
-        _koeder(uid), _ausfluege(uid), _blockiert(uid)]) {
+        _koeder(uid), _ausfluege(uid), _blockiert(uid), _ausruestung(uid)]) {
       for (final d in (await sammlung.get()).docs) {
         await d.reference.delete();
       }

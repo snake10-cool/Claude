@@ -13,6 +13,9 @@ class Fang {
     this.koeder = '',
     this.notiz = '',
     this.zurueckgesetzt = false,
+    this.geschichte = '',
+    this.ausruestung = '',
+    this.verein = '',
     this.uid = '',
     this.nutzerName = '',
     this.oeffentlich = true,
@@ -33,6 +36,15 @@ class Fang {
   final String koeder;
   final String notiz;
   final bool zurueckgesetzt;
+
+  /// Längere Erzählung zum Fang (optional).
+  final String geschichte;
+
+  /// Womit gefangen, z. B. "Spinnrute 2,40 m".
+  final String ausruestung;
+
+  /// Verein des Anglers beim Speichern (für die Vereins-Rangliste).
+  final String verein;
 
   // Nur für online gespeicherte Fänge:
   final String uid;
@@ -66,6 +78,9 @@ class Fang {
         koeder: koeder,
         notiz: notiz,
         zurueckgesetzt: zurueckgesetzt,
+        geschichte: geschichte,
+        ausruestung: ausruestung,
+        verein: verein,
         uid: uid ?? this.uid,
         nutzerName: nutzerName ?? this.nutzerName,
         oeffentlich: oeffentlich ?? this.oeffentlich,
@@ -84,6 +99,9 @@ class Fang {
         'notiz': notiz,
         'zurueckgesetzt': zurueckgesetzt,
         'wetter': wetter,
+        if (geschichte.isNotEmpty) 'geschichte': geschichte,
+        if (ausruestung.isNotEmpty) 'ausruestung': ausruestung,
+        if (verein.isNotEmpty) 'verein': verein,
       };
 
   /// Für die lokale Speicherung (ohne Konto).
@@ -104,6 +122,8 @@ class Fang {
         koeder: j['koeder'] as String? ?? '',
         notiz: j['notiz'] as String? ?? '',
         zurueckgesetzt: j['zurueckgesetzt'] as bool? ?? false,
+        geschichte: j['geschichte'] as String? ?? '',
+        ausruestung: j['ausruestung'] as String? ?? '',
         wetter: _wetter(j['wetter']),
       );
 
@@ -136,6 +156,9 @@ class Fang {
       koeder: j['koeder'] as String? ?? '',
       notiz: j['notiz'] as String? ?? '',
       zurueckgesetzt: j['zurueckgesetzt'] as bool? ?? false,
+      geschichte: j['geschichte'] as String? ?? '',
+      ausruestung: j['ausruestung'] as String? ?? '',
+      verein: j['verein'] as String? ?? '',
       uid: j['uid'] as String? ?? '',
       nutzerName: j['nutzerName'] as String? ?? '',
       oeffentlich: oeffentlich,

@@ -400,6 +400,7 @@ class _Platz {
   int faenge = 0;
   int petriHeil = 0;
   double groesster = 0;
+  final mitglieder = <String>{};
 }
 
 class _Rangliste extends StatefulWidget {
@@ -412,6 +413,7 @@ class _Rangliste extends StatefulWidget {
 class _RanglisteState extends State<_Rangliste> {
   late Future<List<Fang>> _faenge = fangDienst.neuesteFaenge();
   _Wertung _wertung = _Wertung.faenge;
+  bool _vereine = false;
 
   @override
   Widget build(BuildContext context) {
@@ -438,7 +440,11 @@ class _RanglisteState extends State<_Rangliste> {
           }
           final plaetze = <String, _Platz>{};
           for (final f in snap.data!) {
-            final p = plaetze.putIfAbsent(f.uid, () => _Platz(at(f.nutzerName)));
+            if (_vereine && f.verein.isEmpty) continue;
+            final p = _vereine
+                ? plaetze.putIfAbsent(f.verein.toLowerCase(), () => _Platz(f.verein))
+                : plaetze.putIfAbsent(f.uid, () => _Platz(at(f.nutzerName)));
+            p.mitglieder.add(f.uid);
             p.faenge++;
             p.petriHeil += f.petriHeil.length;
             if ((f.laengeCm ?? 0) > p.groesster) p.groesster = f.laengeCm!;
@@ -455,6 +461,22 @@ class _RanglisteState extends State<_Rangliste> {
           return ListView(
             padding: const EdgeInsets.all(12),
             children: [
+              SegmentedButton<bool>(
+                showSelectedIcon: false,
+                segments: const [
+                  ButtonSegment(
+                      value: false,
+                      icon: Icon(Icons.person),
+                      label: Text('Angler')),
+                  ButtonSegment(
+                      value: true,
+                      icon: Icon(Icons.groups_2),
+                      label: Text('Vereine')),
+                ],
+                selected: {_vereine},
+                onSelectionChanged: (s) => setState(() => _vereine = s.first),
+              ),
+              const SizedBox(height: 8),
               SegmentedButton<_Wertung>(
                 showSelectedIcon: false,
                 segments: const [
@@ -469,13 +491,16 @@ class _RanglisteState extends State<_Rangliste> {
               ),
               const SizedBox(height: 12),
               if (top.isEmpty)
-                const Padding(
-                  padding: EdgeInsets.all(24),
-                  child: Text('Noch niemand in der Rangliste.'),
+                Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Text(_vereine
+                      ? 'Noch kein Verein dabei. Trag unter Mehr → Mein '
+                          'Konto deinen Verein ein!'
+                      : 'Noch niemand in der Rangliste.'),
                 ),
               for (var i = 0; i < top.length; i++)
                 Card(
-                  color: top[i].key == eigeneUid
+                  color: !_vereine && top[i].key == eigeneUid
                       ? Theme.of(context).colorScheme.primaryContainer
                       : null,
                   child: ListTile(
@@ -497,7 +522,8 @@ class _RanglisteState extends State<_Rangliste> {
                     ),
                     title: Text(top[i].value.name),
                     subtitle: Text('${top[i].value.faenge} Fänge · '
-                        '${top[i].value.petriHeil} × Petri Heil'),
+                        '${top[i].value.petriHeil} × Petri Heil'
+                        '${_vereine ? ' · ${top[i].value.mitglieder.length} Angler' : ''}'),
                     trailing: Text(
                       switch (_wertung) {
                         _Wertung.faenge => '${top[i].value.faenge}',

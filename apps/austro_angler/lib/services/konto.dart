@@ -24,6 +24,9 @@ class Konto extends ChangeNotifier {
   User? nutzer;
   String? name;
 
+  /// Verein (freiwillig), für die Vereins-Rangliste.
+  String verein = '';
+
   /// Wird true, sobald Firebase gemeldet hat, ob jemand angemeldet ist.
   bool bereit = false;
 
@@ -49,6 +52,7 @@ class Konto extends ChangeNotifier {
     bereit = true;
     nutzer = u;
     name = null;
+    verein = '';
     premiumBis = null;
     await _blockAbo?.cancel();
     blockiert = const {};
@@ -63,11 +67,20 @@ class Konto extends ChangeNotifier {
     try {
       final doc = await _db.doc('nutzer/${u.uid}').get();
       name = (doc.data()?['name'] as String?) ?? name;
+      verein = doc.data()?['verein'] as String? ?? '';
       premiumBis = await fangDienst.premiumBis(u.uid);
     } catch (_) {
       // Offline – der Name kommt beim nächsten Mal.
     }
     notifyListeners();
+  }
+
+  Future<void> vereinSetzen(String neu) async {
+    final u = nutzer;
+    if (u == null) return;
+    verein = neu.trim();
+    notifyListeners();
+    await _db.doc('nutzer/${u.uid}').update({'verein': verein});
   }
 
   /// Macht aus einer Eingabe wie " @HechtJäger " den Handle "hechtjäger".

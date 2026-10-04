@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import 'ausfluege_screen.dart';
+import 'ausruestung_screen.dart';
 import 'bestimmung_screen.dart';
 import 'checkliste_screen.dart';
 import 'einstellungen_screen.dart';
@@ -68,6 +69,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.phishing, 'Köder-Box',
               'Deine Köder mit Foto', () => _oeffnen(context,
                   const KoederScreen())),
+          _Eintrag(Icons.handyman_outlined, 'Meine Ausrüstung',
+              'Ruten, Rollen, Schnüre', () => _oeffnen(context,
+                  const AusruestungScreen())),
           _Eintrag(Icons.badge, 'Meine Lizenzen',
               'Ablaufdatum und Erinnerung', () => _oeffnen(context,
                   const LizenzenScreen())),
