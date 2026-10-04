@@ -12,6 +12,7 @@ import 'screens/konto_screen.dart';
 import 'screens/mehr_screen.dart';
 import 'screens/wuensche_screen.dart';
 import 'services/alle_gewaesser.dart';
+import 'services/hintergrund.dart';
 import 'services/konto.dart';
 import 'services/speicher.dart';
 import 'services/wecker.dart';
@@ -139,6 +140,17 @@ class Startseite extends StatefulWidget {
 
 class _StartseiteState extends State<Startseite> {
   int _index = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final konto = KontoScope.of(context);
+      angeltageWarnen(konto);
+      startbildschirmAktualisieren(SpeicherScope.of(context));
+    });
+  }
 
   static const _seiten = [
     GewaesserScreen(),

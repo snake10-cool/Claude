@@ -142,6 +142,9 @@ class Treffen {
         zeit = (doc.data()?['zeit'] as Timestamp?)?.toDate() ?? DateTime.now(),
         zusagen = (doc.data()?['zusagen'] as Map?)?.map(
                 (k, v) => MapEntry(k as String, v as String)) ??
+            const {},
+        fahrten = (doc.data()?['fahrten'] as Map?)?.map(
+                (k, v) => MapEntry(k as String, Fahrt(v as Map))) ??
             const {};
 
   final String id;
@@ -153,6 +156,23 @@ class Treffen {
 
   /// uid → @Name.
   final Map<String, String> zusagen;
+
+  /// uid → Mitfahr-Angebot oder -Wunsch.
+  final Map<String, Fahrt> fahrten;
+}
+
+/// "Ich fahre ab Braunau, 2 Plätze frei" oder "Suche Mitfahrt ab Ried".
+class Fahrt {
+  Fahrt(Map roh)
+      : name = roh['name'] as String? ?? '',
+        biete = roh['biete'] as bool? ?? true,
+        plaetze = (roh['plaetze'] as num?)?.toInt() ?? 0,
+        von = roh['von'] as String? ?? '';
+
+  final String name;
+  final bool biete;
+  final int plaetze;
+  final String von;
 }
 
 class Bewertung {
@@ -489,6 +509,25 @@ class FangDienst {
       _treffen.doc(treffenId).update({
         'zusagen.$uid': dabei ? name : FieldValue.delete(),
       });
+
+  Future<void> fahrtSetzen(String treffenId, String uid,
+          {required String name,
+          required bool biete,
+          required int plaetze,
+          required String von}) =>
+      _offline(_treffen.doc(treffenId).update({
+        'fahrten.$uid': {
+          'name': name,
+          'biete': biete,
+          'plaetze': plaetze,
+          'von': von,
+        },
+      }));
+
+  Future<void> fahrtLoeschen(String treffenId, String uid) =>
+      _offline(_treffen.doc(treffenId).update({
+        'fahrten.$uid': FieldValue.delete(),
+      }));
 
   Future<void> treffenLoeschen(String id) => _treffen.doc(id).delete();
 

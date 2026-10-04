@@ -35,6 +35,32 @@ class Wecker {
     _bereit = true;
   }
 
+  /// Sofort-Hinweis (z. B. Unwetter am geplanten Angeltag). Jeder
+  /// [schluessel] wird nur einmal gemeldet.
+  Future<void> hinweisEinmal(String schluessel, String titel, String text) async {
+    if (!unterstuetzt) return;
+    final p = await SharedPreferences.getInstance();
+    final gemeldet = p.getStringList('gemeldet') ?? const [];
+    if (gemeldet.contains(schluessel)) return;
+    await _starten();
+    await _plugin.show(
+      id: 5000 + schluessel.hashCode % 1000,
+      title: titel,
+      body: text,
+      notificationDetails: const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'warnungen',
+          'Wetter-Warnungen',
+          channelDescription: 'Unwetter an geplanten Angeltagen',
+          importance: Importance.high,
+          priority: Priority.high,
+        ),
+      ),
+    );
+    await p.setStringList(
+        'gemeldet', [...gemeldet.reversed.take(50).toList().reversed, schluessel]);
+  }
+
   Future<Set<String>> fische() async {
     final p = await SharedPreferences.getInstance();
     return (p.getStringList('wecker') ?? const []).toSet();

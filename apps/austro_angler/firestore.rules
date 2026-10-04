@@ -288,12 +288,16 @@ service cloud.firestore {
           && request.resource.data.zeit is timestamp
           && request.resource.data.text.size() <= 300
           && request.resource.data.zusagen.keys().hasOnly([request.auth.uid]);
-      // Zusagen/Absagen: nur den eigenen Eintrag ändern.
+      // Zusagen/Absagen und Mitfahr-Angebote: nur den eigenen Eintrag ändern.
       allow update: if angemeldet()
           && request.resource.data.diff(resource.data).affectedKeys()
-               .hasOnly(['zusagen'])
+               .hasOnly(['zusagen', 'fahrten'])
           && request.resource.data.zusagen.diff(resource.data.zusagen)
-               .affectedKeys().hasOnly([request.auth.uid]);
+               .affectedKeys().hasOnly([request.auth.uid])
+          && request.resource.data.get('fahrten', {})
+               .diff(resource.data.get('fahrten', {}))
+               .affectedKeys().hasOnly([request.auth.uid])
+          && request.resource.data.get('fahrten', {}).size() <= 100;
       allow delete: if ich(resource.data.uid) || istAdmin();
     }
 

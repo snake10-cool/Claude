@@ -219,3 +219,87 @@ Future<Abfluss> abflussLaden(LatLng p) async {
         : mittel.reduce((a, b) => a + b) / mittel.length,
   );
 }
+
+
+/// Warnung vor Gewitter, Sturm oder Starkregen zwischen [von] und [bis]
+/// (höchstens 7 Tage voraus). Null, wenn nichts Gefährliches angesagt ist.
+Future<String?> unwetterWarnung(LatLng p, DateTime von, DateTime bis) async {
+  final uri = Uri.https('api.open-meteo.com', '/v1/forecast', {
+    'latitude': p.latitude.toStringAsFixed(3),
+    'longitude': p.longitude.toStringAsFixed(3),
+    'hourly': 'weather_code,wind_gusts_10m,precipitation',
+    'timezone': 'Europe/Vienna',
+    'forecast_days': '8',
+  });
+  final antwort = await http.get(uri).timeout(const Duration(seconds: 10));
+  if (antwort.statusCode != 200) return null;
+  final h = (jsonDecode(antwort.body) as Map<String, dynamic>)['hourly']
+      as Map<String, dynamic>;
+  final zeiten = (h['time'] as List).cast<String>();
+  var gewitter = false;
+  var boeen = 0.0;
+  var regen = 0.0;
+  for (var i = 0; i < zeiten.length; i++) {
+    final t = DateTime.parse(zeiten[i]);
+    if (t.isBefore(von.subtract(const Duration(hours: 1))) || t.isAfter(bis)) {
+      continue;
+    }
+    final code = ((h['weather_code'] as List)[i] as num?)?.toInt() ?? 0;
+    if (code >= 95) gewitter = true;
+    final b = ((h['wind_gusts_10m'] as List)[i] as num?)?.toDouble() ?? 0;
+    if (b > boeen) boeen = b;
+    final r = ((h['precipitation'] as List)[i] as num?)?.toDouble() ?? 0;
+    if (r > regen) regen = r;
+  }
+  final teile = [
+    if (gewitter) '⛈️ Gewitter',
+    if (boeen >= 60) '💨 Sturmböen bis ${boeen.round()} km/h',
+    if (regen >= 5) '🌧️ Starkregen',
+  ];
+  return teile.isEmpty ? null : teile.join(', ');
+}
+
+/// Grobe Schätzung der Wassertemperatur aus der Lufttemperatur der letzten
+/// zwei Wochen. Seen reagieren langsam, Bäche werden vom Grundwasser gekühlt.
+Future<double?> wassertemperaturSchaetzung(LatLng p,
+    {required bool fliesst, required bool klein, required bool see}) async {
+  final uri = Uri.https('api.open-meteo.com', '/v1/forecast', {
+    'latitude': p.latitude.toStringAsFixed(3),
+    'longitude': p.longitude.toStringAsFixed(3),
+    'daily': 'temperature_2m_mean',
+    'timezone': 'Europe/Vienna',
+    'past_days': '21',
+    'forecast_days': '1',
+  });
+  final antwort = await http.get(uri).timeout(const Duration(seconds: 10));
+  if (antwort.statusCode != 200) return null;
+  final werte = [
+    for (final w in ((jsonDecode(antwort.body) as Map<String, dynamic>)['daily']
+        as Map<String, dynamic>)['temperature_2m_mean'] as List)
+      if (w != null) (w as num).toDouble(),
+  ];
+  if (werte.isEmpty) return null;
+  // Gleitender Mittelwert: kleiner Faktor = träges Wasser.
+  final faktor = see ? 0.12 : (fliesst ? (klein ? 0.4 : 0.3) : 0.25);
+  var wasser = werte.first;
+  for (final l in werte) {
+    wasser += faktor * (l - wasser);
+  }
+  // Bäche bekommen viel Grundwasser (ca. 9 °C).
+  if (fliesst && klein) wasser = 0.65 * wasser + 0.35 * 9;
+  return wasser.clamp(0.5, 30).toDouble();
+}
+
+/// Was die Wassertemperatur für das Angeln bedeutet.
+String wassertemperaturTipp(double grad) => switch (grad) {
+      < 6 => 'Sehr kalt: Fische sind träge. Langsam und am Grund fischen – '
+          'Hecht, Aalrutte und Saiblinge beißen noch am ehesten.',
+      < 12 => 'Kühl: Forellen, Äschen und Hechte sind aktiv. Friedfische '
+          'beißen noch zögerlich.',
+      < 20 => 'Ideal: Fast alle Fische fressen gut, Karpfen, Schleien und '
+          'Barsche werden richtig aktiv.',
+      < 24 => 'Warm: Karpfen und Welse lieben es. Forellen leiden – lieber '
+          'früh morgens oder abends fischen.',
+      _ => 'Sehr warm: Wenig Sauerstoff im Wasser. Fische schonen, gefangene '
+          'Fische besonders schnell zurücksetzen.',
+    };
