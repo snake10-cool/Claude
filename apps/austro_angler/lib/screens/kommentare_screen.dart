@@ -4,6 +4,8 @@ import '../main.dart';
 import '../models/fang.dart';
 import '../services/fang_dienst.dart';
 import 'fangbuch_screen.dart';
+import 'melden.dart';
+import 'profil_screen.dart';
 import 'widgets.dart';
 
 class KommentareScreen extends StatefulWidget {
@@ -68,6 +70,9 @@ class _KommentareScreenState extends State<KommentareScreen> {
                       const Text('Laden fehlgeschlagen.')
                     else if (!snap.hasData)
                       const Center(child: CircularProgressIndicator())
+                    else if (liste.isNotEmpty)
+                      Text('Lange auf einen Kommentar drücken, um ihn zu melden.',
+                          style: text.bodySmall)
                     else if (liste.isEmpty)
                       const Padding(
                         padding: EdgeInsets.all(16),
@@ -83,8 +88,18 @@ class _KommentareScreenState extends State<KommentareScreen> {
                           leading: const CircleAvatar(
                             child: Icon(Icons.person),
                           ),
-                          title: Text(at(k.nutzerName), style: text.labelLarge),
+                          title: NutzerLink(k.uid, k.nutzerName,
+                              stil: text.labelLarge),
                           subtitle: Text(k.text),
+                          onLongPress: k.uid == konto.uid
+                              ? null
+                              : () => meldenDialog(
+                                    context,
+                                    typ: 'kommentar',
+                                    bezug: '${widget.fang.id}/${k.id}',
+                                    titel: 'Kommentar melden',
+                                    hinweis: 'Was ist das Problem?',
+                                  ),
                           trailing:
                               k.uid == konto.uid ||
                                   konto.istAdmin ||

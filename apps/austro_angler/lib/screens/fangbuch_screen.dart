@@ -14,6 +14,7 @@ import '../services/wetter.dart';
 import '../services/wochen_challenges.dart';
 import 'gewaesser_screen.dart';
 import 'messen_screen.dart';
+import 'profil_screen.dart';
 import 'koeder_screen.dart';
 import 'ort_waehlen.dart';
 import 'statistik_screen.dart';
@@ -337,9 +338,10 @@ class FangKarte extends StatelessWidget {
                     ],
                   ),
                   if (details.isNotEmpty) Text(details),
+                  if (fang.nutzerName.isNotEmpty)
+                    NutzerLink(fang.uid, fang.nutzerName, vorsatz: 'von '),
                   Text(
                     [
-                      if (fang.nutzerName.isNotEmpty) at(fang.nutzerName),
                       '${datumText(fang.datum)} ${uhrText(fang.datum)}',
                       if (ort.isNotEmpty) ort,
                     ].join(' · '),

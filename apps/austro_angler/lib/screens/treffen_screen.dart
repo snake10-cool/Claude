@@ -4,6 +4,7 @@ import '../main.dart';
 import '../services/alle_gewaesser.dart';
 import '../services/wetter.dart';
 import '../services/fang_dienst.dart';
+import 'profil_screen.dart';
 import 'widgets.dart';
 
 /// Gemeinsame Angeltage planen und zusagen.
@@ -159,14 +160,19 @@ class _TreffenListeState extends State<TreffenListe>
                           Text('📍 ${t.gewaesser}'),
                           _UnwetterHinweis(t),
                           if (t.text.isNotEmpty) Text(t.text),
-                          Text(
-                            'Geplant von ${at(t.nutzerName)}',
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
+                          NutzerLink(t.uid, t.nutzerName,
+                              vorsatz: 'Geplant von '),
                           const SizedBox(height: 6),
-                          Text(
-                            'Dabei (${t.zusagen.length}): '
-                            '${t.zusagen.values.map(at).join(', ')}',
+                          Wrap(
+                            spacing: 6,
+                            children: [
+                              Text('Dabei (${t.zusagen.length}):'),
+                              for (final z in t.zusagen.entries)
+                                NutzerLink(z.key, z.value,
+                                    stil: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium),
+                            ],
                           ),
                           _Fahrten(t),
                           const SizedBox(height: 6),

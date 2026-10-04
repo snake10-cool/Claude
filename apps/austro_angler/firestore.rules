@@ -52,10 +52,26 @@ service cloud.firestore {
       allow delete: if ich(uid);
 
       // Freundesliste: nur der Besitzer.
+      // Beim Annehmen einer Anfrage darf der Annehmende auch beim
+      // Anfragenden eintragen (nur solange die Anfrage existiert).
       match /freunde/{freundUid} {
-        allow read, delete: if ich(uid);
-        allow create, update: if ich(uid)
-            && request.resource.data.keys().hasOnly(['name', 'seit']);
+        allow read: if ich(uid);
+        allow delete: if ich(uid) || request.auth.uid == freundUid;
+        allow create, update: if request.resource.data.keys().hasOnly(['name', 'seit'])
+            && (ich(uid)
+                || (request.auth.uid == freundUid
+                    && exists(/databases/$(database)/documents/nutzer/$(freundUid)/anfragen/$(uid))));
+      }
+
+      // Freundschaftsanfragen an diesen Nutzer (Dokument-ID = Absender).
+      match /anfragen/{absender} {
+        allow read: if ich(uid) || request.auth.uid == absender;
+        allow delete: if ich(uid) || request.auth.uid == absender;
+        allow create, update: if request.auth.uid == absender
+            && absender != uid
+            && request.resource.data.keys().hasOnly(['name', 'zeit'])
+            && request.resource.data.name is string
+            && request.resource.data.name.size() <= 30;
       }
 
       // Fangorte: immer privat.

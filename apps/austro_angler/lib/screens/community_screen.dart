@@ -123,6 +123,74 @@ class _FeedState extends State<_Feed> with AutomaticKeepAliveClientMixin {
   }
 }
 
+/// Offene Freundschaftsanfragen an mich.
+class _Anfragen extends StatelessWidget {
+  const _Anfragen(this.stream);
+
+  final Stream<Map<String, String>>? stream;
+
+  @override
+  Widget build(BuildContext context) {
+    final konto = KontoScope.of(context)!;
+    return StreamBuilder<Map<String, String>>(
+      stream: stream,
+      builder: (context, snap) {
+        final anfragen = (snap.data ?? const <String, String>{})
+          ..removeWhere((uid, _) => konto.istBlockiert(uid));
+        if (anfragen.isEmpty) return const SizedBox.shrink();
+        return Card(
+          color: Theme.of(context).colorScheme.secondaryContainer,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Titel('👋 Freundschaftsanfragen (${anfragen.length})'),
+                for (final e in anfragen.entries)
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: const CircleAvatar(child: Icon(Icons.person)),
+                    title: Text(at(e.value)),
+                    onTap: () => profilOeffnen(context, e.key, e.value),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          tooltip: 'Ablehnen',
+                          icon: const Icon(Icons.close),
+                          onPressed: () =>
+                              fangDienst.anfrageAblehnen(konto.uid!, e.key),
+                        ),
+                        IconButton.filled(
+                          tooltip: 'Annehmen',
+                          icon: const Icon(Icons.check),
+                          onPressed: () async {
+                            try {
+                              await fangDienst.anfrageAnnehmen(konto.uid!,
+                                  konto.name ?? '', e.key, e.value);
+                              if (context.mounted) {
+                                meldung(context,
+                                    '${at(e.value)} ist jetzt dein Freund. 🎣');
+                              }
+                            } catch (_) {
+                              if (context.mounted) {
+                                meldung(context, 'Hat nicht geklappt.');
+                              }
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
 /// Fang im Feed: Antippen öffnet das Profil des Fängers.
 class _FeedKarte extends StatelessWidget {
   const _FeedKarte(this.fang);
@@ -166,13 +234,18 @@ class _FreundeFeedState extends State<_FreundeFeed>
     super.dispose();
   }
 
+  Stream<Map<String, String>>? _anfragen;
+
   Future<void> _hinzufuegen() async {
     final handle = Konto.handle(_eingabe.text);
     if (handle.isEmpty) return;
+    final konto = KontoScope.of(context)!;
     try {
-      await fangDienst.freundHinzufuegen(_uid!, handle);
+      await fangDienst.anfrageAnHandle(_uid!, konto.name ?? '', handle);
       _eingabe.clear();
-      if (mounted) meldung(context, '${at(handle)} ist jetzt dein Freund. 🎣');
+      if (mounted) {
+        meldung(context, 'Freundschaftsanfrage an ${at(handle)} geschickt. 🎣');
+      }
     } catch (e) {
       if (mounted) meldung(context, '$e'.replaceFirst('Exception: ', ''));
     }
@@ -194,6 +267,7 @@ class _FreundeFeedState extends State<_FreundeFeed>
     if (_uid != konto.uid) {
       _uid = konto.uid;
       _freunde = fangDienst.freunde(_uid!);
+      _anfragen = fangDienst.anfragenAnMich(_uid!);
     }
     return StreamBuilder<Map<String, String>>(
       stream: _freunde,
@@ -219,7 +293,7 @@ class _FreundeFeedState extends State<_FreundeFeed>
                       controller: _eingabe,
                       decoration: const InputDecoration(
                         prefixText: '@',
-                        hintText: 'Freund über @Namen hinzufügen',
+                        hintText: 'Freundschaftsanfrage an @Namen',
                         border: OutlineInputBorder(),
                         isDense: true,
                       ),
@@ -236,6 +310,7 @@ class _FreundeFeedState extends State<_FreundeFeed>
               const SizedBox(height: 8),
               Text('Dein Name zum Teilen: ${at(konto.name ?? '')}',
                   style: Theme.of(context).textTheme.bodySmall),
+              _Anfragen(_anfragen),
               const SizedBox(height: 8),
               Wrap(
                 spacing: 6,
@@ -372,16 +447,29 @@ class _Aktionen extends StatelessWidget {
                   context,
                   typ: 'fang',
                   bezug: fang.id,
-                  titel: 'Fang melden',
+                  titel: 'Beitrag melden',
                   hinweis: 'Was ist das Problem? (z. B. beleidigend, fremdes '
                       'Foto, geschonter Fisch entnommen)',
                 );
+              } else if (wahl == 'nutzer') {
+                await meldenDialog(
+                  context,
+                  typ: 'nutzer',
+                  bezug: '${fang.uid} (${at(fang.nutzerName)})',
+                  titel: '${at(fang.nutzerName)} melden',
+                  hinweis: 'Was ist das Problem? (z. B. Beleidigungen, Spam, '
+                      'Fake-Fänge)',
+                );
+              } else if (wahl == 'profil') {
+                profilOeffnen(context, fang.uid, fang.nutzerName);
               } else if (wahl == 'blockieren') {
                 await blockierenDialog(context, fang.uid, fang.nutzerName);
               }
             },
             itemBuilder: (_) => const [
-              PopupMenuItem(value: 'melden', child: Text('🚩 Melden')),
+              PopupMenuItem(value: 'profil', child: Text('👤 Profil ansehen')),
+              PopupMenuItem(value: 'melden', child: Text('🚩 Beitrag melden')),
+              PopupMenuItem(value: 'nutzer', child: Text('🙋 Nutzer melden')),
               PopupMenuItem(
                   value: 'blockieren', child: Text('🚫 Nutzer blockieren')),
             ],
@@ -504,6 +592,10 @@ class _RanglisteState extends State<_Rangliste> {
                       ? Theme.of(context).colorScheme.primaryContainer
                       : null,
                   child: ListTile(
+                    onTap: _vereine
+                        ? null
+                        : () => profilOeffnen(context, top[i].key,
+                            top[i].value.name.replaceFirst('@', '')),
                     leading: SizedBox(
                       width: 36,
                       child: Center(

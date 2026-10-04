@@ -300,6 +300,9 @@ class _MeldungenListeState extends State<_MeldungenListe>
     'fang': '🎣 Fang gemeldet',
     'gewaesser-korrektur': '📝 Gewässer-Korrektur',
     'neues-gewaesser': '📍 Neues Gewässer',
+    'nutzer': '👤 Nutzer gemeldet',
+    'kommentar': '💬 Kommentar gemeldet',
+    'neues-geschaeft': '🏪 Neues Geschäft',
   };
 
   @override

@@ -612,8 +612,79 @@ class FangDienst {
     return handle;
   }
 
-  Future<void> freundEntfernen(String meineUid, String freundUid) =>
-      _freunde(meineUid).doc(freundUid).delete();
+  /// Entfernt die Freundschaft auf beiden Seiten.
+  Future<void> freundEntfernen(String meineUid, String freundUid) async {
+    await _freunde(meineUid).doc(freundUid).delete();
+    try {
+      await _freunde(freundUid).doc(meineUid).delete();
+    } catch (_) {
+      // Ältere einseitige Freundschaft – nichts zu tun.
+    }
+  }
+
+  // ── Freundschaftsanfragen ──
+
+  CollectionReference<Map<String, dynamic>> _anfragen(String uid) =>
+      _db.collection('nutzer/$uid/anfragen');
+
+  /// Offene Anfragen an mich: uid → @Name.
+  Stream<Map<String, String>> anfragenAnMich(String uid) =>
+      _anfragen(uid).snapshots().map((s) => {
+            for (final d in s.docs) d.id: d.data()['name'] as String? ?? '',
+          });
+
+  /// Ob ich [andere] schon eine Anfrage geschickt habe.
+  Stream<bool> anfrageGesendet(String ich, String andere) => _anfragen(andere)
+      .doc(ich)
+      .snapshots()
+      .map((d) => d.exists)
+      .handleError((_) => false);
+
+  Future<void> anfrageSenden(String ich, String meinName, String andere) =>
+      _offline(_anfragen(andere).doc(ich).set({
+        'name': meinName,
+        'zeit': FieldValue.serverTimestamp(),
+      }));
+
+  Future<void> anfrageZurueckziehen(String ich, String andere) =>
+      _anfragen(andere).doc(ich).delete();
+
+  /// Nimmt eine Anfrage an: beide werden Freunde.
+  Future<void> anfrageAnnehmen(
+      String ich, String meinName, String andere, String andererName) async {
+    final batch = _db.batch()
+      ..set(_freunde(ich).doc(andere),
+          {'name': andererName, 'seit': FieldValue.serverTimestamp()})
+      ..set(_freunde(andere).doc(ich),
+          {'name': meinName, 'seit': FieldValue.serverTimestamp()})
+      ..delete(_anfragen(ich).doc(andere));
+    await batch.commit();
+  }
+
+  Future<void> anfrageAblehnen(String ich, String andere) =>
+      _anfragen(ich).doc(andere).delete();
+
+  /// Anfrage über den @Namen schicken. Gibt den Namen zurück.
+  Future<String> anfrageAnHandle(
+      String ich, String meinName, String handle) async {
+    final doc = await _db.doc('namen/$handle').get();
+    final uid = doc.data()?['uid'] as String?;
+    if (uid == null) throw Exception('@$handle gibt es nicht.');
+    if (uid == ich) throw Exception('Das bist du selbst 😉');
+    await anfrageSenden(ich, meinName, uid);
+    return handle;
+  }
+
+  /// Öffentliches Profil: @Name, Verein, Mitglied seit.
+  Future<({String name, String verein, DateTime? seit})> nutzerInfo(
+      String uid) async {
+    final d = await _db.doc('nutzer/$uid').get();
+    return (
+      name: d.data()?['name'] as String? ?? '',
+      verein: d.data()?['verein'] as String? ?? '',
+      seit: (d.data()?['erstellt'] as Timestamp?)?.toDate(),
+    );
+  }
 
   /// Öffentliche Fänge eines Nutzers, neueste zuerst.
   Future<List<Fang>> faengeVon(String uid) async {
@@ -1015,7 +1086,8 @@ class FangDienst {
     final oeff = await _oeff.where('uid', isEqualTo: uid).get();
     final privat = await _privat(uid).get();
     for (final sammlung in [_fangorte(uid), _aktivitaeten(uid), _freunde(uid),
-        _koeder(uid), _ausfluege(uid), _blockiert(uid), _ausruestung(uid)]) {
+        _koeder(uid), _ausfluege(uid), _blockiert(uid), _ausruestung(uid),
+        _anfragen(uid)]) {
       for (final d in (await sammlung.get()).docs) {
         await d.reference.delete();
       }

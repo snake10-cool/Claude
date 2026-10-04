@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import '../services/fang_dienst.dart';
+import 'profil_screen.dart';
 import 'widgets.dart';
 
 /// Neuigkeiten: wer bei meinen Fängen Petri Heil gesagt oder kommentiert hat.
@@ -65,6 +66,8 @@ class _AktivitaetenScreenState extends State<AktivitaetenScreen> {
                       if (a.text.isNotEmpty) '"${a.text}"',
                       '${datumText(a.erstellt)} ${uhrText(a.erstellt)}',
                     ].join('\n')),
+                    trailing: const Icon(Icons.person_outline),
+                    onTap: () => profilOeffnen(context, a.uid, a.nutzerName),
                   ),
                 ),
             ],
