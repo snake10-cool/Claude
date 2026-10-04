@@ -13,7 +13,8 @@ Ausgabe (kompakt, gzip):
     "stand": "2026-10-04",
     "laender": ["Wien", ...],                 # Reihenfolge wie Bundesland-Enum
     "bezirke": [["Braunau am Inn", 3], ...],  # Name, Index in laender
-    "gemeinden": [["Mattighofen", 17], ...],  # Name, Index in bezirke
+    "gemeinden": [["Mattighofen", 17, lat, lon], ...],  # Name, Bezirk, Mitte
+    "geschaefte": [[name, lat, lon, gemeinde, bezirk, web, tel, zeiten, adresse]],
     "gewaesser": [[id, name, typ, lat, lon, [gemeinde...], groesse], ...]
   }
 typ: f = Fluss, b = Bach, k = Kanal, s = See, t = Teich
@@ -70,6 +71,7 @@ def bezirk_name(n):
 def main(eingabe, ausgabe):
     admin = {4: [], 6: [], 8: [], 9: []}      # (name, geom)
     linien = []                                # (name, typ, LineString, osmid)
+    geschaefte = []                            # (name, punkt, props)
     flaechen = []                              # (name, water, landuse, geom, osmid)
 
     with open(eingabe, encoding='utf-8') as f:
@@ -95,6 +97,10 @@ def main(eingabe, ausgabe):
                 if lvl in admin:
                     geom = shapely.make_valid(shape(g))
                     admin[lvl].append((name, geom))
+                continue
+            if p.get('shop') == 'fishing':
+                if name:
+                    geschaefte.append((name, shape(g).representative_point(), p))
                 continue
             ww = p.get('waterway')
             if ww in FLIESS and gtyp == 'LineString':
@@ -153,7 +159,8 @@ def main(eingabe, ausgabe):
         if schluessel in gem_index:
             return
         gem_index[schluessel] = len(gemeinden)
-        gemeinden.append([name, b])
+        pt = geom.representative_point()
+        gemeinden.append([name, b, round(pt.y, 4), round(pt.x, 4)])
         gemeinde_geoms.append(geom)
 
     for name, geom in admin[8]:
@@ -176,7 +183,8 @@ def main(eingabe, ausgabe):
         if namen[b[0]] > 1:
             b[0] = f'{b[0]} (Stadt)'
         gem_index[(b[0], i)] = len(gemeinden)
-        gemeinden.append([b[0], i])
+        pt = bezirk_geoms[i].representative_point()
+        gemeinden.append([b[0], i, round(pt.y, 4), round(pt.x, 4)])
         gemeinde_geoms.append(bezirk_geoms[i])
     gemeinde_baum = STRtree(gemeinde_geoms)
     print(f'Bezirke: {len(bezirke)}, Gemeinden: {len(gemeinden)}')
@@ -267,6 +275,27 @@ def main(eingabe, ausgabe):
             zeile.append(e[7])
         aus.append(zeile)
 
+    # --- Angelgeschäfte -----------------------------------------------------
+    gem, bez = orte([g[1] for g in geschaefte])
+    laeden = []
+    for (name, pt, p), g, b in zip(geschaefte, gem, bez):
+        if b is None:
+            continue
+        adresse = ' '.join(x for x in [p.get('addr:street', ''),
+                                       p.get('addr:housenumber', '')] if x)
+        ort = ' '.join(x for x in [p.get('addr:postcode', ''),
+                                   p.get('addr:city', '')] if x)
+        laeden.append([
+            name, round(pt.y, 5), round(pt.x, 5),
+            g if g is not None else -1, b,
+            p.get('website') or p.get('contact:website') or '',
+            p.get('phone') or p.get('contact:phone') or '',
+            p.get('opening_hours') or '',
+            ', '.join(x for x in [adresse, ort] if x),
+        ])
+    laeden.sort(key=lambda l: l[0].lower())
+    print(f'Angelgeschäfte: {len(laeden)}')
+
     daten = {
         'stand': datetime.date.today().isoformat(),
         'quelle': '© OpenStreetMap-Mitwirkende, ODbL',
@@ -274,6 +303,7 @@ def main(eingabe, ausgabe):
         'bezirke': bezirke,
         'gemeinden': gemeinden,
         'gewaesser': aus,
+        'geschaefte': laeden,
     }
     roh = json.dumps(daten, ensure_ascii=False, separators=(',', ':')).encode()
     with open(ausgabe, 'wb') as f:
