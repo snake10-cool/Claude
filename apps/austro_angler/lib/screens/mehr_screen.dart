@@ -4,6 +4,8 @@ import '../main.dart';
 import 'ausfluege_screen.dart';
 import 'bestimmung_screen.dart';
 import 'checkliste_screen.dart';
+import 'einstellungen_screen.dart';
+import 'glossar_screen.dart';
 import 'geschaefte_screen.dart';
 import 'heimat_screen.dart';
 import 'koeder_screen.dart';
@@ -51,6 +53,9 @@ class MehrScreen extends StatelessWidget {
           const SizedBox(height: 8),
           const BundeslandWahl(),
           const SizedBox(height: 8),
+          _Eintrag(Icons.settings_outlined, 'Einstellungen',
+              'Heimatort, Jungangler-Modus, Countdown, Offline-Karte',
+              () => _oeffnen(context, const EinstellungenScreen())),
           _Eintrag(Icons.help_outline, 'FAQ – Fragen & Antworten',
               'Alles erklärt: wieso, weshalb, warum', () => _oeffnen(context,
                   const FaqScreen())),
@@ -92,6 +97,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.calendar_month, 'Schonzeit-Kalender',
               'Welcher Fisch ist wann offen?', () => _oeffnen(context,
                   const KalenderScreen())),
+          _Eintrag(Icons.menu_book, 'Angel-Wörterbuch',
+              'Begriffe einfach erklärt', () => _oeffnen(context,
+                  const GlossarScreen())),
           _Eintrag(Icons.school, 'Fischerprüfung üben', 'Übungsfragen',
               () => _oeffnen(context, const PruefungScreen())),
           _Eintrag(Icons.gesture, 'Knoten', 'Die wichtigsten Angelknoten',

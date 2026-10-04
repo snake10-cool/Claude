@@ -96,6 +96,19 @@ class AustroAnglerApp extends StatelessWidget {
           theme: _thema(farbe, Brightness.light),
           darkTheme: _thema(farbe, Brightness.dark),
           home: const _Weiche(),
+          // Jungangler-Modus: etwas größere Schrift.
+          builder: (context, kind) => ListenableBuilder(
+            listenable: speicher,
+            builder: (context, _) => speicher.jungangler
+                ? MediaQuery(
+                    data: MediaQuery.of(context).copyWith(
+                      textScaler: MediaQuery.textScalerOf(context)
+                          .clamp(minScaleFactor: 1.15),
+                    ),
+                    child: kind!,
+                  )
+                : kind!,
+          ),
         ),
       ),
     );

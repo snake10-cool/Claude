@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../services/kachel_cache.dart';
+
 import '../data/gewaesser.dart';
 import '../main.dart';
 import '../models/fang.dart';
@@ -89,6 +91,7 @@ class KarteScreen extends StatelessWidget {
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 userAgentPackageName: 'com.snake10.austroangler',
+                tileProvider: kachelProvider,
               ),
               const _AlleGewaesserLayer(),
               ListenableBuilder(
@@ -122,9 +125,7 @@ class KarteScreen extends StatelessWidget {
                             : Icons.water,
                         farbe: farben.primary,
                         onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => GewaesserDetail(g),
-                          ),
+                          MaterialPageRoute(builder: (_) => GewaesserDetail(g)),
                         ),
                       ),
                     ),
@@ -185,9 +186,10 @@ class _AlleGewaesserLayer extends StatelessWidget {
       listenable: alleGewaesser,
       builder: (context, _) => MarkerLayer(
         markers: [
-          for (final g in alleGewaesser.liste
-              .where((g) => g.ausOsm && grenzen.contains(g.position))
-              .take(300))
+          for (final g
+              in alleGewaesser.liste
+                  .where((g) => g.ausOsm && grenzen.contains(g.position))
+                  .take(300))
             Marker(
               point: g.position,
               width: 30,
@@ -197,9 +199,9 @@ class _AlleGewaesserLayer extends StatelessWidget {
                 child: _Pin(
                   icon: g.typ.fliesst ? Icons.waves : Icons.water,
                   farbe: Colors.blueGrey,
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => GewaesserDetail(g)),
-                  ),
+                  onTap: () => Navigator.of(
+                    context,
+                  ).push(MaterialPageRoute(builder: (_) => GewaesserDetail(g))),
                 ),
               ),
             ),
@@ -262,32 +264,37 @@ class _MeineFaengeState extends State<_MeineFaenge> {
         builder: (context, faengeSnap) {
           final orte = orteSnap.data ?? const {};
           final faenge = {for (final f in faengeSnap.data ?? <Fang>[]) f.id: f};
-          return MarkerLayer(markers: [
-            for (final e in orte.entries)
-              if (faenge[e.key] case final f?)
-                Marker(
-                  point: e.value,
-                  width: 36,
-                  height: 36,
-                  child: GestureDetector(
-                    onTap: () => meldung(
-                      context,
-                      '${fischById(f.fischId)?.name ?? f.fischId}'
-                      '${f.laengeCm == null ? '' : ', ${f.laengeCm!.toStringAsFixed(0)} cm'}'
-                      ' · ${datumText(f.datum)}',
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.red.shade600,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.white, width: 2),
+          return MarkerLayer(
+            markers: [
+              for (final e in orte.entries)
+                if (faenge[e.key] case final f?)
+                  Marker(
+                    point: e.value,
+                    width: 36,
+                    height: 36,
+                    child: GestureDetector(
+                      onTap: () => meldung(
+                        context,
+                        '${fischById(f.fischId)?.name ?? f.fischId}'
+                        '${f.laengeCm == null ? '' : ', ${f.laengeCm!.toStringAsFixed(0)} cm'}'
+                        ' · ${datumText(f.datum)}',
                       ),
-                      child: const Icon(Icons.set_meal,
-                          color: Colors.white, size: 18),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red.shade600,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white, width: 2),
+                        ),
+                        child: const Icon(
+                          Icons.set_meal,
+                          color: Colors.white,
+                          size: 18,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-          ]);
+            ],
+          );
         },
       ),
     );

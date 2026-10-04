@@ -13,6 +13,7 @@ import '../models/fisch.dart';
 import '../models/gewaesser.dart';
 import 'bestimmung_screen.dart';
 import 'gewaesser_screen.dart';
+import 'glossar_screen.dart';
 import 'widgets.dart';
 
 /// Teilt den Merkmal-Text in einzelne Punkte (an Kommas und Satzenden).
@@ -97,6 +98,9 @@ class _LexikonScreenState extends State<LexikonScreen> {
         padding: const EdgeInsets.all(12),
         children: [
           const BundeslandWahl(),
+          const JunganglerTipp(
+              'Schonzeit = in dieser Zeit darf der Fisch nicht gefangen werden. '
+              'Brittelmaß = so lang muss er mindestens sein.'),
           const SizedBox(height: 8),
           TextField(
             decoration: const InputDecoration(
@@ -206,7 +210,22 @@ class FischDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     final text = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(title: Text(fisch.name)),
+      appBar: AppBar(
+        title: Text(fisch.name),
+        actions: [
+          if (!fisch.ausgestorben)
+            IconButton(
+              tooltip: 'Im Schonzeit-Countdown zeigen',
+              icon: Icon(SpeicherScope.of(context)
+                      .lieblingsfische
+                      .contains(fisch.id)
+                  ? Icons.star
+                  : Icons.star_border),
+              onPressed: () => SpeicherScope.of(context)
+                  .lieblingsfischUmschalten(fisch.id),
+            ),
+        ],
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [

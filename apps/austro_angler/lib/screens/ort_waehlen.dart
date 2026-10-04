@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../services/kachel_cache.dart';
+
 import 'gewaesser_screen.dart';
 
 /// Karte zum Antippen eines Ortes. Gibt den gewählten Punkt zurück.
@@ -25,7 +27,9 @@ class _OrtWaehlenState extends State<OrtWaehlen> {
         title: const Text('Fangort wählen'),
         actions: [
           TextButton(
-            onPressed: _punkt == null ? null : () => Navigator.pop(context, _punkt),
+            onPressed: _punkt == null
+                ? null
+                : () => Navigator.pop(context, _punkt),
             child: const Text('Übernehmen'),
           ),
         ],
@@ -42,21 +46,29 @@ class _OrtWaehlenState extends State<OrtWaehlen> {
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 userAgentPackageName: 'com.snake10.austroangler',
+                tileProvider: kachelProvider,
               ),
               if (_punkt != null)
-                MarkerLayer(markers: [
-                  Marker(
-                    point: _punkt!,
-                    width: 44,
-                    height: 44,
-                    alignment: Alignment.topCenter,
-                    child: Icon(Icons.location_on,
-                        size: 44, color: Colors.red.shade700),
-                  ),
-                ]),
-              const RichAttributionWidget(attributions: [
-                TextSourceAttribution('© OpenStreetMap-Mitwirkende'),
-              ]),
+                MarkerLayer(
+                  markers: [
+                    Marker(
+                      point: _punkt!,
+                      width: 44,
+                      height: 44,
+                      alignment: Alignment.topCenter,
+                      child: Icon(
+                        Icons.location_on,
+                        size: 44,
+                        color: Colors.red.shade700,
+                      ),
+                    ),
+                  ],
+                ),
+              const RichAttributionWidget(
+                attributions: [
+                  TextSourceAttribution('© OpenStreetMap-Mitwirkende'),
+                ],
+              ),
             ],
           ),
           const Positioned(
@@ -66,8 +78,10 @@ class _OrtWaehlenState extends State<OrtWaehlen> {
             child: Card(
               child: Padding(
                 padding: EdgeInsets.all(10),
-                child: Text('Tippe auf die Stelle, wo du gefangen hast. Der '
-                    'Ort bleibt privat – nur du siehst ihn.'),
+                child: Text(
+                  'Tippe auf die Stelle, wo du gefangen hast. Der '
+                  'Ort bleibt privat – nur du siehst ihn.',
+                ),
               ),
             ),
           ),

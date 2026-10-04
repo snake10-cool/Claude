@@ -9,6 +9,13 @@ class Tag {
 
   int get _wert => monat * 100 + tag;
 
+  /// Nächstes Datum ab [ab] (heute zählt mit).
+  DateTime naechstes(DateTime ab) {
+    final heute = DateTime(ab.year, ab.month, ab.day);
+    final d = DateTime(ab.year, monat, tag);
+    return d.isBefore(heute) ? DateTime(ab.year + 1, monat, tag) : d;
+  }
+
   @override
   String toString() => '$tag.$monat.';
 }
@@ -48,6 +55,21 @@ class Regel {
     if (ganzjaehrigGeschont) return '–';
     if (mindestmassCm == null) return 'keines';
     return '$mindestmassCm cm';
+  }
+
+  /// Tage bis zum Ende der Schonzeit (wenn gerade geschont), sonst null.
+  int? tageBisOffen(DateTime heute) {
+    if (istGeschont(heute) != true || ganzjaehrigGeschont) return null;
+    final ende = bis!.naechstes(heute);
+    final tag = DateTime(heute.year, heute.month, heute.day);
+    return ende.difference(tag).inDays + 1;
+  }
+
+  /// Tage bis zum Beginn der Schonzeit (wenn gerade offen), sonst null.
+  int? tageBisSchonzeit(DateTime heute) {
+    if (istGeschont(heute) != false || von == null) return null;
+    final tag = DateTime(heute.year, heute.month, heute.day);
+    return von!.naechstes(heute).difference(tag).inDays;
   }
 
   /// Ob [datum] in der Schonzeit liegt. `null`, wenn es keine Daten gibt.

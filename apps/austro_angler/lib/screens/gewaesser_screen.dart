@@ -13,6 +13,7 @@ import '../services/speicher.dart';
 import '../services/beisszeit.dart';
 import '../services/sonne.dart';
 import '../services/wetter.dart';
+import 'glossar_screen.dart';
 import 'heimat_screen.dart';
 import 'konto_screen.dart';
 import 'melden.dart';
@@ -118,7 +119,11 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
     final text = Theme.of(context).textTheme;
 
     final kopf = <Widget>[
+      const JunganglerTipp('Zum Fischen brauchst du zwei Dinge: eine '
+          'Fischerkarte (dein Angel-Ausweis) und eine Lizenz für das Gewässer '
+          '(z. B. eine Tageskarte).'),
       const BundeslandWahl(),
+      const SchonzeitCountdown(),
       const SizedBox(height: 8),
       if (bezirke.isNotEmpty)
         LayoutBuilder(
@@ -1495,6 +1500,64 @@ class _InfosErgaenzenScreenState extends State<InfosErgaenzenScreen> {
             'eintragen.',
           ),
         ],
+      ),
+    );
+  }
+}
+
+
+/// Countdown für die Lieblingsfische: wie lange noch Schonzeit ist.
+class SchonzeitCountdown extends StatelessWidget {
+  const SchonzeitCountdown({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final speicher = SpeicherScope.of(context);
+    final heute = DateTime.now();
+    final eintraege = <(String, String, bool)>[];
+    for (final id in speicher.lieblingsfische) {
+      final f = fischById(id);
+      if (f == null) continue;
+      final r = f.regel(speicher.bundesland);
+      final offen = r.tageBisOffen(heute);
+      final zu = r.tageBisSchonzeit(heute);
+      if (offen != null) {
+        eintraege.add((f.name, 'noch $offen ${offen == 1 ? 'Tag' : 'Tage'} geschont', false));
+      } else if (zu != null && zu <= 30) {
+        eintraege.add((f.name, 'offen · Schonzeit in $zu Tagen', true));
+      } else if (r.istGeschont(heute) == false) {
+        eintraege.add((f.name, 'offen', true));
+      }
+    }
+    if (eintraege.isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: SizedBox(
+        height: 64,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            for (final (name, text, offen) in eintraege)
+              Card(
+                color: offen
+                    ? Colors.green.withValues(alpha: 0.15)
+                    : Colors.red.withValues(alpha: 0.15),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('${offen ? '✅' : '⏳'} $name',
+                          style: Theme.of(context).textTheme.labelLarge),
+                      Text(text, style: Theme.of(context).textTheme.bodySmall),
+                    ],
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
