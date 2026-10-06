@@ -66,6 +66,7 @@ jobs:
           - { ordner: codekarten, datei: Codekarten }
           - { ordner: teilbar, datei: Teilbar }
           - { ordner: buddelmo, datei: BuddelMo }
+          - { ordner: raetseltag, datei: Raetseltag }
     steps:
       - uses: actions/checkout@v4
 

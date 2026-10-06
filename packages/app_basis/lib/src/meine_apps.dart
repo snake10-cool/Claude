@@ -76,4 +76,13 @@ const meineApps = <MeineApp>[
     farbe: Color(0xFFE0A030),
     veroeffentlicht: false,
   ),
+  MeineApp(
+    name: 'Rätseltag',
+    paketId: 'com.snake10.raetseltag',
+    beschreibungDe: 'Jeden Tag Worträtsel, Sudoku und Schiebepuzzle',
+    beschreibungEn: 'Daily word puzzle, sudoku and sliding puzzle',
+    symbol: Icons.extension,
+    farbe: Color(0xFF2563EB),
+    veroeffentlicht: false,
+  ),
 ];

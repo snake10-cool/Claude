@@ -1,0 +1,149 @@
+{
+  "@@locale": "de",
+  "mehr": "Mehr",
+  "statistik": "Statistik",
+  "einstellungen": "Einstellungen",
+  "loeschen": "Löschen",
+  "weiter": "Weiter",
+  "teilen": "Teilen",
+  "tipp": "Tipp (Video)",
+  "super_": "Super!",
+  "leiderNicht": "Leider nicht",
+  "raetselNr": "Rätsel #{nummer}",
+  "@raetselNr": {
+    "placeholders": {
+      "nummer": {
+        "type": "int"
+      }
+    }
+  },
+  "wortraetsel": "Worträtsel",
+  "wortraetselText": "Finde das Wort mit 5 Buchstaben in 6 Versuchen.",
+  "sudoku": "Sudoku",
+  "sudokuText": "Leicht, mittel oder schwer.",
+  "schiebepuzzle": "Schiebepuzzle",
+  "schiebepuzzleText": "Bring die Zahlen von 1 bis 15 in Reihe.",
+  "geschafftVersuche": "Geschafft in {anzahl}/6 ✅",
+  "@geschafftVersuche": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "nichtGeschafft": "Diesmal nicht geschafft",
+  "geschafftZuege": "Geschafft in {zuege} Zügen ✅",
+  "@geschafftZuege": {
+    "placeholders": {
+      "zuege": {
+        "type": "int"
+      }
+    }
+  },
+  "geschafftSudoku": "{stufe} geschafft in {zeit} ✅",
+  "@geschafftSudoku": {
+    "placeholders": {
+      "stufe": {
+        "type": "String"
+      },
+      "zeit": {
+        "type": "String"
+      }
+    }
+  },
+  "weiterspielen": "Weiterspielen …",
+  "alleDreiGeschafft": "⭐ Alle drei geschafft! Bis morgen!",
+  "archiv": "Archiv",
+  "endlos": "Endlos spielen",
+  "archivLeer": "Ab morgen findest du hier die Rätsel der vergangenen Tage.",
+  "stufeWaehlen": "Schwierigkeit",
+  "leicht": "Leicht",
+  "mittel": "Mittel",
+  "schwer": "Schwer",
+  "serieTage": "{anzahl, plural, =0{Starte heute deine Serie 🌱} =1{🔥 1 Tag am Stück} other{🔥 {anzahl} Tage am Stück}}",
+  "@serieTage": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "zuKurz": "Zu wenige Buchstaben",
+  "keinWort": "Kenne ich nicht als Wort",
+  "wortGeschafft": "Du hast das Wort in {anzahl} Versuchen gefunden.",
+  "@wortGeschafft": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "wortWar": "Das Wort war: {wort}",
+  "@wortWar": {
+    "placeholders": {
+      "wort": {
+        "type": "String"
+      }
+    }
+  },
+  "tippText": "Tipp – Stelle {tipps}",
+  "@tippText": {
+    "placeholders": {
+      "tipps": {
+        "type": "String"
+      }
+    }
+  },
+  "videoNichtVerfuegbar": "Gerade ist kein Video verfügbar. Versuch es später nochmal.",
+  "notizen": "Notizen",
+  "sudokuGeschafft": "Sudoku {stufe} gelöst in {zeit}.",
+  "@sudokuGeschafft": {
+    "placeholders": {
+      "stufe": {
+        "type": "String"
+      },
+      "zeit": {
+        "type": "String"
+      }
+    }
+  },
+  "schiebeGeschafft": "Gelöst in {zuege} Zügen und {zeit}.",
+  "@schiebeGeschafft": {
+    "placeholders": {
+      "zuege": {
+        "type": "int"
+      },
+      "zeit": {
+        "type": "String"
+      }
+    }
+  },
+  "zuege": "Züge",
+  "zuegeKurz": "Züge",
+  "schiebeHilfe": "Tippe auf ein Feld in der Reihe oder Spalte der Lücke – es rutscht hinein.",
+  "aktuelleSerie": "Serie",
+  "laengsteSerie": "Längste Serie",
+  "tageGespielt": "Tage gelöst",
+  "gespielt": "Gespielt",
+  "gewonnen": "Gewonnen",
+  "versucheVerteilung": "Versuche bis zur Lösung",
+  "bestzeit": "Bestzeit {zeit}",
+  "@bestzeit": {
+    "placeholders": {
+      "zeit": {
+        "type": "String"
+      }
+    }
+  },
+  "geloestAnzahl": "Gelöst",
+  "wenigsteZuege": "Wenigste Züge",
+  "proTitel": "Rätseltag Pro",
+  "proKurz": "Archiv, Endlos-Modus, Tipps ohne Video, werbefrei",
+  "proArchiv": "Alle vergangenen Rätsel im Archiv",
+  "proEndlos": "Endlos neue Rätsel",
+  "proWerbefrei": "Keine Werbung, Tipps ohne Video",
+  "proUnterstuetzen": "Du unterstützt die Weiterentwicklung",
+  "werbeEinwilligung": "Einwilligung für Werbung ändern",
+  "statistikLoeschen": "Statistik löschen",
+  "statistikLoeschenText": "Alle Ergebnisse und deine Serie werden gelöscht."
+}

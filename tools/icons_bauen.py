@@ -122,10 +122,27 @@ def teilbar(d, skala):
     d.pieslice(l.box(580, 560, 840, 820), 270, 90, fill=(255, 220, 110, 255))
 
 
+def raetseltag(d, skala):
+    """3×3 Rätselfelder (grün/gelb/weiß) mit einer Lücke."""
+    l = Leinwand(d, skala)
+    gruen = (22, 163, 74, 255)
+    gelb = (234, 179, 8, 255)
+    muster = [gruen, gelb, WEISS, WEISS, gruen, gelb, gelb, WEISS, None]
+    kante, abstand = 170, 30
+    start = 512 - (3 * kante + 2 * abstand) / 2
+    for i, farbe in enumerate(muster):
+        if farbe is None:
+            continue
+        x = start + (i % 3) * (kante + abstand)
+        y = start + (i // 3) * (kante + abstand)
+        d.rounded_rectangle(l.box(x, y, x + kante, y + kante), radius=l.r(30), fill=farbe)
+
+
 APPS = {
     "druckkasse": ((0xE8, 0x62, 0x2A, 255), druckkasse),
     "codekarten": ((0x6C, 0x4D, 0xE6, 255), codekarten),
     "teilbar": ((0x1F, 0x9D, 0x6B, 255), teilbar),
+    "raetseltag": ((0x25, 0x63, 0xEB, 255), raetseltag),
 }
 
 if __name__ == "__main__":
