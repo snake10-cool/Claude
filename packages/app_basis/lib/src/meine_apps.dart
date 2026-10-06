@@ -58,4 +58,13 @@ const meineApps = <MeineApp>[
     farbe: Color(0xFF6C4DE6),
     veroeffentlicht: false,
   ),
+  MeineApp(
+    name: 'Teilbar',
+    paketId: 'com.snake10.teilbar',
+    beschreibungDe: 'WG-Einkaufsliste, Kosten teilen, Packlisten, Resteküche',
+    beschreibungEn: 'Shared shopping lists, split costs, packing lists, recipes',
+    symbol: Icons.shopping_basket,
+    farbe: Color(0xFF1F9D6B),
+    veroeffentlicht: false,
+  ),
 ];

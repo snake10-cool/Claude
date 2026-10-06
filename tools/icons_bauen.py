@@ -105,9 +105,27 @@ def codekarten(d, skala):
         d.ellipse(l.box(x - r, y - r, x + r, y + r), fill=violett)
 
 
+def teilbar(d, skala):
+    """Abgehakte Liste und eine halbierte Münze."""
+    l = Leinwand(d, skala)
+    gruen = (18, 110, 74, 255)
+    hell = (190, 240, 215, 255)
+    d.rounded_rectangle(l.box(240, 200, 700, 800), radius=l.r(56), fill=WEISS)
+    for i, y in enumerate((320, 470, 620)):
+        d.rounded_rectangle(l.box(300, y - 40, 380, y + 40), radius=l.r(16),
+                            fill=gruen if i < 2 else WEISS, outline=gruen, width=l.r(10))
+        if i < 2:
+            d.line([*l.p(318, y), *l.p(336, y + 22), *l.p(366, y - 22)], fill=WEISS, width=l.r(14), joint="curve")
+        d.rounded_rectangle(l.box(420, y - 16, 640, y + 16), radius=l.r(16), fill=hell if i < 2 else gruen)
+    # Münze, in zwei Hälften geteilt
+    d.pieslice(l.box(560, 560, 820, 820), 90, 270, fill=(255, 200, 60, 255))
+    d.pieslice(l.box(580, 560, 840, 820), 270, 90, fill=(255, 220, 110, 255))
+
+
 APPS = {
     "druckkasse": ((0xE8, 0x62, 0x2A, 255), druckkasse),
     "codekarten": ((0x6C, 0x4D, 0xE6, 255), codekarten),
+    "teilbar": ((0x1F, 0x9D, 0x6B, 255), teilbar),
 }
 
 if __name__ == "__main__":

@@ -1,0 +1,340 @@
+{
+  "@@locale": "de",
+  "tabListen": "Listen",
+  "tabGeld": "Geld",
+  "tabPacken": "Packen",
+  "tabKochen": "Kochen",
+  "tabMehr": "Mehr",
+  "abbrechen": "Abbrechen",
+  "speichern": "Speichern",
+  "loeschen": "Löschen",
+  "anlegen": "Anlegen",
+  "hinzufuegen": "Hinzufügen",
+  "umbenennen": "Umbenennen",
+  "ok": "OK",
+  "name": "Name",
+  "menge": "Menge",
+  "pflichtfeld": "Bitte ausfüllen",
+  "ungueltigerBetrag": "Bitte einen Betrag wie 12,50 eingeben",
+  "app": "App",
+  "leer": "Leer",
+  "ich": "ich",
+  "neueListe": "Neue Liste",
+  "keineListen": "Noch keine Liste",
+  "keineListenText": "Leg eine Einkaufsliste an – für dich allein oder gemeinsam mit deiner WG.",
+  "fuerMich": "Für mich",
+  "allesErledigt": "Alles erledigt ✓",
+  "offenVon": "{offen} von {gesamt} offen",
+  "@offenVon": {
+    "placeholders": {
+      "offen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "einkauf": "Einkauf",
+  "werSiehtDieListe": "Wer sieht die Liste?",
+  "nurIch": "Nur ich",
+  "gruppeFuerTeilen": "Zum Teilen zuerst unter „Geld“ eine Gruppe anlegen.",
+  "ichNehmWasMit": "Ich nehm was mit",
+  "ichNehmWasMitText": "Du kaufst für eine Person ein. Beträge zahlt nur diese Person.",
+  "fuerWen": "Für wen?",
+  "werBistDu": "Wer bist du?",
+  "gekauft": "{name} gekauft",
+  "@gekauft": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "betragHilfe": "Trag den Preis ein, dann landet er automatisch in der Abrechnung der Gruppe.",
+  "betragOptional": "Betrag (optional)",
+  "ohneBetrag": "Ohne Betrag",
+  "abhaken": "Abhaken",
+  "artikelBearbeiten": "Artikel bearbeiten",
+  "vorlageGespeichert": "Als Vorlage gespeichert",
+  "listeLoeschen": "Liste löschen",
+  "alsTextTeilen": "Als Text teilen",
+  "alleZuruecksetzen": "Alle Häkchen entfernen",
+  "erledigteEntfernen": "Erledigte entfernen",
+  "alsVorlageSpeichern": "Als Vorlage speichern",
+  "artikelHinzufuegenHinweis": "z. B. „2 Milch“ oder „500 g Mehl“",
+  "listeLeer": "Die Liste ist leer",
+  "listeLeerText": "Tipp oben ein, was fehlt. Mengen erkennt die App selbst.",
+  "erledigtAnzahl": "Erledigt ({anzahl})",
+  "@erledigtAnzahl": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "beitreten": "Gruppe beitreten",
+  "neueGruppe": "Neue Gruppe",
+  "rechner": "Rechnung & Trinkgeld",
+  "rechnerText": "Restaurant-Rechnung fair aufteilen",
+  "keineGruppen": "Noch keine Gruppe",
+  "keineGruppenText": "Gruppen für WG, Familie oder Urlaub: gemeinsame Listen und Ausgaben, die sich selbst abrechnen.",
+  "geteilt": "Geteilt",
+  "nurAufDiesemGeraet": "Nur auf diesem Gerät",
+  "duBistQuitt": "Du bist quitt",
+  "duBekommst": "Du bekommst {betrag}",
+  "@duBekommst": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "duSchuldest": "Du schuldest {betrag}",
+  "@duSchuldest": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "grenzeErreicht": "Gratis-Grenze erreicht",
+  "grenzeGruppen": "Kostenlos kannst du {anzahl} Gruppen haben. Mit Teilbar Plus unbegrenzt viele.",
+  "@grenzeGruppen": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "artWg": "WG",
+  "artFamilie": "Familie",
+  "artUrlaub": "Urlaub",
+  "artEssen": "Essen gehen",
+  "artSonst": "Andere",
+  "gruppenName": "Name der Gruppe",
+  "gruppenNameBeispiel": "z. B. WG Linz",
+  "deinName": "Dein Name",
+  "weiterePersonen": "Weitere Personen (optional)",
+  "weiterePersonenHilfe": "Mit Komma trennen: Ben, Cem, Dana",
+  "gruppeLoeschen": "Gruppe löschen",
+  "gruppeLoeschenText": "Die Gruppe mit allen Listen und Ausgaben wird gelöscht.",
+  "gruppeLoeschenOnline": "Die Gruppe wird für alle Mitglieder gelöscht, mit allen Listen und Ausgaben.",
+  "ausgaben": "Ausgaben",
+  "wersSchuldet": "Wer schuldet wem",
+  "mitglieder": "Mitglieder",
+  "ausgabe": "Ausgabe",
+  "keineAusgaben": "Noch keine Ausgaben",
+  "keineAusgabenText": "Trag ein, wer was bezahlt hat. Oder hak in einer Gruppenliste einen Artikel mit Betrag ab.",
+  "gesamtAusgaben": "Insgesamt ausgegeben: {betrag}",
+  "@gesamtAusgaben": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "bezahltVon": "bezahlt von {name}",
+  "@bezahltVon": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "soGleichtIhrAus": "So gleicht ihr aus",
+  "allesAusgeglichen": "Alles ausgeglichen. 🎉",
+  "zahltAn": "{von} zahlt {an}",
+  "@zahltAn": {
+    "placeholders": {
+      "von": {
+        "type": "String"
+      },
+      "an": {
+        "type": "String"
+      }
+    }
+  },
+  "alsBezahltMarkieren": "Als bezahlt markieren?",
+  "alsBezahltText": "{von} hat {an} {betrag} gegeben.",
+  "@alsBezahltText": {
+    "placeholders": {
+      "von": {
+        "type": "String"
+      },
+      "betrag": {
+        "type": "String"
+      },
+      "an": {
+        "type": "String"
+      }
+    }
+  },
+  "bezahlt": "Bezahlt",
+  "rueckzahlung": "Rückzahlung",
+  "personHinzufuegen": "Person hinzufügen",
+  "person": "Person",
+  "dasBistDu": "Das bist du",
+  "dasBinIch": "Das bin ich",
+  "gemeinsamNutzen": "Gemeinsam nutzen",
+  "gemeinsamNutzenText": "Stell die Gruppe online. Dann sehen alle Mitglieder Listen und Ausgaben live auf ihrem Handy.",
+  "onlineNichtEingerichtet": "Online-Gruppen sind in dieser Version noch nicht eingerichtet. Die Gruppe funktioniert auf diesem Gerät.",
+  "onlineTeilen": "Online teilen",
+  "keinInternet": "Keine Verbindung. Bitte später nochmal probieren.",
+  "einladungscode": "Einladungscode",
+  "einladen": "Einladen",
+  "einladungText": "Komm in unsere Gruppe „{gruppe}“ bei Teilbar! Code: {code}",
+  "@einladungText": {
+    "placeholders": {
+      "gruppe": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "neueAusgabe": "Neue Ausgabe",
+  "ausgabeBearbeiten": "Ausgabe bearbeiten",
+  "ausgabeLoeschen": "Ausgabe löschen?",
+  "mindestensEinePerson": "Mindestens eine Person auswählen.",
+  "wofuer": "Wofür?",
+  "wofuerBeispiel": "z. B. Pizza, Tanken, Miete",
+  "betrag": "Betrag",
+  "werHatBezahlt": "Wer hat bezahlt?",
+  "fuerWenGeteilt": "Für wen? (gleich aufgeteilt)",
+  "beitretenText": "Gib den 6-stelligen Code ein, den du bekommen hast, oder scanne den QR-Code.",
+  "codeUngueltig": "Der Code hat 6 Zeichen.",
+  "codeNichtGefunden": "Diesen Code gibt es nicht.",
+  "ichBinNeu": "Ich bin neu dabei",
+  "qrScannen": "QR-Code scannen",
+  "rechnungsbetrag": "Rechnungsbetrag",
+  "trinkgeldProzent": "Trinkgeld: {prozent} %",
+  "@trinkgeldProzent": {
+    "placeholders": {
+      "prozent": {
+        "type": "int"
+      }
+    }
+  },
+  "personen": "Personen",
+  "aufrunden": "Aufrunden",
+  "aufrundenText": "Auf 50 Cent pro Person aufrunden",
+  "proPerson": "Pro Person",
+  "rechnerErgebnis": "Gesamt {gesamt}, davon {trinkgeld} Trinkgeld",
+  "@rechnerErgebnis": {
+    "placeholders": {
+      "gesamt": {
+        "type": "String"
+      },
+      "trinkgeld": {
+        "type": "String"
+      }
+    }
+  },
+  "vorlageStrand": "Strandurlaub",
+  "vorlageSki": "Skiurlaub",
+  "vorlageFestival": "Festival",
+  "vorlageStadt": "Städtetrip",
+  "vorlageCamping": "Camping",
+  "vorlageBusiness": "Geschäftsreise",
+  "wohinGehts": "Wohin geht's?",
+  "artikelAnzahl": "{anzahl} Sachen",
+  "@artikelAnzahl": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "eigeneVorlagen": "Eigene Vorlagen",
+  "leerePackliste": "Leere Packliste",
+  "packliste": "Packliste",
+  "neuePackliste": "Neue Packliste",
+  "keinePacklisten": "Noch keine Packliste",
+  "keinePacklistenText": "Wähl eine Vorlage (Strand, Ski, Festival …) und pass sie an. Fertige Listen kannst du als eigene Vorlage speichern.",
+  "resteKueche": "Resteküche",
+  "rezeptDesTages": "Rezept des Tages",
+  "wasHastDuDa": "Was hast du da?",
+  "zutatEingeben": "Zutat eingeben, z. B. Eier",
+  "alleEntfernen": "Alle entfernen",
+  "alleRezepte": "Alle Rezepte",
+  "dazuPasst": "{anzahl, plural, =0{Kein passendes Rezept} =1{1 passendes Rezept} other{{anzahl} passende Rezepte}}",
+  "@dazuPasst": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "minutenPortionen": "{minuten} Min. · {portionen} Portionen",
+  "@minutenPortionen": {
+    "placeholders": {
+      "minuten": {
+        "type": "int"
+      },
+      "portionen": {
+        "type": "int"
+      }
+    }
+  },
+  "allesDa": "Du hast alles da!",
+  "esFehlt": "Es fehlt: {zutaten}",
+  "@esFehlt": {
+    "placeholders": {
+      "zutaten": {
+        "type": "String"
+      }
+    }
+  },
+  "aufWelcheListe": "Auf welche Liste?",
+  "neueEinkaufsliste": "Neue Einkaufsliste",
+  "aufListeGesetzt": "{anzahl} Zutaten auf „{liste}“ gesetzt",
+  "@aufListeGesetzt": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      },
+      "liste": {
+        "type": "String"
+      }
+    }
+  },
+  "fehlendeAufListe": "{anzahl} fehlende auf die Einkaufsliste",
+  "@fehlendeAufListe": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "minuten": "{anzahl} Min.",
+  "@minuten": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "portionen": "{anzahl} Portionen",
+  "@portionen": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "zutaten": "Zutaten",
+  "grundzutat": "Grundzutat – meist zu Hause",
+  "zubereitung": "Zubereitung",
+  "plusTitel": "Teilbar Plus",
+  "plusKurz": "Unbegrenzt Gruppen, ohne Werbung",
+  "plusVorteilGruppen": "Unbegrenzt viele Gruppen",
+  "plusVorteilWerbefrei": "Keine Werbung",
+  "plusVorteilUnterstuetzen": "Du unterstützt die Weiterentwicklung",
+  "werbefrei": "Werbung entfernen",
+  "einmalkauf": "Einmalkauf",
+  "profil": "Profil",
+  "nichtGesetzt": "Noch nicht gesetzt",
+  "werbeEinwilligung": "Einwilligung für Werbung ändern"
+}

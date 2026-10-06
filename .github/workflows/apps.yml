@@ -64,6 +64,7 @@ jobs:
           - { ordner: lernapp, datei: Lernfuchs }
           - { ordner: druckkasse, datei: Druckkasse }
           - { ordner: codekarten, datei: Codekarten }
+          - { ordner: teilbar, datei: Teilbar }
     steps:
       - uses: actions/checkout@v4
 

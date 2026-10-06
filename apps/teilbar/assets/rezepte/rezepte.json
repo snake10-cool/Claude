@@ -1,0 +1,1567 @@
+[
+ {
+  "id": "spaghetti_aglio",
+  "name": "Spaghetti Aglio e Olio",
+  "minuten": 15,
+  "portionen": 2,
+  "tags": [
+   "vegetarisch",
+   "schnell"
+  ],
+  "zutaten": [
+   {
+    "name": "Spaghetti",
+    "menge": "250 g",
+    "grund": false
+   },
+   {
+    "name": "Knoblauch",
+    "menge": "3 Zehen",
+    "grund": false
+   },
+   {
+    "name": "Olivenöl",
+    "menge": "5 EL",
+    "grund": true
+   },
+   {
+    "name": "Chili",
+    "menge": "1 Prise",
+    "grund": true
+   },
+   {
+    "name": "Petersilie",
+    "menge": "½ Bund",
+    "grund": false
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Spaghetti in reichlich Salzwasser bissfest kochen.",
+   "Knoblauch in dünne Scheiben schneiden und im Olivenöl bei mittlerer Hitze goldgelb anschwitzen, Chili dazu.",
+   "Nudeln abgießen, dabei eine Tasse Nudelwasser aufheben.",
+   "Nudeln mit Öl, etwas Nudelwasser und gehackter Petersilie vermengen."
+  ]
+ },
+ {
+  "id": "eierspeis",
+  "name": "Eierspeis mit Brot",
+  "minuten": 10,
+  "portionen": 1,
+  "tags": [
+   "schnell",
+   "frühstück"
+  ],
+  "zutaten": [
+   {
+    "name": "Eier",
+    "menge": "3",
+    "grund": false
+   },
+   {
+    "name": "Butter",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Schnittlauch",
+    "menge": "etwas",
+    "grund": false
+   },
+   {
+    "name": "Brot",
+    "menge": "2 Scheiben",
+    "grund": false
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   },
+   {
+    "name": "Pfeffer",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Eier in einer Schüssel mit Salz und Pfeffer verquirlen.",
+   "Butter in der Pfanne schmelzen, Eier hinein und bei kleiner Hitze langsam stocken lassen, dabei umrühren.",
+   "Mit Schnittlauch bestreuen und mit Brot servieren."
+  ]
+ },
+ {
+  "id": "bratkartoffeln",
+  "name": "Bratkartoffeln mit Spiegelei",
+  "minuten": 30,
+  "portionen": 2,
+  "tags": [
+   "resteverwertung"
+  ],
+  "zutaten": [
+   {
+    "name": "Kartoffeln",
+    "menge": "600 g (gekocht)",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Eier",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Öl",
+    "menge": "3 EL",
+    "grund": true
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   },
+   {
+    "name": "Pfeffer",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Gekochte Kartoffeln in Scheiben schneiden, Zwiebel würfeln.",
+   "Kartoffeln im Öl bei mittlerer Hitze 10–15 Minuten knusprig braten, nicht zu oft wenden.",
+   "Zwiebel dazugeben und mitbraten, würzen.",
+   "In einer zweiten Pfanne Spiegeleier braten und darauf servieren."
+  ]
+ },
+ {
+  "id": "gemuesepfanne",
+  "name": "Bunte Gemüsepfanne mit Reis",
+  "minuten": 30,
+  "portionen": 2,
+  "tags": [
+   "vegetarisch",
+   "resteverwertung"
+  ],
+  "zutaten": [
+   {
+    "name": "Reis",
+    "menge": "150 g",
+    "grund": false
+   },
+   {
+    "name": "Paprika",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Zucchini",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Karotten",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Sojasauce",
+    "menge": "3 EL",
+    "grund": false
+   },
+   {
+    "name": "Öl",
+    "menge": "2 EL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Reis nach Packung kochen.",
+   "Gemüse in mundgerechte Stücke schneiden.",
+   "Zwiebel und Karotten im Öl 3 Minuten anbraten, dann Paprika und Zucchini dazu und weitere 5 Minuten braten.",
+   "Mit Sojasauce ablöschen und mit dem Reis servieren."
+  ]
+ },
+ {
+  "id": "fried_rice",
+  "name": "Gebratener Reis vom Vortag",
+  "minuten": 20,
+  "portionen": 2,
+  "tags": [
+   "resteverwertung",
+   "schnell"
+  ],
+  "zutaten": [
+   {
+    "name": "Reis",
+    "menge": "300 g (gekocht, kalt)",
+    "grund": false
+   },
+   {
+    "name": "Eier",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Erbsen",
+    "menge": "100 g",
+    "grund": false
+   },
+   {
+    "name": "Frühlingszwiebeln",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Sojasauce",
+    "menge": "2 EL",
+    "grund": false
+   },
+   {
+    "name": "Öl",
+    "menge": "2 EL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Öl stark erhitzen, Eier hineinschlagen und unter Rühren stocken lassen, herausnehmen.",
+   "Kalten Reis im Öl kräftig anbraten, bis er leicht knusprig wird.",
+   "Erbsen, Frühlingszwiebeln und Ei dazu, mit Sojasauce würzen."
+  ]
+ },
+ {
+  "id": "tomatensuppe",
+  "name": "Schnelle Tomatensuppe",
+  "minuten": 20,
+  "portionen": 2,
+  "tags": [
+   "vegetarisch",
+   "suppe"
+  ],
+  "zutaten": [
+   {
+    "name": "Dosentomaten",
+    "menge": "1 Dose",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Knoblauch",
+    "menge": "1 Zehe",
+    "grund": false
+   },
+   {
+    "name": "Gemüsebrühe",
+    "menge": "300 ml",
+    "grund": false
+   },
+   {
+    "name": "Sahne",
+    "menge": "50 ml",
+    "grund": false
+   },
+   {
+    "name": "Öl",
+    "menge": "1 EL",
+    "grund": true
+   },
+   {
+    "name": "Zucker",
+    "menge": "1 Prise",
+    "grund": true
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Zwiebel und Knoblauch würfeln und im Öl glasig dünsten.",
+   "Tomaten und Brühe dazu, 10 Minuten köcheln.",
+   "Pürieren, Sahne einrühren, mit Salz und einer Prise Zucker abschmecken."
+  ]
+ },
+ {
+  "id": "kaiserschmarrn",
+  "name": "Kaiserschmarrn",
+  "minuten": 25,
+  "portionen": 2,
+  "tags": [
+   "süß",
+   "österreichisch"
+  ],
+  "zutaten": [
+   {
+    "name": "Mehl",
+    "menge": "125 g",
+    "grund": true
+   },
+   {
+    "name": "Milch",
+    "menge": "250 ml",
+    "grund": false
+   },
+   {
+    "name": "Eier",
+    "menge": "3",
+    "grund": false
+   },
+   {
+    "name": "Zucker",
+    "menge": "2 EL",
+    "grund": true
+   },
+   {
+    "name": "Butter",
+    "menge": "2 EL",
+    "grund": true
+   },
+   {
+    "name": "Rosinen",
+    "menge": "1 Handvoll",
+    "grund": false
+   },
+   {
+    "name": "Staubzucker",
+    "menge": "zum Bestreuen",
+    "grund": false
+   }
+  ],
+  "schritte": [
+   "Eier trennen. Eigelb mit Mehl, Milch und Zucker glatt rühren.",
+   "Eiweiß steif schlagen und unterheben.",
+   "Butter in einer großen Pfanne schmelzen, Teig hineingießen, Rosinen darüber, bei mittlerer Hitze stocken lassen.",
+   "Wenden, mit zwei Gabeln in Stücke reißen und kurz weiterbraten.",
+   "Mit Staubzucker bestreuen. Dazu passt Apfelmus."
+  ]
+ },
+ {
+  "id": "palatschinken",
+  "name": "Palatschinken",
+  "minuten": 25,
+  "portionen": 2,
+  "tags": [
+   "süß",
+   "österreichisch"
+  ],
+  "zutaten": [
+   {
+    "name": "Mehl",
+    "menge": "150 g",
+    "grund": true
+   },
+   {
+    "name": "Milch",
+    "menge": "300 ml",
+    "grund": false
+   },
+   {
+    "name": "Eier",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Butter",
+    "menge": "zum Ausbacken",
+    "grund": true
+   },
+   {
+    "name": "Marmelade",
+    "menge": "nach Belieben",
+    "grund": false
+   },
+   {
+    "name": "Salz",
+    "menge": "1 Prise",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Mehl, Milch, Eier und Salz zu einem glatten Teig rühren, 10 Minuten rasten lassen.",
+   "In wenig Butter dünne Palatschinken ausbacken.",
+   "Mit Marmelade bestreichen und einrollen."
+  ]
+ },
+ {
+  "id": "nudelauflauf",
+  "name": "Nudelauflauf mit Schinken",
+  "minuten": 45,
+  "portionen": 3,
+  "tags": [
+   "ofen",
+   "resteverwertung"
+  ],
+  "zutaten": [
+   {
+    "name": "Nudeln",
+    "menge": "300 g",
+    "grund": false
+   },
+   {
+    "name": "Schinken",
+    "menge": "150 g",
+    "grund": false
+   },
+   {
+    "name": "Eier",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Sahne",
+    "menge": "200 ml",
+    "grund": false
+   },
+   {
+    "name": "Käse",
+    "menge": "100 g (gerieben)",
+    "grund": false
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   },
+   {
+    "name": "Pfeffer",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Ofen auf 200 °C vorheizen. Nudeln kochen.",
+   "Schinken würfeln, mit Nudeln in eine Auflaufform geben.",
+   "Eier mit Sahne, Salz und Pfeffer verquirlen und darübergießen.",
+   "Mit Käse bestreuen und 20–25 Minuten goldbraun backen."
+  ]
+ },
+ {
+  "id": "chili",
+  "name": "Chili sin Carne",
+  "minuten": 40,
+  "portionen": 3,
+  "tags": [
+   "vegetarisch",
+   "eintopf"
+  ],
+  "zutaten": [
+   {
+    "name": "Kidneybohnen",
+    "menge": "1 Dose",
+    "grund": false
+   },
+   {
+    "name": "Mais",
+    "menge": "1 Dose",
+    "grund": false
+   },
+   {
+    "name": "Dosentomaten",
+    "menge": "1 Dose",
+    "grund": false
+   },
+   {
+    "name": "Paprika",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Knoblauch",
+    "menge": "2 Zehen",
+    "grund": false
+   },
+   {
+    "name": "Paprikapulver",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Kreuzkümmel",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Öl",
+    "menge": "2 EL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Zwiebel, Knoblauch und Paprika würfeln und im Öl anbraten.",
+   "Gewürze kurz mitrösten.",
+   "Tomaten, abgespülte Bohnen und Mais dazu und 20 Minuten köcheln.",
+   "Abschmecken. Dazu Reis oder Brot."
+  ]
+ },
+ {
+  "id": "linsencurry",
+  "name": "Rotes Linsencurry",
+  "minuten": 30,
+  "portionen": 3,
+  "tags": [
+   "vegan",
+   "eintopf"
+  ],
+  "zutaten": [
+   {
+    "name": "Rote Linsen",
+    "menge": "200 g",
+    "grund": false
+   },
+   {
+    "name": "Kokosmilch",
+    "menge": "1 Dose",
+    "grund": false
+   },
+   {
+    "name": "Dosentomaten",
+    "menge": "1 Dose",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Knoblauch",
+    "menge": "2 Zehen",
+    "grund": false
+   },
+   {
+    "name": "Ingwer",
+    "menge": "1 Stück",
+    "grund": false
+   },
+   {
+    "name": "Currypulver",
+    "menge": "2 TL",
+    "grund": true
+   },
+   {
+    "name": "Öl",
+    "menge": "1 EL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Zwiebel, Knoblauch und Ingwer fein hacken und im Öl anschwitzen, Curry kurz mitrösten.",
+   "Linsen, Tomaten, Kokosmilch und 200 ml Wasser dazu.",
+   "15–20 Minuten köcheln, bis die Linsen weich sind. Mit Salz abschmecken."
+  ]
+ },
+ {
+  "id": "pfannkuchen_herzhaft",
+  "name": "Herzhafte Pfannkuchen mit Käse",
+  "minuten": 25,
+  "portionen": 2,
+  "tags": [
+   "vegetarisch"
+  ],
+  "zutaten": [
+   {
+    "name": "Mehl",
+    "menge": "150 g",
+    "grund": true
+   },
+   {
+    "name": "Milch",
+    "menge": "250 ml",
+    "grund": false
+   },
+   {
+    "name": "Eier",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Käse",
+    "menge": "100 g",
+    "grund": false
+   },
+   {
+    "name": "Spinat",
+    "menge": "100 g",
+    "grund": false
+   },
+   {
+    "name": "Butter",
+    "menge": "zum Braten",
+    "grund": true
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Teig aus Mehl, Milch, Eiern und Salz rühren.",
+   "Pfannkuchen ausbacken, auf einer Hälfte Spinat und Käse verteilen.",
+   "Zuklappen und kurz weiterbraten, bis der Käse schmilzt."
+  ]
+ },
+ {
+  "id": "kartoffelsuppe",
+  "name": "Kartoffelsuppe",
+  "minuten": 35,
+  "portionen": 3,
+  "tags": [
+   "suppe",
+   "vegetarisch"
+  ],
+  "zutaten": [
+   {
+    "name": "Kartoffeln",
+    "menge": "600 g",
+    "grund": false
+   },
+   {
+    "name": "Karotten",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Lauch",
+    "menge": "1 Stange",
+    "grund": false
+   },
+   {
+    "name": "Gemüsebrühe",
+    "menge": "1 l",
+    "grund": false
+   },
+   {
+    "name": "Sahne",
+    "menge": "100 ml",
+    "grund": false
+   },
+   {
+    "name": "Majoran",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Butter",
+    "menge": "1 EL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Gemüse schälen und klein schneiden.",
+   "In Butter anschwitzen, mit Brühe aufgießen und 20 Minuten kochen.",
+   "Teilweise pürieren, Sahne dazu, mit Majoran, Salz und Pfeffer abschmecken."
+  ]
+ },
+ {
+  "id": "gulasch_wuerstel",
+  "name": "Würstelgulasch",
+  "minuten": 35,
+  "portionen": 3,
+  "tags": [
+   "österreichisch",
+   "eintopf"
+  ],
+  "zutaten": [
+   {
+    "name": "Würstel",
+    "menge": "4",
+    "grund": false
+   },
+   {
+    "name": "Kartoffeln",
+    "menge": "500 g",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Paprikapulver",
+    "menge": "2 EL",
+    "grund": true
+   },
+   {
+    "name": "Tomatenmark",
+    "menge": "1 EL",
+    "grund": false
+   },
+   {
+    "name": "Öl",
+    "menge": "2 EL",
+    "grund": true
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Zwiebeln würfeln und im Öl goldbraun rösten.",
+   "Paprikapulver und Tomatenmark kurz mitrösten, mit 600 ml Wasser aufgießen.",
+   "Kartoffelwürfel dazu und 20 Minuten köcheln.",
+   "Würstel in Scheiben dazu und 5 Minuten mitziehen lassen."
+  ]
+ },
+ {
+  "id": "toast_hawaii",
+  "name": "Toast Hawaii",
+  "minuten": 15,
+  "portionen": 2,
+  "tags": [
+   "ofen",
+   "schnell"
+  ],
+  "zutaten": [
+   {
+    "name": "Toastbrot",
+    "menge": "4 Scheiben",
+    "grund": false
+   },
+   {
+    "name": "Schinken",
+    "menge": "4 Scheiben",
+    "grund": false
+   },
+   {
+    "name": "Ananas",
+    "menge": "4 Scheiben",
+    "grund": false
+   },
+   {
+    "name": "Käse",
+    "menge": "4 Scheiben",
+    "grund": false
+   },
+   {
+    "name": "Butter",
+    "menge": "etwas",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Ofen auf 220 °C vorheizen.",
+   "Toast buttern, mit Schinken, Ananas und Käse belegen.",
+   "8–10 Minuten überbacken."
+  ]
+ },
+ {
+  "id": "griechischer_salat",
+  "name": "Griechischer Salat",
+  "minuten": 15,
+  "portionen": 2,
+  "tags": [
+   "vegetarisch",
+   "salat",
+   "schnell"
+  ],
+  "zutaten": [
+   {
+    "name": "Gurke",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Tomaten",
+    "menge": "3",
+    "grund": false
+   },
+   {
+    "name": "Paprika",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Feta",
+    "menge": "150 g",
+    "grund": false
+   },
+   {
+    "name": "Oliven",
+    "menge": "1 Handvoll",
+    "grund": false
+   },
+   {
+    "name": "Olivenöl",
+    "menge": "3 EL",
+    "grund": true
+   },
+   {
+    "name": "Essig",
+    "menge": "1 EL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Gemüse in Stücke schneiden, Zwiebel in Ringe.",
+   "Mit Oliven mischen, Feta darauf bröseln.",
+   "Mit Öl, Essig, Salz und Oregano anmachen."
+  ]
+ },
+ {
+  "id": "couscous_salat",
+  "name": "Couscous-Salat",
+  "minuten": 20,
+  "portionen": 3,
+  "tags": [
+   "vegan",
+   "salat"
+  ],
+  "zutaten": [
+   {
+    "name": "Couscous",
+    "menge": "200 g",
+    "grund": false
+   },
+   {
+    "name": "Gurke",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Tomaten",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Paprika",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Zitrone",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Petersilie",
+    "menge": "1 Bund",
+    "grund": false
+   },
+   {
+    "name": "Olivenöl",
+    "menge": "4 EL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Couscous mit 250 ml heißem Salzwasser übergießen, 5 Minuten quellen lassen, auflockern.",
+   "Gemüse klein würfeln, Petersilie hacken.",
+   "Alles mischen, mit Zitronensaft, Öl, Salz und Pfeffer abschmecken."
+  ]
+ },
+ {
+  "id": "wraps",
+  "name": "Wraps mit Hähnchen",
+  "minuten": 25,
+  "portionen": 2,
+  "tags": [
+   "schnell"
+  ],
+  "zutaten": [
+   {
+    "name": "Tortillas",
+    "menge": "4",
+    "grund": false
+   },
+   {
+    "name": "Hähnchen",
+    "menge": "250 g",
+    "grund": false
+   },
+   {
+    "name": "Salat",
+    "menge": "½ Kopf",
+    "grund": false
+   },
+   {
+    "name": "Tomaten",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Joghurt",
+    "menge": "150 g",
+    "grund": false
+   },
+   {
+    "name": "Paprikapulver",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Öl",
+    "menge": "1 EL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Hähnchen in Streifen schneiden, mit Paprika und Salz würzen und im Öl durchbraten.",
+   "Joghurt mit Salz, Pfeffer und etwas Knoblauch verrühren.",
+   "Tortillas kurz erwärmen, mit Sauce, Salat, Tomaten und Hähnchen füllen und einrollen."
+  ]
+ },
+ {
+  "id": "omelett",
+  "name": "Gemüse-Omelett",
+  "minuten": 15,
+  "portionen": 1,
+  "tags": [
+   "vegetarisch",
+   "schnell",
+   "resteverwertung"
+  ],
+  "zutaten": [
+   {
+    "name": "Eier",
+    "menge": "3",
+    "grund": false
+   },
+   {
+    "name": "Paprika",
+    "menge": "½",
+    "grund": false
+   },
+   {
+    "name": "Champignons",
+    "menge": "4",
+    "grund": false
+   },
+   {
+    "name": "Käse",
+    "menge": "30 g",
+    "grund": false
+   },
+   {
+    "name": "Butter",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Gemüse klein schneiden und in Butter anbraten.",
+   "Verquirlte, gesalzene Eier darübergießen und bei kleiner Hitze stocken lassen.",
+   "Käse darauf, zusammenklappen."
+  ]
+ },
+ {
+  "id": "bananenbrot",
+  "name": "Bananenbrot",
+  "minuten": 70,
+  "portionen": 8,
+  "tags": [
+   "süß",
+   "ofen",
+   "resteverwertung"
+  ],
+  "zutaten": [
+   {
+    "name": "Bananen",
+    "menge": "3 (sehr reif)",
+    "grund": false
+   },
+   {
+    "name": "Mehl",
+    "menge": "250 g",
+    "grund": true
+   },
+   {
+    "name": "Zucker",
+    "menge": "100 g",
+    "grund": true
+   },
+   {
+    "name": "Eier",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Butter",
+    "menge": "80 g",
+    "grund": true
+   },
+   {
+    "name": "Backpulver",
+    "menge": "1 Pkg.",
+    "grund": false
+   },
+   {
+    "name": "Nüsse",
+    "menge": "1 Handvoll",
+    "grund": false
+   }
+  ],
+  "schritte": [
+   "Ofen auf 180 °C vorheizen, Kastenform einfetten.",
+   "Bananen zerdrücken, mit geschmolzener Butter, Zucker und Eiern verrühren.",
+   "Mehl und Backpulver unterheben, Nüsse dazu.",
+   "Etwa 55 Minuten backen (Stäbchenprobe)."
+  ]
+ },
+ {
+  "id": "pizza_toast",
+  "name": "Pizzatoast",
+  "minuten": 15,
+  "portionen": 2,
+  "tags": [
+   "ofen",
+   "schnell",
+   "resteverwertung"
+  ],
+  "zutaten": [
+   {
+    "name": "Toastbrot",
+    "menge": "4 Scheiben",
+    "grund": false
+   },
+   {
+    "name": "Tomatenmark",
+    "menge": "2 EL",
+    "grund": false
+   },
+   {
+    "name": "Käse",
+    "menge": "100 g",
+    "grund": false
+   },
+   {
+    "name": "Salami",
+    "menge": "8 Scheiben",
+    "grund": false
+   },
+   {
+    "name": "Oregano",
+    "menge": "1 TL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Ofen auf 220 °C vorheizen.",
+   "Toast mit Tomatenmark bestreichen, mit Oregano würzen.",
+   "Mit Salami und Käse belegen und 8 Minuten backen."
+  ]
+ },
+ {
+  "id": "milchreis",
+  "name": "Milchreis mit Zimt",
+  "minuten": 35,
+  "portionen": 3,
+  "tags": [
+   "süß"
+  ],
+  "zutaten": [
+   {
+    "name": "Milchreis",
+    "menge": "200 g",
+    "grund": false
+   },
+   {
+    "name": "Milch",
+    "menge": "1 l",
+    "grund": false
+   },
+   {
+    "name": "Zucker",
+    "menge": "3 EL",
+    "grund": true
+   },
+   {
+    "name": "Zimt",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Butter",
+    "menge": "1 EL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Milch mit Butter und Zucker aufkochen.",
+   "Reis einrühren und bei kleinster Hitze 30 Minuten quellen lassen, öfter umrühren.",
+   "Mit Zimt und Zucker bestreut servieren."
+  ]
+ },
+ {
+  "id": "pesto_nudeln",
+  "name": "Nudeln mit Pesto und Tomaten",
+  "minuten": 15,
+  "portionen": 2,
+  "tags": [
+   "vegetarisch",
+   "schnell"
+  ],
+  "zutaten": [
+   {
+    "name": "Nudeln",
+    "menge": "250 g",
+    "grund": false
+   },
+   {
+    "name": "Pesto",
+    "menge": "4 EL",
+    "grund": false
+   },
+   {
+    "name": "Cocktailtomaten",
+    "menge": "200 g",
+    "grund": false
+   },
+   {
+    "name": "Parmesan",
+    "menge": "30 g",
+    "grund": false
+   }
+  ],
+  "schritte": [
+   "Nudeln kochen.",
+   "Tomaten halbieren.",
+   "Nudeln abgießen, mit Pesto und Tomaten mischen, Parmesan darüber."
+  ]
+ },
+ {
+  "id": "shakshuka",
+  "name": "Shakshuka",
+  "minuten": 30,
+  "portionen": 2,
+  "tags": [
+   "vegetarisch"
+  ],
+  "zutaten": [
+   {
+    "name": "Eier",
+    "menge": "4",
+    "grund": false
+   },
+   {
+    "name": "Dosentomaten",
+    "menge": "1 Dose",
+    "grund": false
+   },
+   {
+    "name": "Paprika",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Knoblauch",
+    "menge": "2 Zehen",
+    "grund": false
+   },
+   {
+    "name": "Kreuzkümmel",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Paprikapulver",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Öl",
+    "menge": "2 EL",
+    "grund": true
+   },
+   {
+    "name": "Brot",
+    "menge": "zum Tunken",
+    "grund": false
+   }
+  ],
+  "schritte": [
+   "Zwiebel, Paprika und Knoblauch im Öl weich dünsten, Gewürze dazu.",
+   "Tomaten dazu und 10 Minuten einkochen.",
+   "Vier Mulden machen, Eier hineinschlagen und zugedeckt 6–8 Minuten stocken lassen.",
+   "Mit Brot servieren."
+  ]
+ },
+ {
+  "id": "ofengemuese",
+  "name": "Ofengemüse mit Feta",
+  "minuten": 45,
+  "portionen": 2,
+  "tags": [
+   "vegetarisch",
+   "ofen",
+   "resteverwertung"
+  ],
+  "zutaten": [
+   {
+    "name": "Kartoffeln",
+    "menge": "400 g",
+    "grund": false
+   },
+   {
+    "name": "Karotten",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Zucchini",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Paprika",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Feta",
+    "menge": "150 g",
+    "grund": false
+   },
+   {
+    "name": "Olivenöl",
+    "menge": "4 EL",
+    "grund": true
+   },
+   {
+    "name": "Rosmarin",
+    "menge": "1 Zweig",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Ofen auf 200 °C vorheizen.",
+   "Gemüse in Stücke schneiden, mit Öl, Salz und Rosmarin mischen.",
+   "Auf dem Blech 30 Minuten rösten.",
+   "Feta darüberbröseln und 10 Minuten weiterbacken."
+  ]
+ },
+ {
+  "id": "frittata",
+  "name": "Nudel-Frittata (aus Resten)",
+  "minuten": 20,
+  "portionen": 2,
+  "tags": [
+   "resteverwertung"
+  ],
+  "zutaten": [
+   {
+    "name": "Nudeln",
+    "menge": "250 g (gekocht)",
+    "grund": false
+   },
+   {
+    "name": "Eier",
+    "menge": "4",
+    "grund": false
+   },
+   {
+    "name": "Käse",
+    "menge": "60 g",
+    "grund": false
+   },
+   {
+    "name": "Schinken",
+    "menge": "80 g",
+    "grund": false
+   },
+   {
+    "name": "Butter",
+    "menge": "1 EL",
+    "grund": true
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Eier mit Käse, Salz und Pfeffer verquirlen, Schinken würfeln.",
+   "Nudeln und Schinken in Butter anbraten, Eiermasse darübergießen.",
+   "Zugedeckt bei kleiner Hitze 10 Minuten stocken lassen, dann wenden oder kurz unter den Grill."
+  ]
+ },
+ {
+  "id": "bohnensalat",
+  "name": "Bohnensalat mit Ei",
+  "minuten": 15,
+  "portionen": 2,
+  "tags": [
+   "salat",
+   "schnell"
+  ],
+  "zutaten": [
+   {
+    "name": "Kidneybohnen",
+    "menge": "1 Dose",
+    "grund": false
+   },
+   {
+    "name": "Eier",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "1 (rot)",
+    "grund": false
+   },
+   {
+    "name": "Essig",
+    "menge": "2 EL",
+    "grund": true
+   },
+   {
+    "name": "Öl",
+    "menge": "3 EL",
+    "grund": true
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Eier hart kochen und vierteln.",
+   "Bohnen abspülen, Zwiebel fein schneiden.",
+   "Mit Essig, Öl, Salz und Pfeffer anmachen, Eier darauf."
+  ]
+ },
+ {
+  "id": "apfelstrudel_blaetterteig",
+  "name": "Schneller Apfelstrudel",
+  "minuten": 45,
+  "portionen": 6,
+  "tags": [
+   "süß",
+   "ofen",
+   "österreichisch"
+  ],
+  "zutaten": [
+   {
+    "name": "Blätterteig",
+    "menge": "1 Rolle",
+    "grund": false
+   },
+   {
+    "name": "Äpfel",
+    "menge": "4",
+    "grund": false
+   },
+   {
+    "name": "Zucker",
+    "menge": "3 EL",
+    "grund": true
+   },
+   {
+    "name": "Zimt",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Rosinen",
+    "menge": "1 Handvoll",
+    "grund": false
+   },
+   {
+    "name": "Semmelbrösel",
+    "menge": "2 EL",
+    "grund": false
+   },
+   {
+    "name": "Eier",
+    "menge": "1",
+    "grund": false
+   }
+  ],
+  "schritte": [
+   "Ofen auf 200 °C vorheizen.",
+   "Äpfel schälen, in dünne Scheiben schneiden, mit Zucker, Zimt und Rosinen mischen.",
+   "Blätterteig ausrollen, mit Bröseln bestreuen, Äpfel darauf verteilen und einrollen.",
+   "Mit verquirltem Ei bestreichen und 30 Minuten backen."
+  ]
+ },
+ {
+  "id": "gefuellte_paprika",
+  "name": "Gefüllte Paprika",
+  "minuten": 60,
+  "portionen": 3,
+  "tags": [
+   "ofen"
+  ],
+  "zutaten": [
+   {
+    "name": "Paprika",
+    "menge": "4",
+    "grund": false
+   },
+   {
+    "name": "Faschiertes",
+    "menge": "300 g",
+    "grund": false
+   },
+   {
+    "name": "Reis",
+    "menge": "80 g",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Dosentomaten",
+    "menge": "1 Dose",
+    "grund": false
+   },
+   {
+    "name": "Paprikapulver",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Salz",
+    "menge": "",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Reis halb gar kochen. Ofen auf 180 °C vorheizen.",
+   "Faschiertes mit Reis, gehackter Zwiebel, Salz und Paprikapulver vermengen.",
+   "Paprika aushöhlen, füllen und in eine Form mit den Tomaten setzen.",
+   "Zugedeckt 40 Minuten backen."
+  ]
+ },
+ {
+  "id": "overnight_oats",
+  "name": "Overnight Oats",
+  "minuten": 5,
+  "portionen": 1,
+  "tags": [
+   "frühstück",
+   "schnell"
+  ],
+  "zutaten": [
+   {
+    "name": "Haferflocken",
+    "menge": "50 g",
+    "grund": false
+   },
+   {
+    "name": "Milch",
+    "menge": "150 ml",
+    "grund": false
+   },
+   {
+    "name": "Joghurt",
+    "menge": "2 EL",
+    "grund": false
+   },
+   {
+    "name": "Honig",
+    "menge": "1 TL",
+    "grund": true
+   },
+   {
+    "name": "Obst",
+    "menge": "1 Handvoll",
+    "grund": false
+   }
+  ],
+  "schritte": [
+   "Haferflocken mit Milch, Joghurt und Honig in einem Glas verrühren.",
+   "Über Nacht in den Kühlschrank stellen.",
+   "Morgens mit Obst essen."
+  ]
+ },
+ {
+  "id": "gemuesecremesuppe",
+  "name": "Gemüsecremesuppe aus Resten",
+  "minuten": 30,
+  "portionen": 3,
+  "tags": [
+   "suppe",
+   "vegetarisch",
+   "resteverwertung"
+  ],
+  "zutaten": [
+   {
+    "name": "Karotten",
+    "menge": "3",
+    "grund": false
+   },
+   {
+    "name": "Kartoffeln",
+    "menge": "2",
+    "grund": false
+   },
+   {
+    "name": "Zucchini",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Zwiebel",
+    "menge": "1",
+    "grund": false
+   },
+   {
+    "name": "Gemüsebrühe",
+    "menge": "800 ml",
+    "grund": false
+   },
+   {
+    "name": "Sahne",
+    "menge": "100 ml",
+    "grund": false
+   },
+   {
+    "name": "Butter",
+    "menge": "1 EL",
+    "grund": true
+   }
+  ],
+  "schritte": [
+   "Zwiebel in Butter anschwitzen, restliches Gemüse klein geschnitten dazu.",
+   "Mit Brühe aufgießen und 20 Minuten weich kochen.",
+   "Pürieren, Sahne einrühren und abschmecken."
+  ]
+ }
+]
