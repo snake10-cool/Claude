@@ -1,0 +1,6 @@
+arb-dir: lib/src/l10n
+output-dir: lib/src/l10n
+template-arb-file: basis_de.arb
+output-localization-file: basis_localizations.dart
+output-class: BasisLocalizations
+nullable-getter: false

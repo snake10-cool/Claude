@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "proHolen": "Get Pro",
+  "proAktiv": "Pro is active. Thank you!",
+  "allesFreiTestphase": "During the test phase all Pro features are unlocked for free.",
+  "nurImPlayStore": "Pro can only be bought in the Android app via Google Play.",
+  "keineProdukte": "Offers could not be loaded. Please try again later.",
+  "storeFehlt": "Google Play is currently not available.",
+  "aboKuendbar": "Subscriptions renew automatically and can be cancelled anytime in Google Play.",
+  "wiederherstellen": "Restore purchases"
+}

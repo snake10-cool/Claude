@@ -1,0 +1,11 @@
+{
+  "@@locale": "de",
+  "proHolen": "Hol dir Pro",
+  "proAktiv": "Pro ist aktiv. Danke!",
+  "allesFreiTestphase": "In der Testphase sind alle Pro-Funktionen gratis freigeschaltet.",
+  "nurImPlayStore": "Pro kann nur in der Android-App über Google Play gekauft werden.",
+  "keineProdukte": "Die Angebote konnten nicht geladen werden. Bitte später nochmal probieren.",
+  "storeFehlt": "Google Play ist gerade nicht erreichbar.",
+  "aboKuendbar": "Abos verlängern sich automatisch und sind jederzeit in Google Play kündbar.",
+  "wiederherstellen": "Käufe wiederherstellen"
+}

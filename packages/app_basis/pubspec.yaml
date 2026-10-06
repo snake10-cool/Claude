@@ -1,0 +1,27 @@
+name: app_basis
+description: "Gemeinsame Bausteine für alle Apps: Design, Hell/Dunkel, Mehr Apps, Bewertung, Einstellungen."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.13.5
+  flutter: ">=3.38.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  in_app_review: ^2.0.12
+  intl: ^0.20.3
+  package_info_plus: ^10.2.2
+  shared_preferences: ^2.5.6
+  url_launcher: ^6.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  generate: true

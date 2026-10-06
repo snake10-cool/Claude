@@ -1,0 +1,17 @@
+{
+  "@@locale": "de",
+  "mehrApps": "Mehr Apps von mir",
+  "mehrAppsBaldMehr": "Bald gibt es hier weitere Apps. Schau später wieder vorbei!",
+  "design": "Design",
+  "designHell": "Hell",
+  "designDunkel": "Dunkel",
+  "designSystem": "Wie das System",
+  "appBewerten": "App bewerten",
+  "appBewertenText": "Hilft mir sehr, danke!",
+  "kontakt": "Kontakt & Feedback",
+  "datenschutz": "Datenschutz",
+  "ueberApp": "Über {name}",
+  "@ueberApp": {"placeholders": {"name": {"type": "String"}}},
+  "version": "Version {nummer}",
+  "@version": {"placeholders": {"nummer": {"type": "String"}}}
+}

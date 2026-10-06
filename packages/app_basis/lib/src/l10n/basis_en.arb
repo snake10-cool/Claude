@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  "mehrApps": "More apps by me",
+  "mehrAppsBaldMehr": "More apps are coming soon. Check back later!",
+  "design": "Theme",
+  "designHell": "Light",
+  "designDunkel": "Dark",
+  "designSystem": "System default",
+  "appBewerten": "Rate this app",
+  "appBewertenText": "It helps a lot, thank you!",
+  "kontakt": "Contact & feedback",
+  "datenschutz": "Privacy",
+  "ueberApp": "About {name}",
+  "version": "Version {nummer}"
+}
