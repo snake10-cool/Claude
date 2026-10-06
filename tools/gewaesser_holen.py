@@ -210,20 +210,46 @@ def main(eingabe, ausgabe):
                     bez[j] = int(z)
         return gem, bez
 
-    # --- Fließgewässer: pro Name und Bezirk ein Eintrag ---------------------
+    # --- Fließgewässer: pro zusammenhängendem Gewässer und Bezirk ein Eintrag
+    # Gleichnamige Bäche (Mühlbach, Dorfbach …) gibt es oft mehrmals im
+    # selben Bezirk. Nur Stücke, die sich (fast) berühren, gehören zusammen.
+    cluster = list(range(len(linien)))
+
+    def wurzel(i):
+        while cluster[i] != i:
+            cluster[i] = cluster[cluster[i]]
+            i = cluster[i]
+        return i
+
+    nach_name = defaultdict(list)
+    for i, (name, _, _, _) in enumerate(linien):
+        nach_name[name.lower()].append(i)
+    for idx in nach_name.values():
+        if len(idx) < 2:
+            continue
+        geoms = [linien[i][2] for i in idx]
+        baum = STRtree(geoms)
+        a, b = baum.query(geoms, predicate='dwithin', distance=0.002)
+        for x, y in zip(a, b):
+            if x != y:
+                rx, ry = wurzel(idx[x]), wurzel(idx[y])
+                if rx != ry:
+                    cluster[rx] = ry
+    print(f'Fließgewässer-Gruppen: {len({wurzel(i) for i in range(len(linien))})}')
+
     punkte, info = [], []
-    for name, typ, linie, osmid in linien:
+    for nr, (name, typ, linie, osmid) in enumerate(linien):
         laenge = km_laenge(linie.coords)
         for anteil in (0.0, 0.5, 1.0):
             punkte.append(linie.interpolate(anteil, normalized=True))
-            info.append((name, typ, laenge / 3, osmid, anteil, linie))
+            info.append((name, typ, laenge / 3, osmid, anteil, wurzel(nr)))
     gem, bez = orte(punkte)
 
     gruppen = {}
-    for (name, typ, km, osmid, anteil, linie), pt, g, b in zip(info, punkte, gem, bez):
+    for (name, typ, km, osmid, anteil, gruppe), pt, g, b in zip(info, punkte, gem, bez):
         if b is None:
             continue
-        schl = (name.lower(), b)
+        schl = (gruppe, b)
         gr = gruppen.get(schl)
         if gr is None:
             gr = gruppen[schl] = {'name': name, 'typ': typ, 'km': 0.0, 'gem': set(),
