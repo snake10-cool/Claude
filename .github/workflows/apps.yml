@@ -65,6 +65,7 @@ jobs:
           - { ordner: druckkasse, datei: Druckkasse }
           - { ordner: codekarten, datei: Codekarten }
           - { ordner: teilbar, datei: Teilbar }
+          - { ordner: buddelmo, datei: BuddelMo }
     steps:
       - uses: actions/checkout@v4
 

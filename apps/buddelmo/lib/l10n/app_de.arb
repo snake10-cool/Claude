@@ -1,0 +1,276 @@
+{
+  "@@locale": "de",
+  "ok": "OK",
+  "los": "Los!",
+  "nochmal": "Nochmal",
+  "spaeter": "Später",
+  "einstellungen": "Einstellungen",
+  "kaufen": "Kaufen",
+  "proSekunde": "{wert} pro Sekunde",
+  "@proSekunde": {
+    "placeholders": {
+      "wert": {
+        "type": "String"
+      }
+    }
+  },
+  "shop": "Shop & Einstellungen",
+  "tiefe": "Tiefe",
+  "schichtWiese": "Wiese",
+  "schichtErde": "Erde",
+  "schichtLehm": "Lehm",
+  "schichtStein": "Stein",
+  "schichtKristall": "Kristallhöhle",
+  "schichtLava": "Lava",
+  "schichtKern": "Erdkern",
+  "tagesbonus": "Tagesbonus",
+  "wurmregen": "Wurmregen",
+  "boost": "Boost",
+  "helfer": "Helfer",
+  "verbesserungen": "Verbesserungen",
+  "huegel": "Hügel",
+  "helferWurm": "Regenwurm",
+  "helferIgel": "Igel-Kumpel",
+  "helferSchaufel": "Spitzhacke",
+  "helferLore": "Grubenlore",
+  "helferBohrer": "Tunnelbohrer",
+  "helferKristall": "Kristallsucher",
+  "helferMagma": "Magmapumpe",
+  "helferLaser": "Erdkern-Laser",
+  "helferInfo": "je {einzeln}/s · gesamt {gesamt}/s",
+  "@helferInfo": {
+    "placeholders": {
+      "einzeln": {
+        "type": "String"
+      },
+      "gesamt": {
+        "type": "String"
+      }
+    }
+  },
+  "naechsterHelfer": "Neuer Helfer",
+  "abGold": "zeigt sich ab {gold}",
+  "@abGold": {
+    "placeholders": {
+      "gold": {
+        "type": "String"
+      }
+    }
+  },
+  "vKrallen1": "Stärkere Krallen",
+  "vKrallen2": "Stahlkrallen",
+  "vKrallen3": "Diamantkrallen",
+  "vLampe": "Helle Grubenlampe",
+  "vLampe2": "Superlampe",
+  "vKarte": "Schatzkarte",
+  "vKompass": "Goldkompass",
+  "vHelfer": "Training: {helfer}",
+  "@vHelfer": {
+    "placeholders": {
+      "helfer": {
+        "type": "String"
+      }
+    }
+  },
+  "wirkungTippen": "Tippen ×{faktor}",
+  "@wirkungTippen": {
+    "placeholders": {
+      "faktor": {
+        "type": "String"
+      }
+    }
+  },
+  "wirkungHelfer": "{helfer} ×{faktor}",
+  "@wirkungHelfer": {
+    "placeholders": {
+      "helfer": {
+        "type": "String"
+      },
+      "faktor": {
+        "type": "String"
+      }
+    }
+  },
+  "wirkungAnteil": "Tippen +{prozent} % der Produktion",
+  "@wirkungAnteil": {
+    "placeholders": {
+      "prozent": {
+        "type": "int"
+      }
+    }
+  },
+  "wirkungAlles": "Alles ×{faktor}",
+  "@wirkungAlles": {
+    "placeholders": {
+      "faktor": {
+        "type": "String"
+      }
+    }
+  },
+  "keineVerbesserungen": "Gerade keine Verbesserungen. Grab weiter – bald gibt's neue!",
+  "neuerHuegel": "Neuer Hügel",
+  "neuerHuegelText": "Fang auf einem neuen Hügel von vorne an und nimm Glitzersteine mit. Jeder Stein bringt +10 % für immer. Du hast {glitzer} ✨ (+{prozent} %).",
+  "@neuerHuegelText": {
+    "placeholders": {
+      "glitzer": {
+        "type": "int"
+      },
+      "prozent": {
+        "type": "int"
+      }
+    }
+  },
+  "neuerHuegelKnopf": "Neuer Hügel: +{anzahl} ✨",
+  "@neuerHuegelKnopf": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "neuerHuegelAb": "Ab {gold} Gold in dieser Runde",
+  "@neuerHuegelAb": {
+    "placeholders": {
+      "gold": {
+        "type": "String"
+      }
+    }
+  },
+  "erfolge": "Erfolge ({hast}/{gesamt})",
+  "@erfolge": {
+    "placeholders": {
+      "hast": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "prestigeWarnung": "Gold, Helfer und Verbesserungen werden zurückgesetzt. Du bekommst {anzahl} Glitzersteine (+{prozent} % für immer).",
+  "@prestigeWarnung": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      },
+      "prozent": {
+        "type": "int"
+      }
+    }
+  },
+  "losGehts": "Los geht's",
+  "erfolgFreigeschaltet": "Erfolg: {name}",
+  "@erfolgFreigeschaltet": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "klumpenGefunden": "Glücksklumpen! +{gold} Gold",
+  "@klumpenGefunden": {
+    "placeholders": {
+      "gold": {
+        "type": "String"
+      }
+    }
+  },
+  "eTipp100": "100 Mal gebuddelt",
+  "eTipp1000": "1.000 Mal gebuddelt",
+  "eTipp10000": "Buddel-Profi: 10.000 Tipps",
+  "eGold1k": "Erstes Säckchen: 1.000 Gold",
+  "eGold1m": "Millionär",
+  "eGold1b": "Milliardär",
+  "eGold1t": "Goldkönig: 1 Billion",
+  "eHelfer10": "10 Helfer",
+  "eHelfer100": "100 Helfer",
+  "eAlleHelfer": "Von jedem einen",
+  "ePrestige1": "Erster neuer Hügel",
+  "ePrestige5": "Hügel-Hüpfer: 5 Hügel",
+  "eWurm20": "Wurmfänger: 20 Punkte",
+  "eWurm50": "Wurmmeister: 50 Punkte",
+  "eSerie7": "Eine ganze Woche Bonus",
+  "willkommenZurueck": "Willkommen zurück!",
+  "offlineText": "Während du weg warst ({zeit}), hat Mos Team {gold} Gold gegraben.",
+  "@offlineText": {
+    "placeholders": {
+      "zeit": {
+        "type": "String"
+      },
+      "gold": {
+        "type": "String"
+      }
+    }
+  },
+  "einsammeln": "Einsammeln",
+  "verdoppeln": "Video: ×2",
+  "videoNichtVerfuegbar": "Gerade ist kein Video verfügbar. Versuch es später nochmal.",
+  "tagNummer": "Tag {tag}",
+  "@tagNummer": {
+    "placeholders": {
+      "tag": {
+        "type": "int"
+      }
+    }
+  },
+  "tagesbonusText": "Komm jeden Tag vorbei – an Tag 7 gibt es einen Glitzerstein!",
+  "tagesbonusMorgen": "Für heute schon abgeholt. Morgen geht's weiter!",
+  "abholen": "Abholen",
+  "bonusErhalten": "+{gold} Gold!",
+  "@bonusErhalten": {
+    "placeholders": {
+      "gold": {
+        "type": "String"
+      }
+    }
+  },
+  "bonusMitGlitzer": "+{gold} Gold und ein Glitzerstein ✨!",
+  "@bonusMitGlitzer": {
+    "placeholders": {
+      "gold": {
+        "type": "String"
+      }
+    }
+  },
+  "boostTitel": "Doppelte Kraft",
+  "boostText": "Schau ein kurzes Video: 10 Minuten lang gräbt alles doppelt so schnell. Mehrere Videos verlängern den Boost.",
+  "videoAnsehen": "Video ansehen",
+  "wurmregenErklaerung": "Tippe in 20 Sekunden so viele Würmer wie möglich. Goldene Würmer 🌟 zählen 5!",
+  "wurmErgebnis": "{punkte} Punkte!",
+  "@wurmErgebnis": {
+    "placeholders": {
+      "punkte": {
+        "type": "int"
+      }
+    }
+  },
+  "wurmGold": "+{gold} Gold",
+  "@wurmGold": {
+    "placeholders": {
+      "gold": {
+        "type": "String"
+      }
+    }
+  },
+  "rekord": "Rekord: {punkte}",
+  "@rekord": {
+    "placeholders": {
+      "punkte": {
+        "type": "int"
+      }
+    }
+  },
+  "zurueckZuMo": "Zurück zu Mo",
+  "angebote": "Angebote",
+  "shopNichtVerfuegbar": "Der Shop ist erst in der Play-Store-Version verfügbar.",
+  "werbefrei": "Werbefrei",
+  "werbefreiText": "Kein Banner mehr. Videos für Boni bleiben freiwillig.",
+  "goldsack": "Goldsack",
+  "goldsackText": "2 Stunden Produktion sofort",
+  "glitzerpaket": "Glitzerpaket",
+  "glitzerpaketText": "5 Glitzersteine (+50 % für immer)",
+  "kaeufeWiederherstellen": "Käufe wiederherstellen",
+  "werbeEinwilligung": "Einwilligung für Werbung ändern",
+  "spielZuruecksetzen": "Spiel zurücksetzen",
+  "spielZuruecksetzenText": "Der ganze Spielstand wird gelöscht, auch Glitzersteine und Erfolge."
+}

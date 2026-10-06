@@ -27,6 +27,8 @@ class KaufDienst extends ChangeNotifier {
   KaufDienst({
     required this.proIds,
     this.einzelIds = const {},
+    this.verbrauchbarIds = const {},
+    this.verbrauchbarGekauft,
     required this.kaufPflicht,
   });
 
@@ -36,7 +38,15 @@ class KaufDienst extends ChangeNotifier {
   /// Einzelne Einmalkäufe, z. B. ein Kartenpaket oder „Werbefrei“.
   final Set<String> einzelIds;
 
-  Set<String> get _alleIds => {...proIds, ...einzelIds};
+  /// Verbrauchbare Käufe (z. B. Booster-Pakete), die man mehrmals kaufen
+  /// kann. Nach dem Kauf wird [verbrauchbarGekauft] aufgerufen.
+  final Set<String> verbrauchbarIds;
+
+  /// Die App schreibt hier die Belohnung gut. Erst danach wird der Kauf bei
+  /// Google bestätigt – geht etwas schief, kommt er beim nächsten Start wieder.
+  final Future<void> Function(String produktId)? verbrauchbarGekauft;
+
+  Set<String> get _alleIds => {...proIds, ...einzelIds, ...verbrauchbarIds};
 
   /// `false` = alles frei (Entwicklung, geschlossener Test vor dem Start).
   final bool kaufPflicht;
@@ -117,7 +127,7 @@ class KaufDienst extends ChangeNotifier {
     if (antwort.error != null) return; // Lieber alten Stand behalten.
     await _speichern({
       for (final k in antwort.pastPurchases)
-        if (_alleIds.contains(k.productID) &&
+        if ({...proIds, ...einzelIds}.contains(k.productID) &&
             k.status == PurchaseStatus.purchased)
           k.productID,
     });
@@ -132,6 +142,16 @@ class KaufDienst extends ChangeNotifier {
   Future<void> _kaeufeVerarbeiten(List<PurchaseDetails> liste) async {
     for (final k in liste) {
       if (!_alleIds.contains(k.productID)) continue;
+      if (verbrauchbarIds.contains(k.productID)) {
+        if (k.status == PurchaseStatus.purchased) {
+          await verbrauchbarGekauft?.call(k.productID);
+          fehler = null;
+        } else if (k.status == PurchaseStatus.error) {
+          fehler = k.error?.message ?? 'Kauf fehlgeschlagen';
+        }
+        if (k.pendingCompletePurchase) await _iap.completePurchase(k);
+        continue;
+      }
       switch (k.status) {
         case PurchaseStatus.purchased:
         case PurchaseStatus.restored:
@@ -155,10 +175,14 @@ class KaufDienst extends ChangeNotifier {
     fehler = null;
     notifyListeners();
     try {
-      // Abos werden in in_app_purchase ebenfalls als „non consumable“ gekauft.
-      await _iap.buyNonConsumable(
-        purchaseParam: PurchaseParam(productDetails: produkt),
-      );
+      final param = PurchaseParam(productDetails: produkt);
+      if (verbrauchbarIds.contains(produkt.id)) {
+        await _iap.buyConsumable(purchaseParam: param);
+      } else {
+        // Abos werden in in_app_purchase ebenfalls als „non consumable“
+        // gekauft.
+        await _iap.buyNonConsumable(purchaseParam: param);
+      }
     } catch (e) {
       laedt = false;
       fehler = '$e';

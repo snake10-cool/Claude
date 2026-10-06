@@ -67,4 +67,13 @@ const meineApps = <MeineApp>[
     farbe: Color(0xFF1F9D6B),
     veroeffentlicht: false,
   ),
+  MeineApp(
+    name: 'Buddel Mo',
+    paketId: 'com.snake10.buddelmo',
+    beschreibungDe: 'Idle-Spiel: Grab mit Maulwurf Mo nach Gold',
+    beschreibungEn: 'Idle game: dig for gold with Mo the mole',
+    symbol: Icons.landscape,
+    farbe: Color(0xFFE0A030),
+    veroeffentlicht: false,
+  ),
 ];

@@ -1,0 +1,33 @@
+import 'dart:io';
+import 'dart:ui' as ui;
+
+import 'package:buddelmo/widgets/mo_maler.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+Future<void> speichern(String pfad, bool hintergrund, double skala) async {
+  const g = 1024.0;
+  final rec = ui.PictureRecorder();
+  final c = Canvas(rec);
+  if (hintergrund) {
+    c.drawRect(const Rect.fromLTWH(0, 0, g, g),
+        Paint()..shader = const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xFFFFC94D), Color(0xFFE09A1F)],
+        ).createShader(const Rect.fromLTWH(0, 0, g, g)));
+  }
+  final s = g * skala;
+  c.translate((g - s) / 2, (g - s) / 2 + g * 0.02);
+  MoMaler().paint(c, Size.square(s));
+  final img = await rec.endRecording().toImage(g.toInt(), g.toInt());
+  final bytes = await img.toByteData(format: ui.ImageByteFormat.png);
+  File(pfad).writeAsBytesSync(bytes!.buffer.asUint8List());
+}
+
+void main() {
+  test('Icons rendern', () async {
+    await speichern('assets/icon/icon.png', true, 0.95);
+    await speichern('assets/icon/icon_vordergrund.png', false, 0.66);
+  });
+}
