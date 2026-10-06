@@ -6,6 +6,15 @@ Android-Apps, gebaut mit Flutter, für Google Play.
 |---|---|---|
 | 🎣 **Austro Angler** | `apps/austro_angler` | Angel-App für ganz Österreich (über 22.000 Gewässer, Filter nach Bezirk und Ort), Schwerpunkt Braunau, mit Community |
 | 🦊 **Lernfuchs** (Arbeitsname, pausiert) | `apps/lernapp` | Lern-App für Volksschule 1–4 und Mittelschule 1–4 |
+| 🖨️ **Druckkasse** | `apps/druckkasse` | 3D-Druck: Kosten pro Stück, Preisvorschlag, Schnell-Verkauf, Aufträge, Sparziel, Monatsübersicht |
+| 🃏 **Codekarten** | `apps/codekarten` | Programmieren lernen: 264 geprüfte Karten (Java, Python, Dart, JS), Spaced Repetition, Snippets |
+| 🧺 **Teilbar** | `apps/teilbar` | WG-Einkaufslisten, Kosten teilen, Rechnungsrechner, Packlisten, Resteküche, Online-Gruppen |
+| ⛏️ **Buddel Mo** | `apps/buddelmo` | Ein-Finger-Idle-Spiel mit Maulwurf Mo, Prestige, Minispiel, Tagesbonus |
+| 🧩 **Rätseltag** | `apps/raetseltag` | Täglich Worträtsel, Sudoku und Schiebepuzzle mit Serie und Teilen |
+
+Gemeinsame Pakete in `packages/`: **app_basis** (Design, Hell/Dunkel, Mehr Apps, Bewertung, Einstellungen), **app_kauf** (Google Play Billing), **app_werbung** (AdMob, nur Test-Anzeigen). Jede App hat unter `docs/play-store.md` Store-Texte, Datensicherheit, Altersfreigabe und eine Vorlage für den Antrag auf Produktionszugriff.
+
+Werkzeuge in `tools/`: `icons_bauen.py` (App-Icons), `app_einrichten.py` (neue App einrichten: Name, Signierung, AdMob-Test-ID).
 
 ## Testversion holen
 
@@ -14,6 +23,7 @@ Nach jeder Änderung baut GitHub automatisch die **Handy-Version (APK)** (Tab **
 | Datei | Für |
 |---|---|
 | `AustroAngler.apk` | Android-Handy |
+| `Druckkasse.apk`, `Codekarten.apk`, `Teilbar.apk`, `BuddelMo.apk`, `Raetseltag.apk` | Android-Handy (die neuen Apps) |
 | `AustroAngler-Setup.exe` | Windows-PC (Installation mit Startmenü- und Desktop-Symbol) |
 | `AustroAngler-Windows.zip` | Windows-PC ohne Installation: entpacken und `AustroAngler.exe` starten |
 
