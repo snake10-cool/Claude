@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'apps/**'
+      - 'packages/**'
       - 'installer/**'
       - '.github/workflows/apps.yml'
   workflow_dispatch:
@@ -27,9 +28,41 @@ env:
 jobs:
   # Standard (bei jedem Push) ist nur die Handy-Version (APK). PC auf Wunsch:
   # Actions → Apps bauen → Run workflow → "pc" oder "beide".
+  # Gemeinsame Pakete einzeln prüfen.
+  pakete:
+    if: github.event_name != 'workflow_dispatch' || inputs.plattform != 'pc'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        paket: [app_basis, app_kauf]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - name: ${{ matrix.paket }} prüfen
+        working-directory: packages/${{ matrix.paket }}
+        run: |
+          flutter pub get
+          flutter analyze
+          flutter test
+
+  # Standard (bei jedem Push) ist nur die Handy-Version (APK). PC auf Wunsch:
+  # Actions → Apps bauen → Run workflow → "pc" oder "beide".
+  # Neue App: eine Zeile in der Matrix ergänzen.
   android:
     if: github.event_name != 'workflow_dispatch' || inputs.plattform != 'pc'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { ordner: austro_angler, datei: AustroAngler }
+          - { ordner: lernapp, datei: Lernfuchs }
+          - { ordner: druckkasse, datei: Druckkasse }
     steps:
       - uses: actions/checkout@v4
 
@@ -44,20 +77,24 @@ jobs:
           channel: stable
           cache: true
 
-      - name: Austro Angler prüfen und bauen
-        working-directory: apps/austro_angler
+      - name: ${{ matrix.datei }} prüfen und bauen
+        working-directory: apps/${{ matrix.ordner }}
         run: |
           flutter pub get
           flutter analyze
           flutter test
           flutter build apk --release
+          mkdir -p ../../ausgabe
+          cp build/app/outputs/flutter-apk/app-release.apk ../../ausgabe/${{ matrix.datei }}.apk
 
       # Play-Store-Paket (AAB), signiert mit dem Upload-Schlüssel. Läuft nur,
       # wenn die Secrets ANDROID_KEYSTORE_BASE64 und ANDROID_KEYSTORE_PASSWORT
-      # angelegt sind (siehe docs/play-store.md). Die Test-APK oben bleibt mit
-      # dem Debug-Schlüssel signiert, damit Updates darüber weiter klappen.
-      - name: Austro Angler AAB für Google Play
-        working-directory: apps/austro_angler
+      # angelegt sind (siehe apps/austro_angler/docs/play-store.md). Die
+      # Test-APK oben bleibt mit dem Debug-Schlüssel signiert, damit Updates
+      # darüber weiter klappen.
+      - name: ${{ matrix.datei }} AAB für Google Play
+        if: matrix.ordner != 'lernapp'
+        working-directory: apps/${{ matrix.ordner }}
         env:
           KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           PASSWORT: ${{ secrets.ANDROID_KEYSTORE_PASSWORT }}
@@ -71,26 +108,11 @@ jobs:
             "$PASSWORT" "$PASSWORT" > android/key.properties
           flutter build appbundle --release
           rm android/key.properties android/upload.jks
-          mkdir -p ../../ausgabe
-          cp build/app/outputs/bundle/release/app-release.aab ../../ausgabe/AustroAngler-PlayStore.aab
-
-      - name: Lernfuchs prüfen und bauen
-        working-directory: apps/lernapp
-        run: |
-          flutter pub get
-          flutter analyze
-          flutter test
-          flutter build apk --release
-
-      - name: APKs einsammeln
-        run: |
-          mkdir -p ausgabe
-          cp apps/austro_angler/build/app/outputs/flutter-apk/app-release.apk ausgabe/AustroAngler.apk
-          cp apps/lernapp/build/app/outputs/flutter-apk/app-release.apk ausgabe/Lernfuchs.apk
+          cp build/app/outputs/bundle/release/app-release.aab ../../ausgabe/${{ matrix.datei }}-PlayStore.aab
 
       - uses: actions/upload-artifact@v4
         with:
-          name: android
+          name: android-${{ matrix.ordner }}
           path: ausgabe/*
 
   windows:
@@ -177,7 +199,7 @@ jobs:
           ls -la ausgabe
           NOTIZ="Zuletzt aktualisiert aus ${GITHUB_SHA::7}.
 
-          📱 Handy: AustroAngler.apk antippen und installieren.
+          📱 Handy: AustroAngler.apk, Druckkasse.apk usw. antippen und installieren.
           💻 PC: AustroAngler-Setup.exe herunterladen und starten. Bei der Windows-Warnung auf \"Weitere Informationen\" → \"Trotzdem ausführen\" klicken. Ohne Installation: AustroAngler-Windows.zip entpacken und AustroAngler.exe starten."
           # Vorhandene Dateien der anderen Plattform bleiben erhalten, nur die
           # neu gebauten werden ersetzt.

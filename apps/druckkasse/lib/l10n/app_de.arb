@@ -1,0 +1,477 @@
+{
+  "@@locale": "de",
+  "tabVerkaufen": "Verkaufen",
+  "tabAuftraege": "Aufträge",
+  "tabProdukte": "Produkte",
+  "tabUebersicht": "Übersicht",
+  "tabMehr": "Mehr",
+  "abbrechen": "Abbrechen",
+  "speichern": "Speichern",
+  "loeschen": "Löschen",
+  "entfernen": "Entfernen",
+  "weiter": "Weiter",
+  "laden": "Laden",
+  "super_": "Super!",
+  "oder": " oder ",
+  "pflichtfeld": "Bitte ausfüllen",
+  "ungueltigerBetrag": "Bitte einen Betrag wie 12,50 eingeben",
+  "ungueltigeZahl": "Bitte eine Zahl eingeben",
+  "name": "Name",
+  "notiz": "Notiz",
+  "menge": "Menge",
+  "preis": "Preis",
+  "kosten": "Kosten",
+  "gewinn": "Gewinn",
+  "umsatz": "Umsatz",
+  "app": "App",
+  "daten": "Daten",
+  "grenzeErreicht": "Gratis-Grenze erreicht",
+  "proAnsehen": "Pro ansehen",
+  "proTitel": "Druckkasse Pro",
+  "proKurz": "Unbegrenzt Produkte und Drucker, CSV-Export, 12-Monats-Verlauf",
+  "proVorteilUnbegrenzt": "Unbegrenzt viele Produkte, Drucker und Sparziele",
+  "proVorteilExport": "Export als CSV für Excel und Steuer",
+  "proVorteilVerlauf": "Gewinn-Verlauf über 12 Monate",
+  "proVorteilSparziele": "Mehrere Sparziele gleichzeitig",
+  "proVorteilUnterstuetzen": "Du unterstützt die Weiterentwicklung",
+  "grenzeProdukte": "In der Gratis-Version kannst du bis zu {anzahl} Produkte anlegen. Mit Pro unbegrenzt viele.",
+  "@grenzeProdukte": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "grenzeDrucker": "In der Gratis-Version kannst du bis zu {anzahl} Drucker anlegen. Mit Pro unbegrenzt viele.",
+  "@grenzeDrucker": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "grenzeSparziele": "In der Gratis-Version gibt es ein Sparziel. Mit Pro kannst du mehrere gleichzeitig verfolgen.",
+  "exportNurPro": "Der CSV-Export ist Teil von Pro.",
+  "heuteVerkauft": "Heute verkauft",
+  "heuteUmsatz": "Umsatz heute",
+  "heuteGewinn": "Gewinn heute",
+  "heuteStueck": "Stück heute",
+  "heuteNochNichts": "Heute wurde noch nichts verkauft.",
+  "wischenZumLoeschen": "Nach links wischen, um einen Verkauf zu löschen.",
+  "ausAuftrag": "aus Auftrag",
+  "verkauftMeldung": "{menge}× {name} verkauft · {betrag}",
+  "@verkauftMeldung": {
+    "placeholders": {
+      "menge": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      },
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "rueckgaengig": "Rückgängig",
+  "zielErreichtTitel": "Ziel erreicht! 🎉",
+  "zielErreichtText": "Du hast genug für „{name}“ zusammen. Glückwunsch!",
+  "@zielErreichtText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tippDesTages": "Druck-Tipp des Tages",
+  "ausblenden": "Ausblenden",
+  "ersteSchritteTitel": "Los geht's!",
+  "ersteSchritteText": "Drei Schritte, dann kannst du verkaufen:",
+  "schrittDrucker": "Drucker anlegen",
+  "schrittFilament": "Filament anlegen",
+  "schrittProdukt": "Erstes Produkt anlegen",
+  "preisProStueck": "Preis pro Stück",
+  "verkaufenFuer": "Verkaufen für {betrag}",
+  "@verkaufenFuer": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "zahlungBar": "Bar",
+  "zahlungKarte": "Karte",
+  "zahlungOnline": "Online",
+  "sparStand": "{stand} von {ziel} ({basis})",
+  "@sparStand": {
+    "placeholders": {
+      "stand": {
+        "type": "String"
+      },
+      "ziel": {
+        "type": "String"
+      },
+      "basis": {
+        "type": "String"
+      }
+    }
+  },
+  "sparZielErreicht": "Geschafft! Ziel erreicht 🎉",
+  "sparNoch": "Noch {rest}: z. B. {produkte}",
+  "@sparNoch": {
+    "placeholders": {
+      "rest": {
+        "type": "String"
+      },
+      "produkte": {
+        "type": "String"
+      }
+    }
+  },
+  "sparNochOhne": "Noch {rest}",
+  "@sparNochOhne": {
+    "placeholders": {
+      "rest": {
+        "type": "String"
+      }
+    }
+  },
+  "archiv": "Archiv",
+  "aktiveAnzeigen": "Aktive Produkte anzeigen",
+  "archivAnzeigen": "Archiv anzeigen",
+  "archivLeer": "Keine archivierten Produkte",
+  "neuesProdukt": "Neues Produkt",
+  "keineProdukte": "Noch keine Produkte",
+  "keineProdukteText": "Leg dein erstes Produkt an. Die App rechnet Kosten und schlägt einen Preis vor.",
+  "wiederherstellen": "Wiederherstellen",
+  "produktBearbeiten": "Produkt bearbeiten",
+  "duplizieren": "Duplizieren (z. B. andere Farbe)",
+  "archivieren": "Archivieren",
+  "produktArchivieren": "Produkt archivieren?",
+  "produktArchivierenText": "Das Produkt verschwindet aus der Liste und beim Verkaufen. Alte Verkäufe bleiben in der Übersicht. Du kannst es im Archiv wiederherstellen.",
+  "druck": "Druck",
+  "drucker": "Drucker",
+  "druckerAnlegen": "Drucker anlegen",
+  "ohneDrucker": "Ohne Drucker (keine Strom-/Abnutzungskosten)",
+  "stunden": "Druckzeit Stunden",
+  "minuten": "Minuten",
+  "stueckProDruck": "Stück pro Druck",
+  "stueckProDruckHilfe": "Wie viele Stück passen auf eine Druckplatte? Druckzeit und Gramm gelten für die ganze Platte.",
+  "filamente": "Filamente",
+  "filament": "Filament",
+  "filamentAnlegen": "Filament anlegen",
+  "farbeHinzufuegen": "Farbe hinzufügen",
+  "gramm": "Gramm",
+  "grammHilfe": "Gramm und Druckzeit so eintragen, wie der Slicer sie für den ganzen Druck anzeigt (Bambu Studio: „Gesamtfilament“).",
+  "spuelabfall": "Spülabfall pro Druck",
+  "spuelabfallHilfe": "Abfall bei Farbwechseln (AMS). Steht im Slicer unter „Spülung“/„Flushed“.",
+  "extrasUndArbeit": "Extras & Arbeit",
+  "extrasVerwalten": "Verwalten",
+  "keineExtras": "Noch keine Extras. Lege z. B. Verpackung oder Schlüsselringe an.",
+  "arbeitProStueck": "Handarbeit pro Stück",
+  "arbeitHilfeOhneLohn": "Nacharbeit, Zusammenbauen, Verpacken. Zählt erst, wenn du in den Einstellungen einen Stundenlohn einträgst.",
+  "arbeitHilfe": "Wird mit {lohn}/h eingerechnet.",
+  "@arbeitHilfe": {
+    "placeholders": {
+      "lohn": {
+        "type": "String"
+      }
+    }
+  },
+  "kostenMaterial": "Material",
+  "kostenStrom": "Strom",
+  "kostenAbnutzung": "Abnutzung Drucker",
+  "kostenFehldruck": "Fehldruck-Zuschlag ({prozent} %)",
+  "@kostenFehldruck": {
+    "placeholders": {
+      "prozent": {
+        "type": "int"
+      }
+    }
+  },
+  "kostenExtras": "Extras",
+  "kostenArbeit": "Handarbeit",
+  "kostenProStueck": "Kosten pro Stück",
+  "aufschlag": "Aufschlag auf die Kosten: {prozent} %",
+  "@aufschlag": {
+    "placeholders": {
+      "prozent": {
+        "type": "int"
+      }
+    }
+  },
+  "standardNehmen": "Standard",
+  "vorschlag": "Preisvorschlag: {betrag}",
+  "@vorschlag": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "eigenerPreis": "Eigener Verkaufspreis (optional)",
+  "eigenerPreisHilfe": "Leer lassen, um den Vorschlag zu verwenden.",
+  "verkaufspreis": "Verkaufspreis",
+  "gewinnProStueck": "Gewinn {betrag}",
+  "@gewinnProStueck": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "margeVomPreis": "{prozent} % vom Preis",
+  "@margeVomPreis": {
+    "placeholders": {
+      "prozent": {
+        "type": "int"
+      }
+    }
+  },
+  "keineDrucker": "Noch kein Drucker",
+  "keineDruckerText": "Für Strom- und Abnutzungskosten braucht die App deinen Drucker.",
+  "druckerInfo": "{watt} W · Abnutzung {betrag}/h",
+  "@druckerInfo": {
+    "placeholders": {
+      "watt": {
+        "type": "int"
+      },
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "druckerBearbeiten": "Drucker bearbeiten",
+  "druckerEntfernen": "Drucker entfernen?",
+  "druckerEntfernenText": "Der Drucker wird ausgeblendet. Produkte, die ihn verwenden, rechnen weiter mit seinen Werten.",
+  "vorlageWaehlen": "Vorlage wählen (Werte danach anpassbar)",
+  "verbrauch": "Durchschnittlicher Verbrauch",
+  "verbrauchHilfe": "Beim Drucken gemessen, nicht die Netzteil-Angabe. Bambu A1 ca. 95 W, P1S ca. 120 W.",
+  "anschaffungspreis": "Anschaffungspreis",
+  "lebensdauer": "Lebensdauer",
+  "lebensdauerHilfe": "Nach so vielen Druckstunden ist der Drucker abbezahlt. 5000 h sind ein guter Richtwert.",
+  "keineFilamente": "Noch kein Filament",
+  "keineFilamenteText": "Leg deine Filamente mit Kilopreis an, damit die Materialkosten stimmen.",
+  "proKg": "{betrag}/kg",
+  "@proKg": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "filamentBearbeiten": "Filament bearbeiten",
+  "filamentEntfernen": "Filament entfernen?",
+  "filamentEntfernenText": "Das Filament wird ausgeblendet. Produkte, die es verwenden, rechnen weiter mit seinem Preis.",
+  "material": "Material",
+  "farbe": "Farbe",
+  "filamentNameHilfe": "z. B. „Bambu PLA Basic Rot“",
+  "preisProKg": "Preis pro Kilo",
+  "preisProKgHilfe": "Preis der Spule umgerechnet auf 1 kg (inkl. Versand, wenn du willst).",
+  "extras": "Extras",
+  "extrasUntertitel": "Verpackung, Schlüsselringe, Magnete …",
+  "extraAnlegen": "Extra anlegen",
+  "extraBearbeiten": "Extra bearbeiten",
+  "extraBeispiel": "z. B. Geschenkschachtel",
+  "kostenProStueckFeld": "Kosten pro Stück",
+  "keineExtrasTitel": "Noch keine Extras",
+  "keineExtrasText": "Extras sind Dinge, die du zusätzlich zum Druck brauchst, z. B. Verpackung.",
+  "neuerAuftrag": "Neuer Auftrag",
+  "auftragBearbeiten": "Auftrag bearbeiten",
+  "filterOffen": "Offen",
+  "filterErledigt": "Erledigt",
+  "filterAlle": "Alle",
+  "nochOffen": "Noch nicht bezahlt: {betrag}",
+  "@nochOffen": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "keineOffenenAuftraege": "Keine offenen Aufträge",
+  "keineAuftraege": "Keine Aufträge",
+  "keineAuftraegeText": "Hier landen Bestellungen: wer, was, bis wann. Ein Auftrag ist erledigt, wenn er abgeholt und bezahlt ist.",
+  "faelligAm": "Fällig am {datum}",
+  "@faelligAm": {
+    "placeholders": {
+      "datum": {
+        "type": "String"
+      }
+    }
+  },
+  "statusOffen": "Offen",
+  "statusGedruckt": "Gedruckt",
+  "statusAbgeholt": "Abgeholt",
+  "bezahlt": "Bezahlt",
+  "nichtBezahlt": "Nicht bezahlt",
+  "kunde": "Kunde",
+  "kontaktFeld": "Kontakt (Telefon, Instagram …)",
+  "keinTermin": "Kein Termin",
+  "positionen": "Was wurde bestellt?",
+  "produktHinzufuegen": "Produkt",
+  "notizPosition": "Notiz (z. B. Farbe)",
+  "statusUndZahlung": "Status & Zahlung",
+  "bezahltHilfe": "Bezahlte Aufträge zählen im Umsatz.",
+  "mindestensEinProdukt": "Bitte mindestens ein Produkt hinzufügen.",
+  "auftragLoeschen": "Auftrag löschen?",
+  "auftragLoeschenText": "Der Auftrag und, falls bezahlt, sein Umsatz werden gelöscht.",
+  "exportTitel": "Als CSV exportieren",
+  "exportMonat": "Nur {monat}",
+  "@exportMonat": {
+    "placeholders": {
+      "monat": {
+        "type": "String"
+      }
+    }
+  },
+  "exportAlles": "Alle Verkäufe",
+  "csvDatum": "Datum",
+  "csvProdukt": "Produkt",
+  "csvMenge": "Menge",
+  "csvEinzelpreis": "Einzelpreis",
+  "csvUmsatz": "Umsatz",
+  "csvKosten": "Kosten",
+  "csvGebuehr": "Gebühr",
+  "csvGewinn": "Gewinn",
+  "csvZahlung": "Zahlung",
+  "vorherigerMonat": "Vorheriger Monat",
+  "naechsterMonat": "Nächster Monat",
+  "stueckVerkauft": "Stück verkauft",
+  "davonGebuehren": "Kosten inkl. {betrag} Zahlungsgebühren",
+  "@davonGebuehren": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "gewinnProMonat": "Gewinn pro Monat",
+  "verlaufPro": "12 Monate mit Pro",
+  "bestseller": "Bestseller",
+  "keineVerkaeufeImMonat": "In diesem Monat gibt es noch keine Verkäufe.",
+  "margeVomUmsatz": "{prozent} % vom Umsatz",
+  "@margeVomUmsatz": {
+    "placeholders": {
+      "prozent": {
+        "type": "int"
+      }
+    }
+  },
+  "stueckKurz": "{anzahl} Stk.",
+  "@stueckKurz": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "plusGewinn": "+{betrag}",
+  "@plusGewinn": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "speichernUnter": "Speichern unter …",
+  "teilen": "Teilen",
+  "gespeichert": "Gespeichert",
+  "fehler": "Fehler: {text}",
+  "@fehler": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "werkstatt": "Werkstatt",
+  "ziele": "Ziele",
+  "sparziele": "Sparziele",
+  "einstellungen": "Einstellungen",
+  "einstellungenUntertitel": "Strompreis, Aufschlag, Sicherung, Design",
+  "neuesSparziel": "Neues Sparziel",
+  "keineSparziele": "Noch kein Sparziel",
+  "keineSparzieleText": "Wofür sparst du? Ein neuer Drucker? Die App zeigt, wie viele Stück noch fehlen.",
+  "angeheftet": "Beim Verkaufen sichtbar",
+  "anheften": "Beim Verkaufen zeigen",
+  "seit": "seit {datum}",
+  "@seit": {
+    "placeholders": {
+      "datum": {
+        "type": "String"
+      }
+    }
+  },
+  "sparzielBearbeiten": "Sparziel bearbeiten",
+  "wofuerSparstDu": "Wofür sparst du?",
+  "sparzielBeispiel": "z. B. Bambu Lab P1S",
+  "zielbetrag": "Zielbetrag",
+  "wasZaehlt": "Was zählt?",
+  "basisGewinnHilfe": "Nur der Gewinn zählt, also was nach Material, Strom und Abnutzung übrig bleibt.",
+  "basisUmsatzHilfe": "Alles, was Kunden bezahlen, zählt.",
+  "zaehltAb": "Zählt ab {datum}",
+  "@zaehltAb": {
+    "placeholders": {
+      "datum": {
+        "type": "String"
+      }
+    }
+  },
+  "sparzielLoeschen": "Sparziel löschen?",
+  "sparzielLoeschenText": "Deine Verkäufe bleiben erhalten.",
+  "kalkulation": "Kalkulation",
+  "strompreis": "Strompreis",
+  "strompreisFeld": "Cent pro kWh",
+  "strompreisHilfe": "Steht auf deiner Stromrechnung. Österreich 2026 meist 20–30 ct/kWh.",
+  "standardAufschlag": "Standard-Aufschlag",
+  "aufschlagFeld": "Prozent auf die Kosten",
+  "standardAufschlagHilfe": "200 % heißt: Kosten 1 € → Preis 3 €. Für jedes Produkt einzeln änderbar.",
+  "fehldruckZuschlag": "Fehldruck-Zuschlag",
+  "prozentFeld": "Prozent",
+  "fehldruckHilfe": "Aufschlag auf Material, Strom und Abnutzung für misslungene Drucke.",
+  "rundung": "Preisvorschlag aufrunden",
+  "rundungKeine": "Nicht runden",
+  "rundungAuf": "Auf {betrag} aufrunden",
+  "@rundungAuf": {
+    "placeholders": {
+      "betrag": {
+        "type": "String"
+      }
+    }
+  },
+  "stundenlohn": "Stundenlohn für Handarbeit",
+  "nichtEingerechnet": "Nicht eingerechnet",
+  "stundenlohnFeld": "Euro pro Stunde",
+  "stundenlohnHilfe": "Leer lassen, wenn deine Zeit nicht in die Kosten soll.",
+  "zahlung": "Zahlung",
+  "standardZahlungsart": "Standard-Zahlungsart",
+  "gebuehrKarte": "Gebühr Kartenzahlung",
+  "gebuehrKarteHilfe": "z. B. SumUp ca. 1,39 %. 0 = keine Gebühr.",
+  "gebuehrOnline": "Gebühr Online-Zahlung",
+  "gebuehrOnlineHilfe": "z. B. PayPal. 0 = keine Gebühr.",
+  "sicherungErstellen": "Sicherung erstellen",
+  "sicherungErstellenText": "Alle Daten als Datei speichern (z. B. in Google Drive)",
+  "sicherungWiederherstellen": "Sicherung wiederherstellen",
+  "wiederherstellenWarnung": "Alle aktuellen Daten werden durch die Sicherung ersetzt.",
+  "wiederhergestellt": "Sicherung wiederhergestellt",
+  "keineSicherung": "Diese Datei ist keine gültige Druckkasse-Sicherung.",
+  "beispieldatenLaden": "Beispieldaten laden",
+  "beispieldatenText": "Zum Ausprobieren: Drucker, Produkte, Verkäufe",
+  "beispieldatenWarnung": "Beispiel-Drucker, -Produkte und -Verkäufe werden zu deinen Daten hinzugefügt.",
+  "beispieldatenGeladen": "Beispieldaten geladen",
+  "allesLoeschen": "Alle Daten löschen",
+  "allesLoeschenText": "Alle Drucker, Filamente, Produkte, Verkäufe, Aufträge und Sparziele werden endgültig gelöscht.",
+  "allesGeloescht": "Alle Daten gelöscht",
+  "willkommen": "Willkommen bei Druckkasse",
+  "willkommenText": "Kosten, Preise und Verkäufe für deine 3D-Drucke, alles an einem Ort.",
+  "einfuehrung1Titel": "Was kostet ein Druck wirklich?",
+  "einfuehrung1Text": "Material, Strom und Abnutzung pro Stück, mit Preisvorschlag.",
+  "einfuehrung2Titel": "Verkaufen mit einem Tipp",
+  "einfuehrung2Text": "Große Knöpfe für den Verkauf vor Ort, mit Rückgängig.",
+  "einfuehrung3Titel": "Sparziel im Blick",
+  "einfuehrung3Text": "Sieh, wie viele Stück bis zum neuen Drucker fehlen.",
+  "selbstEinrichten": "Selbst einrichten",
+  "mitBeispielenStarten": "Mit Beispieldaten ausprobieren",
+  "beispieleSpaeterLoeschen": "Beispieldaten kannst du später in den Einstellungen löschen."
+}

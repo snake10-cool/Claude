@@ -34,7 +34,9 @@ class KaufDienst extends ChangeNotifier {
 
   static const _speicher = 'kauf_pro_gekauft';
 
-  final _iap = InAppPurchase.instance;
+  // Erst bei Bedarf holen: InAppPurchase.instance verbindet sich sofort mit
+  // Google Play (und gibt es auf Windows gar nicht).
+  InAppPurchase get _iap => InAppPurchase.instance;
   StreamSubscription<List<PurchaseDetails>>? _kaeufe;
 
   bool _gekauft = false;
