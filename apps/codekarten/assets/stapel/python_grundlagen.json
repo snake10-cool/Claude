@@ -1,0 +1,650 @@
+{
+ "id": "python_grundlagen",
+ "name": "Python Grundlagen",
+ "sprache": "python",
+ "stufe": "Grundlagen",
+ "beschreibung": "Variablen, Listen, Dictionaries, Schleifen, Funktionen, f-Strings, Fehler und Klassen.",
+ "produkt": "paket_python",
+ "karten": [
+  {
+   "key": "py01",
+   "typ": "begriff",
+   "frage": "Wie legt man in Python eine Variable an?",
+   "antwort": "Einfach mit Name = Wert. Einen Typ muss man nicht angeben, Python erkennt ihn selbst.",
+   "code": "alter = 17\nname = \"Mia\""
+  },
+  {
+   "key": "py02",
+   "typ": "begriff",
+   "frage": "Was bedeutet die Einrückung in Python?",
+   "antwort": "Sie legt die Blöcke fest (statt geschweifter Klammern). Alles, was gleich weit eingerückt ist, gehört zusammen."
+  },
+  {
+   "key": "py03",
+   "typ": "begriff",
+   "frage": "Was ist der Unterschied zwischen Liste und Tupel?",
+   "antwort": "Eine Liste [1, 2] ist veränderbar, ein Tupel (1, 2) nicht."
+  },
+  {
+   "key": "py04",
+   "typ": "begriff",
+   "frage": "Was ist ein Dictionary?",
+   "antwort": "Eine Zuordnung Schlüssel → Wert in geschweiften Klammern.",
+   "code": "alter = {\"Mia\": 16, \"Tom\": 17}"
+  },
+  {
+   "key": "py05",
+   "typ": "begriff",
+   "frage": "Was macht def?",
+   "antwort": "Definiert eine Funktion.",
+   "code": "def doppelt(x):\n    return x * 2"
+  },
+  {
+   "key": "py06",
+   "typ": "begriff",
+   "frage": "Was ist None?",
+   "antwort": "Der Wert für „nichts“. Eine Funktion ohne return gibt None zurück."
+  },
+  {
+   "key": "py07",
+   "typ": "begriff",
+   "frage": "Was ist eine f-String?",
+   "antwort": "Ein String mit f davor, in dem man Ausdrücke in geschweiften Klammern einsetzen kann.",
+   "code": "print(f\"Hallo {name}, du bist {alter} Jahre alt\")"
+  },
+  {
+   "key": "py08",
+   "typ": "begriff",
+   "frage": "Was ist der Unterschied zwischen / und //?",
+   "antwort": "/ teilt immer mit Komma (7 / 2 = 3.5), // teilt ganzzahlig und rundet ab (7 // 2 = 3)."
+  },
+  {
+   "key": "py09",
+   "typ": "begriff",
+   "frage": "Was macht range(1, 5)?",
+   "antwort": "Erzeugt die Zahlen 1, 2, 3, 4. Das Ende ist nicht enthalten."
+  },
+  {
+   "key": "py10",
+   "typ": "begriff",
+   "frage": "Was ist eine List Comprehension?",
+   "antwort": "Eine kurze Schreibweise, um aus einer Folge eine neue Liste zu bauen.",
+   "code": "quadrate = [x * x for x in range(5)]"
+  },
+  {
+   "key": "py11",
+   "typ": "begriff",
+   "frage": "Was macht try/except?",
+   "antwort": "Fängt Fehler (Exceptions) ab, damit das Programm nicht abstürzt."
+  },
+  {
+   "key": "py12",
+   "typ": "begriff",
+   "frage": "Was ist self in einer Klasse?",
+   "antwort": "Der Verweis auf das aktuelle Objekt. Er ist immer der erste Parameter von Methoden."
+  },
+  {
+   "key": "py13",
+   "typ": "begriff",
+   "frage": "Was macht __init__?",
+   "antwort": "Der Konstruktor einer Klasse: wird beim Erzeugen eines Objekts aufgerufen und setzt die Startwerte."
+  },
+  {
+   "key": "py14",
+   "typ": "begriff",
+   "frage": "Was ist ein Set?",
+   "antwort": "Eine ungeordnete Sammlung ohne Duplikate: {1, 2, 3}."
+  },
+  {
+   "key": "py15",
+   "typ": "begriff",
+   "frage": "Was macht import?",
+   "antwort": "Lädt ein Modul, z. B. import math, und macht seine Funktionen verfügbar (math.sqrt(16))."
+  },
+  {
+   "key": "py16",
+   "typ": "begriff",
+   "frage": "Was ist der Unterschied zwischen == und is?",
+   "antwort": "== vergleicht den Wert, is prüft, ob es dasselbe Objekt ist. Für None benutzt man is: if x is None."
+  },
+  {
+   "key": "py30",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print(7 / 2, 7 // 2, 7 % 2)",
+   "antwort": "3.5 3 1",
+   "optionen": [
+    "3.5 3 1",
+    "3 3 1",
+    "3.5 3.5 1",
+    "3 3.5 1"
+   ],
+   "erklaerung": "/ teilt mit Komma, // ganzzahlig, % ist der Rest."
+  },
+  {
+   "key": "py31",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print(2 ** 5)",
+   "antwort": "32",
+   "optionen": [
+    "32",
+    "10",
+    "25",
+    "7"
+   ],
+   "erklaerung": "** ist Potenz: 2 hoch 5."
+  },
+  {
+   "key": "py32",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print(\"ab\" * 3)",
+   "antwort": "ababab",
+   "optionen": [
+    "ababab",
+    "ab3",
+    "Fehler",
+    "ab ab ab"
+   ],
+   "erklaerung": "Ein String mal eine Zahl wiederholt den String."
+  },
+  {
+   "key": "py33",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "liste = [10, 20, 30, 40]\nprint(liste[-1])",
+   "antwort": "40",
+   "optionen": [
+    "40",
+    "10",
+    "Fehler",
+    "30"
+   ],
+   "erklaerung": "Negative Indizes zählen von hinten: -1 ist das letzte Element."
+  },
+  {
+   "key": "py34",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "liste = [10, 20, 30, 40, 50]\nprint(liste[1:3])",
+   "antwort": "[20, 30]",
+   "optionen": [
+    "[20, 30]",
+    "[20, 30, 40]",
+    "[10, 20, 30]",
+    "[30]"
+   ],
+   "erklaerung": "Slicing [1:3] nimmt Index 1 und 2, das Ende ist nicht dabei."
+  },
+  {
+   "key": "py35",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "text = \"Python\"\nprint(text[::-1])",
+   "antwort": "nohtyP",
+   "optionen": [
+    "nohtyP",
+    "Python",
+    "P",
+    "Fehler"
+   ],
+   "erklaerung": "[::-1] geht mit Schrittweite -1 rückwärts durch den String."
+  },
+  {
+   "key": "py36",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "zahlen = [3, 1, 2]\nzahlen.append(5)\nzahlen.sort()\nprint(zahlen)",
+   "antwort": "[1, 2, 3, 5]",
+   "optionen": [
+    "[1, 2, 3, 5]",
+    "[3, 1, 2, 5]",
+    "[5, 3, 2, 1]",
+    "None"
+   ],
+   "erklaerung": "append hängt hinten an, sort sortiert die Liste selbst."
+  },
+  {
+   "key": "py37",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "zahlen = [3, 1, 2]\nergebnis = zahlen.sort()\nprint(ergebnis)",
+   "antwort": "None",
+   "optionen": [
+    "None",
+    "[1, 2, 3]",
+    "[3, 1, 2]",
+    "Fehler"
+   ],
+   "erklaerung": "sort() sortiert die Liste selbst und gibt None zurück. sorted(zahlen) würde eine neue Liste liefern."
+  },
+  {
+   "key": "py38",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print([x * 2 for x in range(4)])",
+   "antwort": "[0, 2, 4, 6]",
+   "optionen": [
+    "[0, 2, 4, 6]",
+    "[2, 4, 6, 8]",
+    "[0, 1, 2, 3]",
+    "[0, 2, 4, 6, 8]"
+   ],
+   "erklaerung": "range(4) ist 0, 1, 2, 3, jedes wird verdoppelt."
+  },
+  {
+   "key": "py39",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print([x for x in range(10) if x % 3 == 0])",
+   "antwort": "[0, 3, 6, 9]",
+   "optionen": [
+    "[0, 3, 6, 9]",
+    "[3, 6, 9]",
+    "[0, 3, 6]",
+    "[1, 4, 7]"
+   ],
+   "erklaerung": "Die Bedingung behält nur Vielfache von 3. Auch 0 ist ein Vielfaches."
+  },
+  {
+   "key": "py40",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "alter = {\"Mia\": 16, \"Tom\": 17}\nalter[\"Lea\"] = 15\nprint(len(alter))",
+   "antwort": "3",
+   "optionen": [
+    "3",
+    "2",
+    "6",
+    "Fehler"
+   ],
+   "erklaerung": "Ein neuer Schlüssel fügt einen Eintrag hinzu."
+  },
+  {
+   "key": "py41",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "alter = {\"Mia\": 16}\nprint(alter.get(\"Tom\", 0))",
+   "antwort": "0",
+   "optionen": [
+    "0",
+    "None",
+    "KeyError",
+    "16"
+   ],
+   "erklaerung": "get liefert den Ersatzwert, wenn der Schlüssel fehlt. alter[\"Tom\"] würde einen KeyError werfen."
+  },
+  {
+   "key": "py42",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "def gruss(name, gruss=\"Hallo\"):\n    return f\"{gruss}, {name}!\"\n\nprint(gruss(\"Ben\"))",
+   "antwort": "Hallo, Ben!",
+   "optionen": [
+    "Hallo, Ben!",
+    "Ben, Hallo!",
+    "None",
+    "Fehler"
+   ],
+   "erklaerung": "gruss hat einen Standardwert und muss nicht übergeben werden."
+  },
+  {
+   "key": "py43",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "def f(x):\n    x.append(4)\n\nliste = [1, 2, 3]\nf(liste)\nprint(liste)",
+   "antwort": "[1, 2, 3, 4]",
+   "optionen": [
+    "[1, 2, 3, 4]",
+    "[1, 2, 3]",
+    "None",
+    "Fehler"
+   ],
+   "erklaerung": "Listen werden nicht kopiert. Die Funktion verändert dieselbe Liste."
+  },
+  {
+   "key": "py44",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "a = [1, 2]\nb = a\nb.append(3)\nprint(a)",
+   "antwort": "[1, 2, 3]",
+   "optionen": [
+    "[1, 2, 3]",
+    "[1, 2]",
+    "[3]",
+    "Fehler"
+   ],
+   "erklaerung": "b ist kein neues Objekt, sondern ein zweiter Name für dieselbe Liste."
+  },
+  {
+   "key": "py45",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "for i in range(3):\n    print(i, end=\" \")",
+   "antwort": "0 1 2",
+   "optionen": [
+    "0 1 2",
+    "1 2 3",
+    "0 1 2 3",
+    "0\n1\n2"
+   ],
+   "erklaerung": "end=\" \" ersetzt den Zeilenumbruch durch ein Leerzeichen. (Das letzte Leerzeichen sieht man nicht.)"
+  },
+  {
+   "key": "py46",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "x = 0\nwhile x < 10:\n    x += 4\nprint(x)",
+   "antwort": "12",
+   "optionen": [
+    "12",
+    "8",
+    "10",
+    "4"
+   ],
+   "erklaerung": "x: 0, 4, 8, 12. Bei 12 endet die Schleife."
+  },
+  {
+   "key": "py47",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print(bool(\"\"), bool(\"0\"), bool(0))",
+   "antwort": "False True False",
+   "optionen": [
+    "False True False",
+    "False False False",
+    "True True False",
+    "False True True"
+   ],
+   "erklaerung": "Leere Strings und 0 sind falsch. \"0\" ist ein nicht leerer String und deshalb wahr."
+  },
+  {
+   "key": "py48",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print(\"Hallo Welt\".split())",
+   "antwort": "['Hallo', 'Welt']",
+   "optionen": [
+    "['Hallo', 'Welt']",
+    "Hallo Welt",
+    "['Hallo Welt']",
+    "('Hallo', 'Welt')"
+   ],
+   "erklaerung": "split() ohne Argument trennt an Leerzeichen und liefert eine Liste."
+  },
+  {
+   "key": "py49",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print(\"-\".join([\"a\", \"b\", \"c\"]))",
+   "antwort": "a-b-c",
+   "optionen": [
+    "a-b-c",
+    "-a-b-c",
+    "abc",
+    "['a', 'b', 'c']"
+   ],
+   "erklaerung": "join verbindet die Elemente mit dem Trenner davor."
+  },
+  {
+   "key": "py50",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print(len({1, 2, 2, 3, 3, 3}))",
+   "antwort": "3",
+   "optionen": [
+    "3",
+    "6",
+    "1",
+    "Fehler"
+   ],
+   "erklaerung": "Ein Set speichert jeden Wert nur einmal."
+  },
+  {
+   "key": "py51",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "x, y = 1, 2\nx, y = y, x\nprint(x, y)",
+   "antwort": "2 1",
+   "optionen": [
+    "2 1",
+    "1 2",
+    "2 2",
+    "Fehler"
+   ],
+   "erklaerung": "Tupel-Zuweisung tauscht die Werte in einem Schritt."
+  },
+  {
+   "key": "py52",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "try:\n    print(10 / 0)\nexcept ZeroDivisionError:\n    print(\"geht nicht\")\nfinally:\n    print(\"fertig\")",
+   "antwort": "geht nicht\nfertig",
+   "optionen": [
+    "geht nicht\nfertig",
+    "fertig",
+    "inf\nfertig",
+    "geht nicht"
+   ],
+   "erklaerung": "Durch 0 teilen wirft einen Fehler, except fängt ihn, finally läuft immer."
+  },
+  {
+   "key": "py53",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "class Hund:\n    def __init__(self, name):\n        self.name = name\n\n    def bellen(self):\n        return self.name + \": Wuff\"\n\nprint(Hund(\"Rex\").bellen())",
+   "antwort": "Rex: Wuff",
+   "optionen": [
+    "Rex: Wuff",
+    "Wuff",
+    "self.name: Wuff",
+    "Fehler"
+   ],
+   "erklaerung": "__init__ speichert den Namen, die Methode greift über self darauf zu."
+  },
+  {
+   "key": "py54",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "zahlen = [5, 2, 8]\nprint(max(zahlen) - min(zahlen), sum(zahlen))",
+   "antwort": "6 15",
+   "optionen": [
+    "6 15",
+    "3 15",
+    "6 5",
+    "8 2"
+   ],
+   "erklaerung": "max 8, min 2, Summe 15."
+  },
+  {
+   "key": "py55",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "for i, buchstabe in enumerate(\"ab\"):\n    print(i, buchstabe)",
+   "antwort": "0 a\n1 b",
+   "optionen": [
+    "0 a\n1 b",
+    "1 a\n2 b",
+    "a 0\nb 1",
+    "0 1"
+   ],
+   "erklaerung": "enumerate liefert Paare aus Index und Element."
+  },
+  {
+   "key": "py56",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "namen = [\"Mia\", \"Tom\"]\nalter = [16, 17]\nprint(dict(zip(namen, alter)))",
+   "antwort": "{'Mia': 16, 'Tom': 17}",
+   "optionen": [
+    "{'Mia': 16, 'Tom': 17}",
+    "[('Mia', 16), ('Tom', 17)]",
+    "{'Mia': 'Tom', 16: 17}",
+    "Fehler"
+   ],
+   "erklaerung": "zip verbindet zwei Listen paarweise, dict macht daraus ein Dictionary."
+  },
+  {
+   "key": "py57",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "def f():\n    pass\n\nprint(f())",
+   "antwort": "None",
+   "optionen": [
+    "None",
+    "pass",
+    "",
+    "Fehler"
+   ],
+   "erklaerung": "Ohne return gibt eine Funktion None zurück."
+  },
+  {
+   "key": "py58",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print(round(2.5), round(3.5))",
+   "antwort": "2 4",
+   "optionen": [
+    "2 4",
+    "3 4",
+    "2 3",
+    "3 3"
+   ],
+   "erklaerung": "Python rundet bei .5 zur nächsten geraden Zahl (Bankers Rounding)."
+  },
+  {
+   "key": "py59",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "print(sorted([\"banane\", \"Apfel\", \"kiwi\"], key=len))",
+   "antwort": "['kiwi', 'Apfel', 'banane']",
+   "optionen": [
+    "['kiwi', 'Apfel', 'banane']",
+    "['Apfel', 'banane', 'kiwi']",
+    "['banane', 'Apfel', 'kiwi']",
+    "['Apfel', 'kiwi', 'banane']"
+   ],
+   "erklaerung": "key=len sortiert nach der Länge: 4, 5, 6."
+  },
+  {
+   "key": "py60",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "zahl = 15\nif zahl % 3 == 0 and zahl % 5 == 0:\n    print(\"FizzBuzz\")\nelif zahl % 3 == 0:\n    print(\"Fizz\")\nelse:\n    print(zahl)",
+   "antwort": "FizzBuzz",
+   "optionen": [
+    "FizzBuzz",
+    "Fizz",
+    "15",
+    "Buzz"
+   ],
+   "erklaerung": "15 ist durch 3 und 5 teilbar, die erste passende Bedingung gewinnt."
+  },
+  {
+   "key": "py80",
+   "typ": "luecke",
+   "frage": "Ergänze das Schlüsselwort für eine Funktion.",
+   "code": "___ quadrat(x):\n    return x * x\n\nprint(quadrat(5))",
+   "antwort": "def",
+   "optionen": [
+    "def",
+    "function",
+    "fun",
+    "func"
+   ],
+   "erwartet": "25",
+   "erklaerung": "In Python werden Funktionen mit def definiert."
+  },
+  {
+   "key": "py81",
+   "typ": "luecke",
+   "frage": "Ergänze, damit eine Zahl eingesetzt wird.",
+   "code": "punkte = 42\nprint(___\"Du hast {punkte} Punkte\")",
+   "antwort": "f",
+   "optionen": [
+    "f",
+    "r",
+    "b",
+    "s"
+   ],
+   "erwartet": "Du hast 42 Punkte",
+   "erklaerung": "Nur f-Strings setzen Ausdrücke in {} ein."
+  },
+  {
+   "key": "py82",
+   "typ": "luecke",
+   "frage": "Ergänze, um ein Element hinten anzuhängen.",
+   "code": "liste = [1, 2]\nliste.___(3)\nprint(liste)",
+   "antwort": "append",
+   "optionen": [
+    "append",
+    "add",
+    "push",
+    "insert"
+   ],
+   "erwartet": "[1, 2, 3]",
+   "erklaerung": "Listen haben append. add gibt es bei Sets, push in JavaScript."
+  },
+  {
+   "key": "py83",
+   "typ": "luecke",
+   "frage": "Ergänze den Fehler-Typ.",
+   "code": "try:\n    zahl = int(\"abc\")\nexcept ___:\n    print(\"keine Zahl\")",
+   "antwort": "ValueError",
+   "optionen": [
+    "ValueError",
+    "TypeError",
+    "KeyError",
+    "IndexError"
+   ],
+   "erwartet": "keine Zahl",
+   "erklaerung": "int(\"abc\") wirft einen ValueError: Der Typ stimmt (String), der Wert nicht."
+  },
+  {
+   "key": "py84",
+   "typ": "luecke",
+   "frage": "Ergänze, damit 1 bis 3 ausgegeben werden.",
+   "code": "for i in range(1, ___):\n    print(i, end=\"\")",
+   "antwort": "4",
+   "optionen": [
+    "4",
+    "3",
+    "5",
+    "2"
+   ],
+   "erwartet": "123",
+   "erklaerung": "Das Ende von range ist nicht enthalten."
+  },
+  {
+   "key": "py85",
+   "typ": "luecke",
+   "frage": "Ergänze den ersten Parameter der Methode.",
+   "code": "class Zaehler:\n    def __init__(self):\n        self.n = 0\n\n    def plus(___):\n        self.n += 1\n\nz = Zaehler()\nz.plus()\nprint(z.n)",
+   "antwort": "self",
+   "optionen": [
+    "self",
+    "this",
+    "me",
+    "obj"
+   ],
+   "erwartet": "1",
+   "erklaerung": "Methoden bekommen das Objekt als ersten Parameter, Konvention: self."
+  },
+  {
+   "key": "py86",
+   "typ": "luecke",
+   "frage": "Ergänze, um durch alle Paare eines Dictionarys zu gehen.",
+   "code": "preise = {\"Apfel\": 1, \"Kiwi\": 2}\nfor name, preis in preise.___():\n    print(name, preis)",
+   "antwort": "items",
+   "optionen": [
+    "items",
+    "keys",
+    "values",
+    "pairs"
+   ],
+   "erwartet": "Apfel 1\nKiwi 2",
+   "erklaerung": "items() liefert Paare aus Schlüssel und Wert."
+  }
+ ]
+}

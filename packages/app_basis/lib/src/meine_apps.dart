@@ -28,7 +28,8 @@ class MeineApp {
 }
 
 /// Alle Apps. Neue App fertig → hier eintragen. Jede App zeigt alle anderen
-/// an, die veröffentlicht sind.
+/// an, die veröffentlicht sind. Sobald eine App im Play Store live ist:
+/// `veroeffentlicht: false` entfernen und alle Apps neu hochladen.
 const meineApps = <MeineApp>[
   MeineApp(
     name: 'Austro Angler',
@@ -37,6 +38,7 @@ const meineApps = <MeineApp>[
     beschreibungEn: 'Waters, catch log and closed seasons for Austria',
     symbol: Icons.phishing,
     farbe: Color(0xFF1E6F5C),
+    veroeffentlicht: false,
   ),
   MeineApp(
     name: 'Druckkasse',
@@ -45,5 +47,15 @@ const meineApps = <MeineApp>[
     beschreibungEn: 'Costs, prices and sales for your 3D prints',
     symbol: Icons.print,
     farbe: Color(0xFFE8622A),
+    veroeffentlicht: false,
+  ),
+  MeineApp(
+    name: 'Codekarten',
+    paketId: 'com.snake10.codekarten',
+    beschreibungDe: 'Programmieren lernen mit Karteikarten und Snippets',
+    beschreibungEn: 'Learn to code with flashcards and snippets',
+    symbol: Icons.code,
+    farbe: Color(0xFF6C4DE6),
+    veroeffentlicht: false,
   ),
 ];

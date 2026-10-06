@@ -1,0 +1,832 @@
+{
+ "id": "java_grundlagen",
+ "name": "Java Grundlagen",
+ "sprache": "java",
+ "stufe": "Grundlagen",
+ "beschreibung": "Variablen, Datentypen, Operatoren, Schleifen, Strings, Arrays, Methoden und erste Klassen.",
+ "produkt": null,
+ "karten": [
+  {
+   "key": "jg01",
+   "typ": "begriff",
+   "frage": "Was ist eine Variable?",
+   "antwort": "Ein benannter Speicherplatz für einen Wert. In Java hat jede Variable einen festen Typ.",
+   "code": "int alter = 17;"
+  },
+  {
+   "key": "jg02",
+   "typ": "begriff",
+   "frage": "Was ist der Unterschied zwischen int und double?",
+   "antwort": "int speichert ganze Zahlen, double Kommazahlen (mit Punkt geschrieben: 3.14)."
+  },
+  {
+   "key": "jg03",
+   "typ": "begriff",
+   "frage": "Was bedeutet „primitiver Datentyp“?",
+   "antwort": "Ein eingebauter Grundtyp, der direkt einen Wert speichert: int, double, boolean, char, long, byte, short, float."
+  },
+  {
+   "key": "jg04",
+   "typ": "begriff",
+   "frage": "Wofür steht String in Java?",
+   "antwort": "Eine Zeichenkette (Text). String ist eine Klasse, kein primitiver Typ, und wird in doppelte Anführungszeichen geschrieben.",
+   "code": "String name = \"Jonas\";"
+  },
+  {
+   "key": "jg05",
+   "typ": "begriff",
+   "frage": "Was macht System.out.println()?",
+   "antwort": "Gibt einen Wert auf der Konsole aus und springt danach in eine neue Zeile. print() springt nicht in eine neue Zeile."
+  },
+  {
+   "key": "jg06",
+   "typ": "begriff",
+   "frage": "Was ist eine Methode?",
+   "antwort": "Ein benannter Codeblock, der eine Aufgabe erledigt. Er kann Parameter bekommen und einen Wert zurückgeben.",
+   "code": "static int doppelt(int x) {\n    return x * 2;\n}"
+  },
+  {
+   "key": "jg07",
+   "typ": "begriff",
+   "frage": "Was bedeutet void bei einer Methode?",
+   "antwort": "Die Methode gibt keinen Wert zurück."
+  },
+  {
+   "key": "jg08",
+   "typ": "begriff",
+   "frage": "Was ist der Unterschied zwischen = und ==?",
+   "antwort": "= weist einen Wert zu, == vergleicht zwei Werte (bei Objekten: ob es dasselbe Objekt ist)."
+  },
+  {
+   "key": "jg09",
+   "typ": "begriff",
+   "frage": "Wie vergleicht man zwei Strings richtig?",
+   "antwort": "Mit equals(): a.equals(b). == prüft nur, ob es dasselbe Objekt ist.",
+   "code": "if (eingabe.equals(\"ja\")) { ... }"
+  },
+  {
+   "key": "jg10",
+   "typ": "begriff",
+   "frage": "Was ist ein Array?",
+   "antwort": "Eine Liste fester Länge mit Werten desselben Typs. Der erste Index ist 0.",
+   "code": "int[] zahlen = {4, 8, 15};"
+  },
+  {
+   "key": "jg11",
+   "typ": "begriff",
+   "frage": "Was ist eine Klasse?",
+   "antwort": "Ein Bauplan für Objekte: Sie legt fest, welche Eigenschaften (Felder) und Fähigkeiten (Methoden) die Objekte haben."
+  },
+  {
+   "key": "jg12",
+   "typ": "begriff",
+   "frage": "Was ist ein Objekt?",
+   "antwort": "Ein konkretes Exemplar einer Klasse, erzeugt mit new.",
+   "code": "Hund bello = new Hund();"
+  },
+  {
+   "key": "jg13",
+   "typ": "begriff",
+   "frage": "Was ist ein Konstruktor?",
+   "antwort": "Eine spezielle Methode mit dem Namen der Klasse und ohne Rückgabetyp. Sie wird bei new aufgerufen und setzt die Startwerte."
+  },
+  {
+   "key": "jg14",
+   "typ": "begriff",
+   "frage": "Was bedeutet static?",
+   "antwort": "Das Feld oder die Methode gehört zur Klasse selbst, nicht zu einem einzelnen Objekt. Man braucht kein Objekt, um sie aufzurufen."
+  },
+  {
+   "key": "jg15",
+   "typ": "begriff",
+   "frage": "Was bedeutet private?",
+   "antwort": "Nur Code in derselben Klasse darf darauf zugreifen. So schützt man Daten vor ungewollten Änderungen (Kapselung)."
+  },
+  {
+   "key": "jg16",
+   "typ": "begriff",
+   "frage": "Was ist ein boolean?",
+   "antwort": "Ein Wahrheitswert: true oder false."
+  },
+  {
+   "key": "jg17",
+   "typ": "begriff",
+   "frage": "Was macht der Operator %?",
+   "antwort": "Modulo: der Rest einer ganzzahligen Division. 7 % 3 ist 1."
+  },
+  {
+   "key": "jg18",
+   "typ": "begriff",
+   "frage": "Was ist eine Schleife?",
+   "antwort": "Ein Codeblock, der mehrmals ausgeführt wird: for (fester Ablauf), while (solange Bedingung), do-while (mindestens einmal)."
+  },
+  {
+   "key": "jg19",
+   "typ": "begriff",
+   "frage": "Was macht break in einer Schleife?",
+   "antwort": "Beendet die Schleife sofort. continue springt dagegen nur zum nächsten Durchlauf."
+  },
+  {
+   "key": "jg20",
+   "typ": "begriff",
+   "frage": "Was ist eine NullPointerException?",
+   "antwort": "Ein Fehler, wenn man auf eine Variable zugreift, die null ist (auf kein Objekt zeigt), z. B. name.length() bei name = null."
+  },
+  {
+   "key": "jg21",
+   "typ": "begriff",
+   "frage": "Was ist der Unterschied zwischen Array und ArrayList?",
+   "antwort": "Ein Array hat eine feste Länge. Eine ArrayList wächst automatisch und hat Methoden wie add(), remove() und size()."
+  },
+  {
+   "key": "jg22",
+   "typ": "begriff",
+   "frage": "Was bedeutet Casting?",
+   "antwort": "Einen Wert in einen anderen Typ umwandeln, z. B. (int) 3.9 ergibt 3 (es wird abgeschnitten, nicht gerundet)."
+  },
+  {
+   "key": "jg23",
+   "typ": "begriff",
+   "frage": "Was ist ein char?",
+   "antwort": "Ein einzelnes Zeichen in einfachen Anführungszeichen: 'A'. Intern ist es eine Zahl (Unicode)."
+  },
+  {
+   "key": "jg24",
+   "typ": "begriff",
+   "frage": "Was macht die Methode main?",
+   "antwort": "Der Startpunkt jedes Java-Programms: public static void main(String[] args)."
+  },
+  {
+   "key": "jg30",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int x = 7;\nint y = 2;\nSystem.out.println(x / y);",
+   "antwort": "3",
+   "optionen": [
+    "3",
+    "3.5",
+    "4",
+    "3.0"
+   ],
+   "erklaerung": "Beide sind int, also ganzzahlige Division: Der Rest wird abgeschnitten."
+  },
+  {
+   "key": "jg31",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "System.out.println(7 % 3);",
+   "antwort": "1",
+   "optionen": [
+    "1",
+    "2",
+    "2.33",
+    "0"
+   ],
+   "erklaerung": "7 geteilt durch 3 ist 2 Rest 1."
+  },
+  {
+   "key": "jg32",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "System.out.println(\"5\" + 3);",
+   "antwort": "53",
+   "optionen": [
+    "53",
+    "8",
+    "Fehler",
+    "5 3"
+   ],
+   "erklaerung": "Ist ein Teil ein String, wird + zum Aneinanderhängen."
+  },
+  {
+   "key": "jg33",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "System.out.println(5 + 3 + \"5\");",
+   "antwort": "85",
+   "optionen": [
+    "85",
+    "535",
+    "13",
+    "Fehler"
+   ],
+   "erklaerung": "Von links nach rechts: zuerst 5 + 3 = 8, dann \"8\" + \"5\"."
+  },
+  {
+   "key": "jg34",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "double d = 7 / 2;\nSystem.out.println(d);",
+   "antwort": "3.0",
+   "optionen": [
+    "3.0",
+    "3.5",
+    "3",
+    "4.0"
+   ],
+   "erklaerung": "7 / 2 wird zuerst als int gerechnet (3), erst dann zu double umgewandelt."
+  },
+  {
+   "key": "jg35",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int i = 5;\ni++;\ni += 2;\nSystem.out.println(i);",
+   "antwort": "8",
+   "optionen": [
+    "8",
+    "7",
+    "6",
+    "5"
+   ],
+   "erklaerung": "i++ erhöht um 1, i += 2 um weitere 2."
+  },
+  {
+   "key": "jg36",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int a = 3;\nint b = a++;\nSystem.out.println(a + \" \" + b);",
+   "antwort": "4 3",
+   "optionen": [
+    "4 3",
+    "4 4",
+    "3 3",
+    "3 4"
+   ],
+   "erklaerung": "a++ liefert zuerst den alten Wert (3) und erhöht danach a."
+  },
+  {
+   "key": "jg37",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int summe = 0;\nfor (int i = 1; i <= 4; i++) {\n    summe += i;\n}\nSystem.out.println(summe);",
+   "antwort": "10",
+   "optionen": [
+    "10",
+    "6",
+    "4",
+    "15"
+   ],
+   "erklaerung": "1 + 2 + 3 + 4 = 10."
+  },
+  {
+   "key": "jg38",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "for (int i = 0; i < 3; i++) {\n    System.out.print(i);\n}",
+   "antwort": "012",
+   "optionen": [
+    "012",
+    "123",
+    "0123",
+    "0 1 2"
+   ],
+   "erklaerung": "i läuft von 0 bis 2. print macht keinen Zeilenumbruch."
+  },
+  {
+   "key": "jg39",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int[] z = {4, 8, 15, 16};\nSystem.out.println(z[2]);",
+   "antwort": "15",
+   "optionen": [
+    "15",
+    "8",
+    "16",
+    "Fehler"
+   ],
+   "erklaerung": "Arrays beginnen bei Index 0: z[0]=4, z[1]=8, z[2]=15."
+  },
+  {
+   "key": "jg40",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int[] z = {4, 8, 15};\nSystem.out.println(z.length);",
+   "antwort": "3",
+   "optionen": [
+    "3",
+    "2",
+    "15",
+    "27"
+   ],
+   "erklaerung": "length ist die Anzahl der Elemente."
+  },
+  {
+   "key": "jg41",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "String s = \"Java\";\nSystem.out.println(s.length());",
+   "antwort": "4",
+   "optionen": [
+    "4",
+    "3",
+    "5",
+    "Fehler"
+   ],
+   "erklaerung": "length() zählt die Zeichen."
+  },
+  {
+   "key": "jg42",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "String s = \"Hallo\";\nSystem.out.println(s.charAt(1));",
+   "antwort": "a",
+   "optionen": [
+    "a",
+    "H",
+    "l",
+    "Fehler"
+   ],
+   "erklaerung": "charAt zählt ab 0: H=0, a=1."
+  },
+  {
+   "key": "jg43",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "String s = \"Programmieren\";\nSystem.out.println(s.substring(3, 7));",
+   "antwort": "gram",
+   "optionen": [
+    "gram",
+    "gramm",
+    "ogra",
+    "ramm"
+   ],
+   "erklaerung": "substring(3, 7) nimmt die Zeichen 3 bis 6 (Ende ausgeschlossen)."
+  },
+  {
+   "key": "jg44",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "System.out.println(\"abc\".toUpperCase());",
+   "antwort": "ABC",
+   "optionen": [
+    "ABC",
+    "abc",
+    "Abc",
+    "Fehler"
+   ],
+   "erklaerung": "toUpperCase() wandelt in Großbuchstaben um."
+  },
+  {
+   "key": "jg45",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int x = 10;\nif (x > 5) {\n    System.out.println(\"groß\");\n} else {\n    System.out.println(\"klein\");\n}",
+   "antwort": "groß",
+   "optionen": [
+    "groß",
+    "klein",
+    "groß klein",
+    "nichts"
+   ],
+   "erklaerung": "10 > 5 ist true, also wird der if-Zweig ausgeführt."
+  },
+  {
+   "key": "jg46",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "boolean a = true;\nboolean b = false;\nSystem.out.println(a && !b);",
+   "antwort": "true",
+   "optionen": [
+    "true",
+    "false",
+    "1",
+    "Fehler"
+   ],
+   "erklaerung": "!b ist true, true && true ergibt true."
+  },
+  {
+   "key": "jg47",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "System.out.println(3 > 2 || 1 / 0 > 0);",
+   "antwort": "true",
+   "optionen": [
+    "true",
+    "false",
+    "ArithmeticException",
+    "Fehler beim Kompilieren"
+   ],
+   "erklaerung": "|| wertet von links aus und hört bei true auf (Kurzschluss). 1 / 0 wird nie berechnet."
+  },
+  {
+   "key": "jg48",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int i = 0;\nwhile (i < 10) {\n    i += 3;\n}\nSystem.out.println(i);",
+   "antwort": "12",
+   "optionen": [
+    "12",
+    "9",
+    "10",
+    "3"
+   ],
+   "erklaerung": "i: 0, 3, 6, 9, 12. Bei 12 ist die Bedingung falsch."
+  },
+  {
+   "key": "jg49",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int i = 10;\ndo {\n    i++;\n} while (i < 5);\nSystem.out.println(i);",
+   "antwort": "11",
+   "optionen": [
+    "11",
+    "10",
+    "5",
+    "Fehler"
+   ],
+   "erklaerung": "do-while läuft immer mindestens einmal."
+  },
+  {
+   "key": "jg50",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "System.out.println((int) 9.99);",
+   "antwort": "9",
+   "optionen": [
+    "9",
+    "10",
+    "9.99",
+    "Fehler"
+   ],
+   "erklaerung": "Beim Umwandeln zu int werden die Nachkommastellen abgeschnitten."
+  },
+  {
+   "key": "jg51",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "System.out.println(Math.max(3, 8) + Math.abs(-2));",
+   "antwort": "10",
+   "optionen": [
+    "10",
+    "6",
+    "11",
+    "8"
+   ],
+   "erklaerung": "max(3, 8) = 8, abs(-2) = 2."
+  },
+  {
+   "key": "jg52",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int x = 5;\nString t = x % 2 == 0 ? \"gerade\" : \"ungerade\";\nSystem.out.println(t);",
+   "antwort": "ungerade",
+   "optionen": [
+    "ungerade",
+    "gerade",
+    "1",
+    "true"
+   ],
+   "erklaerung": "Der ?:-Operator: Bedingung ? wennWahr : wennFalsch. 5 % 2 ist 1."
+  },
+  {
+   "key": "jg53",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "for (int i = 0; i < 5; i++) {\n    if (i == 3) break;\n    System.out.print(i);\n}",
+   "antwort": "012",
+   "optionen": [
+    "012",
+    "0123",
+    "01234",
+    "0124"
+   ],
+   "erklaerung": "Bei i == 3 bricht break die Schleife ab."
+  },
+  {
+   "key": "jg54",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "for (int i = 0; i < 5; i++) {\n    if (i == 2) continue;\n    System.out.print(i);\n}",
+   "antwort": "0134",
+   "optionen": [
+    "0134",
+    "01",
+    "01234",
+    "234"
+   ],
+   "erklaerung": "continue überspringt nur den Durchlauf mit i == 2."
+  },
+  {
+   "key": "jg55",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "String a = \"Hi\";\nString b = a;\nb = b + \"!\";\nSystem.out.println(a);",
+   "antwort": "Hi",
+   "optionen": [
+    "Hi",
+    "Hi!",
+    "null",
+    "Fehler"
+   ],
+   "erklaerung": "Strings sind unveränderlich. b + \"!\" erzeugt einen neuen String, a bleibt \"Hi\"."
+  },
+  {
+   "key": "jg56",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int[] z = {1, 2, 3};\nint[] k = z;\nk[0] = 99;\nSystem.out.println(z[0]);",
+   "antwort": "99",
+   "optionen": [
+    "99",
+    "1",
+    "0",
+    "Fehler"
+   ],
+   "erklaerung": "k und z zeigen auf dasselbe Array. Eine Änderung über k sieht man auch über z."
+  },
+  {
+   "key": "jg57",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "char c = 'A';\nc++;\nSystem.out.println(c);",
+   "antwort": "B",
+   "optionen": [
+    "B",
+    "A1",
+    "66",
+    "Fehler"
+   ],
+   "erklaerung": "char ist intern eine Zahl. A + 1 ist B."
+  },
+  {
+   "key": "jg58",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "int x = 3;\nswitch (x) {\n    case 1 -> System.out.println(\"eins\");\n    case 3 -> System.out.println(\"drei\");\n    default -> System.out.println(\"anders\");\n}",
+   "antwort": "drei",
+   "optionen": [
+    "drei",
+    "drei\nanders",
+    "anders",
+    "eins"
+   ],
+   "erklaerung": "Beim switch mit Pfeil (->) gibt es kein Durchfallen in den nächsten Fall."
+  },
+  {
+   "key": "jg59",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "StringBuilder sb = new StringBuilder();\nfor (int i = 3; i > 0; i--) {\n    sb.append(i);\n}\nSystem.out.println(sb);",
+   "antwort": "321",
+   "optionen": [
+    "321",
+    "123",
+    "3210",
+    "6"
+   ],
+   "erklaerung": "Die Schleife zählt rückwärts von 3 bis 1."
+  },
+  {
+   "key": "jg60",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "var liste = new java.util.ArrayList<String>();\nliste.add(\"a\");\nliste.add(\"b\");\nliste.add(0, \"c\");\nSystem.out.println(liste);",
+   "antwort": "[c, a, b]",
+   "optionen": [
+    "[c, a, b]",
+    "[a, b, c]",
+    "[a, c, b]",
+    "[c, b]"
+   ],
+   "erklaerung": "add(0, x) fügt vorne ein und schiebt den Rest nach hinten."
+  },
+  {
+   "key": "jg61",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "public class Main {\n    static int doppelt(int x) {\n        return x * 2;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(doppelt(doppelt(3)));\n    }\n}",
+   "antwort": "12",
+   "optionen": [
+    "12",
+    "6",
+    "9",
+    "3"
+   ],
+   "erklaerung": "Innen zuerst: doppelt(3) = 6, dann doppelt(6) = 12.",
+   "rahmen": "voll"
+  },
+  {
+   "key": "jg62",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "public class Main {\n    static void aendern(int x) {\n        x = 100;\n    }\n\n    public static void main(String[] args) {\n        int a = 5;\n        aendern(a);\n        System.out.println(a);\n    }\n}",
+   "antwort": "5",
+   "optionen": [
+    "5",
+    "100",
+    "0",
+    "Fehler"
+   ],
+   "erklaerung": "Primitive Werte werden als Kopie übergeben. Die Methode ändert nur ihre Kopie.",
+   "rahmen": "voll"
+  },
+  {
+   "key": "jg63",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "public class Main {\n    static class Zaehler {\n        int stand = 0;\n        void plus() { stand++; }\n    }\n\n    public static void main(String[] args) {\n        Zaehler z = new Zaehler();\n        z.plus();\n        z.plus();\n        System.out.println(z.stand);\n    }\n}",
+   "antwort": "2",
+   "optionen": [
+    "2",
+    "0",
+    "1",
+    "Fehler"
+   ],
+   "erklaerung": "Jedes plus() erhöht das Feld stand des Objekts.",
+   "rahmen": "voll"
+  },
+  {
+   "key": "jg64",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "System.out.println(10 - 2 * 3);",
+   "antwort": "4",
+   "optionen": [
+    "4",
+    "24",
+    "6",
+    "-4"
+   ],
+   "erklaerung": "Punkt vor Strich: 2 * 3 = 6, dann 10 - 6."
+  },
+  {
+   "key": "jg65",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "System.out.println(0.1 + 0.2 == 0.3);",
+   "antwort": "false",
+   "optionen": [
+    "false",
+    "true",
+    "0.3",
+    "Fehler"
+   ],
+   "erklaerung": "Kommazahlen sind binär nicht exakt: 0.1 + 0.2 ergibt 0.30000000000000004."
+  },
+  {
+   "key": "jg66",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "String s = null;\nSystem.out.println(\"Wert: \" + s);",
+   "antwort": "Wert: null",
+   "optionen": [
+    "Wert: null",
+    "Wert: ",
+    "NullPointerException",
+    "Fehler beim Kompilieren"
+   ],
+   "erklaerung": "Beim Aneinanderhängen wird null als Text \"null\" geschrieben. Erst ein Methodenaufruf wie s.length() würde abstürzen."
+  },
+  {
+   "key": "jg80",
+   "typ": "luecke",
+   "frage": "Ergänze, damit Hallo in einer eigenen Zeile ausgegeben wird.",
+   "code": "System.out.___(\"Hallo\");\nSystem.out.print(\"!\");",
+   "antwort": "println",
+   "optionen": [
+    "println",
+    "print",
+    "printf",
+    "write"
+   ],
+   "erwartet": "Hallo\n!",
+   "erklaerung": "println hängt einen Zeilenumbruch an, print nicht."
+  },
+  {
+   "key": "jg81",
+   "typ": "luecke",
+   "frage": "Ergänze den Typ für eine Kommazahl.",
+   "code": "___ preis = 2.5;\nSystem.out.println(preis * 2);",
+   "antwort": "double",
+   "optionen": [
+    "double",
+    "int",
+    "String",
+    "char"
+   ],
+   "erwartet": "5.0",
+   "erklaerung": "double speichert Kommazahlen. int würde einen Fehler beim Kompilieren geben."
+  },
+  {
+   "key": "jg82",
+   "typ": "luecke",
+   "frage": "Ergänze, damit 1 bis 5 ausgegeben wird.",
+   "code": "for (int i = 1; i ___ 5; i++) {\n    System.out.print(i);\n}",
+   "antwort": "<=",
+   "optionen": [
+    "<=",
+    "<",
+    "==",
+    ">"
+   ],
+   "erwartet": "12345",
+   "erklaerung": "Mit <= ist die 5 noch dabei."
+  },
+  {
+   "key": "jg83",
+   "typ": "luecke",
+   "frage": "Ergänze den Vergleich für Strings.",
+   "code": "String a = \"ja\";\nString b = new String(\"ja\");\nSystem.out.println(a.___(b));",
+   "antwort": "equals",
+   "optionen": [
+    "equals",
+    "compareTo",
+    "hashCode",
+    "toString"
+   ],
+   "erwartet": "true",
+   "erklaerung": "equals() vergleicht den Inhalt."
+  },
+  {
+   "key": "jg84",
+   "typ": "luecke",
+   "frage": "Ergänze, damit die Anzahl der Elemente ausgegeben wird.",
+   "code": "int[] z = {3, 1, 4, 1, 5};\nSystem.out.println(z.___);",
+   "antwort": "length",
+   "optionen": [
+    "length",
+    "length()",
+    "size()",
+    "count"
+   ],
+   "erwartet": "5",
+   "erklaerung": "Bei Arrays ist length ein Feld ohne Klammern. Bei Strings heißt es length(), bei Listen size()."
+  },
+  {
+   "key": "jg85",
+   "typ": "luecke",
+   "frage": "Ergänze das Schlüsselwort, das einen Wert zurückgibt.",
+   "code": "public class Main {\n    static int quadrat(int x) {\n        ___ x * x;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(quadrat(4));\n    }\n}",
+   "antwort": "return",
+   "optionen": [
+    "return",
+    "print",
+    "yield",
+    "break"
+   ],
+   "erwartet": "16",
+   "erklaerung": "return beendet die Methode und liefert den Wert.",
+   "rahmen": "voll"
+  },
+  {
+   "key": "jg86",
+   "typ": "luecke",
+   "frage": "Ergänze, um ein neues Objekt zu erzeugen.",
+   "code": "StringBuilder sb = ___ StringBuilder(\"Hi\");\nSystem.out.println(sb.reverse());",
+   "antwort": "new",
+   "optionen": [
+    "new",
+    "create",
+    "make",
+    "this"
+   ],
+   "erwartet": "iH",
+   "erklaerung": "Objekte erzeugt man mit new und dem Konstruktor."
+  },
+  {
+   "key": "jg87",
+   "typ": "luecke",
+   "frage": "Ergänze den logischen Operator: Beides muss stimmen.",
+   "code": "int alter = 17;\nboolean ausweis = false;\nSystem.out.println(alter >= 16 ___ ausweis);",
+   "antwort": "&&",
+   "optionen": [
+    "&&",
+    "||",
+    "!=",
+    "+"
+   ],
+   "erwartet": "false",
+   "erklaerung": "&& ist das logische UND: Nur wenn beide Seiten true sind, ist das Ergebnis true. Hier fehlt der Ausweis."
+  },
+  {
+   "key": "jg88",
+   "typ": "luecke",
+   "frage": "Ergänze, um eine Liste von Texten zu erstellen.",
+   "code": "java.util.List<___> namen = new java.util.ArrayList<>();\nnamen.add(\"Mia\");\nSystem.out.println(namen.get(0).length());",
+   "antwort": "String",
+   "optionen": [
+    "String",
+    "int",
+    "char",
+    "boolean"
+   ],
+   "erwartet": "3",
+   "erklaerung": "In spitzen Klammern steht der Typ der Elemente. Primitive Typen wie int sind hier nicht erlaubt."
+  },
+  {
+   "key": "jg89",
+   "typ": "luecke",
+   "frage": "Ergänze, damit nur gerade Zahlen ausgegeben werden.",
+   "code": "for (int i = 1; i <= 6; i++) {\n    if (i ___ 2 == 0) System.out.print(i);\n}",
+   "antwort": "%",
+   "optionen": [
+    "%",
+    "/",
+    "*",
+    "-"
+   ],
+   "erwartet": "246",
+   "erklaerung": "i % 2 == 0 heißt: Rest 0 beim Teilen durch 2, also gerade."
+  }
+ ]
+}

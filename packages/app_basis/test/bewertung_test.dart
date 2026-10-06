@@ -53,6 +53,6 @@ void main() {
   test('Mehr Apps zeigt die eigene App nicht', () {
     final andere = MehrAppsScreen.andereApps('com.snake10.druckkasse');
     expect(andere.any((a) => a.paketId == 'com.snake10.druckkasse'), isFalse);
-    expect(andere, isNotEmpty);
+    expect(andere.every((a) => a.veroeffentlicht), isTrue);
   });
 }

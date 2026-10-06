@@ -11,7 +11,6 @@ import '../daten/sicherung.dart';
 import '../dienste.dart';
 import '../l10n/l.dart';
 import '../logik/typen.dart';
-import '../widgets/allgemein.dart';
 import '../widgets/format.dart';
 import 'uebersicht_screen.dart';
 import 'verkaufen_screen.dart';

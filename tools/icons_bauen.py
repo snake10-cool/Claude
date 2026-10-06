@@ -86,8 +86,28 @@ def druckkasse(d, skala):
     d.rounded_rectangle(l.box(405, 780, 545, 800), radius=l.r(10), fill=dunkel)
 
 
+def codekarten(d, skala):
+    """Zwei gestapelte Karteikarten mit </> darauf."""
+    l = Leinwand(d, skala)
+    violett = (76, 45, 190, 255)
+    hell = (220, 210, 255, 255)
+    # hintere Karte (leicht versetzt)
+    d.rounded_rectangle(l.box(290, 230, 790, 640), radius=l.r(48), fill=hell)
+    # vordere Karte
+    d.rounded_rectangle(l.box(230, 330, 730, 760), radius=l.r(48), fill=WEISS)
+    # </>
+    w = l.r(44)
+    d.line([*l.p(400, 450), *l.p(320, 545), *l.p(400, 640)], fill=violett, width=w, joint="curve")
+    d.line([*l.p(560, 450), *l.p(640, 545), *l.p(560, 640)], fill=violett, width=w, joint="curve")
+    d.line([*l.p(510, 430), *l.p(450, 660)], fill=violett, width=w)
+    for x, y in [(400, 450), (320, 545), (400, 640), (560, 450), (640, 545), (560, 640), (510, 430), (450, 660)]:
+        r = 22
+        d.ellipse(l.box(x - r, y - r, x + r, y + r), fill=violett)
+
+
 APPS = {
     "druckkasse": ((0xE8, 0x62, 0x2A, 255), druckkasse),
+    "codekarten": ((0x6C, 0x4D, 0xE6, 255), codekarten),
 }
 
 if __name__ == "__main__":

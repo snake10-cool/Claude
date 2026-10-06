@@ -1,0 +1,19 @@
+name: app_werbung
+description: "AdMob für alle Apps: Banner, Belohnungs-Video, Zwischenwerbung. Im Test nur Test-Anzeigen."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.13.5
+  flutter: ">=3.38.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_mobile_ads: ^9.1.0
+  shared_preferences: ^2.5.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0

@@ -11,5 +11,7 @@
   "kontakt": "Contact & feedback",
   "datenschutz": "Privacy",
   "ueberApp": "About {name}",
-  "version": "Version {nummer}"
+  "version": "Version {nummer}",
+  "abbrechen": "Cancel",
+  "loeschen": "Delete"
 }

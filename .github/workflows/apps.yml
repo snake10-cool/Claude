@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        paket: [app_basis, app_kauf]
+        paket: [app_basis, app_kauf, app_werbung]
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
@@ -63,6 +63,7 @@ jobs:
           - { ordner: austro_angler, datei: AustroAngler }
           - { ordner: lernapp, datei: Lernfuchs }
           - { ordner: druckkasse, datei: Druckkasse }
+          - { ordner: codekarten, datei: Codekarten }
     steps:
       - uses: actions/checkout@v4
 

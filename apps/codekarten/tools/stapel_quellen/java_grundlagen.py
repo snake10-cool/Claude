@@ -1,0 +1,93 @@
+from pathlib import Path
+import json
+K = []
+def b(key, frage, antwort, code=None, erkl=None):
+    K.append({"key": key, "typ": "begriff", "frage": frage, "antwort": antwort, **({"code": code} if code else {}), **({"erklaerung": erkl} if erkl else {})})
+def a(key, code, antwort, optionen, erkl, frage="Was gibt dieser Code aus?", rahmen=None):
+    K.append({"key": key, "typ": "ausgabe", "frage": frage, "code": code, "antwort": antwort, "optionen": optionen, "erklaerung": erkl, **({"rahmen": rahmen} if rahmen else {})})
+def l(key, frage, code, antwort, optionen, erwartet, erkl, rahmen=None):
+    K.append({"key": key, "typ": "luecke", "frage": frage, "code": code, "antwort": antwort, "optionen": optionen, "erwartet": erwartet, "erklaerung": erkl, **({"rahmen": rahmen} if rahmen else {})})
+
+# --- Begriffe
+b("jg01", "Was ist eine Variable?", "Ein benannter Speicherplatz für einen Wert. In Java hat jede Variable einen festen Typ.", "int alter = 17;")
+b("jg02", "Was ist der Unterschied zwischen int und double?", "int speichert ganze Zahlen, double Kommazahlen (mit Punkt geschrieben: 3.14).")
+b("jg03", "Was bedeutet „primitiver Datentyp“?", "Ein eingebauter Grundtyp, der direkt einen Wert speichert: int, double, boolean, char, long, byte, short, float.")
+b("jg04", "Wofür steht String in Java?", "Eine Zeichenkette (Text). String ist eine Klasse, kein primitiver Typ, und wird in doppelte Anführungszeichen geschrieben.", 'String name = "Jonas";')
+b("jg05", "Was macht System.out.println()?", "Gibt einen Wert auf der Konsole aus und springt danach in eine neue Zeile. print() springt nicht in eine neue Zeile.")
+b("jg06", "Was ist eine Methode?", "Ein benannter Codeblock, der eine Aufgabe erledigt. Er kann Parameter bekommen und einen Wert zurückgeben.", "static int doppelt(int x) {\n    return x * 2;\n}")
+b("jg07", "Was bedeutet void bei einer Methode?", "Die Methode gibt keinen Wert zurück.")
+b("jg08", "Was ist der Unterschied zwischen = und ==?", "= weist einen Wert zu, == vergleicht zwei Werte (bei Objekten: ob es dasselbe Objekt ist).")
+b("jg09", "Wie vergleicht man zwei Strings richtig?", "Mit equals(): a.equals(b). == prüft nur, ob es dasselbe Objekt ist.", 'if (eingabe.equals("ja")) { ... }')
+b("jg10", "Was ist ein Array?", "Eine Liste fester Länge mit Werten desselben Typs. Der erste Index ist 0.", "int[] zahlen = {4, 8, 15};")
+b("jg11", "Was ist eine Klasse?", "Ein Bauplan für Objekte: Sie legt fest, welche Eigenschaften (Felder) und Fähigkeiten (Methoden) die Objekte haben.")
+b("jg12", "Was ist ein Objekt?", "Ein konkretes Exemplar einer Klasse, erzeugt mit new.", "Hund bello = new Hund();")
+b("jg13", "Was ist ein Konstruktor?", "Eine spezielle Methode mit dem Namen der Klasse und ohne Rückgabetyp. Sie wird bei new aufgerufen und setzt die Startwerte.")
+b("jg14", "Was bedeutet static?", "Das Feld oder die Methode gehört zur Klasse selbst, nicht zu einem einzelnen Objekt. Man braucht kein Objekt, um sie aufzurufen.")
+b("jg15", "Was bedeutet private?", "Nur Code in derselben Klasse darf darauf zugreifen. So schützt man Daten vor ungewollten Änderungen (Kapselung).")
+b("jg16", "Was ist ein boolean?", "Ein Wahrheitswert: true oder false.")
+b("jg17", "Was macht der Operator %?", "Modulo: der Rest einer ganzzahligen Division. 7 % 3 ist 1.")
+b("jg18", "Was ist eine Schleife?", "Ein Codeblock, der mehrmals ausgeführt wird: for (fester Ablauf), while (solange Bedingung), do-while (mindestens einmal).")
+b("jg19", "Was macht break in einer Schleife?", "Beendet die Schleife sofort. continue springt dagegen nur zum nächsten Durchlauf.")
+b("jg20", "Was ist eine NullPointerException?", "Ein Fehler, wenn man auf eine Variable zugreift, die null ist (auf kein Objekt zeigt), z. B. name.length() bei name = null.")
+b("jg21", "Was ist der Unterschied zwischen Array und ArrayList?", "Ein Array hat eine feste Länge. Eine ArrayList wächst automatisch und hat Methoden wie add(), remove() und size().")
+b("jg22", "Was bedeutet Casting?", "Einen Wert in einen anderen Typ umwandeln, z. B. (int) 3.9 ergibt 3 (es wird abgeschnitten, nicht gerundet).")
+b("jg23", "Was ist ein char?", "Ein einzelnes Zeichen in einfachen Anführungszeichen: 'A'. Intern ist es eine Zahl (Unicode).")
+b("jg24", "Was macht die Methode main?", "Der Startpunkt jedes Java-Programms: public static void main(String[] args).")
+
+# --- Ausgabe
+a("jg30", "int x = 7;\nint y = 2;\nSystem.out.println(x / y);", "3", ["3", "3.5", "4", "3.0"], "Beide sind int, also ganzzahlige Division: Der Rest wird abgeschnitten.")
+a("jg31", "System.out.println(7 % 3);", "1", ["1", "2", "2.33", "0"], "7 geteilt durch 3 ist 2 Rest 1.")
+a("jg32", 'System.out.println("5" + 3);', "53", ["53", "8", "Fehler", "5 3"], "Ist ein Teil ein String, wird + zum Aneinanderhängen.")
+a("jg33", 'System.out.println(5 + 3 + "5");', "85", ["85", "535", "13", "Fehler"], "Von links nach rechts: zuerst 5 + 3 = 8, dann \"8\" + \"5\".")
+a("jg34", "double d = 7 / 2;\nSystem.out.println(d);", "3.0", ["3.0", "3.5", "3", "4.0"], "7 / 2 wird zuerst als int gerechnet (3), erst dann zu double umgewandelt.")
+a("jg35", "int i = 5;\ni++;\ni += 2;\nSystem.out.println(i);", "8", ["8", "7", "6", "5"], "i++ erhöht um 1, i += 2 um weitere 2.")
+a("jg36", "int a = 3;\nint b = a++;\nSystem.out.println(a + \" \" + b);", "4 3", ["4 3", "4 4", "3 3", "3 4"], "a++ liefert zuerst den alten Wert (3) und erhöht danach a.")
+a("jg37", "int summe = 0;\nfor (int i = 1; i <= 4; i++) {\n    summe += i;\n}\nSystem.out.println(summe);", "10", ["10", "6", "4", "15"], "1 + 2 + 3 + 4 = 10.")
+a("jg38", "for (int i = 0; i < 3; i++) {\n    System.out.print(i);\n}", "012", ["012", "123", "0123", "0 1 2"], "i läuft von 0 bis 2. print macht keinen Zeilenumbruch.")
+a("jg39", "int[] z = {4, 8, 15, 16};\nSystem.out.println(z[2]);", "15", ["15", "8", "16", "Fehler"], "Arrays beginnen bei Index 0: z[0]=4, z[1]=8, z[2]=15.")
+a("jg40", "int[] z = {4, 8, 15};\nSystem.out.println(z.length);", "3", ["3", "2", "15", "27"], "length ist die Anzahl der Elemente.")
+a("jg41", 'String s = "Java";\nSystem.out.println(s.length());', "4", ["4", "3", "5", "Fehler"], "length() zählt die Zeichen.")
+a("jg42", 'String s = "Hallo";\nSystem.out.println(s.charAt(1));', "a", ["a", "H", "l", "Fehler"], "charAt zählt ab 0: H=0, a=1.")
+a("jg43", 'String s = "Programmieren";\nSystem.out.println(s.substring(3, 7));', "gram", ["gram", "gramm", "ogra", "ramm"], "substring(3, 7) nimmt die Zeichen 3 bis 6 (Ende ausgeschlossen).")
+a("jg44", 'System.out.println("abc".toUpperCase());', "ABC", ["ABC", "abc", "Abc", "Fehler"], "toUpperCase() wandelt in Großbuchstaben um.")
+a("jg45", "int x = 10;\nif (x > 5) {\n    System.out.println(\"groß\");\n} else {\n    System.out.println(\"klein\");\n}", "groß", ["groß", "klein", "groß klein", "nichts"], "10 > 5 ist true, also wird der if-Zweig ausgeführt.")
+a("jg46", "boolean a = true;\nboolean b = false;\nSystem.out.println(a && !b);", "true", ["true", "false", "1", "Fehler"], "!b ist true, true && true ergibt true.")
+a("jg47", "System.out.println(3 > 2 || 1 / 0 > 0);", "true", ["true", "false", "ArithmeticException", "Fehler beim Kompilieren"], "|| wertet von links aus und hört bei true auf (Kurzschluss). 1 / 0 wird nie berechnet.")
+a("jg48", "int i = 0;\nwhile (i < 10) {\n    i += 3;\n}\nSystem.out.println(i);", "12", ["12", "9", "10", "3"], "i: 0, 3, 6, 9, 12. Bei 12 ist die Bedingung falsch.")
+a("jg49", "int i = 10;\ndo {\n    i++;\n} while (i < 5);\nSystem.out.println(i);", "11", ["11", "10", "5", "Fehler"], "do-while läuft immer mindestens einmal.")
+a("jg50", "System.out.println((int) 9.99);", "9", ["9", "10", "9.99", "Fehler"], "Beim Umwandeln zu int werden die Nachkommastellen abgeschnitten.")
+a("jg51", "System.out.println(Math.max(3, 8) + Math.abs(-2));", "10", ["10", "6", "11", "8"], "max(3, 8) = 8, abs(-2) = 2.")
+a("jg52", "int x = 5;\nString t = x % 2 == 0 ? \"gerade\" : \"ungerade\";\nSystem.out.println(t);", "ungerade", ["ungerade", "gerade", "1", "true"], "Der ?:-Operator: Bedingung ? wennWahr : wennFalsch. 5 % 2 ist 1.")
+a("jg53", "for (int i = 0; i < 5; i++) {\n    if (i == 3) break;\n    System.out.print(i);\n}", "012", ["012", "0123", "01234", "0124"], "Bei i == 3 bricht break die Schleife ab.")
+a("jg54", "for (int i = 0; i < 5; i++) {\n    if (i == 2) continue;\n    System.out.print(i);\n}", "0134", ["0134", "01", "01234", "234"], "continue überspringt nur den Durchlauf mit i == 2.")
+a("jg55", "String a = \"Hi\";\nString b = a;\nb = b + \"!\";\nSystem.out.println(a);", "Hi", ["Hi", "Hi!", "null", "Fehler"], "Strings sind unveränderlich. b + \"!\" erzeugt einen neuen String, a bleibt \"Hi\".")
+a("jg56", "int[] z = {1, 2, 3};\nint[] k = z;\nk[0] = 99;\nSystem.out.println(z[0]);", "99", ["99", "1", "0", "Fehler"], "k und z zeigen auf dasselbe Array. Eine Änderung über k sieht man auch über z.")
+a("jg57", "char c = 'A';\nc++;\nSystem.out.println(c);", "B", ["B", "A1", "66", "Fehler"], "char ist intern eine Zahl. A + 1 ist B.")
+a("jg58", "int x = 3;\nswitch (x) {\n    case 1 -> System.out.println(\"eins\");\n    case 3 -> System.out.println(\"drei\");\n    default -> System.out.println(\"anders\");\n}", "drei", ["drei", "drei\nanders", "anders", "eins"], "Beim switch mit Pfeil (->) gibt es kein Durchfallen in den nächsten Fall.")
+a("jg59", "StringBuilder sb = new StringBuilder();\nfor (int i = 3; i > 0; i--) {\n    sb.append(i);\n}\nSystem.out.println(sb);", "321", ["321", "123", "3210", "6"], "Die Schleife zählt rückwärts von 3 bis 1.")
+a("jg60", "var liste = new java.util.ArrayList<String>();\nliste.add(\"a\");\nliste.add(\"b\");\nliste.add(0, \"c\");\nSystem.out.println(liste);", "[c, a, b]", ["[c, a, b]", "[a, b, c]", "[a, c, b]", "[c, b]"], "add(0, x) fügt vorne ein und schiebt den Rest nach hinten.")
+a("jg61", "public class Main {\n    static int doppelt(int x) {\n        return x * 2;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(doppelt(doppelt(3)));\n    }\n}", "12", ["12", "6", "9", "3"], "Innen zuerst: doppelt(3) = 6, dann doppelt(6) = 12.", rahmen="voll")
+a("jg62", "public class Main {\n    static void aendern(int x) {\n        x = 100;\n    }\n\n    public static void main(String[] args) {\n        int a = 5;\n        aendern(a);\n        System.out.println(a);\n    }\n}", "5", ["5", "100", "0", "Fehler"], "Primitive Werte werden als Kopie übergeben. Die Methode ändert nur ihre Kopie.", rahmen="voll")
+a("jg63", "public class Main {\n    static class Zaehler {\n        int stand = 0;\n        void plus() { stand++; }\n    }\n\n    public static void main(String[] args) {\n        Zaehler z = new Zaehler();\n        z.plus();\n        z.plus();\n        System.out.println(z.stand);\n    }\n}", "2", ["2", "0", "1", "Fehler"], "Jedes plus() erhöht das Feld stand des Objekts.", rahmen="voll")
+a("jg64", "System.out.println(10 - 2 * 3);", "4", ["4", "24", "6", "-4"], "Punkt vor Strich: 2 * 3 = 6, dann 10 - 6.")
+a("jg65", "System.out.println(0.1 + 0.2 == 0.3);", "false", ["false", "true", "0.3", "Fehler"], "Kommazahlen sind binär nicht exakt: 0.1 + 0.2 ergibt 0.30000000000000004.")
+a("jg66", "String s = null;\nSystem.out.println(\"Wert: \" + s);", "Wert: null", ["Wert: null", "Wert: ", "NullPointerException", "Fehler beim Kompilieren"], "Beim Aneinanderhängen wird null als Text \"null\" geschrieben. Erst ein Methodenaufruf wie s.length() würde abstürzen.")
+
+# --- Lücken
+l("jg80", "Ergänze, damit Hallo in einer eigenen Zeile ausgegeben wird.", 'System.out.___("Hallo");\nSystem.out.print("!");', "println", ["println", "print", "printf", "write"], "Hallo\n!", "println hängt einen Zeilenumbruch an, print nicht.")
+l("jg81", "Ergänze den Typ für eine Kommazahl.", "___ preis = 2.5;\nSystem.out.println(preis * 2);", "double", ["double", "int", "String", "char"], "5.0", "double speichert Kommazahlen. int würde einen Fehler beim Kompilieren geben.")
+l("jg82", "Ergänze, damit 1 bis 5 ausgegeben wird.", "for (int i = 1; i ___ 5; i++) {\n    System.out.print(i);\n}", "<=", ["<=", "<", "==", ">"], "12345", "Mit <= ist die 5 noch dabei.")
+l("jg83", "Ergänze den Vergleich für Strings.", 'String a = "ja";\nString b = new String("ja");\nSystem.out.println(a.___(b));', "equals", ["equals", "compareTo", "hashCode", "toString"], "true", "equals() vergleicht den Inhalt.")
+l("jg84", "Ergänze, damit die Anzahl der Elemente ausgegeben wird.", "int[] z = {3, 1, 4, 1, 5};\nSystem.out.println(z.___);", "length", ["length", "length()", "size()", "count"], "5", "Bei Arrays ist length ein Feld ohne Klammern. Bei Strings heißt es length(), bei Listen size().")
+l("jg85", "Ergänze das Schlüsselwort, das einen Wert zurückgibt.", "public class Main {\n    static int quadrat(int x) {\n        ___ x * x;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(quadrat(4));\n    }\n}", "return", ["return", "print", "yield", "break"], "16", "return beendet die Methode und liefert den Wert.", rahmen="voll")
+l("jg86", "Ergänze, um ein neues Objekt zu erzeugen.", 'StringBuilder sb = ___ StringBuilder("Hi");\nSystem.out.println(sb.reverse());', "new", ["new", "create", "make", "this"], "iH", "Objekte erzeugt man mit new und dem Konstruktor.")
+l("jg87", "Ergänze den logischen Operator: Beides muss stimmen.", "int alter = 17;\nboolean ausweis = false;\nSystem.out.println(alter >= 16 ___ ausweis);", "&&", ["&&", "||", "!=", "+"], "false", "&& ist das logische UND: Nur wenn beide Seiten true sind, ist das Ergebnis true. Hier fehlt der Ausweis.")
+l("jg88", "Ergänze, um eine Liste von Texten zu erstellen.", "java.util.List<___> namen = new java.util.ArrayList<>();\nnamen.add(\"Mia\");\nSystem.out.println(namen.get(0).length());", "String", ["String", "int", "char", "boolean"], "3", "In spitzen Klammern steht der Typ der Elemente. Primitive Typen wie int sind hier nicht erlaubt.")
+l("jg89", "Ergänze, damit nur gerade Zahlen ausgegeben werden.", "for (int i = 1; i <= 6; i++) {\n    if (i ___ 2 == 0) System.out.print(i);\n}", "%", ["%", "/", "*", "-"], "246", "i % 2 == 0 heißt: Rest 0 beim Teilen durch 2, also gerade.")
+
+json.dump({
+  "id": "java_grundlagen", "name": "Java Grundlagen", "sprache": "java", "stufe": "Grundlagen",
+  "beschreibung": "Variablen, Datentypen, Operatoren, Schleifen, Strings, Arrays, Methoden und erste Klassen.",
+  "produkt": None, "karten": K,
+}, open(Path(__file__).resolve().parents[2] / "assets" / "stapel" / "java_grundlagen.json", "w"), ensure_ascii=False, indent=1)
+print(len(K), "Karten")

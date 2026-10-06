@@ -11,7 +11,21 @@
   "kontakt": "Kontakt & Feedback",
   "datenschutz": "Datenschutz",
   "ueberApp": "Über {name}",
-  "@ueberApp": {"placeholders": {"name": {"type": "String"}}},
+  "@ueberApp": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "version": "Version {nummer}",
-  "@version": {"placeholders": {"nummer": {"type": "String"}}}
+  "@version": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "abbrechen": "Abbrechen",
+  "loeschen": "Löschen"
 }

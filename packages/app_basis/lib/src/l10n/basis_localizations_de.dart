@@ -49,4 +49,10 @@ class BasisLocalizationsDe extends BasisLocalizations {
   String version(String nummer) {
     return 'Version $nummer';
   }
+
+  @override
+  String get abbrechen => 'Abbrechen';
+
+  @override
+  String get loeschen => 'Löschen';
 }

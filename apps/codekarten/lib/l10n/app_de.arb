@@ -1,0 +1,229 @@
+{
+  "@@locale": "de",
+  "tabLernen": "Lernen",
+  "tabStapel": "Stapel",
+  "tabSnippets": "Snippets",
+  "tabMehr": "Mehr",
+  "abbrechen": "Abbrechen",
+  "speichern": "Speichern",
+  "loeschen": "Löschen",
+  "bearbeiten": "Bearbeiten",
+  "fertig": "Fertig",
+  "name": "Name",
+  "notiz": "Notiz",
+  "titel": "Titel",
+  "sprache": "Sprache",
+  "code": "Code",
+  "codeOptional": "Code (optional)",
+  "frage": "Frage",
+  "antwort": "Antwort",
+  "pflichtfeld": "Bitte ausfüllen",
+  "app": "App",
+  "einstellungen": "Einstellungen",
+  "statistik": "Statistik",
+  "lernen": "Lernen",
+  "kopieren": "Kopieren",
+  "kopiert": "Kopiert",
+  "codeKopieren": "Code kopieren",
+  "leeren": "Leeren",
+  "heuteTitel": "Heute",
+  "tagesziel": "Tagesziel",
+  "zielGeschafft": "Tagesziel geschafft! 🎉",
+  "streakTage": "{anzahl, plural, =1{1 Tag am Stück} other{{anzahl} Tage am Stück}}",
+  "@streakTage": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "streakStarten": "Lerne heute dein Tagesziel und starte eine Serie.",
+  "jetztLernen": "Jetzt lernen · {faellig} fällig, {neu} neu",
+  "@jetztLernen": {
+    "placeholders": {
+      "faellig": {
+        "type": "int"
+      },
+      "neu": {
+        "type": "int"
+      }
+    }
+  },
+  "allesErledigt": "Alles erledigt für heute",
+  "allesErledigtText": "Morgen sind wieder Karten fällig. Oder schalte weitere Stapel frei.",
+  "deineStapel": "Deine Stapel",
+  "alleStapel": "Alle Stapel",
+  "keineAktivenStapel": "Kein Stapel ausgewählt. Wähle unter „Stapel“ aus, was du lernen willst.",
+  "karteVon": "Karte {nr} von {gesamt}",
+  "@karteVon": {
+    "placeholders": {
+      "nr": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "alsSnippet": "Als Snippet speichern",
+  "alsSnippetGespeichert": "Als Snippet gespeichert",
+  "neu": "Neu",
+  "gleich": "gleich",
+  "tageKurz": "{tage} T",
+  "@tageKurz": {
+    "placeholders": {
+      "tage": {
+        "type": "int"
+      }
+    }
+  },
+  "antwortZeigen": "Antwort zeigen",
+  "nochmal": "Nochmal",
+  "schwer": "Schwer",
+  "gut": "Gut",
+  "leicht": "Leicht",
+  "waehleAntwort": "Wähle eine Antwort.",
+  "zuLeicht": "Zu leicht",
+  "richtigWeiter": "Richtig! Weiter",
+  "falschWeiter": "Weiter (kommt nochmal)",
+  "nichtsZuLernen": "Gerade ist nichts fällig.",
+  "rundeFertig": "Runde geschafft!",
+  "rundeErgebnis": "{gesamt} Karten, {richtig} davon gewusst.",
+  "@rundeErgebnis": {
+    "placeholders": {
+      "gesamt": {
+        "type": "int"
+      },
+      "richtig": {
+        "type": "int"
+      }
+    }
+  },
+  "fertigeStapel": "Fertige Stapel",
+  "eigeneStapel": "Eigene Stapel",
+  "eigeneStapelLeer": "Leg eigene Stapel an oder speichere Snippets als Lernkarten.",
+  "eigenerStapel": "Eigener Stapel",
+  "stapelBearbeiten": "Stapel bearbeiten",
+  "stapelBeispiel": "z. B. Mein Java-Kurs",
+  "stapelZahlen": "{anzahl} Karten · {gelernt} angefangen · {gefestigt} gefestigt",
+  "@stapelZahlen": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      },
+      "gelernt": {
+        "type": "int"
+      },
+      "gefestigt": {
+        "type": "int"
+      }
+    }
+  },
+  "karten": "Karten",
+  "neuMehrzahl": "Neu",
+  "faellig": "Fällig",
+  "gefestigt": "Gefestigt",
+  "stapelLernen": "Diesen Stapel lernen",
+  "freiBis": "Per Video freigeschaltet bis {zeit}",
+  "@freiBis": {
+    "placeholders": {
+      "zeit": {
+        "type": "String"
+      }
+    }
+  },
+  "inHeuteLernen": "In „Heute“ lernen",
+  "inHeuteLernenText": "Fällige Karten dieses Stapels kommen in die tägliche Runde.",
+  "kartenAnsehen": "Alle Karten ansehen",
+  "vorschau": "Vorschau ansehen",
+  "fortschrittZuruecksetzen": "Fortschritt zurücksetzen",
+  "fortschrittZuruecksetzenText": "Alle Karten dieses Stapels gelten wieder als neu.",
+  "zuruecksetzen": "Zurücksetzen",
+  "stapelLoeschen": "Stapel löschen",
+  "stapelLoeschenText": "Der Stapel und alle seine Karten werden gelöscht.",
+  "stapelGesperrt": "Dieser Stapel ist ein Zusatzpaket.",
+  "kaufenNichtVerfuegbar": "Kaufen (gerade nicht verfügbar)",
+  "paketKaufen": "Für immer freischalten · {preis}",
+  "@paketKaufen": {
+    "placeholders": {
+      "preis": {
+        "type": "String"
+      }
+    }
+  },
+  "videoFreischalten": "Video ansehen: 24 Stunden gratis",
+  "allesAbo": "Oder alle Stapel mit dem Abo",
+  "freigeschaltet24": "Freigeschaltet für 24 Stunden. Viel Spaß!",
+  "videoNichtVerfuegbar": "Gerade ist kein Video verfügbar. Versuch es später nochmal.",
+  "karteHinzufuegen": "Karte hinzufügen",
+  "karteBearbeiten": "Karte bearbeiten",
+  "keineKarten": "Noch keine Karten",
+  "keineKartenText": "Füge deine erste Karte hinzu.",
+  "mehrNachFreischalten": "Weitere Karten nach dem Freischalten.",
+  "karteLoeschen": "Karte löschen?",
+  "karteLoeschenText": "Die Karte und ihr Lernstand werden gelöscht.",
+  "typBegriff": "Begriff",
+  "typAusgabe": "Ausgabe",
+  "typLuecke": "Lücke",
+  "wasGibtAus": "Was gibt dieser Code aus?",
+  "lueckeHilfe": "Schreib ___ (drei Unterstriche) an die Stelle der Lücke.",
+  "lueckeFehlt": "Im Code fehlt die Lücke ___",
+  "richtigeAntwort": "Richtige Antwort",
+  "falscheAntwort": "Falsche Antwort {nr}",
+  "@falscheAntwort": {
+    "placeholders": {
+      "nr": {
+        "type": "int"
+      }
+    }
+  },
+  "mindestensEineFalsche": "Mindestens eine falsche Antwort",
+  "erklaerungOptional": "Erklärung (optional)",
+  "snippetsSuchen": "Snippets durchsuchen",
+  "neuesSnippet": "Neues Snippet",
+  "keineSnippets": "Noch keine Snippets",
+  "keineSnippetsText": "Speichere Code, den du dir merken willst. Beim Lernen geht das mit einem Tipp auf das Lesezeichen.",
+  "nichtsGefunden": "Nichts gefunden.",
+  "favorit": "Favorit",
+  "alsLernkarte": "Als Lernkarte",
+  "snippetLoeschen": "Snippet löschen?",
+  "snippetBearbeiten": "Snippet bearbeiten",
+  "snippetTitelBeispiel": "z. B. Liste sortieren",
+  "tags": "Tags",
+  "tagsHilfe": "Mit Komma trennen, z. B. listen, sortieren",
+  "stapelMeineSnippets": "Meine Snippets",
+  "wasMachtDieserCode": "Was macht dieser Code?",
+  "alsKarteGespeichert": "Als Lernkarte im Stapel „Meine Snippets“ gespeichert",
+  "proTitel": "Codekarten Alles",
+  "proKurz": "Alle Stapel, alle neuen Stapel, ohne Werbung",
+  "proVorteilAlle": "Alle Stapel: Java Profi, Python, Dart, JavaScript",
+  "proVorteilNeue": "Alle neuen Stapel, sobald sie erscheinen",
+  "proVorteilWerbefrei": "Keine Werbung",
+  "proVorteilUnterstuetzen": "Du unterstützt die Weiterentwicklung",
+  "aktuelleSerie": "Aktuelle Serie",
+  "laengsteSerie": "Längste Serie",
+  "wiederholungen": "Wiederholungen",
+  "trefferquote": "Trefferquote",
+  "kartenGelernt": "Karten angefangen",
+  "kartenGefestigt": "Karten gefestigt (21+ Tage)",
+  "letzte30Tage": "Letzte 30 Tage",
+  "diagrammHilfe": "Kräftige Balken: Tagesziel erreicht.",
+  "kartenProTag": "{anzahl} Karten pro Tag",
+  "@kartenProTag": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "neueProTag": "Neue Karten pro Tag",
+  "neueProTagText": "Bis zu {anzahl} neue Karten am Tag (der Rest sind Wiederholungen)",
+  "@neueProTagText": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "werbeEinwilligung": "Einwilligung für Werbung ändern"
+}

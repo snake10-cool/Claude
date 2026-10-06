@@ -169,6 +169,18 @@ abstract class BasisLocalizations {
   /// In de, this message translates to:
   /// **'Version {nummer}'**
   String version(String nummer);
+
+  /// No description provided for @abbrechen.
+  ///
+  /// In de, this message translates to:
+  /// **'Abbrechen'**
+  String get abbrechen;
+
+  /// No description provided for @loeschen.
+  ///
+  /// In de, this message translates to:
+  /// **'Löschen'**
+  String get loeschen;
 }
 
 class _BasisLocalizationsDelegate

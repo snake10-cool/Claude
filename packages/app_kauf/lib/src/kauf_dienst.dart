@@ -24,22 +24,32 @@ bool proFreigeschaltet({
 /// der [proIds] besitzt, hat Pro. Der Status wird lokal gespeichert, damit
 /// die App auch ohne Internet weiß, dass Pro gekauft ist.
 class KaufDienst extends ChangeNotifier {
-  KaufDienst({required this.proIds, required this.kaufPflicht});
+  KaufDienst({
+    required this.proIds,
+    this.einzelIds = const {},
+    required this.kaufPflicht,
+  });
 
-  /// Produkt-IDs aus der Play Console, die Pro freischalten.
+  /// Produkt-IDs aus der Play Console, die Pro (alles) freischalten.
   final Set<String> proIds;
+
+  /// Einzelne Einmalkäufe, z. B. ein Kartenpaket oder „Werbefrei“.
+  final Set<String> einzelIds;
+
+  Set<String> get _alleIds => {...proIds, ...einzelIds};
 
   /// `false` = alles frei (Entwicklung, geschlossener Test vor dem Start).
   final bool kaufPflicht;
 
-  static const _speicher = 'kauf_pro_gekauft';
+  static const _speicher = 'kauf_besitz';
 
   // Erst bei Bedarf holen: InAppPurchase.instance verbindet sich sofort mit
   // Google Play (und gibt es auf Windows gar nicht).
   InAppPurchase get _iap => InAppPurchase.instance;
   StreamSubscription<List<PurchaseDetails>>? _kaeufe;
 
-  bool _gekauft = false;
+  /// Alle gekauften Produkt-IDs (lokal gemerkt).
+  Set<String> _besitz = {};
   bool verfuegbar = false;
   bool laedt = false;
   String? fehler;
@@ -49,17 +59,33 @@ class KaufDienst extends ChangeNotifier {
       !kIsWeb && defaultTargetPlatform == TargetPlatform.android;
 
   bool get istPro => proFreigeschaltet(
-        kaufPflicht: kaufPflicht,
-        plattformMitKauf: plattformMitKauf,
-        gekauft: _gekauft,
-      );
+    kaufPflicht: kaufPflicht,
+    plattformMitKauf: plattformMitKauf,
+    gekauft: gekauft,
+  );
 
   /// Wurde Pro wirklich gekauft (nicht nur „alles frei“)?
-  bool get gekauft => _gekauft;
+  bool get gekauft => _besitz.any(proIds.contains);
+
+  /// Ist dieses Einzelprodukt freigeschaltet (gekauft, Pro, oder alles frei)?
+  bool hat(String produktId) =>
+      istPro ||
+      proFreigeschaltet(
+        kaufPflicht: kaufPflicht,
+        plattformMitKauf: plattformMitKauf,
+        gekauft: _besitz.contains(produktId),
+      );
+
+  /// Wurde dieses Produkt wirklich gekauft?
+  bool besitzt(String produktId) => _besitz.contains(produktId);
+
+  /// Preis eines Produkts aus Google Play, z. B. „2,99 €“.
+  ProductDetails? produkt(String id) =>
+      produkte.where((p) => p.id == id).firstOrNull;
 
   Future<void> starten() async {
     final prefs = await SharedPreferences.getInstance();
-    _gekauft = prefs.getBool(_speicher) ?? false;
+    _besitz = (prefs.getStringList(_speicher) ?? const []).toSet();
     notifyListeners();
     if (!plattformMitKauf || _kaeufe != null) return;
     try {
@@ -72,7 +98,7 @@ class KaufDienst extends ChangeNotifier {
           notifyListeners();
         },
       );
-      final antwort = await _iap.queryProductDetails(proIds);
+      final antwort = await _iap.queryProductDetails(_alleIds);
       produkte = [...antwort.productDetails]
         ..sort((a, b) => a.rawPrice.compareTo(b.rawPrice));
       await _bestandPruefen();
@@ -85,29 +111,31 @@ class KaufDienst extends ChangeNotifier {
   /// Fragt Google Play, was der Nutzer gerade besitzt. Abgelaufene Abos
   /// tauchen hier nicht mehr auf – dann wird Pro wieder gesperrt.
   Future<void> _bestandPruefen() async {
-    final android =
-        _iap.getPlatformAddition<InAppPurchaseAndroidPlatformAddition>();
+    final android = _iap
+        .getPlatformAddition<InAppPurchaseAndroidPlatformAddition>();
     final antwort = await android.queryPastPurchases();
     if (antwort.error != null) return; // Lieber alten Stand behalten.
-    final besitzt = antwort.pastPurchases.any((k) =>
-        proIds.contains(k.productID) &&
-        k.status == PurchaseStatus.purchased);
-    await _speichern(besitzt);
+    await _speichern({
+      for (final k in antwort.pastPurchases)
+        if (_alleIds.contains(k.productID) &&
+            k.status == PurchaseStatus.purchased)
+          k.productID,
+    });
   }
 
-  Future<void> _speichern(bool gekauft) async {
-    _gekauft = gekauft;
+  Future<void> _speichern(Set<String> besitz) async {
+    _besitz = besitz;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_speicher, gekauft);
+    await prefs.setStringList(_speicher, besitz.toList());
   }
 
   Future<void> _kaeufeVerarbeiten(List<PurchaseDetails> liste) async {
     for (final k in liste) {
-      if (!proIds.contains(k.productID)) continue;
+      if (!_alleIds.contains(k.productID)) continue;
       switch (k.status) {
         case PurchaseStatus.purchased:
         case PurchaseStatus.restored:
-          await _speichern(true);
+          await _speichern({..._besitz, k.productID});
           fehler = null;
         case PurchaseStatus.error:
           fehler = k.error?.message ?? 'Kauf fehlgeschlagen';

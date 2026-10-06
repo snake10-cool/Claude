@@ -1,9 +1,9 @@
+import 'package:app_basis/app_basis.dart';
 import 'package:flutter/material.dart';
 
 import '../daten/datenbank.dart';
 import '../l10n/l.dart';
 import '../logik/typen.dart';
-import '../widgets/allgemein.dart';
 import '../widgets/format.dart';
 import 'auftrag_bearbeiten_screen.dart';
 

@@ -2,7 +2,11 @@
 App-Name (Android + Windows), Signierung mit dem Upload-Schlüssel aus
 GitHub-Secrets, minSdk 23.
 
-Aufruf:  python3 tools/app_einrichten.py <ordner> "<Anzeigename>" [--desugaring]
+Aufruf:  python3 tools/app_einrichten.py <ordner> "<Anzeigename>" [--desugaring] [--admob]
+
+--admob trägt die Test-App-ID von Google AdMob ins Manifest ein (ohne
+App-ID stürzt eine App mit google_mobile_ads beim Start ab). Beim
+Play-Store-Start durch die echte App-ID ersetzen.
 """
 import re
 import sys
@@ -14,11 +18,22 @@ WURZEL = Path(__file__).resolve().parent.parent
 def main():
     ordner, name = sys.argv[1], sys.argv[2]
     desugaring = "--desugaring" in sys.argv
+    admob = "--admob" in sys.argv
     app = WURZEL / "apps" / ordner
 
     manifest = app / "android/app/src/main/AndroidManifest.xml"
     text = manifest.read_text()
     text = re.sub(r'android:label="[^"]*"', f'android:label="{name}"', text, count=1)
+    if admob and "APPLICATION_ID" not in text:
+        text = text.replace(
+            "        <activity",
+            """        <!-- AdMob: Test-App-ID von Google. Beim Start durch die echte ersetzen. -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+        <activity""",
+            1,
+        )
     manifest.write_text(text)
 
     gradle = app / "android/app/build.gradle.kts"

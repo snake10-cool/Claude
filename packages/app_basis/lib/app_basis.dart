@@ -2,6 +2,7 @@
 library;
 
 export 'src/app_info.dart';
+export 'src/bausteine.dart';
 export 'src/bewertung.dart';
 export 'src/design.dart';
 export 'src/design_modus.dart';

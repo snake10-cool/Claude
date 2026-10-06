@@ -1,0 +1,545 @@
+{
+ "id": "javascript_grundlagen",
+ "name": "JavaScript Grundlagen",
+ "sprache": "javascript",
+ "stufe": "Grundlagen",
+ "beschreibung": "Variablen, Vergleiche, Arrays, Objekte, Funktionen, Destructuring, Klassen und async/await.",
+ "produkt": "paket_javascript",
+ "karten": [
+  {
+   "key": "js01",
+   "typ": "begriff",
+   "frage": "Was ist der Unterschied zwischen let, const und var?",
+   "antwort": "let: veränderbar, gilt im Block. const: keine neue Zuweisung, gilt im Block. var: alt, gilt in der ganzen Funktion. Heute nimmt man let und const."
+  },
+  {
+   "key": "js02",
+   "typ": "begriff",
+   "frage": "Was ist der Unterschied zwischen == und ===?",
+   "antwort": "=== vergleicht Wert und Typ (\"5\" === 5 ist false). == wandelt vorher um (\"5\" == 5 ist true). Fast immer === benutzen."
+  },
+  {
+   "key": "js03",
+   "typ": "begriff",
+   "frage": "Was ist undefined und was ist null?",
+   "antwort": "undefined: Es wurde nie ein Wert gesetzt. null: bewusst „kein Wert“."
+  },
+  {
+   "key": "js04",
+   "typ": "begriff",
+   "frage": "Was ist eine Arrow Function?",
+   "antwort": "Eine kurze Funktionsschreibweise: (x) => x * 2. Sie hat kein eigenes this."
+  },
+  {
+   "key": "js05",
+   "typ": "begriff",
+   "frage": "Was ist ein Template-String?",
+   "antwort": "Ein String in Backticks, in den man mit ${…} Ausdrücke einsetzt.",
+   "code": "`Hallo ${name}!`"
+  },
+  {
+   "key": "js06",
+   "typ": "begriff",
+   "frage": "Was ist ein Objekt in JavaScript?",
+   "antwort": "Eine Sammlung von Schlüssel-Wert-Paaren in geschweiften Klammern.",
+   "code": "const hund = { name: \"Rex\", alter: 3 };"
+  },
+  {
+   "key": "js07",
+   "typ": "begriff",
+   "frage": "Was ist ein Promise?",
+   "antwort": "Ein Platzhalter für einen Wert, der später kommt (z. B. aus dem Netz). Mit await oder .then() kommt man an den Wert."
+  },
+  {
+   "key": "js08",
+   "typ": "begriff",
+   "frage": "Was macht async/await?",
+   "antwort": "Eine async-Funktion gibt immer ein Promise zurück. Darin wartet await auf ein Promise, ohne die Seite zu blockieren."
+  },
+  {
+   "key": "js09",
+   "typ": "begriff",
+   "frage": "Was ist das DOM?",
+   "antwort": "Die Baumstruktur der Webseite, die JavaScript lesen und ändern kann, z. B. mit document.querySelector()."
+  },
+  {
+   "key": "js10",
+   "typ": "begriff",
+   "frage": "Was ist Destructuring?",
+   "antwort": "Werte aus Objekten oder Arrays direkt in Variablen holen.",
+   "code": "const { name, alter } = hund;\nconst [erstes, zweites] = liste;"
+  },
+  {
+   "key": "js11",
+   "typ": "begriff",
+   "frage": "Was ist der Spread-Operator ...?",
+   "antwort": "Verteilt die Elemente eines Arrays oder Objekts: [...a, ...b] oder { ...alt, name: \"neu\" }."
+  },
+  {
+   "key": "js12",
+   "typ": "begriff",
+   "frage": "Was ist „truthy“ und „falsy“?",
+   "antwort": "Falsy sind false, 0, \"\", null, undefined und NaN. Alles andere gilt in Bedingungen als wahr (truthy), auch \"0\" und []."
+  },
+  {
+   "key": "js13",
+   "typ": "begriff",
+   "frage": "Was macht JSON.stringify bzw. JSON.parse?",
+   "antwort": "stringify wandelt ein Objekt in einen JSON-Text um, parse macht aus dem Text wieder ein Objekt."
+  },
+  {
+   "key": "js30",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "console.log(\"5\" + 3);\nconsole.log(\"5\" - 3);",
+   "antwort": "53\n2",
+   "optionen": [
+    "53\n2",
+    "8\n2",
+    "53\n53",
+    "8\n-2"
+   ],
+   "erklaerung": "+ mit einem String hängt an. - gibt es für Strings nicht, also wird \"5\" in eine Zahl umgewandelt."
+  },
+  {
+   "key": "js31",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "console.log(\"5\" == 5, \"5\" === 5);",
+   "antwort": "true false",
+   "optionen": [
+    "true false",
+    "true true",
+    "false false",
+    "false true"
+   ],
+   "erklaerung": "== wandelt um, === nicht."
+  },
+  {
+   "key": "js32",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "console.log(typeof 42, typeof \"42\", typeof null);",
+   "antwort": "number string object",
+   "optionen": [
+    "number string object",
+    "number string null",
+    "int string null",
+    "number number object"
+   ],
+   "erklaerung": "typeof null ist \"object\": ein alter Fehler in JavaScript, der nie behoben wurde."
+  },
+  {
+   "key": "js33",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "console.log(0.1 + 0.2 === 0.3);",
+   "antwort": "false",
+   "optionen": [
+    "false",
+    "true",
+    "0.3",
+    "NaN"
+   ],
+   "erklaerung": "Kommazahlen sind binär nicht exakt: 0.1 + 0.2 ist 0.30000000000000004."
+  },
+  {
+   "key": "js34",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const z = [1, 2, 3, 4];\nconsole.log(z.filter(x => x % 2 === 0).map(x => x * 10));",
+   "antwort": "[ 20, 40 ]",
+   "optionen": [
+    "[ 20, 40 ]",
+    "[ 10, 30 ]",
+    "[ 2, 4 ]",
+    "60"
+   ],
+   "erklaerung": "filter behält gerade Zahlen, map multipliziert. Node schreibt Arrays mit Leerzeichen in den Klammern."
+  },
+  {
+   "key": "js35",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const z = [1, 2, 3, 4];\nconsole.log(z.reduce((summe, x) => summe + x, 0));",
+   "antwort": "10",
+   "optionen": [
+    "10",
+    "1234",
+    "[1, 2, 3, 4]",
+    "0"
+   ],
+   "erklaerung": "reduce sammelt alle Elemente zu einem Wert, hier die Summe."
+  },
+  {
+   "key": "js36",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const z = [10, 1, 5];\nz.sort();\nconsole.log(z.join(\",\"));",
+   "antwort": "1,10,5",
+   "optionen": [
+    "1,10,5",
+    "1,5,10",
+    "10,5,1",
+    "10,1,5"
+   ],
+   "erklaerung": "sort() ohne Vergleichsfunktion sortiert als Text: \"10\" kommt vor \"5\". Richtig: z.sort((a, b) => a - b)."
+  },
+  {
+   "key": "js37",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const name = \"Lea\";\nconsole.log(`Hallo ${name}, ${2 + 3} Punkte`);",
+   "antwort": "Hallo Lea, 5 Punkte",
+   "optionen": [
+    "Hallo Lea, 5 Punkte",
+    "Hallo ${name}, ${2 + 3} Punkte",
+    "Hallo Lea, 2 + 3 Punkte",
+    "Fehler"
+   ],
+   "erklaerung": "In Backticks werden ${…}-Ausdrücke ausgewertet."
+  },
+  {
+   "key": "js38",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const hund = { name: \"Rex\", alter: 3 };\nconst { name, alter } = hund;\nconsole.log(name, alter + 1);",
+   "antwort": "Rex 4",
+   "optionen": [
+    "Rex 4",
+    "Rex 3",
+    "undefined undefined",
+    "Fehler"
+   ],
+   "erklaerung": "Destructuring holt die Eigenschaften in gleichnamige Variablen."
+  },
+  {
+   "key": "js39",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const a = { x: 1, y: 2 };\nconst b = { ...a, y: 5 };\nconsole.log(a.y, b.y);",
+   "antwort": "2 5",
+   "optionen": [
+    "2 5",
+    "5 5",
+    "2 2",
+    "Fehler"
+   ],
+   "erklaerung": "Spread kopiert a in ein neues Objekt, danach wird y überschrieben. a bleibt gleich."
+  },
+  {
+   "key": "js40",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const liste = [1, 2];\nconst kopie = liste;\nkopie.push(3);\nconsole.log(liste.length);",
+   "antwort": "3",
+   "optionen": [
+    "3",
+    "2",
+    "Fehler",
+    "undefined"
+   ],
+   "erklaerung": "kopie ist keine Kopie, sondern derselbe Array. Für eine echte Kopie: [...liste]."
+  },
+  {
+   "key": "js41",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const x = [];\nx.push(1);\nconsole.log(x);",
+   "antwort": "[ 1 ]",
+   "optionen": [
+    "[ 1 ]",
+    "TypeError",
+    "[]",
+    "1"
+   ],
+   "erklaerung": "const verbietet nur eine neue Zuweisung. Den Array selbst darf man verändern."
+  },
+  {
+   "key": "js42",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "let n;\nconsole.log(n, n ?? \"leer\");",
+   "antwort": "undefined leer",
+   "optionen": [
+    "undefined leer",
+    "null leer",
+    "undefined undefined",
+    "Fehler"
+   ],
+   "erklaerung": "Ohne Wert ist n undefined. ?? liefert dann den rechten Wert."
+  },
+  {
+   "key": "js43",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "console.log(0 || \"standard\", 0 ?? \"standard\");",
+   "antwort": "standard 0",
+   "optionen": [
+    "standard 0",
+    "0 0",
+    "standard standard",
+    "0 standard"
+   ],
+   "erklaerung": "|| nimmt den rechten Wert bei jedem falsy-Wert (auch 0), ?? nur bei null und undefined."
+  },
+  {
+   "key": "js44",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const user = {};\nconsole.log(user.adresse?.ort);",
+   "antwort": "undefined",
+   "optionen": [
+    "undefined",
+    "TypeError",
+    "null",
+    "\"\""
+   ],
+   "erklaerung": "?. bricht ab, wenn adresse fehlt, statt einen Fehler zu werfen."
+  },
+  {
+   "key": "js45",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "for (let i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 0);\n}",
+   "antwort": "0\n1\n2",
+   "optionen": [
+    "0\n1\n2",
+    "3\n3\n3",
+    "2\n1\n0",
+    "0"
+   ],
+   "erklaerung": "let erzeugt pro Durchlauf eine eigene Variable i. Mit var käme dreimal 3."
+  },
+  {
+   "key": "js46",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "console.log(\"A\");\nsetTimeout(() => console.log(\"B\"), 0);\nPromise.resolve().then(() => console.log(\"C\"));\nconsole.log(\"D\");",
+   "antwort": "A\nD\nC\nB",
+   "optionen": [
+    "A\nD\nC\nB",
+    "A\nB\nC\nD",
+    "A\nD\nB\nC",
+    "A\nC\nD\nB"
+   ],
+   "erklaerung": "Erst der normale Code (A, D), dann Promises (C), dann Timer (B)."
+  },
+  {
+   "key": "js47",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "async function laden() {\n  return 42;\n}\nladen().then(x => console.log(x + 1));",
+   "antwort": "43",
+   "optionen": [
+    "43",
+    "42",
+    "Promise { 42 }",
+    "undefined"
+   ],
+   "erklaerung": "Eine async-Funktion liefert ein Promise, then bekommt den Wert."
+  },
+  {
+   "key": "js48",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "function f(a, b = 10) {\n  return a + b;\n}\nconsole.log(f(5), f(5, 1));",
+   "antwort": "15 6",
+   "optionen": [
+    "15 6",
+    "5 6",
+    "NaN 6",
+    "15 15"
+   ],
+   "erklaerung": "b hat einen Standardwert, wenn es nicht übergeben wird."
+  },
+  {
+   "key": "js49",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const quadrat = x => x * x;\nconsole.log([1, 2, 3].map(quadrat));",
+   "antwort": "[ 1, 4, 9 ]",
+   "optionen": [
+    "[ 1, 4, 9 ]",
+    "[ 2, 4, 6 ]",
+    "14",
+    "[ 1, 2, 3 ]"
+   ],
+   "erklaerung": "map ruft quadrat für jedes Element auf."
+  },
+  {
+   "key": "js50",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "console.log([1, 2, 3].includes(2), \"Hallo\".includes(\"all\"));",
+   "antwort": "true true",
+   "optionen": [
+    "true true",
+    "true false",
+    "false true",
+    "1 1"
+   ],
+   "erklaerung": "includes gibt es bei Arrays und Strings."
+  },
+  {
+   "key": "js51",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "console.log(Number(\"12px\"), parseInt(\"12px\"));",
+   "antwort": "NaN 12",
+   "optionen": [
+    "NaN 12",
+    "12 12",
+    "NaN NaN",
+    "12 NaN"
+   ],
+   "erklaerung": "Number braucht einen reinen Zahl-Text, parseInt liest so weit wie möglich."
+  },
+  {
+   "key": "js52",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "const p = { name: \"Mia\", alter: 16 };\nconsole.log(Object.keys(p).length, JSON.stringify(p));",
+   "antwort": "2 {\"name\":\"Mia\",\"alter\":16}",
+   "optionen": [
+    "2 {\"name\":\"Mia\",\"alter\":16}",
+    "2 {name: \"Mia\", alter: 16}",
+    "2 [object Object]",
+    "16 {\"name\":\"Mia\"}"
+   ],
+   "erklaerung": "Object.keys liefert die Schlüssel, JSON.stringify den JSON-Text ohne Leerzeichen."
+  },
+  {
+   "key": "js53",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "class Tier {\n  constructor(name) { this.name = name; }\n  laut() { return \"...\"; }\n}\nclass Katze extends Tier {\n  laut() { return `${this.name}: Miau`; }\n}\nconsole.log(new Katze(\"Luna\").laut());",
+   "antwort": "Luna: Miau",
+   "optionen": [
+    "Luna: Miau",
+    "...",
+    "undefined: Miau",
+    "Fehler"
+   ],
+   "erklaerung": "Katze übernimmt den Konstruktor von Tier und überschreibt laut()."
+  },
+  {
+   "key": "js54",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "console.log([...\"abc\"].reverse().join(\"\"));",
+   "antwort": "cba",
+   "optionen": [
+    "cba",
+    "abc",
+    "c,b,a",
+    "Fehler"
+   ],
+   "erklaerung": "[...\"abc\"] zerlegt den String in Buchstaben, reverse dreht um, join setzt zusammen."
+  },
+  {
+   "key": "js55",
+   "typ": "ausgabe",
+   "frage": "Was gibt dieser Code aus?",
+   "code": "console.log(Boolean(\"0\"), Boolean(\"\"), Boolean([]));",
+   "antwort": "true false true",
+   "optionen": [
+    "true false true",
+    "false false false",
+    "false false true",
+    "true false false"
+   ],
+   "erklaerung": "\"0\" und [] sind truthy, nur der leere String ist falsy."
+  },
+  {
+   "key": "js70",
+   "typ": "luecke",
+   "frage": "Ergänze, damit pi nicht neu zugewiesen werden kann.",
+   "code": "___ pi = 3.14;\ntry {\n  pi = 3;\n  console.log(\"geändert\");\n} catch (e) {\n  console.log(\"geschützt\");\n}",
+   "antwort": "const",
+   "optionen": [
+    "const",
+    "let",
+    "var",
+    "final"
+   ],
+   "erwartet": "geschützt",
+   "erklaerung": "Bei const wirft eine neue Zuweisung einen TypeError. Mit let oder var wäre pi geändert. final gibt es in JavaScript nicht."
+  },
+  {
+   "key": "js71",
+   "typ": "luecke",
+   "frage": "Ergänze den strengen Vergleich.",
+   "code": "console.log(5 ___ \"5\");",
+   "antwort": "===",
+   "optionen": [
+    "===",
+    "==",
+    "=",
+    "<="
+   ],
+   "erwartet": "false",
+   "erklaerung": "=== vergleicht auch den Typ: Zahl ist nicht gleich String."
+  },
+  {
+   "key": "js72",
+   "typ": "luecke",
+   "frage": "Ergänze die Methode, die ein neues Array mit umgewandelten Werten liefert.",
+   "code": "console.log([1, 2, 3].___(x => x + 1).join(\" \"));",
+   "antwort": "map",
+   "optionen": [
+    "map",
+    "forEach",
+    "filter",
+    "find"
+   ],
+   "erwartet": "2 3 4",
+   "erklaerung": "map liefert ein neues Array. forEach liefert undefined."
+  },
+  {
+   "key": "js73",
+   "typ": "luecke",
+   "frage": "Ergänze, um hinten ein Element anzufügen.",
+   "code": "const l = [\"a\"];\nl.___(\"b\");\nconsole.log(l.join(\"\"));",
+   "antwort": "push",
+   "optionen": [
+    "push",
+    "append",
+    "add",
+    "unshift"
+   ],
+   "erwartet": "ab",
+   "erklaerung": "In JavaScript heißt es push. unshift fügt vorne ein."
+  },
+  {
+   "key": "js74",
+   "typ": "luecke",
+   "frage": "Ergänze, um auf das Promise zu warten.",
+   "code": "async function start() {\n  const wert = ___ Promise.resolve(\"fertig\");\n  console.log(wert);\n}\nstart();",
+   "antwort": "await",
+   "optionen": [
+    "await",
+    "async",
+    "then",
+    "yield"
+   ],
+   "erwartet": "fertig",
+   "erklaerung": "await wartet auf das Promise und liefert seinen Wert."
+  },
+  {
+   "key": "js75",
+   "typ": "luecke",
+   "frage": "Ergänze die Anführungszeichen für einen Template-String.",
+   "code": "const n = 3;\nconsole.log(___${n} Äpfel___);",
+   "antwort": "`",
+   "optionen": [
+    "`",
+    "\"",
+    "'",
+    "´"
+   ],
+   "erwartet": "3 Äpfel",
+   "erklaerung": "Nur Backticks werten ${…} aus."
+  }
+ ]
+}

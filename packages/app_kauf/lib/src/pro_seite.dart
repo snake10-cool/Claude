@@ -65,8 +65,11 @@ class ProSeite extends StatelessWidget {
             else if (!dienst.gekauft) ...[
               if (dienst.produkte.isEmpty)
                 _Hinweis(
-                    text: dienst.verfuegbar ? l.keineProdukte : l.storeFehlt),
-              for (final p in dienst.produkte)
+                  text: dienst.verfuegbar ? l.keineProdukte : l.storeFehlt,
+                ),
+              for (final p in dienst.produkte.where(
+                (p) => dienst.proIds.contains(p.id),
+              ))
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: FilledButton(
@@ -83,9 +86,11 @@ class ProSeite extends StatelessWidget {
             if (dienst.fehler != null)
               Padding(
                 padding: const EdgeInsets.only(top: 12),
-                child: Text(dienst.fehler!,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: farben.error)),
+                child: Text(
+                  dienst.fehler!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: farben.error),
+                ),
               ),
             const SizedBox(height: 8),
             if (KaufDienst.plattformMitKauf)
@@ -106,10 +111,10 @@ class _Hinweis extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Card(
-        color: Theme.of(context).colorScheme.secondaryContainer,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Text(text, textAlign: TextAlign.center),
-        ),
-      );
+    color: Theme.of(context).colorScheme.secondaryContainer,
+    child: Padding(
+      padding: const EdgeInsets.all(16),
+      child: Text(text, textAlign: TextAlign.center),
+    ),
+  );
 }
