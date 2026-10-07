@@ -62,6 +62,7 @@ class _HeimatScreenState extends State<HeimatScreen> {
               expandedInsets: EdgeInsets.zero,
               initialSelection: _land,
               label: const Text('Bundesland'),
+              menuHeight: 460,
               dropdownMenuEntries: [
                 for (final b in Bundesland.values)
                   DropdownMenuEntry(value: b, label: b.name),

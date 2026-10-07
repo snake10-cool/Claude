@@ -197,12 +197,28 @@ class AlleGewaesser extends ChangeNotifier {
   Gewaesser? zuName(String name) => _nachName[name.trim().toLowerCase()];
 
   /// Für Eingabefelder: passende Gewässer, geprüfte zuerst.
-  Iterable<Gewaesser> suchen(String text, {int max = 30}) {
+  /// Ohne Text: die größten Gewässer im gewählten Bezirk bzw. Bundesland.
+  /// Mit Text: Treffer im gewählten Bundesland zuerst, dann ganz Österreich.
+  Iterable<Gewaesser> suchen(String text,
+      {int max = 30, Bundesland? land, String bezirk = ''}) {
     final t = text.trim().toLowerCase();
-    if (t.isEmpty) return gewaesserListe;
-    return liste
-        .where((g) => g.anzeigeName.toLowerCase().contains(t))
-        .take(max);
+    bool imGebiet(Gewaesser g) =>
+        (land == null || g.land == land) &&
+        (bezirk.isEmpty || g.bezirk == bezirk);
+    if (t.isEmpty) {
+      final nah = liste.where(imGebiet).toList()
+        ..sort((a, b) {
+          if (a.ausOsm != b.ausOsm) return a.ausOsm ? 1 : -1;
+          return (b.groesse ?? 0).compareTo(a.groesse ?? 0);
+        });
+      return nah.take(max);
+    }
+    final treffer =
+        liste.where((g) => g.anzeigeName.toLowerCase().contains(t)).toList();
+    final hier = treffer.where(imGebiet);
+    final land2 = treffer.where((g) => !imGebiet(g) && g.land == land);
+    final rest = treffer.where((g) => !imGebiet(g) && g.land != land);
+    return [...hier, ...land2, ...rest].take(max);
   }
 }
 

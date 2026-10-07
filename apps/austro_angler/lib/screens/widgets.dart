@@ -31,6 +31,7 @@ class BundeslandWahl extends StatelessWidget {
       key: ValueKey(speicher.bundesland),
       initialSelection: speicher.bundesland,
       label: const Text('Bundesland'),
+      menuHeight: 460,
       leadingIcon: const Icon(Icons.place_outlined),
       expandedInsets: EdgeInsets.zero,
       dropdownMenuEntries: [
@@ -246,7 +247,9 @@ class GewaesserFeld extends StatelessWidget {
     return Autocomplete<Gewaesser>(
       initialValue: TextEditingValue(text: anfang),
       displayStringForOption: (g) => g.anzeigeName,
-      optionsBuilder: (v) => alleGewaesser.suchen(v.text),
+      optionsBuilder: (v) => alleGewaesser.suchen(v.text,
+          land: SpeicherScope.of(context).bundesland,
+          bezirk: SpeicherScope.of(context).bezirk),
       optionsViewBuilder: (context, auswaehlen, optionen) => Align(
         alignment: Alignment.topLeft,
         child: Material(
