@@ -20,13 +20,16 @@ const _t = Bundesland.tirol;
 const _vbg = Bundesland.vbg;
 
 const _keine = Regel();
-const _unbekannt = Regel.unbekannt();
 
 /// Rechtsquellen der Schonzeiten und Brittelmaße (RIS, geltende Fassung).
 const schonzeitQuellen = <Bundesland, (String, String)>{
   _ooe: (
     'Oö. Fischereiverordnung, § 17 Abs. 1 (abschließende Liste heimischer Wassertiere, § 17 Abs. 4); Sonderregeln: Donau-, Attersee-, Mondsee-, Traunseefischereiordnung § 1 bzw. § 2',
     'https://ogd.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrOO&Gesetzesnummer=20001102',
+  ),
+  _sbg: (
+    'Salzburger Wassertier-Schonzeiten-Mindestlängen-Verordnung des Landesfischereiverbandes (Salzburgs Fischerei, Heft 4/2012) – nicht im RIS; Tabelle nach angel-urlaub.at, bisherige App-Werte stimmen überein',
+    'https://www.fischereiverband.at/node/147',
   ),
   _w: (
     'Verordnung der Wiener Landesregierung betreffend Schonzeiten und Mindestmaße der Fische sowie Krebse und Muscheltiere, §§ 1–2',
@@ -84,7 +87,7 @@ const fische = <Fisch>[
         von: Tag(1, 10),
         bis: Tag(28, 2),
         mindestmassCm: 25,
-        hinweis: 'Über 800 m Seehöhe gilt 22 cm.',
+        hinweis: 'Ab einer Seehöhe von 800 m, Mindestmaß: 22 cm',
       ),
       _w: Regel(von: Tag(1, 9), bis: Tag(15, 3), mindestmassCm: 26),
       _noe: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 25),
@@ -118,7 +121,7 @@ const fische = <Fisch>[
     eingeschleppt: true,
     regeln: {
       _ooe: Regel(von: Tag(1, 12), bis: Tag(15, 3), mindestmassCm: 22),
-      _sbg: _keine,
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(von: Tag(1, 1), bis: Tag(15, 3), mindestmassCm: 26),
       _noe: Regel(von: Tag(1, 1), bis: Tag(15, 3), mindestmassCm: 25),
       _bgld: Regel(von: Tag(1, 1), bis: Tag(15, 3), mindestmassCm: 25),
@@ -176,7 +179,7 @@ const fische = <Fisch>[
     eingeschleppt: true,
     regeln: {
       _ooe: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 22),
-      _sbg: _keine,
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 22),
       _noe: Regel(von: Tag(16, 9), bis: Tag(15, 3), mindestmassCm: 22),
       _bgld: Regel(hinweis: _fremd),
@@ -307,7 +310,7 @@ const fische = <Fisch>[
         mindestmassCm: 30,
         hinweis: 'Coregonus spp.; Donau: keine; Attersee 1.11.–31.1.; Mondsee 1.10.–15.2.; Traunsee Maräne 16.10., Reinanke 1.11.–15.12.',
       ),
-      _sbg: _unbekannt,
+      _sbg: Regel(von: Tag(1, 11), bis: Tag(31, 12), mindestmassCm: 33),
       _w: Regel(von: Tag(16, 10), bis: Tag(31, 12), mindestmassCm: 30),
       _noe: Regel(von: Tag(16, 10), bis: Tag(31, 12), mindestmassCm: 30),
       _bgld: _keine,
@@ -415,7 +418,7 @@ const fische = <Fisch>[
         mindestmassCm: 10,
         hinweis: 'Donau: 1.2.–31.5.; Mondsee/Traunsee: keine Schonzeit, kein Mindestmaß',
       ),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(von: Tag(1, 3), bis: Tag(31, 5)),
       _noe: Regel(von: Tag(1, 3), bis: Tag(31, 5)),
       _bgld: Regel(von: Tag(1, 3), bis: Tag(31, 5)),
@@ -572,7 +575,7 @@ const fische = <Fisch>[
         mindestmassCm: 25,
         hinweis: 'Attersee 15.5.–15.6.; Mondsee/Traunsee 16.5.–15.6., 30 cm',
       ),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(von: Tag(1, 5), bis: Tag(31, 5), mindestmassCm: 30),
       _noe: Regel(von: Tag(1, 5), bis: Tag(31, 5), mindestmassCm: 25),
       _bgld: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 25),
@@ -617,7 +620,7 @@ const fische = <Fisch>[
     koeder: 'Kaum gezielt befischt.',
     regeln: {
       _ooe: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 35),
-      _sbg: Regel.ganzjaehrig(),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 35),
       _noe: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 35),
       _bgld: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 35),
@@ -662,7 +665,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(von: Tag(16, 4), bis: Tag(31, 5), mindestmassCm: 45),
-      _sbg: Regel.ganzjaehrig(),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(von: Tag(16, 4), bis: Tag(31, 5), mindestmassCm: 40),
       _noe: Regel(von: Tag(16, 4), bis: Tag(31, 5), mindestmassCm: 40),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -683,7 +686,7 @@ const fische = <Fisch>[
     koeder: 'Made, Teig, Mais, Brot.',
     regeln: {
       _ooe: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 12),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(von: Tag(1, 4), bis: Tag(31, 5)),
       _noe: Regel(von: Tag(1, 4), bis: Tag(31, 5)),
       _bgld: Regel(von: Tag(1, 4), bis: Tag(31, 5)),
@@ -704,7 +707,7 @@ const fische = <Fisch>[
     koeder: 'Brot, Made – nahe der Oberfläche.',
     regeln: {
       _ooe: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 15),
-      _sbg: _unbekannt,
+      _sbg: Regel(von: Tag(16, 4), bis: Tag(30, 6), mindestmassCm: 15),
       _w: Regel(von: Tag(1, 4), bis: Tag(31, 5)),
       _noe: Regel(von: Tag(1, 4), bis: Tag(31, 5)),
       _bgld: Regel(von: Tag(1, 4), bis: Tag(31, 5)),
@@ -725,7 +728,7 @@ const fische = <Fisch>[
     koeder: 'Kleine Made an feiner Stippe.',
     regeln: {
       _ooe: Regel(von: Tag(1, 5), bis: Tag(30, 6), mindestmassCm: 10),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(von: Tag(1, 5), bis: Tag(30, 6)),
       _noe: Regel(von: Tag(16, 5), bis: Tag(30, 6)),
       _bgld: Regel(von: Tag(16, 5), bis: Tag(30, 6)),
@@ -744,7 +747,7 @@ const fische = <Fisch>[
     koeder: 'Made, kleine Nymphe.',
     regeln: {
       _ooe: Regel(von: Tag(16, 5), bis: Tag(30, 6), mindestmassCm: 20),
-      _sbg: _unbekannt,
+      _sbg: Regel(von: Tag(16, 5), bis: Tag(30, 6), mindestmassCm: 20),
       _w: _keine,
       _noe: _keine,
       _bgld: _keine,
@@ -763,7 +766,7 @@ const fische = <Fisch>[
     koeder: 'Wurm, Made, Teig.',
     regeln: {
       _ooe: Regel(von: Tag(1, 5), bis: Tag(31, 5), mindestmassCm: 25),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: _keine,
       _noe: _keine,
       _bgld: _keine,
@@ -782,7 +785,7 @@ const fische = <Fisch>[
     koeder: 'In OÖ ganzjährig geschont – nicht befischen.',
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: _unbekannt,
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(von: Tag(1, 5), bis: Tag(31, 5)),
       _noe: Regel(von: Tag(1, 5), bis: Tag(31, 5)),
       _bgld: Regel(von: Tag(1, 5), bis: Tag(31, 5)),
@@ -803,7 +806,7 @@ const fische = <Fisch>[
     koeder: 'Ganzjährig geschont – nicht befischen.',
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel.ganzjaehrig(),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -829,7 +832,7 @@ const fische = <Fisch>[
         bis: Tag(31, 5),
         hinweis: 'Mondsee/Traunsee: keine Schonzeit',
       ),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 10),
       _noe: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 10),
       _bgld: Regel(von: Tag(1, 3), bis: Tag(31, 5), mindestmassCm: 10),
@@ -853,7 +856,7 @@ const fische = <Fisch>[
       _ooe: Regel(
         hinweis: 'In § 17 Abs. 1 nicht angeführt (gilt als nicht heimisch, § 17 Abs. 4)',
       ),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: _keine,
       _noe: _keine,
       _bgld: _keine,
@@ -879,11 +882,7 @@ const fische = <Fisch>[
         mindestmassCm: 8,
         hinweis: 'Mondsee/Traunsee: ganzjährig geschont',
       ),
-      _sbg: Regel(
-        von: Tag(1, 3),
-        bis: Tag(31, 5),
-        hinweis: 'Mindestmaß bitte prüfen.',
-      ),
+      _sbg: Regel(von: Tag(1, 3), bis: Tag(31, 5)),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(von: Tag(1, 2), bis: Tag(30, 4)),
       _bgld: Regel(von: Tag(1, 2), bis: Tag(31, 5)),
@@ -912,7 +911,7 @@ const fische = <Fisch>[
       _sbg: Regel(
         von: Tag(1, 4),
         bis: Tag(30, 6),
-        hinweis: 'Mindestmaß bitte prüfen.',
+        hinweis: 'Ab einer Seehöhe von 1.000 m, Schonzeit: 01.04.-15.07.',
       ),
       _w: Regel(von: Tag(1, 4), bis: Tag(31, 5)),
       _noe: Regel(von: Tag(1, 4), bis: Tag(31, 5)),
@@ -934,7 +933,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(von: Tag(1, 5), bis: Tag(30, 6), mindestmassCm: 45),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -954,7 +953,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(hinweis: _geschuetzt),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(
         ganzjaehrigGeschont: true,
@@ -984,7 +983,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(
         ganzjaehrigGeschont: true,
@@ -1014,7 +1013,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1033,7 +1032,7 @@ const fische = <Fisch>[
     koeder: 'Made, Brot, kleine Fliegen.',
     regeln: {
       _ooe: Regel(von: Tag(16, 3), bis: Tag(31, 5), mindestmassCm: 20),
-      _sbg: _unbekannt,
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(von: Tag(16, 3), bis: Tag(31, 5)),
       _noe: Regel(von: Tag(16, 3), bis: Tag(31, 5)),
       _bgld: Regel(von: Tag(16, 3), bis: Tag(31, 5)),
@@ -1052,7 +1051,7 @@ const fische = <Fisch>[
     koeder: 'Made, Wurm, Mais, kleine Spinner.',
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: _unbekannt,
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(von: Tag(1, 5), bis: Tag(30, 6), mindestmassCm: 35),
       _noe: Regel(von: Tag(1, 5), bis: Tag(30, 6), mindestmassCm: 35),
       _bgld: Regel(
@@ -1077,7 +1076,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1096,7 +1095,7 @@ const fische = <Fisch>[
     koeder: 'Made, Wurm, Teig.',
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: _unbekannt,
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(von: Tag(15, 4), bis: Tag(31, 5), mindestmassCm: 25),
       _noe: Regel(von: Tag(15, 4), bis: Tag(31, 5), mindestmassCm: 25),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1115,7 +1114,7 @@ const fische = <Fisch>[
     koeder: 'Made, Wurm.',
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1134,7 +1133,7 @@ const fische = <Fisch>[
     koeder: 'Made, Wurm, Mais, Teig.',
     regeln: {
       _ooe: Regel(von: Tag(1, 5), bis: Tag(31, 5), mindestmassCm: 25),
-      _sbg: _unbekannt,
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(von: Tag(1, 5), bis: Tag(31, 5)),
       _noe: Regel(von: Tag(1, 5), bis: Tag(31, 5)),
       _bgld: Regel(von: Tag(1, 5), bis: Tag(31, 5)),
@@ -1153,7 +1152,7 @@ const fische = <Fisch>[
     koeder: 'Made, Wurm, Bachflohkrebs.',
     regeln: {
       _ooe: Regel(von: Tag(16, 4), bis: Tag(31, 5), mindestmassCm: 25),
-      _sbg: _unbekannt,
+      _sbg: Regel(von: Tag(16, 4), bis: Tag(15, 6), mindestmassCm: 25),
       _w: Regel(von: Tag(16, 4), bis: Tag(15, 6), mindestmassCm: 30),
       _noe: Regel(von: Tag(16, 4), bis: Tag(15, 6), mindestmassCm: 30),
       _bgld: Regel(von: Tag(16, 4), bis: Tag(30, 6), mindestmassCm: 30),
@@ -1173,7 +1172,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(hinweis: _geschuetzt),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1192,7 +1191,7 @@ const fische = <Fisch>[
     koeder: 'Kein Zielfisch.',
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: _unbekannt,
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1211,7 +1210,7 @@ const fische = <Fisch>[
     koeder: 'Kleiner Wurm, Made – oft als Köderfisch.',
     regeln: {
       _ooe: Regel(von: Tag(1, 5), bis: Tag(31, 5), mindestmassCm: 10),
-      _sbg: _unbekannt,
+      _sbg: Regel(von: Tag(1, 5), bis: Tag(31, 5)),
       _w: Regel(von: Tag(1, 5), bis: Tag(31, 5)),
       _noe: Regel(
         von: Tag(1, 5),
@@ -1235,7 +1234,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(hinweis: _geschuetzt),
       _w: Regel(von: Tag(15, 4), bis: Tag(15, 6)),
       _noe: Regel(
         von: Tag(15, 4),
@@ -1267,7 +1266,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(hinweis: _geschuetzt),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1295,7 +1294,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1320,7 +1319,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1339,7 +1338,7 @@ const fische = <Fisch>[
     koeder: 'Kein Zielfisch.',
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1360,7 +1359,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(hinweis: _geschuetzt),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1380,7 +1379,7 @@ const fische = <Fisch>[
     eingeschleppt: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -1400,7 +1399,7 @@ const fische = <Fisch>[
     eingeschleppt: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -1421,7 +1420,7 @@ const fische = <Fisch>[
     eingeschleppt: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -1442,7 +1441,7 @@ const fische = <Fisch>[
     eingeschleppt: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -1463,7 +1462,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -1484,7 +1483,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -1505,7 +1504,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -1525,7 +1524,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1545,7 +1544,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1565,7 +1564,7 @@ const fische = <Fisch>[
     geschuetzt: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(hinweis: _geschuetzt),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1589,7 +1588,7 @@ const fische = <Fisch>[
         mindestmassCm: 10,
         hinweis: 'Mondsee/Traunsee: ganzjährig geschont',
       ),
-      _sbg: _unbekannt,
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(von: Tag(1, 3), bis: Tag(31, 5)),
       _noe: Regel(von: Tag(1, 3), bis: Tag(31, 5)),
       _bgld: Regel(von: Tag(1, 3), bis: Tag(31, 5)),
@@ -1611,7 +1610,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1632,7 +1631,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(von: Tag(1, 3), bis: Tag(30, 4), mindestmassCm: 20),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(von: Tag(15, 3), bis: Tag(31, 5), mindestmassCm: 20),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1654,7 +1653,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(hinweis: _geschuetzt),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1675,7 +1674,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(ganzjaehrigGeschont: true),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(hinweis: _geschuetzt),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1700,7 +1699,7 @@ const fische = <Fisch>[
         mindestmassCm: 35,
         hinweis: 'Donau: Schonzeit 1.2.–31.5. (Donaufischereiordnung)',
       ),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 35),
       _noe: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 35),
       _bgld: Regel(von: Tag(1, 4), bis: Tag(31, 5), mindestmassCm: 35),
@@ -1721,7 +1720,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(hinweis: _geschuetzt),
-      _sbg: Regel(unbekannt: true, hinweis: _geschuetzt),
+      _sbg: Regel(hinweis: _geschuetzt),
       _w: Regel(ganzjaehrigGeschont: true),
       _noe: Regel(ganzjaehrigGeschont: true),
       _bgld: Regel(ganzjaehrigGeschont: true),
@@ -1741,7 +1740,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: _keine,
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(von: Tag(1, 5), bis: Tag(30, 6)),
       _noe: Regel(von: Tag(1, 5), bis: Tag(30, 6)),
       _bgld: _keine,
@@ -1763,7 +1762,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -1785,7 +1784,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -1806,7 +1805,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: _keine,
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: _keine,
       _noe: _keine,
       _bgld: _keine,
@@ -1827,7 +1826,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: _ausgestorben,
-      _sbg: _ausgestorben,
+      _sbg: Regel(ganzjaehrigGeschont: true),
       _w: _ausgestorben,
       _noe: _ausgestorben,
       _bgld: _ausgestorben,
@@ -1911,7 +1910,7 @@ const fische = <Fisch>[
         mindestmassCm: 30,
         hinweis: 'Über "Coregonus spp." in § 17 Abs. 1 erfasst; Seen-Sonderregeln wie Reinanke',
       ),
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(
         von: Tag(16, 10),
         bis: Tag(31, 12),
@@ -1956,7 +1955,7 @@ const fische = <Fisch>[
         mindestmassCm: 30,
         hinweis: 'Über "Coregonus spp." in § 17 Abs. 1 erfasst; Seen-Sonderregeln wie Reinanke',
       ),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(
         von: Tag(16, 10),
         bis: Tag(31, 12),
@@ -1998,7 +1997,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -2018,7 +2017,7 @@ const fische = <Fisch>[
     eingeschleppt: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -2040,7 +2039,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -2061,7 +2060,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: Regel(hinweis: _fremd),
-      _sbg: Regel(unbekannt: true, hinweis: _fremd),
+      _sbg: Regel(hinweis: _fremd),
       _w: Regel(hinweis: _fremd),
       _noe: Regel(hinweis: _fremd),
       _bgld: Regel(hinweis: _fremd),
@@ -2081,7 +2080,7 @@ const fische = <Fisch>[
     raubfisch: true,
     regeln: {
       _ooe: _keine,
-      _sbg: _unbekannt,
+      _sbg: _keine,
       _w: Regel(
         hinweis: '§ 1 nennt nur den Dreistachligen Stichling (Gasterosteus aculeatus).',
       ),

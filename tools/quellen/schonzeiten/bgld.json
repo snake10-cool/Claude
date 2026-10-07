@@ -1,0 +1,434 @@
+{
+  "quelle": "https://ogd.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrBgld&Gesetzesnummer=20001353",
+  "vorschrift": "Bgld. Fischereiwesenverordnung 2022 (LGBl. Nr. 6/2022 idF LGBl. Nr. 94/2024), § 4 Schonvorschriften, Brittelmaße (iVm § 30 Bgld. FischG 2022)",
+  "arten": {
+    "bachforelle": {
+      "von": "16.9.",
+      "bis": "15.3.",
+      "cm": 25,
+      "beleg": "5. | Bachforelle | 16.9. - 15.3. | 25"
+    },
+    "regenbogenforelle": {
+      "von": "1.1.",
+      "bis": "15.3.",
+      "cm": 25,
+      "beleg": "34. | Regenbogenforelle | 1.1. - 15.3. | 25"
+    },
+    "seeforelle": {
+      "keine": true
+    },
+    "bachsaibling": {
+      "keine": true
+    },
+    "seesaibling": {
+      "keine": true
+    },
+    "aesche": {
+      "von": "1.3.",
+      "bis": "30.4.",
+      "cm": 30,
+      "beleg": "4. | Äsche | 1.3. - 30.4. | 30"
+    },
+    "huchen": {
+      "ganzjaehrig": true,
+      "beleg": "20. | Huchen | ganzjährig | -"
+    },
+    "reinanke": {
+      "keine": true
+    },
+    "hecht": {
+      "von": "1.2.",
+      "bis": "30.4.",
+      "cm": 50,
+      "hinweis": "Neusiedlersee: Schonzeit 1.2. – 31.3. (§ 4 Abs. 2)",
+      "beleg": "19. | Hecht | 1.2. - 30.4. | 50 ; § 4 (2) Im Neusiedlersee ist jeder Fischfang mit Stell- und Zugnetzen vom 16. Februar bis 31. Mai untersagt. In diesem Gewässer wird die Schonzeit für Hechte für die Zeit vom 1. Februar bis 31. März und für Karpfen für die Zeit vom 1. bis 31. Mai festgesetzt."
+    },
+    "zander": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 35,
+      "beleg": "54. | Zander | 1.4. - 31.5. | 35"
+    },
+    "flussbarsch": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "beleg": "12. | Flussbarsch | 1.3. - 31.5. | -"
+    },
+    "wels": {
+      "von": "15.5.",
+      "bis": "15.6.",
+      "cm": 60,
+      "beleg": "52. | Wels | 15.5. – 15.6. | 60"
+    },
+    "aalrutte": {
+      "von": "1.12.",
+      "bis": "29.2.",
+      "cm": 35,
+      "beleg": "2. | Aalrutte | 1.12. - 29.2. | 35"
+    },
+    "karpfen": {
+      "von": "15.5.",
+      "bis": "30.6.",
+      "cm": 35,
+      "hinweis": "Neusiedlersee: Schonzeit 1.5. – 31.5. (§ 4 Abs. 2)",
+      "beleg": "23. | Karpfen | 15.5. - 30.6. | 35 ; § 4 (2) Im Neusiedlersee ist jeder Fischfang mit Stell- und Zugnetzen vom 16. Februar bis 31. Mai untersagt. In diesem Gewässer wird die Schonzeit für Hechte für die Zeit vom 1. Februar bis 31. März und für Karpfen für die Zeit vom 1. bis 31. Mai festgesetzt."
+    },
+    "schleie": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "cm": 25,
+      "beleg": "40. | Schleie | 1.5. - 30.6. | 25"
+    },
+    "brachse": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 25,
+      "beleg": "9. | Brachse | 1.4. - 31.5. | 25"
+    },
+    "barbe": {
+      "von": "1.5.",
+      "bis": "15.6.",
+      "cm": 30,
+      "beleg": "6. | Barbe | 1.5. - 15.6. | 30"
+    },
+    "nase": {
+      "von": "16.3.",
+      "bis": "31.5.",
+      "cm": 35,
+      "beleg": "30. | Nase | 16.3. - 31.5. | 35"
+    },
+    "aitel": {
+      "keine": true,
+      "beleg": "3. | Aitel | - | -"
+    },
+    "rapfen": {
+      "ganzjaehrig": true,
+      "beleg": "38. | Schied, Rapfen | ganzjährig | -"
+    },
+    "rotauge": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "beleg": "35. | Rotauge | 1.4. - 31.5. | -"
+    },
+    "rotfeder": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "beleg": "36. | Rotfeder | 1.4. - 31.5. | -"
+    },
+    "laube": {
+      "von": "16.5.",
+      "bis": "30.6.",
+      "beleg": "27. | Laube | 16.5. - 30.6. | -"
+    },
+    "seelaube": {
+      "keine": true
+    },
+    "giebel": {
+      "keine": true,
+      "beleg": "14. | Giebel | - | -"
+    },
+    "karausche": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "beleg": "22. | Karausche | 1.5. - 31.5. | -"
+    },
+    "perlfisch": {
+      "ganzjaehrig": true,
+      "beleg": "32. | Perlfisch | ganzjährig | -"
+    },
+    "kaulbarsch": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "cm": 10,
+      "beleg": "24. | Kaulbarsch | 1.3. - 31.5. | 10"
+    },
+    "aal": {
+      "keine": true,
+      "beleg": "1. | Aal | - | -"
+    },
+    "koppe": {
+      "von": "1.2.",
+      "bis": "31.5.",
+      "beleg": "26. | Koppe | 1.2. - 31.5. | -"
+    },
+    "elritze": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "beleg": "11. | Elritze | 1.4. - 31.5. | -"
+    },
+    "sterlet": {
+      "ganzjaehrig": true,
+      "beleg": "48. | Sterlet | ganzjährig | -"
+    },
+    "bachneunauge": {
+      "ganzjaehrig": true,
+      "beleg": "33. | Neunaugen | ganzjährig | -",
+      "hinweis": "Im Text als Sammelbegriff „Neunaugen“ ganzjährig geschont."
+    },
+    "ukr_bachneunauge": {
+      "ganzjaehrig": true,
+      "beleg": "33. | Neunaugen | ganzjährig | -",
+      "hinweis": "Im Text als Sammelbegriff „Neunaugen“ ganzjährig geschont."
+    },
+    "stroemer": {
+      "ganzjaehrig": true,
+      "beleg": "50. | Strömer | ganzjährig | -"
+    },
+    "hasel": {
+      "von": "16.3.",
+      "bis": "31.5.",
+      "beleg": "18. | Hasel | 16.3. - 31.5. | -"
+    },
+    "nerfling": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "cm": 35,
+      "beleg": "31. | Nerfling | 1.5. - 30.6 | 35",
+      "hinweis": "Im RIS-Text steht „1.5. - 30.6“ (Punkt fehlt)."
+    },
+    "frauennerfling": {
+      "ganzjaehrig": true,
+      "beleg": "13. | Frauennerfling | ganzjährig | -"
+    },
+    "zobel": {
+      "ganzjaehrig": true,
+      "beleg": "56. | Zobel | ganzjährig | -"
+    },
+    "zope": {
+      "ganzjaehrig": true,
+      "beleg": "57. | Zope | ganzjährig | -"
+    },
+    "guester": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "beleg": "17. | Güster | 1.5. - 31.5. | -"
+    },
+    "russnase": {
+      "von": "16.4.",
+      "bis": "30.6.",
+      "cm": 30,
+      "beleg": "37. | Rußnase, Zährte | 16.4. - 30.6. | 30"
+    },
+    "sichling": {
+      "ganzjaehrig": true,
+      "beleg": "45. | Sichling, Ziege | ganzjährig | -"
+    },
+    "schneider": {
+      "ganzjaehrig": true,
+      "beleg": "42. | Schneider | ganzjährig | -"
+    },
+    "gruendling": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "beleg": "16. | Gründling | 1.5. - 31.5. | -"
+    },
+    "weissflossengruendling": {
+      "von": "15.4.",
+      "bis": "15.6.",
+      "beleg": "51. | Weißflossengründling | 15.4. - 15.6. | -"
+    },
+    "kesslergruendling": {
+      "ganzjaehrig": true,
+      "beleg": "25. | Kessler-Gründling | ganzjährig | -"
+    },
+    "steingressling": {
+      "ganzjaehrig": true,
+      "beleg": "47. | Steingressling | ganzjährig | -"
+    },
+    "bitterling": {
+      "ganzjaehrig": true,
+      "beleg": "7. | Bitterling | ganzjährig | -"
+    },
+    "moderlieschen": {
+      "ganzjaehrig": true,
+      "beleg": "29. | Moderlieschen | ganzjährig | -"
+    },
+    "semling": {
+      "ganzjaehrig": true,
+      "beleg": "44. | Semling, Hundsbarbe | ganzjährig | -"
+    },
+    "graskarpfen": {
+      "keine": true
+    },
+    "silberkarpfen": {
+      "keine": true
+    },
+    "marmorkarpfen": {
+      "keine": true
+    },
+    "blaubandbaerbling": {
+      "keine": true,
+      "beleg": "8. | Blaubandbärbling | - | -"
+    },
+    "sonnenbarsch": {
+      "keine": true
+    },
+    "forellenbarsch": {
+      "keine": true
+    },
+    "zwergwels": {
+      "keine": true
+    },
+    "schlammpeitzger": {
+      "ganzjaehrig": true,
+      "beleg": "39. | Schlammpeitzger | ganzjährig | -"
+    },
+    "steinbeisser": {
+      "ganzjaehrig": true,
+      "beleg": "46. | Steinbeißer | ganzjährig | -"
+    },
+    "goldsteinbeisser": {
+      "ganzjaehrig": true,
+      "beleg": "15. | Goldsteinbeißer | ganzjährig | -"
+    },
+    "schmerle": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "beleg": "41. | Schmerle | 1.3. - 31.5. | -"
+    },
+    "streber": {
+      "ganzjaehrig": true,
+      "beleg": "49. | Streber | ganzjährig | -"
+    },
+    "zingel": {
+      "ganzjaehrig": true,
+      "beleg": "55. | Zingel | ganzjährig | -"
+    },
+    "schraetzer": {
+      "ganzjaehrig": true,
+      "beleg": "43. | Schrätzer | ganzjährig | -"
+    },
+    "donaukaulbarsch": {
+      "ganzjaehrig": true,
+      "beleg": "10. | Donaukaulbarsch | ganzjährig | -"
+    },
+    "wolgazander": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 35,
+      "beleg": "53. | Wolgazander | 1.4. - 31.5. | 35"
+    },
+    "hundsfisch": {
+      "ganzjaehrig": true,
+      "beleg": "21. | Hundsfisch | ganzjährig | -"
+    },
+    "stichling": {
+      "keine": true
+    },
+    "schwarzmundgrundel": {
+      "keine": true
+    },
+    "kesslergrundel": {
+      "keine": true
+    },
+    "marmorgrundel": {
+      "keine": true,
+      "beleg": "28. | Marmorgrundel | - | -"
+    },
+    "hausen": {
+      "keine": true
+    },
+    "waxdick": {
+      "keine": true
+    },
+    "glattdick": {
+      "keine": true
+    },
+    "sternhausen": {
+      "keine": true
+    },
+    "sandfelchen": {
+      "keine": true
+    },
+    "kleine_maraene": {
+      "keine": true
+    },
+    "namaycush": {
+      "keine": true
+    },
+    "goldfisch": {
+      "keine": true
+    },
+    "flussgrundel": {
+      "keine": true
+    },
+    "nackthalsgrundel": {
+      "keine": true
+    },
+    "neunstachler": {
+      "keine": true
+    }
+  },
+  "abweichungen": [
+    "seeforelle: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "bachsaibling: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "seesaibling: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "huchen: App 1.3.–30.6., 75 cm, Gesetz: ganzjährig geschont",
+    "reinanke: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "rapfen: App hat keinen Burgenland-Eintrag, Gesetz: ganzjährig geschont",
+    "rotauge: App hat keinen Burgenland-Eintrag, Gesetz: 1.4.–31.5., kein Brittelmaß",
+    "rotfeder: App hat keinen Burgenland-Eintrag, Gesetz: 1.4.–31.5., kein Brittelmaß",
+    "laube: App hat keinen Burgenland-Eintrag, Gesetz: 16.5.–30.6., kein Brittelmaß",
+    "seelaube: App hat keinen Burgenland-Eintrag, Gesetz: keine Schonzeit/kein Brittelmaß",
+    "giebel: App hat keinen Burgenland-Eintrag, Gesetz: keine Schonzeit/kein Brittelmaß",
+    "karausche: App hat keinen Burgenland-Eintrag, Gesetz: 1.5.–31.5., kein Brittelmaß",
+    "perlfisch: App hat keinen Burgenland-Eintrag, Gesetz: ganzjährig geschont",
+    "kaulbarsch: App hat keinen Burgenland-Eintrag, Gesetz: 1.3.–31.5., 10 cm",
+    "aal: App hat keinen Burgenland-Eintrag, Gesetz: keine Schonzeit/kein Brittelmaß",
+    "koppe: App hat keinen Burgenland-Eintrag, Gesetz: 1.2.–31.5., kein Brittelmaß",
+    "elritze: App hat keinen Burgenland-Eintrag, Gesetz: 1.4.–31.5., kein Brittelmaß",
+    "sterlet: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "bachneunauge: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "ukr_bachneunauge: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "stroemer: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "hasel: App 'unbekannt', Gesetz: 16.3.–31.5., kein Brittelmaß",
+    "nerfling: App 'unbekannt', Gesetz: 1.5.–30.6., 35 cm",
+    "frauennerfling: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "zobel: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "zope: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "guester: App 'unbekannt', Gesetz: 1.5.–31.5., kein Brittelmaß",
+    "russnase: App 'unbekannt', Gesetz: 16.4.–30.6., 30 cm",
+    "sichling: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "schneider: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "gruendling: App 'unbekannt', Gesetz: 1.5.–31.5., kein Brittelmaß",
+    "weissflossengruendling: App 'unbekannt', Gesetz: 15.4.–15.6., kein Brittelmaß",
+    "kesslergruendling: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "steingressling: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "bitterling: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "moderlieschen: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "semling: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "graskarpfen: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "silberkarpfen: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "marmorkarpfen: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "blaubandbaerbling: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "sonnenbarsch: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "forellenbarsch: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "zwergwels: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "schlammpeitzger: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "steinbeisser: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "goldsteinbeisser: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "schmerle: App 'unbekannt', Gesetz: 1.3.–31.5., kein Brittelmaß",
+    "streber: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "zingel: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "schraetzer: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "donaukaulbarsch: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "wolgazander: App 'unbekannt', Gesetz: 1.4.–31.5., 35 cm",
+    "hundsfisch: App 'unbekannt', Gesetz: ganzjährig geschont",
+    "stichling: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "schwarzmundgrundel: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "kesslergrundel: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "marmorgrundel: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "hausen: App 'ganzjährig (ausgestorben)', Gesetz nennt die Art nicht (keine Regel)",
+    "waxdick: App 'ganzjährig (ausgestorben)', Gesetz nennt die Art nicht (keine Regel)",
+    "glattdick: App 'ganzjährig (ausgestorben)', Gesetz nennt die Art nicht (keine Regel)",
+    "sternhausen: App 'ganzjährig (ausgestorben)', Gesetz nennt die Art nicht (keine Regel)",
+    "sandfelchen: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "kleine_maraene: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "namaycush: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "goldfisch: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "flussgrundel: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "nackthalsgrundel: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "neunstachler: App 'unbekannt', Gesetz: keine Schonzeit/kein Brittelmaß",
+    "zander: App-Hinweis 'Neusiedler See: 1.4. – 30.4. und 45 cm' ist in der Verordnung nicht belegt (§ 4 Abs. 2 nennt nur Hecht und Karpfen)"
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "quelle": "https://ogd.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrVbg&Gesetzesnummer=20000572",
+  "vorschrift": "Fischereiverordnung (Vorarlberg), § 14 Schonzeiten und Mindestmaße (Fassung LGBl.Nr. 65/2025); Bodensee: Bodenseefischereiverordnung § 21",
+  "arten": {
+    "bachforelle": {
+      "von": "1.10.",
+      "bis": "28.2.",
+      "cm": 22,
+      "hinweis": "Stehende Gew.: 1.11.–28.2., 25 cm (über 1.500 m 22 cm); Alpenrhein: 1.10.–31.1., 25 cm.",
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Bachforelle | 01.10. bis 28.02. | 22 cm"
+    },
+    "regenbogenforelle": {
+      "von": "1.10.",
+      "bis": "28.2.",
+      "hinweis": "Stehende Gewässer: keine Schonzeit, aber 25 cm; Alpenrhein: 1.10.–31.1.",
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Regenbogenforelle | 01.10. bis 28.02. | -"
+    },
+    "seeforelle": {
+      "von": "1.10.",
+      "bis": "28.2.",
+      "cm": 60,
+      "hinweis": "Alpenrhein: 15.7.–31.1., 60 cm. Bodensee: eigene Regeln (Bodenseefischereiverordnung § 21).",
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Seeforelle | 01.10. bis 28.02. | 60 cm"
+    },
+    "bachsaibling": {
+      "keine": true
+    },
+    "seesaibling": {
+      "von": "1.11.",
+      "bis": "31.12.",
+      "hinweis": "Stehende Gewässer: 1.10.–31.1., 25 cm (über 1.500 m Seehöhe 22 cm).",
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Seesaibling | 01.11 bis 31.12 | -"
+    },
+    "aesche": {
+      "von": "1.2.",
+      "bis": "30.4.",
+      "cm": 35,
+      "hinweis": "Gilt für fließende Gewässer.",
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Äsche | 01.02. bis 30.04. | 35 cm"
+    },
+    "huchen": {
+      "keine": true
+    },
+    "reinanke": {
+      "keine": true,
+      "hinweis": "Alpenrhein: Felchen ganzjährig geschont. Bodensee: eigene Regeln (Bodenseefischereiverordnung § 21).",
+      "beleg": "§ 14 Abs. 2 (Alpenrhein): Felchen | ganzjährig | -"
+    },
+    "hecht": {
+      "von": "1.4.",
+      "bis": "30.4.",
+      "cm": 40,
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Hecht | 01.04. bis 30.04. | 40 cm"
+    },
+    "zander": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 40,
+      "hinweis": "Gilt nur für stehende Gewässer.",
+      "beleg": "§ 14 Abs. 3 (stehende Gewässer): Zander | 01.04. bis 31.05. | 40 cm"
+    },
+    "flussbarsch": {
+      "von": "1.4.",
+      "bis": "20.5.",
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Barsch | 01.04. bis 20.05. | -"
+    },
+    "wels": {
+      "keine": true
+    },
+    "aalrutte": {
+      "von": "15.12.",
+      "bis": "15.3.",
+      "cm": 35,
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Trüsche | 15.12. bis 15.03. | 35 cm"
+    },
+    "karpfen": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "cm": 35,
+      "hinweis": "Gilt nur für stehende Gewässer.",
+      "beleg": "§ 14 Abs. 3 (stehende Gewässer): Karpfen | 01.05. bis 31.05. | 35 cm"
+    },
+    "schleie": {
+      "von": "1.5.",
+      "bis": "15.6.",
+      "cm": 25,
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Schleie | 01.05. bis 15.06. | 25 cm"
+    },
+    "brachse": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "cm": 25,
+      "hinweis": "Gilt nur für stehende Gewässer.",
+      "beleg": "§ 14 Abs. 3 (stehende Gewässer): Brachse | 01.05. bis 31.05. | 25 cm"
+    },
+    "barbe": {
+      "von": "1.5.",
+      "bis": "15.6.",
+      "cm": 40,
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Barbe | 01.05. bis 15.06. | 40 cm"
+    },
+    "nase": {
+      "von": "15.3.",
+      "bis": "31.5.",
+      "cm": 40,
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Nase | 15.03. bis 31.05. | 40 cm"
+    },
+    "aitel": {
+      "keine": true
+    },
+    "rapfen": {
+      "keine": true
+    },
+    "rotauge": {
+      "keine": true
+    },
+    "rotfeder": {
+      "keine": true
+    },
+    "laube": {
+      "keine": true
+    },
+    "seelaube": {
+      "keine": true
+    },
+    "giebel": {
+      "keine": true
+    },
+    "karausche": {
+      "keine": true
+    },
+    "perlfisch": {
+      "keine": true
+    },
+    "kaulbarsch": {
+      "keine": true
+    },
+    "aal": {
+      "cm": 50,
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Aal | - | 50 cm"
+    },
+    "koppe": {
+      "ganzjaehrig": true,
+      "beleg": "§ 14 Abs. 5: Ganzjährig geschont sind Groppe, Strömer, Bitterling, Schneider, Bachschmerle, Gründling, Moderlieschen, Dohlen- und Steinkrebs."
+    },
+    "elritze": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 8,
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Elritze | 01.04. bis 31.05. | 8 cm"
+    },
+    "sterlet": {
+      "keine": true
+    },
+    "bachneunauge": {
+      "keine": true
+    },
+    "ukr_bachneunauge": {
+      "keine": true
+    },
+    "stroemer": {
+      "ganzjaehrig": true,
+      "beleg": "§ 14 Abs. 5: Ganzjährig geschont sind Groppe, Strömer, Bitterling, Schneider, Bachschmerle, Gründling, Moderlieschen, Dohlen- und Steinkrebs."
+    },
+    "hasel": {
+      "von": "15.3.",
+      "bis": "31.5.",
+      "cm": 15,
+      "beleg": "§ 14 Abs. 1 (fließende Gewässer): Hasel | 15.03. bis 31.05. | 15 cm"
+    },
+    "nerfling": {
+      "keine": true
+    },
+    "frauennerfling": {
+      "keine": true
+    },
+    "zobel": {
+      "keine": true
+    },
+    "zope": {
+      "keine": true
+    },
+    "guester": {
+      "keine": true
+    },
+    "russnase": {
+      "keine": true
+    },
+    "sichling": {
+      "keine": true
+    },
+    "schneider": {
+      "ganzjaehrig": true,
+      "beleg": "§ 14 Abs. 5: Ganzjährig geschont sind Groppe, Strömer, Bitterling, Schneider, Bachschmerle, Gründling, Moderlieschen, Dohlen- und Steinkrebs."
+    },
+    "gruendling": {
+      "ganzjaehrig": true,
+      "beleg": "§ 14 Abs. 5: Ganzjährig geschont sind Groppe, Strömer, Bitterling, Schneider, Bachschmerle, Gründling, Moderlieschen, Dohlen- und Steinkrebs."
+    },
+    "weissflossengruendling": {
+      "keine": true
+    },
+    "kesslergruendling": {
+      "keine": true
+    },
+    "steingressling": {
+      "keine": true
+    },
+    "bitterling": {
+      "ganzjaehrig": true,
+      "beleg": "§ 14 Abs. 5: Ganzjährig geschont sind Groppe, Strömer, Bitterling, Schneider, Bachschmerle, Gründling, Moderlieschen, Dohlen- und Steinkrebs."
+    },
+    "moderlieschen": {
+      "ganzjaehrig": true,
+      "beleg": "§ 14 Abs. 5: Ganzjährig geschont sind Groppe, Strömer, Bitterling, Schneider, Bachschmerle, Gründling, Moderlieschen, Dohlen- und Steinkrebs."
+    },
+    "semling": {
+      "keine": true
+    },
+    "graskarpfen": {
+      "keine": true
+    },
+    "silberkarpfen": {
+      "keine": true
+    },
+    "marmorkarpfen": {
+      "keine": true
+    },
+    "blaubandbaerbling": {
+      "keine": true
+    },
+    "sonnenbarsch": {
+      "keine": true
+    },
+    "forellenbarsch": {
+      "keine": true
+    },
+    "zwergwels": {
+      "keine": true
+    },
+    "schlammpeitzger": {
+      "keine": true
+    },
+    "steinbeisser": {
+      "keine": true
+    },
+    "goldsteinbeisser": {
+      "keine": true
+    },
+    "schmerle": {
+      "ganzjaehrig": true,
+      "beleg": "§ 14 Abs. 5: Ganzjährig geschont sind Groppe, Strömer, Bitterling, Schneider, Bachschmerle, Gründling, Moderlieschen, Dohlen- und Steinkrebs."
+    },
+    "streber": {
+      "keine": true
+    },
+    "zingel": {
+      "keine": true
+    },
+    "schraetzer": {
+      "keine": true
+    },
+    "donaukaulbarsch": {
+      "keine": true
+    },
+    "wolgazander": {
+      "keine": true
+    },
+    "hundsfisch": {
+      "keine": true
+    },
+    "stichling": {
+      "keine": true
+    },
+    "schwarzmundgrundel": {
+      "keine": true
+    },
+    "kesslergrundel": {
+      "keine": true
+    },
+    "marmorgrundel": {
+      "keine": true
+    },
+    "hausen": {
+      "keine": true
+    },
+    "waxdick": {
+      "keine": true
+    },
+    "glattdick": {
+      "keine": true
+    },
+    "sternhausen": {
+      "keine": true
+    },
+    "sandfelchen": {
+      "keine": true
+    },
+    "kleine_maraene": {
+      "keine": true
+    },
+    "namaycush": {
+      "keine": true
+    },
+    "goldfisch": {
+      "keine": true
+    },
+    "flussgrundel": {
+      "keine": true
+    },
+    "nackthalsgrundel": {
+      "keine": true
+    },
+    "neunstachler": {
+      "keine": true
+    }
+  },
+  "abweichungen": [
+    "seesaibling: App hatte 1.10.–31.1., 25 cm (stehende Gew., § 14 Abs. 3); Hauptwert hier fließende Gew. § 14 Abs. 1: 1.11.–31.12., kein Mindestmaß",
+    "brachse: App hatte unbekannt, Gesetz (stehende Gew.) 1.5.–31.5., 25 cm",
+    "nase: App hatte unbekannt, Gesetz 15.3.–31.5., 40 cm",
+    "hasel: App hatte unbekannt, Gesetz 15.3.–31.5., 15 cm",
+    "elritze: App hatte keinen Vbg-Eintrag, Gesetz 1.4.–31.5., 8 cm",
+    "aal: App hatte keinen Vbg-Eintrag, Gesetz Mindestmaß 50 cm",
+    "koppe: App hatte keinen Vbg-Eintrag, Gesetz ganzjährig geschont (Groppe)",
+    "stroemer: App hatte unbekannt (FFH-Hinweis), Gesetz ganzjährig geschont",
+    "bitterling: App hatte unbekannt (FFH-Hinweis), Gesetz ganzjährig geschont",
+    "schneider: App hatte unbekannt, Gesetz ganzjährig geschont",
+    "schmerle: App hatte unbekannt, Gesetz ganzjährig geschont (Bachschmerle)",
+    "gruendling: App hatte unbekannt, Gesetz ganzjährig geschont",
+    "moderlieschen: App hatte unbekannt, Gesetz ganzjährig geschont",
+    "regenbogenforelle: Wert stimmt; App-Hinweis fehlt, dass in stehenden Gew. keine Schonzeit, aber 25 cm gilt",
+    "zander/karpfen: Werte stimmen, gelten aber nur für stehende Gewässer (App ohne Hinweis)",
+    "keine-Einträge: alle übrigen App-Arten (u. a. huchen, reinanke, aitel, Neozoen, FFH-Arten) stehen nicht in § 14 -> keine Schonzeit/kein Mindestmaß; App hatte meist unbekannt"
+  ]
+}

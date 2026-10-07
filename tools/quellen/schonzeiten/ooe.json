@@ -1,0 +1,463 @@
+{
+ "quelle": "https://ogd.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrOO&Gesetzesnummer=20001102",
+ "vorschrift": "Oö. Fischereiverordnung, § 17 Abs. 1 (abschließende Liste heimischer Wassertiere, § 17 Abs. 4); Sonderregeln: Donau-, Attersee-, Mondsee-, Traunseefischereiordnung § 1 bzw. § 2",
+ "arten": {
+  "bachforelle": {
+   "von": "16.9.",
+   "bis": "15.3.",
+   "cm": 22,
+   "beleg": "Bachforelle (Salmo trutta f. fario) | 16. Sept. - 15. März | 22 cm"
+  },
+  "regenbogenforelle": {
+   "von": "1.12.",
+   "bis": "15.3.",
+   "cm": 22,
+   "beleg": "Regenbogenforelle (Onchorhynchus mykiss) | 1. Dez. - 15. März | 22 cm"
+  },
+  "seeforelle": {
+   "von": "16.9.",
+   "bis": "15.3.",
+   "cm": 50,
+   "hinweis": "Attersee 15.10.–15.12.; Mondsee/Traunsee 16.10.–15.12. (je 50 cm)",
+   "beleg": "Seeforelle (Salmo trutta f. lacustris) | 16. Sept. - 15. März | 50 cm"
+  },
+  "bachsaibling": {
+   "von": "16.9.",
+   "bis": "15.3.",
+   "cm": 22,
+   "beleg": "Bachsaibling (Salvelinus fontinalis) | 16. Sept. - 15. März | 22 cm"
+  },
+  "seesaibling": {
+   "von": "16.9.",
+   "bis": "15.3.",
+   "cm": 22,
+   "hinweis": "Attersee 15.9.–31.10.; Mondsee 16.9.–15.12., 25 cm; Traunsee 16.10.–15.12., 23 cm",
+   "beleg": "Seesaibling (Salvelinus umbla) | 16. Sept. - 15. März | 22 cm"
+  },
+  "aesche": {
+   "von": "1.3.",
+   "bis": "30.4.",
+   "cm": 30,
+   "beleg": "Äsche (Thymallus thymallus) | 1. März - 30. April | 30 cm"
+  },
+  "huchen": {
+   "von": "16.2.",
+   "bis": "31.5.",
+   "cm": 85,
+   "beleg": "Huchen (Hucho hucho) | 16. Febr. - 31. Mai | 85 cm"
+  },
+  "reinanke": {
+   "von": "16.10.",
+   "bis": "31.12.",
+   "cm": 30,
+   "hinweis": "Coregonus spp.; Donau: keine; Attersee 1.11.–31.1.; Mondsee 1.10.–15.2.; Traunsee Maräne 16.10., Reinanke 1.11.–15.12.",
+   "beleg": "Maräne oder Reinanke (Coregonus spp.) | 16. Okt. - 31. Dez. | 30 cm"
+  },
+  "hecht": {
+   "von": "1.2.",
+   "bis": "30.4.",
+   "cm": 60,
+   "hinweis": "Donau: 1.2.–31.5.; Attersee/Mondsee/Traunsee: 1.4.–15.5., 50 cm (Fischereiordnungen)",
+   "beleg": "Hecht (Esox lucius) | 1. Febr. - 30. April | 60 cm"
+  },
+  "zander": {
+   "von": "1.3.",
+   "bis": "30.4.",
+   "cm": 50,
+   "hinweis": "Donau: Schonzeit 1.2.–31.5. (Donaufischereiordnung)",
+   "beleg": "Zander oder Schill (Sander lucioperca) | 1. März - 30. April | 50 cm"
+  },
+  "flussbarsch": {
+   "von": "1.3.",
+   "bis": "30.4.",
+   "cm": 10,
+   "hinweis": "Donau: 1.2.–31.5.; Mondsee/Traunsee: keine Schonzeit, kein Mindestmaß",
+   "beleg": "Flussbarsch (Perca fluviatilis) | 1. März - 30. April | 10 cm"
+  },
+  "wels": {
+   "von": "1.6.",
+   "bis": "30.6.",
+   "cm": 80,
+   "hinweis": "Attersee/Mondsee/Traunsee: keine Schonzeit, kein Mindestmaß",
+   "beleg": "Wels oder Waller (Silurus glanis) | 1. Juni - 30. Juni | 80 cm"
+  },
+  "aalrutte": {
+   "von": "16.11.",
+   "bis": "28.2.",
+   "cm": 40,
+   "hinweis": "Mondsee/Traunsee: Schonzeit 16.11.–31.1.",
+   "beleg": "Aalrutte (Lota lota) | 16. Nov. - 28. Febr. | 40 cm"
+  },
+  "karpfen": {
+   "von": "1.5.",
+   "bis": "31.5.",
+   "cm": 35,
+   "hinweis": "Mondsee: Schonzeit 1.6.–30.6.",
+   "beleg": "Karpfen (Cyprinus carpio) | 1. Mai - 31. Mai | 35 cm"
+  },
+  "schleie": {
+   "von": "1.5.",
+   "bis": "30.6.",
+   "cm": 25,
+   "beleg": "Schleie (Tinca tinca) | 1. Mai - 30. Juni | 25 cm"
+  },
+  "brachse": {
+   "von": "1.5.",
+   "bis": "31.5.",
+   "cm": 25,
+   "hinweis": "Attersee 15.5.–15.6.; Mondsee/Traunsee 16.5.–15.6., 30 cm",
+   "beleg": "Brachse (Abramis brama) | 1. Mai - 31. Mai | 25 cm"
+  },
+  "barbe": {
+   "von": "16.4.",
+   "bis": "31.5.",
+   "cm": 35,
+   "beleg": "Barbe (Barbus barbus) | 16. April - 31. Mai | 35 cm"
+  },
+  "nase": {
+   "von": "16.3.",
+   "bis": "31.5.",
+   "cm": 35,
+   "beleg": "Nase (Chondrostoma nasus) | 16. März - 31. Mai | 35 cm"
+  },
+  "aitel": {
+   "von": "16.3.",
+   "bis": "31.5.",
+   "cm": 25,
+   "beleg": "Aitel (Squalius cephalus) | 16. März - 31. Mai | 25 cm"
+  },
+  "rapfen": {
+   "von": "16.4.",
+   "bis": "31.5.",
+   "cm": 45,
+   "beleg": "Schied oder Rapfen (Aspius aspius) | 16. April - 31. Mai | 45 cm"
+  },
+  "rotauge": {
+   "von": "1.4.",
+   "bis": "31.5.",
+   "cm": 12,
+   "beleg": "Rotauge (Rutilus rutilus) | 1. April - 31. Mai | 12 cm"
+  },
+  "rotfeder": {
+   "von": "1.4.",
+   "bis": "31.5.",
+   "cm": 15,
+   "beleg": "Rotfeder (Scardinius erythrophthalmus) | 1. April - 31. Mai | 15 cm"
+  },
+  "laube": {
+   "von": "1.5.",
+   "bis": "30.6.",
+   "cm": 10,
+   "beleg": "Laube oder Ukelei (Alburnus alburnus) | 1. Mai - 30. Juni | 10 cm"
+  },
+  "seelaube": {
+   "von": "16.5.",
+   "bis": "30.6.",
+   "cm": 20,
+   "beleg": "Seelaube oder Mairenke (Alburnus mento) | 16. Mai - 30. Juni | 20 cm"
+  },
+  "giebel": {
+   "von": "1.5.",
+   "bis": "31.5.",
+   "cm": 25,
+   "beleg": "Giebel (Carassius gibelio) | 1. Mai - 31. Mai | 25 cm"
+  },
+  "karausche": {
+   "ganzjaehrig": true,
+   "beleg": "Karausche (Carassius carassius) | ganzjährig geschont"
+  },
+  "perlfisch": {
+   "ganzjaehrig": true,
+   "beleg": "Perlfisch (Rutilus meidingeri) | ganzjährig geschont"
+  },
+  "kaulbarsch": {
+   "von": "1.4.",
+   "bis": "31.5.",
+   "hinweis": "Mondsee/Traunsee: keine Schonzeit",
+   "beleg": "Kaulbarsch (Gymnocephalus cernuus) | 1. April - 31. Mai | -"
+  },
+  "aal": {
+   "keine": true,
+   "hinweis": "In § 17 Abs. 1 nicht angeführt (gilt als nicht heimisch, § 17 Abs. 4)"
+  },
+  "koppe": {
+   "von": "1.2.",
+   "bis": "30.4.",
+   "cm": 8,
+   "hinweis": "Mondsee/Traunsee: ganzjährig geschont",
+   "beleg": "Koppe oder Groppe (Cottus gobio) | 1. Febr. - 30. April | 8 cm"
+  },
+  "elritze": {
+   "von": "1.4.",
+   "bis": "31.5.",
+   "cm": 8,
+   "hinweis": "Mondsee/Traunsee: ganzjährig geschont",
+   "beleg": "Elritze oder Pfrille (Phoxinus phoxinus) | 1. April - 31. Mai | 8 cm"
+  },
+  "sterlet": {
+   "ganzjaehrig": true,
+   "beleg": "Sterlet (Acipenser ruthenus) | ganzjährig geschont"
+  },
+  "bachneunauge": {
+   "ganzjaehrig": true,
+   "beleg": "Bachneunauge (Lampetra planeri) | ganzjährig geschont"
+  },
+  "ukr_bachneunauge": {
+   "ganzjaehrig": true,
+   "beleg": "Ukrainisches Bachneunauge (Eudontomyzon mariae) | ganzjährig geschont"
+  },
+  "stroemer": {
+   "ganzjaehrig": true,
+   "beleg": "Strömer (Telestes souffia) | ganzjährig geschont"
+  },
+  "hasel": {
+   "von": "16.3.",
+   "bis": "31.5.",
+   "cm": 20,
+   "beleg": "Hasel (Leuciscus leuciscus) | 16. März - 31. Mai | 20 cm"
+  },
+  "nerfling": {
+   "ganzjaehrig": true,
+   "beleg": "Nerfling oder Seider oder Aland (Leuciscus idus) | ganzjährig geschont"
+  },
+  "frauennerfling": {
+   "ganzjaehrig": true,
+   "beleg": "Frauennerfling (Rutilus virgo) | ganzjährig geschont"
+  },
+  "zobel": {
+   "ganzjaehrig": true,
+   "beleg": "Zobel (Ballerus sapa) | ganzjährig geschont"
+  },
+  "zope": {
+   "ganzjaehrig": true,
+   "beleg": "Zope (Ballerus ballerus) | ganzjährig geschont"
+  },
+  "guester": {
+   "von": "1.5.",
+   "bis": "31.5.",
+   "cm": 25,
+   "beleg": "Güster (Blicca bjoerkna) | 1. Mai - 31. Mai | 25 cm"
+  },
+  "russnase": {
+   "von": "16.4.",
+   "bis": "31.5.",
+   "cm": 25,
+   "beleg": "Russnase oder Blaunase (Vimba vimba) | 16. April - 31. Mai | 25 cm"
+  },
+  "sichling": {
+   "ganzjaehrig": true,
+   "beleg": "Sichling oder Ziege (Pelecus cultratus) | ganzjährig geschont"
+  },
+  "schneider": {
+   "ganzjaehrig": true,
+   "beleg": "Schneider (Alburnoides bipunctatus) | ganzjährig geschont"
+  },
+  "gruendling": {
+   "von": "1.5.",
+   "bis": "31.5.",
+   "cm": 10,
+   "beleg": "Gründling (Gobio gobio) | 1. Mai - 31. Mai | 10 cm"
+  },
+  "weissflossengruendling": {
+   "ganzjaehrig": true,
+   "beleg": "Weißflossengründling (Romanogobio vladykovi) | ganzjährig geschont"
+  },
+  "kesslergruendling": {
+   "ganzjaehrig": true,
+   "beleg": "Kesslergründling (Romanogobio kesslerii) | ganzjährig geschont"
+  },
+  "steingressling": {
+   "ganzjaehrig": true,
+   "beleg": "Steingressling (Romanogobio uranoscopus) | ganzjährig geschont"
+  },
+  "bitterling": {
+   "ganzjaehrig": true,
+   "beleg": "Bitterling (Rhodeus amarus) | ganzjährig geschont"
+  },
+  "moderlieschen": {
+   "ganzjaehrig": true,
+   "beleg": "Moderlieschen (Leucaspius delineatus) | ganzjährig geschont"
+  },
+  "semling": {
+   "ganzjaehrig": true,
+   "beleg": "Semling oder Hundsbarbe (Barbus balcanicus) | ganzjährig geschont"
+  },
+  "graskarpfen": {
+   "keine": true
+  },
+  "silberkarpfen": {
+   "keine": true
+  },
+  "marmorkarpfen": {
+   "keine": true
+  },
+  "blaubandbaerbling": {
+   "keine": true
+  },
+  "sonnenbarsch": {
+   "keine": true
+  },
+  "forellenbarsch": {
+   "keine": true
+  },
+  "zwergwels": {
+   "keine": true
+  },
+  "schlammpeitzger": {
+   "ganzjaehrig": true,
+   "beleg": "Schlammpeitzger (Misgurnus fossilis) | ganzjährig geschont"
+  },
+  "steinbeisser": {
+   "ganzjaehrig": true,
+   "beleg": "Donau-Steinbeißer oder Dorngrundel (Cobitis elongatoides) | ganzjährig geschont"
+  },
+  "goldsteinbeisser": {
+   "ganzjaehrig": true,
+   "beleg": "Goldsteinbeißer (Sabanejewia balcanica) | ganzjährig geschont"
+  },
+  "schmerle": {
+   "von": "1.3.",
+   "bis": "31.5.",
+   "cm": 10,
+   "hinweis": "Mondsee/Traunsee: ganzjährig geschont",
+   "beleg": "Bachschmerle oder Bartgrundel (Barbatula barbatula) | 1. März - 31. Mai | 10 cm"
+  },
+  "streber": {
+   "ganzjaehrig": true,
+   "beleg": "Streber (Zingel streber) | ganzjährig geschont"
+  },
+  "zingel": {
+   "von": "1.3.",
+   "bis": "30.4.",
+   "cm": 20,
+   "beleg": "Zingel (Zingel zingel) | 1. März - 30. April | 20 cm"
+  },
+  "schraetzer": {
+   "ganzjaehrig": true,
+   "beleg": "Schrätzer (Gymnocephalus schraetser) | ganzjährig geschont"
+  },
+  "donaukaulbarsch": {
+   "ganzjaehrig": true,
+   "beleg": "Donaukaulbarsch (Gymnocephalus baloni) | ganzjährig geschont"
+  },
+  "wolgazander": {
+   "von": "1.3.",
+   "bis": "30.4.",
+   "cm": 35,
+   "hinweis": "Donau: Schonzeit 1.2.–31.5. (Donaufischereiordnung)",
+   "beleg": "Wolgazander (Sander volgensis) | 1. März - 30. April | 35 cm"
+  },
+  "hundsfisch": {
+   "keine": true
+  },
+  "stichling": {
+   "keine": true
+  },
+  "schwarzmundgrundel": {
+   "keine": true
+  },
+  "kesslergrundel": {
+   "keine": true
+  },
+  "marmorgrundel": {
+   "keine": true
+  },
+  "hausen": {
+   "keine": true
+  },
+  "waxdick": {
+   "keine": true
+  },
+  "glattdick": {
+   "keine": true
+  },
+  "sternhausen": {
+   "keine": true
+  },
+  "sandfelchen": {
+   "von": "16.10.",
+   "bis": "31.12.",
+   "cm": 30,
+   "beleg": "Maräne oder Reinanke (Coregonus spp.) | 16. Okt. - 31. Dez. | 30 cm",
+   "hinweis": "Über \"Coregonus spp.\" in § 17 Abs. 1 erfasst; Seen-Sonderregeln wie Reinanke"
+  },
+  "kleine_maraene": {
+   "von": "16.10.",
+   "bis": "31.12.",
+   "cm": 30,
+   "beleg": "Maräne oder Reinanke (Coregonus spp.) | 16. Okt. - 31. Dez. | 30 cm",
+   "hinweis": "Über \"Coregonus spp.\" in § 17 Abs. 1 erfasst; Seen-Sonderregeln wie Reinanke"
+  },
+  "namaycush": {
+   "keine": true
+  },
+  "goldfisch": {
+   "keine": true
+  },
+  "flussgrundel": {
+   "keine": true
+  },
+  "nackthalsgrundel": {
+   "keine": true
+  },
+  "neunstachler": {
+   "keine": true
+  }
+ },
+ "abweichungen": [
+  "laube: App hatte 16.5.–30.6., 10 cm, Gesetz sagt 1.5.–30.6., 10 cm",
+  "elritze: App hatte unbekannt, Gesetz sagt 1.4.–31.5., 8 cm",
+  "sterlet: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "bachneunauge: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "ukr_bachneunauge: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "stroemer: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "hasel: App hatte unbekannt, Gesetz sagt 16.3.–31.5., 20 cm",
+  "nerfling: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "frauennerfling: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "zobel: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "zope: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "guester: App hatte unbekannt, Gesetz sagt 1.5.–31.5., 25 cm",
+  "russnase: App hatte unbekannt, Gesetz sagt 16.4.–31.5., 25 cm",
+  "sichling: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "schneider: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "gruendling: App hatte unbekannt, Gesetz sagt 1.5.–31.5., 10 cm",
+  "weissflossengruendling: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "kesslergruendling: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "steingressling: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "bitterling: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "moderlieschen: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "semling: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "graskarpfen: App hatte unbekannt, Gesetz sagt keine Regel",
+  "silberkarpfen: App hatte unbekannt, Gesetz sagt keine Regel",
+  "marmorkarpfen: App hatte unbekannt, Gesetz sagt keine Regel",
+  "blaubandbaerbling: App hatte unbekannt, Gesetz sagt keine Regel",
+  "sonnenbarsch: App hatte unbekannt, Gesetz sagt keine Regel",
+  "forellenbarsch: App hatte unbekannt, Gesetz sagt keine Regel",
+  "zwergwels: App hatte unbekannt, Gesetz sagt keine Regel",
+  "schlammpeitzger: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "steinbeisser: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "goldsteinbeisser: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "schmerle: App hatte unbekannt, Gesetz sagt 1.3.–31.5., 10 cm",
+  "streber: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "zingel: App hatte unbekannt, Gesetz sagt 1.3.–30.4., 20 cm",
+  "schraetzer: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "donaukaulbarsch: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "wolgazander: App hatte unbekannt, Gesetz sagt 1.3.–30.4., 35 cm",
+  "hundsfisch: App hatte unbekannt, Gesetz sagt keine Regel",
+  "stichling: App hatte unbekannt, Gesetz sagt keine Regel",
+  "schwarzmundgrundel: App hatte unbekannt, Gesetz sagt keine Regel",
+  "kesslergrundel: App hatte unbekannt, Gesetz sagt keine Regel",
+  "marmorgrundel: App hatte unbekannt, Gesetz sagt keine Regel",
+  "hausen: App hatte ganzjährig geschont, Gesetz sagt keine Regel",
+  "waxdick: App hatte ganzjährig geschont, Gesetz sagt keine Regel",
+  "glattdick: App hatte ganzjährig geschont, Gesetz sagt keine Regel",
+  "sternhausen: App hatte ganzjährig geschont, Gesetz sagt keine Regel",
+  "sandfelchen: App hatte unbekannt, Gesetz sagt 16.10.–31.12., 30 cm",
+  "kleine_maraene: App hatte unbekannt, Gesetz sagt 16.10.–31.12., 30 cm",
+  "namaycush: App hatte unbekannt, Gesetz sagt keine Regel",
+  "goldfisch: App hatte unbekannt, Gesetz sagt keine Regel",
+  "flussgrundel: App hatte unbekannt, Gesetz sagt keine Regel",
+  "nackthalsgrundel: App hatte unbekannt, Gesetz sagt keine Regel",
+  "neunstachler: App hatte unbekannt, Gesetz sagt keine Regel"
+ ]
+}

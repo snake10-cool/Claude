@@ -1,0 +1,357 @@
+{
+ "quelle": "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrT&Gesetzesnummer=20000862",
+ "vorschrift": "Tiroler Fischereiverordnung 2021 (LGBl. Nr. 7/2021), § 10 iVm Anlage 9 (Brittelmaße) und Anlage 10 (Schonzeiten)",
+ "hinweis_allgemein": "Landesliste abschließend; § 10 Abs. 3: Revierinhaber dürfen strengere Schonzeiten/Brittelmaße festlegen (nur im Innenverhältnis).",
+ "arten": {
+  "bachforelle": {
+   "von": "1.10.",
+   "bis": "28.2.",
+   "cm": 25,
+   "hinweis": "Bezirk Lienz: Schonzeit bis 15.3.",
+   "beleg": "Anlage 9: Bachforellen 25 cm | Anlage 10: Bachforellen vom 1. Oktober bis 28. Februar, im Bezirk Lienz vom 1. Oktober bis 15. März"
+  },
+  "regenbogenforelle": {
+   "cm": 30,
+   "beleg": "Anlage 9: Regenbogenforellen 30 cm"
+  },
+  "seeforelle": {
+   "von": "1.10.",
+   "bis": "31.12.",
+   "cm": 50,
+   "beleg": "Anlage 9: Seeforellen 50 cm | Anlage 10: Seeforellen vom 1. Oktober bis 31. Dezember"
+  },
+  "bachsaibling": {
+   "von": "1.10.",
+   "bis": "15.3.",
+   "cm": 22,
+   "hinweis": "Bezirk Lienz: Brittelmaß 25 cm",
+   "beleg": "Anlage 9: Bachsaiblinge 22 cm, im Bezirk Lienz 25 cm | Anlage 10: Bachsaiblinge vom 1. Oktober bis 15. März"
+  },
+  "seesaibling": {
+   "von": "1.10.",
+   "bis": "28.2.",
+   "cm": 25,
+   "hinweis": "Bezirk Lienz: Schonzeit bis 15.3.",
+   "beleg": "Anlage 9: Seesaiblinge 25 cm | Anlage 10: Seesaiblinge vom 1. Oktober bis 28. Februar, im Bezirk Lienz vom 1. Oktober bis 15. März"
+  },
+  "aesche": {
+   "von": "1.1.",
+   "bis": "15.5.",
+   "cm": 42,
+   "hinweis": "Bezirk Lienz: Schonzeit 1.12.–15.6.",
+   "beleg": "Anlage 9: Äschen 42 cm | Anlage 10: Äschen vom 1. Jänner bis 15. Mai, im Bezirk Lienz vom 1. Dezember bis 15. Juni"
+  },
+  "huchen": {
+   "von": "1.3.",
+   "bis": "31.5.",
+   "cm": 80,
+   "hinweis": "Bezirk Lienz: Schonzeit 1.2.–31.5., Brittelmaß 100 cm",
+   "beleg": "Anlage 9: Huchen 80 cm, im Bezirk Lienz 100 cm | Anlage 10: Huchen vom 1. März bis 31. Mai, im Bezirk Lienz vom 1. Februar bis 31. Mai"
+  },
+  "reinanke": {
+   "von": "1.11.",
+   "bis": "31.1.",
+   "cm": 30,
+   "beleg": "Anlage 9: Renken 30 cm | Anlage 10: Renken vom 1. November bis 31. Jänner"
+  },
+  "hecht": {
+   "von": "1.3.",
+   "bis": "30.4.",
+   "cm": 50,
+   "beleg": "Anlage 9: Hechte 50 cm | Anlage 10: Hechte vom 1. März bis 30. April"
+  },
+  "zander": {
+   "von": "1.4.",
+   "bis": "31.5.",
+   "cm": 45,
+   "beleg": "Anlage 9: Zander 45 cm | Anlage 10: Zander vom 1. April bis 31. Mai"
+  },
+  "flussbarsch": {
+   "keine": true
+  },
+  "wels": {
+   "von": "1.6.",
+   "bis": "30.6.",
+   "beleg": "Anlage 10: Welse (Waller) vom 1. Juni bis 30. Juni"
+  },
+  "aalrutte": {
+   "von": "1.12.",
+   "bis": "31.3.",
+   "cm": 35,
+   "beleg": "Anlage 9: Aalrutten 35 cm | Anlage 10: Aalrutten vom 1. Dezember bis 31. März"
+  },
+  "karpfen": {
+   "cm": 35,
+   "beleg": "Anlage 9: Karpfen 35 cm"
+  },
+  "schleie": {
+   "von": "15.5.",
+   "bis": "30.6.",
+   "cm": 30,
+   "beleg": "Anlage 9: Schleien 30 cm | Anlage 10: Schleien vom 15. Mai bis 30. Juni"
+  },
+  "brachse": {
+   "von": "1.5.",
+   "bis": "31.5.",
+   "cm": 25,
+   "beleg": "Anlage 9: Brachsen 25 cm | Anlage 10: Brachse vom 1. Mai bis 31. Mai"
+  },
+  "barbe": {
+   "von": "1.5.",
+   "bis": "15.6.",
+   "cm": 40,
+   "beleg": "Anlage 9: Barben 40 cm | Anlage 10: Barben vom 1. Mai bis 15. Juni"
+  },
+  "nase": {
+   "von": "15.3.",
+   "bis": "31.5.",
+   "cm": 40,
+   "beleg": "Anlage 9: Nasen 40 cm | Anlage 10: Nasen vom 15. März bis 31. Mai"
+  },
+  "aitel": {
+   "keine": true
+  },
+  "rapfen": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Rapfen: ganzjährig"
+  },
+  "rotauge": {
+   "von": "1.4.",
+   "bis": "31.5.",
+   "beleg": "Anlage 10: Rotaugen vom 1. April bis 31. Mai"
+  },
+  "rotfeder": {
+   "von": "1.4.",
+   "bis": "31.5.",
+   "beleg": "Anlage 10: Rotfedern vom 1. April bis 31. Mai"
+  },
+  "laube": {
+   "von": "1.5.",
+   "bis": "30.6.",
+   "beleg": "Anlage 10: Lauben vom 1. Mai bis 30. Juni"
+  },
+  "seelaube": {
+   "keine": true
+  },
+  "giebel": {
+   "keine": true
+  },
+  "karausche": {
+   "keine": true
+  },
+  "perlfisch": {
+   "keine": true
+  },
+  "kaulbarsch": {
+   "keine": true
+  },
+  "aal": {
+   "keine": true
+  },
+  "koppe": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Koppen: ganzjährig"
+  },
+  "elritze": {
+   "von": "1.4.",
+   "bis": "15.6.",
+   "beleg": "Anlage 10: Elritzen (Pfrillen) vom 1. April bis 15. Juni"
+  },
+  "sterlet": {
+   "keine": true
+  },
+  "bachneunauge": {
+   "keine": true
+  },
+  "ukr_bachneunauge": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Ukrainische Bachneunaugen: ganzjährig"
+  },
+  "stroemer": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Strömer: ganzjährig"
+  },
+  "hasel": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Hasel: ganzjährig"
+  },
+  "nerfling": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Nerflinge: ganzjährig"
+  },
+  "frauennerfling": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Frauennerfling: ganzjährig"
+  },
+  "zobel": {
+   "keine": true
+  },
+  "zope": {
+   "keine": true
+  },
+  "guester": {
+   "keine": true
+  },
+  "russnase": {
+   "keine": true
+  },
+  "sichling": {
+   "keine": true
+  },
+  "schneider": {
+   "keine": true
+  },
+  "gruendling": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Gründlinge: ganzjährig"
+  },
+  "weissflossengruendling": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Gründlinge: ganzjährig",
+   "hinweis": "Anlage 10 nennt nur Sammelbegriff „Gründlinge“; Zuordnung zu dieser Art ist Auslegung."
+  },
+  "kesslergruendling": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Gründlinge: ganzjährig",
+   "hinweis": "Anlage 10 nennt nur Sammelbegriff „Gründlinge“; Zuordnung zu dieser Art ist Auslegung."
+  },
+  "steingressling": {
+   "keine": true
+  },
+  "bitterling": {
+   "keine": true
+  },
+  "moderlieschen": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Moderlieschen: ganzjährig"
+  },
+  "semling": {
+   "keine": true
+  },
+  "graskarpfen": {
+   "keine": true
+  },
+  "silberkarpfen": {
+   "keine": true
+  },
+  "marmorkarpfen": {
+   "keine": true
+  },
+  "blaubandbaerbling": {
+   "keine": true
+  },
+  "sonnenbarsch": {
+   "keine": true
+  },
+  "forellenbarsch": {
+   "keine": true
+  },
+  "zwergwels": {
+   "keine": true
+  },
+  "schlammpeitzger": {
+   "keine": true
+  },
+  "steinbeisser": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Steinbeißer: ganzjährig"
+  },
+  "goldsteinbeisser": {
+   "keine": true
+  },
+  "schmerle": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Schmerlen: ganzjährig"
+  },
+  "streber": {
+   "ganzjaehrig": true,
+   "beleg": "Anlage 10: Streber: ganzjährig"
+  },
+  "zingel": {
+   "keine": true
+  },
+  "schraetzer": {
+   "keine": true
+  },
+  "donaukaulbarsch": {
+   "keine": true
+  },
+  "wolgazander": {
+   "keine": true
+  },
+  "hundsfisch": {
+   "keine": true
+  },
+  "stichling": {
+   "keine": true
+  },
+  "schwarzmundgrundel": {
+   "keine": true
+  },
+  "kesslergrundel": {
+   "keine": true
+  },
+  "marmorgrundel": {
+   "keine": true
+  },
+  "hausen": {
+   "keine": true
+  },
+  "waxdick": {
+   "keine": true
+  },
+  "glattdick": {
+   "keine": true
+  },
+  "sternhausen": {
+   "keine": true
+  },
+  "sandfelchen": {
+   "von": "1.11.",
+   "bis": "31.1.",
+   "cm": 30,
+   "hinweis": "Gesetz nennt Sammelbegriff „Renken“ (Coregonen); Zuordnung ist Auslegung.",
+   "beleg": "Anlage 9: Renken 30 cm | Anlage 10: Renken vom 1. November bis 31. Jänner"
+  },
+  "kleine_maraene": {
+   "von": "1.11.",
+   "bis": "31.1.",
+   "cm": 30,
+   "hinweis": "Gesetz nennt Sammelbegriff „Renken“ (Coregonen); Zuordnung ist Auslegung.",
+   "beleg": "Anlage 9: Renken 30 cm | Anlage 10: Renken vom 1. November bis 31. Jänner"
+  },
+  "namaycush": {
+   "keine": true
+  },
+  "goldfisch": {
+   "keine": true
+  },
+  "flussgrundel": {
+   "keine": true
+  },
+  "nackthalsgrundel": {
+   "keine": true
+  },
+  "neunstachler": {
+   "keine": true
+  }
+ },
+ "abweichungen": [
+  "bachsaibling: App hatte Schonzeit bis 31.3. und Hinweis 'Bezirk Lienz bis 15.3.', Gesetz: 1.10.–15.3. landesweit, Lienz nur Brittelmaß 25 cm",
+  "wels: App hatte 1.5.–31.7., Gesetz sagt 1.6.–30.6.",
+  "schleie: App hatte 1.6.–31.7., Gesetz sagt 15.5.–30.6.",
+  "flussbarsch: App hatte 10 cm, Gesetz nennt kein Brittelmaß/keine Schonzeit",
+  "brachse: App hatte unbekannt, Gesetz sagt 1.5.–31.5. und 25 cm",
+  "reinanke: App-Hinweis 'für einzelne Coregonen-Arten abweichende Zeiten' ist im Gesetz nicht belegt",
+  "rotauge, rotfeder: App ohne Tirol-Eintrag, Gesetz sagt Schonzeit 1.4.–31.5.",
+  "laube: App ohne Tirol-Eintrag, Gesetz sagt Schonzeit 1.5.–30.6.",
+  "elritze: App ohne Tirol-Eintrag, Gesetz sagt Schonzeit 1.4.–15.6.",
+  "rapfen, koppe: App ohne Tirol-Eintrag, Gesetz sagt ganzjährig geschont",
+  "hasel, nerfling, gruendling, moderlieschen, schmerle: App hatte unbekannt, Gesetz sagt ganzjährig geschont",
+  "stroemer, frauennerfling, streber, steinbeisser, ukr_bachneunauge: App hatte unbekannt (geschützt-Hinweis), Gesetz sagt ganzjährig geschont",
+  "weissflossengruendling, kesslergruendling: App hatte unbekannt, Gesetz 'Gründlinge: ganzjährig' (Sammelbegriff, Auslegung)",
+  "sandfelchen, kleine_maraene: App hatte unbekannt, Gesetz 'Renken' 1.11.–31.1., 30 cm (Sammelbegriff, Auslegung)",
+  "hausen, waxdick, glattdick, sternhausen: App ganzjährig (ausgestorben), Landesliste nennt sie nicht -> keine",
+  "übrige App-Arten mit 'unbekannt' bzw. ohne Tirol-Eintrag (z. B. zobel, zope, guester, bachneunauge, goldsteinbeisser, Neozoen): Gesetz -> keine (Liste abschließend)"
+ ]
+}

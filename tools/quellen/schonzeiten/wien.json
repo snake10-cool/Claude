@@ -1,0 +1,444 @@
+{
+  "quelle": "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrW&Gesetzesnummer=20000386",
+  "vorschrift": "Verordnung der Wiener Landesregierung betreffend Schonzeiten und Mindestmaße der Fische sowie Krebse und Muscheltiere, §§ 1–2",
+  "arten": {
+    "bachforelle": {
+      "von": "1.9.",
+      "bis": "15.3.",
+      "cm": 26,
+      "beleg": "4. Bachforelle (Salmo trutta forma fario) | vom 1. September bis 15. März | 26 cm"
+    },
+    "regenbogenforelle": {
+      "von": "1.1.",
+      "bis": "15.3.",
+      "cm": 26,
+      "beleg": "22. Regenbogenforelle (Oncorhynchus mykiss) | vom 1. Jänner bis 15. März | 26 cm"
+    },
+    "seeforelle": {
+      "keine": true
+    },
+    "bachsaibling": {
+      "von": "16.9.",
+      "bis": "15.3.",
+      "cm": 22,
+      "beleg": "5. Bachsaibling (Salvelinus fontinalis) | vom 16. September bis 15. März | 22 cm"
+    },
+    "seesaibling": {
+      "keine": true
+    },
+    "aesche": {
+      "von": "1.3.",
+      "bis": "30.4.",
+      "cm": 30,
+      "beleg": "3. Äsche (Thymallus thymallus) | vom 1. März bis 30. April | 30 cm"
+    },
+    "huchen": {
+      "ganzjaehrig": true,
+      "beleg": "Huchen (Hucho hucho)"
+    },
+    "reinanke": {
+      "von": "16.10.",
+      "bis": "31.12.",
+      "cm": 30,
+      "beleg": "19. Maräne, Renke (Coregonidae) | vom 16. Oktober bis 31. Dezember | 30 cm"
+    },
+    "hecht": {
+      "von": "1.2.",
+      "bis": "30.4.",
+      "cm": 55,
+      "beleg": "13. Hecht (Esox lucius) | vom 1. Februar bis 30. April | 55 cm"
+    },
+    "zander": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 45,
+      "beleg": "33. Zander (Stizostedion lucioperca) | vom 1. April bis 31. Mai | 45 cm"
+    },
+    "flussbarsch": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "beleg": "9. Flussbarsch (Perca fluviatilis) | vom 1. März bis 31. Mai | –"
+    },
+    "wels": {
+      "von": "1.6.",
+      "bis": "30.6.",
+      "cm": 85,
+      "beleg": "31. Wels (Silurus glanis) | vom 1. Juni bis 30. Juni | 85 cm"
+    },
+    "aalrutte": {
+      "von": "1.12.",
+      "bis": "29.2.",
+      "cm": 35,
+      "beleg": "1. Aalrutte (Lota lota) | vom 1. Dezember bis 29. Februar | 35 cm"
+    },
+    "karpfen": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "cm": 35,
+      "hinweis": "Wildform; Zuchtform ohne Schonzeit, aber ebenfalls 35 cm Mindestmaß.",
+      "beleg": "15. Karpfen Zuchtform (Cyprinus carpio) | | 35 cm; 16. Karpfen Wildform (Cyprinus c. carpio) | vom 1. Mai bis 30. Juni | 35 cm"
+    },
+    "schleie": {
+      "von": "1.6.",
+      "bis": "15.7.",
+      "cm": 30,
+      "beleg": "27. Schleie (Tinca tinca) | vom 1. Juni bis 15. Juli | 30 cm"
+    },
+    "brachse": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "cm": 30,
+      "beleg": "7. Brachse (Abramis brama) | vom 1. Mai bis 31. Mai | 30 cm"
+    },
+    "barbe": {
+      "von": "1.5.",
+      "bis": "15.6.",
+      "cm": 35,
+      "beleg": "6. Barbe (barbus barbus) | vom 1. Mai bis 15. Juni | 35 cm"
+    },
+    "nase": {
+      "von": "16.3.",
+      "bis": "31.5.",
+      "cm": 35,
+      "beleg": "20. Nase (Chondrostoma nasus) | vom 16. März bis 31. Mai | 35 cm"
+    },
+    "aitel": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "beleg": "2. Aitel, Döbel (Leuciscus cephalus) | vom 1. Mai bis 31. Mai | –"
+    },
+    "rapfen": {
+      "von": "16.4.",
+      "bis": "31.5.",
+      "cm": 40,
+      "beleg": "26. Schied, Rapfen (Aspius aspius) | vom 16. April bis 31. Mai | 40 cm"
+    },
+    "rotauge": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "beleg": "23. Rotauge (Rutilus rutilus) | vom 1. April bis 31. Mai | –"
+    },
+    "rotfeder": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "beleg": "24. Rotfeder (Scardinius erythrophthalmus) | vom 1. April bis 31. Mai | –"
+    },
+    "laube": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "beleg": "18. Laube (Alburnus alburnus) | vom 1. Mai bis 30. Juni | –"
+    },
+    "seelaube": {
+      "keine": true
+    },
+    "giebel": {
+      "keine": true
+    },
+    "karausche": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "beleg": "14. Karausche (Carassius carassius) | vom 1. Mai bis 31. Mai | –"
+    },
+    "perlfisch": {
+      "ganzjaehrig": true,
+      "beleg": "Perlfisch (Rutilus frisii meidingeri)"
+    },
+    "kaulbarsch": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 10,
+      "beleg": "17. Kaulbarsch (Gymnocephalus cernuus) | vom 1. April bis 31. Mai | 10 cm"
+    },
+    "aal": {
+      "keine": true
+    },
+    "koppe": {
+      "ganzjaehrig": true,
+      "beleg": "Koppe (Cottus gobio)"
+    },
+    "elritze": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "beleg": "8. Elritze (Phoxinus phoxinus) | vom 1. April bis 31. Mai | –"
+    },
+    "sterlet": {
+      "ganzjaehrig": true,
+      "beleg": "Sterlet (Acipenser ruthenus)"
+    },
+    "bachneunauge": {
+      "ganzjaehrig": true,
+      "beleg": "Neunauge (Petromyzontidae)"
+    },
+    "ukr_bachneunauge": {
+      "ganzjaehrig": true,
+      "beleg": "Neunauge (Petromyzontidae)"
+    },
+    "stroemer": {
+      "ganzjaehrig": true,
+      "beleg": "Strömer (Leuciscus souffia agassizi)"
+    },
+    "hasel": {
+      "von": "16.3.",
+      "bis": "31.5.",
+      "beleg": "12. Hasel (Leuciscus leuciscus) | vom 16. März bis 31. Mai | –"
+    },
+    "nerfling": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "cm": 35,
+      "beleg": "21. Nerfling (Leuciscus idus) | vom 1. Mai bis 30. Juni | 35 cm"
+    },
+    "frauennerfling": {
+      "ganzjaehrig": true,
+      "beleg": "Frauennerfling (Rutilus pigus virgo)"
+    },
+    "zobel": {
+      "von": "15.4.",
+      "bis": "31.5.",
+      "cm": 25,
+      "beleg": "34. Zobel (Abramis sapa) | vom 15. April bis 31. Mai | 25 cm"
+    },
+    "zope": {
+      "ganzjaehrig": true,
+      "beleg": "Zoppe (Abramis ballerus)"
+    },
+    "guester": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "beleg": "11. Güster (Blicca bjoerkna) | vom 1. Mai bis 31. Mai | –"
+    },
+    "russnase": {
+      "von": "16.4.",
+      "bis": "15.6.",
+      "cm": 30,
+      "beleg": "25. Rußnase, Zährte (Vimba vimba) | vom 16. April bis 15. Juni | 30 cm"
+    },
+    "sichling": {
+      "ganzjaehrig": true,
+      "beleg": "Sichling (Pelecus cultratus)"
+    },
+    "schneider": {
+      "ganzjaehrig": true,
+      "beleg": "Schneider (Alburnoides bipunctatus)"
+    },
+    "gruendling": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "beleg": "10. Gründling (Gobio gobio) | vom 1. Mai bis 31. Mai | –"
+    },
+    "weissflossengruendling": {
+      "von": "15.4.",
+      "bis": "15.6.",
+      "beleg": "30. Weissflossengründling (Gobio albipinnatus) | vom 15. April bis 15. Juni | –"
+    },
+    "kesslergruendling": {
+      "ganzjaehrig": true,
+      "beleg": "Kesslers Gründling (Gobio kessleri)"
+    },
+    "steingressling": {
+      "ganzjaehrig": true,
+      "beleg": "Steingressling (Gobio uranoscopus)"
+    },
+    "bitterling": {
+      "ganzjaehrig": true,
+      "beleg": "Bitterling (Rhodeus amarus)"
+    },
+    "moderlieschen": {
+      "ganzjaehrig": true,
+      "beleg": "Moderlieschen (Leucaspius delineatus)"
+    },
+    "semling": {
+      "ganzjaehrig": true,
+      "beleg": "Semling, Hundsbarbe (Barbus peloponnesius)"
+    },
+    "graskarpfen": {
+      "keine": true
+    },
+    "silberkarpfen": {
+      "keine": true
+    },
+    "marmorkarpfen": {
+      "keine": true
+    },
+    "blaubandbaerbling": {
+      "keine": true
+    },
+    "sonnenbarsch": {
+      "keine": true
+    },
+    "forellenbarsch": {
+      "keine": true
+    },
+    "zwergwels": {
+      "keine": true
+    },
+    "schlammpeitzger": {
+      "ganzjaehrig": true,
+      "beleg": "Schlammpeitzger (Misgurnus fossilis)"
+    },
+    "steinbeisser": {
+      "ganzjaehrig": true,
+      "beleg": "Steinbeißer (Cobitis taenia)"
+    },
+    "goldsteinbeisser": {
+      "ganzjaehrig": true,
+      "beleg": "Goldsteinbeißer (Sabanejewia balcanica)"
+    },
+    "schmerle": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "beleg": "28. Schmerle (Noemacheilus barbatulus) | vom 1. März bis 31. Mai | –"
+    },
+    "streber": {
+      "ganzjaehrig": true,
+      "beleg": "Streber (Zingel streber)"
+    },
+    "zingel": {
+      "ganzjaehrig": true,
+      "beleg": "Zingel (Zingel zingel)"
+    },
+    "schraetzer": {
+      "ganzjaehrig": true,
+      "beleg": "Schrätzer (Gymnocephalus schraetser)"
+    },
+    "donaukaulbarsch": {
+      "ganzjaehrig": true,
+      "beleg": "Donaukaulbarsch (Gymnocephalus baloni)"
+    },
+    "wolgazander": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 35,
+      "beleg": "32. Wolgazander (Stizostedion volgensis) | vom 1. April bis 31. Mai | 35 cm"
+    },
+    "hundsfisch": {
+      "ganzjaehrig": true,
+      "beleg": "Hundsfisch (Umbra krameri)"
+    },
+    "stichling": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "beleg": "29. Stichling (Gasterosteus aculeatus) | vom 1. Mai bis 30. Juni | –"
+    },
+    "schwarzmundgrundel": {
+      "keine": true
+    },
+    "kesslergrundel": {
+      "keine": true
+    },
+    "marmorgrundel": {
+      "keine": true
+    },
+    "hausen": {
+      "keine": true
+    },
+    "waxdick": {
+      "keine": true
+    },
+    "glattdick": {
+      "keine": true
+    },
+    "sternhausen": {
+      "keine": true
+    },
+    "sandfelchen": {
+      "von": "16.10.",
+      "bis": "31.12.",
+      "cm": 30,
+      "hinweis": "Gesetz nennt Maräne, Renke (Coregonidae) als Familie.",
+      "beleg": "19. Maräne, Renke (Coregonidae) | vom 16. Oktober bis 31. Dezember | 30 cm"
+    },
+    "kleine_maraene": {
+      "von": "16.10.",
+      "bis": "31.12.",
+      "cm": 30,
+      "hinweis": "Gesetz nennt Maräne, Renke (Coregonidae) als Familie.",
+      "beleg": "19. Maräne, Renke (Coregonidae) | vom 16. Oktober bis 31. Dezember | 30 cm"
+    },
+    "namaycush": {
+      "keine": true
+    },
+    "goldfisch": {
+      "keine": true
+    },
+    "flussgrundel": {
+      "keine": true
+    },
+    "nackthalsgrundel": {
+      "keine": true
+    },
+    "neunstachler": {
+      "keine": true,
+      "hinweis": "§ 1 nennt nur den Dreistachligen Stichling (Gasterosteus aculeatus)."
+    }
+  },
+  "abweichungen": [
+    "seeforelle: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "seesaibling: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "reinanke: App hatte unbekannt, Gesetz: 16.10.–31.12., 30 cm",
+    "rapfen: App hatte keinen Wien-Eintrag, Gesetz: 16.4.–31.5., 40 cm",
+    "rotauge: App hatte keinen Wien-Eintrag, Gesetz: 1.4.–31.5., kein Mindestmaß",
+    "rotfeder: App hatte keinen Wien-Eintrag, Gesetz: 1.4.–31.5., kein Mindestmaß",
+    "laube: App hatte keinen Wien-Eintrag, Gesetz: 1.5.–30.6., kein Mindestmaß",
+    "seelaube: App hatte keinen Wien-Eintrag, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "giebel: App hatte keinen Wien-Eintrag, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "karausche: App hatte keinen Wien-Eintrag, Gesetz: 1.5.–31.5., kein Mindestmaß",
+    "perlfisch: App hatte keinen Wien-Eintrag, Gesetz: ganzjährig geschont",
+    "kaulbarsch: App hatte keinen Wien-Eintrag, Gesetz: 1.4.–31.5., 10 cm",
+    "aal: App hatte keinen Wien-Eintrag, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "koppe: App hatte keinen Wien-Eintrag, Gesetz: ganzjährig geschont",
+    "elritze: App hatte keinen Wien-Eintrag, Gesetz: 1.4.–31.5., kein Mindestmaß",
+    "sterlet: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "bachneunauge: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "ukr_bachneunauge: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "stroemer: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "hasel: App hatte unbekannt, Gesetz: 16.3.–31.5., kein Mindestmaß",
+    "nerfling: App hatte unbekannt, Gesetz: 1.5.–30.6., 35 cm",
+    "frauennerfling: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "zobel: App hatte unbekannt, Gesetz: 15.4.–31.5., 25 cm",
+    "zope: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "guester: App hatte unbekannt, Gesetz: 1.5.–31.5., kein Mindestmaß",
+    "russnase: App hatte unbekannt, Gesetz: 16.4.–15.6., 30 cm",
+    "sichling: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "schneider: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "gruendling: App hatte unbekannt, Gesetz: 1.5.–31.5., kein Mindestmaß",
+    "weissflossengruendling: App hatte unbekannt, Gesetz: 15.4.–15.6., kein Mindestmaß",
+    "kesslergruendling: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "steingressling: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "bitterling: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "moderlieschen: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "semling: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "graskarpfen: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "silberkarpfen: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "marmorkarpfen: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "blaubandbaerbling: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "sonnenbarsch: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "forellenbarsch: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "zwergwels: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "schlammpeitzger: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "steinbeisser: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "goldsteinbeisser: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "schmerle: App hatte unbekannt, Gesetz: 1.3.–31.5., kein Mindestmaß",
+    "streber: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "zingel: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "schraetzer: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "donaukaulbarsch: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "wolgazander: App hatte unbekannt, Gesetz: 1.4.–31.5., 35 cm",
+    "hundsfisch: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "stichling: App hatte unbekannt, Gesetz: 1.5.–30.6., kein Mindestmaß",
+    "schwarzmundgrundel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "kesslergrundel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "marmorgrundel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "hausen: App hatte ganzjährig (ausgestorben), Gesetz: keine Schonzeit/kein Mindestmaß",
+    "waxdick: App hatte ganzjährig (ausgestorben), Gesetz: keine Schonzeit/kein Mindestmaß",
+    "glattdick: App hatte ganzjährig (ausgestorben), Gesetz: keine Schonzeit/kein Mindestmaß",
+    "sternhausen: App hatte ganzjährig (ausgestorben), Gesetz: keine Schonzeit/kein Mindestmaß",
+    "sandfelchen: App hatte unbekannt, Gesetz: 16.10.–31.12., 30 cm",
+    "kleine_maraene: App hatte unbekannt, Gesetz: 16.10.–31.12., 30 cm",
+    "namaycush: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "goldfisch: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "flussgrundel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "nackthalsgrundel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß",
+    "neunstachler: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß"
+  ]
+}

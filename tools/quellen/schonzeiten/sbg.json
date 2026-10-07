@@ -1,0 +1,288 @@
+{
+ "quelle": "https://www.fischereiverband.at/node/147",
+ "vorschrift": "Salzburger Wassertier-Schonzeiten-Mindestlängen-Verordnung des Landesfischereiverbandes (Salzburgs Fischerei, Heft 4/2012) – nicht im RIS; Tabelle nach angel-urlaub.at, bisherige App-Werte stimmen überein",
+ "arten": {
+  "aalrutte": {
+   "von": "1.12.",
+   "bis": "31.3.",
+   "cm": 35
+  },
+  "aesche": {
+   "von": "1.1.",
+   "bis": "31.5.",
+   "cm": 33
+  },
+  "aitel": {
+   "keine": true
+  },
+  "bachforelle": {
+   "von": "1.10.",
+   "bis": "28.2.",
+   "cm": 25,
+   "hinweis": "Ab einer Seehöhe von 800 m, Mindestmaß: 22 cm"
+  },
+  "bachsaibling": {
+   "keine": true
+  },
+  "schmerle": {
+   "ganzjaehrig": true
+  },
+  "barbe": {
+   "von": "1.5.",
+   "bis": "15.6.",
+   "cm": 35
+  },
+  "bitterling": {
+   "ganzjaehrig": true
+  },
+  "brachse": {
+   "keine": true
+  },
+  "elritze": {
+   "von": "1.4.",
+   "bis": "30.6.",
+   "hinweis": "Ab einer Seehöhe von 1.000 m, Schonzeit: 01.04.-15.07."
+  },
+  "flussbarsch": {
+   "keine": true
+  },
+  "frauennerfling": {
+   "ganzjaehrig": true
+  },
+  "giebel": {
+   "keine": true
+  },
+  "gruendling": {
+   "von": "1.5.",
+   "bis": "31.5."
+  },
+  "guester": {
+   "ganzjaehrig": true
+  },
+  "hasel": {
+   "ganzjaehrig": true
+  },
+  "hausen": {
+   "ganzjaehrig": true
+  },
+  "hecht": {
+   "von": "1.2.",
+   "bis": "30.4.",
+   "cm": 50
+  },
+  "huchen": {
+   "von": "1.2.",
+   "bis": "31.5.",
+   "cm": 85
+  },
+  "karausche": {
+   "ganzjaehrig": true
+  },
+  "karpfen": {
+   "keine": true
+  },
+  "kaulbarsch": {
+   "keine": true
+  },
+  "koppe": {
+   "von": "1.3.",
+   "bis": "31.5."
+  },
+  "laube": {
+   "keine": true
+  },
+  "nase": {
+   "ganzjaehrig": true
+  },
+  "nerfling": {
+   "ganzjaehrig": true
+  },
+  "perlfisch": {
+   "ganzjaehrig": true
+  },
+  "rapfen": {
+   "ganzjaehrig": true
+  },
+  "regenbogenforelle": {
+   "keine": true
+  },
+  "reinanke": {
+   "von": "1.11.",
+   "bis": "31.12.",
+   "cm": 33
+  },
+  "rotauge": {
+   "keine": true
+  },
+  "rotfeder": {
+   "von": "16.4.",
+   "bis": "30.6.",
+   "cm": 15
+  },
+  "russnase": {
+   "von": "16.4.",
+   "bis": "15.6.",
+   "cm": 25
+  },
+  "schlammpeitzger": {
+   "ganzjaehrig": true
+  },
+  "schleie": {
+   "von": "1.6.",
+   "bis": "31.7.",
+   "cm": 25
+  },
+  "schneider": {
+   "ganzjaehrig": true
+  },
+  "seeforelle": {
+   "von": "1.10.",
+   "bis": "31.12.",
+   "cm": 50
+  },
+  "seelaube": {
+   "von": "16.5.",
+   "bis": "30.6.",
+   "cm": 20
+  },
+  "seesaibling": {
+   "von": "16.10.",
+   "bis": "31.12.",
+   "cm": 25
+  },
+  "steinbeisser": {
+   "ganzjaehrig": true
+  },
+  "steingressling": {
+   "ganzjaehrig": true
+  },
+  "sterlet": {
+   "ganzjaehrig": true
+  },
+  "streber": {
+   "ganzjaehrig": true
+  },
+  "stroemer": {
+   "ganzjaehrig": true
+  },
+  "ukr_bachneunauge": {
+   "ganzjaehrig": true
+  },
+  "wels": {
+   "keine": true
+  },
+  "zander": {
+   "von": "16.3.",
+   "bis": "31.5.",
+   "cm": 40
+  },
+  "zingel": {
+   "ganzjaehrig": true
+  },
+  "zobel": {
+   "ganzjaehrig": true
+  },
+  "aal": {
+   "keine": true
+  },
+  "bachneunauge": {
+   "keine": true
+  },
+  "zope": {
+   "keine": true
+  },
+  "sichling": {
+   "keine": true
+  },
+  "weissflossengruendling": {
+   "keine": true
+  },
+  "kesslergruendling": {
+   "keine": true
+  },
+  "moderlieschen": {
+   "keine": true
+  },
+  "semling": {
+   "keine": true
+  },
+  "graskarpfen": {
+   "keine": true
+  },
+  "silberkarpfen": {
+   "keine": true
+  },
+  "marmorkarpfen": {
+   "keine": true
+  },
+  "blaubandbaerbling": {
+   "keine": true
+  },
+  "sonnenbarsch": {
+   "keine": true
+  },
+  "forellenbarsch": {
+   "keine": true
+  },
+  "zwergwels": {
+   "keine": true
+  },
+  "goldsteinbeisser": {
+   "keine": true
+  },
+  "schraetzer": {
+   "keine": true
+  },
+  "donaukaulbarsch": {
+   "keine": true
+  },
+  "wolgazander": {
+   "keine": true
+  },
+  "hundsfisch": {
+   "keine": true
+  },
+  "stichling": {
+   "keine": true
+  },
+  "schwarzmundgrundel": {
+   "keine": true
+  },
+  "kesslergrundel": {
+   "keine": true
+  },
+  "marmorgrundel": {
+   "keine": true
+  },
+  "waxdick": {
+   "keine": true
+  },
+  "glattdick": {
+   "keine": true
+  },
+  "sternhausen": {
+   "keine": true
+  },
+  "sandfelchen": {
+   "keine": true
+  },
+  "kleine_maraene": {
+   "keine": true
+  },
+  "namaycush": {
+   "keine": true
+  },
+  "goldfisch": {
+   "keine": true
+  },
+  "flussgrundel": {
+   "keine": true
+  },
+  "nackthalsgrundel": {
+   "keine": true
+  },
+  "neunstachler": {
+   "keine": true
+  }
+ }
+}

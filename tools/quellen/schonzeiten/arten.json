@@ -1,0 +1,417 @@
+[
+{
+"id": "bachforelle",
+"name": "Bachforelle",
+"latein": ""
+},
+{
+"id": "regenbogenforelle",
+"name": "Regenbogenforelle",
+"latein": ""
+},
+{
+"id": "seeforelle",
+"name": "Seeforelle",
+"latein": ""
+},
+{
+"id": "bachsaibling",
+"name": "Bachsaibling",
+"latein": ""
+},
+{
+"id": "seesaibling",
+"name": "Seesaibling",
+"latein": ""
+},
+{
+"id": "aesche",
+"name": "Äsche",
+"latein": ""
+},
+{
+"id": "huchen",
+"name": "Huchen",
+"latein": ""
+},
+{
+"id": "reinanke",
+"name": "Reinanke (Renke, Maräne)",
+"latein": ""
+},
+{
+"id": "hecht",
+"name": "Hecht",
+"latein": ""
+},
+{
+"id": "zander",
+"name": "Zander",
+"latein": ""
+},
+{
+"id": "flussbarsch",
+"name": "Flussbarsch (Egli)",
+"latein": ""
+},
+{
+"id": "wels",
+"name": "Wels (Waller)",
+"latein": ""
+},
+{
+"id": "aalrutte",
+"name": "Aalrutte (Quappe, Trüsche)",
+"latein": ""
+},
+{
+"id": "karpfen",
+"name": "Karpfen",
+"latein": ""
+},
+{
+"id": "schleie",
+"name": "Schleie",
+"latein": ""
+},
+{
+"id": "brachse",
+"name": "Brachse (Brasse)",
+"latein": ""
+},
+{
+"id": "barbe",
+"name": "Barbe",
+"latein": ""
+},
+{
+"id": "nase",
+"name": "Nase",
+"latein": ""
+},
+{
+"id": "aitel",
+"name": "Aitel (Döbel)",
+"latein": ""
+},
+{
+"id": "rapfen",
+"name": "Rapfen (Schied)",
+"latein": ""
+},
+{
+"id": "rotauge",
+"name": "Rotauge (Plötze)",
+"latein": ""
+},
+{
+"id": "rotfeder",
+"name": "Rotfeder",
+"latein": ""
+},
+{
+"id": "laube",
+"name": "Laube (Ukelei)",
+"latein": ""
+},
+{
+"id": "seelaube",
+"name": "Seelaube (Mairenke)",
+"latein": ""
+},
+{
+"id": "giebel",
+"name": "Giebel",
+"latein": ""
+},
+{
+"id": "karausche",
+"name": "Karausche",
+"latein": ""
+},
+{
+"id": "perlfisch",
+"name": "Perlfisch",
+"latein": ""
+},
+{
+"id": "kaulbarsch",
+"name": "Kaulbarsch",
+"latein": ""
+},
+{
+"id": "aal",
+"name": "Aal",
+"latein": ""
+},
+{
+"id": "koppe",
+"name": "Koppe (Groppe)",
+"latein": ""
+},
+{
+"id": "elritze",
+"name": "Elritze",
+"latein": ""
+},
+{
+"id": "sterlet",
+"name": "Sterlet",
+"latein": ""
+},
+{
+"id": "bachneunauge",
+"name": "Bachneunauge",
+"latein": ""
+},
+{
+"id": "ukr_bachneunauge",
+"name": "Ukrainisches Bachneunauge",
+"latein": ""
+},
+{
+"id": "stroemer",
+"name": "Strömer",
+"latein": ""
+},
+{
+"id": "hasel",
+"name": "Hasel",
+"latein": ""
+},
+{
+"id": "nerfling",
+"name": "Nerfling (Aland)",
+"latein": ""
+},
+{
+"id": "frauennerfling",
+"name": "Frauennerfling",
+"latein": ""
+},
+{
+"id": "zobel",
+"name": "Zobel",
+"latein": ""
+},
+{
+"id": "zope",
+"name": "Zope",
+"latein": ""
+},
+{
+"id": "guester",
+"name": "Güster",
+"latein": ""
+},
+{
+"id": "russnase",
+"name": "Rußnase (Zährte)",
+"latein": ""
+},
+{
+"id": "sichling",
+"name": "Sichling (Ziege)",
+"latein": ""
+},
+{
+"id": "schneider",
+"name": "Schneider",
+"latein": ""
+},
+{
+"id": "gruendling",
+"name": "Gründling",
+"latein": ""
+},
+{
+"id": "weissflossengruendling",
+"name": "Weißflossengründling",
+"latein": ""
+},
+{
+"id": "kesslergruendling",
+"name": "Kesslergründling",
+"latein": ""
+},
+{
+"id": "steingressling",
+"name": "Steingressling",
+"latein": ""
+},
+{
+"id": "bitterling",
+"name": "Bitterling",
+"latein": ""
+},
+{
+"id": "moderlieschen",
+"name": "Moderlieschen",
+"latein": ""
+},
+{
+"id": "semling",
+"name": "Semling (Karpatenbarbe)",
+"latein": ""
+},
+{
+"id": "graskarpfen",
+"name": "Graskarpfen (Amur)",
+"latein": ""
+},
+{
+"id": "silberkarpfen",
+"name": "Silberkarpfen (Tolstolob)",
+"latein": ""
+},
+{
+"id": "marmorkarpfen",
+"name": "Marmorkarpfen",
+"latein": ""
+},
+{
+"id": "blaubandbaerbling",
+"name": "Blaubandbärbling",
+"latein": ""
+},
+{
+"id": "sonnenbarsch",
+"name": "Sonnenbarsch",
+"latein": ""
+},
+{
+"id": "forellenbarsch",
+"name": "Forellenbarsch (Schwarzbarsch)",
+"latein": ""
+},
+{
+"id": "zwergwels",
+"name": "Zwergwels",
+"latein": ""
+},
+{
+"id": "schlammpeitzger",
+"name": "Schlammpeitzger",
+"latein": ""
+},
+{
+"id": "steinbeisser",
+"name": "Steinbeißer",
+"latein": ""
+},
+{
+"id": "goldsteinbeisser",
+"name": "Goldsteinbeißer",
+"latein": ""
+},
+{
+"id": "schmerle",
+"name": "Bachschmerle",
+"latein": ""
+},
+{
+"id": "streber",
+"name": "Streber",
+"latein": ""
+},
+{
+"id": "zingel",
+"name": "Zingel",
+"latein": ""
+},
+{
+"id": "schraetzer",
+"name": "Schrätzer",
+"latein": ""
+},
+{
+"id": "donaukaulbarsch",
+"name": "Donaukaulbarsch",
+"latein": ""
+},
+{
+"id": "wolgazander",
+"name": "Wolgazander",
+"latein": ""
+},
+{
+"id": "hundsfisch",
+"name": "Hundsfisch",
+"latein": ""
+},
+{
+"id": "stichling",
+"name": "Dreistachliger Stichling",
+"latein": ""
+},
+{
+"id": "schwarzmundgrundel",
+"name": "Schwarzmundgrundel",
+"latein": ""
+},
+{
+"id": "kesslergrundel",
+"name": "Kesslergrundel",
+"latein": ""
+},
+{
+"id": "marmorgrundel",
+"name": "Marmorgrundel",
+"latein": ""
+},
+{
+"id": "hausen",
+"name": "Hausen (Beluga)",
+"latein": ""
+},
+{
+"id": "waxdick",
+"name": "Waxdick (Russischer Stör)",
+"latein": ""
+},
+{
+"id": "glattdick",
+"name": "Glattdick",
+"latein": ""
+},
+{
+"id": "sternhausen",
+"name": "Sternhausen",
+"latein": ""
+},
+{
+"id": "sandfelchen",
+"name": "Sandfelchen",
+"latein": ""
+},
+{
+"id": "kleine_maraene",
+"name": "Kleine Maräne",
+"latein": ""
+},
+{
+"id": "namaycush",
+"name": "Amerikanischer Seesaibling",
+"latein": ""
+},
+{
+"id": "goldfisch",
+"name": "Goldfisch",
+"latein": ""
+},
+{
+"id": "flussgrundel",
+"name": "Flussgrundel",
+"latein": ""
+},
+{
+"id": "nackthalsgrundel",
+"name": "Nackthalsgrundel",
+"latein": ""
+},
+{
+"id": "neunstachler",
+"name": "Neunstachliger Stichling",
+"latein": ""
+}
+]

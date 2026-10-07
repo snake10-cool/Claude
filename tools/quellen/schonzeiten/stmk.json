@@ -1,0 +1,453 @@
+{
+  "quelle": "https://ogd.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrStmk&Gesetzesnummer=20000321",
+  "vorschrift": "Verordnung der Stmk. Landesregierung über die Schonzeiten und Mindestfanglängen von Wassertieren, LGBl. Nr. 81/2000, § 1",
+  "arten": {
+    "bachforelle": {
+      "von": "16.9.",
+      "bis": "15.3.",
+      "cm": 23,
+      "beleg": "Bachforelle | von 16. 9. bis 15. 3. | 23 cm"
+    },
+    "regenbogenforelle": {
+      "von": "1.1.",
+      "bis": "15.3.",
+      "cm": 23,
+      "beleg": "Regenbogenforelle | von 1. 1. bis 15. 3. | 23 cm"
+    },
+    "seeforelle": {
+      "von": "16.9.",
+      "bis": "15.3.",
+      "cm": 50,
+      "beleg": "Seeforelle | von 16. 9. bis 15. 3. | 50 cm"
+    },
+    "bachsaibling": {
+      "von": "16.9.",
+      "bis": "15.3.",
+      "cm": 23,
+      "beleg": "Bachsaibling | von 16. 9. bis 15. 3. | 23 cm"
+    },
+    "seesaibling": {
+      "von": "16.9.",
+      "bis": "15.3.",
+      "cm": 28,
+      "beleg": "Seesaibling | von 16. 9. bis 15. 3. | 28 cm/–",
+      "hinweis": "VO nennt Mindestfanglänge \"28 cm/–\", also nicht durchgehend 28 cm; Gewässerregeln beachten."
+    },
+    "aesche": {
+      "von": "15.2.",
+      "bis": "15.6.",
+      "cm": 32,
+      "beleg": "Äsche | von 15. 2. bis 15. 6. | 32 cm"
+    },
+    "huchen": {
+      "von": "1.3.",
+      "bis": "30.6.",
+      "cm": 85,
+      "beleg": "Huchen | von 1. 3. bis 30. 6. | 85 cm"
+    },
+    "reinanke": {
+      "keine": true
+    },
+    "hecht": {
+      "von": "1.1.",
+      "bis": "15.5.",
+      "cm": 40,
+      "beleg": "Hecht | von 1. 1. bis 15. 5. | 40 cm"
+    },
+    "zander": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "cm": 40,
+      "beleg": "Zander | von 1. 3. bis 31. 5 | 40 cm"
+    },
+    "flussbarsch": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "beleg": "Barsch | von 1. 4. bis 30. 6. | –"
+    },
+    "wels": {
+      "von": "15.4.",
+      "bis": "30.6.",
+      "cm": 70,
+      "beleg": "Wels | von 15. 4. bis 30. 6. | 70 cm"
+    },
+    "aalrutte": {
+      "von": "1.1.",
+      "bis": "15.3.",
+      "cm": 35,
+      "beleg": "Aalrute | von 1. 1. bis 15. 3. | 35 cm"
+    },
+    "karpfen": {
+      "von": "15.5.",
+      "bis": "30.6.",
+      "cm": 35,
+      "beleg": "Karpfen (in Fließgewässern) | von 15. 5. bis 30. 6. | 35 cm",
+      "hinweis": "Gilt laut VO nur in Fließgewässern; in stehenden Gewässern keine Schonzeit/Mindestfanglänge."
+    },
+    "schleie": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "cm": 25,
+      "beleg": "Schleie | von 1. 5. bis 30. 6. | 25 cm"
+    },
+    "brachse": {
+      "von": "1.4.",
+      "bis": "30.5.",
+      "cm": 25,
+      "beleg": "Brachse | von 1. 4. bis 30. 5. | 25 cm"
+    },
+    "barbe": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "cm": 30,
+      "beleg": "Barbe | von 1. 4. bis 30. 6. | 30 cm"
+    },
+    "nase": {
+      "von": "15.3.",
+      "bis": "31.5.",
+      "cm": 30,
+      "beleg": "Nase | von 15. 3. bis 31. 5. | 30 cm"
+    },
+    "aitel": {
+      "keine": true,
+      "beleg": "Aitel | – | _"
+    },
+    "rapfen": {
+      "von": "1.3.",
+      "bis": "30.6.",
+      "cm": 40,
+      "beleg": "Schied | von 1. 3. bis 30. 6. | 40 cm"
+    },
+    "rotauge": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "beleg": "Rotauge | von 1. 3. bis 31. 5. | –"
+    },
+    "rotfeder": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "beleg": "Rotfeder | von 1. 4. bis 30. 6. | –"
+    },
+    "laube": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "beleg": "Laube | von 1. 5. bis 30. 6. | –"
+    },
+    "seelaube": {
+      "ganzjaehrig": true,
+      "beleg": "Seelaube | ganzjährig"
+    },
+    "giebel": {
+      "keine": true
+    },
+    "karausche": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "beleg": "Karausche | von 1. 5. bis 30. 6. | –"
+    },
+    "perlfisch": {
+      "keine": true
+    },
+    "kaulbarsch": {
+      "von": "1.3.",
+      "bis": "30.4.",
+      "cm": 10,
+      "beleg": "Kaulbarsch | von 1. 3. bis 30. 4. | 10 cm"
+    },
+    "aal": {
+      "keine": true
+    },
+    "koppe": {
+      "von": "1.2.",
+      "bis": "31.5.",
+      "beleg": "Koppe | von 1. 2. bis 31. 5. | –"
+    },
+    "elritze": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "beleg": "Ellritze | von 1. 4. bis 30. 6. | –"
+    },
+    "sterlet": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "cm": 50,
+      "beleg": "Sterlet | von 1. 4. bis 30. 6. | 50 cm"
+    },
+    "bachneunauge": {
+      "von": "1.3.",
+      "bis": "30.9.",
+      "beleg": "Neunaugen | von 1. 3. bis 30. 9.",
+      "hinweis": "VO nennt \"Neunaugen\" allgemein; kein Mindestmaß."
+    },
+    "ukr_bachneunauge": {
+      "von": "1.3.",
+      "bis": "30.9.",
+      "beleg": "Neunaugen | von 1. 3. bis 30. 9.",
+      "hinweis": "VO nennt \"Neunaugen\" allgemein; kein Mindestmaß."
+    },
+    "stroemer": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "beleg": "Strömer | von 1. 3. bis 31. 5. | –"
+    },
+    "hasel": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "beleg": "Hasel | von 1. 3. bis 31. 5. | –"
+    },
+    "nerfling": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "cm": 30,
+      "beleg": "Nerfling | von 1. 4. bis 30. 6. | 30 cm"
+    },
+    "frauennerfling": {
+      "ganzjaehrig": true,
+      "beleg": "Frauennerfling | ganzjährig"
+    },
+    "zobel": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "cm": 30,
+      "beleg": "Zobel | von 1. 4. bis 30. 6. | 30 cm"
+    },
+    "zope": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "cm": 30,
+      "beleg": "Zope | von 1. 4. bis 30. 6. | 30 cm"
+    },
+    "guester": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "cm": 25,
+      "beleg": "Güster | von 1. 4. bis 30. 6. | 25 cm"
+    },
+    "russnase": {
+      "von": "15.3.",
+      "bis": "30.6.",
+      "cm": 30,
+      "beleg": "Rußnase, Zährte | von 15. 3. bis 30. 6. | 30 cm"
+    },
+    "sichling": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "cm": 30,
+      "beleg": "Sichling, Ziege | von 1. 4. bis 30. 6. | 30 cm"
+    },
+    "schneider": {
+      "von": "1.3.",
+      "bis": "30.6.",
+      "beleg": "Schneider | von 1. 3. bis 30. 6. | –"
+    },
+    "gruendling": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "beleg": "Gründlinge | von 1. 4. bis 30. 6. | –"
+    },
+    "weissflossengruendling": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "beleg": "Gründlinge | von 1. 4. bis 30. 6. | –",
+      "hinweis": "Zugeordnet über Sammelbegriff \"Gründlinge\" der VO."
+    },
+    "kesslergruendling": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "beleg": "Gründlinge | von 1. 4. bis 30. 6. | –",
+      "hinweis": "Zugeordnet über Sammelbegriff \"Gründlinge\" der VO."
+    },
+    "steingressling": {
+      "von": "1.4.",
+      "bis": "30.6.",
+      "beleg": "Gründlinge | von 1. 4. bis 30. 6. | –",
+      "hinweis": "Zugeordnet über Sammelbegriff \"Gründlinge\" der VO (Gattung Romanogobio)."
+    },
+    "bitterling": {
+      "ganzjaehrig": true,
+      "beleg": "Bitterling | ganzjährig"
+    },
+    "moderlieschen": {
+      "ganzjaehrig": true,
+      "beleg": "Moderlieschen | ganzjährig"
+    },
+    "semling": {
+      "ganzjaehrig": true,
+      "beleg": "Semling, Hundsbarbe | ganzjährig"
+    },
+    "graskarpfen": {
+      "keine": true
+    },
+    "silberkarpfen": {
+      "keine": true
+    },
+    "marmorkarpfen": {
+      "keine": true
+    },
+    "blaubandbaerbling": {
+      "keine": true
+    },
+    "sonnenbarsch": {
+      "keine": true
+    },
+    "forellenbarsch": {
+      "keine": true
+    },
+    "zwergwels": {
+      "keine": true
+    },
+    "schlammpeitzger": {
+      "ganzjaehrig": true,
+      "beleg": "Schlammpeitzger | ganzjährig"
+    },
+    "steinbeisser": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "beleg": "Steinbeißer | von 1. 4. bis 31. 5. | –"
+    },
+    "goldsteinbeisser": {
+      "ganzjaehrig": true,
+      "beleg": "Goldsteinbeißer | ganzjährig"
+    },
+    "schmerle": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "beleg": "Schmerle | von 1. 3. bis 31. 5. | –"
+    },
+    "streber": {
+      "ganzjaehrig": true,
+      "beleg": "Streber | ganzjährig"
+    },
+    "zingel": {
+      "von": "1.3.",
+      "bis": "30.6.",
+      "cm": 25,
+      "beleg": "Zingel | von 1. 3. bis 30. 6. | 25 cm"
+    },
+    "schraetzer": {
+      "ganzjaehrig": true,
+      "beleg": "Schrätzer | ganzjährig"
+    },
+    "donaukaulbarsch": {
+      "keine": true
+    },
+    "wolgazander": {
+      "keine": true
+    },
+    "hundsfisch": {
+      "keine": true
+    },
+    "stichling": {
+      "keine": true
+    },
+    "schwarzmundgrundel": {
+      "keine": true
+    },
+    "kesslergrundel": {
+      "keine": true
+    },
+    "marmorgrundel": {
+      "keine": true
+    },
+    "hausen": {
+      "keine": true
+    },
+    "waxdick": {
+      "keine": true
+    },
+    "glattdick": {
+      "keine": true
+    },
+    "sternhausen": {
+      "keine": true
+    },
+    "sandfelchen": {
+      "keine": true
+    },
+    "kleine_maraene": {
+      "keine": true
+    },
+    "namaycush": {
+      "keine": true
+    },
+    "goldfisch": {
+      "keine": true
+    },
+    "flussgrundel": {
+      "keine": true
+    },
+    "nackthalsgrundel": {
+      "keine": true
+    },
+    "neunstachler": {
+      "keine": true
+    }
+  },
+  "abweichungen": [
+    "reinanke: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "rapfen: App hatte unbekannt, Gesetz: 1.3.-30.6., 40 cm",
+    "rotauge: App hatte unbekannt, Gesetz: 1.3.-31.5., kein Mindestmaß",
+    "rotfeder: App hatte unbekannt, Gesetz: 1.4.-30.6., kein Mindestmaß",
+    "laube: App hatte unbekannt, Gesetz: 1.5.-30.6., kein Mindestmaß",
+    "seelaube: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "giebel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "karausche: App hatte unbekannt, Gesetz: 1.5.-30.6., kein Mindestmaß",
+    "perlfisch: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "kaulbarsch: App hatte unbekannt, Gesetz: 1.3.-30.4., 10 cm",
+    "aal: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "koppe: App hatte unbekannt, Gesetz: 1.2.-31.5., kein Mindestmaß",
+    "elritze: App hatte unbekannt, Gesetz: 1.4.-30.6., kein Mindestmaß",
+    "sterlet: App hatte unbekannt, Gesetz: 1.4.-30.6., 50 cm",
+    "bachneunauge: App hatte unbekannt, Gesetz: 1.3.-30.9., kein Mindestmaß",
+    "ukr_bachneunauge: App hatte unbekannt, Gesetz: 1.3.-30.9., kein Mindestmaß",
+    "stroemer: App hatte unbekannt, Gesetz: 1.3.-31.5., kein Mindestmaß",
+    "hasel: App hatte unbekannt, Gesetz: 1.3.-31.5., kein Mindestmaß",
+    "nerfling: App hatte unbekannt, Gesetz: 1.4.-30.6., 30 cm",
+    "frauennerfling: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "zobel: App hatte unbekannt, Gesetz: 1.4.-30.6., 30 cm",
+    "zope: App hatte unbekannt, Gesetz: 1.4.-30.6., 30 cm",
+    "guester: App hatte unbekannt, Gesetz: 1.4.-30.6., 25 cm",
+    "russnase: App hatte unbekannt, Gesetz: 15.3.-30.6., 30 cm",
+    "sichling: App hatte unbekannt, Gesetz: 1.4.-30.6., 30 cm",
+    "schneider: App hatte unbekannt, Gesetz: 1.3.-30.6., kein Mindestmaß",
+    "gruendling: App hatte unbekannt, Gesetz: 1.4.-30.6., kein Mindestmaß",
+    "weissflossengruendling: App hatte unbekannt, Gesetz: 1.4.-30.6., kein Mindestmaß",
+    "kesslergruendling: App hatte unbekannt, Gesetz: 1.4.-30.6., kein Mindestmaß",
+    "steingressling: App hatte unbekannt, Gesetz: 1.4.-30.6., kein Mindestmaß",
+    "bitterling: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "moderlieschen: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "semling: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "graskarpfen: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "silberkarpfen: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "marmorkarpfen: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "blaubandbaerbling: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "sonnenbarsch: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "forellenbarsch: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "zwergwels: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "schlammpeitzger: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "steinbeisser: App hatte unbekannt, Gesetz: 1.4.-31.5., kein Mindestmaß",
+    "goldsteinbeisser: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "schmerle: App hatte unbekannt, Gesetz: 1.3.-31.5., kein Mindestmaß",
+    "streber: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "zingel: App hatte unbekannt, Gesetz: 1.3.-30.6., 25 cm",
+    "schraetzer: App hatte unbekannt, Gesetz: ganzjährig geschont",
+    "donaukaulbarsch: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "wolgazander: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "hundsfisch: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "stichling: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "schwarzmundgrundel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "kesslergrundel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "marmorgrundel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "hausen: App hatte ganzjährig geschont (ausgestorben), VO nennt die Art nicht (keine Schonzeit/kein Mindestmaß)",
+    "waxdick: App hatte ganzjährig geschont (ausgestorben), VO nennt die Art nicht (keine Schonzeit/kein Mindestmaß)",
+    "glattdick: App hatte ganzjährig geschont (ausgestorben), VO nennt die Art nicht (keine Schonzeit/kein Mindestmaß)",
+    "sternhausen: App hatte ganzjährig geschont (ausgestorben), VO nennt die Art nicht (keine Schonzeit/kein Mindestmaß)",
+    "sandfelchen: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "kleine_maraene: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "namaycush: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "goldfisch: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "flussgrundel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "nackthalsgrundel: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)",
+    "neunstachler: App hatte unbekannt, Gesetz: keine Schonzeit/kein Mindestmaß (nicht in VO genannt)"
+  ]
+}

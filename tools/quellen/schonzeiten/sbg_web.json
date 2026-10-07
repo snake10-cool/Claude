@@ -1,0 +1,133 @@
+{
+ "aesche": {
+  "von": "1.1.",
+  "bis": "31.5.",
+  "cm": 33
+ },
+ "bachforelle": {
+  "von": "1.10.",
+  "bis": "28.2.",
+  "cm": 25,
+  "hinweis": "Ab einer Seehöhe von 800 m, Mindestmaß: 22 cm"
+ },
+ "bachsaibling": {
+  "keine": true
+ },
+ "schmerle": {
+  "ganzjaehrig": true
+ },
+ "barbe": {
+  "von": "1.5.",
+  "bis": "15.6.",
+  "cm": 35
+ },
+ "bitterling": {
+  "ganzjaehrig": true
+ },
+ "elritze": {
+  "von": "1.4.",
+  "bis": "30.6.",
+  "hinweis": "Ab einer Seehöhe von 1.000 m, Schonzeit: 01.04.-15.07."
+ },
+ "frauennerfling": {
+  "ganzjaehrig": true
+ },
+ "giebel": {
+  "keine": true
+ },
+ "gruendling": {
+  "von": "1.5.",
+  "bis": "31.5."
+ },
+ "guester": {
+  "ganzjaehrig": true
+ },
+ "hasel": {
+  "ganzjaehrig": true
+ },
+ "hecht": {
+  "von": "1.2.",
+  "bis": "30.4.",
+  "cm": 50
+ },
+ "huchen": {
+  "von": "1.2.",
+  "bis": "31.5.",
+  "cm": 85
+ },
+ "karausche": {
+  "ganzjaehrig": true
+ },
+ "karpfen": {
+  "keine": true
+ },
+ "kaulbarsch": {
+  "keine": true
+ },
+ "nase": {
+  "ganzjaehrig": true
+ },
+ "perlfisch": {
+  "ganzjaehrig": true
+ },
+ "regenbogenforelle": {
+  "keine": true
+ },
+ "reinanke": {
+  "von": "1.11.",
+  "bis": "31.12.",
+  "cm": 33
+ },
+ "rotfeder": {
+  "von": "16.4.",
+  "bis": "30.6.",
+  "cm": 15
+ },
+ "schlammpeitzger": {
+  "ganzjaehrig": true
+ },
+ "schleie": {
+  "von": "1.6.",
+  "bis": "31.7.",
+  "cm": 25
+ },
+ "schneider": {
+  "ganzjaehrig": true
+ },
+ "seeforelle": {
+  "von": "1.10.",
+  "bis": "31.12.",
+  "cm": 50
+ },
+ "seesaibling": {
+  "von": "16.10.",
+  "bis": "31.12.",
+  "cm": 25
+ },
+ "steinbeisser": {
+  "ganzjaehrig": true
+ },
+ "sterlet": {
+  "ganzjaehrig": true
+ },
+ "streber": {
+  "ganzjaehrig": true
+ },
+ "stroemer": {
+  "ganzjaehrig": true
+ },
+ "ukr_bachneunauge": {
+  "ganzjaehrig": true
+ },
+ "zander": {
+  "von": "16.3.",
+  "bis": "31.5.",
+  "cm": 40
+ },
+ "zingel": {
+  "ganzjaehrig": true
+ },
+ "zobel": {
+  "ganzjaehrig": true
+ }
+}

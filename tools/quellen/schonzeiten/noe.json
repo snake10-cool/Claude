@@ -1,0 +1,480 @@
+{
+  "quelle": "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrNO&Gesetzesnummer=20000592",
+  "vorschrift": "NÖ Fischereiverordnung 2002 (LGBl. 6550/1, idF LGBl. Nr. 93/2015), § 1 Abs. 1 und 3",
+  "arten": {
+    "bachforelle": {
+      "von": "16.9.",
+      "bis": "15.3.",
+      "cm": 25,
+      "beleg": "Bachforelle 16. September – 25 cm / (Salmo trutta) 15. März"
+    },
+    "regenbogenforelle": {
+      "von": "1.1.",
+      "bis": "15.3.",
+      "cm": 25,
+      "beleg": "Regenbogenforelle 1. Jänner – 25 cm / (Oncorhynchus mykiss) 15. März"
+    },
+    "seeforelle": {
+      "von": "16.9.",
+      "bis": "15.3.",
+      "cm": 50,
+      "beleg": "Seeforelle 16. September – 50 cm / (Salmo trutta) 15. März"
+    },
+    "bachsaibling": {
+      "von": "16.9.",
+      "bis": "15.3.",
+      "cm": 22,
+      "beleg": "Bachsaibling 16. September – 22 cm / (Salvelinus fontinalis) 15. März"
+    },
+    "seesaibling": {
+      "von": "16.9.",
+      "bis": "15.3.",
+      "cm": 28,
+      "beleg": "Seesaibling 16. September – 28 cm / (Salvelinus umbla) 15. März"
+    },
+    "aesche": {
+      "von": "1.3.",
+      "bis": "30.4.",
+      "cm": 30,
+      "beleg": "Äsche 1. März – 30. April 30 cm"
+    },
+    "huchen": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "cm": 75,
+      "beleg": "Huchen 1. März – 31. Mai 75 cm"
+    },
+    "reinanke": {
+      "von": "16.10.",
+      "bis": "31.12.",
+      "cm": 30,
+      "beleg": "Maräne, Renke 16. Oktober – 30 cm / (Coregonidae) 31. Dezember"
+    },
+    "hecht": {
+      "von": "1.2.",
+      "bis": "30.4.",
+      "cm": 50,
+      "beleg": "Hecht 1. Februar – 50 cm / (Esox lucius) 30. April"
+    },
+    "zander": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 35,
+      "beleg": "Zander 1. April - 31. Mai 35 cm"
+    },
+    "flussbarsch": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "beleg": "Flussbarsch 1. März – 31. Mai ––-"
+    },
+    "wels": {
+      "von": "1.6.",
+      "bis": "30.6.",
+      "cm": 60,
+      "beleg": "Wels 1. Juni – 30. Juni 60 cm"
+    },
+    "aalrutte": {
+      "von": "1.12.",
+      "bis": "29.2.",
+      "cm": 35,
+      "hinweis": "Text nennt 29. Februar als Schonzeitende",
+      "beleg": "Aalrutte 1. Dezember – 35 cm / (Lota lota) 29. Februar"
+    },
+    "karpfen": {
+      "cm": 35,
+      "hinweis": "Wildkarpfen (Cyprinus carpio): Schonzeit 1.5.–30.6., 35 cm",
+      "beleg": "Karpfen ––– 35 cm"
+    },
+    "schleie": {
+      "von": "1.6.",
+      "bis": "30.6.",
+      "cm": 25,
+      "beleg": "Schleie 1. Juni – 30. Juni 25 cm"
+    },
+    "brachse": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "cm": 25,
+      "beleg": "Brachse 1. Mai – 31. Mai 25 cm"
+    },
+    "barbe": {
+      "von": "1.5.",
+      "bis": "15.6.",
+      "cm": 30,
+      "beleg": "Barbe 1. Mai – 15. Juni 30 cm"
+    },
+    "nase": {
+      "von": "16.3.",
+      "bis": "31.5.",
+      "cm": 35,
+      "beleg": "Nase 16. März – 31. Mai 35 cm"
+    },
+    "aitel": {
+      "keine": true,
+      "beleg": "Aitel, Döbel ––- ––-"
+    },
+    "rapfen": {
+      "von": "16.4.",
+      "bis": "31.5.",
+      "cm": 40,
+      "beleg": "Schied, Rapfen 16. April – 31. Mai 40 cm"
+    },
+    "rotauge": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "beleg": "Rotauge 1. April – 31. Mai ––-"
+    },
+    "rotfeder": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "beleg": "Rotfeder 1. April – 31. Mai ––-"
+    },
+    "laube": {
+      "von": "16.5.",
+      "bis": "30.6.",
+      "beleg": "Laube 16. Mai – 30. Juni ––-"
+    },
+    "seelaube": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "giebel": {
+      "keine": true,
+      "beleg": "Giebel ––- ––-"
+    },
+    "karausche": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "beleg": "Karausche 1. Mai – 31. Mai ––-"
+    },
+    "perlfisch": {
+      "ganzjaehrig": true,
+      "beleg": "Perlfisch ganzjährig ––-"
+    },
+    "kaulbarsch": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 10,
+      "beleg": "Kaulbarsch 1. April – 31. Mai 10 cm"
+    },
+    "aal": {
+      "keine": true,
+      "beleg": "Aal ––- ––-"
+    },
+    "koppe": {
+      "von": "1.2.",
+      "bis": "30.4.",
+      "beleg": "Koppe 1. Februar – ––- / (Cottus gobio) 30. April"
+    },
+    "elritze": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "beleg": "Elritze 1. April – 31. Mai ––-"
+    },
+    "sterlet": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "cm": 45,
+      "beleg": "Sterlet 1. Mai – 30. Juni 45 cm"
+    },
+    "bachneunauge": {
+      "ganzjaehrig": true,
+      "hinweis": "Alle Neunaugen (Petromyzontidae) ganzjährig geschont",
+      "beleg": "Neunaugen ganzjährig ––- / (Petromyzontidae)"
+    },
+    "ukr_bachneunauge": {
+      "ganzjaehrig": true,
+      "hinweis": "Alle Neunaugen (Petromyzontidae) ganzjährig geschont",
+      "beleg": "Neunaugen ganzjährig ––- / (Petromyzontidae)"
+    },
+    "stroemer": {
+      "ganzjaehrig": true,
+      "beleg": "Strömer ganzjährig ––-"
+    },
+    "hasel": {
+      "von": "16.3.",
+      "bis": "31.5.",
+      "beleg": "Hasel 16. März – 31. Mai ––-"
+    },
+    "nerfling": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "cm": 35,
+      "beleg": "Nerfling 1. Mai – 30. Juni 35 cm"
+    },
+    "frauennerfling": {
+      "ganzjaehrig": true,
+      "beleg": "Frauennerfling ganzjährig ––-"
+    },
+    "zobel": {
+      "von": "15.4.",
+      "bis": "31.5.",
+      "cm": 25,
+      "beleg": "Zobel 15. April – 31. Mai 25 cm"
+    },
+    "zope": {
+      "ganzjaehrig": true,
+      "beleg": "Zope ganzjährig ––-"
+    },
+    "guester": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "beleg": "Güster 1. Mai – 31. Mai ––-"
+    },
+    "russnase": {
+      "von": "16.4.",
+      "bis": "15.6.",
+      "cm": 30,
+      "beleg": "Rußnase, Zährte 16. April – 15. Juni 30 cm"
+    },
+    "sichling": {
+      "ganzjaehrig": true,
+      "beleg": "Sichling ganzjährig ––-"
+    },
+    "schneider": {
+      "ganzjaehrig": true,
+      "beleg": "Schneider ganzjährig ––-"
+    },
+    "gruendling": {
+      "von": "1.5.",
+      "bis": "31.5.",
+      "hinweis": "Donau-Gründling (Gobio obtusirostris) ebenfalls 1.5.–31.5.",
+      "beleg": "Gründling 1. Mai – 31. Mai ––-"
+    },
+    "weissflossengruendling": {
+      "von": "15.4.",
+      "bis": "15.6.",
+      "hinweis": "Donau-Weißflossengründling (Romanogobio vladykovi)",
+      "beleg": "Donau- 15. April – 15. Juni ––– / Weißflossengründling"
+    },
+    "kesslergruendling": {
+      "ganzjaehrig": true,
+      "beleg": "Kesslers Gründling ganzjährig ––-"
+    },
+    "steingressling": {
+      "ganzjaehrig": true,
+      "beleg": "Steingressling ganzjährig ––-"
+    },
+    "bitterling": {
+      "ganzjaehrig": true,
+      "beleg": "Bitterling ganzjährig ––-"
+    },
+    "moderlieschen": {
+      "ganzjaehrig": true,
+      "beleg": "Moderlieschen ganzjährig ––-"
+    },
+    "semling": {
+      "ganzjaehrig": true,
+      "beleg": "Semling, Hundsbarbe ganzjährig ––-"
+    },
+    "graskarpfen": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "silberkarpfen": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "marmorkarpfen": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "blaubandbaerbling": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "sonnenbarsch": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "forellenbarsch": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "zwergwels": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "schlammpeitzger": {
+      "ganzjaehrig": true,
+      "beleg": "Schlammpeitzger ganzjährig ––-"
+    },
+    "steinbeisser": {
+      "ganzjaehrig": true,
+      "beleg": "Steinbeißer ganzjährig ––-"
+    },
+    "goldsteinbeisser": {
+      "ganzjaehrig": true,
+      "beleg": "Goldsteinbeißer ganzjährig ––-"
+    },
+    "schmerle": {
+      "von": "1.3.",
+      "bis": "31.5.",
+      "beleg": "Schmerle 1. März – 31. Mai ––-"
+    },
+    "streber": {
+      "ganzjaehrig": true,
+      "beleg": "Streber ganzjährig ––-"
+    },
+    "zingel": {
+      "von": "15.3.",
+      "bis": "31.5.",
+      "cm": 20,
+      "beleg": "Zingel 15. März – 31. Mai 20 cm"
+    },
+    "schraetzer": {
+      "ganzjaehrig": true,
+      "beleg": "Schrätzer ganzjährig ––-"
+    },
+    "donaukaulbarsch": {
+      "ganzjaehrig": true,
+      "beleg": "Donaukaulbarsch ganzjährig –––"
+    },
+    "wolgazander": {
+      "von": "1.4.",
+      "bis": "31.5.",
+      "cm": 35,
+      "beleg": "Wolgazander 1. April - 31. Mai 35 cm"
+    },
+    "hundsfisch": {
+      "ganzjaehrig": true,
+      "beleg": "Hundsfisch ganzjährig ––-"
+    },
+    "stichling": {
+      "von": "1.5.",
+      "bis": "30.6.",
+      "beleg": "Stichling 1. Mai – 30. Juni ––- / (Gasterosteus aculeatus)"
+    },
+    "schwarzmundgrundel": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "kesslergrundel": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "marmorgrundel": {
+      "keine": true,
+      "beleg": "Marmorgrundel ––- ––-"
+    },
+    "hausen": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "waxdick": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "glattdick": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "sternhausen": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "sandfelchen": {
+      "von": "16.10.",
+      "bis": "31.12.",
+      "cm": 30,
+      "hinweis": "Familie Coregonidae („Maräne, Renke“) erfasst",
+      "beleg": "Maräne, Renke 16. Oktober – 30 cm / (Coregonidae) 31. Dezember"
+    },
+    "kleine_maraene": {
+      "von": "16.10.",
+      "bis": "31.12.",
+      "cm": 30,
+      "hinweis": "Familie Coregonidae („Maräne, Renke“) erfasst",
+      "beleg": "Maräne, Renke 16. Oktober – 30 cm / (Coregonidae) 31. Dezember"
+    },
+    "namaycush": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "goldfisch": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "flussgrundel": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "nackthalsgrundel": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    },
+    "neunstachler": {
+      "keine": true,
+      "beleg": "Alle nicht in Abs. 1 genannten Fischarten, Neunaugen, Krustentiere und Muscheln gelten als nicht heimisch bzw. nicht eingebürgert. Für sie gelten daher weder Schonzeiten noch Brittelmaße."
+    }
+  },
+  "abweichungen": [
+    "regenbogenforelle: App hatte 30 cm, Gesetz sagt 25 cm",
+    "seesaibling: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 16.9.–15.3., Brittelmaß 28 cm",
+    "reinanke: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 16.10.–31.12., Brittelmaß 30 cm",
+    "rapfen: App ohne NÖ-Eintrag, Gesetz: Schonzeit 16.4.–31.5., Brittelmaß 40 cm",
+    "rotauge: App ohne NÖ-Eintrag, Gesetz: Schonzeit 1.4.–31.5., Brittelmaß keins",
+    "rotfeder: App ohne NÖ-Eintrag, Gesetz: Schonzeit 1.4.–31.5., Brittelmaß keins",
+    "laube: App ohne NÖ-Eintrag, Gesetz: Schonzeit 16.5.–30.6., Brittelmaß keins",
+    "seelaube: App ohne NÖ-Eintrag, Gesetz: keine Schonzeit/kein Brittelmaß",
+    "giebel: App ohne NÖ-Eintrag, Gesetz: keine Schonzeit/kein Brittelmaß",
+    "karausche: App ohne NÖ-Eintrag, Gesetz: Schonzeit 1.5.–31.5., Brittelmaß keins",
+    "perlfisch: App ohne NÖ-Eintrag, Gesetz: ganzjährig geschont",
+    "kaulbarsch: App ohne NÖ-Eintrag, Gesetz: Schonzeit 1.4.–31.5., Brittelmaß 10 cm",
+    "aal: App ohne NÖ-Eintrag, Gesetz: keine Schonzeit/kein Brittelmaß",
+    "koppe: App ohne NÖ-Eintrag, Gesetz: Schonzeit 1.2.–30.4., Brittelmaß keins",
+    "elritze: App ohne NÖ-Eintrag, Gesetz: Schonzeit 1.4.–31.5., Brittelmaß keins",
+    "sterlet: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: Schonzeit 1.5.–30.6., Brittelmaß 45 cm",
+    "bachneunauge: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "ukr_bachneunauge: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "stroemer: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "hasel: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 16.3.–31.5., Brittelmaß keins",
+    "nerfling: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 1.5.–30.6., Brittelmaß 35 cm",
+    "frauennerfling: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "zobel: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 15.4.–31.5., Brittelmaß 25 cm",
+    "zope: App hatte unbekannt (_unbekannt), Gesetz: ganzjährig geschont",
+    "guester: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 1.5.–31.5., Brittelmaß keins",
+    "russnase: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 16.4.–15.6., Brittelmaß 30 cm",
+    "sichling: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "schneider: App hatte unbekannt (_unbekannt), Gesetz: ganzjährig geschont",
+    "gruendling: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 1.5.–31.5., Brittelmaß keins",
+    "weissflossengruendling: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: Schonzeit 15.4.–15.6., Brittelmaß keins",
+    "kesslergruendling: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "steingressling: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "bitterling: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "moderlieschen: App hatte unbekannt (_unbekannt), Gesetz: ganzjährig geschont",
+    "semling: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "graskarpfen: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "silberkarpfen: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "marmorkarpfen: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "blaubandbaerbling: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "sonnenbarsch: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "forellenbarsch: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "zwergwels: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "schlammpeitzger: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "steinbeisser: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "goldsteinbeisser: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "schmerle: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 1.3.–31.5., Brittelmaß keins",
+    "streber: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "zingel: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: Schonzeit 15.3.–31.5., Brittelmaß 20 cm",
+    "schraetzer: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "donaukaulbarsch: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "wolgazander: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 1.4.–31.5., Brittelmaß 35 cm",
+    "hundsfisch: App hatte unbekannt (Regel(unbekannt: true, hinweis: _geschue), Gesetz: ganzjährig geschont",
+    "stichling: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 1.5.–30.6., Brittelmaß keins",
+    "schwarzmundgrundel: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "kesslergrundel: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "marmorgrundel: App hatte unbekannt (_unbekannt), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "hausen: App hatte unbekannt (_ausgestorben), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "waxdick: App hatte unbekannt (_ausgestorben), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "glattdick: App hatte unbekannt (_ausgestorben), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "sternhausen: App hatte unbekannt (_ausgestorben), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "sandfelchen: App hatte unbekannt (_unbekannt), Gesetz: Schonzeit 16.10.–31.12., Brittelmaß 30 cm",
+    "kleine_maraene: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: Schonzeit 16.10.–31.12., Brittelmaß 30 cm",
+    "namaycush: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "goldfisch: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "flussgrundel: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "nackthalsgrundel: App hatte unbekannt (Regel(unbekannt: true, hinweis: _fremd)), Gesetz: keine Schonzeit/kein Brittelmaß",
+    "neunstachler: App hatte unbekannt (_unbekannt), Gesetz: keine Schonzeit/kein Brittelmaß"
+  ]
+}

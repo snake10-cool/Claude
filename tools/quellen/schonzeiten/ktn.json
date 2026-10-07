@@ -1,0 +1,358 @@
+{
+ "quelle": "https://ogd.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrK&Gesetzesnummer=20000952",
+ "vorschrift": "Kärntner Fischereischonzeitenverordnung – K-FSV, LGBl. Nr. 89/2024, § 1 (Schonzeiten) und § 2 (Mindestfangmaße)",
+ "arten": {
+  "aalrutte": {
+   "von": "1.12.",
+   "bis": "28.2.",
+   "cm": 35,
+   "beleg": "§ 1 Abs. 1 Z 1: Aalrutten | 1. Dezember bis 28. Februar / § 2 Abs. 1 Z 1: Aalrutten | 35 cm"
+  },
+  "aesche": {
+   "von": "1.1.",
+   "bis": "31.5.",
+   "cm": 35,
+   "beleg": "§ 1 Abs. 1 Z 2: Äschen | 1. Jänner bis 31. Mai / § 2 Abs. 1 Z 2: Äschen | 35 cm"
+  },
+  "bachforelle": {
+   "von": "1.10.",
+   "bis": "31.3.",
+   "cm": 22,
+   "beleg": "§ 1 Abs. 1 Z 3: Bachforellen | 1. Oktober bis 31. März / § 2 Abs. 1 Z 3: Bachforellen | 22 cm"
+  },
+  "bachsaibling": {
+   "von": "1.10.",
+   "bis": "31.3.",
+   "cm": 22,
+   "beleg": "§ 1 Abs. 1 Z 4: Bachsaiblinge | 1. Oktober bis 31. März / § 2 Abs. 1 Z 4: Bachsaiblinge | 22 cm"
+  },
+  "barbe": {
+   "von": "1.1.",
+   "bis": "31.7.",
+   "cm": 35,
+   "beleg": "§ 1 Abs. 1 Z 5: Barben | 1. Jänner bis 31. Juli / § 2 Abs. 1 Z 5: Barben | 35 cm"
+  },
+  "bitterling": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 6: Bitterlinge | 1. Jänner bis 31. Dezember"
+  },
+  "elritze": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 7: Elritzen, Pfrillen | 1. Jänner bis 31. Dezember"
+  },
+  "flussbarsch": {
+   "von": "1.1.",
+   "bis": "31.5.",
+   "hinweis": "Keine Schonzeit im Millstätter See und Weissensee.",
+   "beleg": "§ 1 Abs. 1 Z 8: Flussbarsche, ausgenommen Millstätter See und Weissensee | 1. Jänner bis 31. Mai"
+  },
+  "forellenbarsch": {
+   "von": "16.4.",
+   "bis": "30.6.",
+   "cm": 25,
+   "beleg": "§ 1 Abs. 1 Z 9: Forellenbarsche | 16. April bis 30. Juni / § 2 Abs. 1 Z 7: Forellenbarsche | 25 cm"
+  },
+  "frauennerfling": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 10: Frauennerflinge | 1. Jänner bis 31. Dezember"
+  },
+  "gruendling": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 11: Gründlinge | 1. Jänner bis 31. Dezember"
+  },
+  "hasel": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 12: Haseln | 1. Jänner bis 31. Dezember"
+  },
+  "hecht": {
+   "von": "1.1.",
+   "bis": "30.4.",
+   "cm": 55,
+   "hinweis": "Ossiacher/Feld-/Afritzer See 70 cm; Weißensee u. Drau Lieser–Gail: keine Schonzeit, kein Maß.",
+   "beleg": "§ 1 Abs. 1 Z 13: Hechte, ausgenommen im Weißensee sowie in der Drau zwischen der Einmündung der Lieser und der Einmündung der Gail | 1. Jänner bis 30. April / § 2 Abs. 1 Z 8: a) Hechte, ausgenommen im Ossiacher See, im Weißensee, im Feldsee und Afritzer See sowie in der Drau zwischen der Einmündung der Lieser und der Einmündung der Gail | 55 cm; b) Hechte im Ossiacher See, Feldsee und Afritzer See | 70 cm"
+  },
+  "huchen": {
+   "von": "1.2.",
+   "bis": "31.5.",
+   "cm": 85,
+   "beleg": "§ 1 Abs. 1 Z 14: Huchen | 1. Februar bis 31. Mai / § 2 Abs. 1 Z 9: Huchen | 85 cm"
+  },
+  "karausche": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 15: Karauschen | 1. Jänner bis 31. Dezember"
+  },
+  "koppe": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 16: Koppen | 1. Jänner bis 31. Dezember"
+  },
+  "kesslergruendling": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 17: Kessler-Gründlinge | 1. Jänner bis 31. Dezember"
+  },
+  "seelaube": {
+   "von": "1.5.",
+   "bis": "31.5.",
+   "cm": 20,
+   "beleg": "§ 1 Abs. 1 Z 18: Mairenken (Seelauben) | 1. Mai bis 31. Mai / § 2 Abs. 1 Z 11: Mairenken (Seelauben) | 20 cm"
+  },
+  "nase": {
+   "ganzjaehrig": true,
+   "cm": 35,
+   "hinweis": "Drau Mauthbrücken bis Staatsgrenze: Schonzeit nur 16.3.–15.6.",
+   "beleg": "§ 1 Abs. 1: Z 19: Nasen | 1. Jänner bis 31. Dezember / § 1 Abs. 1 Z 20: Nasen in der Drau von Mauthbrücken bis zur Staatsgrenze | 16. März bis 15.Juni / § 2 Abs. 1 Z 12: Nasen | 35 cm"
+  },
+  "regenbogenforelle": {
+   "von": "1.1.",
+   "bis": "31.3.",
+   "cm": 24,
+   "beleg": "§ 1 Abs. 1 Z 21: Regenbogenforellen | 1. Jänner bis 31. März / § 2 Abs. 1 Z 13: Regenbogenforellen | 24 cm"
+  },
+  "reinanke": {
+   "von": "1.11.",
+   "bis": "28.2.",
+   "cm": 30,
+   "hinweis": "Ossiacher See: 1.10.–28.2., 45 cm; Weißensee, Feldsee, Afritzer See: 35 cm.",
+   "beleg": "§ 1 Abs. 1 Z 22: a) Reinanken, Maränen, ausgenommen im Ossiacher See | 1. November bis 28. Februar; b) Reinanken, Maränen im Ossiacher See | 1. Oktober bis 28. Februar / § 2 Abs. 1 Z 14: a) Reinanken, Maränen, ausgenommen im Ossiacher See, Weißensee, Feldsee und Afritzer See | 30 cm; b) Reinanken, Maränen im Ossiacher See | 45 cm; c) Reinanken, Maränen im Weißensee, Feldsee und Afritzer See | 35 cm"
+  },
+  "sandfelchen": {
+   "von": "1.11.",
+   "bis": "28.2.",
+   "cm": 30,
+   "hinweis": "VO nennt allgemein \"Reinanken, Maränen\". Ossiacher See: 1.10.–28.2., 45 cm; Weißensee, Feldsee, Afritzer See: 35 cm.",
+   "beleg": "§ 1 Abs. 1 Z 22: a) Reinanken, Maränen, ausgenommen im Ossiacher See | 1. November bis 28. Februar; b) Reinanken, Maränen im Ossiacher See | 1. Oktober bis 28. Februar / § 2 Abs. 1 Z 14: a) Reinanken, Maränen, ausgenommen im Ossiacher See, Weißensee, Feldsee und Afritzer See | 30 cm; b) Reinanken, Maränen im Ossiacher See | 45 cm; c) Reinanken, Maränen im Weißensee, Feldsee und Afritzer See | 35 cm"
+  },
+  "kleine_maraene": {
+   "von": "1.11.",
+   "bis": "28.2.",
+   "cm": 30,
+   "hinweis": "VO nennt allgemein \"Reinanken, Maränen\". Ossiacher See: 1.10.–28.2., 45 cm; Weißensee, Feldsee, Afritzer See: 35 cm.",
+   "beleg": "§ 1 Abs. 1 Z 22: a) Reinanken, Maränen, ausgenommen im Ossiacher See | 1. November bis 28. Februar; b) Reinanken, Maränen im Ossiacher See | 1. Oktober bis 28. Februar / § 2 Abs. 1 Z 14: a) Reinanken, Maränen, ausgenommen im Ossiacher See, Weißensee, Feldsee und Afritzer See | 30 cm; b) Reinanken, Maränen im Ossiacher See | 45 cm; c) Reinanken, Maränen im Weißensee, Feldsee und Afritzer See | 35 cm"
+  },
+  "schleie": {
+   "von": "1.6.",
+   "bis": "30.6.",
+   "cm": 25,
+   "beleg": "§ 1 Abs. 1 Z 23: Schleien | 1. Juni bis 30. Juni / § 2 Abs. 1 Z 15: Schleien | 25 cm"
+  },
+  "schmerle": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 24: Schmerlen | 1. Jänner bis 31. Dezember"
+  },
+  "schneider": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 25: Schneider | 1. Jänner bis 31. Dezember"
+  },
+  "seeforelle": {
+   "von": "1.10.",
+   "bis": "28.2.",
+   "cm": 60,
+   "beleg": "§ 1 Abs. 1 Z 26: Seeforellen | 1. Oktober bis 28. Februar / § 2 Abs. 1 Z 16: Seeforellen | 60 cm"
+  },
+  "seesaibling": {
+   "von": "1.10.",
+   "bis": "28.2.",
+   "cm": 30,
+   "hinweis": "Gilt nicht in Seen über der Waldgrenze (dort keine Schonzeit, kein Maß).",
+   "beleg": "§ 1 Abs. 1 Z 27: Seesaiblinge, ausgenommen in Seen über der Waldgrenze | 1. Oktober bis 28. Februar / § 2 Abs. 1 Z 17: Seesaiblinge, ausgenommen in Seen über der Waldgrenze | 30 cm"
+  },
+  "semling": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 28: Semlinge, Hundsbarben | 1. Jänner bis 31. Dezember"
+  },
+  "steinbeisser": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 29: Steinbeißer | 1. Jänner bis 31. Dezember"
+  },
+  "steingressling": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 30: Steingreßlinge | 1. Jänner bis 31. Dezember"
+  },
+  "sterlet": {
+   "von": "1.1.",
+   "bis": "30.6.",
+   "cm": 40,
+   "beleg": "§ 1 Abs. 1 Z 31: Sterlet | 1. Jänner bis 30. Juni / § 2 Abs. 1 Z 18: Sterlet | 40 cm"
+  },
+  "streber": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 32: Streber | 1. Jänner bis 31. Dezember"
+  },
+  "stroemer": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 33: Strömer | 1. Jänner bis 31. Dezember"
+  },
+  "weissflossengruendling": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 34: Weißflossen-Gründlinge | 1. Jänner bis 31. Dezember"
+  },
+  "wels": {
+   "von": "1.1.",
+   "bis": "31.5.",
+   "cm": 70,
+   "beleg": "§ 1 Abs. 1 Z 35: Welse (Waller) | 1. Jänner bis 31. Mai / § 2 Abs. 1 Z 19: Welse (Waller) | 70 cm"
+  },
+  "russnase": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 36: Zährten (Rußnasen ) | 1. Jänner bis 31. Dezember"
+  },
+  "zander": {
+   "von": "1.1.",
+   "bis": "31.5.",
+   "cm": 45,
+   "hinweis": "Ossiacher See 50 cm; Feldsee und Afritzer See 55 cm.",
+   "beleg": "§ 1 Abs. 1 Z 37: Zander | 1. Jänner bis 31. Mai / § 2 Abs. 1 Z 20: a) Zander, ausgenommen im Ossiacher See, Feldsee und Afritzer See | 45 cm; b) Zander im Ossiacher See | 50 cm; c) Zander im Feldsee und Afritzer See | 55 cm"
+  },
+  "zingel": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 1: Z 38: Zingel | 1. Jänner bis 31. Dezember"
+  },
+  "aitel": {
+   "von": "1.1.",
+   "bis": "31.5.",
+   "beleg": "§ 1 Abs. 1 Z 39: Aitel | 1. Jänner bis 31. Mai"
+  },
+  "ukr_bachneunauge": {
+   "ganzjaehrig": true,
+   "beleg": "§ 1 Abs. 4: Ukrainisches Bachneunauge, Donaubachneunauge | 1. Jänner bis 31. Dezember"
+  },
+  "brachse": {
+   "cm": 30,
+   "beleg": "§ 2 Abs. 1 Z 6: Brachsen | 30 cm"
+  },
+  "karpfen": {
+   "cm": 35,
+   "beleg": "§ 2 Abs. 1 Z 10: Karpfen | 35 cm"
+  },
+  "rapfen": {
+   "keine": true
+  },
+  "rotauge": {
+   "keine": true
+  },
+  "rotfeder": {
+   "keine": true
+  },
+  "laube": {
+   "keine": true
+  },
+  "giebel": {
+   "keine": true
+  },
+  "perlfisch": {
+   "keine": true
+  },
+  "kaulbarsch": {
+   "keine": true
+  },
+  "aal": {
+   "keine": true
+  },
+  "bachneunauge": {
+   "keine": true
+  },
+  "nerfling": {
+   "keine": true
+  },
+  "zobel": {
+   "keine": true
+  },
+  "zope": {
+   "keine": true
+  },
+  "guester": {
+   "keine": true
+  },
+  "sichling": {
+   "keine": true
+  },
+  "moderlieschen": {
+   "keine": true
+  },
+  "graskarpfen": {
+   "keine": true
+  },
+  "silberkarpfen": {
+   "keine": true
+  },
+  "marmorkarpfen": {
+   "keine": true
+  },
+  "blaubandbaerbling": {
+   "keine": true
+  },
+  "sonnenbarsch": {
+   "keine": true
+  },
+  "zwergwels": {
+   "keine": true
+  },
+  "schlammpeitzger": {
+   "keine": true
+  },
+  "goldsteinbeisser": {
+   "keine": true
+  },
+  "schraetzer": {
+   "keine": true
+  },
+  "donaukaulbarsch": {
+   "keine": true
+  },
+  "wolgazander": {
+   "keine": true
+  },
+  "hundsfisch": {
+   "keine": true
+  },
+  "stichling": {
+   "keine": true
+  },
+  "schwarzmundgrundel": {
+   "keine": true
+  },
+  "kesslergrundel": {
+   "keine": true
+  },
+  "marmorgrundel": {
+   "keine": true
+  },
+  "hausen": {
+   "keine": true
+  },
+  "waxdick": {
+   "keine": true
+  },
+  "glattdick": {
+   "keine": true
+  },
+  "sternhausen": {
+   "keine": true
+  },
+  "namaycush": {
+   "keine": true
+  },
+  "goldfisch": {
+   "keine": true
+  },
+  "flussgrundel": {
+   "keine": true
+  },
+  "nackthalsgrundel": {
+   "keine": true
+  },
+  "neunstachler": {
+   "keine": true
+  }
+ },
+ "abweichungen": [
+  "nase: App ganzjährig ohne Maß; Gesetz ganzjährig, aber 35 cm Mindestfangmaß und in der Drau Mauthbrücken–Staatsgrenze nur 16.3.–15.6.",
+  "hecht: App-Hinweis nennt nur 70 cm in Ossiacher/Feld-/Afritzer See; fehlt: Weißensee und Drau Lieser–Gail ausgenommen",
+  "Kein _ktn-Eintrag in der App, Gesetz: keine Regelung (keine): rapfen, rotauge, rotfeder, laube, giebel, perlfisch, kaulbarsch, aal",
+  "Kein _ktn-Eintrag in der App, Gesetz regelt: seelaube 1.5.–31.5./20 cm; karausche, koppe, elritze ganzjährig",
+  "sterlet: App unbekannt, Gesetz 1.1.–30.6., 40 cm",
+  "App unbekannt, Gesetz ganzjährig: bitterling, frauennerfling, gruendling, hasel, kesslergruendling, schmerle, schneider, semling, steinbeisser, steingressling, streber, stroemer, weissflossengruendling, russnase, zingel, ukr_bachneunauge",
+  "forellenbarsch: App unbekannt, Gesetz 16.4.–30.6., 25 cm",
+  "sandfelchen: App unbekannt, kleine_maraene: App unbekannt (fremd); Gesetz \"Reinanken, Maränen\" 1.11.–28.2., 30 cm",
+  "App unbekannt/ausgestorben/geschützt, Gesetz nennt Art nicht (keine): bachneunauge, nerfling, zobel, zope, guester, sichling, moderlieschen, graskarpfen, silberkarpfen, marmorkarpfen, blaubandbaerbling, sonnenbarsch, zwergwels, schlammpeitzger, goldsteinbeisser, schraetzer, donaukaulbarsch, wolgazander, hundsfisch, stichling, schwarzmundgrundel, kesslergrundel, marmorgrundel, hausen, waxdick, glattdick, sternhausen, namaycush, goldfisch, flussgrundel, nackthalsgrundel, neunstachler"
+ ]
+}
