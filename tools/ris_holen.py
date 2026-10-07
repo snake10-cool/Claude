@@ -23,7 +23,13 @@ LAENDER = {
     'ooe': 'Oberoesterreich', 'sbg': 'Salzburg', 'stmk': 'Steiermark',
     'ktn': 'Kaernten', 'tirol': 'Tirol', 'vbg': 'Vorarlberg',
 }
-SUCHWORTE = ['Fischerei', 'Schonzeit', 'Fischereiverordnung']
+# (Feld, Wert): Titel-Suche mit Platzhalter und Volltext-Suche.
+SUCHEN = [
+    ('Titel', 'Fischerei*'), ('Titel', 'Fischerei'), ('Titel', '*fischerei*'),
+    ('Suchworte', 'Schonzeit'), ('Suchworte', 'Brittelmaß'),
+    ('Suchworte', 'Mindestmaß'), ('Suchworte', 'Fischerei'),
+]
+SEITEN = 4
 
 
 def holen(url):
@@ -60,46 +66,63 @@ def links(obj):
     return list(dict.fromkeys(gefunden))
 
 
+def treffer(daten):
+    try:
+        r = daten['OgdSearchResult']['OgdDocumentResults']['OgdDocumentReference']
+    except (KeyError, TypeError):
+        return []
+    return r if isinstance(r, list) else [r]
+
+
 def main():
     ZIEL.mkdir(parents=True, exist_ok=True)
     uebersicht = {}
     for kurz, land in LAENDER.items():
         ordner = ZIEL / kurz
+        if ordner.exists():
+            for alt in ordner.iterdir():
+                alt.unlink()
         ordner.mkdir(exist_ok=True)
-        alle = []
-        for wort in SUCHWORTE:
-            params = {
-                'Applikation': 'LrKons',
-                'Titel': wort,
-                'Bundesland.SucheIn' + land: 'true',
-                'DokumenteProSeite': 'Fifty',
-            }
-            url = API + '?' + urllib.parse.urlencode(params)
+        gesetze = {}  # Gesetzesnummer -> (Kurztitel, URL der geltenden Fassung)
+        for feld, wert in SUCHEN:
+            for seite in range(1, SEITEN + 1):
+                params = {
+                    'Applikation': 'LrKons',
+                    feld: wert,
+                    'Bundesland.SucheIn' + land: 'true',
+                    'DokumenteProSeite': 'OneHundred',
+                    'Seitennummer': seite,
+                }
+                url = API + '?' + urllib.parse.urlencode(params)
+                try:
+                    daten = json.loads(holen(url))
+                except Exception as e:  # noqa: BLE001
+                    print(f'{kurz} {feld}={wert}: Fehler {e}')
+                    break
+                liste = treffer(daten)
+                for t in liste:
+                    lr = t.get('Data', {}).get('Metadaten', {}).get('Landesrecht', {})
+                    kons = lr.get('LrKons', {})
+                    titel = lr.get('Kurztitel', '') or ''
+                    nr = kons.get('Gesetzesnummer')
+                    ganz = kons.get('GesamteRechtsvorschriftUrl')
+                    if nr and ganz and re.search(r'(?i)fisch', titel + ' ' + str(kons.get('Indizes', ''))):
+                        gesetze.setdefault(nr, (titel, ganz))
+                time.sleep(0.5)
+                if len(liste) < 100:
+                    break
+        uebersicht[kurz] = {nr: t for nr, (t, _) in gesetze.items()}
+        print(f'{kurz}: {len(gesetze)} Rechtsvorschriften')
+        for nr, (titel, ganz) in gesetze.items():
             try:
-                roh = holen(url)
+                html = holen(ganz).decode('utf-8', 'replace')
             except Exception as e:  # noqa: BLE001
-                print(f'{kurz} {wort}: Fehler {e}')
+                print(f'  {ganz}: {e}')
                 continue
-            (ordner / f'_suche_{wort}.json').write_bytes(roh)
-            try:
-                daten = json.loads(roh)
-            except ValueError:
-                continue
-            alle += links(daten)
-            time.sleep(1)
-        alle = list(dict.fromkeys(alle))[:40]
-        uebersicht[kurz] = alle
-        print(f'{kurz}: {len(alle)} Dokumente')
-        for i, u in enumerate(alle):
-            try:
-                html = holen(u).decode('utf-8', 'replace')
-            except Exception as e:  # noqa: BLE001
-                print(f'  {u}: {e}')
-                continue
-            titel = re.search(r'(?is)<title>(.*?)</title>', html)
-            name = re.sub(r'[^A-Za-z0-9]+', '_', (titel.group(1) if titel else str(i)))[:80]
-            (ordner / f'{i:02d}_{name}.txt').write_text(
-                f'QUELLE: {u}\n\n' + text_aus_html(html), encoding='utf-8')
+            name = re.sub(r'[^A-Za-z0-9]+', '_', titel)[:60]
+            (ordner / f'{nr}_{name}.txt').write_text(
+                f'QUELLE: {ganz}\nTITEL: {titel}\n\n' + text_aus_html(html),
+                encoding='utf-8')
             time.sleep(0.5)
     (ZIEL / 'uebersicht.json').write_text(
         json.dumps(uebersicht, indent=1, ensure_ascii=False), encoding='utf-8')
