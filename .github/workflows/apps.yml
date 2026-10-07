@@ -46,11 +46,14 @@ jobs:
 
       - name: Austro Angler prüfen und bauen
         working-directory: apps/austro_angler
+        # Nur die Test-APK bekommt die Testkonto-Knöpfe (Secret TESTKONTO_PASSWORT).
+        env:
+          TESTKONTO_PASSWORT: ${{ secrets.TESTKONTO_PASSWORT }}
         run: |
           flutter pub get
           flutter analyze
           flutter test
-          flutter build apk --release
+          flutter build apk --release --dart-define=TESTKONTO_PASSWORT="$TESTKONTO_PASSWORT"
 
       # Play-Store-Paket (AAB), signiert mit dem Upload-Schlüssel. Läuft nur,
       # wenn die Secrets ANDROID_KEYSTORE_BASE64 und ANDROID_KEYSTORE_PASSWORT

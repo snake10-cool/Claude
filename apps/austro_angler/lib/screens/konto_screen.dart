@@ -241,6 +241,10 @@ class _Profil extends StatelessWidget {
   }
 }
 
+/// Nur in der Test-APK gesetzt (--dart-define aus dem GitHub-Secret),
+/// im Play-Store-Paket leer – dann gibt es keine Testkonto-Knöpfe.
+const _testkontoPasswort = String.fromEnvironment('TESTKONTO_PASSWORT');
+
 class AnmeldeFormular extends StatefulWidget {
   const AnmeldeFormular({super.key});
 
@@ -294,6 +298,13 @@ class _AnmeldenState extends State<AnmeldeFormular> {
     }
   }
 
+  void _testkonto(int nr) {
+    _email.text = 'testkonto$nr@austro-angler.test';
+    _passwort.text = _testkontoPasswort;
+    _neu = false;
+    _los();
+  }
+
   Future<void> _vergessen() async {
     try {
       await KontoScope.of(context)!.passwortVergessen(_email.text);
@@ -308,6 +319,23 @@ class _AnmeldenState extends State<AnmeldeFormular> {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
+        if (_testkontoPasswort.isNotEmpty) ...[
+          Row(
+            children: [
+              for (final nr in [1, 2]) ...[
+                if (nr == 2) const SizedBox(width: 8),
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: _laedt ? null : () => _testkonto(nr),
+                    icon: const Icon(Icons.science_outlined),
+                    label: Text('Testkonto $nr'),
+                  ),
+                ),
+              ],
+            ],
+          ),
+          const SizedBox(height: 16),
+        ],
         SegmentedButton<bool>(
           segments: const [
             ButtonSegment(value: false, label: Text('Anmelden')),
