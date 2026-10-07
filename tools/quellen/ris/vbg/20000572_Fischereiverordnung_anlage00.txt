@@ -1,0 +1,87 @@
+QUELLE: https://ogd.ris.bka.gv.at/Dokumente/Landesnormen/LVB40045360/Anlage_1.pdf
+
+                                     Vlbg. LGBl.Nr. 65/2025 - Ausgegeben am 30. Oktober 2025                                                   2 von 2
+
+
+
+
+                                                                                                                                             Anlage 1
+                                                                                                                                             (zu § 14)
+
+Schonzeiten und Mindestmaße für autochthone (heimische) Fischarten und Flusskrebse
+Fam.                 Arten              Trivialnamen             Fließgewässer               Stehende Gewässer                        Alpenrhein
+                                                                            Mindest-                       Mindest-                                Mindest
+                                                            Schonzeit                      Schonzeit                         Schonzeit
+                                                                            maß [cm]                       maß [cm]                                maß [cm]
+Anguillidae, Aale
+         Anguilla anguilla            Aal                        -               50             -              -                  -                  50
+Salmonidae, Lachsartige
+         Salmo trutta f. fario        Bachforelle         01.10. - 28.02.        22      01.11. - 28.02.   25 (22*)       01.10. - 31.01.**          25
+         Salmo trutta f. lacustris    Seeforelle          01.10. - 28.02.        60             -              -           15.07. - 31.01.           60
+         Salvelinus umbla             Seesaibling         01.11. – 31.12.        -       01.10. - 31.01.   25 (22*)        01.11. – 31.12.            -
+Coregonidae, Felchen
+         Coregonus sp.                Felchen, Renke             -               -              -              -                ganzjährig     geschont
+Thymallidae, Äschen
+
+         Thymallus thymallus          Äsche               01.02. - 30.04.        35             -              -           01.02. - 30.04.           35
+
+Esociidae, Hechte
+         Esox lucius                  Hecht               01.04. - 30.04.        40      01.04. - 30.04.      40           01.04. - 30.04.           40
+
+Cyprinidae, Karpfenartige
+         Abramis brama                Brachse                    -               -       01.05. - 31.05.      25                  -                   -
+         Alburnoides bipunctatus      Schneider                                              ganzjährig geschont
+         Alburnus alburnus            Laube                                            keine Schonzeit, kein Mindestmaß
+         Barbus barbus                Barbe               01.05. - 15.06.        40             -              -           01.05. - 15.06.           40
+         Blicca bjoerkna              Güster, Blicke                                   keine Schonzeit, kein Mindestmaß
+         Carassius carassius          Karausche                                        keine Schonzeit, kein Mindestmaß
+         Chondrostoma nasus           Nase                15.03. - 31.05.        40             -              -           15.03. - 31.05.           40
+         Gobio gobio                  Gründling                                              ganzjährig geschont
+         Leucaspius delineatus        Moderlieschen                                          ganzjährig geschont
+         Leuciscus leuciscus          Hasel               15.03. - 31.05.        15             -              -           15.03. - 31.05.           15
+         Phoxinus phoxinus            Elritze, Pfrille    01.04. - 31.05.        8       01.04. - 31.05.       8           01.04. - 31.05.            8
+         Rhodeus amarus               Bitterling                                             ganzjährig geschont
+         Rutilus rutilus              Rotauge                                          keine Schonzeit, kein Mindestmaß
+         Scardinius
+                                      Rotfeder                                         keine Schonzeit, kein Mindestmaß
+         erythrophthalmus
+         Squalius cephalus            Döbel, Aitel                                     keine Schonzeit, kein Mindestmaß
+         Telestes souffia             Strömer                                                ganzjährig geschont
+         Tinca tinca                  Schleie             01.05. - 15.06.        25      01.05. - 15.06.      25           01.05. - 15.06.           25
+Nemacheilidae, Bachschmerlen
+         Barbatula barbatula          Bachschmerle                                           ganzjährig geschont
+Siluridae, Welse
+         Silurus glanis               Wels                                             keine Schonzeit, kein Mindestmaß
+Gadidae, Dorsche
+         Lota lota                    Trüsche, Aalrutte   15.12. - 15.03.        35             -              -           15.12. - 15.03.           35
+Percidae, Barsche
+         Perca fluviatilis            Flussbarsch         01.04. - 20.05.        -       01.04. - 20.05.       -           01.04. - 20.05.            -
+Cottidae, Koppen
+         Cottus gobio                 Groppe, Koppe                                          ganzjährig geschont
+Astacidae, Flusskrebse
+         Astacus astacus              Edelkrebs                ganzjährig geschont       01.10. - 31.07.      12                  -                   -
+         Austropotamobius
+                                      Steinkrebs                                             ganzjährig geschont
+         torrentium
+         Austropotamobius
+                                      Dohlenkrebs                                            ganzjährig geschont
+         pallipes
+    * Gilt für stehende Gewässer über 1.500 m Seehöhe.
+    ** Bachforellen im Alpenrhein mit einem Fangmaß ab 50 cm haben eine Schonzeit vom 15.07. bis 31.01.
+
+
+
+
+www.ris.bka.gv.at
+Dieses Dokument ist amtssigniert im Sinne des E-Government-Gesetzes.
+
+Mechanismen zur Überprüfung des elektronischen Dokuments sind unter
+https://www.signaturpruefung.gv.at/ verfügbar.
+
+Ausdrucke des Dokuments können beim
+Amt der Vorarlberger Landesregierung
+Landhaus
+A-6901 Bregenz
+E-Mail: land@vorarlberg.at
+überprüft werden.
+
