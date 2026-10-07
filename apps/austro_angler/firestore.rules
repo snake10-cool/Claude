@@ -253,6 +253,7 @@ service cloud.firestore {
           || (angemeldet() && resource.data.uid == request.auth.uid);
       allow create, update: if angemeldet()
           && request.resource.data.uid == request.auth.uid
+          && (resource == null || resource.data.uid == request.auth.uid)
           && request.resource.data.keys().hasOnly(['uid', 'oeffentlich',
                'teile', 'groesse'])
           && request.resource.data.teile is int
@@ -265,6 +266,8 @@ service cloud.firestore {
             || (angemeldet() && resource.data.uid == request.auth.uid);
         allow create, update: if angemeldet()
             && request.resource.data.uid == request.auth.uid
+            && (resource == null || resource.data.uid == request.auth.uid)
+            && get(/databases/$(database)/documents/videos/$(fangId)).data.uid == request.auth.uid
             && request.resource.data.keys().hasOnly(['uid', 'daten'])
             && request.resource.data.daten is string
             && request.resource.data.daten.size() < 900000;
