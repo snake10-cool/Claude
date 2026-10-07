@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: pdftotext installieren
+        run: sudo apt-get install -y poppler-utils
       - name: RIS laden
         run: python tools/ris_holen.py
       - name: Ins Repo übernehmen

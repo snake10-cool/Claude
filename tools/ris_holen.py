@@ -7,6 +7,7 @@ tools/quellen/ris/<land>/ sowie die rohen Suchergebnisse zum Nachprüfen.
 
 import json
 import re
+import subprocess
 import sys
 import time
 import urllib.parse
@@ -64,6 +65,32 @@ def links(obj):
                 gehen(x)
     gehen(obj)
     return list(dict.fromkeys(gefunden))
+
+
+def anlagen_holen(html, basis, ziel):
+    """Anlagen (z. B. Tirol: Schonzeit-Tabellen) liegen oft nur als PDF bei."""
+    pdfs = []
+    for a in re.finditer(r'(?is)<a[^>]+href="([^"]+\.pdf)"[^>]*>(.*?)</a>', html):
+        url, text = unescape(a.group(1)), re.sub(r'<[^>]+>', ' ', a.group(2))
+        if re.search(r'(?i)anl|beil', url + ' ' + text):
+            pdfs.append(urllib.parse.urljoin(basis, url))
+    for i, url in enumerate(list(dict.fromkeys(pdfs))[:25]):
+        try:
+            pdf = holen(url)
+        except Exception as e:  # noqa: BLE001
+            print(f'  {url}: {e}')
+            continue
+        datei = Path(f'{ziel}_anlage{i:02d}.pdf')
+        datei.write_bytes(pdf)
+        try:
+            subprocess.run(['pdftotext', '-layout', str(datei),
+                            str(datei.with_suffix('.txt'))], check=True)
+            text = datei.with_suffix('.txt').read_text(encoding='utf-8', errors='replace')
+            datei.with_suffix('.txt').write_text(f'QUELLE: {url}\n\n' + text, encoding='utf-8')
+        except Exception as e:  # noqa: BLE001
+            print(f'  pdftotext {url}: {e}')
+        datei.unlink()
+        time.sleep(0.5)
 
 
 def treffer(daten):
@@ -124,6 +151,8 @@ def main():
                 f'QUELLE: {ganz}\nTITEL: {titel}\n\n' + text_aus_html(html),
                 encoding='utf-8')
             time.sleep(0.5)
+            if re.search(r'(?i)fisch', titel):
+                anlagen_holen(html, ganz, ordner / f'{nr}_{name}')
     (ZIEL / 'uebersicht.json').write_text(
         json.dumps(uebersicht, indent=1, ensure_ascii=False), encoding='utf-8')
 
