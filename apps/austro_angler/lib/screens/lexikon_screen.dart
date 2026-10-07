@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../data/bilder.dart';
 import '../data/fische.dart';
@@ -22,10 +23,12 @@ List<String> merkmalPunkte(String text) {
   for (final satz in text.split(RegExp(r'(?<=[.!])\s+'))) {
     final teile = satz.replaceAll(RegExp(r'[.!]$'), '').split(RegExp(r',\s+'));
     // Kurze Sätze ohne Aufzählung bleiben zusammen.
-    punkte.addAll(teile.where((t) => t.trim().isNotEmpty).map((t) {
-      final s = t.trim();
-      return s[0].toUpperCase() + s.substring(1);
-    }));
+    punkte.addAll(
+      teile.where((t) => t.trim().isNotEmpty).map((t) {
+        final s = t.trim();
+        return s[0].toUpperCase() + s.substring(1);
+      }),
+    );
   }
   return punkte;
 }
@@ -89,8 +92,9 @@ class _LexikonScreenState extends State<LexikonScreen> {
           IconButton(
             tooltip: 'Welcher Fisch ist das?',
             icon: const Icon(Icons.manage_search),
-            onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const BestimmungScreen())),
+            onPressed: () => Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (_) => const BestimmungScreen())),
           ),
         ],
       ),
@@ -99,8 +103,9 @@ class _LexikonScreenState extends State<LexikonScreen> {
         children: [
           const BundeslandWahl(),
           const JunganglerTipp(
-              'Schonzeit = in dieser Zeit darf der Fisch nicht gefangen werden. '
-              'Brittelmaß = so lang muss er mindestens sein.'),
+            'Schonzeit = in dieser Zeit darf der Fisch nicht gefangen werden. '
+            'Brittelmaß = so lang muss er mindestens sein.',
+          ),
           const SizedBox(height: 8),
           TextField(
             decoration: const InputDecoration(
@@ -128,8 +133,10 @@ class _LexikonScreenState extends State<LexikonScreen> {
               ],
             ),
           ),
-          Text('${liste.length} Arten',
-              style: Theme.of(context).textTheme.labelLarge),
+          Text(
+            '${liste.length} Arten',
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
           if (liste.isEmpty)
             const Padding(
               padding: EdgeInsets.all(24),
@@ -149,21 +156,22 @@ class _LexikonScreenState extends State<LexikonScreen> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                title: Text([
-                  f.name,
-                  if (f.geschuetzt) '🛡️',
-                  if (f.eingeschleppt) '🌍',
-                  if (f.ausgestorben) '✝',
-                ].join(' ')),
+                title: Text(
+                  [
+                    f.name,
+                    if (f.geschuetzt) '🛡️',
+                    if (f.eingeschleppt) '🌍',
+                    if (f.ausgestorben) '✝',
+                  ].join(' '),
+                ),
                 subtitle: Text(
                   'Schonzeit: ${f.regel(land).schonzeitText}\n'
                   'Brittelmaß: ${f.regel(land).mindestmassText}',
                 ),
                 isThreeLine: true,
                 trailing: _StatusPunkt(f.regel(land).istGeschont(heute)),
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => FischDetail(f)),
-                ),
+                onTap: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => FischDetail(f))),
               ),
             ),
           const SizedBox(height: 8),
@@ -216,13 +224,13 @@ class FischDetail extends StatelessWidget {
           if (!fisch.ausgestorben)
             IconButton(
               tooltip: 'Im Schonzeit-Countdown zeigen',
-              icon: Icon(SpeicherScope.of(context)
-                      .lieblingsfische
-                      .contains(fisch.id)
-                  ? Icons.star
-                  : Icons.star_border),
-              onPressed: () => SpeicherScope.of(context)
-                  .lieblingsfischUmschalten(fisch.id),
+              icon: Icon(
+                SpeicherScope.of(context).lieblingsfische.contains(fisch.id)
+                    ? Icons.star
+                    : Icons.star_border,
+              ),
+              onPressed: () =>
+                  SpeicherScope.of(context).lieblingsfischUmschalten(fisch.id),
             ),
         ],
       ),
@@ -264,8 +272,10 @@ class FischDetail extends StatelessWidget {
                     : null,
                 child: ListTile(
                   dense: true,
-                  title: Text(jahreszeitNamen[i] +
-                      (i == jahreszeit(DateTime.now()) ? '  (jetzt)' : '')),
+                  title: Text(
+                    jahreszeitNamen[i] +
+                        (i == jahreszeit(DateTime.now()) ? '  (jetzt)' : ''),
+                  ),
                   subtitle: Text(tipps[i]),
                 ),
               ),
@@ -278,17 +288,21 @@ class FischDetail extends StatelessWidget {
             border: TableBorder.all(color: Theme.of(context).dividerColor),
             columnWidths: const {0: IntrinsicColumnWidth()},
             children: [
-              const TableRow(children: [
-                _Zelle('', fett: true),
-                _Zelle('Schonzeit', fett: true),
-                _Zelle('Brittelmaß', fett: true),
-              ]),
+              const TableRow(
+                children: [
+                  _Zelle('', fett: true),
+                  _Zelle('Schonzeit', fett: true),
+                  _Zelle('Brittelmaß', fett: true),
+                ],
+              ),
               for (final b in Bundesland.values)
-                TableRow(children: [
-                  _Zelle(b.kurz, fett: true),
-                  _Zelle(fisch.regel(b).schonzeitText),
-                  _Zelle(fisch.regel(b).mindestmassText),
-                ]),
+                TableRow(
+                  children: [
+                    _Zelle(b.kurz, fett: true),
+                    _Zelle(fisch.regel(b).schonzeitText),
+                    _Zelle(fisch.regel(b).mindestmassText),
+                  ],
+                ),
             ],
           ),
           for (final e in fisch.regeln.entries)
@@ -299,6 +313,38 @@ class FischDetail extends StatelessWidget {
               ),
           const SizedBox(height: 8),
           Text(schonzeitenStand, style: text.bodySmall),
+          ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            title: Text('Rechtsquellen', style: text.titleSmall),
+            subtitle: const Text(
+              'Landesgesetze im RIS (Rechtsinformationssystem)',
+            ),
+            children: [
+              for (final b in Bundesland.values)
+                ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.zero,
+                  leading: Text(
+                    b.kurz,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  title: Text(
+                    schonzeitQuellen[b]?.$1 ??
+                        'Verordnung des Landesfischereiverbandes – nicht im RIS, '
+                            'Werte bitte beim Verband prüfen.',
+                  ),
+                  trailing: schonzeitQuellen[b] == null
+                      ? null
+                      : const Icon(Icons.open_in_new, size: 18),
+                  onTap: schonzeitQuellen[b] == null
+                      ? null
+                      : () => launchUrl(
+                          Uri.parse(schonzeitQuellen[b]!.$2),
+                          mode: LaunchMode.externalApplication,
+                        ),
+                ),
+            ],
+          ),
           const SizedBox(height: 24),
           if (!fisch.ausgestorben) WoGibtEsIhn(fisch),
         ],
@@ -377,26 +423,31 @@ class _WeckerKnopfState extends State<_WeckerKnopf> {
       child: SwitchListTile(
         contentPadding: EdgeInsets.zero,
         secondary: const Icon(Icons.alarm),
-        title: const Row(children: [
-          Flexible(child: Text('Schonzeit-Wecker')),
-          SizedBox(width: 8),
-          PremiumMarke(),
-        ]),
-        subtitle: Text('Erinnerung um 8 Uhr am Tag nach dem ${regel.bis}, wenn die '
-            'Schonzeit in ${land.name} endet'),
+        title: const Row(
+          children: [
+            Flexible(child: Text('Schonzeit-Wecker')),
+            SizedBox(width: 8),
+            PremiumMarke(),
+          ],
+        ),
+        subtitle: Text(
+          'Erinnerung um 8 Uhr am Tag nach dem ${regel.bis}, wenn die '
+          'Schonzeit in ${land.name} endet',
+        ),
         value: _an ?? false,
         onChanged: _an == null
             ? null
             : (_) async {
-                final an =
-                    await Wecker.instanz.umschalten(widget.fisch.id, land);
+                final an = await Wecker.instanz.umschalten(
+                  widget.fisch.id,
+                  land,
+                );
                 if (mounted) setState(() => _an = an);
               },
       ),
     );
   }
 }
-
 
 enum _Sicherheit {
   alle('Alle'),
@@ -445,8 +496,9 @@ class _WoGibtEsIhnState extends State<WoGibtEsIhn> {
     if (!mounted || KontoScope.of(context) == null) return;
     try {
       final gefangen = await fangDienst.gewaesserMitFang(widget.fisch.id);
-      final infos =
-          await fangDienst.gewaesserMitFischLautInfos(widget.fisch.id);
+      final infos = await fangDienst.gewaesserMitFischLautInfos(
+        widget.fisch.id,
+      );
       if (mounted) {
         setState(() {
           _gefangen = {
@@ -464,7 +516,10 @@ class _WoGibtEsIhnState extends State<WoGibtEsIhn> {
     if (fang != null) return (true, '🎣 hier gefangen ($fang×)');
     if (_vonAnglern.contains(g.id)) return (true, '🙋 von Anglern (geprüft)');
     if (!g.fischarten.contains(widget.fisch.id)) return null;
-    return (g.fischQuelle.sicher, '${g.fischQuelle.zeichen} ${g.fischQuelle.text}');
+    return (
+      g.fischQuelle.sicher,
+      '${g.fischQuelle.zeichen} ${g.fischQuelle.text}',
+    );
   }
 
   @override
@@ -551,8 +606,10 @@ class _WoGibtEsIhnState extends State<WoGibtEsIhn> {
         else if (treffer.isEmpty)
           const Padding(
             padding: EdgeInsets.all(16),
-            child: Text('Keine Gewässer gefunden. Probier einen anderen '
-                'Filter oder wähle oben ein anderes Bundesland.'),
+            child: Text(
+              'Keine Gewässer gefunden. Probier einen anderen '
+              'Filter oder wähle oben ein anderes Bundesland.',
+            ),
           ),
         for (final (g, grund, _) in treffer.take(_anzahl))
           Card(
@@ -560,15 +617,17 @@ class _WoGibtEsIhnState extends State<WoGibtEsIhn> {
               dense: true,
               leading: Icon(g.typ.fliesst ? Icons.waves : Icons.water),
               title: Text(g.name),
-              subtitle: Text('${g.typ.name} · ${g.ort}\n$grund',
-                  maxLines: 3, overflow: TextOverflow.ellipsis),
+              subtitle: Text(
+                '${g.typ.name} · ${g.ort}\n$grund',
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
               isThreeLine: true,
               trailing: g.preise.isEmpty
                   ? null
                   : Text(g.preise.first.euroText, style: text.titleSmall),
-              onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => GewaesserDetail(g)),
-              ),
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => GewaesserDetail(g))),
             ),
           ),
         if (treffer.length > _anzahl)

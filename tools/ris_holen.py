@@ -93,6 +93,48 @@ def anlagen_holen(html, basis, ziel):
         time.sleep(0.5)
 
 
+# Salzburg: Schonzeiten legt der Landesfischereiverband fest (nicht im RIS).
+WEB = {
+    'sbg_web': [
+        'https://www.fischereiverband.at/node/147',
+        'https://www.salzburg.gv.at/themen/aw/jagd/fischerei',
+        'https://www.angel-urlaub.at/fischen/salzburg/schonzeiten/',
+        'https://ssfv.at/images/content/Bestimmungen.pdf',
+        'https://www.ssfv.at/wp-content/uploads/2021/01/Bestimmungen2021.pdf',
+    ],
+}
+
+
+def web_holen():
+    for kurz, urls in WEB.items():
+        ordner = ZIEL / kurz
+        ordner.mkdir(parents=True, exist_ok=True)
+        for i, url in enumerate(urls):
+            try:
+                roh = holen(url)
+            except Exception as e:  # noqa: BLE001
+                print(f'  {url}: {e}')
+                continue
+            datei = ordner / f'{i:02d}'
+            if url.endswith('.pdf') or roh[:4] == b'%PDF':
+                datei.with_suffix('.pdf').write_bytes(roh)
+                subprocess.run(['pdftotext', '-layout', str(datei.with_suffix('.pdf')),
+                                str(datei.with_suffix('.txt'))], check=False)
+                datei.with_suffix('.pdf').unlink()
+                if datei.with_suffix('.txt').exists():
+                    t = datei.with_suffix('.txt').read_text(encoding='utf-8', errors='replace')
+                    datei.with_suffix('.txt').write_text(f'QUELLE: {url}\n\n{t}', encoding='utf-8')
+            else:
+                html = roh.decode('utf-8', 'replace')
+                for a in re.finditer(r'href="([^"]+\.pdf)"', html):
+                    link = urllib.parse.urljoin(url, unescape(a.group(1)))
+                    if re.search(r'(?i)schon|brittel|mindest|verordnung', link) and link not in urls:
+                        urls.append(link)
+                datei.with_suffix('.txt').write_text(
+                    f'QUELLE: {url}\n\n' + text_aus_html(html), encoding='utf-8')
+            time.sleep(0.5)
+
+
 def treffer(daten):
     try:
         r = daten['OgdSearchResult']['OgdDocumentResults']['OgdDocumentReference']
@@ -103,6 +145,9 @@ def treffer(daten):
 
 def main():
     ZIEL.mkdir(parents=True, exist_ok=True)
+    web_holen()
+    if '--nur-web' in sys.argv:
+        return
     uebersicht = {}
     for kurz, land in LAENDER.items():
         ordner = ZIEL / kurz
