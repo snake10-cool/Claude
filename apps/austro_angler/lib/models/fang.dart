@@ -142,7 +142,13 @@ class Fang {
         'uid': uid,
         'nutzerName': nutzerName,
         'hatFoto': hatFoto,
-        if (hatVideo) 'hatVideo': true,
+        // Immer mitschreiben: Beim Bearbeiten (update) bleiben fehlende
+        // Felder sonst stehen – geleerte Texte und entfernte Videos kämen
+        // wieder.
+        'geschichte': geschichte,
+        'ausruestung': ausruestung,
+        'verein': verein,
+        'hatVideo': hatVideo,
       };
 
   factory Fang.fromFirestore(

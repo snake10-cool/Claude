@@ -60,16 +60,13 @@ class Regel {
   /// Tage bis zum Ende der Schonzeit (wenn gerade geschont), sonst null.
   int? tageBisOffen(DateTime heute) {
     if (istGeschont(heute) != true || ganzjaehrigGeschont) return null;
-    final ende = bis!.naechstes(heute);
-    final tag = DateTime(heute.year, heute.month, heute.day);
-    return ende.difference(tag).inDays + 1;
+    return _tageZwischen(heute, bis!.naechstes(heute)) + 1;
   }
 
   /// Tage bis zum Beginn der Schonzeit (wenn gerade offen), sonst null.
   int? tageBisSchonzeit(DateTime heute) {
     if (istGeschont(heute) != false || von == null) return null;
-    final tag = DateTime(heute.year, heute.month, heute.day);
-    return von!.naechstes(heute).difference(tag).inDays;
+    return _tageZwischen(heute, von!.naechstes(heute));
   }
 
   /// Ob [datum] in der Schonzeit liegt. `null`, wenn es keine Daten gibt.
@@ -121,3 +118,10 @@ class Fisch {
 
   Regel regel(Bundesland land) => regeln[land] ?? const Regel.unbekannt();
 }
+
+/// Ganze Kalendertage von [a] bis [b] – in UTC gerechnet, sonst fehlt über
+/// die Sommerzeit-Umstellung eine Stunde und es wird ein Tag zu wenig.
+int _tageZwischen(DateTime a, DateTime b) =>
+    DateTime.utc(b.year, b.month, b.day)
+        .difference(DateTime.utc(a.year, a.month, a.day))
+        .inDays;

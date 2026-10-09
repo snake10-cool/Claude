@@ -1605,13 +1605,20 @@ class _WassertempKarteState extends State<WassertempKarte> {
               child: const Text('Abbrechen')),
           FilledButton(
             onPressed: () => Navigator.pop(context,
-                double.tryParse(eingabe.text.replaceAll(',', '.'))),
+                double.tryParse(eingabe.text.replaceAll(',', '.').trim()) ??
+                    double.nan),
             child: const Text('Speichern'),
           ),
         ],
       ),
     );
-    if (grad == null || grad < -1 || grad > 35) return;
+    if (grad == null) return; // abgebrochen
+    if (grad.isNaN || grad < -1 || grad > 35) {
+      if (mounted) {
+        meldung(context, 'Bitte eine Temperatur zwischen -1 und 35 °C eingeben.');
+      }
+      return;
+    }
     try {
       await fangDienst.wassertemperaturMelden(
           widget.g.id, konto!.uid!, konto.name ?? '', grad);

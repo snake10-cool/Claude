@@ -98,6 +98,10 @@ class _TreffenListeState extends State<TreffenListe>
       if (mounted) meldung(context, 'Bitte ein Gewässer angeben.');
       return;
     }
+    if (!zeit.isAfter(DateTime.now())) {
+      if (mounted) meldung(context, 'Der Angeltag liegt in der Vergangenheit.');
+      return;
+    }
     try {
       await fangDienst.treffenAnlegen(
         uid: konto.uid!,
@@ -158,7 +162,8 @@ class _TreffenListeState extends State<TreffenListe>
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                           Text('📍 ${t.gewaesser}'),
-                          _UnwetterHinweis(t),
+                          _UnwetterHinweis(t,
+                              key: ValueKey('${t.id}-${t.zeit}')),
                           if (t.text.isNotEmpty) Text(t.text),
                           NutzerLink(t.uid, t.nutzerName,
                               vorsatz: 'Geplant von '),
@@ -325,7 +330,7 @@ class _Fahrten extends StatelessWidget {
                     : '🙋 ${at(e.value.name)} sucht Mitfahrt ab ${e.value.von}',
                 style: text.bodyMedium,
               ),
-          Row(
+          Wrap(
             children: [
               TextButton.icon(
                 onPressed: () => _eintragen(context),
@@ -353,7 +358,7 @@ class _Fahrten extends StatelessWidget {
 
 /// Zeigt eine Unwetter-Warnung für Angeltage in den nächsten 7 Tagen.
 class _UnwetterHinweis extends StatefulWidget {
-  const _UnwetterHinweis(this.t);
+  const _UnwetterHinweis(this.t, {super.key});
 
   final Treffen t;
 

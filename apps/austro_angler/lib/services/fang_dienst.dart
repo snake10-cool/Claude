@@ -329,9 +329,13 @@ class FangDienst {
     late StreamController<List<Fang>> controller;
     var oeffentlich = <Fang>[];
     var privat = <Fang>[];
+    var oeffDa = false, privatDa = false;
     final abos = <StreamSubscription<dynamic>>[];
 
+    // Erst senden, wenn beide Teile einmal da sind – sonst sieht man
+    // kurz nur die Hälfte (Statistik, PDF, Rangliste).
     void senden() {
+      if (!oeffDa || !privatDa) return;
       controller.add([...oeffentlich, ...privat]
         ..sort((a, b) => b.datum.compareTo(a.datum)));
     }
@@ -343,12 +347,14 @@ class FangDienst {
             oeffentlich = s.docs
                 .map((d) => Fang.fromFirestore(d, oeffentlich: true))
                 .toList();
+            oeffDa = true;
             senden();
           }, onError: controller.addError))
           ..add(_privat(uid).snapshots().listen((s) {
             privat = s.docs
                 .map((d) => Fang.fromFirestore(d, oeffentlich: false))
                 .toList();
+            privatDa = true;
             senden();
           }, onError: controller.addError));
       },
@@ -401,6 +407,10 @@ class FangDienst {
   /// [vorher] ist der alte Stand beim Bearbeiten (für den Wechsel
   /// öffentlich ↔ privat).
   /// Gibt die ID des Fangs zurück.
+  /// Neue Fang-ID, bevor gespeichert wird (verhindert Doppel-Anlagen,
+  /// wenn nach einem Fehler nochmal auf Speichern getippt wird).
+  String neueFangId() => _oeff.doc().id;
+
   Future<String> speichern(
     Fang fang, {
     Fang? vorher,
@@ -408,10 +418,11 @@ class FangDienst {
     bool fotoEntfernen = false,
     Uint8List? video,
     bool videoEntfernen = false,
+    String? neueId,
   }) async {
     final ziel = fang.oeffentlich ? _oeff : _privat(fang.uid);
     final hatFoto = foto != null || (!fotoEntfernen && (vorher?.hatFoto ?? false));
-    final id = vorher?.id ?? ziel.doc().id;
+    final id = vorher?.id ?? neueId ?? ziel.doc().id;
     final hatVideo =
         video != null || (!videoEntfernen && (vorher?.hatVideo ?? false));
     final daten =
@@ -477,11 +488,15 @@ class FangDienst {
 
   Future<void> loeschen(Fang fang) async {
     final ort = fang.oeffentlich ? _oeff : _privat(fang.uid);
-    await ort.doc(fang.id).delete();
-    await _fangorte(fang.uid).doc(fang.id).delete().catchError((_) {});
-    if (fang.hatFoto) await _fotos.doc(fang.id).delete();
+    // Anhänge zuerst – fehlt eines, darf das Löschen nicht abbrechen.
+    await _offline(_fangorte(fang.uid).doc(fang.id).delete())
+        .catchError((_) {});
+    if (fang.hatFoto) {
+      await _offline(_fotos.doc(fang.id).delete()).catchError((_) {});
+    }
     if (fang.hatVideo) await videoLoeschen(fang.id).catchError((_) {});
     _fotoCache.remove(fang.id);
+    await _offline(ort.doc(fang.id).delete());
   }
 
   Future<void> petriHeil(Fang fang, String uid,
@@ -665,7 +680,27 @@ class FangDienst {
 
   /// Berechnet meine Einträge (gesamt, dieser und letzter Monat) aus meinen
   /// öffentlichen Fängen und schreibt sie, wenn sich etwas geändert hat.
+  Future<void> _ranglisteKette = Future.value();
+
+  /// Aufrufe laufen nacheinander: Sonst kann ein älterer, langsamer Aufruf
+  /// den Eintrag eines neueren mit veraltetem Stand überschreiben.
   Future<void> ranglistePflegen({
+    required String uid,
+    required String name,
+    required String verein,
+    required List<Fang> alle,
+    required String Function(DateTime monat) challengeFisch,
+  }) =>
+      _ranglisteKette = _ranglisteKette
+          .then((_) => _ranglistePflegenJetzt(
+              uid: uid,
+              name: name,
+              verein: verein,
+              alle: alle,
+              challengeFisch: challengeFisch))
+          .catchError((_) {});
+
+  Future<void> _ranglistePflegenJetzt({
     required String uid,
     required String name,
     required String verein,
@@ -849,8 +884,12 @@ class FangDienst {
   }
 
   /// Öffentliche Fänge eines Nutzers, neueste zuerst.
-  Future<List<Fang>> faengeVon(String uid) async {
-    final s = await _oeff.where('uid', isEqualTo: uid).get();
+  Future<List<Fang>> faengeVon(String uid, {int max = 20}) async {
+    final s = await _oeff
+        .where('uid', isEqualTo: uid)
+        .orderBy('datum', descending: true)
+        .limit(max)
+        .get();
     return s.docs.map((d) => Fang.fromFirestore(d, oeffentlich: true)).toList()
       ..sort((a, b) => b.datum.compareTo(a.datum));
   }
@@ -1079,17 +1118,28 @@ class FangDienst {
   }
 
   Future<void> videoLoeschen(String fangId) async {
-    final meta = _db.doc('videos/$fangId');
-    final teile = await meta.collection('teile').get();
-    for (final t in teile.docs) {
-      await t.reference.delete();
-    }
-    await meta.delete();
     _videoCache.remove(fangId);
+    final meta = _db.doc('videos/$fangId');
+    // Teile direkt per Nummer löschen: Eine Abfrage auf "teile" würde bei
+    // privaten Videos an den Regeln scheitern.
+    final DocumentSnapshot<Map<String, dynamic>> info;
+    try {
+      info = await meta.get();
+    } catch (_) {
+      return; // gibt es nicht (mehr)
+    }
+    if (!info.exists) return;
+    final teile = (info.data()?['teile'] as num?)?.toInt() ?? 0;
+    for (var i = 0; i < teile; i++) {
+      await _offline(meta.collection('teile').doc('$i').delete())
+          .catchError((_) {});
+    }
+    await _offline(meta.delete()).catchError((_) {});
   }
 
   Future<void> videoSichtbarkeit(String fangId, bool oeffentlich) =>
-      _db.doc('videos/$fangId').update({'oeffentlich': oeffentlich});
+      _offline(_db.doc('videos/$fangId').update({'oeffentlich': oeffentlich}))
+          .catchError((_) {});
 
   // ── Wassertemperatur (von Anglern gemessen) ──
 
@@ -1141,8 +1191,13 @@ class FangDienst {
       _bewertungen(gewaesserId).doc(uid).delete();
 
   /// Öffentliche Fänge an einem Gewässer, neueste zuerst.
+  /// Die letzten (höchstens 100) öffentlichen Fänge an einem Gewässer.
   Future<List<Fang>> faengeAn(String gewaesserName) async {
-    final s = await _oeff.where('gewaesser', isEqualTo: gewaesserName).get();
+    final s = await _oeff
+        .where('gewaesser', isEqualTo: gewaesserName)
+        .orderBy('datum', descending: true)
+        .limit(100)
+        .get();
     return s.docs.map((d) => Fang.fromFirestore(d, oeffentlich: true)).toList()
       ..sort((a, b) => b.datum.compareTo(a.datum));
   }
@@ -1300,22 +1355,86 @@ class FangDienst {
 
   /// Entfernt alle Daten eines Nutzers (vor dem Löschen des Kontos).
   Future<void> allesLoeschen(String uid, String? name) async {
-    await _ranglisteEntfernen(uid);
-    final oeff = await _oeff.where('uid', isEqualTo: uid).get();
-    final privat = await _privat(uid).get();
+    // Jede Löschung einzeln absichern: Ein fehlendes Dokument oder eine
+    // abgelehnte Regel darf das Konto-Löschen nicht abbrechen.
+    Future<void> weg(Future<void> f) => f.catchError((_) {});
+    Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> holen(
+            Query<Map<String, dynamic>> q) =>
+        q.get().then((s) => s.docs, onError: (_) => <QueryDocumentSnapshot<Map<String, dynamic>>>[]);
+
+    if (name == null) {
+      try {
+        final ich = await _db.doc('nutzer/$uid').get();
+        name = ich.data()?['name'] as String?;
+      } catch (_) {}
+    }
+    await weg(_ranglisteEntfernen(uid));
+
+    // Freundschaften auf beiden Seiten
+    for (final f in await holen(_freunde(uid))) {
+      await weg(_db.doc('nutzer/${f.id}/freunde/$uid').delete());
+    }
     for (final sammlung in [_fangorte(uid), _aktivitaeten(uid), _freunde(uid),
         _koeder(uid), _ausfluege(uid), _blockiert(uid), _ausruestung(uid),
         _anfragen(uid)]) {
-      for (final d in (await sammlung.get()).docs) {
-        await d.reference.delete();
+      for (final d in await holen(sammlung)) {
+        await weg(d.reference.delete());
       }
     }
-    for (final doc in [...oeff.docs, ...privat.docs]) {
-      if (doc.data()['hatFoto'] == true) await _fotos.doc(doc.id).delete();
-      if (doc.data()['hatVideo'] == true) await videoLoeschen(doc.id);
-      await doc.reference.delete();
+
+    // Eigene Kommentare, Wassertemperaturen und Bewertungen überall
+    for (final d in await holen(
+        _db.collectionGroup('kommentare').where('uid', isEqualTo: uid))) {
+      await weg(d.reference.delete());
     }
-    if (name != null) await _db.doc('namen/${name.toLowerCase()}').delete();
-    await _db.doc('nutzer/$uid').delete();
+    for (final d in await holen(
+        _db.collectionGroup('messungen').where('uid', isEqualTo: uid))) {
+      await weg(d.reference.delete());
+    }
+    if (name != null) {
+      for (final d in await holen(_db
+          .collectionGroup('bewertungen')
+          .where('nutzerName', isEqualTo: name))) {
+        if (d.id == uid) await weg(d.reference.delete());
+      }
+    }
+
+    // Angeltage: eigene löschen, bei anderen Zusage und Fahrt austragen
+    for (final t in await holen(_db.collection('treffen').limit(500))) {
+      final daten = t.data();
+      if (daten['uid'] == uid) {
+        await weg(t.reference.delete());
+      } else if ((daten['zusagen'] as Map?)?.containsKey(uid) == true ||
+          (daten['fahrten'] as Map?)?.containsKey(uid) == true) {
+        await weg(t.reference.update({
+          'zusagen.$uid': FieldValue.delete(),
+          'fahrten.$uid': FieldValue.delete(),
+        }));
+      }
+    }
+    for (final w in await holen(
+        _db.collection('wuensche').where('uid', isEqualTo: uid))) {
+      if (w.data()['status'] == 'neu') await weg(w.reference.delete());
+    }
+
+    // Fänge mit Kommentaren, Fotos und Videos
+    final oeff = await holen(_oeff.where('uid', isEqualTo: uid));
+    final privat = await holen(_privat(uid));
+    for (final doc in oeff) {
+      for (final k in await holen(doc.reference.collection('kommentare'))) {
+        await weg(k.reference.delete());
+      }
+    }
+    for (final doc in [...oeff, ...privat]) {
+      if (doc.data()['hatFoto'] == true) {
+        await weg(_fotos.doc(doc.id).delete());
+      }
+      if (doc.data()['hatVideo'] == true) await weg(videoLoeschen(doc.id));
+      await weg(doc.reference.delete());
+    }
+    if (name != null) {
+      await weg(_db.doc('namen/${name.toLowerCase()}').delete());
+    }
+    await weg(_db.doc('nutzer/$uid').delete());
   }
 }

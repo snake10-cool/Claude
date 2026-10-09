@@ -135,7 +135,7 @@ class _Anfragen extends StatelessWidget {
     return StreamBuilder<Map<String, String>>(
       stream: stream,
       builder: (context, snap) {
-        final anfragen = (snap.data ?? const <String, String>{})
+        final anfragen = Map.of(snap.data ?? const <String, String>{})
           ..removeWhere((uid, _) => konto.istBlockiert(uid));
         if (anfragen.isEmpty) return const SizedBox.shrink();
         return Card(
@@ -706,6 +706,7 @@ class _RekordeState extends State<_Rekorde> {
           // Die Liste ist nach Länge sortiert: der erste pro Art ist der Rekord.
           final rekorde = <String, Fang>{};
           for (final f in snap.data!) {
+            if (f.laengeCm == null) continue; // ohne Länge kein Rekord
             rekorde.putIfAbsent(f.fischId, () => f);
           }
           final liste = fische.where((f) => rekorde.containsKey(f.id));

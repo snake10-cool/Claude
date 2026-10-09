@@ -457,7 +457,7 @@ class _FangFormularState extends State<FangFormular> {
   late Bundesland _land = Bundesland.ausName(widget.fang?.bundesland) ??
       SpeicherScope.of(context).bundesland;
   late final _laenge = TextEditingController(
-    text: widget.fang?.laengeCm?.toStringAsFixed(0) ?? '',
+    text: _zahlText(widget.fang?.laengeCm),
   );
   late final _gewicht =
       TextEditingController(text: widget.fang?.gewichtG?.toString() ?? '');
@@ -493,6 +493,8 @@ class _FangFormularState extends State<FangFormular> {
     }
   }
   bool _speichert = false;
+  bool _loescht = false;
+  String? _neueId;
   LatLng? _ort;
   bool _ortGeaendert = false;
 
@@ -578,8 +580,8 @@ class _FangFormularState extends State<FangFormular> {
       id: id,
       fischId: _fischId,
       datum: _datum,
-      laengeCm: double.tryParse(_laenge.text.replaceAll(',', '.')),
-      gewichtG: int.tryParse(_gewicht.text),
+      laengeCm: _laengeWert(_laenge.text),
+      gewichtG: _gewichtWert(_gewicht.text),
       gewaesser: _gewaesser.text.trim(),
       bundesland: _land.name,
       koeder: _koeder.text.trim(),
@@ -595,11 +597,34 @@ class _FangFormularState extends State<FangFormular> {
     );
   }
 
+  /// Prüft Länge und Gewicht. Gibt eine Fehlermeldung zurück oder null.
+  String? _zahlenFehler() {
+    final l = _laenge.text.trim();
+    if (l.isNotEmpty) {
+      final wert = _laengeWert(l);
+      if (wert == null) return 'Die Länge ist keine Zahl (z. B. 45 oder 45,5).';
+      if (wert < 1 || wert > 300) return 'Die Länge muss zwischen 1 und 300 cm liegen.';
+    }
+    final g = _gewicht.text.trim();
+    if (g.isNotEmpty) {
+      final wert = _gewichtWert(g);
+      if (wert == null) return 'Das Gewicht bitte in Gramm als ganze Zahl (z. B. 2300).';
+      if (wert < 1 || wert > 150000) return 'Das Gewicht muss zwischen 1 g und 150 kg liegen.';
+    }
+    return null;
+  }
+
   Future<void> _speichern() async {
+    final fehler = _zahlenFehler();
+    if (fehler != null) {
+      meldung(context, fehler);
+      return;
+    }
     setState(() => _speichert = true);
     try {
       if (_online) {
-        var fang = _ausFormular(widget.fang?.id ?? '');
+        if (widget.fang == null) _neueId ??= fangDienst.neueFangId();
+        var fang = _ausFormular(widget.fang?.id ?? _neueId!);
         // Wetter zur Fangzeit automatisch dazuholen (wenn noch keins da ist).
         if (fang.wetter == null || _ortGeaendert) {
           final w = await wetterZurZeit(_wetterOrt, _datum);
@@ -612,6 +637,7 @@ class _FangFormularState extends State<FangFormular> {
           fotoEntfernen: _fotoEntfernen,
           video: _neuesVideo,
           videoEntfernen: _videoEntfernen,
+          neueId: _neueId,
         );
         if (_ortGeaendert) {
           await fangDienst.fangortSpeichern(fang.uid, id, _ort);
@@ -632,13 +658,41 @@ class _FangFormularState extends State<FangFormular> {
   }
 
   Future<void> _loeschen() async {
+    if (_loescht) return;
     final fang = widget.fang!;
-    if (_online) {
-      await fangDienst.loeschen(fang);
-    } else {
-      await SpeicherScope.of(context).fangLoeschen(fang.id);
+    final ja = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Fang löschen?'),
+        content: const Text(
+            'Der Fang wird samt Foto und Video endgültig gelöscht.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Abbrechen'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Löschen'),
+          ),
+        ],
+      ),
+    );
+    if (ja != true || !mounted) return;
+    setState(() => _loescht = true);
+    try {
+      if (_online) {
+        await fangDienst.loeschen(fang);
+      } else {
+        await SpeicherScope.of(context).fangLoeschen(fang.id);
+      }
+      if (mounted) Navigator.pop(context);
+    } catch (e) {
+      if (mounted) {
+        setState(() => _loescht = false);
+        meldung(context, 'Löschen hat nicht geklappt: $e');
+      }
     }
-    if (mounted) Navigator.pop(context);
   }
 
   @override
@@ -661,8 +715,9 @@ class _FangFormularState extends State<FangFormular> {
             ),
           if (widget.fang != null)
             IconButton(
+              tooltip: 'Löschen',
               icon: const Icon(Icons.delete_outline),
-              onPressed: _loeschen,
+              onPressed: _loescht || _speichert ? null : _loeschen,
             ),
         ],
       ),
@@ -717,7 +772,8 @@ class _FangFormularState extends State<FangFormular> {
                   padding: EdgeInsets.symmetric(vertical: 4),
                   child: Text('🎬 Dieser Fang hat ein Video.'),
                 ),
-              Row(
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   if (_videoLaedt)
                     const Padding(
@@ -988,4 +1044,23 @@ class _FangFormularState extends State<FangFormular> {
       ),
     );
   }
+}
+
+/// 45 → "45", 45.5 → "45,5" (nichts runden, sonst ändert Bearbeiten die Länge).
+String _zahlText(double? wert) {
+  if (wert == null) return '';
+  if (wert == wert.roundToDouble()) return wert.toStringAsFixed(0);
+  return wert.toString().replaceAll('.', ',');
+}
+
+/// "45,5" oder "45.5" → 45.5; leer → null; Unsinn → null.
+double? _laengeWert(String text) {
+  final t = text.trim().replaceAll(' ', '').replaceAll(',', '.');
+  return t.isEmpty ? null : double.tryParse(t);
+}
+
+/// Gramm: "2300", "2.300" oder "2 300" → 2300; leer/Unsinn → null.
+int? _gewichtWert(String text) {
+  final t = text.trim().replaceAll(' ', '').replaceAll('.', '');
+  return t.isEmpty ? null : int.tryParse(t);
 }

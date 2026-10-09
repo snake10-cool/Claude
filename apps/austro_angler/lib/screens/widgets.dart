@@ -107,20 +107,36 @@ class AnmeldenKarte extends StatelessWidget {
 }
 
 /// Lädt das Foto eines Fangs aus Firestore.
-class FangFoto extends StatelessWidget {
+///
+/// Stateful, damit das Laden nicht bei jedem Neuaufbau (z. B. jedes
+/// „Petri Heil“ im Feed) neu startet und das Bild kurz flackert.
+class FangFoto extends StatefulWidget {
   const FangFoto(this.fangId, {super.key, this.hoehe = 220});
 
   final String fangId;
   final double hoehe;
 
   @override
+  State<FangFoto> createState() => _FangFotoState();
+}
+
+class _FangFotoState extends State<FangFoto> {
+  late Future<Uint8List?> _foto = fangDienst.foto(widget.fangId);
+
+  @override
+  void didUpdateWidget(FangFoto alt) {
+    super.didUpdateWidget(alt);
+    if (alt.fangId != widget.fangId) _foto = fangDienst.foto(widget.fangId);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder<Uint8List?>(
-      future: fangDienst.foto(fangId),
+      future: _foto,
       builder: (context, snap) {
         if (snap.connectionState != ConnectionState.done) {
           return SizedBox(
-            height: hoehe,
+            height: widget.hoehe,
             child: const Center(child: CircularProgressIndicator()),
           );
         }
@@ -128,9 +144,10 @@ class FangFoto extends StatelessWidget {
         if (bytes == null) return const SizedBox.shrink();
         return Image.memory(
           bytes,
-          height: hoehe,
+          height: widget.hoehe,
           width: double.infinity,
           fit: BoxFit.cover,
+          gaplessPlayback: true,
         );
       },
     );

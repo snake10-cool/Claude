@@ -43,23 +43,30 @@ final alleChallenges = <WochenChallenge>[
       (w, _) => w.where((f) => f.laengeCm != null).length),
 ];
 
+/// Donnerstag der ISO-Woche (in UTC, damit die Sommerzeit nicht stört).
+DateTime _donnerstag(DateTime d) {
+  final tag = DateTime.utc(d.year, d.month, d.day);
+  return tag.add(Duration(days: 4 - tag.weekday));
+}
+
 /// ISO-Kalenderwoche.
 int kalenderwoche(DateTime d) {
-  final tag = DateTime(d.year, d.month, d.day);
-  final donnerstag = tag.add(Duration(days: 4 - tag.weekday));
-  final jahresbeginn = DateTime(donnerstag.year);
-  return 1 + donnerstag.difference(jahresbeginn).inDays ~/ 7;
+  final donnerstag = _donnerstag(d);
+  return 1 + donnerstag.difference(DateTime.utc(donnerstag.year)).inDays ~/ 7;
 }
+
+/// Jahr, zu dem die ISO-Woche gehört (31.12. kann schon KW 1 sein).
+int wochenjahr(DateTime d) => _donnerstag(d).year;
 
 DateTime wochenbeginn(DateTime d) =>
     DateTime(d.year, d.month, d.day).subtract(Duration(days: d.weekday - 1));
 
 /// Die zwei Challenges dieser Woche.
 List<WochenChallenge> challengesDerWoche(DateTime jetzt) {
-  final w = kalenderwoche(jetzt) + jetzt.year * 53;
+  final w = kalenderwoche(jetzt) + wochenjahr(jetzt) * 53;
   final n = alleChallenges.length;
   return [alleChallenges[(w * 2) % n], alleChallenges[(w * 2 + 1) % n]];
 }
 
 String challengeSchluessel(DateTime jetzt, WochenChallenge c) =>
-    '${jetzt.year}-${kalenderwoche(jetzt)}-${c.id}';
+    '${wochenjahr(jetzt)}-${kalenderwoche(jetzt)}-${c.id}';

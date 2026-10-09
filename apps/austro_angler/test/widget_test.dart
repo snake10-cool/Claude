@@ -10,6 +10,7 @@ import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/konto.dart';
 import 'package:austro_angler/services/speicher.dart';
 import 'package:austro_angler/services/wetter.dart';
+import 'package:austro_angler/services/wochen_challenges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -93,6 +94,20 @@ void main() {
     expect(Konto.nameProblem('ab'), isNotNull);
     expect(Konto.nameProblem('Jäger'), isNotNull);
     expect(Konto.nameProblem('mit leer'), isNotNull);
+  });
+
+  test('Kalenderwoche und Countdown über die Sommerzeit', () {
+    expect(kalenderwoche(DateTime(2026, 3, 26)), 13);
+    expect(kalenderwoche(DateTime(2026, 4, 2)), 14);
+    expect(kalenderwoche(DateTime(2026, 10, 8)), 41);
+    expect(kalenderwoche(DateTime(2026, 10, 22)), 43);
+    expect(kalenderwoche(DateTime(2026, 12, 31)), 53);
+    expect(kalenderwoche(DateTime(2027, 1, 1)), 53);
+    expect(wochenjahr(DateTime(2027, 1, 1)), 2026);
+    expect(kalenderwoche(DateTime(2025, 12, 31)), 1);
+    expect(wochenjahr(DateTime(2025, 12, 31)), 2026);
+    const regel = Regel(von: Tag(1, 1), bis: Tag(31, 3));
+    expect(regel.tageBisOffen(DateTime(2026, 3, 1)), 31);
   });
 
   test('Mondphase', () {

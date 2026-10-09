@@ -30,28 +30,45 @@ class KontoScreen extends StatelessWidget {
   }
 }
 
+/// Läuft gerade ein Hochladen? (gegen doppeltes Tippen)
+bool _laedtHoch = false;
+
 class _Profil extends StatelessWidget {
   const _Profil(this.konto);
 
   final Konto konto;
 
   Future<void> _hochladen(BuildContext context) async {
+    if (_laedtHoch) return;
+    _laedtHoch = true;
     final speicher = SpeicherScope.of(context);
-    final anzahl = speicher.faenge.length;
+    var anzahl = 0;
+    meldung(context, 'Fänge werden hochgeladen …');
     try {
-      for (final f in speicher.faenge) {
-        await fangDienst.speichern(f.kopie(
-          uid: konto.uid,
-          nutzerName: konto.name ?? '',
-          oeffentlich: false,
-        ));
+      // Mit der lokalen ID hochladen und danach lokal entfernen: Ein
+      // zweiter Versuch überschreibt dann nur, statt doppelt anzulegen.
+      for (final f in [...speicher.faenge]) {
+        await fangDienst.speichern(
+          f.kopie(
+            uid: konto.uid,
+            nutzerName: konto.name ?? '',
+            oeffentlich: false,
+          ),
+          neueId: f.id,
+        );
+        await speicher.fangLoeschen(f.id);
+        anzahl++;
       }
-      await speicher.lokaleFaengeLeeren();
       if (context.mounted) {
         meldung(context, '$anzahl Fänge hochgeladen (privat).');
       }
     } catch (_) {
-      if (context.mounted) meldung(context, 'Hochladen fehlgeschlagen.');
+      if (context.mounted) {
+        meldung(context,
+            'Hochladen abgebrochen ($anzahl geschafft). Bitte nochmal tippen.');
+      }
+    } finally {
+      _laedtHoch = false;
     }
   }
 
@@ -286,9 +303,9 @@ class _AnmeldenState extends State<AnmeldeFormular> {
       }
       if (mounted && Navigator.canPop(context)) Navigator.pop(context);
     } on KontoFehler catch (e) {
-      setState(() => _fehler = e.text);
+      if (mounted) setState(() => _fehler = e.text);
     } catch (e) {
-      setState(() => _fehler = 'Fehler: $e');
+      if (mounted) setState(() => _fehler = 'Fehler: $e');
     } finally {
       if (mounted) setState(() => _laedt = false);
     }
@@ -299,7 +316,7 @@ class _AnmeldenState extends State<AnmeldeFormular> {
       await KontoScope.of(context)!.passwortVergessen(_email.text);
       if (mounted) meldung(context, 'E-Mail zum Zurücksetzen verschickt.');
     } on KontoFehler catch (e) {
-      setState(() => _fehler = e.text);
+      if (mounted) setState(() => _fehler = e.text);
     }
   }
 

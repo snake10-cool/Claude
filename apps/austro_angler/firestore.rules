@@ -400,5 +400,17 @@ service cloud.firestore {
       allow delete: if istAdmin()
           || (ich(resource.data.uid) && resource.data.status == 'neu');
     }
+
+    // Fürs Konto-Löschen: eigene Einträge in allen Gewässern/Fängen finden.
+    // (Die Lese-Rechte sind dieselben wie bei den einzelnen Sammlungen.)
+    match /{pfad=**}/kommentare/{id} {
+      allow read: if true;
+    }
+    match /{pfad=**}/messungen/{id} {
+      allow read: if angemeldet();
+    }
+    match /{pfad=**}/bewertungen/{id} {
+      allow read: if true;
+    }
   }
 }
