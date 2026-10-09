@@ -68,6 +68,9 @@ ThemeData _thema(Color farbe, Brightness helligkeit) => ThemeData(
   colorSchemeSeed: farbe,
   brightness: helligkeit,
   useMaterial3: true,
+  // Am Handy übernimmt das System die Emojis; im Test (Store-Screenshots)
+  // braucht es die Schrift ausdrücklich.
+  fontFamilyFallback: const ['NotoColorEmoji'],
   // Kleinere Beschriftung, damit "Gewässer" & Co. nicht umbrechen.
   navigationBarTheme: const NavigationBarThemeData(
     labelTextStyle: WidgetStatePropertyAll(

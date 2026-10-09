@@ -108,9 +108,10 @@ Alle Angaben ohne Gewähr – es gelten immer das Landesfischereigesetz und die 
 **Bilder** (in `docs/store/`):
 - App-Symbol 512 × 512: `icon-512.png`
 - Feature-Grafik 1024 × 500: `feature-grafik.png`
-- Screenshots: mindestens 2, besser 4 bis 8 Handy-Screenshots. Am einfachsten
-  am eigenen Handy machen: Gewässer-Liste, Gewässer-Detail mit Wetter,
-  Fangbuch, Fischlexikon, Feed, Karte.
+- Screenshots (1080 × 1920, fertig): `docs/store/screenshots/1_gewaesser.png`
+  bis `8_einfuehrung.png` – in dieser Reihenfolge hochladen. Neu erzeugen:
+  `flutter test screenshots/store_test.dart --update-goldens`. Im Fangbuch
+  stehen Beispiel-Fänge.
 
 ## Fragebögen in der Play Console
 
