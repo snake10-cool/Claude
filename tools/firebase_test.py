@@ -1,13 +1,15 @@
-"""Ende-zu-Ende-Test gegen die echte Firebase-Datenbank mit zwei Testkonten.
+"""Ende-zu-Ende-Test gegen die echte Firebase-Datenbank.
 
-Prüft die wichtigsten Abläufe UND die Sicherheitsregeln (was darf ein
-fremdes Konto NICHT). Räumt am Ende alle Test-Daten wieder auf.
+Legt zwei Wegwerf-Konten an, prüft die wichtigsten Abläufe UND die
+Sicherheitsregeln (was darf ein fremdes Konto NICHT) und löscht am Ende
+alle Test-Daten samt Konten wieder.
 
-Aufruf: TESTKONTO_PASSWORT=... python3 tools/firebase_test.py
+Aufruf: python3 tools/firebase_test.py
 """
 
 import json
 import os
+import secrets
 import subprocess
 import sys
 import time
@@ -40,13 +42,18 @@ def anfrage(methode, url, daten=None, token=None):
             return e.code, {'roh': t.decode(errors='replace')}
 
 
-def anmelden(email, pw):
+def konto_anlegen(email, pw):
     s, d = anfrage('POST', 'https://identitytoolkit.googleapis.com/v1/accounts:'
-                   f'signInWithPassword?key={API_KEY}',
+                   f'signUp?key={API_KEY}',
                    {'email': email, 'password': pw, 'returnSecureToken': True})
     if s != 200:
-        sys.exit(f'Anmeldung {email} fehlgeschlagen: {d}')
+        sys.exit(f'Konto {email} anlegen fehlgeschlagen: {d}')
     return d['localId'], d['idToken']
+
+
+def konto_loeschen(token):
+    anfrage('POST', 'https://identitytoolkit.googleapis.com/v1/accounts:'
+            f'delete?key={API_KEY}', {'idToken': token})
 
 
 def wert(v):
@@ -127,15 +134,15 @@ def admin_loeschen(pfade):
 
 
 def main():
-    pw = os.environ.get('TESTKONTO_PASSWORT')
-    if not pw:
-        sys.exit('TESTKONTO_PASSWORT fehlt')
-    u1, t1 = anmelden('testkonto1@austro-angler.test', pw)
-    u2, t2 = anmelden('testkonto2@austro-angler.test', pw)
+    kennung = secrets.token_hex(4)
+    pw = secrets.token_urlsafe(16)
+    n1, n2 = f'test{kennung}a', f'test{kennung}b'
+    u1, t1 = konto_anlegen(f'{n1}@austro-angler.test', pw)
+    u2, t2 = konto_anlegen(f'{n2}@austro-angler.test', pw)
     print('Angemeldet:', u1, u2)
 
     # Profile (wie bei der Registrierung)
-    for uid, tok, name in [(u1, t1, 'testkonto1'), (u2, t2, 'testkonto2')]:
+    for uid, tok, name in [(u1, t1, n1), (u2, t2, n2)]:
         s, _ = lesen(tok, f'namen/{name}')
         if s != 200:
             erlaubt(f'Name @{name} reservieren', commit(tok, [
@@ -143,16 +150,16 @@ def main():
                 {'update': {'name': doc_name(f'nutzer/{uid}'),
                             'fields': {'name': wert(name), 'erstellt': wert(jetzt())}}},
             ]))
-    verboten('Fremden Namen @testkonto1 übernehmen',
-             setzen(t2, 'namen/testkonto1', {'uid': u2}))
-    erlaubt('Verein setzen', setzen(t1, f'nutzer/{u1}', {'name': 'testkonto1', 'erstellt': jetzt(), 'verein': 'Testverein'}))
+    verboten('Fremden Namen übernehmen',
+             setzen(t2, f'namen/{n1}', {'uid': u2}))
+    erlaubt('Verein setzen', setzen(t1, f'nutzer/{u1}', {'name': n1, 'erstellt': jetzt(), 'verein': 'Testverein'}))
 
     # Fänge
     fang = f'test_{int(time.time())}'
     fangdaten = {'fischId': 'hecht', 'laengeCm': 72.0, 'gewichtG': 2500, 'gewaesser': 'Mattig (Test)',
                  'bundesland': 'Oberösterreich', 'koeder': 'Gummifisch', 'notiz': 'Testfang',
                  'zurueckgesetzt': True, 'wetter': None, 'datum': jetzt(), 'uid': u1,
-                 'nutzerName': 'testkonto1', 'hatFoto': False, 'petriHeil': [], 'erstellt': jetzt(),
+                 'nutzerName': n1, 'hatFoto': False, 'petriHeil': [], 'erstellt': jetzt(),
                  'geschichte': 'Ein Test-Drill.', 'ausruestung': 'Spinnrute', 'verein': 'Testverein'}
     erlaubt('Öffentlichen Fang speichern', setzen(t1, f'faenge/{fang}', fangdaten))
     verboten('Fang im Namen eines anderen speichern',
@@ -165,19 +172,19 @@ def main():
 
     # Kommentar
     erlaubt('Kommentieren', setzen(t2, f'faenge/{fang}/kommentare/k1',
-                                   {'uid': u2, 'nutzerName': 'testkonto2', 'text': 'Petri!', 'erstellt': jetzt()}))
+                                   {'uid': u2, 'nutzerName': n2, 'text': 'Petri!', 'erstellt': jetzt()}))
 
     # Freundschaftsanfrage
     erlaubt('Freundschaftsanfrage senden', setzen(t2, f'nutzer/{u1}/anfragen/{u2}',
-                                                  {'name': 'testkonto2', 'zeit': jetzt()}))
+                                                  {'name': n2, 'zeit': jetzt()}))
     verboten('Anfrage im Namen eines anderen', setzen(t2, f'nutzer/{u1}/anfragen/fremd',
                                                       {'name': 'x', 'zeit': jetzt()}))
     erlaubt('Gesendete Anfrage sehen (Absender)', lesen(t2, f'nutzer/{u1}/anfragen/{u2}'))
     erlaubt('Anfrage annehmen (beide Seiten)', commit(t1, [
         {'update': {'name': doc_name(f'nutzer/{u1}/freunde/{u2}'),
-                    'fields': {'name': wert('testkonto2'), 'seit': wert(jetzt())}}},
+                    'fields': {'name': wert(n2), 'seit': wert(jetzt())}}},
         {'update': {'name': doc_name(f'nutzer/{u2}/freunde/{u1}'),
-                    'fields': {'name': wert('testkonto1'), 'seit': wert(jetzt())}}},
+                    'fields': {'name': wert(n1), 'seit': wert(jetzt())}}},
         {'delete': doc_name(f'nutzer/{u1}/anfragen/{u2}')},
     ]))
     verboten('Sich ohne Anfrage als Freund eintragen',
@@ -190,35 +197,35 @@ def main():
     # Angeltag + Zusage + Fahrgemeinschaft
     tr = f'test_{int(time.time())}'
     erlaubt('Angeltag planen', setzen(t1, f'treffen/{tr}', {
-        'uid': u1, 'nutzerName': 'testkonto1', 'gewaesser': 'Mattig (Test)',
-        'zeit': jetzt(86400), 'text': 'Test', 'zusagen': {u1: 'testkonto1'}}))
-    erlaubt('Zusagen', setzen(t2, f'treffen/{tr}', {'zusagen': {u2: 'testkonto2'}}, [f'zusagen.`{u2}`']))
+        'uid': u1, 'nutzerName': n1, 'gewaesser': 'Mattig (Test)',
+        'zeit': jetzt(86400), 'text': 'Test', 'zusagen': {u1: n1}}))
+    erlaubt('Zusagen', setzen(t2, f'treffen/{tr}', {'zusagen': {u2: n2}}, [f'zusagen.`{u2}`']))
     verboten('Fremde Zusage entfernen', setzen(t2, f'treffen/{tr}', {'zusagen': {}}, [f'zusagen.`{u1}`']))
     erlaubt('Fahrgemeinschaft anbieten', setzen(t2, f'treffen/{tr}', {
-        'fahrten': {u2: {'name': 'testkonto2', 'biete': True, 'plaetze': 2, 'von': 'Braunau'}}},
+        'fahrten': {u2: {'name': n2, 'biete': True, 'plaetze': 2, 'von': 'Braunau'}}},
         [f'fahrten.`{u2}`']))
     verboten('Fremde Fahrt ändern', setzen(t2, f'treffen/{tr}', {
         'fahrten': {u1: {'name': 'x', 'biete': True, 'plaetze': 9, 'von': 'x'}}}, [f'fahrten.`{u1}`']))
 
     # Rangliste
     erlaubt('Eigenen Ranglisten-Eintrag schreiben', setzen(t1, 'rangliste/test', {
-        'eintraege': {u1: {'name': 'testkonto1', 'faenge': 1}}}, [f'eintraege.`{u1}`']))
+        'eintraege': {u1: {'name': n1, 'faenge': 1}}}, [f'eintraege.`{u1}`']))
     verboten('Fremden Ranglisten-Eintrag schreiben', setzen(t2, 'rangliste/test', {
-        'eintraege': {u1: {'name': 'testkonto1', 'faenge': 999}}}, [f'eintraege.`{u1}`']))
+        'eintraege': {u1: {'name': n1, 'faenge': 999}}}, [f'eintraege.`{u1}`']))
     erlaubt('Rangliste lesen', lesen(t2, 'rangliste/test'))
 
     # Wassertemperatur, Infos, Wunsch
     erlaubt('Wassertemperatur melden', setzen(t1, 'wassertemp/test/messungen/m1',
-                                              {'uid': u1, 'nutzerName': 'testkonto1', 'grad': 12.5, 'zeit': jetzt()}))
+                                              {'uid': u1, 'nutzerName': n1, 'grad': 12.5, 'zeit': jetzt()}))
     verboten('Unsinnige Temperatur (99 °C)', setzen(t1, 'wassertemp/test/messungen/m2',
                                                     {'uid': u1, 'nutzerName': 'x', 'grad': 99.0, 'zeit': jetzt()}))
     erlaubt('Infos zum Gewässer vorschlagen', setzen(t1, f'gewaesser_infos/{fang}', {
-        'uid': u1, 'nutzerName': 'testkonto1', 'gewaesserId': 'test', 'gewaesserName': 'Test',
+        'uid': u1, 'nutzerName': n1, 'gewaesserId': 'test', 'gewaesserName': 'Test',
         'fische': ['hecht'], 'verkauf': 'Test', 'url': '', 'text': 'Test', 'erstellt': jetzt()}))
     verboten('Vorschläge lesen (nur Admin)', lesen(t2, f'gewaesser_infos/{fang}'))
     verboten('Geprüfte Infos selbst schreiben', setzen(t1, 'gepruefte_infos/test', {'fische': ['hecht']}))
     erlaubt('Mehr Infos wünschen', setzen(t1, f'wuensche/{fang}', {
-        'uid': u1, 'nutzerName': 'testkonto1', 'text': 'Test', 'status': 'neu',
+        'uid': u1, 'nutzerName': n1, 'text': 'Test', 'status': 'neu',
         'typ': 'infos', 'bezug': 'test', 'erstellt': jetzt()}))
     verboten('Premium selbst vergeben', setzen(t1, f'premium/{u1}', {'bis': jetzt(9999999)}))
 
@@ -230,7 +237,7 @@ def main():
     verboten('Fremdes Video überschreiben', setzen(t2, f'videos/{fang}/teile/0', {'uid': u2, 'daten': 'BBBB'}))
 
     # Blockieren, Ausrüstung
-    erlaubt('Nutzer blockieren', setzen(t1, f'nutzer/{u1}/blockiert/{u2}', {'name': 'testkonto2'}))
+    erlaubt('Nutzer blockieren', setzen(t1, f'nutzer/{u1}/blockiert/{u2}', {'name': n2}))
     verboten('Fremde Blockliste lesen', lesen(t2, f'nutzer/{u1}/blockiert/{u2}'))
     erlaubt('Ausrüstung speichern', setzen(t1, f'nutzer/{u1}/ausruestung/a1',
                                            {'name': 'Spinnrute', 'art': 'Rute', 'notiz': ''}))
@@ -246,6 +253,10 @@ def main():
     ]:
         loeschen(tok, pfad)
     setzen(t1, 'rangliste/test', {'eintraege': {}}, [f'eintraege.`{u1}`'])
+    for tok, uid, name in [(t1, u1, n1), (t2, u2, n2)]:
+        loeschen(tok, f'namen/{name}')
+        loeschen(tok, f'nutzer/{uid}')
+        konto_loeschen(tok)
     admin_loeschen([f'gewaesser_infos/{fang}', 'gewaesser_infos/test1', 'wuensche/test1'])
 
     fehler = [e for e in ergebnisse if not e[1]]
