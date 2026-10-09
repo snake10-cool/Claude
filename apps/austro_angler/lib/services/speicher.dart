@@ -38,6 +38,9 @@ class Speicher extends ChangeNotifier {
   List<String> lieblingsfische = const ['hecht', 'zander', 'bachforelle',
     'karpfen'];
 
+  /// Einführung beim ersten Start schon gezeigt?
+  bool einfuehrungGesehen = false;
+
   /// Erledigte Wochen-Challenges, z. B. "2026-40".
   List<String> erledigteChallenges = const [];
 
@@ -57,6 +60,7 @@ class Speicher extends ChangeNotifier {
     heimatLat = _prefs.getDouble('heimatLat');
     heimatLon = _prefs.getDouble('heimatLon');
     jungangler = _prefs.getBool('jungangler') ?? false;
+    einfuehrungGesehen = _prefs.getBool('einfuehrung') ?? false;
     lieblingsfische =
         _prefs.getStringList('lieblingsfische') ?? lieblingsfische;
     erledigteChallenges = _prefs.getStringList('challenges') ?? const [];
@@ -80,6 +84,12 @@ class Speicher extends ChangeNotifier {
     await _prefs.remove('heimat');
     await _prefs.remove('heimatLat');
     await _prefs.remove('heimatLon');
+  }
+
+  Future<void> einfuehrungErledigt() async {
+    einfuehrungGesehen = true;
+    notifyListeners();
+    await _prefs.setBool('einfuehrung', true);
   }
 
   Future<void> junganglerSetzen(bool an) async {

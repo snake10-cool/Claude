@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// Alle Einträge unter "Mehr", die einen Bildschirm in der App öffnen.
 const _mehr = [
+  'Einführung ansehen',
   '⭐ Premium',
   'Einstellungen',
   'FAQ – Fragen & Antworten',
@@ -48,7 +49,7 @@ Future<void> _starten(WidgetTester tester) async {
   tester.view.physicalSize = const Size(1080, 2400);
   tester.view.devicePixelRatio = 2.5;
   addTearDown(tester.view.reset);
-  SharedPreferences.setMockInitialValues({});
+  SharedPreferences.setMockInitialValues({'einfuehrung': true});
   final speicher = await Speicher.oeffnen();
   await tester.runAsync(alleGewaesser.laden);
   await tester.pumpWidget(AustroAnglerApp(speicher: speicher));
@@ -120,5 +121,27 @@ void main() {
       expect(find.byType(FischDetail), findsOneWidget, reason: f.name);
       await _zurueck(tester);
     }
+  });
+
+  testWidgets('Einführung beim ersten Start durchklicken', (tester) async {
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 2.5;
+    addTearDown(tester.view.reset);
+    SharedPreferences.setMockInitialValues({});
+    final speicher = await Speicher.oeffnen();
+    await tester.runAsync(alleGewaesser.laden);
+    await tester.pumpWidget(AustroAnglerApp(speicher: speicher));
+    await _warten(tester);
+    expect(find.text('Servus und Petri Heil!'), findsOneWidget);
+    for (var i = 0; i < 5; i++) {
+      await tester.tap(find.text('Weiter'));
+      await _warten(tester);
+    }
+    expect(find.text('Wo fischst du?'), findsOneWidget);
+    await tester.tap(find.text('Los geht\'s!'));
+    await _warten(tester);
+    expect(find.text('Wo fischst du?'), findsNothing);
+    expect(speicher.einfuehrungGesehen, isTrue);
+    expect(tester.takeException(), isNull);
   });
 }

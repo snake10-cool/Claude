@@ -103,7 +103,7 @@ void main() {
 
   testWidgets('App startet ohne Firebase und alle Tabs öffnen',
       (tester) async {
-    SharedPreferences.setMockInitialValues({});
+    SharedPreferences.setMockInitialValues({'einfuehrung': true});
     final speicher = await Speicher.oeffnen();
     await tester.runAsync(alleGewaesser.laden);
     await tester.pumpWidget(AustroAnglerApp(speicher: speicher));

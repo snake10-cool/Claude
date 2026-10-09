@@ -5,6 +5,7 @@ import 'ausfluege_screen.dart';
 import 'ausruestung_screen.dart';
 import 'bestimmung_screen.dart';
 import 'checkliste_screen.dart';
+import 'einfuehrung_screen.dart';
 import 'einstellungen_screen.dart';
 import 'glossar_screen.dart';
 import 'premium_screen.dart';
@@ -61,6 +62,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.settings_outlined, 'Einstellungen',
               'Heimatort, Jungangler-Modus, Countdown, Offline-Karte',
               () => _oeffnen(context, const EinstellungenScreen())),
+          _Eintrag(Icons.waving_hand_outlined, 'Einführung ansehen',
+              'Die App in 6 Schritten erklärt', () => _oeffnen(context,
+                  const EinfuehrungScreen())),
           _Eintrag(Icons.help_outline, 'FAQ – Fragen & Antworten',
               'Alles erklärt: wieso, weshalb, warum', () => _oeffnen(context,
                   const FaqScreen())),

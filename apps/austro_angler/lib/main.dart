@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
+import 'screens/einfuehrung_screen.dart';
 import 'screens/community_screen.dart';
 import 'screens/fangbuch_screen.dart';
 import 'screens/gewaesser_screen.dart';
@@ -150,7 +151,13 @@ class _StartseiteState extends State<Startseite> {
       final konto = KontoScope.of(context);
       angeltageWarnen(konto);
       aboDienst.starten();
-      startbildschirmAktualisieren(SpeicherScope.of(context));
+      final speicher = SpeicherScope.of(context);
+      startbildschirmAktualisieren(speicher);
+      if (!speicher.einfuehrungGesehen) {
+        Navigator.of(context).push(MaterialPageRoute(
+            fullscreenDialog: true,
+            builder: (_) => const EinfuehrungScreen()));
+      }
     });
   }
 
