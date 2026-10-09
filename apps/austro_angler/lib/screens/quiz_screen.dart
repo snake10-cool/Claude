@@ -32,8 +32,9 @@ class _FischQuizScreenState extends State<FischQuizScreen> {
   @override
   void initState() {
     super.initState();
-    SharedPreferences.getInstance().then(
-        (p) => setState(() => _rekord = p.getInt('quiz_rekord') ?? 0));
+    SharedPreferences.getInstance().then((p) {
+      if (mounted) setState(() => _rekord = p.getInt('quiz_rekord') ?? 0);
+    });
     _neu();
   }
 
@@ -66,6 +67,7 @@ class _FischQuizScreenState extends State<FischQuizScreen> {
         await p.setInt('quiz_rekord', _punkte);
         _rekord = _punkte;
       }
+      if (!mounted) return;
       setState(() => _runde++);
       return;
     }

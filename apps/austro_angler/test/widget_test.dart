@@ -108,6 +108,8 @@ void main() {
     expect(wochenjahr(DateTime(2025, 12, 31)), 2026);
     const regel = Regel(von: Tag(1, 1), bis: Tag(31, 3));
     expect(regel.tageBisOffen(DateTime(2026, 3, 1)), 31);
+    expect(const Tag(29, 2).imJahr(2027), DateTime(2027, 2, 28));
+    expect(const Tag(29, 2).imJahr(2028), DateTime(2028, 2, 29));
   });
 
   test('Mondphase', () {

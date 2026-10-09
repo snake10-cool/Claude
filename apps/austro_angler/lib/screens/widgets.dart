@@ -154,6 +154,28 @@ class _FangFotoState extends State<FangFoto> {
   }
 }
 
+/// Rückfrage vor dem endgültigen Löschen. Gibt true zurück, wenn bestätigt.
+Future<bool> loeschenBestaetigen(BuildContext context, String was) async {
+  final ja = await showDialog<bool>(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text('$was löschen?'),
+      content: const Text('Das kann nicht rückgängig gemacht werden.'),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context, false),
+          child: const Text('Abbrechen'),
+        ),
+        FilledButton(
+          onPressed: () => Navigator.pop(context, true),
+          child: const Text('Löschen'),
+        ),
+      ],
+    ),
+  );
+  return ja == true;
+}
+
 /// Nutzername mit @ davor.
 String at(String name) => name.isEmpty ? '' : '@$name';
 

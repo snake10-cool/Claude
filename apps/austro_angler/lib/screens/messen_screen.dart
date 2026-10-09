@@ -36,6 +36,7 @@ class _MessenScreenState extends State<MessenScreen> {
         .pickImage(source: quelle, maxWidth: 1600, imageQuality: 80);
     if (datei == null) return;
     final bytes = await datei.readAsBytes();
+    if (!mounted) return;
     setState(() {
       _bild = bytes;
       _punkte.clear();

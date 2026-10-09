@@ -83,9 +83,15 @@ class _KoederScreenState extends State<KoederScreen> {
             TextButton(
                 onPressed: () => Navigator.pop(context, false),
                 child: const Text('Abbrechen')),
-            FilledButton(
-                onPressed: () => Navigator.pop(context, true),
-                child: const Text('Speichern')),
+            // Ohne Namen geht nichts – Knopf erst aktiv, wenn einer da ist.
+            ListenableBuilder(
+              listenable: name,
+              builder: (context, _) => FilledButton(
+                  onPressed: name.text.trim().isEmpty
+                      ? null
+                      : () => Navigator.pop(context, true),
+                  child: const Text('Speichern')),
+            ),
           ],
         ),
       ),
@@ -161,8 +167,13 @@ class _KoederScreenState extends State<KoederScreen> {
                     trailing: widget.auswahl
                         ? const Icon(Icons.check_circle_outline)
                         : IconButton(
+                            tooltip: 'Löschen',
                             icon: const Icon(Icons.delete_outline),
-                            onPressed: () => fangDienst.koederLoeschen(uid, k.id),
+                            onPressed: () async {
+                              if (await loeschenBestaetigen(context, 'Köder')) {
+                                await fangDienst.koederLoeschen(uid, k.id);
+                              }
+                            },
                           ),
                   ),
                 ),

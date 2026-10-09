@@ -180,8 +180,7 @@ class Wecker {
   static DateTime? _naechstesEnde(Regel regel, DateTime ab) {
     if (regel.von == null || regel.bis == null) return null;
     for (var jahr = ab.year; jahr <= ab.year + 1; jahr++) {
-      final ende = DateTime(jahr, regel.bis!.monat, regel.bis!.tag)
-          .add(const Duration(days: 1));
+      final ende = regel.bis!.imJahr(jahr).add(const Duration(days: 1));
       if (ende.isAfter(ab)) return ende;
     }
     return null;

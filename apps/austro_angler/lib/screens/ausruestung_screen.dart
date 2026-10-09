@@ -60,9 +60,15 @@ class _AusruestungScreenState extends State<AusruestungScreen> {
             TextButton(
                 onPressed: () => Navigator.pop(context, false),
                 child: const Text('Abbrechen')),
-            FilledButton(
-                onPressed: () => Navigator.pop(context, true),
-                child: const Text('Speichern')),
+            // Ohne Namen geht nichts – Knopf erst aktiv, wenn einer da ist.
+            ListenableBuilder(
+              listenable: name,
+              builder: (context, _) => FilledButton(
+                  onPressed: name.text.trim().isEmpty
+                      ? null
+                      : () => Navigator.pop(context, true),
+                  child: const Text('Speichern')),
+            ),
           ],
         ),
       ),
@@ -137,7 +143,11 @@ class _AusruestungScreenState extends State<AusruestungScreen> {
                     onTap: () => _bearbeiten(uid, a),
                     trailing: IconButton(
                       icon: const Icon(Icons.delete_outline),
-                      onPressed: () => fangDienst.ausruestungLoeschen(uid, a.id),
+                      onPressed: () async {
+                        if (await loeschenBestaetigen(context, a.name)) {
+                          await fangDienst.ausruestungLoeschen(uid, a.id);
+                        }
+                      },
                     ),
                   ),
                 ),

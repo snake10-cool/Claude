@@ -12,8 +12,14 @@ class Tag {
   /// Nächstes Datum ab [ab] (heute zählt mit).
   DateTime naechstes(DateTime ab) {
     final heute = DateTime(ab.year, ab.month, ab.day);
-    final d = DateTime(ab.year, monat, tag);
-    return d.isBefore(heute) ? DateTime(ab.year + 1, monat, tag) : d;
+    final d = imJahr(ab.year);
+    return d.isBefore(heute) ? imJahr(ab.year + 1) : d;
+  }
+
+  /// Datum in [jahr]; der 29.2. wird in Nicht-Schaltjahren zum 28.2.
+  DateTime imJahr(int jahr) {
+    final letzter = DateTime(jahr, monat + 1, 0).day;
+    return DateTime(jahr, monat, tag > letzter ? letzter : tag);
   }
 
   @override

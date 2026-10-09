@@ -245,7 +245,7 @@ const pruefungsfragen = <Frage>[
     'Karpfen',
     'Barsche',
   ], 'Der weiße Flossensaum ist ein gutes Erkennungsmerkmal der Saiblinge.'),
-  Frage('Fischkunde', 'Welcher Fisch ist der einzige Raubfisch unter den heimischen Karpfenfischen?', [
+  Frage('Fischkunde', 'Welcher heimische Karpfenfisch lebt als erwachsener Fisch fast nur räuberisch?', [
     'Rapfen (Schied)',
     'Brachse',
     'Rotauge',

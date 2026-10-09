@@ -1,3 +1,4 @@
+// ignore_for_file: invalid_use_of_visible_for_testing_member
 // Erzeugt die Screenshots für den Play Store (nicht Teil der normalen Tests).
 //
 // Aufruf: flutter test screenshots/store_test.dart --update-goldens

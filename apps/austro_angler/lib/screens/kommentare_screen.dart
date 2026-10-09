@@ -40,7 +40,7 @@ class _KommentareScreenState extends State<KommentareScreen> {
         konto.name ?? '',
         text,
       );
-      _eingabe.clear();
+      if (mounted) _eingabe.clear();
     } catch (_) {
       if (mounted) meldung(context, 'Senden fehlgeschlagen.');
     } finally {

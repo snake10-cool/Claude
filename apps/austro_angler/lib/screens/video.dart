@@ -85,6 +85,8 @@ class _VideoAbspielerState extends State<VideoAbspieler> {
         await player.dispose();
         return;
       }
+      // Auf Änderungen (läuft/pausiert) hören, damit das Play-Symbol stimmt.
+      player.addListener(_aktualisieren);
       setState(() => _player = player);
       await player.play();
     } catch (e) {
@@ -92,8 +94,13 @@ class _VideoAbspielerState extends State<VideoAbspieler> {
     }
   }
 
+  void _aktualisieren() {
+    if (mounted) setState(() {});
+  }
+
   @override
   void dispose() {
+    _player?.removeListener(_aktualisieren);
     _player?.dispose();
     super.dispose();
   }
@@ -118,7 +125,7 @@ class _VideoAbspielerState extends State<VideoAbspieler> {
           height: 180, child: Center(child: CircularProgressIndicator()));
     }
     return GestureDetector(
-      onTap: () => setState(() => p.value.isPlaying ? p.pause() : p.play()),
+      onTap: () => p.value.isPlaying ? p.pause() : p.play(),
       child: AspectRatio(
         aspectRatio: p.value.aspectRatio,
         child: Stack(

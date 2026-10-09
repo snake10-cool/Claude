@@ -34,7 +34,7 @@ class Bestimmung {
   /// Kleine Flosse ohne Strahlen zwischen Rücken- und Schwanzflosse.
   final bool fettflosse;
 
-  /// Anzahl Barteln (0, 2, 4 oder 6 = sechs und mehr).
+  /// Anzahl Barteln (0, 1, 2, 4 oder 6 = sechs und mehr).
   final int barteln;
 
   /// Stachelige (harte) vordere Rückenflosse.
@@ -177,7 +177,7 @@ const bestimmung = <String, Bestimmung>{
   'aalrutte': Bestimmung(
     KoerperForm.lang,
     fettflosse: false,
-    barteln: 2,
+    barteln: 1,
     stachel: false,
     saugscheibe: false,
     groesse: Groesse.mittel,

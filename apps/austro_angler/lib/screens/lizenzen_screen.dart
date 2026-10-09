@@ -18,7 +18,9 @@ class _LizenzenScreenState extends State<LizenzenScreen> {
   @override
   void initState() {
     super.initState();
-    Wecker.instanz.lizenzen().then((l) => setState(() => _liste = l));
+    Wecker.instanz.lizenzen().then((l) {
+      if (mounted) setState(() => _liste = l);
+    });
   }
 
   Future<void> _speichern() => Wecker.instanz
@@ -76,7 +78,6 @@ class _LizenzenScreenState extends State<LizenzenScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final heute = DateTime.now();
     return Scaffold(
       appBar: AppBar(title: const Text('Meine Lizenzen')),
       floatingActionButton: FloatingActionButton.extended(
@@ -106,25 +107,33 @@ class _LizenzenScreenState extends State<LizenzenScreen> {
                   Card(
                     child: ListTile(
                       leading: Icon(
-                        l.ablauf.isBefore(heute)
+                        _tageBis(l.ablauf) < 0
                             ? Icons.error
-                            : l.ablauf.difference(heute).inDays < 14
+                            : _tageBis(l.ablauf) < 14
                                 ? Icons.warning_amber
                                 : Icons.verified,
-                        color: l.ablauf.isBefore(heute)
+                        color: _tageBis(l.ablauf) < 0
                             ? Colors.red
-                            : l.ablauf.difference(heute).inDays < 14
+                            : _tageBis(l.ablauf) < 14
                                 ? Colors.orange
                                 : Colors.green,
                       ),
                       title: Text(l.name),
-                      subtitle: Text(l.ablauf.isBefore(heute)
-                          ? 'Abgelaufen am ${datumText(l.ablauf)}'
-                          : 'Gültig bis ${datumText(l.ablauf)} '
-                              '(noch ${l.ablauf.difference(heute).inDays} Tage)'),
+                      subtitle: Text(switch (_tageBis(l.ablauf)) {
+                        < 0 => 'Abgelaufen am ${datumText(l.ablauf)}',
+                        0 => 'Gültig bis heute (${datumText(l.ablauf)})',
+                        1 => 'Gültig bis morgen (${datumText(l.ablauf)})',
+                        final n => 'Gültig bis ${datumText(l.ablauf)} '
+                            '(noch $n Tage)',
+                      }),
                       trailing: IconButton(
+                        tooltip: 'Löschen',
                         icon: const Icon(Icons.delete_outline),
                         onPressed: () async {
+                          if (!await loeschenBestaetigen(context, l.name) ||
+                              !mounted) {
+                            return;
+                          }
                           setState(() => _liste = [..._liste!]..remove(l));
                           await _speichern();
                         },
@@ -135,4 +144,12 @@ class _LizenzenScreenState extends State<LizenzenScreen> {
             ),
     );
   }
+}
+
+/// Ganze Tage von heute bis [ablauf] (Ablauftag zählt noch als gültig).
+int _tageBis(DateTime ablauf) {
+  final heute = DateTime.now();
+  return DateTime.utc(ablauf.year, ablauf.month, ablauf.day)
+      .difference(DateTime.utc(heute.year, heute.month, heute.day))
+      .inDays;
 }

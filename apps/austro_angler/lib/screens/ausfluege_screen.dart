@@ -42,6 +42,7 @@ class _AusfluegeScreenState extends State<AusfluegeScreen> {
     var start = alt?.start ?? DateTime(jetzt.year, jetzt.month, jetzt.day, 6);
     var ende = alt?.ende ?? DateTime(jetzt.year, jetzt.month, jetzt.day, 10);
     final notiz = TextEditingController(text: alt?.notiz ?? '');
+    String? fehler;
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => StatefulBuilder(
@@ -61,7 +62,14 @@ class _AusfluegeScreenState extends State<AusfluegeScreen> {
                   title: Text('Von ${datumText(start)} ${uhrText(start)}'),
                   onTap: () async {
                     final z = await _zeitWaehlen(context, start);
-                    if (z != null) setState(() => start = z);
+                    if (z == null) return;
+                    setState(() {
+                      // Ende mitverschieben, damit es nicht vor dem Start liegt.
+                      if (!ende.isAfter(z)) ende = z.add(ende.difference(start).abs());
+                      if (!ende.isAfter(z)) ende = z.add(const Duration(hours: 4));
+                      start = z;
+                      fehler = null;
+                    });
                   },
                 ),
                 ListTile(
@@ -70,7 +78,12 @@ class _AusfluegeScreenState extends State<AusfluegeScreen> {
                   title: Text('Bis ${datumText(ende)} ${uhrText(ende)}'),
                   onTap: () async {
                     final z = await _zeitWaehlen(context, ende);
-                    if (z != null) setState(() => ende = z);
+                    if (z != null) {
+                      setState(() {
+                        ende = z;
+                        fehler = null;
+                      });
+                    }
                   },
                 ),
                 TextField(
@@ -80,6 +93,10 @@ class _AusfluegeScreenState extends State<AusfluegeScreen> {
                   decoration:
                       const InputDecoration(labelText: 'Notiz (Bedingungen …)'),
                 ),
+                if (fehler != null)
+                  Text(fehler!,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.error)),
               ],
             ),
           ),
@@ -88,7 +105,14 @@ class _AusfluegeScreenState extends State<AusfluegeScreen> {
                 onPressed: () => Navigator.pop(context, false),
                 child: const Text('Abbrechen')),
             FilledButton(
-                onPressed: () => Navigator.pop(context, true),
+                onPressed: () {
+                  if (!ende.isAfter(start)) {
+                    setState(
+                        () => fehler = 'Das Ende muss nach dem Start liegen.');
+                    return;
+                  }
+                  Navigator.pop(context, true);
+                },
                 child: const Text('Speichern')),
           ],
         ),
@@ -193,7 +217,12 @@ class _AusfluegeScreenState extends State<AusfluegeScreen> {
                       onTap: () => _bearbeiten(uid, a),
                       trailing: IconButton(
                         icon: const Icon(Icons.delete_outline),
-                        onPressed: () => fangDienst.ausflugLoeschen(uid, a.id),
+                        tooltip: 'Löschen',
+                        onPressed: () async {
+                          if (await loeschenBestaetigen(context, 'Angeltag')) {
+                            await fangDienst.ausflugLoeschen(uid, a.id);
+                          }
+                        },
                       ),
                     ),
                   ),

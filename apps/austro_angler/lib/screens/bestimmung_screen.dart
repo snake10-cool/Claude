@@ -128,7 +128,7 @@ class _BestimmungScreenState extends State<BestimmungScreen> {
               'Barteln am Maul?',
               'Die "Bartfäden" am Maul, z. B. beim Karpfen oder Wels.',
               _barteln,
-              const [(0, 'Keine'), (2, '2'), (4, '4'), (6, '6 oder mehr')],
+              const [(0, 'Keine'), (1, '1'), (2, '2'), (4, '4'), (6, '6 oder mehr')],
               (v) => _barteln = v),
           _frage(
               'Fettflosse?',

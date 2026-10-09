@@ -149,8 +149,11 @@ class _StoryKarte extends StatelessWidget {
           Row(
             children: [
               if (fang.nutzerName.isNotEmpty)
-                Text(at(fang.nutzerName),
-                    style: weiss.copyWith(fontWeight: FontWeight.w600)),
+                Flexible(
+                  child: Text(at(fang.nutzerName),
+                      overflow: TextOverflow.ellipsis,
+                      style: weiss.copyWith(fontWeight: FontWeight.w600)),
+                ),
               const Spacer(),
               Text('Austro Angler',
                   style: weiss.copyWith(fontSize: 12, color: Colors.white70)),

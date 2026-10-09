@@ -124,6 +124,7 @@ class _EinstellungenScreenState extends State<EinstellungenScreen> {
                           TextButton(
                             onPressed: () async {
                               await KachelCache.leeren();
+                              if (!mounted) return;
                               setState(() => _cache = KachelCache.groesse());
                             },
                             child: const Text('Löschen'),

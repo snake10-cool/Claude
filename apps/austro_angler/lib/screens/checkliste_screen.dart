@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const _standard = [
@@ -35,11 +36,14 @@ class _ChecklisteScreenState extends State<ChecklisteScreen> {
   @override
   void initState() {
     super.initState();
-    SharedPreferences.getInstance().then((p) => setState(() {
+    SharedPreferences.getInstance().then((p) {
+      if (!mounted) return;
+      setState(() {
           _prefs = p;
           _punkte = p.getStringList('checkliste') ?? List.of(_standard);
           _erledigt = (p.getStringList('checkliste_erledigt') ?? []).toSet();
-        }));
+        });
+    });
   }
 
   void _speichern() {
@@ -68,7 +72,11 @@ class _ChecklisteScreenState extends State<ChecklisteScreen> {
         ],
       ),
     );
-    if (text == null || text.trim().isEmpty) return;
+    if (text == null || text.trim().isEmpty || !mounted) return;
+    if (_punkte.contains(text.trim())) {
+      meldung(context, '„${text.trim()}“ steht schon auf der Liste.');
+      return;
+    }
     setState(() => _punkte.add(text.trim()));
     _speichern();
   }
