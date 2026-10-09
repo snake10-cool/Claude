@@ -1,6 +1,10 @@
 """Erzeugt die rechtlichen Webseiten in public/ (python3 seiten.py)."""
-STAND = '4. Oktober 2026'
-KONTAKT = 'snakejoni10@yahoo.com'
+STAND = '9. Oktober 2026'
+KONTAKT = 'info.kaiserschmarrn@gmx.at'
+NAME = 'Jasmin Aigner'
+MARKE = 'Kaiserschmarrn Apps'
+STRASSE = 'Höllersberg 8'
+ORT = '5222 Munderfing'
 P = lambda t: f'<span class="platzhalter">[{t}]</span>'
 
 def seite(datei, titel, inhalt):
@@ -44,8 +48,8 @@ seite('datenschutz', 'Datenschutzerklärung', f'''
 verarbeitet, wofür und welche Rechte du hast.</p>
 
 <h2>1. Verantwortlich</h2>
-<div class="karte">{P('Vor- und Nachname')}<br>{P('Straße Hausnummer')}<br>
-{P('PLZ Ort')}, Österreich<br>E-Mail: <a href="mailto:{KONTAKT}">{KONTAKT}</a></div>
+<div class="karte">{NAME} ({MARKE})<br>{STRASSE}<br>
+{ORT}, Österreich<br>E-Mail: <a href="mailto:{KONTAKT}">{KONTAKT}</a></div>
 
 <h2>2. Was wir speichern</h2>
 <table>
@@ -238,9 +242,9 @@ seite('impressum', 'Impressum', f'''
 <p class="klein">Informationen gemäß § 5 ECG und § 25 MedienG</p>
 <div class="karte">
 <b>Medieninhaber und Betreiber der App „Austro Angler“:</b><br>
-{P('Vor- und Nachname')}<br>
-{P('Straße Hausnummer')}<br>
-{P('PLZ Ort')}, Österreich<br>
+{NAME} ({MARKE})<br>
+{STRASSE}<br>
+{ORT}, Österreich<br>
 E-Mail: <a href="mailto:{KONTAKT}">{KONTAKT}</a>
 </div>
 <p><b>Grundlegende Richtung:</b> Informationen rund ums Angeln in

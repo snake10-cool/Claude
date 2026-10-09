@@ -7,7 +7,7 @@ deinem Google-Konto.
 
 | # | Schritt | Wer |
 |---|---------|-----|
-| 1 | Impressum und Datenschutz: Name und Adresse eintragen (`hosting/seiten.py`, Platzhalter in Gelb) | du + Claude |
+| 1 | ~~Impressum und Datenschutz: Name und Adresse eintragen~~ ✅ erledigt | du + Claude |
 | 2 | ~~Google-Play-Entwicklerkonto anlegen~~ ✅ erledigt | du |
 | 3 | GitHub-Secrets für den Upload-Schlüssel anlegen (siehe unten) | du |
 | 4 | App in der Play Console anlegen, Texte und Bilder aus diesem Ordner einfügen | du |
@@ -41,7 +41,8 @@ Fingerabdruck des Upload-Schlüssels:
 - Datenschutzerklärung: https://austro-angler-202495bd.web.app/datenschutz
 - Konto löschen: https://austro-angler-202495bd.web.app/konto-loeschen
 - Website: https://austro-angler-202495bd.web.app
-- E-Mail: snakejoni10@yahoo.com
+- E-Mail: info.kaiserschmarrn@gmx.at
+- Entwicklername: Kaiserschmarrn Apps
 
 Die Seiten liegen in `hosting/`. Ändern: `python3 seiten.py` in `hosting/`,
 danach veröffentlicht Claude sie neu auf Firebase Hosting.
