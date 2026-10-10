@@ -311,10 +311,16 @@ class FangDienst {
   /// Ohne Netz bestätigt Firestore Schreibvorgänge erst, wenn wieder Empfang
   /// da ist. Die Änderung ist aber schon lokal gespeichert und wird später
   /// automatisch hochgeladen – deshalb nicht ewig warten.
-  static Future<void> _offline(Future<void> schreiben) => schreiben.timeout(
-        const Duration(seconds: 4),
-        onTimeout: () {},
-      );
+  ///
+  /// `then((_) {})` macht daraus immer ein `Future<void>`: Bei `add()` kommt
+  /// sonst ein `Future<DocumentReference>` an, und `onTimeout: () {}` passt
+  /// nicht zu dessen Typ – der Eintrag wird gespeichert, aber es kommt
+  /// trotzdem ein Fehler (und beim zweiten Versuch ein Duplikat).
+  static Future<void> _offline(Future<Object?> schreiben) =>
+      schreiben.then((_) {}).timeout(
+            const Duration(seconds: 4),
+            onTimeout: () {},
+          );
   final _fotoCache = <String, Uint8List?>{};
 
   CollectionReference<Map<String, dynamic>> get _oeff =>
