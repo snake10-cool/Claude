@@ -1,0 +1,52 @@
+APP-NAME (max. 30)
+Austro Angler – Angeln in AT
+
+KURZBESCHREIBUNG (max. 80)
+24.000 Gewässer, Fangbuch & Schonzeiten aller 9 Bundesländer – fürs Angeln in AT
+
+VOLLSTÄNDIGE BESCHREIBUNG (max. 4000)
+Austro Angler ist die Angel-App für ganz Österreich – mit Schwerpunkt Bezirk Braunau, Innviertel und Salzburger Flachgau. Ohne Werbung, ohne Standortverfolgung.
+
+🎣 GEWÄSSER
+• Über 24.000 Flüsse, Bäche, Seen und Teiche in ganz Österreich – filtern nach Bundesland, Bezirk und Ort
+• Geprüfte Gewässer rund um Braunau mit Lizenz, Kartenverkauf und Preisen
+• Wetter, Beißzeit-Prognose, Sonnenauf- und -untergang, Abfluss und Wassertemperatur
+• Angelgeschäfte mit Adresse und Öffnungszeiten
+• Bewertungen, Preise und Infos aus der Community (vom Admin geprüft)
+• Heimatort selbst wählen und nach Entfernung sortieren – ohne GPS
+• Offline-Karte: angesehene Kartenausschnitte gehen auch ohne Netz
+
+📖 FANGBUCH
+• Fänge mit Foto, kurzem Video, Länge, Gewicht, Köder, Ausrüstung, Datum und Uhrzeit
+• Länge per Foto messen, Wetter zur Fangzeit automatisch
+• Eigene Angelplätze auf der Karte – immer privat
+• Statistik, Rekorde, Abzeichen, Wochen-Challenges und PDF-Export
+• Fangstatistik fürs Revier als PDF zum Abgeben
+• „Dein Angeljahr“ – Jahresrückblick zum Teilen
+
+🐟 FISCHLEXIKON
+• 83 Fischarten Österreichs mit Bild und Merkmalen – suchen und filtern
+• Bestimmungshilfe: „Welcher Fisch ist das?“
+• Bei jedem Fisch: alle Gewässer, wo es ihn gibt – sicher oder nur typisch
+• Schonzeiten und Brittelmaße aller 9 Bundesländer – direkt aus den Landesgesetzen, mit Quelle
+• Schonzeit-Countdown, Kalender und Erinnerung
+• Jungangler-Modus mit Angel-Wörterbuch
+
+🎓 FISCHERPRÜFUNG
+• Übungsfragen und Prüfungsmodus mit Zeitlimit
+• Die wichtigsten Angelknoten mit Bildern
+
+👥 COMMUNITY
+• Feed mit „Petri Heil“, Kommentaren und Fang-Geschichten
+• Profile mit Statistik und Abzeichen, Freundschaftsanfragen
+• Gemeinsame Angeltage mit Fahrgemeinschaften und Unwetter-Warnung
+• Monats-Challenge, Rangliste und Vereins-Rangliste
+• Melden und Blockieren für eine faire Community
+
+📱 WIDGET
+• Beißzeit und Wetter an deinem Heimatort direkt am Startbildschirm
+
+⭐ PREMIUM
+Die Grundfunktionen sind gratis. Mit Premium (3,99 € im Monat oder 29,99 € im Jahr, 7 Tage gratis testen) bekommst du Extras wie die Beißzeit für die nächsten Tage, Statistik mit Wetter-Auswertung, Wasserführungs-Verlauf, PDF-Export und den Prüfungsmodus.
+
+Alle Angaben ohne Gewähr – es gelten immer das Landesfischereigesetz und die Lizenzbedingungen des Reviers.
