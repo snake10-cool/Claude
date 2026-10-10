@@ -121,7 +121,8 @@ class AustroAnglerApp extends StatelessWidget {
   }
 }
 
-/// Mit Online-Funktionen muss man angemeldet sein, um die App zu nutzen.
+/// Mit Online-Funktionen muss man angemeldet sein und die E-Mail bestätigt
+/// haben, um die App zu nutzen.
 class _Weiche extends StatelessWidget {
   const _Weiche();
 
@@ -132,7 +133,10 @@ class _Weiche extends StatelessWidget {
     if (!konto.bereit) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
-    return konto.angemeldet ? const Startseite() : const AnmeldeSeite();
+    if (!konto.angemeldet) return const AnmeldeSeite();
+    // Erst mit bestätigter E-Mail in die App (gegen Fake-Konten).
+    if (!konto.emailBestaetigt) return const BestaetigenSeite();
+    return const Startseite();
   }
 }
 

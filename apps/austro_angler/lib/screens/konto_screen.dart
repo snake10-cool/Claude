@@ -491,3 +491,114 @@ Future<void> _vereinWaehlen(BuildContext context, Konto konto) async {
     if (context.mounted) meldung(context, 'Speichern fehlgeschlagen.');
   }
 }
+
+/// Nach der Anmeldung: Ohne bestätigte E-Mail geht es nicht weiter.
+class BestaetigenSeite extends StatefulWidget {
+  const BestaetigenSeite({super.key});
+
+  @override
+  State<BestaetigenSeite> createState() => _BestaetigenSeiteState();
+}
+
+class _BestaetigenSeiteState extends State<BestaetigenSeite>
+    with WidgetsBindingObserver {
+  bool _prueft = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  // Zurück aus dem Mail-Programm: gleich nachsehen, ob schon bestätigt.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState zustand) {
+    if (zustand == AppLifecycleState.resumed) _pruefen(still: true);
+  }
+
+  Future<void> _pruefen({bool still = false}) async {
+    if (_prueft) return;
+    setState(() => _prueft = true);
+    final konto = KontoScope.of(context)!;
+    try {
+      await konto.neuLaden();
+      if (!still && mounted && !konto.emailBestaetigt) {
+        meldung(context,
+            'Noch nicht bestätigt. Tippe zuerst auf den Link in der E-Mail.');
+      }
+    } catch (_) {
+      if (!still && mounted) meldung(context, 'Keine Verbindung.');
+    } finally {
+      if (mounted) setState(() => _prueft = false);
+    }
+  }
+
+  Future<void> _nochmalSenden() async {
+    try {
+      await KontoScope.of(context)!.bestaetigungSenden();
+      if (mounted) meldung(context, 'E-Mail erneut gesendet.');
+    } on KontoFehler catch (e) {
+      if (mounted) meldung(context, e.text);
+    } catch (_) {
+      if (mounted) {
+        meldung(context, 'Zu viele Versuche – bitte später nochmal.');
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final konto = KontoScope.of(context)!;
+    final text = Theme.of(context).textTheme;
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 480),
+            child: ListView(
+              padding: const EdgeInsets.all(24),
+              shrinkWrap: true,
+              children: [
+                const Text('📧',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 64)),
+                const SizedBox(height: 16),
+                Text('Bitte bestätige deine E-Mail',
+                    textAlign: TextAlign.center, style: text.headlineSmall),
+                const SizedBox(height: 12),
+                Text(
+                  'Wir haben einen Link an\n${konto.nutzer?.email ?? ''}\n'
+                  'geschickt. Tippe darauf und komm dann hierher zurück. '
+                  'Schau auch im Spam-Ordner nach.',
+                  textAlign: TextAlign.center,
+                  style: text.bodyLarge,
+                ),
+                const SizedBox(height: 24),
+                FilledButton(
+                  onPressed: _prueft ? null : _pruefen,
+                  child: Text(_prueft ? 'Prüfe …' : 'Ich habe bestätigt'),
+                ),
+                const SizedBox(height: 8),
+                OutlinedButton(
+                  onPressed: _nochmalSenden,
+                  child: const Text('E-Mail nochmal senden'),
+                ),
+                const SizedBox(height: 8),
+                TextButton(
+                  onPressed: konto.abmelden,
+                  child: const Text('Abmelden / andere E-Mail verwenden'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
