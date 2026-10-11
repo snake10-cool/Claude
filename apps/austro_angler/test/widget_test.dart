@@ -1,4 +1,5 @@
 import 'package:austro_angler/data/fische.dart';
+import 'package:austro_angler/data/gewicht.dart';
 import 'package:austro_angler/data/fragen.dart';
 import 'package:austro_angler/data/gewaesser.dart';
 import 'package:austro_angler/main.dart';
@@ -110,6 +111,16 @@ void main() {
     expect(regel.tageBisOffen(DateTime(2026, 3, 1)), 31);
     expect(const Tag(29, 2).imJahr(2027), DateTime(2027, 2, 28));
     expect(const Tag(29, 2).imJahr(2028), DateTime(2028, 2, 29));
+  });
+
+  test('Gewicht schätzen', () {
+    final hecht = gewichtSchaetzen('hecht', 78)!;
+    expect(hecht, inInclusiveRange(2800, 4200));
+    expect(gewichtSchaetzen('bachforelle', 34), inInclusiveRange(350, 500));
+    expect(gewichtSchaetzen('karpfen', 62), inInclusiveRange(3800, 5500));
+    expect(gewichtSchaetzen('wels', 150), inInclusiveRange(20000, 32000));
+    expect(gewichtSchaetzen('hecht', 0), isNull);
+    expect(gewichtGenau('koppe'), isFalse);
   });
 
   test('Mondphase', () {

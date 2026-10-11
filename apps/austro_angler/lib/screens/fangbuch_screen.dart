@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../data/fische.dart';
+import '../data/gewicht.dart';
 import '../services/alle_gewaesser.dart';
 import '../main.dart';
 import '../models/bundesland.dart';
@@ -848,9 +849,16 @@ class _FangFormularState extends State<FangFormular> {
                   controller: _gewicht,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(labelText: 'Gewicht (g)'),
+                  onChanged: (_) => setState(() {}),
                 ),
               ),
             ],
+          ),
+          _GewichtVorschlag(
+            fischId: _fischId,
+            laenge: _laengeWert(_laenge.text),
+            sichtbar: _gewicht.text.trim().isEmpty,
+            uebernehmen: (g) => setState(() => _gewicht.text = '$g'),
           ),
           const SizedBox(height: 12),
           GewaesserFeld(
@@ -1041,6 +1049,39 @@ class _FangFormularState extends State<FangFormular> {
                 : const Text('Speichern'),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// „≈ 1,6 kg geschätzt“ aus Länge und Fischart – mit einem Tipp übernehmen.
+class _GewichtVorschlag extends StatelessWidget {
+  const _GewichtVorschlag({
+    required this.fischId,
+    required this.laenge,
+    required this.sichtbar,
+    required this.uebernehmen,
+  });
+
+  final String fischId;
+  final double? laenge;
+  final bool sichtbar;
+  final void Function(int) uebernehmen;
+
+  @override
+  Widget build(BuildContext context) {
+    final g = laenge == null ? null : gewichtSchaetzen(fischId, laenge!);
+    if (!sichtbar || g == null) return const SizedBox.shrink();
+    final text = g >= 1000
+        ? '${(g / 1000).toStringAsFixed(1).replaceAll('.', ',')} kg'
+        : '$g g';
+    return Align(
+      alignment: Alignment.centerRight,
+      child: TextButton.icon(
+        onPressed: () => uebernehmen(g),
+        icon: const Icon(Icons.scale_outlined, size: 18),
+        label: Text('≈ $text geschätzt'
+            '${gewichtGenau(fischId) ? '' : ' (grob)'} – übernehmen'),
       ),
     );
   }
