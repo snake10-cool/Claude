@@ -5,6 +5,7 @@ import 'ausfluege_screen.dart';
 import 'ausruestung_screen.dart';
 import 'bestimmung_screen.dart';
 import 'checkliste_screen.dart';
+import 'darf_ich_screen.dart';
 import 'einfuehrung_screen.dart';
 import 'einstellungen_screen.dart';
 import 'glossar_screen.dart';
@@ -62,6 +63,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.settings_outlined, 'Einstellungen',
               'Heimatort, Jungangler-Modus, Countdown, Offline-Karte',
               () => _oeffnen(context, const EinstellungenScreen())),
+          _Eintrag(Icons.chat_bubble_outline, 'Darf ich …? ⭐',
+              'Frag nach Schonzeit, Brittelmaß und Gewässer', () => _oeffnen(context,
+                  const DarfIchScreen())),
           _Eintrag(Icons.waving_hand_outlined, 'Einführung ansehen',
               'Die App in 6 Schritten erklärt', () => _oeffnen(context,
                   const EinfuehrungScreen())),

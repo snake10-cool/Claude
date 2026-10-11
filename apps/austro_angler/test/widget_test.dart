@@ -147,6 +147,8 @@ void main() {
       await tester.tap(find.text(tab).last);
       await tester.pumpAndSettle();
     }
+    await tester.scrollUntilVisible(find.text('FAQ – Fragen & Antworten'), 200,
+        scrollable: find.byType(Scrollable).first);
     expect(find.text('FAQ – Fragen & Antworten'), findsOneWidget);
     await tester.tap(find.text('FAQ – Fragen & Antworten'));
     await tester.pumpAndSettle();

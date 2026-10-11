@@ -2,6 +2,7 @@
 // prüft, dass kein Bildschirm abstürzt.
 import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/main.dart';
+import 'package:austro_angler/screens/darf_ich_screen.dart';
 import 'package:austro_angler/screens/lexikon_screen.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/speicher.dart';
@@ -11,9 +12,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// Alle Einträge unter "Mehr", die einen Bildschirm in der App öffnen.
 const _mehr = [
-  'Einführung ansehen',
   '⭐ Premium',
   'Einstellungen',
+  'Darf ich …? ⭐',
+  'Einführung ansehen',
   'FAQ – Fragen & Antworten',
   'Statistik & Abzeichen',
   'Meine Angeltage ⭐',
@@ -142,6 +144,19 @@ void main() {
     await _warten(tester);
     expect(find.text('Wo fischst du?'), findsNothing);
     expect(speicher.einfuehrungGesehen, isTrue);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('Darf ich …? beantwortet eine Frage', (tester) async {
+    await _starten(tester);
+    tester
+        .state<NavigatorState>(find.byType(Navigator).first)
+        .push(MaterialPageRoute(builder: (_) => const DarfIchScreen()));
+    await _warten(tester);
+    await tester.enterText(find.byType(TextField), 'Darf ich einen 45 cm Hecht mitnehmen?');
+    await tester.testTextInput.receiveAction(TextInputAction.search);
+    await _warten(tester);
+    expect(find.textContaining('Zu klein'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }

@@ -8,6 +8,7 @@ import 'dart:io';
 
 import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/main.dart';
+import 'package:austro_angler/screens/darf_ich_screen.dart';
 import 'package:austro_angler/screens/einfuehrung_screen.dart';
 import 'package:austro_angler/screens/kalender_screen.dart';
 import 'package:austro_angler/screens/lexikon_screen.dart';
@@ -193,5 +194,12 @@ void main() {
     await _starten(tester);
     await _oeffnen(tester, const EinfuehrungScreen());
     await _foto(tester, '8_einfuehrung');
+  });
+
+  testWidgets('9 Darf ich', (tester) async {
+    await _starten(tester);
+    await _oeffnen(tester,
+        const DarfIchScreen(frage: 'Darf ich morgen am Inn einen 45 cm Hecht mitnehmen?'));
+    await _foto(tester, '9_darf_ich');
   });
 }
