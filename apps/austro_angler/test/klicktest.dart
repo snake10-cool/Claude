@@ -21,6 +21,7 @@ const _mehr = [
   'FAQ – Fragen & Antworten',
   'Statistik & Abzeichen',
   'Arten-Sammelalbum',
+  'Eigene Wettfischen',
   'Meine Angeltage ⭐',
   'Köder-Box',
   'Meine Ausrüstung',

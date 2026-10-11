@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../models/fang.dart';
+import 'wettfischen.dart';
 
 /// Ein Wunsch oder eine Meldung.
 class Eintrag {
@@ -1413,6 +1414,7 @@ class FangDienst {
       } catch (_) {}
     }
     await weg(_ranglisteEntfernen(uid));
+    await weg(wettfischenDienst.allesLoeschen(uid));
 
     // Freundschaften auf beiden Seiten
     for (final f in await holen(_freunde(uid))) {

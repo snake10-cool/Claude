@@ -25,6 +25,7 @@ import 'knoten_screen.dart';
 import 'konto_screen.dart';
 import 'lexikon_screen.dart';
 import 'pruefung_screen.dart';
+import 'wettfischen_screen.dart';
 import 'widgets.dart';
 import 'wuensche_screen.dart';
 
@@ -87,6 +88,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.collections_bookmark_outlined, 'Arten-Sammelalbum',
               'Alle Fischarten sammeln – wie viele hast du?', () => _oeffnen(context,
                   const AlbumScreen())),
+          _Eintrag(Icons.emoji_events_outlined, 'Eigene Wettfischen',
+              'Mit Freunden oder Verein – per Code', () => _oeffnen(context,
+                  const WettfischenScreen())),
           _Eintrag(Icons.event_available, 'Meine Angeltage ⭐',
               'Ganze Tage erfassen, auch Schneidertage', () => _oeffnen(context,
                   const AusfluegeScreen())),

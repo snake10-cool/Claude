@@ -97,6 +97,13 @@ service cloud.firestore {
             && request.resource.data.text.size() <= 150;
       }
 
+      // Meine Wettfischen (nur die Liste, für „Meine Wettfischen“).
+      match /wettfischen/{id} {
+        allow read, delete: if ich(uid);
+        allow create, update: if ich(uid)
+            && request.resource.data.keys().hasOnly(['titel', 'bis']);
+      }
+
       // Köder-Box (mit kleinem Foto).
       match /koeder/{id} {
         allow read, delete: if ich(uid);
@@ -304,6 +311,50 @@ service cloud.firestore {
             && request.resource.data.groesster <= 300;
         allow delete: if istAdmin()
             || (angemeldet() && request.auth.uid == uid);
+      }
+    }
+
+    // Eigene Wettfischen (Beitritt per Code, Stand aus dem eigenen Fangbuch).
+    match /wettfischen/{id} {
+      function gueltigesWettfischen(d) {
+        return d.keys().hasOnly(['titel', 'gewaesser', 'fischId', 'wertung',
+                 'von', 'bis', 'code', 'ersteller', 'erstellerName', 'erstellt'])
+            && d.titel is string && d.titel.size() > 0 && d.titel.size() <= 60
+            && d.gewaesser is string && d.gewaesser.size() <= 100
+            && d.fischId is string && d.fischId.size() <= 40
+            && d.wertung in ['laenge', 'anzahl', 'arten']
+            && d.code is string && d.code.matches('^[A-Z0-9]{6}$')
+            && d.von is timestamp && d.bis is timestamp
+            && d.bis > d.von
+            && d.bis < d.von + duration.value(32, 'd');
+      }
+      allow read: if angemeldet();
+      allow create: if angemeldet()
+          && request.resource.data.ersteller == request.auth.uid
+          && gueltigesWettfischen(request.resource.data);
+      allow update: if angemeldet()
+          && resource.data.ersteller == request.auth.uid
+          && request.resource.data.ersteller == resource.data.ersteller
+          && request.resource.data.code == resource.data.code
+          && gueltigesWettfischen(request.resource.data);
+      allow delete: if istAdmin()
+          || (angemeldet() && resource.data.ersteller == request.auth.uid);
+
+      match /teilnehmer/{uid} {
+        allow read: if angemeldet();
+        allow create, update: if angemeldet() && request.auth.uid == uid
+            && request.resource.data.keys().hasOnly(['name', 'faenge',
+                 'groesster', 'arten', 'besterFisch'])
+            && request.resource.data.name is string
+            && request.resource.data.name.size() <= 30
+            && request.resource.data.faenge is int
+            && request.resource.data.faenge < 10000
+            && request.resource.data.groesster is number
+            && request.resource.data.groesster <= 300
+            && request.resource.data.arten is int;
+        allow delete: if angemeldet() && (request.auth.uid == uid || istAdmin()
+            || get(/databases/$(database)/documents/wettfischen/$(id)).data.ersteller
+                 == request.auth.uid);
       }
     }
 

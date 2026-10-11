@@ -234,6 +234,23 @@ def main():
     erlaubt('Eigenes Postfach lesen', lesen(t1, f'nutzer/{u1}/aktivitaeten/n1'))
     erlaubt('Eigene Neuigkeit löschen', loeschen(t1, f'nutzer/{u1}/aktivitaeten/n1'))
 
+    # Eigene Wettfischen
+    wf = {'titel': 'Testcup', 'gewaesser': '', 'fischId': '', 'wertung': 'laenge',
+          'von': jetzt(), 'bis': jetzt(86400), 'code': 'TEST23', 'ersteller': u1,
+          'erstellerName': n1, 'erstellt': jetzt()}
+    erlaubt('Wettfischen anlegen', setzen(t1, f'wettfischen/{fang}', wf))
+    verboten('Wettfischen für andere anlegen', setzen(t2, f'wettfischen/{fang}x', {**wf, 'ersteller': u1}))
+    verboten('Wettfischen über 31 Tage', setzen(t1, f'wettfischen/{fang}y', {**wf, 'bis': jetzt(40 * 86400)}))
+    verboten('Fremdes Wettfischen ändern', setzen(t2, f'wettfischen/{fang}', {**wf, 'titel': 'Gekapert'}))
+    stand = {'name': n2, 'faenge': 2, 'groesster': 61.0, 'arten': 1, 'besterFisch': 'hecht'}
+    erlaubt('Wettfischen beitreten (eigener Stand)', setzen(t2, f'wettfischen/{fang}/teilnehmer/{u2}', stand))
+    verboten('Fremden Stand schreiben', setzen(t1, f'wettfischen/{fang}/teilnehmer/{u2}', stand))
+    erlaubt('Ersteller entfernt Teilnehmer', loeschen(t1, f'wettfischen/{fang}/teilnehmer/{u2}'))
+    erlaubt('Eigene Wettfischen-Liste', setzen(t2, f'nutzer/{u2}/wettfischen/{fang}', {'titel': 'Testcup', 'bis': jetzt()}))
+    verboten('Fremde Wettfischen-Liste lesen', lesen(t1, f'nutzer/{u2}/wettfischen/{fang}'))
+    loeschen(t2, f'nutzer/{u2}/wettfischen/{fang}')
+    erlaubt('Eigenes Wettfischen löschen', loeschen(t1, f'wettfischen/{fang}'))
+
     # Wassertemperatur, Infos, Wunsch
     erlaubt('Wassertemperatur melden', setzen(t1, 'wassertemp/test/messungen/m1',
                                               {'uid': u1, 'nutzerName': n1, 'grad': 12.5, 'zeit': jetzt()}))

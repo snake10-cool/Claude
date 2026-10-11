@@ -1,6 +1,7 @@
 import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/data/gewicht.dart';
 import 'package:austro_angler/services/csv_export.dart';
+import 'package:austro_angler/services/wettfischen.dart';
 import 'package:austro_angler/data/fragen.dart';
 import 'package:austro_angler/data/gewaesser.dart';
 import 'package:austro_angler/main.dart';
@@ -145,6 +146,31 @@ void main() {
         zeilen[1],
         startsWith('03.05.2026;07:05;Hecht;78,5;3900;'
             '"Inn; bei Braunau";Oberösterreich;"Gummi ""Shad""";ja'));
+  });
+
+  test('Wettfischen-Stand', () {
+    Fang f(String fisch, double cm, DateTime d) => Fang(
+        id: '$fisch$cm', fischId: fisch, datum: d, laengeCm: cm,
+        gewaesser: '', bundesland: '', koeder: '', notiz: '',
+        zurueckgesetzt: false);
+    final von = DateTime(2026, 6, 1), bis = DateTime(2026, 6, 3);
+    final faenge = [
+      f('hecht', 70, DateTime(2026, 6, 1, 8)),
+      f('zander', 50, DateTime(2026, 6, 2, 20)),
+      f('hecht', 90, DateTime(2026, 6, 3, 0, 1)), // zu spät
+      f('hecht', 95, DateTime(2026, 5, 31, 23)), // zu früh
+    ];
+    final alle = standImZeitraum(von, bis, '', faenge);
+    expect(alle['faenge'], 2);
+    expect(alle['groesster'], 70.0);
+    expect(alle['arten'], 2);
+    expect(alle['besterFisch'], 'hecht');
+    expect(standImZeitraum(von, bis, 'zander', faenge)['groesster'], 50.0);
+    final t = sortiert([
+      Teilnehmer('a', {'name': 'a', 'faenge': 1, 'groesster': 60.0}),
+      Teilnehmer('b', {'name': 'b', 'faenge': 3, 'groesster': 80.0}),
+    ], Wertung.laenge);
+    expect(t.first.uid, 'b');
   });
 
   test('Mondphase', () {
