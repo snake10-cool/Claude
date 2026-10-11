@@ -25,6 +25,7 @@ import 'konto_screen.dart';
 import 'lexikon_screen.dart';
 import 'pruefung_screen.dart';
 import 'widgets.dart';
+import 'wuensche_screen.dart';
 
 class MehrScreen extends StatelessWidget {
   const MehrScreen({super.key});
@@ -70,6 +71,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.my_location, 'Zielfisch',
               'Ich will Hecht → wo, wann, womit', () => _oeffnen(context,
                   const ZielfischScreen())),
+          _Eintrag(Icons.lightbulb_outline, 'Wünsche & Ideen',
+              'Was soll die App noch können?', () => _oeffnen(context,
+                  const WuenscheScreen())),
           _Eintrag(Icons.waving_hand_outlined, 'Einführung ansehen',
               'Die App in 6 Schritten erklärt', () => _oeffnen(context,
                   const EinfuehrungScreen())),

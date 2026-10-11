@@ -124,6 +124,9 @@ void main() {
     final speicher = await Speicher.oeffnen();
     await tester.runAsync(alleGewaesser.laden);
     await tester.pumpWidget(AustroAnglerApp(speicher: speicher));
+    expect(find.text('Heute'), findsWidgets);
+    await tester.tap(find.text('Gewässer').last);
+    await tester.pumpAndSettle();
     expect(find.text('Wo darf ich fischen?'), findsOneWidget);
     expect(alleGewaesser.geladen, isTrue);
     expect(find.textContaining(RegExp(r'^\d+ Gewässer$')), findsOneWidget);
@@ -143,7 +146,7 @@ void main() {
         scrollable: find.byType(Scrollable).first);
     expect(find.text('✅ Enknach (Bach)'), findsOneWidget);
 
-    for (final tab in ['Fangbuch', 'Feed', 'Wünsche', 'Mehr']) {
+    for (final tab in ['Heute', 'Fangbuch', 'Feed', 'Mehr']) {
       await tester.tap(find.text(tab).last);
       await tester.pumpAndSettle();
     }

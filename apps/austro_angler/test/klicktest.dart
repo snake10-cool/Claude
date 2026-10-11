@@ -16,6 +16,7 @@ const _mehr = [
   'Einstellungen',
   'Darf ich …? ⭐',
   'Zielfisch',
+  'Wünsche & Ideen',
   'Einführung ansehen',
   'FAQ – Fragen & Antworten',
   'Statistik & Abzeichen',
@@ -78,6 +79,9 @@ void main() {
 
   testWidgets('Alle Tabs und ein Gewässer öffnen', (tester) async {
     await _starten(tester);
+    expect(find.byType(DarfIchFeld), findsOneWidget);
+    await tester.tap(find.text('Gewässer').last);
+    await _warten(tester);
     await tester.scrollUntilVisible(find.text('✅ Inn bei Braunau'), 200,
         scrollable: find.byType(Scrollable).first);
     await tester.tap(find.text('✅ Inn bei Braunau'));
@@ -88,7 +92,7 @@ void main() {
     expect(tester.takeException(), isNull);
     await _zurueck(tester);
 
-    for (final tab in ['Fangbuch', 'Feed', 'Wünsche', 'Mehr', 'Gewässer']) {
+    for (final tab in ['Fangbuch', 'Feed', 'Mehr', 'Heute', 'Gewässer']) {
       await tester.tap(find.text(tab).last);
       await _warten(tester);
       expect(tester.takeException(), isNull, reason: tab);

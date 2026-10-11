@@ -146,11 +146,15 @@ void main() {
 
   testWidgets('1 Gewässerliste', (tester) async {
     await _starten(tester);
+    await tester.tap(find.text('Gewässer').last);
+    await _warten(tester);
     await _foto(tester, '1_gewaesser');
   });
 
   testWidgets('2 Gewässer-Detail', (tester) async {
     await _starten(tester);
+    await tester.tap(find.text('Gewässer').last);
+    await _warten(tester);
     await tester.scrollUntilVisible(find.text('✅ Inn bei Braunau'), 200,
         scrollable: find.byType(Scrollable).first);
     await tester.tap(find.text('✅ Inn bei Braunau'));
@@ -208,5 +212,10 @@ void main() {
     await _starten(tester);
     await _oeffnen(tester, const ZielfischScreen(fischId: 'zander'));
     await _foto(tester, '10_zielfisch');
+  });
+
+  testWidgets('11 Heute', (tester) async {
+    await _starten(tester);
+    await _foto(tester, '11_heute');
   });
 }
