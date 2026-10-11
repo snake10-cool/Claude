@@ -46,6 +46,9 @@ class Speicher extends ChangeNotifier {
   /// Einführung beim ersten Start schon gezeigt?
   bool einfuehrungGesehen = false;
 
+  /// Bis wann die Neuigkeiten (Glocke) gelesen sind.
+  DateTime neuigkeitenGesehen = DateTime.fromMillisecondsSinceEpoch(0);
+
   /// Erledigte Wochen-Challenges, z. B. "2026-40".
   List<String> erledigteChallenges = const [];
 
@@ -66,6 +69,8 @@ class Speicher extends ChangeNotifier {
     heimatLon = _prefs.getDouble('heimatLon');
     jungangler = _prefs.getBool('jungangler') ?? false;
     einfuehrungGesehen = _prefs.getBool('einfuehrung') ?? false;
+    neuigkeitenGesehen = DateTime.fromMillisecondsSinceEpoch(
+        _prefs.getInt('neuigkeitenGesehen') ?? 0);
     favoriten = _prefs.getStringList('favoriten') ?? const [];
     lieblingsfische =
         _prefs.getStringList('lieblingsfische') ?? lieblingsfische;
@@ -98,6 +103,13 @@ class Speicher extends ChangeNotifier {
     favoriten = neu;
     notifyListeners();
     await _prefs.setStringList('favoriten', neu);
+  }
+
+  Future<void> neuigkeitenGelesen() async {
+    neuigkeitenGesehen = DateTime.now();
+    notifyListeners();
+    await _prefs.setInt(
+        'neuigkeitenGesehen', neuigkeitenGesehen.millisecondsSinceEpoch);
   }
 
   Future<void> einfuehrungErledigt() async {

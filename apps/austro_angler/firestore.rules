@@ -91,7 +91,8 @@ service cloud.firestore {
             && request.resource.data.keys().hasOnly(['von', 'nutzerName',
                  'typ', 'text', 'bezug', 'erstellt'])
             && request.resource.data.von == request.auth.uid
-            && request.resource.data.typ in ['petri', 'kommentar']
+            && request.resource.data.typ in ['petri', 'kommentar', 'anfrage', 'freund',
+                 'wettfischen']
             && request.resource.data.text is string
             && request.resource.data.text.size() <= 150;
       }

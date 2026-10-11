@@ -10,6 +10,7 @@ import '../services/alle_gewaesser.dart';
 import '../services/beisszeit.dart';
 import '../services/fang_dienst.dart';
 import '../services/wetter.dart';
+import 'aktivitaeten_screen.dart';
 import 'darf_ich_screen.dart';
 import 'fangbuch_screen.dart';
 import 'gewaesser_screen.dart';
@@ -66,7 +67,10 @@ class _HeuteScreenState extends State<HeuteScreen> {
     Widget challenges(List<Fang> f) => WochenChallengeKarte(f);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Heute')),
+      appBar: AppBar(
+        title: const Text('Heute'),
+        actions: const [NeuigkeitenGlocke()],
+      ),
       body: ListenableBuilder(
         listenable: alleGewaesser,
         builder: (context, _) => ListView(

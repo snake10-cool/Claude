@@ -222,6 +222,18 @@ def main():
     erlaubt('Eintrag lesen (1.1)', lesen(t2, f'rangliste/test/eintraege/{u1}'))
     erlaubt('Eigenen Eintrag löschen (1.1)', loeschen(t1, f'rangliste/test/eintraege/{u1}'))
 
+    # Neuigkeiten (Postfach)
+    nachricht = {'von': u2, 'nutzerName': n2, 'typ': 'anfrage', 'text': '',
+                 'bezug': '', 'erstellt': jetzt()}
+    erlaubt('Neuigkeit an anderen schicken', setzen(t2, f'nutzer/{u1}/aktivitaeten/n1', nachricht))
+    verboten('Neuigkeit mit falschem Absender', setzen(t2, f'nutzer/{u1}/aktivitaeten/n2',
+                                                       {**nachricht, 'von': u1}))
+    verboten('Unbekannte Art von Neuigkeit', setzen(t2, f'nutzer/{u1}/aktivitaeten/n3',
+                                                    {**nachricht, 'typ': 'werbung'}))
+    verboten('Fremdes Postfach lesen', lesen(t2, f'nutzer/{u1}/aktivitaeten/n1'))
+    erlaubt('Eigenes Postfach lesen', lesen(t1, f'nutzer/{u1}/aktivitaeten/n1'))
+    erlaubt('Eigene Neuigkeit löschen', loeschen(t1, f'nutzer/{u1}/aktivitaeten/n1'))
+
     # Wassertemperatur, Infos, Wunsch
     erlaubt('Wassertemperatur melden', setzen(t1, 'wassertemp/test/messungen/m1',
                                               {'uid': u1, 'nutzerName': n1, 'grad': 12.5, 'zeit': jetzt()}))

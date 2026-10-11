@@ -42,13 +42,7 @@ class CommunityScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Community'),
           actions: [
-            if (konto.angemeldet)
-              IconButton(
-                tooltip: 'Neuigkeiten',
-                icon: const Icon(Icons.notifications_outlined),
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => const AktivitaetenScreen())),
-              ),
+            const NeuigkeitenGlocke(),
           ],
           bottom: const TabBar(
             isScrollable: true,

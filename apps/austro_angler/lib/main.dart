@@ -8,6 +8,7 @@ import 'screens/einfuehrung_screen.dart';
 import 'screens/community_screen.dart';
 import 'screens/fangbuch_screen.dart';
 import 'screens/gewaesser_screen.dart';
+import 'screens/aktivitaeten_screen.dart';
 import 'screens/heute_screen.dart';
 import 'screens/karte_screen.dart';
 import 'screens/konto_screen.dart';
@@ -194,12 +195,21 @@ class _StartseiteState extends State<Startseite> {
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           selectedIndex: _index,
           onDestinationSelected: (i) => setState(() => _index = i),
-          destinations: const [
+          destinations: [
             NavigationDestination(icon: Icon(Icons.today), label: 'Heute'),
             NavigationDestination(icon: Icon(Icons.water), label: 'Gewässer'),
             NavigationDestination(icon: Icon(Icons.map), label: 'Karte'),
             NavigationDestination(icon: Icon(Icons.book), label: 'Fangbuch'),
-            NavigationDestination(icon: Icon(Icons.groups), label: 'Feed'),
+            NavigationDestination(
+              icon: NeuigkeitenZaehler(
+                builder: (context, n) => Badge(
+                  isLabelVisible: n > 0,
+                  label: Text('$n'),
+                  child: const Icon(Icons.groups),
+                ),
+              ),
+              label: 'Feed',
+            ),
             NavigationDestination(icon: Icon(Icons.menu), label: 'Mehr'),
           ],
         ),

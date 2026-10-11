@@ -11,7 +11,10 @@ import '../models/fang.dart';
 class Eintrag {
   Eintrag(DocumentSnapshot<Map<String, dynamic>> doc)
       : id = doc.id,
-        uid = doc.data()?['uid'] as String? ?? '',
+        // Neuigkeiten speichern den Absender unter „von“.
+        uid = doc.data()?['uid'] as String? ??
+            doc.data()?['von'] as String? ??
+            '',
         nutzerName = doc.data()?['nutzerName'] as String? ?? '',
         text = doc.data()?['text'] as String? ?? '',
         typ = doc.data()?['typ'] as String? ?? '',
@@ -543,21 +546,34 @@ class FangDienst {
       _db.collection('nutzer/$uid/aktivitaeten');
 
   Future<void> _aktivitaet(
-      Fang fang, String von, String name, String typ, String text) async {
-    if (fang.uid == von) return; // Keine Nachricht an sich selbst.
+          Fang fang, String von, String name, String typ, String text) =>
+      nachricht(fang.uid, von, name, typ, text, bezug: fang.fischId);
+
+  /// Legt eine Neuigkeit im Postfach von [an] ab (Petri Heil, Kommentar,
+  /// Freundschaftsanfrage …). Fehler sind egal – die Aktion selbst zählt.
+  Future<void> nachricht(
+      String an, String von, String name, String typ, String text,
+      {String bezug = ''}) async {
+    if (an == von || an.isEmpty) return; // Keine Nachricht an sich selbst.
     try {
-      await _aktivitaeten(fang.uid).add({
+      await _offline(_aktivitaeten(an).add({
         'von': von,
         'nutzerName': name,
         'typ': typ,
         'text': text.length > 100 ? '${text.substring(0, 100)}…' : text,
-        'bezug': fang.fischId,
+        'bezug': bezug,
         'erstellt': FieldValue.serverTimestamp(),
-      });
-    } catch (_) {
-      // Nicht schlimm, wenn die Benachrichtigung fehlschlägt.
-    }
+      }));
+    } catch (_) {}
   }
+
+  /// Anzahl Neuigkeiten nach [seit] (für das Glocken-Abzeichen).
+  Stream<int> neueAktivitaeten(String uid, DateTime seit) => _aktivitaeten(uid)
+      .where('erstellt', isGreaterThan: Timestamp.fromDate(seit))
+      .limit(20)
+      .snapshots()
+      .map((s) => s.docs.length)
+      .handleError((_) => 0);
 
   Stream<List<Eintrag>> aktivitaeten(String uid) => _aktivitaeten(uid)
       .orderBy('erstellt', descending: true)
@@ -862,11 +878,13 @@ class FangDienst {
       .map((d) => d.exists)
       .handleError((_) => false);
 
-  Future<void> anfrageSenden(String ich, String meinName, String andere) =>
-      _offline(_anfragen(andere).doc(ich).set({
-        'name': meinName,
-        'zeit': FieldValue.serverTimestamp(),
-      }));
+  Future<void> anfrageSenden(String ich, String meinName, String andere) async {
+    await _offline(_anfragen(andere).doc(ich).set({
+      'name': meinName,
+      'zeit': FieldValue.serverTimestamp(),
+    }));
+    await nachricht(andere, ich, meinName, 'anfrage', '');
+  }
 
   Future<void> anfrageZurueckziehen(String ich, String andere) =>
       _anfragen(andere).doc(ich).delete();
@@ -881,6 +899,7 @@ class FangDienst {
           {'name': meinName, 'seit': FieldValue.serverTimestamp()})
       ..delete(_anfragen(ich).doc(andere));
     await batch.commit();
+    await nachricht(andere, ich, meinName, 'freund', '');
   }
 
   Future<void> anfrageAblehnen(String ich, String andere) =>
