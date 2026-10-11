@@ -37,6 +37,7 @@ enum _Sortierung { groesse, name, entfernung, heimat }
 class _GewaesserScreenState extends State<GewaesserScreen> {
   String _suche = '';
   GewaesserTyp? _typ;
+  bool _nurFavoriten = false;
   _Sortierung? _sortierung;
 
   @override
@@ -56,6 +57,8 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
   List<Gewaesser> _gefiltert(Speicher speicher) {
     final suche = _suche.toLowerCase();
     final liste = alleGewaesser.liste.where((g) {
+      // „Meine Gewässer“ gelten für ganz Österreich.
+      if (_nurFavoriten) return speicher.istFavorit(g.id);
       if (g.land != speicher.bundesland) return false;
       if (speicher.bezirk.isNotEmpty && g.bezirk != speicher.bezirk) {
         return false;
@@ -85,10 +88,12 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
           _Sortierung.entfernung => kmVonBraunau(a).compareTo(kmVonBraunau(b)),
           _Sortierung.groesse => _gewicht(b).compareTo(_gewicht(a)),
         };
-    // Geprüfte Gewässer mit Lizenzinfos immer zuerst.
-    liste.sort((a, b) => a.ausOsm == b.ausOsm
-        ? vergleich(a, b)
-        : (a.ausOsm ? 1 : -1));
+    // Gewässer, denen ich folge, dann geprüfte mit Lizenzinfos zuerst.
+    liste.sort((a, b) {
+      final fa = speicher.istFavorit(a.id), fb = speicher.istFavorit(b.id);
+      if (fa != fb) return fa ? -1 : 1;
+      return a.ausOsm == b.ausOsm ? vergleich(a, b) : (a.ausOsm ? 1 : -1);
+    });
     return liste;
   }
 
@@ -188,6 +193,15 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 6),
+              child: FilterChip(
+                avatar: const Text('⭐'),
+                label: Text('Meine (${speicher.favoriten.length})'),
+                selected: _nurFavoriten,
+                onSelected: (v) => setState(() => _nurFavoriten = v),
+              ),
+            ),
             for (final t in [
               null,
               GewaesserTyp.fluss,
@@ -422,7 +436,28 @@ class GewaesserDetail extends StatelessWidget {
     final heute = DateTime.now();
 
     return Scaffold(
-      appBar: AppBar(title: Text(g.name)),
+      appBar: AppBar(
+        title: Text(g.name),
+        actions: [
+          ListenableBuilder(
+            listenable: SpeicherScope.of(context),
+            builder: (context, _) {
+              final speicher = SpeicherScope.of(context);
+              final an = speicher.istFavorit(g.id);
+              return IconButton(
+                tooltip: an ? 'Nicht mehr folgen' : 'Gewässer folgen',
+                icon: Icon(an ? Icons.star : Icons.star_border,
+                    color: an ? Colors.amber : null),
+                onPressed: () {
+                  speicher.favoritUmschalten(g.id);
+                  meldung(context,
+                      an ? 'Du folgst ${g.name} nicht mehr.' : '⭐ Du folgst ${g.name}.');
+                },
+              );
+            },
+          ),
+        ],
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [

@@ -38,6 +38,11 @@ class Speicher extends ChangeNotifier {
   List<String> lieblingsfische = const ['hecht', 'zander', 'bachforelle',
     'karpfen'];
 
+  /// Gewässer, denen ich folge (IDs), in der Reihenfolge des Hinzufügens.
+  List<String> favoriten = const [];
+
+  bool istFavorit(String id) => favoriten.contains(id);
+
   /// Einführung beim ersten Start schon gezeigt?
   bool einfuehrungGesehen = false;
 
@@ -61,6 +66,7 @@ class Speicher extends ChangeNotifier {
     heimatLon = _prefs.getDouble('heimatLon');
     jungangler = _prefs.getBool('jungangler') ?? false;
     einfuehrungGesehen = _prefs.getBool('einfuehrung') ?? false;
+    favoriten = _prefs.getStringList('favoriten') ?? const [];
     lieblingsfische =
         _prefs.getStringList('lieblingsfische') ?? lieblingsfische;
     erledigteChallenges = _prefs.getStringList('challenges') ?? const [];
@@ -84,6 +90,14 @@ class Speicher extends ChangeNotifier {
     await _prefs.remove('heimat');
     await _prefs.remove('heimatLat');
     await _prefs.remove('heimatLon');
+  }
+
+  Future<void> favoritUmschalten(String id) async {
+    final neu = [...favoriten];
+    neu.contains(id) ? neu.remove(id) : neu.add(id);
+    favoriten = neu;
+    notifyListeners();
+    await _prefs.setStringList('favoriten', neu);
   }
 
   Future<void> einfuehrungErledigt() async {

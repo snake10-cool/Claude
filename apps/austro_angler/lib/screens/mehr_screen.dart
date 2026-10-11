@@ -7,6 +7,7 @@ import 'bestimmung_screen.dart';
 import 'checkliste_screen.dart';
 import 'darf_ich_screen.dart';
 import 'einfuehrung_screen.dart';
+import 'zielfisch_screen.dart';
 import 'einstellungen_screen.dart';
 import 'glossar_screen.dart';
 import 'premium_screen.dart';
@@ -66,6 +67,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.chat_bubble_outline, 'Darf ich …? ⭐',
               'Frag nach Schonzeit, Brittelmaß und Gewässer', () => _oeffnen(context,
                   const DarfIchScreen())),
+          _Eintrag(Icons.my_location, 'Zielfisch',
+              'Ich will Hecht → wo, wann, womit', () => _oeffnen(context,
+                  const ZielfischScreen())),
           _Eintrag(Icons.waving_hand_outlined, 'Einführung ansehen',
               'Die App in 6 Schritten erklärt', () => _oeffnen(context,
                   const EinfuehrungScreen())),

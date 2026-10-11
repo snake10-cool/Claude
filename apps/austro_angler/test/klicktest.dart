@@ -15,6 +15,7 @@ const _mehr = [
   '⭐ Premium',
   'Einstellungen',
   'Darf ich …? ⭐',
+  'Zielfisch',
   'Einführung ansehen',
   'FAQ – Fragen & Antworten',
   'Statistik & Abzeichen',
