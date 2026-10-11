@@ -50,9 +50,11 @@ class _ChallengeListeState extends State<ChallengeListe> {
   static Future<List<Map<String, RangEintrag>>> _laden() {
     final jetzt = DateTime.now();
     return Future.wait([
-      fangDienst.rangliste(FangDienst.monatsSchluessel(jetzt)),
+      fangDienst.rangliste(FangDienst.monatsSchluessel(jetzt),
+          feld: 'challenge.laenge', max: 50),
       fangDienst.rangliste(
-          FangDienst.monatsSchluessel(DateTime(jetzt.year, jetzt.month - 1))),
+          FangDienst.monatsSchluessel(DateTime(jetzt.year, jetzt.month - 1)),
+          feld: 'challenge.laenge', max: 50),
     ]);
   }
 

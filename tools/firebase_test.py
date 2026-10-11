@@ -213,6 +213,14 @@ def main():
     verboten('Fremden Ranglisten-Eintrag schreiben', setzen(t2, 'rangliste/test', {
         'eintraege': {u1: {'name': n1, 'faenge': 999}}}, [f'eintraege.`{u1}`']))
     erlaubt('Rangliste lesen', lesen(t2, 'rangliste/test'))
+    eintrag = {'name': n1, 'verein': '', 'faenge': 3, 'arten': 2,
+               'groesster': 55.0, 'petri': 1}
+    erlaubt('Eigener Eintrag (1.1)', setzen(t1, f'rangliste/test/eintraege/{u1}', eintrag))
+    verboten('Fremder Eintrag (1.1)', setzen(t2, f'rangliste/test/eintraege/{u1}', eintrag))
+    verboten('Unsinnige Größe (1.1)', setzen(t1, f'rangliste/test/eintraege/{u1}',
+                                              {**eintrag, 'groesster': 999.0}))
+    erlaubt('Eintrag lesen (1.1)', lesen(t2, f'rangliste/test/eintraege/{u1}'))
+    erlaubt('Eigenen Eintrag löschen (1.1)', loeschen(t1, f'rangliste/test/eintraege/{u1}'))
 
     # Wassertemperatur, Infos, Wunsch
     erlaubt('Wassertemperatur melden', setzen(t1, 'wassertemp/test/messungen/m1',

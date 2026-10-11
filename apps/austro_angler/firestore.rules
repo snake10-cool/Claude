@@ -289,6 +289,21 @@ service cloud.firestore {
               && request.resource.data.eintraege.diff(resource.data.eintraege)
                    .affectedKeys().hasOnly([request.auth.uid]));
       allow delete: if istAdmin();
+
+      // Ab 1.1: ein Dokument pro Angler.
+      match /eintraege/{uid} {
+        allow read: if angemeldet();
+        allow create, update: if angemeldet() && request.auth.uid == uid
+            && request.resource.data.keys().hasOnly(['name', 'verein',
+                 'faenge', 'arten', 'groesster', 'petri', 'challenge'])
+            && request.resource.data.faenge is int
+            && request.resource.data.faenge >= 0
+            && request.resource.data.faenge < 100000
+            && request.resource.data.groesster is number
+            && request.resource.data.groesster <= 300;
+        allow delete: if istAdmin()
+            || (angemeldet() && request.auth.uid == uid);
+      }
     }
 
     // Selbst gemessene Wassertemperaturen.

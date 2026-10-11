@@ -507,9 +507,20 @@ class _RanglisteState extends State<_Rangliste> {
   String get _zeitraum =>
       _gesamt ? 'gesamt' : FangDienst.monatsSchluessel(DateTime.now());
 
+  /// Für Vereine zählen alle Mitglieder – dafür mehr Einträge laden.
+  String get _feld => _vereine
+      ? 'faenge'
+      : switch (_wertung) {
+          _Wertung.faenge => 'faenge',
+          _Wertung.petriHeil => 'petri',
+          _Wertung.groesster => 'groesster',
+        };
+
   Future<Map<String, RangEintrag>> _laden({bool neu = false}) {
-    if (neu) _cache.remove(_zeitraum);
-    return _cache[_zeitraum] ??= fangDienst.rangliste(_zeitraum);
+    final schluessel = '$_zeitraum/$_feld/$_vereine';
+    if (neu) _cache.remove(schluessel);
+    return _cache[schluessel] ??= fangDienst.rangliste(_zeitraum,
+        feld: _feld, max: _vereine ? 1000 : 100);
   }
 
   @override

@@ -661,24 +661,34 @@ class FangDienst {
     }
   }
 
-  /// Die neuesten öffentlichen Fänge für die Rangliste.
-
-
-  // ── Ranglisten: ein Dokument pro Zeitraum statt hunderter Fänge ──
+  // ── Ranglisten: ein Dokument pro Angler und Zeitraum ──
   //
-  // Jeder pflegt nur seinen eigenen Eintrag (beim Öffnen des Fangbuchs).
-  // Die Rangliste braucht so nur einen einzigen Lesezugriff.
+  // rangliste/{zeitraum}/eintraege/{uid} – jeder pflegt nur seinen eigenen
+  // Eintrag (beim Öffnen des Fangbuchs). Gelesen werden nur die besten
+  // [max] nach dem gewählten Feld, das reicht auch bei vielen Nutzern.
+  // Bis alle auf 1.1 sind, kommt noch das alte Sammel-Dokument dazu.
 
   static String monatsSchluessel(DateTime d) =>
       '${d.year}-${d.month.toString().padLeft(2, '0')}';
 
-  Future<Map<String, RangEintrag>> rangliste(String zeitraum) async {
-    final d = await _db.doc('rangliste/$zeitraum').get();
-    final roh = (d.data()?['eintraege'] as Map?) ?? const {};
+  CollectionReference<Map<String, dynamic>> _rang(String zeitraum) =>
+      _db.collection('rangliste/$zeitraum/eintraege');
+
+  Future<Map<String, RangEintrag>> rangliste(String zeitraum,
+      {String feld = 'faenge', int max = 200}) async {
+    final ergebnis = await Future.wait([
+      _db.doc('rangliste/$zeitraum').get().then<Object?>((d) => d,
+          onError: (_) => null),
+      _rang(zeitraum).orderBy(feld, descending: true).limit(max).get(),
+    ]);
+    final alt = ergebnis[0] as DocumentSnapshot<Map<String, dynamic>>?;
+    final neu = ergebnis[1] as QuerySnapshot<Map<String, dynamic>>;
+    final roh = (alt?.data()?['eintraege'] as Map?) ?? const {};
     return {
       for (final e in roh.entries)
         if (e.value is Map)
           e.key as String: RangEintrag(e.key as String, e.value as Map),
+      for (final d in neu.docs) d.id: RangEintrag(d.id, d.data()),
     };
   }
 
@@ -733,20 +743,26 @@ class FangDienst {
       final json = jsonEncode(eintrag);
       final schluessel = '$uid/${e.key}';
       if (_zuletztGeschrieben[schluessel] == json) continue;
-      if (e.value.isEmpty && !_zuletztGeschrieben.containsKey(schluessel)) {
-        // Nichts zu melden – nur schreiben, falls früher etwas drin stand.
-        final alt = await _db.doc('rangliste/${e.key}').get();
-        if ((alt.data()?['eintraege'] as Map?)?.containsKey(uid) != true) {
-          _zuletztGeschrieben[schluessel] = json;
-          continue;
-        }
+      if (!_altEntfernt.contains(schluessel)) {
+        // Eintrag aus dem alten Sammel-Dokument (bis 1.0) einmal entfernen.
+        _altEntfernt.add(schluessel);
+        try {
+          await _offline(_db
+              .doc('rangliste/${e.key}')
+              .update({'eintraege.$uid': FieldValue.delete()}));
+        } catch (_) {}
       }
-      await _offline(_db.doc('rangliste/${e.key}').set({
-        'eintraege': {uid: eintrag},
-      }, SetOptions(merge: true)));
+      if (e.value.isEmpty) {
+        // Nichts zu melden – einen alten Eintrag gibt es dann nicht mehr.
+        await _offline(_rang(e.key).doc(uid).delete());
+      } else {
+        await _offline(_rang(e.key).doc(uid).set(eintrag));
+      }
       _zuletztGeschrieben[schluessel] = json;
     }
   }
+
+  final _altEntfernt = <String>{};
 
   static Map<String, Object?> _rangEintrag(
       List<Fang> f, String name, String verein, String? challengeFisch) {
@@ -787,6 +803,9 @@ class FangDienst {
       monatsSchluessel(DateTime(jetzt.year, jetzt.month - 1))]) {
       try {
         await _db.doc('rangliste/$z').update({'eintraege.$uid': FieldValue.delete()});
+      } catch (_) {}
+      try {
+        await _rang(z).doc(uid).delete();
       } catch (_) {}
     }
   }
