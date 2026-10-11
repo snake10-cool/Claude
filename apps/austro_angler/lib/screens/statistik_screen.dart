@@ -5,6 +5,7 @@ import '../main.dart';
 import '../models/fang.dart';
 import '../services/abzeichen.dart';
 import '../services/fang_dienst.dart';
+import '../services/csv_export.dart';
 import '../services/pdf_export.dart';
 import 'angeljahr_screen.dart';
 import 'premium_screen.dart';
@@ -376,6 +377,25 @@ class _Export extends StatelessWidget {
                     label: Text('$j'),
                   ),
               ],
+            ),
+            const SizedBox(height: 8),
+            const Text('Alle Fänge als Tabelle (Excel, Numbers, Google '
+                'Tabellen) – deine Daten gehören dir.'),
+            const SizedBox(height: 4),
+            OutlinedButton.icon(
+              onPressed: faenge.isEmpty
+                  ? null
+                  : () async {
+                      try {
+                        await fangbuchCsvTeilen(faenge);
+                      } catch (e) {
+                        if (context.mounted) {
+                          meldung(context, 'Export fehlgeschlagen: $e');
+                        }
+                      }
+                    },
+              icon: const Icon(Icons.table_chart_outlined),
+              label: const Text('Als CSV exportieren'),
             ),
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/data/gewicht.dart';
+import 'package:austro_angler/services/csv_export.dart';
 import 'package:austro_angler/data/fragen.dart';
 import 'package:austro_angler/data/gewaesser.dart';
 import 'package:austro_angler/main.dart';
@@ -121,6 +122,29 @@ void main() {
     expect(gewichtSchaetzen('wels', 150), inInclusiveRange(20000, 32000));
     expect(gewichtSchaetzen('hecht', 0), isNull);
     expect(gewichtGenau('koppe'), isFalse);
+  });
+
+  test('Fangbuch als CSV', () {
+    final csv = fangbuchCsv([
+      Fang(
+        id: 'a',
+        fischId: 'hecht',
+        datum: DateTime(2026, 5, 3, 7, 5),
+        laengeCm: 78.5,
+        gewichtG: 3900,
+        gewaesser: 'Inn; bei Braunau',
+        bundesland: 'Oberösterreich',
+        koeder: 'Gummi "Shad"',
+        notiz: '',
+        zurueckgesetzt: true,
+      ),
+    ]);
+    final zeilen = csv.substring(1).trim().split('\r\n');
+    expect(zeilen, hasLength(2));
+    expect(
+        zeilen[1],
+        startsWith('03.05.2026;07:05;Hecht;78,5;3900;'
+            '"Inn; bei Braunau";Oberösterreich;"Gummi ""Shad""";ja'));
   });
 
   test('Mondphase', () {
