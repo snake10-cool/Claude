@@ -10,6 +10,7 @@ import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/main.dart';
 import 'package:austro_angler/screens/album_screen.dart';
 import 'package:austro_angler/screens/darf_ich_screen.dart';
+import 'package:austro_angler/screens/neu_screen.dart';
 import 'package:austro_angler/screens/einfuehrung_screen.dart';
 import 'package:austro_angler/screens/zielfisch_screen.dart';
 import 'package:austro_angler/screens/kalender_screen.dart';
@@ -73,7 +74,7 @@ Future<void> _starten(WidgetTester tester) async {
   tester.view.devicePixelRatio = 2.75;
   addTearDown(tester.view.reset);
   SharedPreferences.setMockInitialValues({
-    'einfuehrung': true,
+    'einfuehrung': true, 'wasIstNeu': 99,
     'bundesland': 'Oberösterreich',
     'bezirk': 'Braunau',
     'heimat': 'Oberösterreich|Braunau|Braunau am Inn',
@@ -224,5 +225,11 @@ void main() {
     await _starten(tester);
     await _oeffnen(tester, const AlbumScreen());
     await _foto(tester, '12_album');
+  });
+
+  testWidgets('13 Was ist neu', (tester) async {
+    await _starten(tester);
+    await _oeffnen(tester, const NeuScreen());
+    await _foto(tester, '13_neu');
   });
 }

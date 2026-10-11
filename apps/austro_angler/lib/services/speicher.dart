@@ -46,6 +46,9 @@ class Speicher extends ChangeNotifier {
   /// Einführung beim ersten Start schon gezeigt?
   bool einfuehrungGesehen = false;
 
+  /// Bis zu welchem Stand „Was ist neu?“ gezeigt wurde.
+  int wasIstNeuGesehen = 0;
+
   /// Bis wann die Neuigkeiten (Glocke) gelesen sind.
   DateTime neuigkeitenGesehen = DateTime.fromMillisecondsSinceEpoch(0);
 
@@ -69,6 +72,7 @@ class Speicher extends ChangeNotifier {
     heimatLon = _prefs.getDouble('heimatLon');
     jungangler = _prefs.getBool('jungangler') ?? false;
     einfuehrungGesehen = _prefs.getBool('einfuehrung') ?? false;
+    wasIstNeuGesehen = _prefs.getInt('wasIstNeu') ?? 0;
     neuigkeitenGesehen = DateTime.fromMillisecondsSinceEpoch(
         _prefs.getInt('neuigkeitenGesehen') ?? 0);
     favoriten = _prefs.getStringList('favoriten') ?? const [];
@@ -110,6 +114,11 @@ class Speicher extends ChangeNotifier {
     notifyListeners();
     await _prefs.setInt(
         'neuigkeitenGesehen', neuigkeitenGesehen.millisecondsSinceEpoch);
+  }
+
+  Future<void> wasIstNeuErledigt(int stand) async {
+    wasIstNeuGesehen = stand;
+    await _prefs.setInt('wasIstNeu', stand);
   }
 
   Future<void> einfuehrungErledigt() async {

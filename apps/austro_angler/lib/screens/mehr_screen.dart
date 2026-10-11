@@ -15,6 +15,7 @@ import 'premium_screen.dart';
 import 'geschaefte_screen.dart';
 import 'heimat_screen.dart';
 import 'koeder_screen.dart';
+import 'neu_screen.dart';
 import 'lizenzen_screen.dart';
 import 'quiz_screen.dart';
 import 'vereine_screen.dart';
@@ -76,6 +77,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.lightbulb_outline, 'Wünsche & Ideen',
               'Was soll die App noch können?', () => _oeffnen(context,
                   const WuenscheScreen())),
+          _Eintrag(Icons.new_releases_outlined, 'Was ist neu?',
+              'Alle Neuerungen von Update 1.1', () => _oeffnen(context,
+                  const NeuScreen())),
           _Eintrag(Icons.waving_hand_outlined, 'Einführung ansehen',
               'Die App in 6 Schritten erklärt', () => _oeffnen(context,
                   const EinfuehrungScreen())),

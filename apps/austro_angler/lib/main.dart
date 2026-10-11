@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
 import 'screens/einfuehrung_screen.dart';
+import 'services/update.dart';
 import 'screens/community_screen.dart';
 import 'screens/fangbuch_screen.dart';
 import 'screens/gewaesser_screen.dart';
 import 'screens/aktivitaeten_screen.dart';
 import 'screens/heute_screen.dart';
+import 'screens/neu_screen.dart';
 import 'screens/karte_screen.dart';
 import 'screens/konto_screen.dart';
 import 'screens/mehr_screen.dart';
@@ -162,10 +164,17 @@ class _StartseiteState extends State<Startseite> {
       final speicher = SpeicherScope.of(context);
       startbildschirmAktualisieren(speicher);
       if (!speicher.einfuehrungGesehen) {
+        // Neu installiert: Einführung statt „Was ist neu?“.
+        speicher.wasIstNeuErledigt(neuigkeitenStand);
         Navigator.of(context).push(MaterialPageRoute(
             fullscreenDialog: true,
             builder: (_) => const EinfuehrungScreen()));
+      } else if (speicher.wasIstNeuGesehen < neuigkeitenStand) {
+        speicher.wasIstNeuErledigt(neuigkeitenStand);
+        Navigator.of(context).push(MaterialPageRoute(
+            fullscreenDialog: true, builder: (_) => const NeuScreen()));
       }
+      updatePruefen(ScaffoldMessenger.of(context));
     });
   }
 

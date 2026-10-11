@@ -1,0 +1,7 @@
+Versionshinweise für Google Play – Update 1.1 (max. 500 Zeichen)
+(Beim Release: pubspec.yaml auf version: 1.1.0+<nächste Nummer> stellen.)
+
+<de-DE>
+NEU: „Darf ich …?“ – frag einfach, wie du redest: „Darf ich morgen am Inn einen 45-cm-Zander mitnehmen?“ Antwort sofort aus Schonzeit & Brittelmaß, auch offline (Premium).
+Außerdem: Heute-Startseite, Zielfisch-Modus, Gewässer folgen, eigene Wettfischen mit Code, Arten-Sammelalbum, Gewicht schätzen, Benachrichtigungen, Fang-Link teilen, CSV-Export und Updates direkt in der App.
+</de-DE>
