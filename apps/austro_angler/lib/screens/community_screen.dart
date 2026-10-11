@@ -404,6 +404,12 @@ class _Aktionen extends StatelessWidget {
               MaterialPageRoute(builder: (_) => StoryScreen(fang))),
         ),
         IconButton(
+          tooltip: 'Link teilen',
+          icon: const Icon(Icons.link, size: 20),
+          onPressed: () => fangLinkTeilen(fang.id,
+              (fischById(fang.fischId)?.name ?? 'Fang').split(' (').first),
+        ),
+        IconButton(
           tooltip: 'Kommentare',
           icon: const Icon(Icons.chat_bubble_outline, size: 20),
           onPressed: uid == null

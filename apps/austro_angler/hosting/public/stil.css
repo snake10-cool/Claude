@@ -18,3 +18,5 @@ nav a{display:block;background:var(--karte);border:1px solid var(--rand);border-
 footer{max-width:760px;margin:24px auto;padding:0 16px 24px;color:var(--grau);font-size:.9rem}
 table{border-collapse:collapse;width:100%}
 td,th{border:1px solid var(--rand);padding:6px 8px;text-align:left;vertical-align:top}
+.foto{width:100%;max-height:420px;object-fit:cover;border-radius:10px}
+.gross{font-size:1.25rem;font-weight:600}

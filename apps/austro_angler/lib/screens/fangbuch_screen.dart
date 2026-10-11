@@ -714,6 +714,15 @@ class _FangFormularState extends State<FangFormular> {
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) => StoryScreen(widget.fang!))),
             ),
+          if (widget.fang?.oeffentlich == true)
+            IconButton(
+              tooltip: 'Link teilen',
+              icon: const Icon(Icons.link),
+              onPressed: () => fangLinkTeilen(widget.fang!.id,
+                  (fischById(widget.fang!.fischId)?.name ?? 'Fang')
+                      .split(' (')
+                      .first),
+            ),
           if (widget.fang != null)
             IconButton(
               tooltip: 'Löschen',

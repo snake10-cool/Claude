@@ -264,4 +264,68 @@ Seiten sind deren Betreiber verantwortlich.</p>
 Karten- und Gewässerdaten © OpenStreetMap-Mitwirkende (ODbL). Wetterdaten: Open-Meteo.com
 (CC BY 4.0).</p>
 ''')
+# Geteilter Fang: fang?id=… liest den öffentlichen Fang direkt aus Firestore.
+import json as _json, re as _re
+_fische = dict(_re.findall(r"id: '(\w+)',\s*name: '([^']+)'",
+                           open('../lib/data/fische.dart', encoding='utf-8').read()))
+seite('fang', 'Fang', """
+<div id="fang" class="karte"><p>Fang wird geladen …</p></div>
+<div class="karte">
+<b>Austro Angler</b> – Fangbuch, Schonzeiten und 24.000 Gewässer in ganz
+Österreich.<br>
+<a href="https://play.google.com/store/apps/details?id=com.snake10.austroangler">Im Play Store ansehen</a>
+</div>
+<script>
+const FISCHE = """ + _json.dumps(_fische, ensure_ascii=False) + """;
+const BASIS = 'https://firestore.googleapis.com/v1/projects/austro-angler-202495bd/databases/(default)/documents/';
+function feld(f, k) {
+  const v = (f || {})[k]; if (!v) return null;
+  return v.stringValue ?? v.integerValue ?? v.doubleValue ?? v.booleanValue ?? v.timestampValue ?? null;
+}
+function el(tag, text, klasse) {
+  const e = document.createElement(tag);
+  if (text != null) e.textContent = text;
+  if (klasse) e.className = klasse;
+  return e;
+}
+async function laden() {
+  const box = document.getElementById('fang');
+  const id = new URLSearchParams(location.search).get('id') || '';
+  if (!/^[A-Za-z0-9_-]{1,64}$/.test(id)) { box.textContent = 'Kein Fang angegeben.'; return; }
+  const r = await fetch(BASIS + 'faenge/' + id);
+  if (!r.ok) { box.textContent = 'Diesen Fang gibt es nicht (mehr) oder er ist nicht öffentlich.'; return; }
+  const f = (await r.json()).fields || {};
+  const fisch = FISCHE[feld(f, 'fischId')] || feld(f, 'fischId') || 'Fisch';
+  const name = (fisch.split(' (')[0]);
+  document.title = name + ' – Austro Angler';
+  box.textContent = '';
+  if (feld(f, 'hatFoto')) {
+    try {
+      const b = await fetch(BASIS + 'fotos/' + id);
+      if (b.ok) {
+        const daten = feld((await b.json()).fields, 'daten');
+        if (daten) {
+          const img = el('img'); img.src = 'data:image/jpeg;base64,' + daten;
+          img.alt = name; img.className = 'foto'; box.appendChild(img);
+        }
+      }
+    } catch (_) {}
+  }
+  box.appendChild(el('h1', '🎣 ' + name));
+  const teile = [];
+  const l = feld(f, 'laengeCm'), g = feld(f, 'gewichtG');
+  if (l) teile.push(Math.round(l) + ' cm');
+  if (g) teile.push(g >= 1000 ? (g / 1000).toFixed(1).replace('.', ',') + ' kg' : g + ' g');
+  if (feld(f, 'zurueckgesetzt')) teile.push('zurückgesetzt 🐟');
+  if (teile.length) box.appendChild(el('p', teile.join(' · '), 'gross'));
+  const d = feld(f, 'datum');
+  const ort = [feld(f, 'gewaesser'), feld(f, 'bundesland')].filter(Boolean).join(', ');
+  box.appendChild(el('p', [d ? new Date(d).toLocaleDateString('de-AT') : '', ort].filter(Boolean).join(' · ')));
+  const k = feld(f, 'koeder'); if (k) box.appendChild(el('p', 'Köder: ' + k));
+  const gs = feld(f, 'geschichte'); if (gs) box.appendChild(el('p', gs));
+  const n = feld(f, 'nutzerName'); if (n) box.appendChild(el('p', 'Gefangen von @' + n, 'klein'));
+}
+laden().catch(() => { document.getElementById('fang').textContent = 'Laden fehlgeschlagen.'; });
+</script>
+""")
 print('fertig')

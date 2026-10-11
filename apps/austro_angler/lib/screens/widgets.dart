@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
@@ -16,6 +17,14 @@ import 'konto_screen.dart';
 const webseite = 'https://austro-angler-202495bd.web.app';
 
 /// Öffnet eine Unterseite der Webseite, z. B. `datenschutz`.
+/// Link zu einem öffentlichen Fang – öffnet sich auch ohne App im Browser.
+String fangLink(String fangId) => '$webseite/fang?id=$fangId';
+
+Future<void> fangLinkTeilen(String fangId, String fischName) =>
+    SharePlus.instance.share(ShareParams(
+      text: 'Petri Heil! Mein $fischName 🎣 ${fangLink(fangId)}',
+    ));
+
 Future<void> webseiteOeffnen(String seite) => launchUrl(
     Uri.parse('$webseite/$seite'),
     mode: LaunchMode.externalApplication);
