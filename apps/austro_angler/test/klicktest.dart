@@ -20,6 +20,7 @@ const _mehr = [
   'Einführung ansehen',
   'FAQ – Fragen & Antworten',
   'Statistik & Abzeichen',
+  'Arten-Sammelalbum',
   'Meine Angeltage ⭐',
   'Köder-Box',
   'Meine Ausrüstung',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../main.dart';
+import 'album_screen.dart';
 import 'ausfluege_screen.dart';
 import 'ausruestung_screen.dart';
 import 'bestimmung_screen.dart';
@@ -83,6 +84,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.bar_chart, 'Statistik & Abzeichen',
               'Rekorde, Auswertungen, PDF-Export', () => _oeffnen(context,
                   const StatistikScreen())),
+          _Eintrag(Icons.collections_bookmark_outlined, 'Arten-Sammelalbum',
+              'Alle Fischarten sammeln – wie viele hast du?', () => _oeffnen(context,
+                  const AlbumScreen())),
           _Eintrag(Icons.event_available, 'Meine Angeltage ⭐',
               'Ganze Tage erfassen, auch Schneidertage', () => _oeffnen(context,
                   const AusfluegeScreen())),

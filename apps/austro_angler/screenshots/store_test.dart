@@ -8,6 +8,7 @@ import 'dart:io';
 
 import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/main.dart';
+import 'package:austro_angler/screens/album_screen.dart';
 import 'package:austro_angler/screens/darf_ich_screen.dart';
 import 'package:austro_angler/screens/einfuehrung_screen.dart';
 import 'package:austro_angler/screens/zielfisch_screen.dart';
@@ -217,5 +218,11 @@ void main() {
   testWidgets('11 Heute', (tester) async {
     await _starten(tester);
     await _foto(tester, '11_heute');
+  });
+
+  testWidgets('12 Sammelalbum', (tester) async {
+    await _starten(tester);
+    await _oeffnen(tester, const AlbumScreen());
+    await _foto(tester, '12_album');
   });
 }
