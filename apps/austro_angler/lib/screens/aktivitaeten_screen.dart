@@ -93,6 +93,7 @@ class _AktivitaetenScreenState extends State<AktivitaetenScreen> {
         'anfrage' => ('🤝', '${at(a.nutzerName)} möchte dein Freund sein'),
         'freund' => ('🎉', '${at(a.nutzerName)} hat deine Anfrage angenommen'),
         'wettfischen' => ('🏆', '${at(a.nutzerName)}: Wettfischen'),
+        'treffen' => ('🎣', '${at(a.nutzerName)} lädt dich zum Angeln ein'),
         _ => ('🔔', at(a.nutzerName)),
       };
 

@@ -92,7 +92,7 @@ service cloud.firestore {
                  'typ', 'text', 'bezug', 'erstellt'])
             && request.resource.data.von == request.auth.uid
             && request.resource.data.typ in ['petri', 'kommentar', 'anfrage', 'freund',
-                 'wettfischen']
+                 'wettfischen', 'treffen']
             && request.resource.data.text is string
             && request.resource.data.text.size() <= 150;
       }

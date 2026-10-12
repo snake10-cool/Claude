@@ -115,6 +115,47 @@ class _TreffenListeState extends State<TreffenListe>
     }
   }
 
+  /// Freunde auswählen und ihnen den Angeltag als Neuigkeit schicken.
+  Future<void> _einladen(Treffen t) async {
+    final konto = KontoScope.of(context)!;
+    final Map<String, String> freunde;
+    try {
+      freunde = await fangDienst.freunde(konto.uid!).first;
+    } catch (_) {
+      if (mounted) meldung(context, 'Freunde konnten nicht laden.');
+      return;
+    }
+    if (!mounted) return;
+    final offen = {
+      for (final f in freunde.entries)
+        if (!t.zusagen.containsKey(f.key) && f.key != t.uid) f.key: f.value,
+    };
+    if (offen.isEmpty) {
+      meldung(
+          context,
+          freunde.isEmpty
+              ? 'Du hast noch keine Freunde – füg welche unter Feed → Freunde hinzu.'
+              : 'Alle deine Freunde sind schon dabei 🎉');
+      return;
+    }
+    final gewaehlt = await showModalBottomSheet<Set<String>>(
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => _FreundeWahl(offen),
+    );
+    if (gewaehlt == null || gewaehlt.isEmpty || !mounted) return;
+    final text = '${t.gewaesser}, ${_tage[t.zeit.weekday - 1]} '
+        '${datumText(t.zeit)} um ${uhrText(t.zeit)}';
+    for (final uid in gewaehlt) {
+      await fangDienst.nachricht(
+          uid, konto.uid!, konto.name ?? '', 'treffen', text);
+    }
+    if (mounted) {
+      meldung(context,
+          '${gewaehlt.length} ${gewaehlt.length == 1 ? 'Freund' : 'Freunde'} eingeladen 🎣');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -204,6 +245,13 @@ class _TreffenListeState extends State<TreffenListe>
                                   child: const Text('Bin dabei! 🙋'),
                                 ),
                               const Spacer(),
+                              if (t.uid == konto.uid ||
+                                  t.zusagen.containsKey(konto.uid))
+                                IconButton(
+                                  tooltip: 'Freunde einladen',
+                                  icon: const Icon(Icons.person_add_alt),
+                                  onPressed: () => _einladen(t),
+                                ),
                               if (t.uid == konto.uid || konto.istAdmin)
                                 IconButton(
                                   tooltip: 'Absagen/Löschen',
@@ -230,6 +278,76 @@ class _TreffenListeState extends State<TreffenListe>
   }
 }
 
+
+/// Auswahl der Freunde, die eingeladen werden.
+class _FreundeWahl extends StatefulWidget {
+  const _FreundeWahl(this.freunde);
+
+  final Map<String, String> freunde;
+
+  @override
+  State<_FreundeWahl> createState() => _FreundeWahlState();
+}
+
+class _FreundeWahlState extends State<_FreundeWahl> {
+  final _gewaehlt = <String>{};
+
+  @override
+  Widget build(BuildContext context) {
+    final liste = widget.freunde.entries.toList()
+      ..sort((a, b) => a.value.compareTo(b.value));
+    return SafeArea(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text('Wen willst du einladen?',
+                style: Theme.of(context).textTheme.titleMedium),
+          ),
+          Flexible(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                for (final f in liste)
+                  CheckboxListTile(
+                    value: _gewaehlt.contains(f.key),
+                    title: Text(at(f.value)),
+                    onChanged: (an) => setState(() => an == true
+                        ? _gewaehlt.add(f.key)
+                        : _gewaehlt.remove(f.key)),
+                  ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                TextButton(
+                  onPressed: () => setState(() => _gewaehlt.length == liste.length
+                      ? _gewaehlt.clear()
+                      : _gewaehlt.addAll(widget.freunde.keys)),
+                  child: Text(_gewaehlt.length == liste.length
+                      ? 'Keinen'
+                      : 'Alle'),
+                ),
+                const Spacer(),
+                FilledButton.icon(
+                  onPressed: _gewaehlt.isEmpty
+                      ? null
+                      : () => Navigator.of(context).pop(_gewaehlt),
+                  icon: const Icon(Icons.send),
+                  label: Text('Einladen (${_gewaehlt.length})'),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 /// Fahrgemeinschaften zu einem Angeltag.
 class _Fahrten extends StatelessWidget {
