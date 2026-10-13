@@ -24,6 +24,8 @@ groesse: km Länge (Fließgewässer im Bezirk) bzw. ha Fläche (stehende Gewäss
 import datetime
 import gzip
 import json
+from pathlib import Path
+import re
 import math
 import sys
 from collections import defaultdict
@@ -66,6 +68,60 @@ def bezirk_name(n):
         if n.startswith(p):
             return n[len(p):]
     return n
+
+
+APP = Path(__file__).resolve().parent.parent / 'apps' / 'austro_angler'
+
+
+def positionen_pruefen(linien, flaechen, gemeinden, bezirke):
+    """Die von Hand gepflegten Gewässer (lib/data/gewaesser.dart) auf den
+    nächsten Punkt der gleichnamigen OSM-Geometrie setzen – in der Nähe der
+    zugeordneten Gemeinde. Ergebnis: tools/quellen/gewaesser_positionen.json"""
+    from shapely.geometry import Point
+    from shapely.ops import nearest_points
+    quelle = (APP / 'lib' / 'data' / 'gewaesser.dart').read_text(encoding='utf-8')
+    eintraege = re.findall(
+        r"id: '([^']+)',\s*name: '([^']+)'.*?position: LatLng\(([\d.]+), ([\d.]+)\)",
+        quelle, re.S)
+    zuordnung = {
+        m[0]: (m[1], [n.strip().strip("'") for n in m[2].split(',') if n.strip()],
+               [n.strip().strip("'") for n in m[3].split(',') if n.strip()])
+        for m in re.findall(
+            r"'([\w-]+)': \(bezirk: '([^']*)', osmNamen: \[([^\]]*)\], "
+            r"gemeinden: \[([^\]]*)\]\)", quelle)
+    }
+    geoms = defaultdict(list)
+    for name, _, linie, _ in linien:
+        geoms[name.lower()].append(linie)
+    for name, _, _, geom, _ in flaechen:
+        for teil in [name] + [t.strip() for t in name.split('/')]:
+            geoms[teil.lower()].append(shapely.make_valid(geom))
+    mitte = {}
+    for g in gemeinden:
+        if len(g) >= 4:
+            mitte[(g[0], bezirke[g[1]][0])] = Point(g[3], g[2])
+
+    ergebnis = {}
+    for gid, name, lat, lon in eintraege:
+        bezirk, namen, orte = zuordnung.get(gid, ('', [], []))
+        alt = Point(float(lon), float(lat))
+        # Bezugspunkt: Mitte der ersten zugeordneten Gemeinde, sonst alte Lage.
+        bezug = next((mitte[(o, bezirk)] for o in orte if (o, bezirk) in mitte), alt)
+        kandidaten = [g for n in namen for g in geoms.get(n.lower(), [])]
+        if not kandidaten:
+            print(f'  {gid}: keine OSM-Geometrie')
+            continue
+        geom = min(kandidaten, key=lambda g: g.distance(bezug))
+        # Seen: Punkt im See (repräsentativ), Flüsse: nächster Punkt am Ufer.
+        if geom.geom_type in ('Polygon', 'MultiPolygon'):
+            neu = geom.representative_point()
+        else:
+            neu = nearest_points(geom, bezug)[0]
+        km = alt.distance(neu) * 111.32
+        ergebnis[gid] = [round(neu.y, 5), round(neu.x, 5), round(km, 2)]
+        print(f'  {gid}: {km:.2f} km verschoben')
+    ziel = Path(__file__).resolve().parent / 'quellen' / 'gewaesser_positionen.json'
+    ziel.write_text(json.dumps(ergebnis, ensure_ascii=False, indent=1), encoding='utf-8')
 
 
 def main(eingabe, ausgabe):
@@ -300,6 +356,9 @@ def main(eingabe, ausgabe):
         if not e[5]:
             zeile.append(e[7])
         aus.append(zeile)
+
+    # --- Geprüfte Gewässer aus der App auf die echte Lage setzen -------------
+    positionen_pruefen(linien, flaechen, gemeinden, bezirke)
 
     # --- Angelgeschäfte -----------------------------------------------------
     gem, bez = orte([g[1] for g in geschaefte])

@@ -57,7 +57,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add apps/austro_angler/assets/daten
+          git add apps/austro_angler/assets/daten tools/quellen/gewaesser_positionen.json
           git diff --cached --quiet && { echo "Keine Änderungen"; exit 0; }
           git commit -m "Gewässer Österreich aus OpenStreetMap aktualisiert"
           git pull --rebase
