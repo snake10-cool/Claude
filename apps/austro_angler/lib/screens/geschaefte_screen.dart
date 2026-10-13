@@ -115,18 +115,6 @@ Future<void> geschaeftZeigen(BuildContext context, Angelgeschaeft l) =>
                 spacing: 8,
                 runSpacing: 8,
                 children: [
-                  FilledButton.icon(
-                    onPressed: () => launchUrl(
-                      Uri.https('www.google.com', '/maps/search/', {
-                        'api': '1',
-                        'query':
-                            '${l.position.latitude},${l.position.longitude}',
-                      }),
-                      mode: LaunchMode.externalApplication,
-                    ),
-                    icon: const Icon(Icons.directions),
-                    label: const Text('Hinfahren'),
-                  ),
                   if (l.telefon.isNotEmpty)
                     OutlinedButton.icon(
                       onPressed: () => launchUrl(

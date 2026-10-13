@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../data/fische.dart';
 import '../main.dart';
-import '../services/kachel_cache.dart';
 import 'glossar_screen.dart';
 import 'heimat_screen.dart';
 import 'widgets.dart';
@@ -15,14 +14,6 @@ class EinstellungenScreen extends StatefulWidget {
 }
 
 class _EinstellungenScreenState extends State<EinstellungenScreen> {
-  Future<(int, int)>? _cache;
-
-  @override
-  void initState() {
-    super.initState();
-    _cache = KachelCache.groesse();
-  }
-
   @override
   Widget build(BuildContext context) {
     final speicher = SpeicherScope.of(context);
@@ -88,50 +79,6 @@ class _EinstellungenScreenState extends State<EinstellungenScreen> {
                               speicher.lieblingsfischUmschalten(f.id),
                         ),
                     ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Titel('🗺️ Offline-Karte', premium: true),
-                  const Text(
-                    'Jeder Kartenausschnitt, den du dir ansiehst, wird auf dem '
-                    'Gerät gespeichert. Am Bach ohne Netz siehst du ihn dann '
-                    'trotzdem. Tipp: Vor dem Losfahren die Gegend auf der '
-                    'Karte einmal anschauen und hineinzoomen.',
-                  ),
-                  const SizedBox(height: 8),
-                  FutureBuilder<(int, int)>(
-                    future: _cache,
-                    builder: (context, snap) {
-                      final (bytes, anzahl) = snap.data ?? (0, 0);
-                      return Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              snap.hasData
-                                  ? '$anzahl Kacheln · '
-                                      '${(bytes / 1024 / 1024).toStringAsFixed(1)} MB'
-                                  : 'Wird berechnet …',
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () async {
-                              await KachelCache.leeren();
-                              if (!mounted) return;
-                              setState(() => _cache = KachelCache.groesse());
-                            },
-                            child: const Text('Löschen'),
-                          ),
-                        ],
-                      );
-                    },
                   ),
                 ],
               ),

@@ -12,7 +12,6 @@ import 'screens/gewaesser_screen.dart';
 import 'screens/aktivitaeten_screen.dart';
 import 'screens/heute_screen.dart';
 import 'screens/neu_screen.dart';
-import 'screens/karte_screen.dart';
 import 'screens/konto_screen.dart';
 import 'screens/mehr_screen.dart';
 import 'services/abo.dart';
@@ -181,7 +180,6 @@ class _StartseiteState extends State<Startseite> {
   static const _seiten = [
     HeuteScreen(),
     GewaesserScreen(),
-    KarteScreen(),
     FangbuchScreen(),
     CommunityScreen(),
     MehrScreen(),
@@ -197,7 +195,7 @@ class _StartseiteState extends State<Startseite> {
         ],
       ),
       // Große Systemschrift nur begrenzt übernehmen, sonst bricht die
-      // Beschriftung bei sechs Tabs um.
+      // Beschriftung bei vielen Tabs um.
       bottomNavigationBar: MediaQuery.withClampedTextScaling(
         maxScaleFactor: 1.1,
         child: NavigationBar(
@@ -207,7 +205,6 @@ class _StartseiteState extends State<Startseite> {
           destinations: [
             NavigationDestination(icon: Icon(Icons.today), label: 'Heute'),
             NavigationDestination(icon: Icon(Icons.water), label: 'Gewässer'),
-            NavigationDestination(icon: Icon(Icons.map), label: 'Karte'),
             NavigationDestination(icon: Icon(Icons.book), label: 'Fangbuch'),
             NavigationDestination(
               icon: NeuigkeitenZaehler(

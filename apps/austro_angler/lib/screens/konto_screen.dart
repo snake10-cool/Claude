@@ -408,8 +408,8 @@ class _AnmeldenState extends State<AnmeldeFormular> {
         const SizedBox(height: 16),
         const HinweisKarte(
           'Deine Fänge sind standardmäßig öffentlich – mit Nutzername, '
-          'Fischart, Größe und Gewässer. Deine eigenen Angelplätze auf der '
-          'Karte sind immer privat – nur du siehst sie.',
+          'Fischart, Größe und Gewässer. Fangorte sind immer privat – nur '
+          'du siehst sie.',
         ),
       ],
     );

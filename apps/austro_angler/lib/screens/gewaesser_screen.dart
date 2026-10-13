@@ -420,16 +420,6 @@ class GewaesserDetail extends StatelessWidget {
 
   final Gewaesser g;
 
-  Future<void> _navigation() async {
-    final p = g.position;
-    // Öffnet am Handy die Karten-App, am PC den Browser.
-    final uri = Uri.https('www.google.com', '/maps/search/', {
-      'api': '1',
-      'query': '${p.latitude},${p.longitude}',
-    });
-    await launchUrl(uri, mode: LaunchMode.externalApplication);
-  }
-
   @override
   Widget build(BuildContext context) {
     final text = Theme.of(context).textTheme;
@@ -556,12 +546,6 @@ class GewaesserDetail extends StatelessWidget {
             InfoKnoepfe(g),
           ],
           const SizedBox(height: 16),
-          FilledButton.icon(
-            onPressed: _navigation,
-            icon: const Icon(Icons.directions),
-            label: const Text('Hinfahren'),
-          ),
-          const SizedBox(height: 8),
           OutlinedButton.icon(
             onPressed: () => meldenDialog(
               context,

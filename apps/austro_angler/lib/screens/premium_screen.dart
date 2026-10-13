@@ -44,7 +44,6 @@ const _vorteile = [
   ('📈', 'Wasserführungs-Verlauf der letzten 14 Tage'),
   ('⏰', 'Schonzeit-Wecker ohne Limit'),
   ('📄', 'Fangbuch und Revier-Fangstatistik als PDF'),
-  ('🗺️', 'Offline-Karte'),
   ('🎁', 'Dein Angeljahr – Jahresrückblick'),
   ('🎓', 'Prüfungsmodus mit Zeitlimit'),
   ('🏅', 'Besondere Abzeichen'),

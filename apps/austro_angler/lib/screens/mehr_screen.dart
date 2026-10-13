@@ -66,7 +66,7 @@ class MehrScreen extends StatelessWidget {
               'Was Premium bringt', () => _oeffnen(context,
                   const PremiumScreen())),
           _Eintrag(Icons.settings_outlined, 'Einstellungen',
-              'Heimatort, Jungangler-Modus, Countdown, Offline-Karte',
+              'Heimatort, Jungangler-Modus, Countdown',
               () => _oeffnen(context, const EinstellungenScreen())),
           _Eintrag(Icons.chat_bubble_outline, 'Darf ich …? ⭐',
               'Frag nach Schonzeit, Brittelmaß und Gewässer', () => _oeffnen(context,

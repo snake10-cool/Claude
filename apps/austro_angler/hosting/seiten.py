@@ -28,7 +28,7 @@ def seite(datei, titel, inhalt):
 seite('index', 'Start', f'''
 <h1>Austro Angler</h1>
 <p>Die Angel-App für ganz Österreich mit Schwerpunkt Bezirk Braunau:
-über 22.000 Gewässer mit Lizenzinfos und Preisen, Fangbuch, Karte,
+über 22.000 Gewässer mit Lizenzinfos und Preisen, Fangbuch,
 Fischlexikon mit Schonzeiten und Brittelmaßen, Fischerprüfung üben und eine
 Community für Petri Heil unter Anglern.</p>
 <p>Ohne Werbung. Keine Standortverfolgung – Orte gibst du immer selbst an.</p>
@@ -57,7 +57,7 @@ verarbeitet, wofür und welche Rechte du hast.</p>
 <tr><td>E-Mail-Adresse und Passwort (verschlüsselt)</td><td>Anmeldung, Bestätigungs- und Passwort-Mails</td><td>Nur du (und technisch der Betreiber)</td></tr>
 <tr><td>@Nutzername</td><td>Dein öffentlicher Name in der App</td><td>Alle angemeldeten Nutzer</td></tr>
 <tr><td>Öffentliche Fänge: Fischart, Länge, Gewicht, Gewässer, Datum/Uhrzeit, Köder, Notiz, Foto, Wetter zur Fangzeit</td><td>Fangbuch, Feed, Rangliste, Challenge</td><td>Alle angemeldeten Nutzer</td></tr>
-<tr><td>Private Fänge, eigene Angelplätze (selbst auf der Karte gewählt), Köder-Box, Angeltage</td><td>Dein persönliches Fangbuch</td><td>Nur du</td></tr>
+<tr><td>Private Fänge, Fangorte (selbst auf der Karte gewählt), Köder-Box, Angeltage</td><td>Dein persönliches Fangbuch</td><td>Nur du</td></tr>
 <tr><td>Kommentare, „Petri Heil“, geplante Angeltage, Gewässerbewertungen</td><td>Community-Funktionen</td><td>Alle angemeldeten Nutzer</td></tr>
 <tr><td>Freundesliste, blockierte Nutzer</td><td>Freunde-Feed, Blockieren</td><td>Nur du</td></tr>
 <tr><td>Wünsche, Preisvorschläge, Meldungen</td><td>Verbesserung der App, Moderation</td><td>Betreiber (Wünsche auch andere Nutzer)</td></tr>

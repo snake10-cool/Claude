@@ -14,12 +14,10 @@ Austro Angler ist die Angel-App für ganz Österreich – mit Schwerpunkt Bezirk
 • Angelgeschäfte mit Adresse und Öffnungszeiten
 • Bewertungen, Preise und Infos aus der Community (vom Admin geprüft)
 • Heimatort selbst wählen und nach Entfernung sortieren – ohne GPS
-• Offline-Karte: angesehene Kartenausschnitte gehen auch ohne Netz
 
 📖 FANGBUCH
 • Fänge mit Foto, kurzem Video, Länge, Gewicht, Köder, Ausrüstung, Datum und Uhrzeit
 • Länge per Foto messen, Wetter zur Fangzeit automatisch
-• Eigene Angelplätze auf der Karte – immer privat
 • Statistik, Rekorde, Abzeichen, Wochen-Challenges und PDF-Export
 • Fangstatistik fürs Revier als PDF zum Abgeben
 • „Dein Angeljahr“ – Jahresrückblick zum Teilen
