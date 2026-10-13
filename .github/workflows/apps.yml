@@ -13,6 +13,10 @@ on:
         type: choice
         options: [handy, pc, beide]
         default: handy
+      ref:
+        description: 'Optional: Commit/Tag, der gebaut werden soll (leer = dieser Branch)'
+        type: string
+        default: ''
 
 permissions:
   contents: write
@@ -32,6 +36,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || '' }}
 
       - uses: actions/setup-java@v4
         with:
