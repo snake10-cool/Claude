@@ -443,7 +443,8 @@ service cloud.firestore {
 
     // Premium (z. B. Challenge-Gewinn): alle lesen, nur der Admin vergibt.
     match /premium/{uid} {
-      allow read: if true;
+      // Nur der eigene Premium-Status (Gewinn, Gutschrift) – und der Admin.
+      allow read: if ich(uid) || istAdmin();
       allow write: if istAdmin();
     }
 

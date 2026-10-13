@@ -265,6 +265,8 @@ def main():
         'uid': u1, 'nutzerName': n1, 'text': 'Test', 'status': 'neu',
         'typ': 'infos', 'bezug': 'test', 'erstellt': jetzt()}))
     verboten('Premium selbst vergeben', setzen(t1, f'premium/{u1}', {'bis': jetzt(9999999)}))
+    erlaubt('Eigenen Premium-Status lesen', lesen(t1, f'premium/{u1}'))
+    verboten('Fremden Premium-Status lesen', lesen(t2, f'premium/{u1}'))
 
     # Video
     erlaubt('Video-Info speichern', setzen(t1, f'videos/{fang}', {

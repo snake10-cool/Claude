@@ -16,6 +16,7 @@ import 'package:austro_angler/screens/zielfisch_screen.dart';
 import 'package:austro_angler/screens/kalender_screen.dart';
 import 'package:austro_angler/screens/lexikon_screen.dart';
 import 'package:austro_angler/screens/statistik_screen.dart';
+import 'package:austro_angler/services/abo.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/speicher.dart';
 import 'package:austro_angler/services/wochen_challenges.dart';
@@ -88,6 +89,8 @@ Future<void> _starten(WidgetTester tester) async {
     ],
   });
   final speicher = await Speicher.oeffnen();
+  // Store-Bilder zeigen die App mit Premium.
+  aboDienst.aktiv = true;
   await tester.runAsync(alleGewaesser.laden);
   await tester.pumpWidget(AustroAnglerApp(speicher: speicher));
   await _warten(tester);
