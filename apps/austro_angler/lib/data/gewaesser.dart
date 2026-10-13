@@ -564,7 +564,7 @@ const zuordnung = <String, Zuordnung>{
   'salzach-ooe': (bezirk: 'Braunau', osmNamen: ['Salzach'], gemeinden: ['Ostermiething', 'Hochburg-Ach']),
   'hoellerersee': (bezirk: 'Braunau', osmNamen: ['Höllerersee', 'Höllerer See'], gemeinden: []),
   'ibmer-moor': (bezirk: 'Braunau', osmNamen: ['Heratinger See', 'Ibmer See'], gemeinden: ['Eggelsberg', 'Franking']),
-  'mattig': (bezirk: 'Braunau', osmNamen: ['Mattig'], gemeinden: ['Mattighofen', 'Braunau am Inn']),
+  'mattig': (bezirk: 'Braunau', osmNamen: ['Mattig'], gemeinden: ['Braunau am Inn', 'Mattighofen']),
   'mondsee': (bezirk: 'Vöcklabruck', osmNamen: ['Mondsee'], gemeinden: ['Mondsee']),
   'attersee': (bezirk: 'Vöcklabruck', osmNamen: ['Attersee'], gemeinden: ['Seewalchen am Attersee', 'Unterach am Attersee']),
   'obertrumer-see': (bezirk: 'Salzburg-Umgebung', osmNamen: ['Obertrumer See'], gemeinden: ['Obertrum am See']),
