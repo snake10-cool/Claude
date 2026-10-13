@@ -5,7 +5,7 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 
 /// Bis zum Play-Store-Start sind alle ⭐-Funktionen für alle frei.
 /// Zum Start auf `true` setzen – dann braucht man Premium (Abo oder Gewinn).
-const premiumPflicht = true;
+const premiumPflicht = false;
 
 /// Produkt-IDs, wie sie in der Play Console angelegt werden müssen.
 const aboMonat = 'premium_monat';

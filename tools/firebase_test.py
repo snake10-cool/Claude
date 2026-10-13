@@ -120,13 +120,20 @@ def verboten(name, antwort):
            f'{s} {json.dumps(d)[:200]}')
 
 
-def admin_loeschen(pfade):
-    """Nur-Admin-Dokumente mit dem gcloud-Zugang des Projektinhabers löschen (falls vorhanden)."""
+def admin_token():
+    """gcloud-Zugang des Projektinhabers (umgeht die Regeln), sonst None."""
     try:
         env = {k: v for k, v in os.environ.items() if k != 'CLOUDSDK_AUTH_ACCESS_TOKEN'}
-        tok = subprocess.run(['gcloud', 'auth', 'print-access-token'], env=env,
-                             capture_output=True, text=True, check=True).stdout.strip()
+        return subprocess.run(['gcloud', 'auth', 'print-access-token'], env=env,
+                              capture_output=True, text=True, check=True).stdout.strip()
     except Exception:
+        return None
+
+
+def admin_loeschen(pfade):
+    """Nur-Admin-Dokumente löschen (falls gcloud vorhanden)."""
+    tok = admin_token()
+    if tok is None:
         print('  (gcloud fehlt – Admin-Testdaten bleiben liegen)')
         return
     for p in pfade:
@@ -265,8 +272,12 @@ def main():
         'uid': u1, 'nutzerName': n1, 'text': 'Test', 'status': 'neu',
         'typ': 'infos', 'bezug': 'test', 'erstellt': jetzt()}))
     verboten('Premium selbst vergeben', setzen(t1, f'premium/{u1}', {'bis': jetzt(9999999)}))
-    erlaubt('Eigenen Premium-Status lesen', lesen(t1, f'premium/{u1}'))
-    verboten('Fremden Premium-Status lesen', lesen(t2, f'premium/{u1}'))
+    admin = admin_token()
+    if admin:
+        setzen(admin, f'premium/{u1}', {'bis': jetzt(3600), 'grund': 'Test'})
+        erlaubt('Eigenen Premium-Status lesen', lesen(t1, f'premium/{u1}'))
+        verboten('Fremden Premium-Status lesen', lesen(t2, f'premium/{u1}'))
+        loeschen(admin, f'premium/{u1}')
 
     # Video
     erlaubt('Video-Info speichern', setzen(t1, f'videos/{fang}', {
