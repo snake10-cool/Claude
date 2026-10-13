@@ -13,6 +13,8 @@ import '../services/darf_ich.dart';
 import '../services/wetter.dart';
 import 'darf_ich_screen.dart';
 import 'gewaesser_screen.dart';
+import '../services/fern_konfig.dart';
+import 'widgets.dart';
 
 /// „Ich will Hecht“ → wo, wann, womit.
 class ZielfischScreen extends StatefulWidget {
@@ -46,6 +48,7 @@ class _ZielfischScreenState extends State<ZielfischScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (!funktionAn('zielfisch')) return const FunktionAusSeite('Zielfisch');
     final speicher = SpeicherScope.of(context);
     return Scaffold(
       appBar: AppBar(title: const Text('Zielfisch')),

@@ -12,6 +12,7 @@ import '../services/wettfischen.dart';
 import 'konto_screen.dart';
 import 'profil_screen.dart';
 import 'widgets.dart';
+import '../services/fern_konfig.dart';
 
 /// Eigene Wettfischen: anlegen, mit Code beitreten, Rangliste.
 class WettfischenScreen extends StatelessWidget {
@@ -19,6 +20,7 @@ class WettfischenScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!funktionAn('wettfischen')) return const FunktionAusSeite('Eigene Wettfischen');
     final konto = KontoScope.of(context);
     return Scaffold(
       appBar: AppBar(title: const Text('Eigene Wettfischen')),

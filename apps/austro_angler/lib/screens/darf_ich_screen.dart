@@ -7,6 +7,8 @@ import '../services/alle_gewaesser.dart';
 import '../services/darf_ich.dart';
 import 'lexikon_screen.dart';
 import 'premium_screen.dart';
+import '../services/fern_konfig.dart';
+import 'widgets.dart';
 
 DarfIch? _ki;
 List<Object>? _kiStand;
@@ -83,6 +85,7 @@ class _DarfIchScreenState extends State<DarfIchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (!funktionAn('darf_ich')) return const FunktionAusSeite('Darf ich …?');
     final farben = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
     return Scaffold(

@@ -272,6 +272,9 @@ def main():
         'uid': u1, 'nutzerName': n1, 'text': 'Test', 'status': 'neu',
         'typ': 'infos', 'bezug': 'test', 'erstellt': jetzt()}))
     verboten('Premium selbst vergeben', setzen(t1, f'premium/{u1}', {'bis': jetzt(9999999)}))
+    # 404 heißt: erlaubt, aber (noch) nicht angelegt.
+    pruefe('Fern-Konfig lesen', lesen(t1, 'konfig/app')[0] in (200, 404))
+    verboten('Fern-Konfig ändern', setzen(t1, 'konfig/app', {'aus': ['darf_ich']}))
     admin = admin_token()
     if admin:
         setzen(admin, f'premium/{u1}', {'bis': jetzt(3600), 'grund': 'Test'})

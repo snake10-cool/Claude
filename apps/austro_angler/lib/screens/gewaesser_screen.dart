@@ -18,6 +18,7 @@ import 'heimat_screen.dart';
 import 'konto_screen.dart';
 import 'melden.dart';
 import 'widgets.dart';
+import '../services/fern_konfig.dart';
 
 class GewaesserScreen extends StatefulWidget {
   const GewaesserScreen({super.key});
@@ -466,8 +467,10 @@ class GewaesserDetail extends StatelessWidget {
             HinweisKarte(g.hinweis!, icon: Icons.warning_amber),
           ],
           const SizedBox(height: 12),
-          WetterKarte(g),
-          BeisszeitKarte(g),
+          if (funktionAn('wetter')) ...[
+            WetterKarte(g),
+            BeisszeitKarte(g),
+          ],
           DaemmerungKarte(g),
           WassertempKarte(g),
           if (KontoScope.of(context) != null) WasBeisstKarte(g),

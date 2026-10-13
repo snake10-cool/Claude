@@ -5,6 +5,7 @@ import '../data/fische.dart';
 import '../services/fang_dienst.dart';
 import '../services/konto.dart';
 import 'widgets.dart';
+import '../services/fern_konfig.dart';
 
 const _status = {
   'neu': ('🆕', 'Neu'),
@@ -60,7 +61,7 @@ class _AdminAnsicht extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Admin 🛡️'),
@@ -72,6 +73,7 @@ class _AdminAnsicht extends StatelessWidget {
               Tab(icon: Icon(Icons.euro), text: 'Preise'),
               Tab(icon: Icon(Icons.water), text: 'Infos'),
               Tab(icon: Icon(Icons.flag), text: 'Meldungen'),
+              Tab(icon: Icon(Icons.tune), text: 'Steuerung'),
             ],
           ),
         ),
@@ -81,6 +83,7 @@ class _AdminAnsicht extends StatelessWidget {
             const _PreisPruefung(),
             const _InfoPruefung(),
             const _MeldungenListe(),
+            const _Steuerung(),
           ],
         ),
       ),
@@ -505,6 +508,151 @@ class _InfoPruefungState extends State<_InfoPruefung>
                   ),
                 ),
               ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+/// Admin: Funktionen aus der Ferne abschalten und Hinweis-Banner setzen.
+/// Wirkt sofort bei allen Nutzern – ohne App-Update.
+class _Steuerung extends StatefulWidget {
+  const _Steuerung();
+
+  @override
+  State<_Steuerung> createState() => _SteuerungState();
+}
+
+class _SteuerungState extends State<_Steuerung> {
+  late final _text =
+      TextEditingController(text: fernKonfig.daten.banner?.text ?? '');
+  late bool _warnung = fernKonfig.daten.banner?.warnung ?? false;
+  bool _sendet = false;
+
+  @override
+  void dispose() {
+    _text.dispose();
+    super.dispose();
+  }
+
+  Future<void> _ausfuehren(Future<void> Function() aktion, String ok) async {
+    setState(() => _sendet = true);
+    try {
+      await aktion();
+      if (mounted) meldung(context, ok);
+    } catch (e) {
+      if (mounted) meldung(context, 'Fehlgeschlagen: $e');
+    } finally {
+      if (mounted) setState(() => _sendet = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    return ListenableBuilder(
+      listenable: fernKonfig,
+      builder: (context, _) {
+        final d = fernKonfig.daten;
+        return ListView(
+          padding: const EdgeInsets.all(12),
+          children: [
+            const HinweisKarte(
+              'Änderungen hier gelten sofort für alle Nutzer – ohne '
+              'App-Update.',
+              icon: Icons.bolt,
+            ),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Titel('📢 Hinweis-Banner'),
+                    Text(
+                        d.banner == null
+                            ? 'Gerade kein Banner aktiv.'
+                            : 'Aktiv: „${d.banner!.text}“',
+                        style: text.bodySmall),
+                    const SizedBox(height: 8),
+                    TextField(
+                      controller: _text,
+                      maxLength: 140,
+                      maxLines: 2,
+                      decoration: const InputDecoration(
+                        hintText: 'z. B. Wetter gerade gestört – wird repariert.',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      value: _warnung,
+                      onChanged: (v) => setState(() => _warnung = v),
+                      title: const Text('Als Warnung (rot)'),
+                    ),
+                    Wrap(
+                      spacing: 8,
+                      children: [
+                        FilledButton(
+                          onPressed: _sendet
+                              ? null
+                              : () => _ausfuehren(
+                                  () => fernKonfig.bannerSetzen(_text.text,
+                                      warnung: _warnung),
+                                  'Banner gespeichert'),
+                          child: const Text('Banner zeigen'),
+                        ),
+                        OutlinedButton(
+                          onPressed: _sendet || d.banner == null
+                              ? null
+                              : () {
+                                  _text.clear();
+                                  _ausfuehren(
+                                      () => fernKonfig.bannerSetzen('',
+                                          warnung: false),
+                                      'Banner entfernt');
+                                },
+                          child: const Text('Entfernen'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Titel('🔌 Funktionen'),
+                    Text('Ausgeschaltete Funktionen zeigen „vorübergehend nicht '
+                        'verfügbar“.', style: text.bodySmall),
+                    for (final f in fernFunktionen.entries)
+                      SwitchListTile(
+                        contentPadding: EdgeInsets.zero,
+                        value: !d.aus.contains(f.key),
+                        onChanged: _sendet
+                            ? null
+                            : (an) => _ausfuehren(
+                                () => fernKonfig.funktionSetzen(f.key, an: an),
+                                '${f.value} ${an ? 'an' : 'aus'}'),
+                        title: Text(f.value),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.dataset_outlined),
+                title: const Text('Daten-Korrekturen'),
+                subtitle: Text('${d.gewaesser.length} Gewässer · '
+                    '${d.schonzeiten.length} Fischarten mit Schonzeit-Korrektur'),
+              ),
+            ),
           ],
         );
       },

@@ -24,6 +24,7 @@ import 'ort_waehlen.dart';
 import 'statistik_screen.dart';
 import 'story_screen.dart';
 import 'widgets.dart';
+import '../services/fern_konfig.dart';
 
 class FangbuchScreen extends StatefulWidget {
   const FangbuchScreen({super.key});
@@ -714,7 +715,7 @@ class _FangFormularState extends State<FangFormular> {
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) => StoryScreen(widget.fang!))),
             ),
-          if (widget.fang?.oeffentlich == true)
+          if (widget.fang?.oeffentlich == true && funktionAn('fang_link'))
             IconButton(
               tooltip: 'Link teilen',
               icon: const Icon(Icons.link),

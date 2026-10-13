@@ -29,6 +29,7 @@ import 'pruefung_screen.dart';
 import 'wettfischen_screen.dart';
 import 'widgets.dart';
 import 'wuensche_screen.dart';
+import '../services/fern_konfig.dart';
 
 class MehrScreen extends StatelessWidget {
   const MehrScreen({super.key});
@@ -68,9 +69,11 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.settings_outlined, 'Einstellungen',
               'Heimatort, Jungangler-Modus, Countdown',
               () => _oeffnen(context, const EinstellungenScreen())),
+          if (funktionAn('darf_ich'))
           _Eintrag(Icons.chat_bubble_outline, 'Darf ich …? ⭐',
               'Frag nach Schonzeit, Brittelmaß und Gewässer', () => _oeffnen(context,
                   const DarfIchScreen())),
+          if (funktionAn('zielfisch'))
           _Eintrag(Icons.my_location, 'Zielfisch',
               'Ich will Hecht → wo, wann, womit', () => _oeffnen(context,
                   const ZielfischScreen())),
@@ -89,9 +92,11 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.bar_chart, 'Statistik & Abzeichen',
               'Rekorde, Auswertungen, PDF-Export', () => _oeffnen(context,
                   const StatistikScreen())),
+          if (funktionAn('album'))
           _Eintrag(Icons.collections_bookmark_outlined, 'Arten-Sammelalbum',
               'Alle Fischarten sammeln – wie viele hast du?', () => _oeffnen(context,
                   const AlbumScreen())),
+          if (funktionAn('wettfischen'))
           _Eintrag(Icons.emoji_events_outlined, 'Eigene Wettfischen',
               'Mit Freunden oder Verein – per Code', () => _oeffnen(context,
                   const WettfischenScreen())),

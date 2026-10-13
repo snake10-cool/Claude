@@ -6,6 +6,7 @@ import '../services/wetter.dart';
 import '../services/fang_dienst.dart';
 import 'profil_screen.dart';
 import 'widgets.dart';
+import '../services/fern_konfig.dart';
 
 /// Gemeinsame Angeltage planen und zusagen.
 class TreffenListe extends StatefulWidget {
@@ -159,6 +160,7 @@ class _TreffenListeState extends State<TreffenListe>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    if (!funktionAn('angeltage')) return const FunktionAus('Angeltage');
     final konto = KontoScope.of(context)!;
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(

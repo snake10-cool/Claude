@@ -7,6 +7,8 @@ import '../models/fang.dart';
 import '../models/fisch.dart';
 import '../services/fang_dienst.dart';
 import 'lexikon_screen.dart';
+import '../services/fern_konfig.dart';
+import 'widgets.dart';
 
 /// Stufen nach Fanghäufigkeit in Österreich – für Glanz im Album.
 enum Seltenheit {
@@ -74,6 +76,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (!funktionAn('album')) return const FunktionAusSeite('Arten-Sammelalbum');
     final konto = KontoScope.of(context);
     _faenge ??= konto?.uid == null
         ? Future.value(SpeicherScope.of(context).faenge)

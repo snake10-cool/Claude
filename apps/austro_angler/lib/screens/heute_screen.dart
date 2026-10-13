@@ -18,6 +18,7 @@ import 'heimat_screen.dart';
 import 'lexikon_screen.dart';
 import 'widgets.dart';
 import 'zielfisch_screen.dart';
+import '../services/fern_konfig.dart';
 
 /// Startseite: was heute am Wasser zählt – auf einen Blick.
 class HeuteScreen extends StatefulWidget {
@@ -82,9 +83,9 @@ class _HeuteScreenState extends State<HeuteScreen> {
             Text('${wt[jetzt.weekday - 1]}, ${jetzt.day}.${jetzt.month}.'
                 '${speicher.heimatName.isEmpty ? '' : ' · ${speicher.heimatName}'}'),
             const SizedBox(height: 12),
-            const DarfIchFeld(),
+            if (funktionAn('darf_ich')) const DarfIchFeld(),
             const SizedBox(height: 4),
-            const _WetterKarte(),
+            if (funktionAn('wetter')) const _WetterKarte(),
             const SizedBox(height: 4),
             const _MeineGewaesser(),
             const SizedBox(height: 4),
@@ -295,6 +296,7 @@ class _Lieblingsfische extends StatelessWidget {
                 Expanded(
                     child: Titel('🐟 Lieblingsfische in '
                         '${speicher.bundesland.name}')),
+                if (funktionAn('zielfisch'))
                 TextButton(
                   onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute(
@@ -309,7 +311,9 @@ class _Lieblingsfische extends StatelessWidget {
                 dense: true,
                 title: Text(f.name.split(' (').first),
                 subtitle: Text(status(f)),
-                trailing: IconButton(
+                trailing: !funktionAn('zielfisch')
+                    ? null
+                    : IconButton(
                   tooltip: 'Wo und womit?',
                   icon: const Icon(Icons.my_location),
                   onPressed: () => Navigator.of(context).push(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
 import 'screens/einfuehrung_screen.dart';
+import 'services/fern_konfig.dart';
 import 'services/update.dart';
 import 'screens/community_screen.dart';
 import 'screens/fangbuch_screen.dart';
@@ -38,6 +39,8 @@ Future<void> main() async {
         cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
       );
       konto = Konto();
+      // Schalter, Hinweis-Banner und Daten-Korrekturen aus der Ferne.
+      fernKonfig.starten();
     } catch (e) {
       debugPrint('Firebase nicht verfügbar: $e');
     }
@@ -106,7 +109,7 @@ class AustroAnglerApp extends StatelessWidget {
           home: const _Weiche(),
           // Jungangler-Modus: etwas größere Schrift.
           builder: (context, kind) => ListenableBuilder(
-            listenable: speicher,
+            listenable: Listenable.merge([speicher, fernKonfig]),
             builder: (context, _) => speicher.jungangler
                 ? MediaQuery(
                     data: MediaQuery.of(context).copyWith(
@@ -192,6 +195,7 @@ class _StartseiteState extends State<Startseite> {
         children: [
           const _OfflineHinweis(),
           Expanded(child: IndexedStack(index: _index, children: _seiten)),
+          const _FernBanner(),
         ],
       ),
       // Große Systemschrift nur begrenzt übernehmen, sonst bricht die
@@ -217,6 +221,41 @@ class _StartseiteState extends State<Startseite> {
               label: 'Feed',
             ),
             NavigationDestination(icon: Icon(Icons.menu), label: 'Mehr'),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Hinweis aus der Ferne (z. B. „Wetter gerade gestört“), wegklickbar.
+class _FernBanner extends StatelessWidget {
+  const _FernBanner();
+
+  @override
+  Widget build(BuildContext context) {
+    final speicher = SpeicherScope.of(context);
+    final b = fernKonfig.daten.banner;
+    if (b == null || speicher.bannerWeg == b.id) return const SizedBox.shrink();
+    final farben = Theme.of(context).colorScheme;
+    final grund = b.warnung ? farben.errorContainer : farben.secondaryContainer;
+    final schrift =
+        b.warnung ? farben.onErrorContainer : farben.onSecondaryContainer;
+    return Material(
+      color: grund,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
+        child: Row(
+          children: [
+            Icon(b.warnung ? Icons.warning_amber : Icons.info_outline,
+                color: schrift, size: 20),
+            const SizedBox(width: 8),
+            Expanded(child: Text(b.text, style: TextStyle(color: schrift))),
+            IconButton(
+              tooltip: 'Ausblenden',
+              icon: Icon(Icons.close, color: schrift, size: 20),
+              onPressed: () => speicher.bannerAusblenden(b.id),
+            ),
           ],
         ),
       ),

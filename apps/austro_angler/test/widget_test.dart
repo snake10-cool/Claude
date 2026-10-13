@@ -1,6 +1,7 @@
 import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/data/gewicht.dart';
 import 'package:austro_angler/services/csv_export.dart';
+import 'package:austro_angler/services/fern_konfig.dart';
 import 'package:austro_angler/services/wettfischen.dart';
 import 'package:austro_angler/data/fragen.dart';
 import 'package:austro_angler/data/gewaesser.dart';
@@ -171,6 +172,39 @@ void main() {
       Teilnehmer('b', {'name': 'b', 'faenge': 3, 'groesster': 80.0}),
     ], Wertung.laenge);
     expect(t.first.uid, 'b');
+  });
+
+  test('Fern-Konfig lesen und anwenden', () {
+    final d = FernDaten.aus({
+      'aus': ['darf_ich', 42],
+      'banner': {'id': 'b1', 'text': ' Wetter gestört ', 'art': 'warnung'},
+      'gewaesser': {
+        'inn-braunau': {'lat': 48.26, 'lon': 13.04},
+        'kaputt': {'lat': 'x'},
+      },
+      'schonzeiten': {
+        'hecht': {
+          'Oberösterreich': {'von': '1.2.', 'bis': '31.3', 'mass': 55},
+          'Nirgendwo': {'von': '1.1.', 'bis': '2.1.'},
+        },
+        'zander': {'Oberösterreich': {'von': '1.2.'}},
+      },
+    });
+    expect(d.aus, {'darf_ich'});
+    expect(d.banner?.text, 'Wetter gestört');
+    expect(d.banner?.warnung, isTrue);
+    expect(d.gewaesser.keys, ['inn-braunau']);
+    expect(d.schonzeiten.keys, ['hecht']);
+    fernKonfig.uebernehmen(d);
+    expect(funktionAn('darf_ich'), isFalse);
+    expect(funktionAn('wetter'), isTrue);
+    final hecht = fische.firstWhere((f) => f.id == 'hecht');
+    expect(hecht.regel(Bundesland.ooe).mindestmassCm, 55);
+    expect(hecht.regel(Bundesland.ooe).istGeschont(DateTime(2026, 3, 15)),
+        isTrue);
+    fernKonfig.uebernehmen(FernDaten.aus(null));
+    expect(funktionAn('darf_ich'), isTrue);
+    expect(hecht.regel(Bundesland.ooe).mindestmassCm, isNot(55));
   });
 
   test('Mondphase', () {

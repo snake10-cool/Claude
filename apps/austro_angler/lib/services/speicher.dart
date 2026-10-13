@@ -46,6 +46,9 @@ class Speicher extends ChangeNotifier {
   /// Einführung beim ersten Start schon gezeigt?
   bool einfuehrungGesehen = false;
 
+  /// Zuletzt weggeklicktes Fern-Banner (dessen ID).
+  String bannerWeg = '';
+
   /// Bis zu welchem Stand „Was ist neu?“ gezeigt wurde.
   int wasIstNeuGesehen = 0;
 
@@ -73,6 +76,7 @@ class Speicher extends ChangeNotifier {
     jungangler = _prefs.getBool('jungangler') ?? false;
     einfuehrungGesehen = _prefs.getBool('einfuehrung') ?? false;
     wasIstNeuGesehen = _prefs.getInt('wasIstNeu') ?? 0;
+    bannerWeg = _prefs.getString('bannerWeg') ?? '';
     neuigkeitenGesehen = DateTime.fromMillisecondsSinceEpoch(
         _prefs.getInt('neuigkeitenGesehen') ?? 0);
     favoriten = _prefs.getStringList('favoriten') ?? const [];
@@ -114,6 +118,12 @@ class Speicher extends ChangeNotifier {
     notifyListeners();
     await _prefs.setInt(
         'neuigkeitenGesehen', neuigkeitenGesehen.millisecondsSinceEpoch);
+  }
+
+  Future<void> bannerAusblenden(String id) async {
+    bannerWeg = id;
+    notifyListeners();
+    await _prefs.setString('bannerWeg', id);
   }
 
   Future<void> wasIstNeuErledigt(int stand) async {

@@ -15,6 +15,7 @@ import 'kommentare_screen.dart';
 import 'story_screen.dart';
 import 'treffen_screen.dart';
 import 'widgets.dart';
+import '../services/fern_konfig.dart';
 
 class CommunityScreen extends StatelessWidget {
   const CommunityScreen({super.key});
@@ -81,6 +82,7 @@ class _FeedState extends State<_Feed> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    if (!funktionAn('feed')) return const FunktionAus('Der Feed');
     final konto = KontoScope.of(context)!;
     return StreamBuilder<List<Fang>>(
       stream: _stream,
@@ -397,6 +399,7 @@ class _Aktionen extends StatelessWidget {
           onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => StoryScreen(fang))),
         ),
+        if (funktionAn('fang_link'))
         IconButton(
           tooltip: 'Link teilen',
           icon: const Icon(Icons.link, size: 20),

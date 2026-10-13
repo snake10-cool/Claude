@@ -11,6 +11,7 @@ import 'angeljahr_screen.dart';
 import 'premium_screen.dart';
 import 'widgets.dart';
 import 'zuruecksetzen_screen.dart';
+import '../services/fern_konfig.dart';
 
 class StatistikScreen extends StatefulWidget {
   const StatistikScreen({super.key});
@@ -378,6 +379,7 @@ class _Export extends StatelessWidget {
                   ),
               ],
             ),
+            if (funktionAn('csv')) ...[
             const SizedBox(height: 8),
             const Text('Alle Fänge als Tabelle (Excel, Numbers, Google '
                 'Tabellen) – deine Daten gehören dir.'),
@@ -397,6 +399,7 @@ class _Export extends StatelessWidget {
               icon: const Icon(Icons.table_chart_outlined),
               label: const Text('Als CSV exportieren'),
             ),
+            ],
           ],
         ),
       ),
