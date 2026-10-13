@@ -8,7 +8,6 @@ import 'screens/einfuehrung_screen.dart';
 import 'screens/community_screen.dart';
 import 'screens/fangbuch_screen.dart';
 import 'screens/gewaesser_screen.dart';
-import 'screens/karte_screen.dart';
 import 'screens/konto_screen.dart';
 import 'screens/mehr_screen.dart';
 import 'screens/wuensche_screen.dart';
@@ -170,7 +169,6 @@ class _StartseiteState extends State<Startseite> {
 
   static const _seiten = [
     GewaesserScreen(),
-    KarteScreen(),
     FangbuchScreen(),
     CommunityScreen(),
     WuenscheScreen(),
@@ -187,7 +185,7 @@ class _StartseiteState extends State<Startseite> {
         ],
       ),
       // Große Systemschrift nur begrenzt übernehmen, sonst bricht die
-      // Beschriftung bei sechs Tabs um.
+      // Beschriftung bei vielen Tabs um.
       bottomNavigationBar: MediaQuery.withClampedTextScaling(
         maxScaleFactor: 1.1,
         child: NavigationBar(
@@ -196,7 +194,6 @@ class _StartseiteState extends State<Startseite> {
           onDestinationSelected: (i) => setState(() => _index = i),
           destinations: const [
             NavigationDestination(icon: Icon(Icons.water), label: 'Gewässer'),
-            NavigationDestination(icon: Icon(Icons.map), label: 'Karte'),
             NavigationDestination(icon: Icon(Icons.book), label: 'Fangbuch'),
             NavigationDestination(icon: Icon(Icons.groups), label: 'Feed'),
             NavigationDestination(

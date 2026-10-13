@@ -25,10 +25,6 @@ const _themen = <String, List<_Faq>>{
         'Nein, nie. Deinen Heimatort wählst du selbst (Mehr → Einstellungen). '
             'Danach kannst du Gewässer und Angelgeschäfte nach Entfernung '
             'sortieren, und das Widget zeigt Wetter und Beißzeit dort.'),
-    _Faq('Funktioniert die Karte ohne Netz?',
-        'Ja, für alles, was du dir vorher angesehen hast: Jeder '
-            'Kartenausschnitt wird auf dem Handy gespeichert. Tipp: Vor dem '
-            'Losfahren die Gegend auf der Karte einmal anschauen.'),
     _Faq('Warum fehlt bei einem Gewässer der Preis?',
         'Für so viele Gewässer gibt es keine öffentliche Preisliste. Die '
             'Lizenz vergibt meist ein Verein, die Gemeinde oder ein '
@@ -53,9 +49,9 @@ const _themen = <String, List<_Faq>>{
         'Fänge sind standardmäßig öffentlich: @Name, Fischart, Größe, Gewässer, '
             'Datum und Foto. Pro Fang kannst du "Öffentlich teilen" '
             'ausschalten – dann siehst nur du ihn.'),
-    _Faq('Wer sieht meine Angelplätze und Fangorte?',
-        'Niemand außer dir. Eigene Angelplätze auf der Karte bleiben auf '
-            'deinem Handy, Fangorte werden privat in deinem Konto gespeichert. '
+    _Faq('Wer sieht meine Fangorte?',
+        'Niemand außer dir. Fangorte werden privat in deinem Konto '
+            'gespeichert. '
             'Die App verfolgt deinen Standort nie – du wählst Orte selbst aus.'),
     _Faq('Wie lösche ich mein Konto?',
         'Unter "Mehr" → Konto → "Konto und alle Daten löschen". Dann werden '
@@ -99,7 +95,7 @@ const _themen = <String, List<_Faq>>{
   '⭐ Premium': [
     _Faq('Was ist gratis?',
         'Alles, was du zum legalen Fischen brauchst, und die ganze Community: '
-            'Gewässer, Preise, Karte, Wetter, Fischlexikon, Schonzeiten, '
+            'Gewässer, Preise, Wetter, Fischlexikon, Schonzeiten, '
             'Fangbuch, Feed, Freunde, Kommentare, Angeltage, Challenge, '
             'Knoten, Checkliste, Prüfungstrainer.'),
     _Faq('Was bringt Premium?',

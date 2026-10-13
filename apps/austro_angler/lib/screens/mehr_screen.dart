@@ -60,7 +60,7 @@ class MehrScreen extends StatelessWidget {
               'Was Premium bringt', () => _oeffnen(context,
                   const PremiumScreen())),
           _Eintrag(Icons.settings_outlined, 'Einstellungen',
-              'Heimatort, Jungangler-Modus, Countdown, Offline-Karte',
+              'Heimatort, Jungangler-Modus, Countdown',
               () => _oeffnen(context, const EinstellungenScreen())),
           _Eintrag(Icons.waving_hand_outlined, 'Einführung ansehen',
               'Die App in 6 Schritten erklärt', () => _oeffnen(context,
