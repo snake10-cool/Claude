@@ -18,6 +18,7 @@ import 'heimat_screen.dart';
 import 'konto_screen.dart';
 import 'melden.dart';
 import 'widgets.dart';
+import 'karte_screen.dart';
 
 class GewaesserScreen extends StatefulWidget {
   const GewaesserScreen({super.key});
@@ -511,6 +512,13 @@ class GewaesserDetail extends StatelessWidget {
             InfoKnoepfe(g),
           ],
           const SizedBox(height: 16),
+          FilledButton.icon(
+            onPressed: () => inGoogleMapsOeffnen(
+                g.position.latitude, g.position.longitude),
+            icon: const Icon(Icons.map_outlined),
+            label: const Text('In Google Maps öffnen'),
+          ),
+          const SizedBox(height: 8),
           OutlinedButton.icon(
             onPressed: () => meldenDialog(
               context,

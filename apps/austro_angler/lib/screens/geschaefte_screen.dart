@@ -6,6 +6,7 @@ import '../main.dart';
 import '../services/alle_gewaesser.dart';
 import 'melden.dart';
 import 'widgets.dart';
+import 'karte_screen.dart';
 
 /// Angelgeschäfte aus OpenStreetMap.
 class GeschaefteScreen extends StatelessWidget {
@@ -115,6 +116,12 @@ Future<void> geschaeftZeigen(BuildContext context, Angelgeschaeft l) =>
                 spacing: 8,
                 runSpacing: 8,
                 children: [
+                  FilledButton.icon(
+                    onPressed: () => inGoogleMapsOeffnen(
+                        l.position.latitude, l.position.longitude),
+                    icon: const Icon(Icons.map_outlined),
+                    label: const Text('In Google Maps öffnen'),
+                  ),
                   if (l.telefon.isNotEmpty)
                     OutlinedButton.icon(
                       onPressed: () => launchUrl(
