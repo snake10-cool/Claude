@@ -5,7 +5,7 @@ KURZBESCHREIBUNG (max. 80)
 24.000 Gewässer, Fangbuch & Schonzeiten aller 9 Bundesländer – fürs Angeln in AT
 
 VOLLSTÄNDIGE BESCHREIBUNG (max. 4000)
-Austro Angler ist die Angel-App für ganz Österreich – mit Schwerpunkt Bezirk Braunau, Innviertel und Salzburger Flachgau. Ohne Werbung, ohne Standortverfolgung.
+Austro Angler ist die Angel-App für ganz Österreich – mit Schwerpunkt Bezirk Braunau, Innviertel und Salzburger Flachgau. Ohne Werbung, ohne Standortverfolgung – jetzt mit Google-Karte.
 
 🎣 GEWÄSSER
 • Über 24.000 Flüsse, Bäche, Seen und Teiche in ganz Österreich – filtern nach Bundesland, Bezirk und Ort
@@ -14,6 +14,7 @@ Austro Angler ist die Angel-App für ganz Österreich – mit Schwerpunkt Bezirk
 • Angelgeschäfte mit Adresse und Öffnungszeiten
 • Bewertungen, Preise und Infos aus der Community (vom Admin geprüft)
 • Heimatort selbst wählen und nach Entfernung sortieren – ohne GPS
+• Karte mit Google Maps: alle Gewässer auf einen Blick, mit einem Tipp in Google Maps öffnen und hinfahren
 
 📖 FANGBUCH
 • Fänge mit Foto, kurzem Video, Länge, Gewicht, Köder, Ausrüstung, Datum und Uhrzeit
@@ -48,3 +49,9 @@ Austro Angler ist die Angel-App für ganz Österreich – mit Schwerpunkt Bezirk
 Die Grundfunktionen sind gratis. Mit Premium (3,99 € im Monat oder 29,99 € im Jahr, 7 Tage gratis testen) bekommst du Extras wie die Beißzeit für die nächsten Tage, Statistik mit Wetter-Auswertung, Wasserführungs-Verlauf, PDF-Export und den Prüfungsmodus.
 
 Alle Angaben ohne Gewähr – es gelten immer das Landesfischereigesetz und die Lizenzbedingungen des Reviers.
+
+
+VERSIONSHINWEISE BUILD 8 (max. 500)
+<de-DE>
+Neu: Karte mit Google Maps – alle Gewässer auf einen Blick, mit einem Tipp in Google Maps öffnen und hinfahren. Außerdem: genauere Lage der Gewässer rund um Braunau und kleinere Fehlerbehebungen.
+</de-DE>
