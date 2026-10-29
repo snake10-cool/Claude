@@ -182,7 +182,8 @@ KEIN_BAND = re.compile(
     r'trilogie|gesamtausgabe|vorgeschichte|-saga\b|\bsaga$|doppelband|schulplaner|planer|'
     r'journal|brosche|kette\b|anhänger|\bvke\b|\bve\b|hausaufgabenheft|geschichten aus|'
     r'zum film|der film|lesebuch|atlas|von a [–-] z|a bis z|storys|stories|all stars|'
-    r'kurzgeschichten|erzählungen aus|begleitbuch|& friends|und friends|alle meine|unsere schönsten|\d+ weihnacht', re.I)
+    r'kurzgeschichten|erzählungen aus|begleitbuch|& friends|und friends|alle meine|unsere schönsten|\d+ weihnacht|'
+    r"mach.s wie|\(mein\) tagebuch", re.I)  # Gregs Mitmachbücher
 
 
 def kern(titel):
