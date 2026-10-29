@@ -28,6 +28,10 @@ const katalogErwachsen = <Buch>[
       Frage('Wie lautet die berühmte Gretchenfrage?', ['„Nun sag, wie hast du\'s mit der Religion?“', '„Liebst du mich?“', '„Wer bist du?“', '„Was willst du von mir?“']),
       Frage('Wer ist Gretchens Bruder, den Faust tötet?', ['Valentin', 'Wagner', 'Siebel', 'Frosch']),
       Frage('Wie endet der erste Teil für Gretchen?', ['Sie stirbt im Kerker – eine Stimme ruft „Ist gerettet!“', 'Sie heiratet Faust', 'Sie flieht mit Mephisto', 'Sie wird Nonne']),
+      Frage('Wo schließt Faust den Pakt mit Mephisto?', ['In seinem Studierzimmer', 'In Auerbachs Keller', 'Vor dem Tor beim Osterspaziergang', 'In der Hexenküche']),
+      Frage('Welches Zeichen an der Schwelle hindert Mephisto zunächst am Verlassen des Zimmers?', ['Ein Drudenfuß (Pentagramm)', 'Ein Kruzifix', 'Ein Hufeisen', 'Ein Siegel']),
+      Frage('Warum sitzt Gretchen am Ende im Kerker?', ['Sie hat ihr neugeborenes Kind ertränkt', 'Sie hat Valentin getötet', 'Sie hat Schmuck gestohlen', 'Sie gilt als Hexe']),
+      Frage('Welches Fach hat Faust laut seinem ersten Monolog nicht studiert?', ['Astronomie', 'Juristerei', 'Medizin', 'Theologie']),
     ],
   ),
   Buch(
@@ -55,6 +59,12 @@ const katalogErwachsen = <Buch>[
       Frage('Welches Buch liegt aufgeschlagen auf seinem Pult?', ['Emilia Galotti', 'Faust', 'Die Räuber', 'Hamlet']),
       Frage('Wann stirbt Werther?', ['Kurz vor Weihnachten', 'Im Sommer', 'An Ostern', 'An seinem Geburtstag']),
       Frage('Was steht am Ende über seine Beerdigung?', ['Kein Geistlicher hat ihn begleitet', 'Die ganze Stadt kam', 'Lotte hielt eine Rede', 'Er wurde in der Kirche beigesetzt']),
+      Frage('Welcher Epoche wird der Roman zugeordnet?', ['Sturm und Drang', 'Weimarer Klassik', 'Romantik', 'Aufklärung']),
+      Frage('Was trägt Werther bei der ersten Begegnung mit Lotte?', ['Einen blauen Frack und eine gelbe Weste', 'Einen schwarzen Frack', 'Einen grünen Rock', 'Einen grauen Mantel']),
+      Frage('Welchen Dichter liest Werther in seiner glücklichen Zeit?', ['Homer', 'Ovid', 'Vergil', 'Sophokles']),
+      Frage('Warum wird Werther aus einer adligen Gesellschaft gewiesen?', ['Weil er bürgerlich ist', 'Weil er betrunken ist', 'Weil er gestritten hat', 'Weil er zu spät kommt']),
+      Frage('Welcher Bauernbursche erlebt ein ähnliches Schicksal wie Werther?', ['Der Knecht der Witwe, der aus Liebe zum Mörder wird', 'Der Gärtner', 'Der Schreiber Heinrich', 'Alberts Diener']),
+      Frage('Wo möchte Werther begraben werden?', ['In einer Ecke des Kirchhofs bei zwei Lindenbäumen', 'In Lottes Garten', 'In Wahlheim auf dem Marktplatz', 'In seiner Heimatstadt']),
     ],
   ),
   Buch(
