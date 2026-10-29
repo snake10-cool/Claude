@@ -175,9 +175,11 @@ class BuchScreen extends StatelessWidget {
             const Divider(height: 32),
             Text('Quiz', style: theme.textTheme.titleMedium),
             const SizedBox(height: 4),
-            Text(fragen == 0
-                ? 'Zu diesem Buch gibt es noch kein Quiz.'
-                : 'Noch ${mindestFragen - fragen} Frage(n), dann gibt es ein Quiz.'),
+            Text(switch (nochNichtErschienen(buch)) {
+              final ab? => 'Das Buch erscheint am ${ab.day}.${ab.month}.${ab.year} – ab dann gibt es das Quiz.',
+              _ when fragen == 0 => 'Zu diesem Buch gibt es noch kein Quiz.',
+              _ => 'Noch ${mindestFragen - fragen} Frage(n), dann gibt es ein Quiz.',
+            }),
           ],
           if (konto != null && !buch.eigenes) ...[
             const SizedBox(height: 8),
