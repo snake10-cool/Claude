@@ -29,7 +29,7 @@ class BuchScreen extends StatelessWidget {
     final eintrag = speicher.eintraege[buchId];
     final quiz = speicher.quiz[buchId];
     final konto = KontoScope.of(context);
-    final fragen = buch.quiz.length + (konto?.gemeinschaftsFragen[buchId]?.length ?? 0);
+    final fragen = eingebauteFragen(buch).length + (konto?.gemeinschaftsFragen[buchId]?.length ?? 0);
     final theme = Theme.of(context);
 
     void setzen({Status? status, int? sterne, Format? format}) {
@@ -152,7 +152,7 @@ class BuchScreen extends StatelessWidget {
               children: [
                 Text('Quiz', style: theme.textTheme.titleMedium),
                 const SizedBox(width: 8),
-                StufeSchild(buch.stufe),
+                StufeSchild(stufeVon(buch)),
                 const Spacer(),
                 Text('${min(fragen, fragenProQuiz(buch.zielgruppe))} Fragen', style: theme.textTheme.bodySmall),
               ],

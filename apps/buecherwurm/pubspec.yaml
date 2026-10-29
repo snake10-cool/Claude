@@ -29,6 +29,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/daten/katalog_wikidata.json.gz
+    - assets/daten/quiz_zusatz.json.gz
 
 # Icon und Startbild neu erzeugen (nach `python tools/buecherwurm_icon.py`):
 #   dart run flutter_launcher_icons && dart run flutter_native_splash:create

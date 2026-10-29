@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import '../data/quiz_zusatz.dart';
 import '../models/buch.dart';
 import 'konto.dart';
 
@@ -15,8 +16,14 @@ int fragenProQuiz(Zielgruppe z) => switch (z) {
 
 /// Fragen für ein Quiz: zufällig aus den eingebauten und den freigegebenen
 /// Leserfragen. Gibt es mehr als nötig, ist jede Runde etwas anders.
+/// Alle fest hinterlegten Fragen eines Buchs (Programmcode + Zusatz-Paket).
+List<Frage> eingebauteFragen(Buch buch) => [...buch.quiz, ...?zusatzFragen[buch.id]];
+
+/// Schwierigkeit des Quiz: aus dem Zusatz-Paket, sonst vom Buch.
+Schwierigkeit stufeVon(Buch buch) => zusatzStufe[buch.id] ?? buch.stufe;
+
 List<Frage> quizFragen(Buch buch, Konto? konto, [Random? zufall]) {
-  final alle = [...buch.quiz, ...?konto?.gemeinschaftsFragen[buch.id]]..shuffle(zufall);
+  final alle = [...eingebauteFragen(buch), ...?konto?.gemeinschaftsFragen[buch.id]]..shuffle(zufall);
   return alle.take(fragenProQuiz(buch.zielgruppe)).toList();
 }
 
@@ -34,4 +41,4 @@ DateTime? nochNichtErschienen(Buch buch, {DateTime? jetzt}) {
 
 bool quizVerfuegbar(Buch buch, Konto? konto, {DateTime? jetzt}) =>
     nochNichtErschienen(buch, jetzt: jetzt) == null &&
-    buch.quiz.length + (konto?.gemeinschaftsFragen[buch.id]?.length ?? 0) >= mindestFragen;
+    eingebauteFragen(buch).length + (konto?.gemeinschaftsFragen[buch.id]?.length ?? 0) >= mindestFragen;

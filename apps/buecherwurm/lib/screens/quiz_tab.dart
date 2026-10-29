@@ -66,7 +66,7 @@ class QuizTab extends StatelessWidget {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  StufeSchild(buch.stufe),
+                  StufeSchild(stufeVon(buch)),
                   const SizedBox(width: 8),
                   if (ergebnis == null)
                     const Icon(Icons.play_circle_outline)
