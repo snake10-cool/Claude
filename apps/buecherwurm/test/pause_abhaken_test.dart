@@ -44,7 +44,7 @@ void main() {
     await tester.tap(find.text('öffnen'));
     await tester.pumpAndSettle();
     expect(find.text('Weiter geht\'s!'), findsOneWidget);
-    expect(find.textContaining('Weiter mit Frage 2 von 3'), findsOneWidget);
+    expect(find.textContaining('Weiter mit Frage 2 von 10'), findsOneWidget);
   });
 
   test('Mitten in einer Frage geschlossen: diese Frage zählt als falsch', () async {

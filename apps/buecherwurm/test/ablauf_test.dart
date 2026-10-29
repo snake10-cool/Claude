@@ -55,7 +55,7 @@ void main() {
       await tester.pump();
     }
     await tester.pump();
-    expect(find.text('3 von 3 richtig'), findsOneWidget);
+    expect(find.text('${pippi.quiz.length} von ${pippi.quiz.length} richtig'), findsOneWidget);
     expect(speicher.bewiesen, 1);
     expect(speicher.punkte, greaterThanOrEqualTo(30));
     await tester.tap(find.text('Fertig'));
