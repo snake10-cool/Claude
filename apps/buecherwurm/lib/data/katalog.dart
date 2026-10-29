@@ -1,8 +1,13 @@
 import '../models/buch.dart';
+import 'katalog_erwachsen.dart';
+import 'katalog_jung.dart';
+
+/// Alle eingebauten Bücher (alle mit Quiz).
+const katalog = <Buch>[..._grundstock, ...katalogJung, ...katalogErwachsen];
 
 // Tags sind die Schlüssel aus [Tags]. Bei den Quizfragen steht die richtige
 // Antwort immer zuerst, die App mischt sie beim Anzeigen.
-const katalog = <Buch>[
+const _grundstock = <Buch>[
   // ───────────── Kinder ─────────────
   Buch(
     id: 'pippi',
