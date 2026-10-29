@@ -96,11 +96,13 @@ jobs:
           flutter test
           flutter build apk --release
 
+      # Eigener Upload-Schlüssel für Bücherwurm (Secrets
+      # BUECHERWURM_KEYSTORE_BASE64 und BUECHERWURM_KEYSTORE_PASSWORT).
       - name: Bücherwurm AAB für Google Play
         working-directory: apps/buecherwurm
         env:
-          KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-          PASSWORT: ${{ secrets.ANDROID_KEYSTORE_PASSWORT }}
+          KEYSTORE: ${{ secrets.BUECHERWURM_KEYSTORE_BASE64 }}
+          PASSWORT: ${{ secrets.BUECHERWURM_KEYSTORE_PASSWORT }}
         run: |
           if [ -z "$KEYSTORE" ] || [ -z "$PASSWORT" ]; then
             echo "Keine Signier-Secrets – AAB wird übersprungen."

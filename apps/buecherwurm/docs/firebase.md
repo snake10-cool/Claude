@@ -2,8 +2,7 @@
 
 Die App funktioniert ohne Firebase. Die Rangliste läuft dann über Punkte-Codes.
 Für Konten, @Namen und die Rangliste „Freunde / Weltweit" braucht Bücherwurm ein
-**eigenes** Firebase-Projekt. Es ist getrennt von Austro Angler, damit sich die
-Konten der beiden Apps nicht vermischen. Alles läuft im kostenlosen Spark-Tarif.
+**eigenes** Firebase-Projekt. Alles läuft im kostenlosen Spark-Tarif.
 
 Dauer: etwa 10 Minuten, nur mit dem Google-Konto (u3206495666@gmail.com).
 

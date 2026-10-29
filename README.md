@@ -72,6 +72,8 @@ Vereins-Rangliste · Fang-Geschichten · Schonzeit-Countdown.
 
 **Online-Rangliste einschalten:** Bücherwurm braucht ein eigenes Firebase-Projekt (10 Minuten). Die Anleitung steht in [`apps/buecherwurm/docs/firebase.md`](apps/buecherwurm/docs/firebase.md). Bis dahin läuft alles ohne Konto.
 
+**Play Store:** Bücherwurm hat einen eigenen Upload-Schlüssel. Sobald die GitHub-Secrets `BUECHERWURM_KEYSTORE_BASE64` und `BUECHERWURM_KEYSTORE_PASSWORT` angelegt sind, baut GitHub zusätzlich `Buecherwurm-PlayStore.aab`.
+
 Bücher und Quizfragen: `apps/buecherwurm/lib/data/katalog*.dart`, Fragebogen: `lib/data/fragebogen.dart`.
 
 ## 🔥 Firebase
