@@ -1,4 +1,4 @@
-12920 Bücher aus Wikidata (8200 mit Genre-Merkmalen); Kinder 356, Jugend 233, Erwachsene 12331
+12592 Bücher aus Wikidata (7866 mit Genre-Merkmalen); Kinder 362, Jugend 237, Erwachsene 11993
 Allgemeine Erklärung der Menschenrechte – Generalversammlung der Vereinten Nationen, United Nations Universal Declaration of Human Rights Drafting Committee (1940) klassiker
 Neues Testament – verschiedene Autoren (0) 
 Mahabharata – Vyasa (0) 
@@ -45,21 +45,19 @@ Decamerone – Giovanni Boccaccio (1353) klassiker
 A Christmas Carol – Charles Dickens (1843) klassiker
 Theogonie – Hesiod (0) 
 Hänsel und Gretel – Brüder Grimm, Jacob Grimm (1812) fantasy,klassiker
-Paradise Lost – John Milton (1667) klassiker
 Rolandslied – Turold (1100) klassiker
 Die Geschichte der Drei Reiche – Luo Guanzhong, Jiang Daqi (1350) historisch,klassiker
-Der Rabe – Edgar Allan Poe (1845) klassiker
 Äsops Fabeln – Äsop (0) tiere
 Canterbury Tales – Geoffrey Chaucer (1387) klassiker
 Eugen Onegin – Alexander Sergejewitsch Puschkin (1825) klassiker
 Protokolle der Weisen von Zion – Matwei Wassiljewitsch Golowinski (1903) klassiker
 Panchatantra – Vishnu Sharma (0) tiere
-Kojiki – Hieda no Are, Ō no Yasumaro (0) historisch
 Der Wohlstand der Nationen – Adam Smith (1776) klassiker,sachbuch
 Gespräche des Konfuzius – Anonymus (0) 
+Kojiki – Hieda no Are, Ō no Yasumaro (0) historisch
 Sahīh al-Buchārī – Al-Buchārī (0) 
-Eine Geschichte aus zwei Städten – Charles Dickens (1859) historisch,klassiker
 Candide oder der Optimismus – Voltaire (1759) klassiker,nachdenklich
+Eine Geschichte aus zwei Städten – Charles Dickens (1859) historisch,klassiker
 Vom Winde verweht – Margaret Mitchell (1936) historisch,klassiker,liebe
 De bello Gallico – Aulus Hirtius, Gaius Iulius Caesar (49) klassiker,sachbuch
 Höhlengleichnis – Platon (400) klassiker,sachbuch
@@ -72,8 +70,8 @@ Apologie – Platon (395) klassiker
 Die Räuber vom Liang-Schan-Moor – Shi Nai'an, Shi Hui (1400) abenteuer,historisch,klassiker
 Das hässliche Entlein – Hans Christian Andersen (0) fantasy
 Die Schneekönigin – Hans Christian Andersen (1844) fantasy,klassiker
-Vater Goriot – Honoré de Balzac (1835) historisch,klassiker
 Alice hinter den Spiegeln – Lewis Carroll (1871) fantasy,jungeHelden,klassiker
+Vater Goriot – Honoré de Balzac (1835) historisch,klassiker
 Des Kaisers neue Kleider – Hans Christian Andersen (1837) fantasy,klassiker
 Lieder-Edda – Sæmundur fróði (1260) klassiker
 Shiji – Sima Qian (90) klassiker
@@ -87,173 +85,167 @@ Der Archipel Gulag – Alexander Issajewitsch Solschenizyn (1973) sachbuch
 Jataka – verschiedene Autoren (0) tiere
 Poetik – Aristoteles (0) 
 Historien des Herodot – Herodot (0) historisch
-Fight Club – Chuck Palahniuk (1996) humor
 In einem andern Land – Ernest Hemingway (1929) klassiker
+Fight Club – Chuck Palahniuk (1996) humor
 Der König von Narnia – C. S. Lewis (1950) fantasy
 Herz-Sutra – Siddhartha Gautama (0) 
 Bhagavatapurana – Vyasa (1871) klassiker
 Gray’s Anatomy – Henry Gray (1858) klassiker
 Kampf der Kulturen – Samuel Phillips Huntington (1996) jungeHelden
 Das andere Geschlecht – Simone de Beauvoir (1949) klassiker,sachbuch
+Die drei kleinen Schweinchen – James Orchard Halliwell-Phillipps (1853) fantasy,klassiker,tiere
 Doktor Schiwago – Boris Leonidowitsch Pasternak (1957) historisch
 Die Abenteuer des braven Soldaten Schwejk – Jaroslav Hašek (1921) humor,klassiker
-Die drei kleinen Schweinchen – James Orchard Halliwell-Phillipps (1853) fantasy,klassiker,tiere
 Nikomachische Ethik – Aristoteles (0) 
 Watchmen – Alan Moore, Dave Gibbons (1986) fantasy
 Die Märchen von Beedle dem Barden – Joanne K. Rowling (2008) fantasy,jungeHelden
 Das kleine Mädchen mit den Schwefelhölzern – Hans Christian Andersen (1845) fantasy,klassiker
-Buch der Lieder – verschiedene Autoren (0) 
 Ruf der Wildnis – Jack London (1903) abenteuer,klassiker
-Die geheimnisvolle Insel – Jules Verne (1888) abenteuer,fantasy,klassiker,scifi
-Sohar – Mosche de Leon, Schimon ben Jochai (0) 
+Buch der Lieder – verschiedene Autoren (0) 
 Die Dämonen – Fjodor Michailowitsch Dostojewski (1871) klassiker
 Catch-22 – Joseph Heller (1961) historisch,humor
+Die geheimnisvolle Insel – Jules Verne (1888) abenteuer,fantasy,klassiker,scifi
+Sohar – Mosche de Leon, Schimon ben Jochai (0) 
 Lob der Torheit – Erasmus von Rotterdam (1511) humor,klassiker
 Utopia – Thomas Morus (0) sachbuch
 Straßburger Eide – Nithard (0) historisch
 Sahīh Muslim – Muslim ibn al-Haddschādsch (0) 
+Uhrwerk Orange – Anthony Burgess (1962) humor
+Les Fleurs du Mal – Charles Baudelaire (1857) klassiker
 Rot und Schwarz – Stendhal (1830) historisch,klassiker,nachdenklich
 Little Women – Louisa May Alcott (1868) klassiker,nachdenklich,sachbuch
-Les Fleurs du Mal – Charles Baudelaire (1857) klassiker
-Uhrwerk Orange – Anthony Burgess (1962) humor
 Worte des Vorsitzenden Mao Tsetung – Mao Zedong (1964) sachbuch
-Selbstbetrachtungen – Mark Aurel (0) 
 Kriton – Platon (400) klassiker
+Selbstbetrachtungen – Mark Aurel (0) 
 Shakespeares Sonette – William Shakespeare (1609) klassiker
 Werke und Tage – Hesiod (0) 
 Blaubart – Charles Perrault (1697) fantasy,klassiker
-Quidditch im Wandel der Zeiten – Joanne K. Rowling (2001) fantasy
-Der Recke im Tigerfell – Schota Rustaweli (1180) klassiker
 Aufzeichnungen aus dem Kellerloch – Fjodor Michailowitsch Dostojewski (1864) klassiker
 Yogasutra – Patanjali (0) 
+Quidditch im Wandel der Zeiten – Joanne K. Rowling (2001) fantasy
+Der Recke im Tigerfell – Schota Rustaweli (1180) klassiker
 Symposion – Platon (0) 
 Confessio Augustana – Philipp Melanchthon (1530) klassiker
 Metaphysik – Aristoteles (0) 
-Das verräterische Herz – Edgar Allan Poe (1843) horror,klassiker
 Der Spieler – Fjodor Michailowitsch Dostojewski (1867) klassiker
 Martin Eden – Jack London (1909) klassiker
 Systema Naturæ – Carl von Linné (1735) klassiker
 Phaidon – Platon (0) 
 Anabasis – Xenophon (1859) historisch,klassiker
+De civitate Dei – Augustinus von Hippo (0) 
 Der Revisor – Nikolai Wassiljewitsch Gogol (1836) humor,klassiker
 Parallelbiographien – Plutarch (110) klassiker
 Schiffbruch mit Tiger – Yann Martel (2001) abenteuer,fantasy
 Historia Augusta – Flavius Vopiscus, Aelius Spartianus (0) sachbuch
 Reise ans Ende der Nacht – Louis-Ferdinand Céline (1932) klassiker,sachbuch
-De civitate Dei – Augustinus von Hippo (0) 
 Madschnūn Lailā – Nezāmi (0) liebe
 Kalevipoeg – Friedrich Reinhold Kreutzwald (1857) klassiker
 Han Shu – Ban Gu, Ban Zhao (200) klassiker
+Däumelinchen – Hans Christian Andersen (1835) fantasy,klassiker
 Die Herrin von Wildfell Hall – Unbekannt (1848) klassiker
 Das Grüne Buch – Muammar al-Gaddafi (1975) 
-Däumelinchen – Hans Christian Andersen (1835) fantasy,klassiker
 Arme Leute – Fjodor Michailowitsch Dostojewski (1846) klassiker
-Der Mythos des Sisyphos – Albert Camus (1942) klassiker,nachdenklich,sachbuch
+Stabat mater – Iacopone da Todi (0) 
 Väter und Söhne – Iwan Sergejewitsch Turgenew (1862) klassiker
 Mitternachtskinder – Salman Rushdie (1981) historisch
-Rumpelstilzchen – Brüder Grimm, Jacob Grimm (1812) fantasy,klassiker
-Stabat mater – Iacopone da Todi (0) 
-Die Kameliendame – Alexandre Dumas der Jüngere (1848) klassiker,liebe,sachbuch
 DinoPark – Michael Crichton (1990) horror,scifi,thriller
+Schlachthof 5 oder Der Kinderkreuzzug – Kurt Vonnegut (1969) humor,scifi
 Weiße Nächte – Fjodor Michailowitsch Dostojewski (1848) klassiker
 Der ewige Quell – Ayn Rand (1943) klassiker,nachdenklich
-Schlachthof 5 oder Der Kinderkreuzzug – Kurt Vonnegut (1969) humor,scifi
-Georgica – Vergil (0) 
+Die Kameliendame – Alexandre Dumas der Jüngere (1848) klassiker,liebe,sachbuch
+Der Mythos des Sisyphos – Albert Camus (1942) klassiker,nachdenklich,sachbuch
+Rumpelstilzchen – Brüder Grimm, Jacob Grimm (1812) fantasy,klassiker
 Die Kinder des Kapitän Grant – Jules Verne (1864) abenteuer,klassiker
-Kanon der Medizin – Avicenna (1025) klassiker
 Organon – Aristoteles (0) 
+Kanon der Medizin – Avicenna (1025) klassiker
+The Pilgrim’s Progress – John Bunyan (1678) klassiker
+Homerische Hymnen – Homer (0) 
+Das Phantom der Oper – Gaston Leroux (1910) fantasy,horror,klassiker,krimi,liebe
+Anne Elliot – Jane Austen (1817) klassiker,liebe
 Atlas wirft die Welt ab – Ayn Rand (1957) krimi,liebe,scifi
 Ab urbe condita – Titus Livius (0) historisch
-Ein Porträt des Künstlers als junger Mann – James Joyce (1918) klassiker,nachdenklich
-Homerische Hymnen – Homer (0) 
 Walden – Henry David Thoreau (1854) klassiker
-Anne Elliot – Jane Austen (1817) klassiker,liebe
-The Pilgrim’s Progress – John Bunyan (1678) klassiker
-Das Phantom der Oper – Gaston Leroux (1910) fantasy,horror,klassiker,krimi,liebe
+Ein Porträt des Künstlers als junger Mann – James Joyce (1918) klassiker,nachdenklich
 Alexander I. – Tatjana Babac (0) 
 Phaidros – Platon (370) klassiker
 Von der Erde zum Mond – Jules Verne (1865) klassiker,scifi
-Confessiones – Augustinus von Hippo (0) sachbuch
-Die wunderbare Reise des kleinen Nils Holgersson mit den Wildgänsen – Selma Lagerlöf (1906) fantasy,klassiker
-Der Kater mit Hut – Dr. Seuss (1957) jungeHelden
-Der scharlachrote Buchstabe – Nathaniel Hawthorne (1850) historisch,klassiker,liebe
-Dubliner – James Joyce (1914) klassiker
 Historia regum Britanniae – Geoffrey von Monmouth (1136) historisch,klassiker
-Das Schwarzbuch des Kommunismus – Stéphane Courtois, Nicolas Werth (1997) historisch,sachbuch
 Quo Vadis – Henryk Sienkiewicz (1896) historisch,klassiker
 A Clash of Kings – George R. R. Martin (1998) fantasy
+Das Schwarzbuch des Kommunismus – Stéphane Courtois, Nicolas Werth (1997) historisch,sachbuch
+Confessiones – Augustinus von Hippo (0) sachbuch
+Die wunderbare Reise des kleinen Nils Holgersson mit den Wildgänsen – Selma Lagerlöf (1906) fantasy,klassiker
+Der scharlachrote Buchstabe – Nathaniel Hawthorne (1850) historisch,klassiker,liebe
+Der Kater mit Hut – Dr. Seuss (1957) jungeHelden
+Dubliner – James Joyce (1914) klassiker
 Timaios – Platon (360) klassiker
 Legenda aurea – Jacobus de Voragine (1298) klassiker
-Schall und Wahn – William Faulkner (1929) horror,klassiker
 Alexias – Anna Komnena (0) 
-Der rasende Roland – Ludovico Ariosto (1516) klassiker
+Schall und Wahn – William Faulkner (1929) horror,klassiker
 Die Hauptmannstochter – Alexander Sergejewitsch Puschkin (1836) historisch,klassiker
 Auferstehung – Lew Nikolajewitsch Tolstoi (1899) klassiker
-Mansfield Park – Jane Austen (1814) klassiker,liebe
-Das fehlende Glied in der Kette – Agatha Christie (1920) klassiker,krimi,liebe
-Die Möwe Jonathan – Richard Bach (1970) 
-Die Traumdeutung – Sigmund Freud (1900) klassiker
-Mortal Engines – Philip Reeve (2001) dystopie,nachdenklich,scifi
-Euthyphron – Platon (400) klassiker
-Rosenroman – Guillaume de Lorris, Jean de Meung (0) 
-Tod eines Handlungsreisenden – Arthur Miller (1949) drama,klassiker
+Der rasende Roland – Ludovico Ariosto (1516) klassiker
+Heimskringla – Snorri Sturluson (0) 
 Te Deum – Ambrosius von Mailand, Augustinus von Hippo (414) klassiker
 Frühlings- und Herbstannalen – Konfuzius (0) 
-Heimskringla – Snorri Sturluson (0) 
-Der schwarze Kater – Crowley Baruc (0) horror
-Die Fahrt zum Leuchtturm – Virginia Woolf (1927) klassiker
+Mansfield Park – Jane Austen (1814) klassiker,liebe
+Mortal Engines – Philip Reeve (2001) dystopie,nachdenklich,scifi
+Das fehlende Glied in der Kette – Agatha Christie (1920) klassiker,krimi,liebe
+Rosenroman – Guillaume de Lorris, Jean de Meung (0) 
+Euthyphron – Platon (400) klassiker
+Die Möwe Jonathan – Richard Bach (1970) 
+Tod eines Handlungsreisenden – Arthur Miller (1949) drama,klassiker
+Die Traumdeutung – Sigmund Freud (1900) klassiker
 Der Ekel – Jean-Paul Sartre (1938) klassiker,nachdenklich
+Die Fahrt zum Leuchtturm – Virginia Woolf (1927) klassiker
 Hundeherz – Michail Bulgakow (1987) drama,humor,scifi
 Dantes Inferno – Dante Alighieri (1304) humor,klassiker
 Vom Gesellschaftsvertrag oder Prinzipien des Staatsrechtes – Jean-Jacques Rousseau (1762) klassiker,sachbuch
 Ruhnama – Saparmyrat Nyýazow (2001) 
 Wir – Jewgeni Iwanowitsch Samjatin (1924) klassiker,scifi
 Germinal – Émile Zola (1885) klassiker
-Fünf Wochen im Ballon – Jules Verne (1863) abenteuer,klassiker
-Taras Bulba – Nikolai Wassiljewitsch Gogol (1835) historisch,klassiker,liebe
 Jenseits von Gut und Böse – Friedrich Nietzsche (1886) klassiker,sachbuch
-Die Stadt der Blinden – José Saramago (1995) dystopie,scifi
 Landnámabók – Ari Þorgilsson (1200) klassiker
-Der Hirte des Hermas – Hermas (0) 
-Der Doppelmord in der Rue Morgue – Edgar Allan Poe (1841) klassiker,krimi
+Fünf Wochen im Ballon – Jules Verne (1863) abenteuer,klassiker
 Sir Gawain and the Green Knight – Pearl-Dichter (0) liebe
 Träumen Androiden von elektrischen Schafen? – Philip K. Dick (1968) scifi
 Jahrmarkt der Eitelkeit – William Makepeace Thackeray (1848) klassiker
-De rerum natura – Lukrez (0) 
-Ethica, ordine geometrico demonstrata – Baruch de Spinoza (1677) klassiker,nachdenklich
-Der Prinz und der Bettelknabe – Mark Twain (1881) historisch,klassiker
+Der Hirte des Hermas – Hermas (0) 
 Historia ecclesiastica gentis Anglorum – Beda Venerabilis (0) 
 Periplus Maris Erythraei – Arrian (0) 
 Nachfolge Christi – Thomas von Kempen (0) 
+Ethica, ordine geometrico demonstrata – Baruch de Spinoza (1677) klassiker,nachdenklich
+Der Prinz und der Bettelknabe – Mark Twain (1881) historisch,klassiker
+Die Stadt der Blinden – José Saramago (1995) dystopie,scifi
+Taras Bulba – Nikolai Wassiljewitsch Gogol (1835) historisch,klassiker,liebe
 Peter-Prinzip – Laurence J. Peter, Raymond Hull (0) 
 Gorgias – Platon (0) 
+Discours de la méthode – René Descartes (1637) klassiker,nachdenklich,sachbuch
 UN-Antifolterkonvention – Generalversammlung der Vereinten Nationen (1984) 
 Gesta Danorum – Saxo Grammaticus (1300) klassiker
-Discours de la méthode – René Descartes (1637) klassiker,nachdenklich,sachbuch
+Der Froschkönig oder der eiserne Heinrich – Brüder Grimm, Jacob Grimm (1812) fantasy,klassiker
 Der stille Don – Michail Alexandrowitsch Scholochow (1928) klassiker
 Die Prinzessin auf der Erbse – Hans Christian Andersen (1835) fantasy,klassiker
-Der Froschkönig oder der eiserne Heinrich – Brüder Grimm, Jacob Grimm (1812) fantasy,klassiker
-Aufzeichnungen aus einem Totenhaus – Fjodor Michailowitsch Dostojewski (1862) klassiker
-Liber Pontificalis – Anonymous (Book of pontiffs) (0) sachbuch
-Al-Kutub as-sitta – rawah al-jamaa (0) 
 Das Orakel vom Berge – Philip K. Dick (1962) scifi
 Mrs. Dalloway – Virginia Woolf (1925) klassiker
 Heilige Bücher des Islam – Gott im Islam (0) 
+Aufzeichnungen aus einem Totenhaus – Fjodor Michailowitsch Dostojewski (1862) klassiker
+Liber Pontificalis – Anonymous (Book of pontiffs) (0) sachbuch
+Al-Kutub as-sitta – rawah al-jamaa (0) 
 Der Mantel – Nikolai Wassiljewitsch Gogol (1842) klassiker
-Ein Skandal in Böhmen – Arthur Conan Doyle (1892) klassiker,krimi
 Vom Geist der Gesetze – Charles de Secondat, Baron de Montesquieu (1748) klassiker
 Menon – Platon (0) 
 Ashoka-Edikte – Ashoka (0) 
 Finnegans Wake – James Joyce (1939) humor,klassiker
-Die Mutter – Maxim Gorki (1907) historisch,klassiker
 Der Wolf und die sieben jungen Geißlein – Brüder Grimm, Jacob Grimm (1812) fantasy,klassiker
+Die Mutter – Maxim Gorki (1907) historisch,klassiker
 A Dance with Dragons – George R. R. Martin (2011) fantasy
-Der Oberst hat niemand, der ihm schreibt – Gabriel García Márquez (1961) 
-Endstation Sehnsucht – Tennessee Williams (1947) horror,klassiker
-Germania – Tacitus (98) klassiker
-A Storm of Swords – George R. R. Martin (2000) fantasy
-Jabberwocky – Lewis Carroll (1871) klassiker
 La Celestina – Fernando de Rojas (1500) humor,klassiker
+Endstation Sehnsucht – Tennessee Williams (1947) horror,klassiker
+Jabberwocky – Lewis Carroll (1871) klassiker
+Germania – Tacitus (98) klassiker
+Der Oberst hat niemand, der ihm schreibt – Gabriel García Márquez (1961) 
+A Storm of Swords – George R. R. Martin (2000) fantasy
 Der Tod auf dem Nil – Agatha Christie (1937) klassiker,krimi
 Ecce homo – Friedrich Nietzsche (1888) klassiker,sachbuch
 Agenda 21 – Vereinte Nationen (0) 
@@ -261,41 +253,49 @@ Verteidigung der Rechte der Frau – Mary Wollstonecraft (1792) klassiker,sachbu
 Chroniken der Drei Reiche – Chen Shou (280) klassiker,sachbuch
 Das Sein und das Nichts – Jean-Paul Sartre (1943) klassiker,sachbuch
 Der stumme Frühling – Rachel Carson (1962) sachbuch
-Rot ist mein Name – Orhan Pamuk (1998) historisch
-Hou Hanshu – Fan Ye, Sima Biao (0) 
-König Salomos Schatzkammer – H. Rider Haggard (1885) abenteuer,klassiker
-Bibliotheke des Apollodor – Pseudo-Apollodor (0) 
-Argonautensage – Apollonios von Rhodos (0) 
-Tagebuch einer Kammerzofe – Octave Mirbeau (1900) klassiker
-Die Pickwickier – Charles Dickens (1836) humor,klassiker
-The Red-Headed League – Arthur Conan Doyle (1891) klassiker,krimi
-Émile oder Über die Erziehung – Jean-Jacques Rousseau (1762) klassiker,sachbuch
-Die Straße – Cormac McCarthy (2006) dystopie,scifi
 Al-Muwatta' – Mālik ibn Anas (0) 
 Die fröhliche Wissenschaft – Friedrich Nietzsche (1882) klassiker,sachbuch
+Die Straße – Cormac McCarthy (2006) dystopie,scifi
+Argonautensage – Apollonios von Rhodos (0) 
+Rot ist mein Name – Orhan Pamuk (1998) historisch
+Bibliotheke des Apollodor – Pseudo-Apollodor (0) 
+Émile oder Über die Erziehung – Jean-Jacques Rousseau (1762) klassiker,sachbuch
+Hou Hanshu – Fan Ye, Sima Biao (0) 
+König Salomos Schatzkammer – H. Rider Haggard (1885) abenteuer,klassiker
 Zabūr – Gott im Islam (0) 
+Tagebuch einer Kammerzofe – Octave Mirbeau (1900) klassiker
 Der Fuchs und die Trauben – Äsop (0) tiere
+Die Pickwickier – Charles Dickens (1836) humor,klassiker
 A Feast for Crows – George R. R. Martin (2005) fantasy
-Species Plantarum – Carl von Linné (0) 
 Froschmäusekrieg – Pseudo-Homeros, Homer (600) humor,klassiker
+Species Plantarum – Carl von Linné (0) 
 The Stand – Das letzte Gefecht – Stephen King (1978) dystopie,fantasy,horror,scifi
 Frau Holle – Brüder Grimm, Jacob Grimm (1812) fantasy,klassiker
-Der Kurier des Zaren – Jules Verne (1876) abenteuer,historisch,klassiker
-Fundamento de Esperanto – Ludwik Lejzer Zamenhof (1905) klassiker
 Ein Kapitän von fünfzehn Jahren – Jules Verne (1878) klassiker
+Kopfkissenbuch – Sei Shōnagon (0) 
 Mein Katalonien – George Orwell (1938) klassiker,sachbuch
 Lord Jim – Joseph Conrad (1900) klassiker
-Der Goldkäfer – Edgar Allan Poe (1842) klassiker,krimi
-Nanhua zhenjing – Zhuangzi (0) 
+Fundamento de Esperanto – Ludwik Lejzer Zamenhof (1905) klassiker
+Der Kurier des Zaren – Jules Verne (1876) abenteuer,historisch,klassiker
 Der Tod des Iwan Iljitsch – Lew Nikolajewitsch Tolstoi (1886) klassiker
-Kopfkissenbuch – Sei Shōnagon (0) 
 Das Tal der Angst – Arthur Conan Doyle (1915) klassiker,krimi
+Nanhua zhenjing – Zhuangzi (0) 
 Casino Royale – Ian Fleming (1953) krimi
 Arm und Reich – Jared Diamond (1997) sachbuch
 Der Antichrist – Friedrich Nietzsche (1889) klassiker,sachbuch
-Il Milione – Rustichello da Pisa, Marco Polo (1298) klassiker
 De revolutionibus orbium coelestium – Nikolaus Kopernikus (1543) klassiker
 Der Judenstaat – Theodor Herzl (1896) klassiker,sachbuch
 Nomoi – Platon (0) 
+Il Milione – Rustichello da Pisa, Marco Polo (1298) klassiker
 Der standhafte Zinnsoldat – Hans Christian Andersen (1838) fantasy,klassiker
 Ein Tag im Leben des Iwan Denissowitsch – Alexander Issajewitsch Solschenizyn (1962) 
+Heiligstes Buch – Baha'ullah (1872) klassiker
+Die Mausefalle – Agatha Christie (1945) klassiker,krimi
+Das befreite Jerusalem – Torquato Tasso (1580) klassiker
+Die Geburt der Tragödie aus dem Geiste der Musik – Friedrich Nietzsche (1872) klassiker,sachbuch
+Struwwelpeter – Heinrich Hoffmann (1845) jungeHelden,klassiker
+I Promessi Sposi – Alessandro Manzoni (1827) historisch,klassiker,liebe
+Der Prophet – Khalil Gibran (1923) fantasy,klassiker,nachdenklich
+Things Fall Apart – Chinua Achebe (1958) historisch
+Starship Troopers – Robert A. Heinlein (1959) scifi
+Die Katze auf dem heißen Blechdach – Tennessee Williams (1955) drama
