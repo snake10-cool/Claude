@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
 import '../models/buch.dart';
+import '../models/meldung.dart';
 import 'speicher.dart';
 
 /// Administrator: gibt Quizfragen frei (muss mit firestore.rules übereinstimmen).
@@ -381,6 +382,32 @@ class Konto extends ChangeNotifier {
 
   Future<void> ablehnen(Vorschlag v) =>
       _fehler(() => _db.collection('quizvorschlaege').doc(v.id).update({'status': 'abgelehnt'}));
+
+  // ───────── Gemeldete Quizfragen ─────────
+
+  /// Schickt eine Meldung an den Admin. Ohne Anmeldung geht es nicht –
+  /// dann merkt sich die App die Meldung und reicht sie später nach.
+  Future<void> frageMelden(FrageMeldung m) async {
+    final u = nutzer;
+    if (u == null) throw const KontoFehler('Bitte melde dich an, damit die Meldung beim Admin ankommt.');
+    await _fehler(() => _db.collection('fragemeldungen').add({
+          ...m.toJson(),
+          'uid': u.uid,
+          'name': name ?? '',
+          'status': 'neu',
+          'erstellt': FieldValue.serverTimestamp(),
+        }));
+  }
+
+  /// Nur für den Admin: noch nicht bearbeitete Meldungen.
+  Stream<List<FrageMeldung>> offeneMeldungen() => _db
+      .collection('fragemeldungen')
+      .where('status', isEqualTo: 'neu')
+      .snapshots()
+      .map((s) => [for (final d in s.docs) FrageMeldung.fromJson(d.data(), id: d.id)]);
+
+  Future<void> meldungErledigt(FrageMeldung m) =>
+      _fehler(() => _db.collection('fragemeldungen').doc(m.id).update({'status': 'erledigt'}));
 
   // ───────── Rezensionen ─────────
 

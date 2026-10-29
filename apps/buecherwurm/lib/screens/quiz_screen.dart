@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../models/buch.dart';
 import '../services/quiz_fragen.dart';
+import '../widgets/frage_melden.dart';
 
 /// Zeit pro Frage. Kurz genug, dass Nachschlagen kaum klappt.
 const sekundenProFrage = 20;
@@ -331,6 +332,11 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
               icon: const Icon(Icons.pause),
               label: const Text('Pausieren – später weitermachen'),
             ),
+          TextButton.icon(
+            onPressed: () => frageMelden(context, widget.buch, frage, gewaehlt: _gewaehlt),
+            icon: const Icon(Icons.flag_outlined),
+            label: const Text('Problem mit dieser Frage melden'),
+          ),
         ],
       ],
     );

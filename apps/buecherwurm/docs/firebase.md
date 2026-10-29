@@ -74,3 +74,7 @@ bekommt eins, sobald 3 Fragen freigegeben sind.
 
 Bücher, Bewertungen, Notizen und der Fragebogen bleiben **nur auf dem Handy**.
 „Konto löschen" in der App entfernt alles Online-Gespeicherte. Das ist Pflicht für den Play Store.
+
+## Gemeldete Fragen
+
+Im Quiz kann jeder nach dem Antworten „Problem mit dieser Frage melden“ antippen (keine richtige Antwort, falsch gewertet, mehrere richtig, unklar, Spoiler, Tippfehler, Sonstiges). Meldungen landen in der Sammlung `fragemeldungen`; nur der Admin kann sie lesen und im Admin-Bereich unter „Gemeldete Fragen“ als erledigt markieren. Ohne Anmeldung merkt sich die App die Meldung und schickt sie beim nächsten Melden mit. Die Regeln dafür stehen in `firestore.rules` – nach dem Ändern neu veröffentlichen.

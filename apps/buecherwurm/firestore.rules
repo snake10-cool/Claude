@@ -71,6 +71,22 @@ service cloud.firestore {
 
     // Quizfragen-Vorschläge der Leser: nur der Admin sieht alle und
     // entscheidet. Die richtige Antwort steht immer zuerst.
+    // Gemeldete Quizfragen: jeder Angemeldete darf melden, nur der Admin liest.
+    match /fragemeldungen/{id} {
+      allow create: if angemeldet()
+          && request.resource.data.keys().hasOnly(['buchId', 'buchTitel', 'frage', 'richtig', 'gewaehlt', 'grund', 'text', 'uid', 'name', 'status', 'erstellt'])
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.grund in ['keine', 'falsch', 'mehrere', 'unklar', 'spoiler', 'tippfehler', 'sonstiges']
+          && request.resource.data.text is string && request.resource.data.text.size() <= 500
+          && request.resource.data.frage is string && request.resource.data.frage.size() <= 300
+          && request.resource.data.status == 'neu'
+          && request.resource.data.erstellt == request.time;
+      allow read, delete: if istAdmin();
+      allow update: if istAdmin()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+          && request.resource.data.status == 'erledigt';
+    }
+
     match /quizvorschlaege/{id} {
       allow create: if angemeldet()
           && request.resource.data.keys().hasOnly(['buchId', 'buchTitel', 'frage', 'antworten', 'uid', 'name', 'status', 'erstellt'])

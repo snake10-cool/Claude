@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../data/katalog.dart';
 import '../data/katalog_zusatz.dart';
 import '../models/buch.dart';
+import '../models/meldung.dart';
 import 'challenges.dart';
 import 'empfehlung.dart';
 
@@ -63,6 +64,9 @@ class Speicher extends ChangeNotifier {
     };
     geprueft = {...(_json('geprueft', []) as List).cast<String>()};
     abgelehnt = {...(_json('abgelehnt', []) as List).cast<String>()};
+    offeneMeldungen = [
+      for (final m in _json('meldungen', []) as List) FrageMeldung.fromJson(Map<String, dynamic>.from(m as Map)),
+    ];
     pausierteQuizze = {
       for (final MapEntry(:key, :value) in _json('pausierteQuizze', {}).entries)
         key: value as Map<String, dynamic>,
@@ -99,6 +103,20 @@ class Speicher extends ChangeNotifier {
 
   /// Angefangene Quizze zum Weitermachen: Buch-ID → Zustand.
   late Map<String, Map<String, dynamic>> pausierteQuizze;
+
+  /// Gemeldete Quizfragen, die noch nicht beim Admin angekommen sind
+  /// (ohne Konto oder ohne Internet). Werden beim nächsten Senden nachgereicht.
+  late List<FrageMeldung> offeneMeldungen;
+
+  Future<void> meldungMerken(FrageMeldung m) {
+    offeneMeldungen.add(m);
+    return _speichern('meldungen', [for (final x in offeneMeldungen) x.toJson()]);
+  }
+
+  Future<void> meldungenGesendet() {
+    offeneMeldungen.clear();
+    return _speichern('meldungen', const []);
+  }
 
   // ───────── Fortschritt speichern ─────────
 
