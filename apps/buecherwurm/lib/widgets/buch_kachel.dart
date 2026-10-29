@@ -29,7 +29,7 @@ class BuchCover extends StatelessWidget {
         .where((w) => w.isNotEmpty && RegExp(r'[A-Za-zÄÖÜäöü0-9]').hasMatch(w[0]))
         .toList();
     final kuerzel = woerter.take(2).map((w) => w[0].toUpperCase()).join();
-    return Container(
+    final platzhalter = Container(
       width: breite,
       height: breite * 1.45,
       alignment: Alignment.center,
@@ -48,6 +48,20 @@ class BuchCover extends StatelessWidget {
           fontWeight: FontWeight.bold,
           fontSize: breite * 0.38,
         ),
+      ),
+    );
+    final url = buch.coverUrl;
+    if (url == null) return platzhalter;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(breite / 10),
+      child: Image.network(
+        url,
+        width: breite,
+        height: breite * 1.45,
+        fit: BoxFit.cover,
+        // Ohne Internet oder bei kaputtem Link einfach der Platzhalter.
+        errorBuilder: (_, _, _) => platzhalter,
+        loadingBuilder: (_, bild, fortschritt) => fortschritt == null ? bild : platzhalter,
       ),
     );
   }

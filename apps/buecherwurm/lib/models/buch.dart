@@ -25,6 +25,8 @@ class Buch {
     this.minAlter = 0,
     this.quiz = const [],
     this.eigenes = false,
+    this.coverUrl,
+    this.isbn,
   });
 
   final String id;
@@ -43,6 +45,10 @@ class Buch {
   /// Vom Nutzer selbst angelegt (nicht im Katalog, ohne Quiz).
   final bool eigenes;
 
+  /// Cover aus der Online-Suche, sonst null (dann Platzhalter).
+  final String? coverUrl;
+  final String? isbn;
+
   bool get hatQuiz => quiz.isNotEmpty;
 
   Map<String, dynamic> toJson() => {
@@ -51,6 +57,11 @@ class Buch {
         'autor': autor,
         'jahr': jahr,
         'seiten': seiten,
+        'zielgruppe': zielgruppe.name,
+        'tags': tags.toList(),
+        'beschreibung': beschreibung,
+        'coverUrl': ?coverUrl,
+        'isbn': ?isbn,
       };
 
   factory Buch.eigenesAusJson(Map<String, dynamic> j) => Buch(
@@ -59,10 +70,12 @@ class Buch {
         autor: j['autor'] as String,
         jahr: j['jahr'] as int? ?? 0,
         seiten: j['seiten'] as int? ?? 0,
-        zielgruppe: Zielgruppe.erwachsene,
-        tags: const {},
-        beschreibung: 'Selbst hinzugefügt.',
+        zielgruppe: Zielgruppe.values.asNameMap()[j['zielgruppe']] ?? Zielgruppe.erwachsene,
+        tags: {...?(j['tags'] as List?)?.cast<String>()},
+        beschreibung: j['beschreibung'] as String? ?? 'Selbst hinzugefügt.',
         eigenes: true,
+        coverUrl: j['coverUrl'] as String?,
+        isbn: j['isbn'] as String?,
       );
 }
 

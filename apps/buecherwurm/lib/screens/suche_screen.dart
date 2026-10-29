@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../models/buch.dart';
 import '../widgets/buch_kachel.dart';
+import 'online_suche_screen.dart';
 import 'start_screen.dart';
 
 class SucheScreen extends StatefulWidget {
@@ -29,6 +30,15 @@ class _SucheScreenState extends State<SucheScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            tooltip: 'ISBN scannen',
+            icon: const Icon(Icons.qr_code_scanner),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => const OnlineSucheScreen(scannen: true),
+            )),
+          ),
+        ],
         title: TextField(
           autofocus: true,
           decoration: const InputDecoration(hintText: 'Titel oder Autor', border: InputBorder.none),
@@ -57,8 +67,22 @@ class _SucheScreenState extends State<SucheScreen> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: buecher.length,
+              itemCount: buecher.length + 1,
               itemBuilder: (context, i) {
+                if (i == buecher.length) {
+                  return Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: OutlinedButton.icon(
+                      onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => OnlineSucheScreen(text: _text),
+                      )),
+                      icon: const Icon(Icons.travel_explore),
+                      label: Text(_text.isEmpty
+                          ? 'Nicht dabei? Alle Bücher der Welt durchsuchen'
+                          : '„$_text" online suchen'),
+                    ),
+                  );
+                }
                 final buch = buecher[i];
                 final status = speicher.eintraege[buch.id]?.status;
                 return ListTile(

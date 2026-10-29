@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../models/buch.dart';
 import '../widgets/buch_kachel.dart';
+import 'online_suche_screen.dart';
 import 'start_screen.dart';
 
 class BibliothekTab extends StatefulWidget {
@@ -25,9 +26,9 @@ class _BibliothekTabState extends State<BibliothekTab> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => _eigenesBuch(context),
+        onPressed: () => _hinzufuegen(context),
         icon: const Icon(Icons.add),
-        label: const Text('Eigenes Buch'),
+        label: const Text('Buch hinzufügen'),
       ),
       body: Column(
         children: [
@@ -97,6 +98,45 @@ class _BibliothekTabState extends State<BibliothekTab> {
                   ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _hinzufuegen(BuildContext context) {
+    void oeffnen(Widget seite) {
+      Navigator.of(context).pop();
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) => seite));
+    }
+
+    showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      builder: (sheetContext) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.travel_explore),
+              title: const Text('Online suchen'),
+              subtitle: const Text('Titel oder Autor – jedes Buch der Welt'),
+              onTap: () => oeffnen(const OnlineSucheScreen()),
+            ),
+            ListTile(
+              leading: const Icon(Icons.qr_code_scanner),
+              title: const Text('Strichcode scannen'),
+              subtitle: const Text('ISBN auf der Rückseite des Buchs'),
+              onTap: () => oeffnen(const OnlineSucheScreen(scannen: true)),
+            ),
+            ListTile(
+              leading: const Icon(Icons.edit_note),
+              title: const Text('Von Hand eintragen'),
+              onTap: () {
+                Navigator.of(sheetContext).pop();
+                _eigenesBuch(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

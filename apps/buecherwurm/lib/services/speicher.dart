@@ -109,17 +109,29 @@ class Speicher extends ChangeNotifier {
     return _speichern('eintraege', eintraege);
   }
 
-  Future<Buch> eigenesBuchAnlegen(String titel, String autor, int seiten) async {
+  Future<Buch> eigenesBuchAnlegen(
+    String titel,
+    String autor,
+    int seiten, {
+    int jahr = 0,
+    Set<String> tags = const {},
+    Zielgruppe zielgruppe = Zielgruppe.erwachsene,
+    String beschreibung = 'Selbst hinzugefügt.',
+    String? coverUrl,
+    String? isbn,
+  }) async {
     final buch = Buch(
       id: 'eigen_${DateTime.now().microsecondsSinceEpoch}',
       titel: titel,
       autor: autor,
-      jahr: 0,
+      jahr: jahr,
       seiten: seiten,
-      zielgruppe: Zielgruppe.erwachsene,
-      tags: const {},
-      beschreibung: 'Selbst hinzugefügt.',
+      zielgruppe: zielgruppe,
+      tags: tags,
+      beschreibung: beschreibung,
       eigenes: true,
+      coverUrl: coverUrl,
+      isbn: isbn,
     );
     eigeneBuecher.add(buch);
     await _speichern('eigeneBuecher', [for (final b in eigeneBuecher) b.toJson()]);
