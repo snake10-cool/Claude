@@ -180,7 +180,7 @@ UNERWUENSCHT = re.compile(
 KEIN_BAND = re.compile(
     r'trilogie|gesamtausgabe|vorgeschichte|-saga\b|\bsaga$|doppelband|schulplaner|planer|'
     r'journal|brosche|kette\b|anhänger|\bvke\b|\bve\b|hausaufgabenheft|geschichten aus|'
-    r'zum film|lesebuch|& friends|und friends|alle meine|unsere schönsten|\d+ weihnacht', re.I)
+    r'zum film|der film|lesebuch|& friends|und friends|alle meine|unsere schönsten|\d+ weihnacht', re.I)
 
 
 def kern(titel):
@@ -279,7 +279,7 @@ def main():
     platz = maximal - len(quiz)
     bekannt = {normal(t) for _, t, _ in quiz}
     # Kerntitel (ohne Reihenname davor), damit „Lockwood & Co – X" und „X" als gleich gelten.
-    kerne = {normal(kern(t)) for _, t, _ in quiz if len(normal(kern(t))) >= 8}
+    quiz_kerne = frozenset(normal(kern(t)) for _, t, _ in quiz if len(normal(kern(t))) >= 8)
     print(f'{len(quiz)} Bücher mit Quiz, Platz für {platz} weitere')
 
     buecher = []
@@ -288,11 +288,11 @@ def main():
     def hinzufuegen(eintrag):
         schluessel = normal(eintrag['titel'])
         k = normal(kern(eintrag['titel']))
-        if schluessel in bekannt or (len(k) >= 8 and k in kerne) or len(buecher) >= platz:
+        # Kerntitel nur gegen die Quiz-Bücher prüfen; innerhalb einer Reihe
+        # sorgt band_kerne für Eindeutigkeit.
+        if schluessel in bekannt or (len(k) >= 8 and k in quiz_kerne) or len(buecher) >= platz:
             return False
         bekannt.add(schluessel)
-        if len(k) >= 8:
-            kerne.add(k)
         buecher.append(eintrag)
         return True
 
@@ -338,23 +338,24 @@ def main():
                 if gefunden:
                     break
             # Gleicher Bandtitel unter verschiedenen Nummern/Schreibweisen nur einmal.
-            auswahl, kerne = [], set()
+            auswahl, band_kerne = [], set()
             for e in sorted(gefunden.values(), key=lambda e: (e['nr'] or 999, e['jahr'] or 9999)):
                 k = normal(kern(e['anzeige']))
-                if k in kerne:
+                if k in band_kerne:
                     continue
-                kerne.add(k)
+                band_kerne.add(k)
                 auswahl.append(e)
             auswahl = auswahl[:r['max']]
+            uebernommen = 0
             for e in auswahl:
-                hinzufuegen({
+                uebernommen += hinzufuegen({
                     'titel': e['anzeige'], 'autor': e['autor'], 'jahr': e['jahr'], 'seiten': e['seiten'],
                     'isbn': e['isbn'], 'zielgruppe': ziel, 'minAlter': min_alter,
                     'tags': sorted(g_tags | set(r.get('tags', [])) | tags_aus(e['schlagworte']) | {'serie'}),
                     'beschreibung': (f'Band {e["nr"]} der Reihe „{r["reihe"]}".' if e['nr']
                                      else f'Aus der Reihe „{r["reihe"]}".'),
                 })
-            bericht.append(f'Reihe {r["reihe"]}: {len(auswahl)} Bände ' +
+            bericht.append(f'Reihe {r["reihe"]}: {len(auswahl)} Bände, {uebernommen} neu ' +
                            ('| ' + '; '.join(e['anzeige'] for e in auswahl) if auswahl else '– NICHTS GEFUNDEN'))
             print(bericht[-1][:150])
 
