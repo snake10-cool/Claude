@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/katalog.dart';
+import '../data/katalog_zusatz.dart';
 import '../models/buch.dart';
 import 'challenges.dart';
 import 'empfehlung.dart';
@@ -234,7 +235,17 @@ class Speicher extends ChangeNotifier {
 
   // ───────── Bücher ─────────
 
-  List<Buch> get alleBuecher => [...katalog, ...eigeneBuecher];
+  List<Buch> get alleBuecher => [...katalog, ...katalogZusatz, ...eigeneBuecher];
+
+  // Empfehlungen zwischenspeichern: Bei 20.000 Büchern nicht bei jedem
+  // Neuzeichnen neu rechnen, nur nach Änderungen.
+  List<Empfehlung>? _empfehlungenCache;
+
+  @override
+  void notifyListeners() {
+    _empfehlungenCache = null;
+    super.notifyListeners();
+  }
 
   Buch? buch(String id) {
     final k = katalogBuch(id);
@@ -309,7 +320,7 @@ class Speicher extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<Empfehlung> get empfehlungen => empfehlen(
+  List<Empfehlung> get empfehlungen => _empfehlungenCache ??= empfehlen(
         antworten: antworten,
         eintraege: eintraege,
         buecher: alleBuecher,

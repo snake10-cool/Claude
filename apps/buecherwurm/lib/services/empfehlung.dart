@@ -115,7 +115,7 @@ List<Empfehlung> empfehlen({
     punkte /= sqrt(max(buch.tags.length, 1));
 
     if (alter != null) punkte += _altersBonus(alter, buch.zielgruppe);
-    if (laenge != null) punkte += _laengenBonus(laenge, buch.seiten);
+    if (laenge != null && buch.seiten > 0) punkte += _laengenBonus(laenge, buch.seiten);
 
     treffer.sort((a, b) => b.$2.compareTo(a.$2));
     final gruende = [for (final t in treffer.take(3)) Tags.namen[t.$1] ?? t.$1];

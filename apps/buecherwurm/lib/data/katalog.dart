@@ -1,6 +1,7 @@
 import '../models/buch.dart';
 import 'katalog_erwachsen.dart';
 import 'katalog_extra.dart';
+import 'katalog_zusatz.dart';
 import 'katalog_jung.dart';
 import 'katalog_klassiker.dart';
 import 'katalog_mehr_quiz.dart';
@@ -808,4 +809,4 @@ const _grundstock = <Buch>[
 
 final _nachId = {for (final b in katalog) b.id: b};
 
-Buch? katalogBuch(String id) => _nachId[id];
+Buch? katalogBuch(String id) => _nachId[id] ?? zusatzBuch(id);
