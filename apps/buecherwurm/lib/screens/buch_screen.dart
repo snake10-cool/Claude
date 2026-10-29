@@ -5,6 +5,7 @@ import '../models/buch.dart';
 import '../services/quiz_fragen.dart';
 import '../widgets/buch_kachel.dart';
 import '../widgets/lese_fortschritt.dart';
+import '../widgets/rezensionen.dart';
 import 'konto_screen.dart';
 import 'quiz_screen.dart';
 import 'quiz_vorschlag_screen.dart';
@@ -187,6 +188,10 @@ class BuchScreen extends StatelessWidget {
               icon: const Icon(Icons.add_comment_outlined),
               label: Text(konto.angemeldet ? 'Quizfrage vorschlagen' : 'Anmelden, um Quizfragen vorzuschlagen'),
             ),
+          ],
+          if (konto != null && !buch.eigenes) ...[
+            const Divider(height: 32),
+            Rezensionen(buch: buch, konto: konto),
           ],
         ],
       ),

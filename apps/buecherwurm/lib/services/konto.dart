@@ -10,6 +10,73 @@ import 'speicher.dart';
 /// Administrator: gibt Quizfragen frei (muss mit firestore.rules übereinstimmen).
 const adminEmail = 'snakejoni10@yahoo.com';
 
+/// Eine Rezension zu einem Buch (eine pro Leser und Buch).
+class Rezension {
+  const Rezension(this.id, this.buchId, this.uid, this.name, this.sterne, this.text, this.spoiler, this.erstellt);
+
+  final String id;
+  final String buchId;
+  final String uid;
+  final String name;
+  final int sterne;
+  final String text;
+  final bool spoiler;
+  final DateTime? erstellt;
+
+  factory Rezension.ausDoc(DocumentSnapshot<Map<String, dynamic>> d) {
+    final j = d.data() ?? const {};
+    return Rezension(
+      d.id,
+      j['buchId'] as String? ?? '',
+      j['uid'] as String? ?? '',
+      j['name'] as String? ?? '?',
+      j['sterne'] as int? ?? 0,
+      j['text'] as String? ?? '',
+      j['spoiler'] as bool? ?? false,
+      (j['erstellt'] as Timestamp?)?.toDate(),
+    );
+  }
+}
+
+/// Eine Lesegruppe (Buchclub).
+class Gruppe {
+  const Gruppe(this.id, this.name, this.code, this.mitglieder, this.namen, this.buchId, this.buchTitel);
+
+  final String id;
+  final String name;
+
+  /// 6-stelliger Beitrittscode.
+  final String code;
+  final List<String> mitglieder;
+  final Map<String, String> namen;
+  final String? buchId;
+  final String? buchTitel;
+
+  factory Gruppe.ausDoc(DocumentSnapshot<Map<String, dynamic>> d) {
+    final j = d.data() ?? const {};
+    return Gruppe(
+      d.id,
+      j['name'] as String? ?? '',
+      j['code'] as String? ?? '',
+      List<String>.from(j['mitglieder'] as List? ?? const []),
+      Map<String, String>.from(j['namen'] as Map? ?? const {}),
+      j['buchId'] as String?,
+      j['buchTitel'] as String?,
+    );
+  }
+}
+
+/// Fortschritt eines Mitglieds beim Gruppenbuch.
+class GruppenFortschritt {
+  const GruppenFortschritt(this.uid, this.name, this.seite, this.seiten, this.gelesen);
+
+  final String uid;
+  final String name;
+  final int seite;
+  final int seiten;
+  final bool gelesen;
+}
+
 /// Eine von Lesern vorgeschlagene Quizfrage.
 class Vorschlag {
   const Vorschlag(this.id, this.buchId, this.buchTitel, this.frage, this.antworten, this.name, this.status);
@@ -314,6 +381,123 @@ class Konto extends ChangeNotifier {
 
   Future<void> ablehnen(Vorschlag v) =>
       _fehler(() => _db.collection('quizvorschlaege').doc(v.id).update({'status': 'abgelehnt'}));
+
+  // ───────── Rezensionen ─────────
+
+  CollectionReference<Map<String, dynamic>> get _rezensionen => _db.collection('rezensionen');
+
+  // Ohne orderBy, damit Firestore keinen zusätzlichen Index braucht.
+  Stream<List<Rezension>> rezensionen(String buchId) => _rezensionen
+      .where('buchId', isEqualTo: buchId)
+      .limit(100)
+      .snapshots()
+      .map((s) => s.docs.map(Rezension.ausDoc).toList()
+        ..sort((a, b) => (b.erstellt ?? DateTime(2100)).compareTo(a.erstellt ?? DateTime(2100))));
+
+  Future<void> rezensionSchreiben(String buchId, int sterne, String text, bool spoiler) async {
+    final u = nutzer;
+    if (u == null || name == null) throw const KontoFehler('Bitte melde dich zuerst an.');
+    await _fehler(() => _rezensionen.doc('${buchId}_${u.uid}').set({
+          'buchId': buchId,
+          'uid': u.uid,
+          'name': name,
+          'sterne': sterne,
+          'text': text.trim(),
+          'spoiler': spoiler,
+          'erstellt': FieldValue.serverTimestamp(),
+        }));
+  }
+
+  Future<void> rezensionLoeschen(String id) => _fehler(() => _rezensionen.doc(id).delete());
+
+  Future<int> hilfreichAnzahl(String rezensionId) async {
+    final s = await _rezensionen.doc(rezensionId).collection('hilfreich').count().get();
+    return s.count ?? 0;
+  }
+
+  Future<void> hilfreich(String rezensionId) async {
+    final u = nutzer;
+    if (u == null) throw const KontoFehler('Bitte melde dich zuerst an.');
+    await _fehler(() => _rezensionen.doc(rezensionId).collection('hilfreich').doc(u.uid).set({'am': FieldValue.serverTimestamp()}));
+  }
+
+  // ───────── Lesegruppen ─────────
+
+  CollectionReference<Map<String, dynamic>> get _gruppen => _db.collection('gruppen');
+
+  Stream<List<Gruppe>> meineGruppen() {
+    final u = nutzer;
+    if (u == null) return Stream.value(const []);
+    return _gruppen.where('mitglieder', arrayContains: u.uid).snapshots().map((s) => s.docs.map(Gruppe.ausDoc).toList());
+  }
+
+  Stream<Gruppe> gruppe(String id) => _gruppen.doc(id).snapshots().map(Gruppe.ausDoc);
+
+  Future<Gruppe> gruppeGruenden(String gruppenName) async {
+    final u = nutzer;
+    if (u == null || name == null) throw const KontoFehler('Bitte melde dich zuerst an.');
+    const zeichen = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    final zufall = DateTime.now().microsecondsSinceEpoch;
+    final code = List.generate(6, (i) => zeichen[(zufall ~/ (i * 7 + 1) + i * 13) % zeichen.length]).join();
+    final ref = _gruppen.doc();
+    await _fehler(() => ref.set({
+          'name': gruppenName.trim(),
+          'code': code,
+          'ersteller': u.uid,
+          'mitglieder': [u.uid],
+          'namen': {u.uid: name},
+          'erstellt': FieldValue.serverTimestamp(),
+        }));
+    return Gruppe(ref.id, gruppenName.trim(), code, [u.uid], {u.uid: name!}, null, null);
+  }
+
+  Future<void> gruppeBeitreten(String code) async {
+    final u = nutzer;
+    if (u == null || name == null) throw const KontoFehler('Bitte melde dich zuerst an.');
+    final treffer = await _fehler(() => _gruppen.where('code', isEqualTo: code.trim().toUpperCase()).limit(1).get());
+    if (treffer.docs.isEmpty) throw const KontoFehler('Diesen Code gibt es nicht.');
+    await _fehler(() => treffer.docs.first.reference.update({
+          'mitglieder': FieldValue.arrayUnion([u.uid]),
+          'namen.${u.uid}': name,
+        }));
+  }
+
+  Future<void> gruppeVerlassen(String gruppenId) async {
+    final u = nutzer;
+    if (u == null) return;
+    await _fehler(() => _gruppen.doc(gruppenId).update({
+          'mitglieder': FieldValue.arrayRemove([u.uid]),
+          'namen.${u.uid}': FieldValue.delete(),
+        }));
+  }
+
+  Future<void> gruppenBuchSetzen(String gruppenId, Buch buch) =>
+      _fehler(() => _gruppen.doc(gruppenId).update({'buchId': buch.id, 'buchTitel': buch.titel}));
+
+  /// Eigenen Fortschritt beim Gruppenbuch hochladen.
+  Future<void> fortschrittMelden(String gruppenId, int seite, int seiten, bool gelesen) async {
+    final u = nutzer;
+    if (u == null || name == null) return;
+    await _gruppen.doc(gruppenId).collection('fortschritt').doc(u.uid).set({
+      'name': name,
+      'seite': seite,
+      'seiten': seiten,
+      'gelesen': gelesen,
+      'aktualisiert': FieldValue.serverTimestamp(),
+    });
+  }
+
+  Stream<List<GruppenFortschritt>> fortschritte(String gruppenId) =>
+      _gruppen.doc(gruppenId).collection('fortschritt').snapshots().map((s) => [
+            for (final d in s.docs)
+              GruppenFortschritt(
+                d.id,
+                d.data()['name'] as String? ?? '?',
+                d.data()['seite'] as int? ?? 0,
+                d.data()['seiten'] as int? ?? 0,
+                d.data()['gelesen'] as bool? ?? false,
+              ),
+          ]);
 
   /// Übersetzt Firebase-Fehler in verständliche deutsche Meldungen.
   Future<T> _fehler<T>(Future<T> Function() aktion) async {

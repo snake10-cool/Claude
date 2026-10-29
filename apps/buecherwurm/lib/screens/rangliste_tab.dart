@@ -5,6 +5,7 @@ import '../main.dart';
 import '../services/konto.dart';
 import '../services/speicher.dart';
 import 'challenges_screen.dart';
+import 'gruppen_screen.dart';
 import 'konto_screen.dart';
 
 /// Rangliste mit Freunden. Ohne Server: Jeder teilt seinen Punkte-Code
@@ -232,6 +233,11 @@ class _OnlineRanglisteState extends State<_OnlineRangliste> {
             },
           ),
           const SizedBox(height: 4),
+          OutlinedButton.icon(
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const GruppenScreen())),
+            icon: const Icon(Icons.groups),
+            label: const Text('Lesegruppen'),
+          ),
           OutlinedButton.icon(
             onPressed: () => _freundHinzufuegen(konto),
             icon: const Icon(Icons.person_add_alt),
