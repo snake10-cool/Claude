@@ -6,9 +6,10 @@ import 'katalog_jung.dart';
 import 'katalog_klassiker.dart';
 import 'katalog_mehr_quiz.dart';
 import 'katalog_reihen_quiz.dart';
+import 'katalog_walkers.dart';
 
 /// Bücher mit Quiz (von Hand geschrieben).
-const katalogMitQuiz = <Buch>[..._grundstock, ...katalogJung, ...katalogErwachsen, ...katalogKlassiker, ...katalogMehrQuiz, ...katalogReihenQuiz];
+const katalogMitQuiz = <Buch>[..._grundstock, ...katalogJung, ...katalogErwachsen, ...katalogKlassiker, ...katalogMehrQuiz, ...katalogReihenQuiz, ...katalogWalkers];
 
 /// Alle eingebauten Bücher: die mit Quiz zuerst, dann die aus der
 /// Nationalbibliothek (ohne Quiz).
@@ -136,6 +137,16 @@ const _grundstock = <Buch>[
       Frage('In welches Tier kann sich Carag verwandeln?', ['Einen Puma', 'Einen Wolf', 'Einen Adler', 'Einen Bären']),
       Frage('Wie heißt die Schule für Gestaltwandler?', ['Clearwater High', 'Hogwarts', 'Silverlake Academy', 'Forest Hill']),
       Frage('Wie nennt man Menschen, die sich in Tiere verwandeln können?', ['Woodwalker', 'Wandler', 'Waldläufer', 'Animagi']),
+      Frage('Welche Familie nimmt Carag bei sich auf?', ['Die Ralstons', 'Die Clearwaters', 'Die Millings', 'Die Ellwoods']),
+      Frage('In welches Tier verwandelt sich die Schulleiterin Lissa Clearwater?', ['In einen Adler', 'In eine Eule', 'In einen Wolf', 'In einen Bären']),
+      Frage('Welche zweite Gestalt hat Carags Zimmergenosse Brandon?', ['Bison', 'Grizzly', 'Elch', 'Wapiti']),
+      Frage('Was für ein Tier ist Holly?', ['Ein Rothörnchen', 'Eine Maus', 'Ein Kaninchen', 'Ein Waschbär']),
+      Frage('In welches Tier verwandelt sich der Lehrer James Bridger?', ['In einen Kojoten', 'In einen Wolf', 'In einen Puma', 'In einen Luchs']),
+      Frage('Welches Zauberwort wählt Carag für seine Verwandlung?', ['Timbuktu', 'Abrakadabra', 'Wyoming', 'Simsalabim']),
+      Frage('Welcher Geruch hilft Carag, sich in einen Menschen zu verwandeln?', ['Wacholder', 'Lavendel', 'Pfefferminze', 'Kiefernharz']),
+      Frage('Was war in dem Taschenmesser von Andrew Milling versteckt?', ['Ein Abhörgerät', 'Ein Peilsender mit Licht', 'Ein Zettel', 'Gift']),
+      Frage('Wer war der Spion, der alles an Milling verraten hat?', ['Ein Fliegen-Wandler', 'Die Raben Shadow und Wing', 'Mr Ellwood', 'Jeffrey']),
+      Frage('Wessen Tochter ist Lou?', ['Von Mr Ellwood, dem Verwandlungslehrer', 'Von Miss Clearwater', 'Von Mr Bridger', 'Von Mr Brighteye']),
     ],
   ),
   Buch(
