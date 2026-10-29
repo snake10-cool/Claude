@@ -1,240 +1,1362 @@
 {
-"wd_Q625923": {"s": "mittel", "q": [
- ["Wer schrieb „The Turn of the Screw“?", "Henry James", "Edgar Allan Poe", "Oscar Wilde", "Bram Stoker"],
- ["In welchem Jahr erschien die Novelle?", "1898", "1850", "1920", "1875"],
- ["Wie heißen die zwei Kinder?", "Miles und Flora", "Hansel und Gretel", "Peter und Wendy", "Tom und Emily"],
- ["Wie heißt der Landsitz?", "Bly", "Thornfield", "Pemberley", "Manderley"],
- ["Wer liest die Geistererzählung am Kamin vor?", "Douglas", "Miles", "Der Onkel", "Die Gouvernante selbst"]
-]},
-"wd_Q469969": {"s": "mittel", "q": [
- ["Der wievielte Scheibenwelt-Roman ist „Das Licht der Phantasie“?", "Der zweite", "Der erste", "Der zehnte", "Der fünfte"],
- ["Wer schrieb ihn?", "Terry Pratchett", "Douglas Adams", "Neil Gaiman", "Tom Holt"],
- ["In welchem Jahr erschien er?", "1986", "1983", "1990", "1995"],
- ["Von welchem Dichter stammt das Zitat im englischen Titel?", "John Milton", "William Shakespeare", "Lord Byron", "John Keats"],
- ["Welcher Roman wird direkt fortgesetzt?", "Die Farben der Magie", "Gevatter Tod", "Das Erbe des Zauberers", "Wachen! Wachen!"]
-]},
-"wd_Q594139": {"s": "mittel", "q": [
- ["Wer schrieb „Der Schuss am Kilimandscharo“?", "Jules Verne", "H. G. Wells", "Karl May", "Rider Haggard"],
- ["In welchem Jahr erschien der Roman zuerst?", "1889", "1865", "1900", "1875"],
- ["Aus welcher Stadt stammt der Kanonenclub?", "Baltimore", "Boston", "Chicago", "Philadelphia"],
- ["Wie heißt der Mathematiker und Schriftführer des Clubs?", "James T. Maston", "Impey Barbicane", "Phileas Fogg", "Robur"],
- ["Wer finanziert das neue Projekt?", "Die Millionärswitwe Evangelina Scorbitt", "Die US-Regierung", "Der Zar", "Ein englischer Lord"]
-]},
-"wd_Q594439": {"s": "schwierig", "q": [
- ["Wer schrieb „Hard-Boiled Wonderland und das Ende der Welt“?", "Haruki Murakami", "Kōbō Abe", "Kenzaburō Ōe", "Ryū Murakami"],
- ["In welchem Jahr erschien der Roman?", "1985", "1973", "1999", "2005"],
- ["In welcher Stadt spielt der Strang „Hard-Boiled Wonderland“?", "In Tokio", "In Osaka", "In Kyōto", "In Sapporo"],
- ["Als was arbeitet der Ich-Erzähler?", "Als „Kalkulator“", "Als „Semiot“", "Als Detektiv", "Als Bibliothekar"],
- ["Wie heißt der Gegenspieler des „Systems“?", "Die „Fabrik“", "Das „Netz“", "Die „Zentrale“", "Der „Turm“"]
-]},
-"wd_Q471926": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „Die Augen des Drachen“?", "The Eyes of the Dragon", "The Dark Tower", "The Talisman", "The Stand"],
- ["Für wen schrieb Stephen King den Roman ursprünglich?", "Für seine Tochter Naomi", "Für seine Frau", "Für seinen Verleger", "Für eine Schulklasse"],
- ["Wie heißt das Königreich?", "Delain", "Gilead", "Narnia", "Ingary"],
- ["Wie heißt der finstere Hofzauberer?", "Flagg", "Merlin", "Saruman", "Rasputin"],
- ["Wen heiratet König Roland?", "Sasha", "Delain", "Naomi", "Flora"]
-]},
-"wd_Q301342": {"s": "schwierig", "q": [
- ["Wer schrieb „Une saison en enfer“?", "Arthur Rimbaud", "Paul Verlaine", "Charles Baudelaire", "Stéphane Mallarmé"],
- ["Wie wird der Titel meist übersetzt?", "Eine Zeit in der Hölle", "Die Blumen des Bösen", "Das trunkene Schiff", "Ein Sommer in Paris"],
- ["In welchem Jahr entstand das Werk?", "1873", "1857", "1890", "1910"],
- ["Wie alt war der Dichter damals?", "19", "30", "15", "45"],
- ["Wie heißt der Abschnitt „Alchemie des Wortes“ auf Französisch?", "Alchimie du verbe", "Mauvais Sang", "Nuit de l’enfer", "L’éclair"]
-]},
-"wd_Q615046": {"s": "schwierig", "q": [
- ["Welche Übersetzung schildert der Aristeasbrief?", "Die des Pentateuchs ins Griechische", "Die der Ilias ins Lateinische", "Die des Korans ins Persische", "Die der Bibel ins Deutsche"],
- ["Wie heißt diese Übersetzung?", "Septuaginta", "Vulgata", "Targum", "Peschitta"],
- ["Was bedeutet „Septuaginta“?", "Siebzig", "Zwölf", "Heilige Schrift", "Übersetzung"],
- ["Wie viele Übersetzer kamen nach Alexandria?", "72", "12", "70", "7"],
- ["In wie vielen Tagen übersetzten sie den Pentateuch?", "In 72 Tagen", "In 7 Tagen", "In einem Jahr", "In 40 Tagen"]
-]},
-"wd_Q797466": {"s": "mittel", "q": [
- ["Wer schrieb „Der glückliche Prinz und andere Märchen“?", "Oscar Wilde", "Hans Christian Andersen", "Lewis Carroll", "Rudyard Kipling"],
- ["In welchem Jahr erschien die Sammlung?", "1888", "1850", "1900", "1870"],
- ["Wie viele Kunstmärchen enthält sie?", "Fünf", "Zehn", "Zwölf", "Drei"],
- ["Wer bittet im Titelmärchen die Statue um Hilfe – oder umgekehrt?", "Die Statue bittet eine Schwalbe, ihre Reichtümer zu verteilen", "Ein König bittet die Statue um Rat", "Ein Kind bittet die Statue um Brot", "Ein Rabe bittet die Statue um Gold"],
- ["Wer illustrierte die Erstausgabe?", "Walter Crane", "Arthur Rackham", "John Tenniel", "Aubrey Beardsley"]
-]},
-"wd_Q195261": {"s": "schwierig", "q": [
- ["Wer schrieb „Geschäft ist Geschäft“?", "Octave Mirbeau", "Molière", "Georges Feydeau", "Émile Zola"],
- ["Wo wurde das Stück uraufgeführt?", "In der Comédie-Française", "Im Burgtheater", "Im Globe Theatre", "Im Moskauer Künstlertheater"],
- ["In welchem Jahr war die Uraufführung?", "1903", "1880", "1920", "1950"],
- ["Wie heißt der Geschäftsmann im Stück?", "Isidore Lechat", "Jean Valjean", "Père Grandet", "Monsieur Jourdain"],
- ["Welche Gattung hat das Stück?", "Komödie", "Tragödie", "Oper", "Ballett"]
-]},
-"wd_Q645024": {"s": "mittel", "q": [
- ["Wer schrieb „Mathias Sandorf“?", "Jules Verne", "Alexandre Dumas", "Victor Hugo", "Karl May"],
- ["In welchem Jahr erschien der Roman?", "1885", "1870", "1900", "1865"],
- ["In welcher Stadt beginnt die Handlung?", "In Triest", "In Wien", "In Budapest", "In Venedig"],
- ["Was finden die Gauner Sarcany und Zirone?", "Eine Brieftaube mit Geheimbotschaft", "Einen Schatz", "Eine Leiche", "Ein Testament"],
- ["In welchem Jahr beginnt die Handlung?", "1866", "1885", "1848", "1900"]
-]},
-"wd_Q883098": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „Blausäure“?", "Sparkling Cyanide", "Sad Cypress", "The Pale Horse", "Endless Night"],
- ["In welchem Jahr erschien der Roman?", "1945", "1935", "1955", "1925"],
- ["Welcher wiederkehrende Charakter ermittelt hier zum letzten Mal?", "Colonel Race", "Superintendent Battle", "Parker Pyne", "Inspector Japp"],
- ["In wie viele „Bücher“ ist der Roman aufgeteilt?", "Drei", "Zwei", "Fünf", "Sieben"],
- ["Wie heißt das erste Buch?", "Rosemary", "Iris", "All Souls’ Day", "George"]
-]},
-"wd_Q1198883": {"s": "mittel", "q": [
- ["Wer schrieb „Der grüne Strahl“?", "Jules Verne", "Walter Scott", "Robert Louis Stevenson", "Guy de Maupassant"],
- ["In welchem Jahr erschien der Roman?", "1882", "1865", "1900", "1870"],
- ["Was für ein Roman ist er?", "Ein reiner Liebesroman", "Ein Kriminalroman", "Ein Kriegsroman", "Ein Science-Fiction-Roman"],
- ["Wie heißt die junge Heldin?", "Helena Campbell", "Mary Grant", "Aouda", "Miriota"],
- ["Wann kann man den grünen Strahl beobachten?", "Beim Sonnenuntergang am Meer", "Bei Mondfinsternis", "Im Nordlicht", "Bei Gewitter"]
-]},
-"wd_Q568210": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „Fata Morgana“?", "They Do It with Mirrors", "The Mirror Crack’d", "A Murder Is Announced", "Nemesis"],
- ["Wer ermittelt?", "Miss Marple", "Hercule Poirot", "Ariadne Oliver", "Colonel Race"],
- ["In welcher Stadt besuchten die drei Freundinnen ein Internat?", "In Florenz", "In Paris", "In Genf", "In Rom"],
- ["Wie heißt das viktorianische Anwesen?", "Stonygates", "Gorston Hall", "Chimneys", "Enderby Hall"],
- ["Was betreiben Carrie Louise und ihr Mann dort?", "Ein Internat für schwer erziehbare Jugendliche", "Ein Hotel", "Eine Klinik", "Ein Theater"]
-]},
-"wd_Q565638": {"s": "mittel", "q": [
- ["Wer schrieb „Little Dorrit“?", "Charles Dickens", "William Thackeray", "Wilkie Collins", "George Eliot"],
- ["Wann wurde der Roman als Fortsetzungsroman veröffentlicht?", "1855 bis 1857", "1838 bis 1839", "1870", "1812"],
- ["Wo wurde Amy Dorrit geboren?", "Im Schuldgefängnis Marshalsea", "In einem Waisenhaus", "Auf einem Schiff", "In Marseille"],
- ["Wer war in derselben Institution eingesperrt gewesen?", "Dickens’ Vater", "Dickens selbst", "Die Königin", "Dickens’ Verleger"],
- ["In welcher Stadt beginnt der Roman?", "In Marseille", "In London", "In Venedig", "In Paris"]
-]},
-"wd_Q571244": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „Das Geheimnis von Sittaford“?", "The Sittaford Mystery", "The Murder at the Vicarage", "The Seven Dials Mystery", "Lord Edgware Dies"],
- ["Unter welchem Titel erschien er in den USA?", "The Murder at Hazelmoor", "Murder in Devon", "The Snow Murder", "Death on Dartmoor"],
- ["In welchem Jahr erschien der Roman?", "1931", "1921", "1941", "1951"],
- ["Am Rande welches Moors liegt das Dorf?", "Dartmoor", "Exmoor", "Bodmin Moor", "Yorkshire Moors"],
- ["Wem gehört Sittaford House?", "Captain Trevelyan", "Mrs. Willett", "Major Burnaby", "Mr. Rycroft"]
-]},
-"wd_Q729812": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „Karibische Affäre“?", "A Caribbean Mystery", "Nemesis", "At Bertram’s Hotel", "Evil Under the Sun"],
- ["In welchem Jahr erschien der Roman?", "1964", "1954", "1974", "1944"],
- ["Wer schenkt Miss Marple die Reise?", "Ihr Neffe Raymond West und seine Frau", "Ihre Freundin Dolly Bantry", "Sir Henry Clithering", "Ein reicher Fremder"],
- ["Wie heißt das Hotel?", "Golden Palm", "Majestic", "Bertram’s", "Jolly Roger"],
- ["Welcher Gast erzählt ständig Geschichten aus seiner Jugend?", "Major Palgrave", "Tim Kendal", "Mr. Rafiel", "Colonel Race"]
-]},
-"wd_Q930923": {"s": "mittel", "q": [
- ["Zu welchem Zyklus gehört „Der Flottenvertrag“?", "Die Memoiren des Sherlock Holmes", "Die Abenteuer des Sherlock Holmes", "Sherlock Holmes’ Buch der Fälle", "Seine Abschiedsvorstellung"],
- ["In welchem Magazin erschien die Geschichte zuerst?", "The Strand Magazine", "Punch", "The Times", "Harper’s Bazaar"],
- ["In welchem Jahr erschien sie?", "1893", "1887", "1901", "1910"],
- ["Wer schreibt Watson einen Brief?", "Sein Schulfreund Percy Phelps", "Mycroft Holmes", "Inspektor Lestrade", "Mrs. Hudson"],
- ["Wo arbeitet der Briefschreiber?", "Im Foreign Office", "Bei Scotland Yard", "In einer Bank", "Bei der Marine"]
-]},
-"wd_Q1193766": {"s": "mittel", "q": [
- ["Wer schrieb „Der Gefangene von Zenda“?", "Anthony Hope", "Robert Louis Stevenson", "Arthur Conan Doyle", "Rider Haggard"],
- ["In welchem Jahr erschien der Roman?", "1894", "1870", "1910", "1885"],
- ["In welchem fiktiven Land spielt er?", "Ruritanien", "Graustark", "Syldavien", "Freedonia"],
- ["Zwischen welchen Ländern liegt dieses Land?", "Zwischen Sachsen und Böhmen", "Zwischen Frankreich und Spanien", "Zwischen Polen und Russland", "Zwischen Italien und der Schweiz"],
- ["Wie heißt der Held?", "Rudolf Rassendyll", "Rupert von Hentzau", "Michael von Strelsau", "Fritz von Tarlenheim"]
-]},
-"wd_Q768605": {"s": "mittel", "q": [
- ["Wer schrieb „Das Karpatenschloss“?", "Jules Verne", "Bram Stoker", "Mary Shelley", "Theodor Storm"],
- ["In welchem Jahr erschien der Roman?", "1892", "1870", "1897", "1910"],
- ["In welchem Gebirge spielt er?", "In den Karpaten Transsylvaniens", "In den Alpen", "In den Pyrenäen", "Im Kaukasus"],
- ["Was kauft der Schäfer Frik von einem Händler?", "Ein Fernrohr", "Ein Messer", "Eine Laterne", "Einen Kompass"],
- ["Wem gehört das verlassene Schloss?", "Dem Baron von Gortz", "Dem Grafen Dracula", "Dem Förster Nick Deck", "Dem Arzt Patak"]
-]},
-"wd_Q1130299": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „Wiedersehen mit Mrs. Oliver“?", "Dead Man’s Folly", "Mrs McGinty’s Dead", "Hallowe’en Party", "Third Girl"],
- ["In welchem Jahr erschien der Roman?", "1956", "1946", "1966", "1936"],
- ["Wie heißt das Anwesen?", "Nasse House", "Styles Court", "Enderby Hall", "Gorston Hall"],
- ["Wen nimmt Poirot auf der Anreise mit?", "Zwei Anhalterinnen", "Einen Pfarrer", "Einen Polizisten", "Ein Kind"],
- ["Was inszeniert Mrs. Oliver?", "Eine Mörderjagd", "Ein Theaterstück", "Eine Hochzeit", "Ein Pferderennen"]
-]},
-"wd_Q957248": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „Das Haus an der Düne“?", "Peril at End House", "The Hollow", "Evil Under the Sun", "The Sittaford Mystery"],
- ["Der wievielte Kriminalroman Christies ist er?", "Der zwölfte", "Der erste", "Der dreißigste", "Der fünfte"],
- ["In welchem Jahr erschien er?", "1932", "1922", "1942", "1952"],
- ["In welchem Hotel verbringen Poirot und Hastings ihren Urlaub?", "Im Majestic Hotel", "Im Golden Palm", "In Bertrams Hotel", "Im Grand Hotel"],
- ["An welcher Küste liegt St. Looe?", "Cornwall", "Kent", "Yorkshire", "Wales"]
-]},
-"wd_Q1072741": {"s": "schwierig", "q": [
- ["Wer schrieb „Childe Harold’s Pilgrimage“?", "Lord Byron", "Percy Shelley", "John Keats", "William Wordsworth"],
- ["Wann wurde das Versepos herausgegeben?", "Zwischen 1812 und 1818", "Um 1750", "Um 1850", "Um 1900"],
- ["Was bedeutet „childe“?", "Schildknappe", "Kind", "König", "Pilger"],
- ["Aus wie vielen Canti besteht das Werk?", "Vier", "Zwölf", "Zwei", "Sieben"],
- ["In welcher Strophenform ist es geschrieben?", "In Spenserstrophen", "In Sonetten", "In Stanzen", "In Terzinen"]
-]},
-"wd_Q856407": {"s": "mittel", "q": [
- ["Wer schrieb „Djamila“?", "Tschingis Aitmatow", "Michail Scholochow", "Boris Pasternak", "Konstantin Paustowski"],
- ["In welchem Jahr entstand die Novelle?", "1958", "1945", "1970", "1930"],
- ["Wie alt ist der Erzähler Seït?", "15", "10", "25", "40"],
- ["Wie heißt Djamilas Mann?", "Sadyk", "Danijar", "Seït", "Osmon"],
- ["Wodurch bemerkt Djamila Danijars Inneres?", "Als er ein Lied singt", "Als er ein Pferd zähmt", "Als er ein Gedicht schreibt", "Als er ein Kind rettet"]
-]},
-"wd_Q1167658": {"s": "schwierig", "q": [
- ["Gegen wen richtet sich „Das Elend der Philosophie“?", "Gegen Pierre-Joseph Proudhon", "Gegen Hegel", "Gegen Bakunin", "Gegen Adam Smith"],
- ["Wer verfasste die Schrift?", "Karl Marx", "Friedrich Engels", "Lenin", "Ferdinand Lassalle"],
- ["In welchem Jahr wurde sie verfasst?", "1847", "1867", "1871", "1830"],
- ["In welcher Sprache erschien sie im Original?", "Französisch", "Deutsch", "Englisch", "Russisch"],
- ["Wie hieß das Werk, auf das der Titel anspielt?", "Philosophie des Elends", "Das Kapital", "Was ist Eigentum?", "Der Gesellschaftsvertrag"]
-]},
-"wd_Q1211539": {"s": "schwierig", "q": [
- ["Wer begründete die Monadologie?", "Gottfried Wilhelm Leibniz", "Baruch de Spinoza", "René Descartes", "Christian Wolff"],
- ["In welchem Jahr entstand das Werk?", "1714", "1650", "1781", "1690"],
- ["In wie vielen Paragraphen legt er die Lehre dar?", "90", "12", "365", "1000"],
- ["Was bedeutet das griechische „monás“?", "Eins, Einheit", "Seele", "Welt", "Licht"],
- ["Wer ist laut dem Werk die Urmonade?", "Gott", "Der Mensch", "Die Sonne", "Das Atom"]
-]},
-"wd_Q1613926": {"s": "mittel", "q": [
- ["Wer schrieb „Herr Puntila und sein Knecht Matti“?", "Bertolt Brecht", "Carl Zuckmayer", "Friedrich Dürrenmatt", "Max Frisch"],
- ["Wo wurde das Stück 1948 uraufgeführt?", "Im Schauspielhaus Zürich", "Im Berliner Ensemble", "Im Burgtheater Wien", "In Helsinki"],
- ["In welchem Land lebte der Autor zur Entstehungszeit im Exil?", "In Finnland", "In den USA", "In Dänemark", "In Schweden"],
- ["Wie ist Puntila, wenn er betrunken ist?", "Ein Menschenfreund", "Ein Ausbeuter", "Ein Schläfer", "Ein Dichter"],
- ["Welchen Beruf hat Matti?", "Chauffeur", "Koch", "Gärtner", "Lehrer"]
-]},
-"wd_Q482535": {"s": "mittel", "q": [
- ["Wer schrieb die Light Novel „NHK ni Yōkoso!“?", "Tatsuhiko Takimoto", "Haruki Murakami", "Nisio Isin", "Reki Kawahara"],
- ["Wie heißt die Hauptfigur?", "Tatsuhiro Satō", "Kōichi Sakakibara", "Light Yagami", "Shinji Ikari"],
- ["Wie nennt man Menschen wie ihn, die sich zu Hause abschotten?", "Hikikomori", "Otaku", "Salaryman", "Ronin"],
- ["Vor wie vielen Jahren flog er von der Uni?", "Vor vier Jahren", "Vor einem Jahr", "Vor zehn Jahren", "Vor zwanzig Jahren"],
- ["Was steckt laut seiner Verschwörungstheorie dahinter?", "Eine Organisation namens NHK", "Außerirdische", "Seine Eltern", "Die Regierung der USA"]
-]},
-"wd_Q465649": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „Das Geheimnis der Schnallenschuhe“?", "One, Two, Buckle My Shoe", "Five Little Pigs", "Hickory Dickory Dock", "Three Blind Mice"],
- ["In welchem Jahr erschien der Roman?", "1940", "1930", "1950", "1960"],
- ["Wessen Praxis verlässt Poirot zu Beginn?", "Die seines Zahnarztes Henry Morley", "Die seines Hausarztes", "Die eines Anwalts", "Die eines Friseurs"],
- ["Was trägt Poirot Mabelle Sainsbury Seale nach?", "Eine Schuhschnalle", "Einen Handschuh", "Eine Brille", "Einen Schirm"],
- ["Unter welchem Titel erschien er in den USA zuerst?", "The Patriotic Murders", "An Overdose of Death", "The Dentist Dies", "Murder in Harley Street"]
-]},
-"wd_Q1214433": {"s": "mittel", "q": [
- ["Wer schrieb „Die Leiden eines Chinesen in China“?", "Jules Verne", "Pearl S. Buck", "Karl May", "Rudyard Kipling"],
- ["In welchem Jahr erschien der Roman?", "1879", "1900", "1850", "1866"],
- ["Wie heißt der junge reiche Chinese?", "Kin-Fo", "Wang Lung", "Ah Q", "Li Bai"],
- ["Wann spielt der Roman?", "Am Ende des 19. Jahrhunderts", "Im Mittelalter", "Im 21. Jahrhundert", "In der Antike"],
- ["Was weiß Kin-Fo nicht zu schätzen?", "Das Leben", "Das Geld", "Die Musik", "Das Essen"]
-]},
-"wd_Q466057": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „Die letzte Generation“?", "Childhood’s End", "Rendezvous with Rama", "The City and the Stars", "Against the Fall of Night"],
- ["In welchem Jahr erschien der Roman?", "1953", "1968", "1973", "1945"],
- ["Wie werden die Außerirdischen genannt?", "Overlords", "Vogonen", "Marsianer", "Monolithen"],
- ["Wie heißt der Abgesandte der Außerirdischen?", "Karellen", "Stormgren", "Klaatu", "Rama"],
- ["Nach wie vielen Jahren will er sich der Menschheit zeigen?", "Nach 50 Jahren", "Nach 5 Jahren", "Nach 100 Jahren", "Nach 1000 Jahren"]
-]},
-"wd_Q1411928": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „In einer kleinen Stadt“?", "Needful Things", "The Dead Zone", "Cujo", "Salem’s Lot"],
- ["In welchem Jahr erschien der Roman?", "1991", "1981", "2001", "1975"],
- ["In welcher Kleinstadt spielt er?", "Castle Rock", "Derry", "Jerusalem’s Lot", "Haven"],
- ["Wer eröffnet den Laden?", "Leland Gaunt", "Alan Pangborn", "Brian Rusk", "Randall Flagg"],
- ["Welchen Zyklus schließt der Roman ab?", "Den Castle-Rock-Zyklus", "Den Dunklen Turm", "Den Derry-Zyklus", "Den Shining-Zyklus"]
-]},
-"wd_Q1215982": {"s": "mittel", "q": [
- ["Wie lautet der Originaltitel von „Die Schattenhand“?", "The Moving Finger", "The Body in the Library", "A Pocket Full of Rye", "The Murder at the Vicarage"],
- ["Der wievielte Miss-Marple-Roman ist es?", "Der dritte", "Der erste", "Der zehnte", "Der zwölfte"],
- ["In welcher Kleinstadt mieten die Burtons ein Haus?", "In Lymstock", "In St. Mary Mead", "In Dillmouth", "In Chipping Cleghorn"],
- ["Wovon soll sich Jerry Burton erholen?", "Von einem Flugzeugabsturz", "Von einem Schiffbruch", "Von einer Grippe", "Von einem Duell"],
- ["Was geht im Ort seit einiger Zeit um?", "Anonyme Briefe", "Ein Geist", "Ein Dieb", "Eine Krankheit"]
-]},
-"wd_Q1364539": {"s": "schwierig", "q": [
- ["In welchem Jahr erschien „Menschliches, Allzumenschliches“?", "1878", "1872", "1886", "1889"],
- ["Wem ist die erste Auflage gewidmet?", "Voltaire", "Richard Wagner", "Arthur Schopenhauer", "Goethe"],
- ["Wie lautet der Untertitel?", "Ein Buch für freie Geister", "Ein Buch für Alle und Keinen", "Eine Streitschrift", "Fluch auf das Christentum"],
- ["Welche Sammlung erschien bereits 1880 und kam später hinzu?", "Der Wanderer und sein Schatten", "Morgenröte", "Die fröhliche Wissenschaft", "Ecce homo"],
- ["Was für eine Art Buch ist es?", "Eine Aphorismensammlung", "Ein Roman", "Ein Drama", "Eine Gedichtsammlung"]
-]},
-"wd_Q1660727": {"s": "schwierig", "q": [
- ["Wer schrieb „In der Strafkolonie“?", "Franz Kafka", "Thomas Mann", "Robert Musil", "Hermann Hesse"],
- ["Wann entstand die Erzählung?", "Im Oktober 1914", "Im Jahr 1924", "Im Jahr 1900", "Im Jahr 1933"],
- ["Wann wurde sie veröffentlicht?", "1919", "1914", "1925", "1945"],
- ["Wer besucht die Strafkolonie?", "Ein Forschungsreisender", "Ein König", "Ein Arzt", "Ein Journalist"],
- ["Wer hatte den Apparat ursprünglich entwickelt?", "Der verstorbene Kommandant", "Der Forschungsreisende", "Ein Soldat", "Der Verurteilte"]
-]}
+"wd_Q625923": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „The Turn of the Screw“?",
+"Henry James",
+"Edgar Allan Poe",
+"Oscar Wilde",
+"Bram Stoker"
+],
+[
+"In welchem Jahr erschien die Novelle?",
+"1898",
+"1850",
+"1920",
+"1875"
+],
+[
+"Wie heißen die zwei Kinder?",
+"Miles und Flora",
+"Hansel und Gretel",
+"Peter und Wendy",
+"Tom und Emily"
+],
+[
+"Wie heißt der Landsitz?",
+"Bly",
+"Thornfield",
+"Pemberley",
+"Manderley"
+],
+[
+"Wer liest die Geistererzählung am Kamin vor?",
+"Douglas",
+"Miles",
+"Der Onkel",
+"Die Gouvernante selbst"
+]
+]
+},
+"wd_Q469969": {
+"s": "mittel",
+"q": [
+[
+"Der wievielte Scheibenwelt-Roman ist „Das Licht der Phantasie“?",
+"Der zweite",
+"Der erste",
+"Der zehnte",
+"Der fünfte"
+],
+[
+"Wer schrieb ihn?",
+"Terry Pratchett",
+"Douglas Adams",
+"Neil Gaiman",
+"Tom Holt"
+],
+[
+"In welchem Jahr erschien er?",
+"1986",
+"1983",
+"1990",
+"1995"
+],
+[
+"Von welchem Dichter stammt das Zitat im englischen Titel?",
+"John Milton",
+"William Shakespeare",
+"Lord Byron",
+"John Keats"
+],
+[
+"Welcher Roman wird direkt fortgesetzt?",
+"Die Farben der Magie",
+"Gevatter Tod",
+"Das Erbe des Zauberers",
+"Wachen! Wachen!"
+]
+]
+},
+"wd_Q594139": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der Schuss am Kilimandscharo“?",
+"Jules Verne",
+"H. G. Wells",
+"Karl May",
+"Rider Haggard"
+],
+[
+"In welchem Jahr erschien der Roman zuerst?",
+"1889",
+"1865",
+"1900",
+"1875"
+],
+[
+"Aus welcher Stadt stammt der Kanonenclub?",
+"Baltimore",
+"Boston",
+"Chicago",
+"Philadelphia"
+],
+[
+"Wie heißt der Mathematiker und Schriftführer des Clubs?",
+"James T. Maston",
+"Impey Barbicane",
+"Phileas Fogg",
+"Robur"
+],
+[
+"Wer finanziert das neue Projekt?",
+"Die Millionärswitwe Evangelina Scorbitt",
+"Die US-Regierung",
+"Der Zar",
+"Ein englischer Lord"
+]
+]
+},
+"wd_Q594439": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Hard-Boiled Wonderland und das Ende der Welt“?",
+"Haruki Murakami",
+"Kōbō Abe",
+"Kenzaburō Ōe",
+"Ryū Murakami"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1985",
+"1973",
+"1999",
+"2005"
+],
+[
+"In welcher Stadt spielt der Strang „Hard-Boiled Wonderland“?",
+"In Tokio",
+"In Osaka",
+"In Kyōto",
+"In Sapporo"
+],
+[
+"Als was arbeitet der Ich-Erzähler?",
+"Als „Kalkulator“",
+"Als „Semiot“",
+"Als Detektiv",
+"Als Bibliothekar"
+],
+[
+"Wie heißt der Gegenspieler des „Systems“?",
+"Die „Fabrik“",
+"Das „Netz“",
+"Die „Zentrale“",
+"Der „Turm“"
+]
+]
+},
+"wd_Q471926": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „Die Augen des Drachen“?",
+"The Eyes of the Dragon",
+"The Dark Tower",
+"The Talisman",
+"The Stand"
+],
+[
+"Für wen schrieb Stephen King den Roman ursprünglich?",
+"Für seine Tochter Naomi",
+"Für seine Frau",
+"Für seinen Verleger",
+"Für eine Schulklasse"
+],
+[
+"Wie heißt das Königreich?",
+"Delain",
+"Gilead",
+"Narnia",
+"Ingary"
+],
+[
+"Wie heißt der finstere Hofzauberer?",
+"Flagg",
+"Merlin",
+"Saruman",
+"Rasputin"
+],
+[
+"Wen heiratet König Roland?",
+"Sasha",
+"Delain",
+"Naomi",
+"Flora"
+]
+]
+},
+"wd_Q301342": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Une saison en enfer“?",
+"Arthur Rimbaud",
+"Paul Verlaine",
+"Charles Baudelaire",
+"Stéphane Mallarmé"
+],
+[
+"Wie wird der Titel meist übersetzt?",
+"Eine Zeit in der Hölle",
+"Die Blumen des Bösen",
+"Das trunkene Schiff",
+"Ein Sommer in Paris"
+],
+[
+"In welchem Jahr entstand das Werk?",
+"1873",
+"1857",
+"1890",
+"1910"
+],
+[
+"Wie alt war der Dichter damals?",
+"19",
+"30",
+"15",
+"45"
+],
+[
+"Wie heißt der Abschnitt „Alchemie des Wortes“ auf Französisch?",
+"Alchimie du verbe",
+"Mauvais Sang",
+"Nuit de l’enfer",
+"L’éclair"
+]
+]
+},
+"wd_Q615046": {
+"s": "schwierig",
+"q": [
+[
+"Welche Übersetzung schildert der Aristeasbrief?",
+"Die des Pentateuchs ins Griechische",
+"Die der Ilias ins Lateinische",
+"Die des Korans ins Persische",
+"Die der Bibel ins Deutsche"
+],
+[
+"Wie heißt diese Übersetzung?",
+"Septuaginta",
+"Vulgata",
+"Targum",
+"Peschitta"
+],
+[
+"Was bedeutet „Septuaginta“?",
+"Siebzig",
+"Zwölf",
+"Heilige Schrift",
+"Übersetzung"
+],
+[
+"Wie viele Übersetzer kamen nach Alexandria?",
+"72",
+"12",
+"70",
+"7"
+],
+[
+"In wie vielen Tagen übersetzten sie den Pentateuch?",
+"In 72 Tagen",
+"In 7 Tagen",
+"In einem Jahr",
+"In 40 Tagen"
+]
+]
+},
+"wd_Q797466": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der glückliche Prinz und andere Märchen“?",
+"Oscar Wilde",
+"Hans Christian Andersen",
+"Lewis Carroll",
+"Rudyard Kipling"
+],
+[
+"In welchem Jahr erschien die Sammlung?",
+"1888",
+"1850",
+"1900",
+"1870"
+],
+[
+"Wie viele Kunstmärchen enthält sie?",
+"Fünf",
+"Zehn",
+"Zwölf",
+"Drei"
+],
+[
+"Worum bittet die Statue im Titelmärchen eine Schwalbe?",
+"Ihre Reichtümer unter den Armen zu verteilen",
+"Sie nach Ägypten mitzunehmen",
+"Ihr ein Lied zu singen",
+"Den König zu warnen"
+],
+[
+"Wer illustrierte die Erstausgabe?",
+"Walter Crane",
+"Arthur Rackham",
+"John Tenniel",
+"Aubrey Beardsley"
+]
+]
+},
+"wd_Q195261": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Geschäft ist Geschäft“?",
+"Octave Mirbeau",
+"Molière",
+"Georges Feydeau",
+"Émile Zola"
+],
+[
+"Wo wurde das Stück uraufgeführt?",
+"In der Comédie-Française",
+"Im Burgtheater",
+"Im Globe Theatre",
+"Im Moskauer Künstlertheater"
+],
+[
+"In welchem Jahr war die Uraufführung?",
+"1903",
+"1880",
+"1920",
+"1950"
+],
+[
+"Wie heißt der Geschäftsmann im Stück?",
+"Isidore Lechat",
+"Jean Valjean",
+"Père Grandet",
+"Monsieur Jourdain"
+],
+[
+"Welche Gattung hat das Stück?",
+"Komödie",
+"Tragödie",
+"Oper",
+"Ballett"
+]
+]
+},
+"wd_Q645024": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Mathias Sandorf“?",
+"Jules Verne",
+"Alexandre Dumas",
+"Victor Hugo",
+"Karl May"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1885",
+"1870",
+"1900",
+"1865"
+],
+[
+"In welcher Stadt beginnt die Handlung?",
+"In Triest",
+"In Wien",
+"In Budapest",
+"In Venedig"
+],
+[
+"Was finden die Gauner Sarcany und Zirone?",
+"Eine Brieftaube mit Geheimbotschaft",
+"Einen Schatz",
+"Eine Leiche",
+"Ein Testament"
+],
+[
+"In welchem Jahr beginnt die Handlung?",
+"1866",
+"1885",
+"1848",
+"1900"
+]
+]
+},
+"wd_Q883098": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „Blausäure“?",
+"Sparkling Cyanide",
+"Sad Cypress",
+"The Pale Horse",
+"Endless Night"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1945",
+"1935",
+"1955",
+"1925"
+],
+[
+"Welcher wiederkehrende Charakter ermittelt hier zum letzten Mal?",
+"Colonel Race",
+"Superintendent Battle",
+"Parker Pyne",
+"Inspector Japp"
+],
+[
+"In wie viele „Bücher“ ist der Roman aufgeteilt?",
+"Drei",
+"Zwei",
+"Fünf",
+"Sieben"
+],
+[
+"Wie heißt das erste Buch?",
+"Rosemary",
+"Iris",
+"All Souls’ Day",
+"George"
+]
+]
+},
+"wd_Q1198883": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der grüne Strahl“?",
+"Jules Verne",
+"Walter Scott",
+"Robert Louis Stevenson",
+"Guy de Maupassant"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1882",
+"1865",
+"1900",
+"1870"
+],
+[
+"Was für ein Roman ist er?",
+"Ein reiner Liebesroman",
+"Ein Kriminalroman",
+"Ein Kriegsroman",
+"Ein Science-Fiction-Roman"
+],
+[
+"Wie heißt die junge Heldin?",
+"Helena Campbell",
+"Mary Grant",
+"Aouda",
+"Miriota"
+],
+[
+"Wann kann man den grünen Strahl beobachten?",
+"Beim Sonnenuntergang am Meer",
+"Bei Mondfinsternis",
+"Im Nordlicht",
+"Bei Gewitter"
+]
+]
+},
+"wd_Q568210": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „Fata Morgana“?",
+"They Do It with Mirrors",
+"The Mirror Crack’d",
+"A Murder Is Announced",
+"Nemesis"
+],
+[
+"Wer ermittelt?",
+"Miss Marple",
+"Hercule Poirot",
+"Ariadne Oliver",
+"Colonel Race"
+],
+[
+"In welcher Stadt besuchten die drei Freundinnen ein Internat?",
+"In Florenz",
+"In Paris",
+"In Genf",
+"In Rom"
+],
+[
+"Wie heißt das viktorianische Anwesen?",
+"Stonygates",
+"Gorston Hall",
+"Chimneys",
+"Enderby Hall"
+],
+[
+"Was betreiben Carrie Louise und ihr Mann dort?",
+"Ein Internat für schwer erziehbare Jugendliche",
+"Ein Hotel",
+"Eine Klinik",
+"Ein Theater"
+]
+]
+},
+"wd_Q565638": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Little Dorrit“?",
+"Charles Dickens",
+"William Thackeray",
+"Wilkie Collins",
+"George Eliot"
+],
+[
+"Wann wurde der Roman als Fortsetzungsroman veröffentlicht?",
+"1855 bis 1857",
+"1838 bis 1839",
+"1870",
+"1812"
+],
+[
+"Wo wurde Amy Dorrit geboren?",
+"Im Schuldgefängnis Marshalsea",
+"In einem Waisenhaus",
+"Auf einem Schiff",
+"In Marseille"
+],
+[
+"Wer war in derselben Institution eingesperrt gewesen?",
+"Dickens’ Vater",
+"Dickens selbst",
+"Die Königin",
+"Dickens’ Verleger"
+],
+[
+"In welcher Stadt beginnt der Roman?",
+"In Marseille",
+"In London",
+"In Venedig",
+"In Paris"
+]
+]
+},
+"wd_Q571244": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „Das Geheimnis von Sittaford“?",
+"The Sittaford Mystery",
+"The Murder at the Vicarage",
+"The Seven Dials Mystery",
+"Lord Edgware Dies"
+],
+[
+"Unter welchem Titel erschien er in den USA?",
+"The Murder at Hazelmoor",
+"Murder in Devon",
+"The Snow Murder",
+"Death on Dartmoor"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1931",
+"1921",
+"1941",
+"1951"
+],
+[
+"Am Rande welches Moors liegt das Dorf?",
+"Dartmoor",
+"Exmoor",
+"Bodmin Moor",
+"Yorkshire Moors"
+],
+[
+"Wem gehört Sittaford House?",
+"Captain Trevelyan",
+"Mrs. Willett",
+"Major Burnaby",
+"Mr. Rycroft"
+]
+]
+},
+"wd_Q729812": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „Karibische Affäre“?",
+"A Caribbean Mystery",
+"Nemesis",
+"At Bertram’s Hotel",
+"Evil Under the Sun"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1964",
+"1954",
+"1974",
+"1944"
+],
+[
+"Wer schenkt Miss Marple die Reise?",
+"Ihr Neffe Raymond West und seine Frau",
+"Ihre Freundin Dolly Bantry",
+"Sir Henry Clithering",
+"Ein reicher Fremder"
+],
+[
+"Wie heißt das Hotel?",
+"Golden Palm",
+"Majestic",
+"Bertram’s",
+"Jolly Roger"
+],
+[
+"Welcher Gast erzählt ständig Geschichten aus seiner Jugend?",
+"Major Palgrave",
+"Tim Kendal",
+"Mr. Rafiel",
+"Colonel Race"
+]
+]
+},
+"wd_Q930923": {
+"s": "mittel",
+"q": [
+[
+"Zu welchem Zyklus gehört „Der Flottenvertrag“?",
+"Die Memoiren des Sherlock Holmes",
+"Die Abenteuer des Sherlock Holmes",
+"Sherlock Holmes’ Buch der Fälle",
+"Seine Abschiedsvorstellung"
+],
+[
+"In welchem Magazin erschien die Geschichte zuerst?",
+"The Strand Magazine",
+"Punch",
+"The Times",
+"Harper’s Bazaar"
+],
+[
+"In welchem Jahr erschien sie?",
+"1893",
+"1887",
+"1901",
+"1910"
+],
+[
+"Wer schreibt Watson einen Brief?",
+"Sein Schulfreund Percy Phelps",
+"Mycroft Holmes",
+"Inspektor Lestrade",
+"Mrs. Hudson"
+],
+[
+"Wo arbeitet der Briefschreiber?",
+"Im Foreign Office",
+"Bei Scotland Yard",
+"In einer Bank",
+"Bei der Marine"
+]
+]
+},
+"wd_Q1193766": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der Gefangene von Zenda“?",
+"Anthony Hope",
+"Robert Louis Stevenson",
+"Arthur Conan Doyle",
+"Rider Haggard"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1894",
+"1870",
+"1910",
+"1885"
+],
+[
+"In welchem fiktiven Land spielt er?",
+"Ruritanien",
+"Graustark",
+"Syldavien",
+"Freedonia"
+],
+[
+"Zwischen welchen Ländern liegt dieses Land?",
+"Zwischen Sachsen und Böhmen",
+"Zwischen Frankreich und Spanien",
+"Zwischen Polen und Russland",
+"Zwischen Italien und der Schweiz"
+],
+[
+"Wie heißt der Held?",
+"Rudolf Rassendyll",
+"Rupert von Hentzau",
+"Michael von Strelsau",
+"Fritz von Tarlenheim"
+]
+]
+},
+"wd_Q768605": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Das Karpatenschloss“?",
+"Jules Verne",
+"Bram Stoker",
+"Mary Shelley",
+"Theodor Storm"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1892",
+"1870",
+"1897",
+"1910"
+],
+[
+"In welchem Gebirge spielt er?",
+"In den Karpaten Transsylvaniens",
+"In den Alpen",
+"In den Pyrenäen",
+"Im Kaukasus"
+],
+[
+"Was kauft der Schäfer Frik von einem Händler?",
+"Ein Fernrohr",
+"Ein Messer",
+"Eine Laterne",
+"Einen Kompass"
+],
+[
+"Wem gehört das verlassene Schloss?",
+"Dem Baron von Gortz",
+"Dem Grafen Dracula",
+"Dem Förster Nick Deck",
+"Dem Arzt Patak"
+]
+]
+},
+"wd_Q1130299": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „Wiedersehen mit Mrs. Oliver“?",
+"Dead Man’s Folly",
+"Mrs McGinty’s Dead",
+"Hallowe’en Party",
+"Third Girl"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1956",
+"1946",
+"1966",
+"1936"
+],
+[
+"Wie heißt das Anwesen?",
+"Nasse House",
+"Styles Court",
+"Enderby Hall",
+"Gorston Hall"
+],
+[
+"Wen nimmt Poirot auf der Anreise mit?",
+"Zwei Anhalterinnen",
+"Einen Pfarrer",
+"Einen Polizisten",
+"Ein Kind"
+],
+[
+"Was inszeniert Mrs. Oliver?",
+"Eine Mörderjagd",
+"Ein Theaterstück",
+"Eine Hochzeit",
+"Ein Pferderennen"
+]
+]
+},
+"wd_Q957248": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „Das Haus an der Düne“?",
+"Peril at End House",
+"The Hollow",
+"Evil Under the Sun",
+"The Sittaford Mystery"
+],
+[
+"Der wievielte Kriminalroman Christies ist er?",
+"Der zwölfte",
+"Der erste",
+"Der dreißigste",
+"Der fünfte"
+],
+[
+"In welchem Jahr erschien er?",
+"1932",
+"1922",
+"1942",
+"1952"
+],
+[
+"In welchem Hotel verbringen Poirot und Hastings ihren Urlaub?",
+"Im Majestic Hotel",
+"Im Golden Palm",
+"In Bertrams Hotel",
+"Im Grand Hotel"
+],
+[
+"An welcher Küste liegt St. Looe?",
+"Cornwall",
+"Kent",
+"Yorkshire",
+"Wales"
+]
+]
+},
+"wd_Q1072741": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Childe Harold’s Pilgrimage“?",
+"Lord Byron",
+"Percy Shelley",
+"John Keats",
+"William Wordsworth"
+],
+[
+"Wann wurde das Versepos herausgegeben?",
+"Zwischen 1812 und 1818",
+"Um 1750",
+"Um 1850",
+"Um 1900"
+],
+[
+"Was bedeutet „childe“?",
+"Schildknappe",
+"Kind",
+"König",
+"Pilger"
+],
+[
+"Aus wie vielen Canti besteht das Werk?",
+"Vier",
+"Zwölf",
+"Zwei",
+"Sieben"
+],
+[
+"In welcher Strophenform ist es geschrieben?",
+"In Spenserstrophen",
+"In Sonetten",
+"In Stanzen",
+"In Terzinen"
+]
+]
+},
+"wd_Q856407": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Djamila“?",
+"Tschingis Aitmatow",
+"Michail Scholochow",
+"Boris Pasternak",
+"Konstantin Paustowski"
+],
+[
+"In welchem Jahr entstand die Novelle?",
+"1958",
+"1945",
+"1970",
+"1930"
+],
+[
+"Wie alt ist der Erzähler Seït?",
+"15",
+"10",
+"25",
+"40"
+],
+[
+"Wie heißt Djamilas Mann?",
+"Sadyk",
+"Danijar",
+"Seït",
+"Osmon"
+],
+[
+"Wodurch bemerkt Djamila Danijars Inneres?",
+"Als er ein Lied singt",
+"Als er ein Pferd zähmt",
+"Als er ein Gedicht schreibt",
+"Als er ein Kind rettet"
+]
+]
+},
+"wd_Q1167658": {
+"s": "schwierig",
+"q": [
+[
+"Gegen wen richtet sich „Das Elend der Philosophie“?",
+"Gegen Pierre-Joseph Proudhon",
+"Gegen Hegel",
+"Gegen Bakunin",
+"Gegen Adam Smith"
+],
+[
+"Wer verfasste die Schrift?",
+"Karl Marx",
+"Friedrich Engels",
+"Lenin",
+"Ferdinand Lassalle"
+],
+[
+"In welchem Jahr wurde sie verfasst?",
+"1847",
+"1867",
+"1871",
+"1830"
+],
+[
+"In welcher Sprache erschien sie im Original?",
+"Französisch",
+"Deutsch",
+"Englisch",
+"Russisch"
+],
+[
+"Wie hieß das Werk, auf das der Titel anspielt?",
+"Philosophie des Elends",
+"Das Kapital",
+"Was ist Eigentum?",
+"Der Gesellschaftsvertrag"
+]
+]
+},
+"wd_Q1211539": {
+"s": "schwierig",
+"q": [
+[
+"Wer begründete die Monadologie?",
+"Gottfried Wilhelm Leibniz",
+"Baruch de Spinoza",
+"René Descartes",
+"Christian Wolff"
+],
+[
+"In welchem Jahr entstand das Werk?",
+"1714",
+"1650",
+"1781",
+"1690"
+],
+[
+"In wie vielen Paragraphen legt er die Lehre dar?",
+"90",
+"12",
+"365",
+"1000"
+],
+[
+"Was bedeutet das griechische „monás“?",
+"Eins, Einheit",
+"Seele",
+"Welt",
+"Licht"
+],
+[
+"Wer ist laut dem Werk die Urmonade?",
+"Gott",
+"Der Mensch",
+"Die Sonne",
+"Das Atom"
+]
+]
+},
+"wd_Q1613926": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Herr Puntila und sein Knecht Matti“?",
+"Bertolt Brecht",
+"Carl Zuckmayer",
+"Friedrich Dürrenmatt",
+"Max Frisch"
+],
+[
+"Wo wurde das Stück 1948 uraufgeführt?",
+"Im Schauspielhaus Zürich",
+"Im Berliner Ensemble",
+"Im Burgtheater Wien",
+"In Helsinki"
+],
+[
+"In welchem Land lebte der Autor zur Entstehungszeit im Exil?",
+"In Finnland",
+"In den USA",
+"In Dänemark",
+"In Schweden"
+],
+[
+"Wie ist Puntila, wenn er betrunken ist?",
+"Ein Menschenfreund",
+"Ein Ausbeuter",
+"Ein Schläfer",
+"Ein Dichter"
+],
+[
+"Welchen Beruf hat Matti?",
+"Chauffeur",
+"Koch",
+"Gärtner",
+"Lehrer"
+]
+]
+},
+"wd_Q482535": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb die Light Novel „NHK ni Yōkoso!“?",
+"Tatsuhiko Takimoto",
+"Haruki Murakami",
+"Nisio Isin",
+"Reki Kawahara"
+],
+[
+"Wie heißt die Hauptfigur?",
+"Tatsuhiro Satō",
+"Kōichi Sakakibara",
+"Light Yagami",
+"Shinji Ikari"
+],
+[
+"Wie nennt man Menschen wie ihn, die sich zu Hause abschotten?",
+"Hikikomori",
+"Otaku",
+"Salaryman",
+"Ronin"
+],
+[
+"Vor wie vielen Jahren flog er von der Uni?",
+"Vor vier Jahren",
+"Vor einem Jahr",
+"Vor zehn Jahren",
+"Vor zwanzig Jahren"
+],
+[
+"Was steckt laut seiner Verschwörungstheorie dahinter?",
+"Eine Organisation namens NHK",
+"Außerirdische",
+"Seine Eltern",
+"Die Regierung der USA"
+]
+]
+},
+"wd_Q465649": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „Das Geheimnis der Schnallenschuhe“?",
+"One, Two, Buckle My Shoe",
+"Five Little Pigs",
+"Hickory Dickory Dock",
+"Three Blind Mice"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1940",
+"1930",
+"1950",
+"1960"
+],
+[
+"Wessen Praxis verlässt Poirot zu Beginn?",
+"Die seines Zahnarztes Henry Morley",
+"Die seines Hausarztes",
+"Die eines Anwalts",
+"Die eines Friseurs"
+],
+[
+"Was trägt Poirot Mabelle Sainsbury Seale nach?",
+"Eine Schuhschnalle",
+"Einen Handschuh",
+"Eine Brille",
+"Einen Schirm"
+],
+[
+"Unter welchem Titel erschien er in den USA zuerst?",
+"The Patriotic Murders",
+"An Overdose of Death",
+"The Dentist Dies",
+"Murder in Harley Street"
+]
+]
+},
+"wd_Q1214433": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Die Leiden eines Chinesen in China“?",
+"Jules Verne",
+"Pearl S. Buck",
+"Karl May",
+"Rudyard Kipling"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1879",
+"1900",
+"1850",
+"1866"
+],
+[
+"Wie heißt der junge reiche Chinese?",
+"Kin-Fo",
+"Wang Lung",
+"Ah Q",
+"Li Bai"
+],
+[
+"Wann spielt der Roman?",
+"Am Ende des 19. Jahrhunderts",
+"Im Mittelalter",
+"Im 21. Jahrhundert",
+"In der Antike"
+],
+[
+"Was weiß Kin-Fo nicht zu schätzen?",
+"Das Leben",
+"Das Geld",
+"Die Musik",
+"Das Essen"
+]
+]
+},
+"wd_Q466057": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „Die letzte Generation“?",
+"Childhood’s End",
+"Rendezvous with Rama",
+"The City and the Stars",
+"Against the Fall of Night"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1953",
+"1968",
+"1973",
+"1945"
+],
+[
+"Wie werden die Außerirdischen genannt?",
+"Overlords",
+"Vogonen",
+"Marsianer",
+"Monolithen"
+],
+[
+"Wie heißt der Abgesandte der Außerirdischen?",
+"Karellen",
+"Stormgren",
+"Klaatu",
+"Rama"
+],
+[
+"Nach wie vielen Jahren will er sich der Menschheit zeigen?",
+"Nach 50 Jahren",
+"Nach 5 Jahren",
+"Nach 100 Jahren",
+"Nach 1000 Jahren"
+]
+]
+},
+"wd_Q1411928": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „In einer kleinen Stadt“?",
+"Needful Things",
+"The Dead Zone",
+"Cujo",
+"Salem’s Lot"
+],
+[
+"In welchem Jahr erschien der Roman?",
+"1991",
+"1981",
+"2001",
+"1975"
+],
+[
+"In welcher Kleinstadt spielt er?",
+"Castle Rock",
+"Derry",
+"Jerusalem’s Lot",
+"Haven"
+],
+[
+"Wer eröffnet den Laden?",
+"Leland Gaunt",
+"Alan Pangborn",
+"Brian Rusk",
+"Randall Flagg"
+],
+[
+"Welchen Zyklus schließt der Roman ab?",
+"Den Castle-Rock-Zyklus",
+"Den Dunklen Turm",
+"Den Derry-Zyklus",
+"Den Shining-Zyklus"
+]
+]
+},
+"wd_Q1215982": {
+"s": "mittel",
+"q": [
+[
+"Wie lautet der Originaltitel von „Die Schattenhand“?",
+"The Moving Finger",
+"The Body in the Library",
+"A Pocket Full of Rye",
+"The Murder at the Vicarage"
+],
+[
+"Der wievielte Miss-Marple-Roman ist es?",
+"Der dritte",
+"Der erste",
+"Der zehnte",
+"Der zwölfte"
+],
+[
+"In welcher Kleinstadt mieten die Burtons ein Haus?",
+"In Lymstock",
+"In St. Mary Mead",
+"In Dillmouth",
+"In Chipping Cleghorn"
+],
+[
+"Wovon soll sich Jerry Burton erholen?",
+"Von einem Flugzeugabsturz",
+"Von einem Schiffbruch",
+"Von einer Grippe",
+"Von einem Duell"
+],
+[
+"Was geht im Ort seit einiger Zeit um?",
+"Anonyme Briefe",
+"Ein Geist",
+"Ein Dieb",
+"Eine Krankheit"
+]
+]
+},
+"wd_Q1364539": {
+"s": "schwierig",
+"q": [
+[
+"In welchem Jahr erschien „Menschliches, Allzumenschliches“?",
+"1878",
+"1872",
+"1886",
+"1889"
+],
+[
+"Wem ist die erste Auflage gewidmet?",
+"Voltaire",
+"Richard Wagner",
+"Arthur Schopenhauer",
+"Goethe"
+],
+[
+"Wie lautet der Untertitel?",
+"Ein Buch für freie Geister",
+"Ein Buch für Alle und Keinen",
+"Eine Streitschrift",
+"Fluch auf das Christentum"
+],
+[
+"Welche Sammlung erschien bereits 1880 und kam später hinzu?",
+"Der Wanderer und sein Schatten",
+"Morgenröte",
+"Die fröhliche Wissenschaft",
+"Ecce homo"
+],
+[
+"Was für eine Art Buch ist es?",
+"Eine Aphorismensammlung",
+"Ein Roman",
+"Ein Drama",
+"Eine Gedichtsammlung"
+]
+]
+},
+"wd_Q1660727": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „In der Strafkolonie“?",
+"Franz Kafka",
+"Thomas Mann",
+"Robert Musil",
+"Hermann Hesse"
+],
+[
+"Wann entstand die Erzählung?",
+"Im Oktober 1914",
+"Im Jahr 1924",
+"Im Jahr 1900",
+"Im Jahr 1933"
+],
+[
+"Wann wurde sie veröffentlicht?",
+"1919",
+"1914",
+"1925",
+"1945"
+],
+[
+"Wer besucht die Strafkolonie?",
+"Ein Forschungsreisender",
+"Ein König",
+"Ein Arzt",
+"Ein Journalist"
+],
+[
+"Wer hatte den Apparat ursprünglich entwickelt?",
+"Der verstorbene Kommandant",
+"Der Forschungsreisende",
+"Ein Soldat",
+"Der Verurteilte"
+]
+]
+}
 }
