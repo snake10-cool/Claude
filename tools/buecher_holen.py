@@ -263,13 +263,15 @@ def main():
         min_alter = gruppe.get('minAlter', 0)
 
         for r in gruppe.get('reihen', []):
-            treffer = dnb_suchen(f'tit="{r["reihe"]}" and per={r["autor"]}', 100)
+            # Ohne Autor wird nur nach dem Reihentitel gesucht.
+            abfrage = f'tit="{r["reihe"]}"' + (f' and per={r["autor"]}' if r['autor'] else '')
+            treffer = dnb_suchen(abfrage, 100)
             time.sleep(0.5)
             gefunden = {}
             for e in treffer:
                 if e['sprache'] and 'ger' not in e['sprache']:
                     continue
-                if normal(r['autor']) not in normal(e['autor']):
+                if r['autor'] and normal(r['autor']) not in normal(e['autor']):
                     continue
                 titel = anzeige_titel(e, r['reihe'])
                 if UNERWUENSCHT.search(titel) or normal(titel) == normal(r['reihe']):
