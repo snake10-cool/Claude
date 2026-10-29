@@ -1,4 +1,4 @@
-553 Bücher ohne Quiz, 472 mit Cover; 289 von 303 Quiz-Büchern mit Cover.
+604 Bücher ohne Quiz, 512 mit Cover; 289 von 303 Quiz-Büchern mit Cover.
 Reihe Woodwalkers: 12 Bände, 11 neu | Woodwalkers – Jeffreys große Chance; Woodwalkers – Feindliche Spuren; Woodwalkers – Zeit der Entscheidung; Woodwalkers – Das Grollen der Löwin; Woodwalkers – Herr der Gestalten; Woodwalkers – Der Club der Fabeltiere; Woodwalkers – Rivalen im Revier; Woodwalkers – Tag der Rache; Woodwalkers – Carags Verwandlung; Woodwalkers – Gefährliche Freundschaft; Woodwalkers – Hollys Geheimnis; Woodwalkers – Fremde Wildnis
 Reihe Seawalkers: 6 Bände, 6 neu | Seawalkers – Gefährliche Gestalten; Seawalkers – Rettung für Shari; Seawalkers – Wilde Wellen; Seawalkers – Ein Riese des Meeres; Seawalkers – Filmstars unter Wasser; Seawalkers – Im Visier der Python
 Reihe Windwalkers: 4 Bände, 4 neu | Windwalkers – Helden der Lüfte; Windwalkers – Giftige Gefahr; Windwalkers – Spione im Schwarm; Windwalkers – Verborgene Flügel
@@ -107,7 +107,7 @@ NICHT GEFUNDEN: Wunder – Auggie & ich (R. J. Palacio)
 NICHT GEFUNDEN: Herr Klee und Herr Feld (Michael Köhlmeier)
 Reihe Das Lied von Eis und Feuer: 8 Bände, 7 neu | Die Herren von Winterfell; Das Erbe von Winterfell; Der Thron der Sieben Königreiche; Die Saat des goldenen Löwen; Sturm der Schwerter; Die Königin der Drachen; Zeit der Krähen; Die dunkle Königin
 Reihe Hexer: 5 Bände, 4 neu | Das Erbe der Elfen; Die Zeit der Verachtung; Feuertaufe; Der Schwalbenturm; Die Dame vom See
-Reihe Scheibenwelt: 6 Bände, 6 neu | Dralle Drachen und andere Storys vom Schöpfer der Scheibenwelt; Vollsthändiger und unentbehrlicher Atlas der Scheibenwelt; Die staubsaugende Schreckschraube und andere Storys vom Schöpfer der Scheibenwelt; Scheibenwelt all stars; Das Jüngste Gericht; Die Scheibenwelt von A – Z
+Reihe Scheibenwelt: 1 Bände, 1 neu | Das Jüngste Gericht
 Reihe Die Zwerge: 1 Bände, 1 neu | Die Zwerge
 Reihe Sturmlicht: 4 Bände, 4 neu | Der Weg der Könige; Der Pfad der Winde; Die Worte des Lichts; Die Stürme des Zorns
 Reihe Kinder des Nebels: 1 Bände, 1 neu | Kinder des Nebels
@@ -118,6 +118,40 @@ Reihe Der Dunkle Turm: 7 Bände, 7 neu | Schwarz; Drei; Tot; Die kleinen Schwest
 Reihe Der Wüstenplanet: 3 Bände, 2 neu | Der Wüstenplanet; Der Herr des Wüstenplaneten; Die Kinder des Wüstenplaneten
 Reihe Outlander: 5 Bände, 5 neu | Outlander – Die geliehene Zeit; Outlander – Ferne Ufer; Outlander – Das flammende Kreuz; Ein Hauch von Schnee und Asche; Echo der Hoffnung
 Reihe Die Königsmörder-Chronik: 2 Bände, 1 neu | Der Name des Windes; Die Furcht des Weisen
+Reihe Das Rad der Zeit: 8 Bände, 8 neu | Die Suche nach dem Auge der Welt; Die Jagd beginnt; Die Rückkehr des Drachen; Der Schatten erhebt sich; Das Feuer des Himmels; Herr des Chaos; Die Krone der Schwerter; Der Weg der Klingen
+Reihe Die Gilde der Schwarzen Magier: 3 Bände, 3 neu | Die Rebellin; Die Novizin; Die Meisterin
+Reihe Die Elfen: 5 Bände, 5 neu | Elfenwinter; Elfenlicht; De elfen; Elfenkönigin; Elfenmond
+Reihe Die Klingen: 3 Bände, 3 neu | Feuerklingen; Königsklingen; Kriegsklingen
+Reihe Die Chroniken des Weitsehers: 0 Bände, 0 neu – NICHTS GEFUNDEN
+Reihe Die Gentleman-Bastarde: 0 Bände, 0 neu – NICHTS GEFUNDEN
+Reihe Das Lied des Blutes: 1 Bände, 1 neu | Das Lied des Blutes
+Reihe Das Schwert der Wahrheit: 4 Bände, 4 neu | Das erste Gesetz der Magie; Die Schwestern des Lichts; Die Günstlinge der Unterwelt; Der Bann der Hexe
+Reihe Osten Ard: 3 Bände, 3 neu | Der Drachenbeinthron; Der Abschiedsstein; Die Nornenkönigin
+Reihe Fourth Wing: 3 Bände, 3 neu | Fourth Wing – Flammengeküsst: Die Graphic Novel, Volume 1; Fourth Wing; Fourth Wing Tarot: Das offizielle Deck und Guidebook aus der Welt von Flammengeküsst
+Reihe Liebe kennt keine Grenzen: 3 Bände, 3 neu | Blood and ash; Flesh and fire; Crown and bones
+Reihe Nevernight: 3 Bände, 3 neu | Nevernight – Die Prüfung; Nevernight; Nevernight – Das Spiel
+Reihe Midkemia: 3 Bände, 3 neu | Der Lehrling des Magiers; Der verwaiste Thron; Die Gilde des Todes
+Reihe Die Drachenreiter von Pern: 0 Bände, 0 neu – NICHTS GEFUNDEN
+DNB: Jonathan Strange & Mr Norrell (Susanna Clarke, 2004, 1020 S.)
+DNB: Piranesi (Susanna Clarke, 2020, 269 S.)
+DNB: Ich bin Circe (Madeline Miller, 2019, 516 S.)
+DNB: Das Lied des Achill (Madeline Miller, 2011, 379 S.)
+DNB: Der Nachtzirkus (Erin Morgenstern, 2012, 463 S.)
+DNB: Das unsichtbare Leben der Addie LaRue (Victoria Schwab, 2021, 590 S.)
+DNB: Babel (R. F Kuang, 2023, 731 S.)
+DNB: Das neunte Haus (Leigh Bardugo, 2020, 528 S.)
+DNB: Die Farben der Magie (Terry Pratchett, 1992, 269 S.)
+DNB: Wachen! Wachen! (Terry Pratchett, 1991, 423 S.)
+DNB: Gevatter Tod (Terry Pratchett, 1990, 329 S.)
+NICHT GEFUNDEN: Der Krieger des Feuers (Brandon Sanderson)
+DNB: Elantris (Brandon Sanderson, 2007, 895 S.)
+DNB: Sturmklänge (Brandon Sanderson, 2010, 768 S.)
+DNB: Der Hexer von Salem (Wolfgang Hohlbein, 1987, 763 S.)
+DNB: Die Stadt der träumenden Bücher (Walter Moers, 2009, 475 S.)
+NICHT GEFUNDEN: Die 13½ Leben des Käpt'n Blaubär (Walter Moers)
+DNB: Rumo & Die Wunder im Dunkeln (Walter Moers, 2003, 693 S.)
+NICHT GEFUNDEN: Die Sagen des klassischen Altertums (Gustav Schwab)
+DNB: Grimms Märchen (Jacob Grimm, 2022, 178 S.)
 DNB: Das Silmarillion (J. R. R Tolkien, 1978, 404 S.)
 DNB: American Gods (Neil Gaiman, 2003, 623 S.)
 DNB: Der Unsichtbare (H. G Wells, 1974, 157 S.)
