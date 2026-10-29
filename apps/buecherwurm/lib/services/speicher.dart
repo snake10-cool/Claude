@@ -55,6 +55,10 @@ class Speicher extends ChangeNotifier {
       for (final j in _json('freunde', []) as List)
         Freund.ausJson(j as Map<String, dynamic>),
     ];
+    vorlieben = {
+      for (final MapEntry(:key, :value) in _json('vorlieben', {}).entries)
+        key: (value as num).toDouble(),
+    };
   }
 
   static Future<Speicher> laden() async =>
@@ -70,6 +74,9 @@ class Speicher extends ChangeNotifier {
   late List<Buch> eigeneBuecher;
   late Map<String, QuizErgebnis> quiz;
   late List<Freund> freunde;
+
+  /// Aus „Bücher gegeneinander": Merkmal → -1 (mag ich nicht) … +1.
+  late Map<String, double> vorlieben;
 
   dynamic _json(String key, Object leer) {
     final text = _prefs.getString(key);
@@ -167,7 +174,27 @@ class Speicher extends ChangeNotifier {
         antworten: antworten,
         eintraege: eintraege,
         buecher: alleBuecher,
+        vorlieben: vorlieben,
       );
+
+  /// Ergebnis von „Bücher gegeneinander" übernehmen: Vorlieben fließen
+  /// (gemittelt mit früheren Vergleichen) ins Leseprofil, unbewertete Bücher
+  /// bekommen Sterne aus der Gesamtbewertung.
+  Future<void> vergleichUebernehmen(Map<String, double> neu, Map<String, int> sterne) async {
+    neu.forEach((tag, wert) {
+      final alt = vorlieben[tag];
+      vorlieben[tag] = alt == null ? wert : (alt + wert) / 2;
+    });
+    sterne.forEach((id, s) {
+      final e = eintraege[id];
+      if (e != null && e.sterne == 0) e.sterne = s;
+    });
+    await _prefs.setInt('vergleiche', (_prefs.getInt('vergleiche') ?? 0) + 1);
+    await _prefs.setString('eintraege', jsonEncode(eintraege));
+    await _speichern('vorlieben', vorlieben);
+  }
+
+  int get vergleiche => _prefs.getInt('vergleiche') ?? 0;
 
   /// 0 = Lesen, 1 = Hören, 2 = beides.
   int get lieblingsFormat => antwortWert(antworten, 'format') ?? 0;
@@ -240,6 +267,7 @@ class Speicher extends ChangeNotifier {
     eigeneBuecher = [];
     quiz = {};
     freunde = [];
+    vorlieben = {};
     notifyListeners();
   }
 }

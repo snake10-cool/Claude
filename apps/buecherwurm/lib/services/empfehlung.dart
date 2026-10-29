@@ -29,8 +29,9 @@ int? antwortWert(Map<String, List<String>> antworten, String frageId) {
 Map<String, double> leseprofil(
   Map<String, List<String>> antworten,
   Map<String, Eintrag> eintraege,
-  Buch? Function(String id) buchFinden,
-) {
+  Buch? Function(String id) buchFinden, {
+  Map<String, double> vorlieben = const {},
+}) {
   final profil = <String, double>{};
   void plus(String tag, double w) => profil[tag] = (profil[tag] ?? 0) + w;
 
@@ -59,6 +60,10 @@ Map<String, double> leseprofil(
       plus(t, w);
     }
   });
+
+  // „Bücher gegeneinander": direkte Aussagen wie „Liebesgeschichten mag ich
+  // nicht" zählen stark.
+  vorlieben.forEach((t, w) => plus(t, w * 2));
   return profil;
 }
 
@@ -67,9 +72,10 @@ List<Empfehlung> empfehlen({
   required Map<String, Eintrag> eintraege,
   List<Buch> buecher = katalog,
   int anzahl = 20,
+  Map<String, double> vorlieben = const {},
 }) {
   final nachId = {for (final b in buecher) b.id: b};
-  final profil = leseprofil(antworten, eintraege, (id) => nachId[id]);
+  final profil = leseprofil(antworten, eintraege, (id) => nachId[id], vorlieben: vorlieben);
   final alter = antwortWert(antworten, 'alter');
   final laenge = antwortWert(antworten, 'laenge');
 
