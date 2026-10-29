@@ -54,6 +54,9 @@ SCHLUESSEL = {
 }
 VERBOTEN = re.compile(r'erotik|erotisch|pornograf|pornograph', re.I)
 # Schriftwerke, die keine Lesebücher sind: Gesetze, Verträge, heilige Schriften, Zeitschriften …
+# Hetz-, Propaganda- und Anleitungsschriften: gehören nicht in eine Lese-App für Kinder und Jugendliche.
+AUSSCHLUSS = set('Q48244 Q26193 Q662930 Q1542194 Q486292 Q706852 Q1198947 Q1137873 Q3058688 Q2367117 Q2628198 Q38343 Q468041 Q7734955 Q7756256 Q566691 Q951265 Q1193264 Q2009607 Q1926728'.split())
+
 KEIN_LESEBUCH = re.compile(
     r'gesetz|verfassung|vertrag|abkommen|charta|deklaration|erklärung der|resolution|verordnung|'
     r'bibel|evangeli|testament|koran|sure\b|psalm|brief des|brief an die|enzyklika|katechismus|'
@@ -216,7 +219,7 @@ def main():
             time.sleep(0.3)
 
         for q, titel, links, autoren, genres, publikum, jahre, seiten, beschreibung in roh:
-            if not titel or normal(titel) in gesehen:
+            if not titel or normal(titel) in gesehen or q in AUSSCHLUSS:
                 continue
             genre_namen = [personen.get(g, '') for g in genres]
             publikum_namen = [personen.get(p, '') for p in publikum]
