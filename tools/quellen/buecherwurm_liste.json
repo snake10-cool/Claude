@@ -1300,7 +1300,7 @@
     {
      "reihe": "Scheibenwelt",
      "autor": "Terry Pratchett",
-     "max": 16,
+     "max": 20,
      "tags": [
       "fantasy",
       "humor",
@@ -1330,7 +1330,7 @@
     {
      "reihe": "Kinder des Nebels",
      "autor": "Brandon Sanderson",
-     "max": 3,
+     "max": 4,
      "tags": [
       "fantasy",
       "action",
@@ -1409,9 +1409,339 @@
       "abenteuer",
       "serie"
      ]
+    },
+    {
+     "reihe": "Das Rad der Zeit",
+     "autor": "Robert Jordan",
+     "max": 8,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Die Gilde der Schwarzen Magier",
+     "autor": "Trudi Canavan",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Die Elfen",
+     "autor": "Bernhard Hennen",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "action",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Die Klingen",
+     "autor": "Joe Abercrombie",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "action",
+      "drama",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Die Chroniken des Weitsehers",
+     "autor": "Robin Hobb",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "drama",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Die Gentleman-Bastarde",
+     "autor": "Scott Lynch",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "krimi",
+      "humor",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Das Lied des Blutes",
+     "autor": "Anthony Ryan",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "action",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Das Schwert der Wahrheit",
+     "autor": "Terry Goodkind",
+     "max": 4,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Osten Ard",
+     "autor": "Tad Williams",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Fourth Wing",
+     "autor": "Rebecca Yarros",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "liebe",
+      "action",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Liebe kennt keine Grenzen",
+     "autor": "Jennifer Armentrout",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "liebe",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Nevernight",
+     "autor": "Jay Kristoff",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "action",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Midkemia",
+     "autor": "Raymond Feist",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Die Drachenreiter von Pern",
+     "autor": "Anne McCaffrey",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "scifi",
+      "serie"
+     ]
     }
    ],
    "buecher": [
+    [
+     "Jonathan Strange & Mr Norrell",
+     "Susanna Clarke",
+     [
+      "fantasy",
+      "historisch"
+     ]
+    ],
+    [
+     "Piranesi",
+     "Susanna Clarke",
+     [
+      "fantasy",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Ich bin Circe",
+     "Madeline Miller",
+     [
+      "fantasy",
+      "historisch",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Das Lied des Achill",
+     "Madeline Miller",
+     [
+      "fantasy",
+      "historisch",
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "Der Nachtzirkus",
+     "Erin Morgenstern",
+     [
+      "fantasy",
+      "liebe"
+     ]
+    ],
+    [
+     "Das unsichtbare Leben der Addie LaRue",
+     "V. E. Schwab",
+     [
+      "fantasy",
+      "liebe",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Babel",
+     "Rebecca F. Kuang",
+     [
+      "fantasy",
+      "historisch",
+      "drama"
+     ]
+    ],
+    [
+     "Das neunte Haus",
+     "Leigh Bardugo",
+     [
+      "fantasy",
+      "horror",
+      "krimi"
+     ]
+    ],
+    [
+     "Der Drachenbeinthron",
+     "Tad Williams",
+     [
+      "fantasy",
+      "abenteuer",
+      "serie"
+     ]
+    ],
+    [
+     "Die Farben der Magie",
+     "Terry Pratchett",
+     [
+      "fantasy",
+      "humor",
+      "serie"
+     ]
+    ],
+    [
+     "Wachen! Wachen!",
+     "Terry Pratchett",
+     [
+      "fantasy",
+      "humor",
+      "krimi",
+      "serie"
+     ]
+    ],
+    [
+     "Gevatter Tod",
+     "Terry Pratchett",
+     [
+      "fantasy",
+      "humor",
+      "serie"
+     ]
+    ],
+    [
+     "Der Krieger des Feuers",
+     "Brandon Sanderson",
+     [
+      "fantasy",
+      "action",
+      "serie"
+     ]
+    ],
+    [
+     "Elantris",
+     "Brandon Sanderson",
+     [
+      "fantasy"
+     ]
+    ],
+    [
+     "Sturmklänge",
+     "Brandon Sanderson",
+     [
+      "fantasy",
+      "serie"
+     ]
+    ],
+    [
+     "Der Hexer von Salem",
+     "Wolfgang Hohlbein",
+     [
+      "fantasy",
+      "horror"
+     ]
+    ],
+    [
+     "Die Stadt der träumenden Bücher",
+     "Walter Moers",
+     [
+      "fantasy",
+      "humor",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Die 13½ Leben des Käpt'n Blaubär",
+     "Walter Moers",
+     [
+      "fantasy",
+      "humor",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Rumo & Die Wunder im Dunkeln",
+     "Walter Moers",
+     [
+      "fantasy",
+      "humor",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Die Sagen des klassischen Altertums",
+     "Gustav Schwab",
+     [
+      "fantasy",
+      "klassiker",
+      "historisch"
+     ]
+    ],
+    [
+     "Der Name der Rose",
+     "Umberto Eco",
+     []
+    ],
+    [
+     "Grimms Märchen",
+     "Jacob Grimm",
+     [
+      "fantasy",
+      "klassiker"
+     ]
+    ],
     [
      "Die zwei Türme",
      "J. R. R. Tolkien",
