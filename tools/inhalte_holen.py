@@ -26,7 +26,11 @@ ABSCHNITTE = ('handlung', 'inhalt', 'zusammenfassung', 'handlungsübersicht', '�
 MAX_TEXT = 3000
 
 
-def holen(url, versuche=4):
+class Gesperrt(Exception):
+    pass
+
+
+def holen(url, versuche=4, sperre_abbrechen=False):
     for i in range(versuche):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': UA})
@@ -35,6 +39,8 @@ def holen(url, versuche=4):
         except urllib.error.HTTPError as e:
             if e.code == 404:
                 return None
+            if e.code == 429 and sperre_abbrechen:
+                raise Gesperrt() from e
             time.sleep(5 * (i + 1) if e.code == 429 else 2 * (i + 1))
         except Exception:  # noqa: BLE001
             time.sleep(2 * (i + 1))
@@ -85,12 +91,27 @@ def wikipedia_text(titel):
 
 
 def google_books(isbn):
-    a = holen('https://www.googleapis.com/books/v1/volumes?' + urllib.parse.urlencode({'q': f'isbn:{isbn}'}))
+    a = holen('https://www.googleapis.com/books/v1/volumes?' + urllib.parse.urlencode({'q': f'isbn:{isbn}'}),
+              versuche=2, sperre_abbrechen=True)
     for item in (a or {}).get('items', [])[:1]:
         d = item.get('volumeInfo', {}).get('description', '')
         if d:
             return re.sub(r'<[^>]+>', ' ', d)[:MAX_TEXT]
     return None
+
+
+START = time.monotonic()
+MINUTEN = int(sys.argv[sys.argv.index('--minuten') + 1]) if '--minuten' in sys.argv else 240
+
+
+def zeit_um():
+    return time.monotonic() - START > MINUTEN * 60
+
+
+def speichern(ergebnis):
+    AUSGABE.parent.mkdir(parents=True, exist_ok=True)
+    with gzip.open(AUSGABE, 'wt', encoding='utf-8') as f:
+        json.dump(ergebnis, f, ensure_ascii=False, separators=(',', ':'))
 
 
 def main():
@@ -115,11 +136,17 @@ def main():
     fertig = 0
     with ThreadPoolExecutor(4) as pool:
         for bid, r in pool.map(eins, list(nach_id)):
+            if zeit_um():
+                print('Zeit um – speichere den bisherigen Stand', flush=True)
+                pool.shutdown(wait=False, cancel_futures=True)
+                break
             fertig += 1
             if r and len(r[1]) >= 300:
                 ergebnis[bid] = {'t': nach_id[bid]['t'], 'q': f'Wikipedia ({r[0]})', 'x': r[1]}
             if fertig % 500 == 0:
                 print(f'  Wikipedia {fertig}/{len(nach_id)}, {len(ergebnis)} Texte', flush=True)
+                speichern(ergebnis)
+    speichern(ergebnis)
 
     # 2) Bücher aus der Nationalbibliothek mit ISBN
     extra = (APP / 'lib' / 'data' / 'katalog_extra.dart').read_text(encoding='utf-8')
@@ -128,14 +155,18 @@ def main():
     for bid, t, isbn in isbn_buecher:
         if bid in ergebnis:
             continue
-        d = google_books(isbn)
+        if zeit_um():
+            break
+        try:
+            d = google_books(isbn)
+        except Gesperrt:
+            print('Google Books sperrt (429) – Klappentexte beim nächsten Lauf', flush=True)
+            break
         if d and len(d) >= 200:
             ergebnis[bid] = {'t': t.replace("\\'", "'"), 'q': 'Google Books (Klappentext)', 'x': d}
         time.sleep(0.3)
 
-    AUSGABE.parent.mkdir(parents=True, exist_ok=True)
-    with gzip.open(AUSGABE, 'wt', encoding='utf-8') as f:
-        json.dump(ergebnis, f, ensure_ascii=False, separators=(',', ':'))
+    speichern(ergebnis)
     handlung = sum(1 for e in ergebnis.values() if 'Handlung' in e['q'])
     print(f'{len(ergebnis)} Texte gespeichert ({handlung} mit Handlungsabschnitt)')
 
