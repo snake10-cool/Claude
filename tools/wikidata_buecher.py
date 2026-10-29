@@ -58,7 +58,8 @@ KEIN_LESEBUCH = re.compile(
     r'gesetz|verfassung|vertrag|abkommen|charta|deklaration|erklärung der|resolution|verordnung|'
     r'bibel|evangeli|testament|koran|sure\b|psalm|brief des|brief an die|enzyklika|katechismus|'
     r'zeitschrift|zeitung|magazin|periodikum|wörterbuch|lexikon|enzyklopädie|handschrift|kodex|'
-    r'codex|inschrift|urkunde|lehrbuch|schulbuch', re.I)
+    r'codex|inschrift|urkunde|lehrbuch|schulbuch|kurzgeschichte\b|gedicht von|^gedicht|aufsatz|'
+    r'zeitungsartikel|fachartikel|\brede\b|predigt|songtext|libretto', re.I)
 
 
 def normal(s):
@@ -111,6 +112,31 @@ SELECT ?item ?titel ?links WHERE {{
     return alle
 
 
+def kandidaten_mit_label(vorhanden, mindestens=4):
+    """Zweite Runde: bekannte Werke mit deutschem Titel, aber ohne deutschen Artikel."""
+    alle = {}
+    for art in ['Q7725634', 'Q47461344', 'Q571']:
+        for unten, oben in [(30, 1000), (15, 30), (8, 15), (mindestens, 8)]:
+            abfrage = f'''
+SELECT ?item ?titel ?links WHERE {{
+  ?item wdt:P31 wd:{art} ; wikibase:sitelinks ?links .
+  FILTER(?links >= {unten} && ?links < {oben})
+  ?item rdfs:label ?titel . FILTER(LANG(?titel) = "de")
+  FILTER NOT EXISTS {{ ?artikel schema:about ?item ; schema:isPartOf <https://de.wikipedia.org/> . }}
+}}'''
+            antwort = sparql(abfrage)
+            if not antwort:
+                print(f'{art} {unten}–{oben}: keine Antwort')
+                continue
+            for b in antwort['results']['bindings']:
+                q = b['item']['value'].rsplit('/', 1)[-1]
+                if q not in vorhanden:
+                    alle.setdefault(q, (b['titel']['value'], int(b['links']['value'])))
+            print(f'{art} {unten}–{oben}: {len(antwort["results"]["bindings"])} Werke')
+            time.sleep(2)
+    return alle
+
+
 def entitaeten(ids):
     """Details zu bis zu 50 Wikidata-Einträgen."""
     url = 'https://www.wikidata.org/w/api.php?' + urllib.parse.urlencode({
@@ -153,6 +179,10 @@ def main():
     kand = kandidaten()
     reihenfolge = sorted(kand.items(), key=lambda x: -x[1][1])
     print(f'{len(kand)} Kandidaten mit deutschem Wikipedia-Artikel')
+    # Reicht das nicht, kommen bekannte Werke mit deutschem Titel ohne Artikel dazu (danach sortiert).
+    zweite = kandidaten_mit_label(kand)
+    reihenfolge += sorted(zweite.items(), key=lambda x: -x[1][1])
+    print(f'{len(zweite)} weitere Kandidaten mit deutschem Titel')
 
     buecher, bericht, gesehen = [], [], set(vorhanden)
     personen = {}
