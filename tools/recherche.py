@@ -18,15 +18,11 @@ UA = 'Buecherwurm/0.3 (https://github.com/snake10-cool/Claude; Lern-Projekt) pyt
 REIHEN = {
     'woodwalkers': {
         'wiki': [('de', ['Woodwalkers', 'Woodwalkers (Film)', 'Katja Brandis'])],
-        'fandom': ['woodwalkers', 'woodwalker', 'woodwalkers-wiki', 'clearwater-high'],
+        # Das Walkers-Wiki hat zu jedem Band eine Seite „<Titel>/Handlung".
+        'fandom': ['woodwalkers'], 'nur': r'/Handlung$',
     },
     'seawalkers': {
-        'wiki': [('de', ['Seawalkers'])],
-        'fandom': ['seawalkers', 'woodwalkers'],
-    },
-    'windwalkers': {
-        'wiki': [('de', ['Windwalkers'])],
-        'fandom': ['windwalkers', 'woodwalkers'],
+        'wiki': [('de', ['Seawalkers', 'Windwalkers'])],
     },
     'magisterium': {
         'wiki': [('de', ['Magisterium (Romanreihe)', 'Magisterium']),
@@ -40,8 +36,8 @@ REIHEN = {
     },
     'meisterdiebe': {
         'wiki': [('de', ['Die Schule der Meisterdiebe']),
-                 ('en', ['The Thief School', 'J. J. Arcanjo', 'Fox and the Thief School'])],
-        'fandom': ['thief-school', 'schule-der-meisterdiebe'],
+                 ('en', ['Crookhaven (novel)', 'Crookhaven: The School for Thieves', 'J. J. Arcanjo'])],
+        'fandom': ['crookhaven'],
     },
 }
 
@@ -77,16 +73,30 @@ def wikipedia(sprache, titel):
     return None
 
 
-def fandom(name):
+def alle_seiten(api):
+    seiten, weiter = [], {}
+    while True:
+        a = holen(api + urllib.parse.urlencode({
+            'action': 'query', 'list': 'allpages', 'aplimit': 500, 'format': 'json', **weiter}))
+        if not a:
+            return seiten
+        seiten += [p['title'] for p in a.get('query', {}).get('allpages', [])]
+        if 'continue' not in a or len(seiten) > 20000:
+            return seiten
+        weiter = {'apcontinue': a['continue']['apcontinue']}
+
+
+def fandom(name, nur=None):
     texte = []
     for basis in (f'https://{name}.fandom.com/de', f'https://{name}.fandom.com'):
         api = basis + '/api.php?'
-        a = holen(api + urllib.parse.urlencode({
-            'action': 'query', 'list': 'allpages', 'aplimit': 500, 'format': 'json'}))
-        seiten = [p['title'] for p in (a or {}).get('query', {}).get('allpages', [])]
+        seiten = alle_seiten(api)
         if not seiten:
             continue
         print(f'  Fandom {basis}: {len(seiten)} Seiten')
+        if nur:
+            seiten = [t for t in seiten if re.search(nur, t)]
+            print(f'  davon {len(seiten)} passend')
         texte.append(f'##### {basis}: Seiten: ' + ' | '.join(seiten))
         for i in range(0, min(len(seiten), 400), 20):
             a = holen(api + urllib.parse.urlencode({
@@ -121,8 +131,8 @@ def main():
                 if r:
                     texte.append(f'##### {sprache}.wikipedia – {r[0]}\n{r[1]}')
                 time.sleep(0.5)
-        for name in q['fandom']:
-            texte += fandom(name)
+        for name in q.get('fandom', []):
+            texte += fandom(name, q.get('nur'))
         (ZIEL / f'{reihe}.txt').write_text('\n\n'.join(texte) + '\n', encoding='utf-8')
         print(f'  {sum(len(t) for t in texte)} Zeichen')
 
