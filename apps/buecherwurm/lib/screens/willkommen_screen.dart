@@ -66,7 +66,9 @@ class _WillkommenScreenState extends State<WillkommenScreen> {
             FilledButton.icon(
               onPressed: _name.text.trim().isEmpty ? null : _los,
               icon: const Icon(Icons.quiz_outlined),
-              label: const Text('Fragebogen starten'),
+              label: Text(SpeicherScope.of(context).fragebogenEntwurf == null
+                  ? 'Fragebogen starten'
+                  : 'Fragebogen fortsetzen'),
             ),
           ],
         ),

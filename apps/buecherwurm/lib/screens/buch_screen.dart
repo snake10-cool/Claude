@@ -146,7 +146,11 @@ class BuchScreen extends StatelessWidget {
                 builder: (_) => QuizScreen(buch: buch),
               )),
               icon: const Icon(Icons.play_arrow),
-              label: Text(quiz == null ? 'Quiz starten' : 'Nochmal üben (ohne Punkte)'),
+              label: Text(quiz != null
+                  ? 'Nochmal üben (ohne Punkte)'
+                  : speicher.pausierteQuizze.containsKey(buchId)
+                      ? 'Quiz fortsetzen'
+                      : 'Quiz starten'),
             ),
           ] else if (!buch.eigenes) ...[
             const Divider(height: 32),

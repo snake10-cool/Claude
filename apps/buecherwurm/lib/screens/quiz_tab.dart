@@ -55,7 +55,9 @@ class QuizTab extends StatelessWidget {
             return ListTile(
               leading: BuchCover(buch, breite: 36),
               title: Text(buch.titel),
-              subtitle: Text(ergebnis != null
+              subtitle: Text(speicher.pausierteQuizze.containsKey(buch.id)
+                  ? '⏸ Pausiert – tippen zum Weitermachen'
+                  : ergebnis != null
                   ? '${ergebnis.richtig}/${ergebnis.gesamt} richtig · ${ergebnis.punkte} Punkte'
                   : status == Status.gelesen
                       ? 'Gelesen – jetzt beweisen!'

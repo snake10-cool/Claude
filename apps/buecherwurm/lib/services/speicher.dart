@@ -59,6 +59,11 @@ class Speicher extends ChangeNotifier {
       for (final MapEntry(:key, :value) in _json('vorlieben', {}).entries)
         key: (value as num).toDouble(),
     };
+    geprueft = {...(_json('geprueft', []) as List).cast<String>()};
+    pausierteQuizze = {
+      for (final MapEntry(:key, :value) in _json('pausierteQuizze', {}).entries)
+        key: value as Map<String, dynamic>,
+    };
   }
 
   static Future<Speicher> laden() async =>
@@ -77,6 +82,77 @@ class Speicher extends ChangeNotifier {
 
   /// Aus „Bücher gegeneinander": Merkmal → -1 (mag ich nicht) … +1.
   late Map<String, double> vorlieben;
+
+  /// Beim Abhaken als „nicht gelesen" markierte Bücher (werden nicht mehr gefragt).
+  late Set<String> geprueft;
+
+  /// Angefangene Quizze zum Weitermachen: Buch-ID → Zustand.
+  late Map<String, Map<String, dynamic>> pausierteQuizze;
+
+  // ───────── Fortschritt speichern ─────────
+
+  /// Angefangener Fragebogen (Antworten + aktuelle Frage) oder null.
+  (Map<String, List<String>>, int)? get fragebogenEntwurf {
+    final j = _json('fragebogenEntwurf', {}) as Map;
+    if (j.isEmpty) return null;
+    return (
+      {
+        for (final MapEntry(:key, :value) in (j['antworten'] as Map).entries)
+          key as String: List<String>.from(value as List),
+      },
+      j['index'] as int,
+    );
+  }
+
+  Future<void> fragebogenEntwurfSpeichern(Map<String, List<String>> antworten, int index) =>
+      _prefs.setString('fragebogenEntwurf', jsonEncode({'antworten': antworten, 'index': index}));
+
+  Future<void> fragebogenEntwurfLoeschen() => _prefs.remove('fragebogenEntwurf');
+
+  Future<void> quizPausieren(String buchId, Map<String, dynamic> zustand) {
+    pausierteQuizze[buchId] = zustand;
+    return _speichern('pausierteQuizze', pausierteQuizze);
+  }
+
+  Future<void> quizFortsetzungLoeschen(String buchId) {
+    pausierteQuizze.remove(buchId);
+    return _speichern('pausierteQuizze', pausierteQuizze);
+  }
+
+  // ───────── Abhaken ─────────
+
+  bool get sterneBeimAbhaken => _prefs.getBool('sterneBeimAbhaken') ?? false;
+
+  Future<void> sterneBeimAbhakenSetzen(bool an) async {
+    await _prefs.setBool('sterneBeimAbhaken', an);
+    notifyListeners();
+  }
+
+  /// Ja: als gelesen eintragen. Nein: merken, damit es nicht wieder kommt.
+  Future<void> abhaken(String buchId, bool gelesen) async {
+    if (gelesen) {
+      geprueft.remove(buchId);
+      if (eintraege[buchId]?.status != Status.gelesen) {
+        eintraege[buchId] = Eintrag(
+          status: Status.gelesen,
+          sterne: eintraege[buchId]?.sterne ?? 0,
+          format: lieblingsFormat == 1 ? Format.gehoert : Format.gelesen,
+        );
+      }
+      await _prefs.setString('geprueft', jsonEncode(geprueft.toList()));
+      await _speichern('eintraege', eintraege);
+    } else {
+      geprueft.add(buchId);
+      if (eintraege[buchId]?.status == Status.gelesen) eintraege.remove(buchId);
+      await _prefs.setString('eintraege', jsonEncode(eintraege));
+      await _speichern('geprueft', geprueft.toList());
+    }
+  }
+
+  /// Schon beantwortet (gelesen, abgebrochen, „nicht gelesen")?
+  bool abgehakt(String buchId) =>
+      geprueft.contains(buchId) ||
+      const {Status.gelesen, Status.abgebrochen}.contains(eintraege[buchId]?.status);
 
   dynamic _json(String key, Object leer) {
     final text = _prefs.getString(key);
@@ -268,6 +344,8 @@ class Speicher extends ChangeNotifier {
     quiz = {};
     freunde = [];
     vorlieben = {};
+    geprueft = {};
+    pausierteQuizze = {};
     notifyListeners();
   }
 }

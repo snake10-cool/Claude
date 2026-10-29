@@ -16,11 +16,16 @@ class FragebogenScreen extends StatefulWidget {
 }
 
 class _FragebogenScreenState extends State<FragebogenScreen> {
+  // Ein angefangener Fragebogen wird fortgesetzt, sonst starten wir mit den
+  // bisherigen Antworten (beim Neu-Machen).
+  late final _entwurf = SpeicherScope.of(context).fragebogenEntwurf;
   late final Map<String, List<String>> _antworten = {
-    for (final MapEntry(:key, :value) in SpeicherScope.of(context).antworten.entries)
+    for (final MapEntry(:key, :value) in (_entwurf?.$1 ?? SpeicherScope.of(context).antworten).entries)
       key: [...value],
   };
-  var _index = 0;
+  late var _index = (_entwurf?.$2 ?? 0).clamp(0, fragebogen.length - 1);
+
+  void _entwurfSichern() => SpeicherScope.of(context).fragebogenEntwurfSpeichern(_antworten, _index);
 
   FragebogenFrage get _frage => fragebogen[_index];
   List<String> get _gewaehlt => _antworten[_frage.id] ?? const [];
@@ -35,6 +40,7 @@ class _FragebogenScreenState extends State<FragebogenScreen> {
         _antworten[_frage.id] = [optionId];
       }
     });
+    _entwurfSichern();
     if (!_frage.mehrfach) {
       Future.delayed(const Duration(milliseconds: 250), () {
         if (mounted) _weiter();
@@ -46,10 +52,12 @@ class _FragebogenScreenState extends State<FragebogenScreen> {
     if (_gewaehlt.isEmpty) return;
     if (_index < fragebogen.length - 1) {
       setState(() => _index++);
+      _entwurfSichern();
       return;
     }
     final speicher = SpeicherScope.of(context);
     await speicher.antwortenSetzen(_antworten);
+    await speicher.fragebogenEntwurfLoeschen();
     if (!mounted) return;
     if (widget.pflicht) {
       Navigator.of(context).pushReplacement(MaterialPageRoute(

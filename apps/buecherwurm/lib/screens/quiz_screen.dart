@@ -24,13 +24,14 @@ class QuizScreen extends StatefulWidget {
 
 class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
   final _zufall = Random();
-  late final List<(Frage, List<String>)> _fragen = [
-    for (final f in quizFragen(widget.buch, KontoScope.of(context), _zufall)..shuffle(_zufall))
-      (f, [...f.antworten]..shuffle(_zufall)),
-  ];
+  late List<(Frage, List<String>)> _fragen;
 
   /// Nur der erste Versuch zählt, danach ist es Übung.
   late final bool _zaehlt = !SpeicherScope.of(context).quiz.containsKey(widget.buch.id);
+
+  /// Fortgesetztes, vorher pausiertes Quiz.
+  var _fortgesetzt = false;
+  var _bereit = false;
 
   var _gestartet = false;
   var _index = 0;
@@ -46,6 +47,58 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_bereit) return;
+    _bereit = true;
+    final gespeichert = _zaehlt ? SpeicherScope.of(context).pausierteQuizze[widget.buch.id] : null;
+    if (gespeichert != null) {
+      _wiederherstellen(gespeichert);
+    } else {
+      _fragen = [
+        for (final f in quizFragen(widget.buch, KontoScope.of(context), _zufall)..shuffle(_zufall))
+          (f, [...f.antworten]..shuffle(_zufall)),
+      ];
+    }
+  }
+
+  // ───────── Pausieren: Stand nach jeder Frage sichern ─────────
+
+  void _wiederherstellen(Map<String, dynamic> z) {
+    _fragen = [
+      for (final f in (z['fragen'] as List).cast<Map<String, dynamic>>())
+        (
+          Frage(f['f'] as String, [f['r'] as String, ...(f['a'] as List).cast<String>().where((a) => a != f['r'])]),
+          (f['a'] as List).cast<String>(),
+        ),
+    ];
+    _richtig = z['richtig'] as int;
+    _punkte = z['punkte'] as int;
+    _verlassen = z['verlassen'] as int;
+    _index = z['naechste'] as int;
+    // Die App wurde mitten in einer Frage geschlossen: Diese Frage ist verloren.
+    if (z['aktiv'] == true) {
+      _verlassen++;
+      _index++;
+    }
+    _fortgesetzt = true;
+  }
+
+  void _sichern({required bool aktiv}) {
+    if (!_zaehlt) return;
+    SpeicherScope.of(context).quizPausieren(widget.buch.id, {
+      'fragen': [
+        for (final (f, antworten) in _fragen) {'f': f.text, 'r': f.richtig, 'a': antworten},
+      ],
+      'naechste': aktiv ? _index : _index + 1,
+      'aktiv': aktiv,
+      'richtig': _richtig,
+      'punkte': _punkte,
+      'verlassen': _verlassen,
+    });
   }
 
   @override
@@ -68,7 +121,11 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
 
   void _starten() {
     setState(() => _gestartet = true);
-    _frageStarten();
+    if (_index >= _fragen.length) {
+      _beenden();
+    } else {
+      _frageStarten();
+    }
   }
 
   void _frageStarten() {
@@ -81,6 +138,7 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
       setState(() => _rest--);
       if (_rest <= 0) _aufloesen(null);
     });
+    _sichern(aktiv: true);
   }
 
   void _aufloesen(String? antwort) {
@@ -94,6 +152,7 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
         _punkte += punkteFuer(_rest);
       }
     });
+    _sichern(aktiv: false);
   }
 
   Future<void> _weiter() async {
@@ -103,40 +162,41 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
       return;
     }
     setState(() => _index++);
-    if (_zaehlt) {
-      await SpeicherScope.of(context).quizBeendet(
-        widget.buch.id,
-        QuizErgebnis(richtig: _richtig, gesamt: _fragen.length, punkte: _punkte, datum: DateTime.now()),
-      );
-    }
+    await _beenden();
+  }
+
+  Future<void> _beenden() async {
+    setState(() => _index = _fragen.length);
+    if (!_zaehlt) return;
+    final speicher = SpeicherScope.of(context);
+    await speicher.quizFortsetzungLoeschen(widget.buch.id);
+    await speicher.quizBeendet(
+      widget.buch.id,
+      QuizErgebnis(richtig: _richtig, gesamt: _fragen.length, punkte: _punkte, datum: DateTime.now()),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: !_gestartet || _index >= _fragen.length || !_zaehlt,
+      canPop: !_gestartet || _index >= _fragen.length || !_zaehlt || _aufgeloest,
       onPopInvokedWithResult: (didPop, _) async {
         if (didPop) return;
-        final abbrechen = await showDialog<bool>(
+        final pausieren = await showDialog<bool>(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('Quiz abbrechen?'),
-            content: const Text('Dann zählt das Quiz mit den bisherigen Antworten. Offene Fragen sind falsch.'),
+            title: const Text('Quiz pausieren?'),
+            content: const Text('Die laufende Frage zählt dann als falsch. Mit den anderen Fragen '
+                'machst du später genau hier weiter.'),
             actions: [
               TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Weiterspielen')),
-              FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Abbrechen')),
+              FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Pausieren')),
             ],
           ),
         );
-        if (abbrechen != true || !context.mounted) return;
-        _timer?.cancel();
-        _index = _fragen.length;
-        final navigator = Navigator.of(context);
-        await SpeicherScope.of(context).quizBeendet(
-          widget.buch.id,
-          QuizErgebnis(richtig: _richtig, gesamt: _fragen.length, punkte: _punkte, datum: DateTime.now()),
-        );
-        navigator.pop();
+        if (pausieren != true || !context.mounted) return;
+        _aufloesen(null);
+        Navigator.of(context).pop();
       },
       child: Scaffold(
         appBar: AppBar(title: Text(widget.buch.titel)),
@@ -159,14 +219,21 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
       children: [
         const Text('🤞', textAlign: TextAlign.center, style: TextStyle(fontSize: 56)),
         const SizedBox(height: 12),
-        Text(_zaehlt ? 'Bereit?' : 'Übungsrunde', textAlign: TextAlign.center, style: theme.textTheme.headlineSmall),
+        Text(_fortgesetzt ? 'Weiter geht\'s!' : _zaehlt ? 'Bereit?' : 'Übungsrunde',
+            textAlign: TextAlign.center, style: theme.textTheme.headlineSmall),
         const SizedBox(height: 16),
         Text(
-          _zaehlt
+          _fortgesetzt
+              ? 'Du hattest dieses Quiz pausiert.\n'
+                  '• Weiter mit Frage ${min(_index + 1, _fragen.length)} von ${_fragen.length}\n'
+                  '• Bisher $_richtig richtig, $_punkte Punkte'
+                  '${_verlassen > 0 ? '\n• Eine Frage war gerade offen, als die App geschlossen wurde – sie zählt als falsch.' : ''}'
+              : _zaehlt
               ? '• ${_fragen.length} Fragen, je $sekundenProFrage Sekunden\n'
                   '• Schnelle Antworten geben Bonuspunkte\n'
                   '• Nur dieser erste Versuch zählt im Wettbewerb\n'
                   '• Verlässt du die App während einer Frage, ist sie falsch\n'
+                  '• Zwischen zwei Fragen kannst du jederzeit pausieren\n'
                   '• Ab ${(_fragen.length * 2 / 3).ceil()} richtigen Antworten gilt das Buch als bewiesen gelesen'
               : 'Du hast dieses Quiz schon gemacht. Diese Runde ist nur zum Spaß und bringt keine Punkte.',
           style: theme.textTheme.bodyLarge,
@@ -200,7 +267,7 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
           FilledButton.icon(
             onPressed: _starten,
             icon: const Icon(Icons.play_arrow),
-            label: const Text('Los geht\'s'),
+            label: Text(_fortgesetzt ? 'Weiterspielen' : 'Los geht\'s'),
           ),
       ],
     );
@@ -258,6 +325,12 @@ class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
             onPressed: _weiter,
             child: Text(_index == _fragen.length - 1 ? 'Ergebnis' : 'Nächste Frage'),
           ),
+          if (_zaehlt && _index < _fragen.length - 1)
+            TextButton.icon(
+              onPressed: () => Navigator.of(context).pop(),
+              icon: const Icon(Icons.pause),
+              label: const Text('Pausieren – später weitermachen'),
+            ),
         ],
       ],
     );
