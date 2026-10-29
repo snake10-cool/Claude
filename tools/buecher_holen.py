@@ -75,7 +75,8 @@ def dart_text(s):
 
 def aufraeumen(s):
     # DNB markiert Nichtsortierzeichen (Artikel) mit ¬ oder Steuerzeichen.
-    s = re.sub(r'[\u0098\u009c¬]', '', s or '')
+    s = unicodedata.normalize('NFC', s or '')
+    s = re.sub(r'[\u0098\u009c¬]', '', s)
     s = re.split(r'\s/\s', s)[0]
     s = re.sub(r'\s*:?\s*\[[^\]]*\]', '', s)
     s = re.sub(r'\s+', ' ', s).strip()
@@ -196,11 +197,14 @@ def anzeige_titel(e, reihe=None, praefix=True):
     if not reihe:
         return f'{a} – {p}' if p and normal(p) not in normal(a) else a
     k = p or a
-    # DNB schreibt Untertitel oft klein („gefährliche Freundschaft").
-    k = k[:1].upper() + k[1:]
-    if not praefix or normal(reihe) in normal(k):
-        return k
-    return f'{reihe} – {k}'
+    if normal(k) in normal(reihe):
+        k = reihe
+    if praefix and normal(reihe) not in normal(k):
+        k = f'{reihe} – {k}'
+    # Einheitliche Gedankenstriche; DNB schreibt Untertitel oft klein.
+    k = re.sub(r'\s+-\s+', ' – ', k)
+    k = re.sub(r'(^|\s–\s)(\w)', lambda m: m.group(1) + m.group(2).upper(), k)
+    return k
 
 
 def bandnummer(e):
@@ -300,13 +304,13 @@ def main():
         praefix = gruppe.get('praefix', ziel != 'erwachsene')
         for r in gruppe.get('reihen', []):
             woerter = [normal(w) for w in r['autor'].split()]
-            nachname = r['autor'].split()[-1] if r['autor'] else ''
+            familienname = r['autor'].split()[-1] if r['autor'] else ''
             abfragen = [r['reihe']]
             if re.match(r'^(Die|Der|Das) ', r['reihe']):
                 abfragen.append(r['reihe'].split(' ', 1)[1])  # zweiter Versuch ohne Artikel
             gefunden = {}
             for reihe_text in abfragen:
-                abfrage = f'tit="{reihe_text}"' + (f' and per={nachname}' if nachname else '')
+                abfrage = f'tit="{reihe_text}"' + (f' and per={familienname}' if familienname else '')
                 treffer = dnb_suchen(abfrage, 100)
                 time.sleep(0.5)
                 for e in treffer:
