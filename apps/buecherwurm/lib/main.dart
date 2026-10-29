@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 import 'screens/start_screen.dart';
 import 'screens/willkommen_screen.dart';
+import 'services/challenges.dart';
 import 'services/erinnerung.dart';
 import 'services/konto.dart';
 import 'services/speicher.dart';
@@ -12,7 +13,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final speicher = await Speicher.laden();
   // Sanfte Lese-Erinnerung: nach jedem Lese-Tag und beim Start neu planen.
-  speicher.nachLeseTag = () => Erinnerung.instanz.planen(speicher).catchError((_) {});
+  speicher.nachLeseTag = () {
+    Erinnerung.instanz.planen(speicher).catchError((_) {});
+    speicher.challengesPruefen().catchError((_) => const <Challenge>[]);
+  };
+  speicher.challengesPruefen().catchError((_) => const <Challenge>[]);
   Erinnerung.instanz.planen(speicher).catchError((_) {});
   Konto? konto;
   if (firebaseKonfiguriert) {

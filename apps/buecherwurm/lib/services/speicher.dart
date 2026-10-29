@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/katalog.dart';
 import '../models/buch.dart';
+import 'challenges.dart';
 import 'empfehlung.dart';
 
 /// Ein Mitspieler in der Rangliste, eingelesen über seinen Punkte-Code.
@@ -341,7 +342,29 @@ class Speicher extends ChangeNotifier {
 
   // ───────── Quiz & Wettbewerb ─────────
 
-  int get punkte => quiz.values.fold(0, (s, q) => s + q.punkte);
+  int get punkte => quiz.values.fold(0, (s, q) => s + q.punkte) + bonusPunkte;
+
+  /// Geschaffte Monats-Challenges: "2026-10:dick" → Bonuspunkte.
+  Map<String, int> get erledigteChallenges => {
+        for (final MapEntry(:key, :value) in (_json('challenges', {}) as Map).entries) key as String: value as int,
+      };
+  int get bonusPunkte => erledigteChallenges.values.fold(0, (a, b) => a + b);
+
+  /// Prüft die Challenges des aktuellen Monats und schreibt neu geschaffte
+  /// gut. Gibt die neu geschafften zurück.
+  Future<List<Challenge>> challengesPruefen([DateTime? jetzt]) async {
+    final t = jetzt ?? DateTime.now();
+    final erledigt = erledigteChallenges;
+    final neu = <Challenge>[];
+    for (final c in challengesFuer(t.year, t.month)) {
+      final schluessel = '${t.year}-${t.month}:${c.id}';
+      if (erledigt.containsKey(schluessel) || !c.geschafft(this, t.year, t.month)) continue;
+      erledigt[schluessel] = challengePunkte(t.month);
+      neu.add(c);
+    }
+    if (neu.isNotEmpty) await _speichern('challenges', erledigt);
+    return neu;
+  }
   int get gelesen => eintraege.values.where((e) => e.status == Status.gelesen).length;
   int get bewiesen => quiz.values.where((q) => q.bestanden).length;
 

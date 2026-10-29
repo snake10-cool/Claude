@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import '../main.dart';
 import '../services/konto.dart';
 import '../services/speicher.dart';
+import 'challenges_screen.dart';
 import 'konto_screen.dart';
 
 /// Rangliste mit Freunden. Ohne Server: Jeder teilt seinen Punkte-Code
@@ -22,6 +23,17 @@ class RanglisteTab extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
+        Card(
+          color: theme.colorScheme.secondaryContainer,
+          child: ListTile(
+            leading: const Text('🏁', style: TextStyle(fontSize: 28)),
+            title: const Text('Monats-Challenges'),
+            subtitle: Text('3 Aufgaben diesen Monat – ${speicher.bonusPunkte} Bonuspunkte bisher'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ChallengesScreen())),
+          ),
+        ),
+        const SizedBox(height: 12),
         Text('Wer liest am meisten?', style: theme.textTheme.titleLarge),
         const SizedBox(height: 4),
         const Text(
