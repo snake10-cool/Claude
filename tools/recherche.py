@@ -28,7 +28,10 @@ REIHEN = {
         'wiki': [('de', ['Magisterium (Romanreihe)', 'Magisterium']),
                  ('en', ['Magisterium (book series)', 'The Iron Trial', 'The Copper Gauntlet',
                          'The Bronze Key', 'The Silver Mask', 'The Golden Tower'])],
-        'fandom': ['magisterium'],
+        'fandom': ['magisterium', 'themagisterium'],
+        'nur': r'^(The (Iron Trial|Copper Gauntlet|Bronze Key|Silver Mask|Golden Tower|Enemy of Death)'
+               r'|De[rn] .*|Die .*|Callum Hunt|Aaron Stewart|Tamara Rajavi|Alex Strike|Jasper deWinter'
+               r'|Havoc|Master (Joseph|Rufus)|Anastasia Tarquin|Constantine Madden|Alastair Hunt)$',
     },
     'fluesterwald': {
         'wiki': [('de', ['Flüsterwald', 'Andreas Suchanek'])],
