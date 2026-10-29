@@ -16,6 +16,8 @@ const katalogKlassiker = <Buch>[
       Frage('In welcher Stadt spielt das Stück?', ['Verona', 'Venedig', 'Florenz', 'Rom']),
       Frage('Wie heißen die verfeindeten Familien?', ['Montague und Capulet', 'Lancaster und York', 'Medici und Borgia', 'Stark und Lennister']),
       Frage('Was nimmt Julia, damit man sie für tot hält?', ['Einen Schlaftrunk', 'Gift', 'Einen Zauberspruch', 'Gar nichts, sie versteckt sich']),
+      Frage('Wer hat „Romeo und Julia“ geschrieben?', ['William Shakespeare', 'Friedrich Schiller', 'Johann Wolfgang von Goethe', 'Molière']),
+      Frage('Wie stirbt Romeo?', ['Er trinkt Gift', 'Er wird erstochen', 'Er fällt vom Balkon', 'Er ertrinkt']),
     ],
   ),
   Buch(
@@ -31,6 +33,8 @@ const katalogKlassiker = <Buch>[
       Frage('In welchem Land spielt das Stück?', ['Dänemark', 'England', 'Schottland', 'Norwegen']),
       Frage('Wer hat Hamlets Vater ermordet?', ['Sein Bruder Claudius', 'Polonius', 'Laertes', 'Die Königin']),
       Frage('Wie beginnt Hamlets berühmtester Monolog?', ['„Sein oder Nichtsein"', '„Wer bin ich?"', '„O Romeo"', '„Ein Pferd, ein Pferd"']),
+      Frage('Wer erscheint Hamlet am Anfang?', ['Der Geist seines Vaters', 'Eine Hexe', 'Ein Engel', 'Seine Mutter']),
+      Frage('Wie heißt die junge Frau, die Hamlet liebt und die wahnsinnig wird?', ['Ophelia', 'Desdemona', 'Julia', 'Cordelia']),
     ],
   ),
   Buch(
@@ -46,6 +50,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wer sagt Macbeth voraus, dass er König wird?', ['Drei Hexen', 'Ein Geist', 'Ein Mönch', 'Seine Frau']),
       Frage('Welchen König ermordet Macbeth?', ['Duncan', 'Lear', 'Claudius', 'Richard']),
       Frage('Wer treibt Macbeth zum Mord an?', ['Lady Macbeth', 'Banquo', 'Macduff', 'Die Königin']),
+      Frage('In welchem Land spielt „Macbeth“?', ['Schottland', 'England', 'Dänemark', 'Irland']),
+      Frage('Was will Lady Macbeth im Schlaf immer wieder von ihren Händen abwaschen?', ['Blut', 'Tinte', 'Asche', 'Erde']),
     ],
   ),
   Buch(
@@ -61,6 +67,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Elfenkönig?', ['Oberon', 'Puck', 'Theseus', 'Zettel']),
       Frage('Welchen Kopf bekommt der Weber Zettel?', ['Einen Eselskopf', 'Einen Schweinekopf', 'Einen Löwenkopf', 'Einen Vogelkopf']),
       Frage('Wer ist der freche Diener des Elfenkönigs?', ['Puck', 'Ariel', 'Oberon', 'Lysander']),
+      Frage('Wo spielt der größte Teil des Stücks?', ['In einem Wald bei Athen', 'In Venedig', 'In London', 'Auf einer Insel']),
+      Frage('Wie heißt die Elfenkönigin, die sich in Zettel verliebt?', ['Titania', 'Hermia', 'Helena', 'Hippolyta']),
     ],
   ),
   Buch(
@@ -76,6 +84,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wer spinnt die Intrige gegen Othello?', ['Jago', 'Cassio', 'Rodrigo', 'Brabantio']),
       Frage('Wie heißt Othellos Frau?', ['Desdemona', 'Ophelia', 'Julia', 'Portia']),
       Frage('Welcher Gegenstand dient als falscher Beweis?', ['Ein Taschentuch', 'Ein Ring', 'Ein Brief', 'Ein Dolch']),
+      Frage('In welcher Stadt beginnt das Stück?', ['Venedig', 'Verona', 'Rom', 'Florenz']),
+      Frage('Was tut Othello aus Eifersucht?', ['Er tötet Desdemona', 'Er verlässt Venedig', 'Er tötet Jago', 'Er wird Mönch']),
     ],
   ),
   Buch(
@@ -91,6 +101,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie viele Töchter hat Lear?', ['Drei', 'Zwei', 'Vier', 'Eine']),
       Frage('Welche Tochter will ihm nicht schmeicheln?', ['Cordelia', 'Goneril', 'Regan', 'Ophelia']),
       Frage('Wer begleitet Lear ehrlich und witzig?', ['Der Narr', 'Der Hofmeister', 'Ein Bischof', 'Ein Hund']),
+      Frage('Wer hat „König Lear“ geschrieben?', ['William Shakespeare', 'Christopher Marlowe', 'Friedrich Schiller', 'Molière']),
+      Frage('Wie heißen Lears zwei ältere, falsche Töchter?', ['Goneril und Regan', 'Ophelia und Gertrud', 'Portia und Jessica', 'Hermia und Helena']),
     ],
   ),
   Buch(
@@ -106,6 +118,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Geldverleiher?', ['Shylock', 'Antonio', 'Bassanio', 'Lorenzo']),
       Frage('Was verlangt er als Pfand?', ['Ein Pfund Fleisch', 'Ein Schiff', 'Ein Haus', 'Die Hand seiner Tochter']),
       Frage('Wer rettet Antonio vor Gericht, als Anwalt verkleidet?', ['Portia', 'Jessica', 'Nerissa', 'Desdemona']),
+      Frage('Wer hat „Der Kaufmann von Venedig“ geschrieben?', ['William Shakespeare', 'Gotthold Ephraim Lessing', 'Carlo Goldoni', 'Molière']),
+      Frage('Wie heißt der Kaufmann, der das Geld leiht?', ['Antonio', 'Bassanio', 'Lorenzo', 'Gratiano']),
     ],
   ),
 
@@ -123,6 +137,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißen die beiden Brüder?', ['Karl und Franz Moor', 'Max und Moritz', 'Ferdinand und Wurm', 'Faust und Wagner']),
       Frage('Was wird Karl?', ['Hauptmann einer Räuberbande', 'Priester', 'Soldat', 'Kaufmann']),
       Frage('Wie heißt Karls Geliebte?', ['Amalia', 'Luise', 'Gretchen', 'Emilia']),
+      Frage('Wer hat „Die Räuber“ geschrieben?', ['Friedrich Schiller', 'Johann Wolfgang von Goethe', 'Gotthold Ephraim Lessing', 'Heinrich von Kleist']),
+      Frage('Welcher Bruder intrigiert, um das Erbe zu bekommen?', ['Franz', 'Karl', 'Hermann', 'Spiegelberg']),
     ],
   ),
   Buch(
@@ -138,6 +154,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt das bürgerliche Mädchen?', ['Luise Miller', 'Lady Milford', 'Amalia', 'Emilia Galotti']),
       Frage('Wie heißt der Sekretär, der die Intrige mitspinnt?', ['Wurm', 'Marinelli', 'Mephisto', 'Jago']),
       Frage('Womit vergiftet Ferdinand sich und Luise?', ['Mit Limonade', 'Mit Wein', 'Mit Tee', 'Mit einem Apfel']),
+      Frage('Wer hat „Kabale und Liebe“ geschrieben?', ['Friedrich Schiller', 'Gotthold Ephraim Lessing', 'Johann Wolfgang von Goethe', 'Georg Büchner']),
+      Frage('Wie heißt Luises adliger Geliebter?', ['Ferdinand von Walter', 'Karl Moor', 'Major von Tellheim', 'Prinz Hettore']),
     ],
   ),
   Buch(
@@ -153,6 +171,8 @@ const katalogKlassiker = <Buch>[
       Frage('Was muss Tell vom Kopf seines Sohnes schießen?', ['Einen Apfel', 'Eine Birne', 'Einen Hut', 'Eine Nuss']),
       Frage('Wie heißt der Landvogt?', ['Gessler', 'Attinghausen', 'Stauffacher', 'Rudenz']),
       Frage('Was sollen die Leute in Altdorf grüßen?', ['Einen Hut auf einer Stange', 'Eine Fahne', 'Ein Bild des Kaisers', 'Den Landvogt persönlich']),
+      Frage('Wer hat „Wilhelm Tell“ geschrieben?', ['Friedrich Schiller', 'Johann Wolfgang von Goethe', 'Gottfried Keller', 'Heinrich von Kleist']),
+      Frage('In welchem Land spielt das Stück?', ['In der Schweiz', 'In Österreich', 'In Bayern', 'In Italien']),
     ],
   ),
   Buch(
@@ -168,6 +188,8 @@ const katalogKlassiker = <Buch>[
       Frage('Welche Königin hält Maria gefangen?', ['Elisabeth I. von England', 'Maria von Ungarn', 'Katharina von Aragon', 'Viktoria']),
       Frage('Wessen Königin war Maria Stuart?', ['Schottlands', 'Frankreichs', 'Irlands', 'Spaniens']),
       Frage('Wie endet das Stück für Maria?', ['Sie wird hingerichtet', 'Sie wird befreit', 'Sie flieht nach Frankreich', 'Sie wird Königin von England']),
+      Frage('Wer hat „Maria Stuart“ geschrieben?', ['Friedrich Schiller', 'William Shakespeare', 'Johann Wolfgang von Goethe', 'Gotthold Ephraim Lessing']),
+      Frage('Mit welcher Königin ist Maria verwandt und verfeindet?', ['Elisabeth I.', 'Victoria', 'Katharina die Große', 'Maria Theresia']),
     ],
   ),
   Buch(
@@ -183,6 +205,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wo spielt das Stück?', ['In Jerusalem', 'In Rom', 'In Konstantinopel', 'In Kairo']),
       Frage('Mit welcher Geschichte antwortet Nathan dem Sultan?', ['Mit der Ringparabel', 'Mit der Bergpredigt', 'Mit einem Märchen von Drachen', 'Mit der Geschichte von Hiob']),
       Frage('Wie heißt der Sultan?', ['Saladin', 'Suleiman', 'Harun', 'Mehmed']),
+      Frage('Wer hat „Nathan der Weise“ geschrieben?', ['Gotthold Ephraim Lessing', 'Friedrich Schiller', 'Johann Wolfgang von Goethe', 'Heinrich von Kleist']),
+      Frage('Wofür plädiert das Stück?', ['Für Toleranz zwischen den Religionen', 'Für den Krieg', 'Für die Monarchie', 'Für die Rache']),
     ],
   ),
   Buch(
@@ -198,6 +222,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wer begehrt Emilia?', ['Der Prinz von Guastalla', 'Graf Appiani', 'Marinelli', 'Odoardo']),
       Frage('Wer hilft dem Prinzen mit einer Intrige?', ['Der Kammerherr Marinelli', 'Wurm', 'Jago', 'Mephisto']),
       Frage('Wer tötet Emilia am Ende – auf ihren Wunsch?', ['Ihr Vater', 'Der Prinz', 'Ihr Bräutigam', 'Marinelli']),
+      Frage('Wer hat „Emilia Galotti“ geschrieben?', ['Gotthold Ephraim Lessing', 'Friedrich Schiller', 'Johann Wolfgang von Goethe', 'Georg Büchner']),
+      Frage('Wie heißt Emilias Vater?', ['Odoardo Galotti', 'Appiani', 'Marinelli', 'Conti']),
     ],
   ),
   Buch(
@@ -213,6 +239,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt Minnas Verlobter?', ['Major von Tellheim', 'Graf Appiani', 'Ferdinand', 'Karl Moor']),
       Frage('Warum will er Minna nicht mehr heiraten?', ['Er fühlt sich arm und in seiner Ehre verletzt', 'Er liebt eine andere', 'Er muss in den Krieg', 'Er ist krank']),
       Frage('Womit spielt Minna ihm einen Streich?', ['Mit den Verlobungsringen', 'Mit einem Brief', 'Mit einer Verkleidung als Soldat', 'Mit Geld']),
+      Frage('Wer hat „Minna von Barnhelm“ geschrieben?', ['Gotthold Ephraim Lessing', 'Friedrich Schiller', 'Heinrich von Kleist', 'Johann Wolfgang von Goethe']),
+      Frage('Was für ein Stück ist „Minna von Barnhelm“?', ['Ein Lustspiel', 'Eine Tragödie', 'Eine Oper', 'Ein Roman']),
     ],
   ),
   Buch(
@@ -228,6 +256,8 @@ const katalogKlassiker = <Buch>[
       Frage('Was ist Kohlhaas von Beruf?', ['Pferdehändler', 'Schmied', 'Richter', 'Bauer']),
       Frage('Was wird ihm angetan?', ['Seine Pferde werden zugrunde gerichtet', 'Sein Haus wird verbrannt', 'Sein Geld wird gestohlen', 'Er wird verhaftet']),
       Frage('Welcher berühmte Mann wendet sich in einem offenen Brief an ihn?', ['Martin Luther', 'Goethe', 'Napoleon', 'Der Papst']),
+      Frage('Wer hat „Michael Kohlhaas“ geschrieben?', ['Heinrich von Kleist', 'Friedrich Schiller', 'Theodor Storm', 'E. T. A. Hoffmann']),
+      Frage('Was ist Kohlhaas’ Schicksal am Ende?', ['Er bekommt Recht, wird aber hingerichtet', 'Er wird Kurfürst', 'Er flieht nach Amerika', 'Er wird begnadigt und lebt glücklich']),
     ],
   ),
   Buch(
@@ -243,6 +273,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wer hat den Krug zerbrochen?', ['Dorfrichter Adam selbst', 'Ruprecht', 'Eve', 'Frau Marthe']),
       Frage('Wer kommt überraschend zur Gerichtsverhandlung?', ['Gerichtsrat Walter', 'Der König', 'Ein Pfarrer', 'Die Polizei']),
       Frage('Wie heißt der Richter?', ['Adam', 'Walter', 'Licht', 'Ruprecht']),
+      Frage('Wer hat „Der zerbrochne Krug“ geschrieben?', ['Heinrich von Kleist', 'Gotthold Ephraim Lessing', 'Georg Büchner', 'Friedrich Schiller']),
+      Frage('Was für ein Stück ist „Der zerbrochne Krug“?', ['Ein Lustspiel', 'Eine Tragödie', 'Eine Novelle', 'Ein Gedicht']),
     ],
   ),
   Buch(
@@ -258,6 +290,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt die Hauptfigur?', ['Nathanael', 'Lothar', 'Coppelius', 'Spalanzani']),
       Frage('Was ist Olimpia in Wirklichkeit?', ['Ein Automat, eine Puppe', 'Ein Geist', 'Eine Hexe', 'Clara in Verkleidung']),
       Frage('Wer ist für Nathanael der Sandmann?', ['Der Advokat Coppelius', 'Sein Vater', 'Lothar', 'Professor Spalanzani']),
+      Frage('Wer hat „Der Sandmann“ geschrieben?', ['E. T. A. Hoffmann', 'Heinrich von Kleist', 'Joseph von Eichendorff', 'Theodor Storm']),
+      Frage('Durch was sieht Nathanael Olimpia lebendig?', ['Durch ein Taschenfernrohr (Perspektiv)', 'Durch einen Spiegel', 'Durch eine Brille aus Gold', 'Durch ein Fenster im Traum']),
     ],
   ),
   Buch(
@@ -273,6 +307,8 @@ const katalogKlassiker = <Buch>[
       Frage('In welcher Stadt spielt die Erzählung?', ['Paris', 'Berlin', 'Wien', 'London']),
       Frage('Wer ist der Mörder?', ['Der Goldschmied Cardillac', 'Olivier Brusson', 'Der König', 'Ein Polizist']),
       Frage('Warum tötet er?', ['Er will seinen Schmuck zurück', 'Aus Eifersucht', 'Für Geld', 'Aus Rache am König']),
+      Frage('Wer hat „Das Fräulein von Scuderi“ geschrieben?', ['E. T. A. Hoffmann', 'Heinrich von Kleist', 'Theodor Fontane', 'Annette von Droste-Hülshoff']),
+      Frage('Was ist Madeleine von Scuderi von Beruf?', ['Dichterin', 'Ärztin', 'Goldschmiedin', 'Polizistin']),
     ],
   ),
   Buch(
@@ -288,6 +324,8 @@ const katalogKlassiker = <Buch>[
       Frage('Was ist Woyzeck?', ['Ein einfacher Soldat', 'Ein Arzt', 'Ein Hauptmann', 'Ein Bauer']),
       Frage('Was muss er für den Doktor essen?', ['Nur Erbsen', 'Nur Brot', 'Nur Fleisch', 'Nichts']),
       Frage('Wen tötet Woyzeck?', ['Marie', 'Den Tambourmajor', 'Den Doktor', 'Den Hauptmann']),
+      Frage('Wer hat „Woyzeck“ geschrieben?', ['Georg Büchner', 'Heinrich von Kleist', 'Friedrich Schiller', 'Gerhart Hauptmann']),
+      Frage('Warum ist Woyzeck eifersüchtig?', ['Marie hat eine Affäre mit dem Tambourmajor', 'Marie will ihn verlassen und auswandern', 'Marie liebt den Doktor', 'Marie hat sein Geld genommen']),
     ],
   ),
   Buch(
@@ -303,6 +341,8 @@ const katalogKlassiker = <Buch>[
       Frage('Was ist Wenzel Strapinski von Beruf?', ['Schneider', 'Graf', 'Kutscher', 'Lehrer']),
       Frage('Für wen halten ihn die Leute in Goldach?', ['Für einen polnischen Grafen', 'Für einen Spion', 'Für einen Arzt', 'Für einen König']),
       Frage('In wen verliebt er sich?', ['Nettchen', 'Gretchen', 'Effi', 'Luise']),
+      Frage('Wer hat „Kleider machen Leute“ geschrieben?', ['Gottfried Keller', 'Theodor Storm', 'Theodor Fontane', 'Jeremias Gotthelf']),
+      Frage('Warum halten die Leute Wenzel für einen Grafen?', ['Wegen seines vornehmen Mantels und seiner Kutsche', 'Weil er es behauptet und einen Ausweis zeigt', 'Weil er viel Geld hat', 'Weil er einen Titel geerbt hat']),
     ],
   ),
   Buch(
@@ -318,6 +358,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt Thiels Sohn aus erster Ehe?', ['Tobias', 'Hans', 'Karl', 'Peter']),
       Frage('Was passiert mit dem Sohn?', ['Er wird vom Zug erfasst', 'Er ertrinkt', 'Er läuft weg', 'Er wird krank']),
       Frage('Wie heißt Thiels zweite Frau?', ['Lene', 'Minna', 'Marie', 'Effi']),
+      Frage('Wer hat „Bahnwärter Thiel“ geschrieben?', ['Gerhart Hauptmann', 'Theodor Fontane', 'Thomas Mann', 'Georg Büchner']),
+      Frage('Was für ein Text ist „Bahnwärter Thiel“?', ['Eine Novelle', 'Ein Drama', 'Ein Gedicht', 'Ein Roman in drei Bänden']),
     ],
   ),
   Buch(
@@ -333,6 +375,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie lautet der Untertitel?', ['Verfall einer Familie', 'Aufstieg einer Familie', 'Eine Kaufmannsgeschichte', 'Das Haus am Meer']),
       Frage('In welcher Stadt lebt die Familie?', ['Lübeck', 'Hamburg', 'Bremen', 'München']),
       Frage('Welchen Preis bekam Thomas Mann später vor allem für diesen Roman?', ['Den Nobelpreis für Literatur', 'Den Büchner-Preis', 'Den Pulitzer-Preis', 'Den Goethe-Preis']),
+      Frage('Wer hat „Buddenbrooks“ geschrieben?', ['Thomas Mann', 'Heinrich Mann', 'Theodor Fontane', 'Hermann Hesse']),
+      Frage('Was ist die Familie Buddenbrook?', ['Eine Kaufmannsfamilie', 'Eine Adelsfamilie', 'Eine Bauernfamilie', 'Eine Musikerfamilie']),
     ],
   ),
   Buch(
@@ -348,6 +392,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Schriftsteller?', ['Gustav von Aschenbach', 'Hans Castorp', 'Tonio Kröger', 'Thomas Buddenbrook']),
       Frage('Wie heißt der Junge, den er bewundert?', ['Tadzio', 'Hanno', 'Felix', 'Jaschu']),
       Frage('Welche Krankheit breitet sich in Venedig aus?', ['Die Cholera', 'Die Pest', 'Die Grippe', 'Die Pocken']),
+      Frage('Wer hat „Der Tod in Venedig“ geschrieben?', ['Thomas Mann', 'Hermann Hesse', 'Stefan Zweig', 'Arthur Schnitzler']),
+      Frage('Wie endet die Geschichte für Aschenbach?', ['Er stirbt am Strand von Venedig', 'Er reist nach Hause', 'Er heiratet', 'Er wird berühmt']),
     ],
   ),
   Buch(
@@ -363,6 +409,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt die Hauptfigur?', ['Hans Castorp', 'Gustav von Aschenbach', 'Felix Krull', 'Settembrini']),
       Frage('Wo liegt das Sanatorium?', ['In Davos', 'In Venedig', 'Am Bodensee', 'In Lübeck']),
       Frage('Wie lange wollte er bleiben – und wie lange bleibt er?', ['Drei Wochen – sieben Jahre', 'Einen Tag – ein Jahr', 'Eine Woche – einen Monat', 'Ein Jahr – zehn Jahre']),
+      Frage('Wer hat „Der Zauberberg“ geschrieben?', ['Thomas Mann', 'Hermann Hesse', 'Robert Musil', 'Franz Kafka']),
+      Frage('Warum fährt Hans Castorp ins Sanatorium?', ['Um seinen kranken Vetter Joachim zu besuchen', 'Weil er Arzt werden will', 'Weil er im Urlaub ist', 'Weil er dort arbeitet']),
     ],
   ),
   Buch(
@@ -378,6 +426,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Schüler?', ['Hans Giebenrath', 'Hermann Heilner', 'Emil Sinclair', 'Tonio Kröger']),
       Frage('In welches Seminar kommt er?', ['Maulbronn', 'Tübingen', 'Mariabronn', 'Heidelberg']),
       Frage('Wie heißt sein rebellischer Freund?', ['Hermann Heilner', 'Max Demian', 'Goldmund', 'Narziß']),
+      Frage('Wer hat „Unterm Rad“ geschrieben?', ['Hermann Hesse', 'Thomas Mann', 'Erich Kästner', 'Robert Musil']),
+      Frage('Wie endet Hans Giebenrath?', ['Er ertrinkt im Fluss', 'Er wird Pfarrer', 'Er wandert aus', 'Er wird Lehrer']),
     ],
   ),
   Buch(
@@ -393,6 +443,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt das Kloster, in dem sich die beiden kennenlernen?', ['Mariabronn', 'Maulbronn', 'Melk', 'Andechs']),
       Frage('Was wird Goldmund auf seiner Wanderschaft?', ['Bildhauer', 'Arzt', 'Ritter', 'Kaufmann']),
       Frage('Wer bleibt sein Leben lang im Kloster?', ['Narziß', 'Goldmund', 'Beide', 'Keiner']),
+      Frage('Wer hat „Narziß und Goldmund“ geschrieben?', ['Hermann Hesse', 'Thomas Mann', 'Stefan Zweig', 'Rainer Maria Rilke']),
+      Frage('Was wird Narziß später im Kloster?', ['Abt', 'Koch', 'Gärtner', 'Bischof von Rom']),
     ],
   ),
   Buch(
@@ -408,6 +460,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Erzähler?', ['Emil Sinclair', 'Max Demian', 'Hans Giebenrath', 'Harry Haller']),
       Frage('Wer erpresst Sinclair als Kind?', ['Franz Kromer', 'Max Demian', 'Pistorius', 'Sein Vater']),
       Frage('Wie heißt der Gott, von dem Demian erzählt?', ['Abraxas', 'Zeus', 'Odin', 'Mephisto']),
+      Frage('Wer hat „Demian“ geschrieben?', ['Hermann Hesse', 'Thomas Mann', 'Franz Kafka', 'Max Frisch']),
+      Frage('Welches Tier malt Sinclair, das aus dem Ei schlüpft?', ['Einen Vogel (Sperber)', 'Einen Drachen', 'Eine Schlange', 'Einen Löwen']),
     ],
   ),
   Buch(
@@ -423,6 +477,8 @@ const katalogKlassiker = <Buch>[
       Frage('In welchem Krieg spielt das Stück?', ['Im Dreißigjährigen Krieg', 'Im Ersten Weltkrieg', 'Im Siebenjährigen Krieg', 'Im Zweiten Weltkrieg']),
       Frage('Womit zieht Mutter Courage durchs Land?', ['Mit einem Planwagen', 'Mit einem Schiff', 'Zu Fuß mit einem Sack', 'Mit einer Kutsche']),
       Frage('Was tut die stumme Kattrin, um eine Stadt zu warnen?', ['Sie trommelt auf einem Dach', 'Sie läutet die Glocken', 'Sie zündet ein Feuer an', 'Sie schreit']),
+      Frage('Wer hat „Mutter Courage und ihre Kinder“ geschrieben?', ['Bertolt Brecht', 'Gerhart Hauptmann', 'Friedrich Dürrenmatt', 'Carl Zuckmayer']),
+      Frage('Wie verdient Mutter Courage ihr Geld?', ['Sie handelt mit Waren im Krieg', 'Sie ist Köchin bei Hof', 'Sie ist Bäuerin', 'Sie ist Soldatin']),
     ],
   ),
   Buch(
@@ -438,6 +494,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt die gute Frau?', ['Shen Te', 'Yang Sun', 'Mi Tzü', 'Wang']),
       Frage('Als wer verkleidet sie sich?', ['Als ihr strenger Vetter Shui Ta', 'Als Gott', 'Als Wasserverkäufer', 'Als Soldat']),
       Frage('Was schenken ihr die Götter?', ['Geld für einen Tabakladen', 'Ein Haus', 'Einen Mann', 'Unsterblichkeit']),
+      Frage('Wer hat „Der gute Mensch von Sezuan“ geschrieben?', ['Bertolt Brecht', 'Max Frisch', 'Friedrich Dürrenmatt', 'Gerhart Hauptmann']),
+      Frage('In welchem Land liegt Sezuan im Stück?', ['China', 'Japan', 'Indien', 'Korea']),
     ],
   ),
   Buch(
@@ -453,6 +511,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Gangster?', ['Mackie Messer', 'Al Capone', 'Jack der Ripper', 'Tiger Brown']),
       Frage('Wer ist Peachum?', ['Der Bettlerkönig von London', 'Der Polizeichef', 'Ein Bankier', 'Ein Pfarrer']),
       Frage('Wen heiratet Mackie?', ['Polly Peachum', 'Lucy Brown', 'Jenny', 'Celia']),
+      Frage('Wer hat den Text der „Dreigroschenoper“ geschrieben?', ['Bertolt Brecht', 'Carl Zuckmayer', 'Ödön von Horváth', 'Frank Wedekind']),
+      Frage('Wer hat die Musik komponiert?', ['Kurt Weill', 'Richard Wagner', 'Hanns Eisler', 'Wolfgang Amadeus Mozart']),
     ],
   ),
   Buch(
@@ -468,6 +528,8 @@ const katalogKlassiker = <Buch>[
       Frage('Was beweist Galilei?', ['Dass sich die Erde um die Sonne dreht', 'Dass die Erde eine Scheibe ist', 'Dass es Atome gibt', 'Dass der Mond Licht erzeugt']),
       Frage('Was tut Galilei vor der Inquisition?', ['Er widerruft seine Lehre', 'Er flieht', 'Er stirbt als Märtyrer', 'Er schweigt']),
       Frage('Welches Instrument verbessert er?', ['Das Fernrohr', 'Das Mikroskop', 'Die Uhr', 'Den Kompass']),
+      Frage('Wer hat „Leben des Galilei“ geschrieben?', ['Bertolt Brecht', 'Friedrich Dürrenmatt', 'Max Frisch', 'Carl Zuckmayer']),
+      Frage('In welchem Land lebt Galilei?', ['Italien', 'Spanien', 'Frankreich', 'Polen']),
     ],
   ),
   Buch(
@@ -483,6 +545,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der „kleine Mann"?', ['Johannes Pinneberg', 'Otto Quangel', 'Franz Biberkopf', 'Fabian']),
       Frage('Wie nennt er seine Frau?', ['Lämmchen', 'Mäuschen', 'Schätzchen', 'Kätzchen']),
       Frage('In welcher Zeit spielt der Roman?', ['In der Weltwirtschaftskrise um 1930', 'Im Ersten Weltkrieg', 'Nach 1945', 'Um 1890']),
+      Frage('Wer hat „Kleiner Mann – was nun?“ geschrieben?', ['Hans Fallada', 'Erich Kästner', 'Alfred Döblin', 'Erich Maria Remarque']),
+      Frage('Was ist Pinneberg von Beruf?', ['Verkäufer', 'Bauer', 'Arzt', 'Polizist']),
     ],
   ),
   Buch(
@@ -498,6 +562,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt das Ehepaar?', ['Otto und Anna Quangel', 'Johannes und Emma Pinneberg', 'Hans und Sophie Scholl', 'Karl und Marie Moor']),
       Frage('Wie leisten sie Widerstand?', ['Sie verteilen Postkarten gegen Hitler', 'Sie legen Bomben', 'Sie verstecken Waffen', 'Sie fliehen ins Ausland']),
       Frage('Was ist der Auslöser?', ['Ihr Sohn fällt im Krieg', 'Ihr Haus wird zerstört', 'Otto verliert seine Arbeit', 'Ein Nachbar wird verhaftet']),
+      Frage('Wer hat „Jeder stirbt für sich allein“ geschrieben?', ['Hans Fallada', 'Erich Maria Remarque', 'Heinrich Böll', 'Erich Kästner']),
+      Frage('In welcher Stadt spielt der Roman?', ['Berlin', 'München', 'Hamburg', 'Wien']),
     ],
   ),
   Buch(
@@ -513,6 +579,8 @@ const katalogKlassiker = <Buch>[
       Frage('Was betreiben die drei Kameraden?', ['Eine Autowerkstatt', 'Eine Bar', 'Eine Zeitung', 'Einen Bauernhof']),
       Frage('In wen verliebt sich Robert?', ['Patricia Hollmann', 'Lotte', 'Hermine', 'Marie']),
       Frage('Woran ist Pat erkrankt?', ['An Tuberkulose', 'An Krebs', 'An der Grippe', 'An der Pest']),
+      Frage('Wer hat „Drei Kameraden“ geschrieben?', ['Erich Maria Remarque', 'Hans Fallada', 'Ernest Hemingway', 'Erich Kästner']),
+      Frage('Wie heißt das Auto der Kameraden?', ['Karl', 'Otto', 'Fritz', 'Max']),
     ],
   ),
   Buch(
@@ -528,6 +596,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wer zerstört Katharinas Ruf?', ['Eine Boulevardzeitung', 'Die Polizei', 'Ihre Familie', 'Ein Nachbar']),
       Frage('Was tut Katharina am Ende?', ['Sie erschießt den Reporter', 'Sie flieht', 'Sie verklagt die Zeitung', 'Sie heiratet']),
       Frage('Wann lernt sie Ludwig kennen?', ['Auf einer Karnevalsparty', 'Im Zug', 'Bei der Arbeit', 'Im Urlaub']),
+      Frage('Wer hat „Die verlorene Ehre der Katharina Blum“ geschrieben?', ['Heinrich Böll', 'Günter Grass', 'Siegfried Lenz', 'Max Frisch']),
+      Frage('Was ist Ludwig Götten in den Augen der Polizei?', ['Ein gesuchter Verdächtiger', 'Ein Polizist', 'Ein Reporter', 'Katharinas Bruder']),
     ],
   ),
   Buch(
@@ -543,6 +613,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt die Hauptfigur?', ['Andri', 'Can', 'Peider', 'Barblin']),
       Frage('Wofür halten ihn alle?', ['Für einen Juden', 'Für einen Spion', 'Für einen Adligen', 'Für einen Verbrecher']),
       Frage('Wer ist Andri in Wirklichkeit?', ['Der leibliche Sohn des Lehrers', 'Ein Waisenkind aus dem Ausland', 'Der Sohn des Soldaten', 'Ein Findelkind']),
+      Frage('Wer hat „Andorra“ geschrieben?', ['Max Frisch', 'Friedrich Dürrenmatt', 'Bertolt Brecht', 'Heinrich Böll']),
+      Frage('Was für ein Text ist „Andorra“?', ['Ein Theaterstück', 'Ein Roman', 'Eine Novelle', 'Ein Gedicht']),
     ],
   ),
   Buch(
@@ -558,6 +630,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Bürger?', ['Gottlieb Biedermann', 'Andri', 'Walter Faber', 'Stiller']),
       Frage('Was lagern die Gäste auf dem Dachboden?', ['Benzinfässer', 'Gold', 'Waffen', 'Bücher']),
       Frage('Was gibt Biedermann ihnen am Ende sogar?', ['Streichhölzer', 'Geld', 'Seinen Schlüssel', 'Ein Auto']),
+      Frage('Wer hat „Biedermann und die Brandstifter“ geschrieben?', ['Max Frisch', 'Friedrich Dürrenmatt', 'Bertolt Brecht', 'Heinrich Böll']),
+      Frage('Was ist Biedermann von Beruf?', ['Fabrikant (Haarwasser)', 'Feuerwehrmann', 'Polizist', 'Lehrer']),
     ],
   ),
   Buch(
@@ -573,6 +647,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Kommissar?', ['Bärlach', 'Matthäi', 'Maigret', 'Tschanz']),
       Frage('Wer ist der Mörder von Polizeileutnant Schmied?', ['Tschanz', 'Gastmann', 'Bärlach', 'Lutz']),
       Frage('Mit wem hat Bärlach vor Jahrzehnten eine Wette abgeschlossen?', ['Mit Gastmann', 'Mit Tschanz', 'Mit seinem Arzt', 'Mit dem Richter']),
+      Frage('Wer hat „Der Richter und sein Henker“ geschrieben?', ['Friedrich Dürrenmatt', 'Max Frisch', 'Bertolt Brecht', 'Gottfried Keller']),
+      Frage('In welchem Land spielt der Krimi?', ['In der Schweiz', 'In Österreich', 'In Deutschland', 'In Frankreich']),
     ],
   ),
   Buch(
@@ -588,6 +664,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Kommissar?', ['Matthäi', 'Bärlach', 'Tschanz', 'Henzi']),
       Frage('Was verspricht er der Mutter?', ['Den Mörder zu finden', 'Das Kind zurückzubringen', 'Ihr Geld zu geben', 'Zu schweigen']),
       Frage('Wo wartet er jahrelang auf den Täter?', ['An einer Tankstelle', 'Im Wald', 'Auf dem Revier', 'Am Bahnhof']),
+      Frage('Wer hat „Das Versprechen“ geschrieben?', ['Friedrich Dürrenmatt', 'Max Frisch', 'Gottfried Keller', 'Patrick Süskind']),
+      Frage('Wie lautet der Untertitel?', ['Requiem auf den Kriminalroman', 'Ein Sommer in Zürich', 'Der letzte Fall', 'Eine Liebesgeschichte']),
     ],
   ),
   Buch(
@@ -603,6 +681,8 @@ const katalogKlassiker = <Buch>[
       Frage('Welches Aufsatzthema bekommt Siggi?', ['Die Freuden der Pflicht', 'Mein Vater', 'Der Krieg', 'Meine Heimat']),
       Frage('Was muss Siggis Vater als Polizist überwachen?', ['Ein Malverbot für den Maler Nansen', 'Ein Gefängnis', 'Einen Hafen', 'Eine Fabrik']),
       Frage('Wo schreibt Siggi den Aufsatz?', ['In einer Anstalt für schwer erziehbare Jugendliche', 'In der Schule', 'Im Krankenhaus', 'Zu Hause']),
+      Frage('Wer hat „Deutschstunde“ geschrieben?', ['Siegfried Lenz', 'Heinrich Böll', 'Günter Grass', 'Uwe Johnson']),
+      Frage('Wie heißt Siggi mit Nachnamen?', ['Jepsen', 'Nansen', 'Mergel', 'Bäumer']),
     ],
   ),
   Buch(
@@ -618,6 +698,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Held?', ['Edgar Wibeau', 'Werther', 'Willi', 'Siggi Jepsen']),
       Frage('Wo findet Edgar den Werther?', ['Auf dem Klo einer Laube', 'In der Schulbibliothek', 'Im Zug', 'Bei seiner Mutter']),
       Frage('Woran arbeitet Edgar, als er stirbt?', ['An einem Farbspritzgerät', 'An einem Moped', 'An einem Radio', 'An einem Roman']),
+      Frage('Wer hat „Die neuen Leiden des jungen W.“ geschrieben?', ['Ulrich Plenzdorf', 'Christa Wolf', 'Heiner Müller', 'Günter Grass']),
+      Frage('Auf welches berühmte Buch spielt der Titel an?', ['Die Leiden des jungen Werthers', 'Faust', 'Die Blechtrommel', 'Der Steppenwolf']),
     ],
   ),
   Buch(
@@ -633,6 +715,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Schuster, der sich als Hauptmann verkleidet?', ['Wilhelm Voigt', 'Wilhelm Tell', 'Diederich Heßling', 'Franz Biberkopf']),
       Frage('Was besetzt er mit Soldaten?', ['Das Rathaus von Köpenick', 'Ein Gefängnis', 'Eine Bank', 'Das Schloss']),
       Frage('Was will er eigentlich haben?', ['Einen Pass', 'Geld', 'Rache', 'Eine Frau']),
+      Frage('Wer hat „Der Hauptmann von Köpenick“ geschrieben?', ['Carl Zuckmayer', 'Bertolt Brecht', 'Gerhart Hauptmann', 'Ödön von Horváth']),
+      Frage('Woher hat Voigt die Uniform?', ['Aus einem Trödelladen', 'Von einem Freund geliehen', 'Aus einer Kaserne gestohlen', 'Selbst genäht']),
     ],
   ),
   Buch(
@@ -648,6 +732,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wer erzählt die Geschichte?', ['Ein Lehrer', 'Ein Schüler', 'Ein Pfarrer', 'Ein Richter']),
       Frage('Wo geschieht der Mord?', ['In einem Zeltlager', 'In der Schule', 'In einer Kirche', 'Im Zug']),
       Frage('Welchen Spitznamen hat der Schüler T., der der wahre Täter ist?', ['Der Fisch', 'Der Fuchs', 'Der Rabe', 'Der Wolf']),
+      Frage('Wer hat „Jugend ohne Gott“ geschrieben?', ['Ödön von Horváth', 'Erich Kästner', 'Bertolt Brecht', 'Klaus Mann']),
+      Frage('Welcher Schüler wird im Zeltlager ermordet?', ['N', 'Z', 'T', 'B']),
     ],
   ),
   Buch(
@@ -663,6 +749,8 @@ const katalogKlassiker = <Buch>[
       Frage('Was ist Fridolin von Beruf?', ['Arzt', 'Anwalt', 'Musiker', 'Offizier']),
       Frage('Wie lautet das Passwort für den geheimen Ball?', ['Dänemark', 'Venedig', 'Rose', 'Mitternacht']),
       Frage('In welcher Stadt spielt die Novelle?', ['Wien', 'Berlin', 'Paris', 'Prag']),
+      Frage('Wer hat „Traumnovelle“ geschrieben?', ['Arthur Schnitzler', 'Stefan Zweig', 'Thomas Mann', 'Hugo von Hofmannsthal']),
+      Frage('Wie heißt Fridolins Frau?', ['Albertine', 'Marianne', 'Effi', 'Gretchen']),
     ],
   ),
   Buch(
@@ -678,6 +766,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wessen Sohn ist der Taugenichts?', ['Eines Müllers', 'Eines Grafen', 'Eines Bäckers', 'Eines Pfarrers']),
       Frage('Welches Instrument spielt er?', ['Geige', 'Flöte', 'Gitarre', 'Klavier']),
       Frage('In welches Land wandert er?', ['Nach Italien', 'Nach Frankreich', 'Nach England', 'Nach Russland']),
+      Frage('Wer hat „Aus dem Leben eines Taugenichts“ geschrieben?', ['Joseph von Eichendorff', 'E. T. A. Hoffmann', 'Novalis', 'Heinrich Heine']),
+      Frage('Zu welcher Epoche gehört die Novelle?', ['Romantik', 'Barock', 'Expressionismus', 'Realismus']),
     ],
   ),
   Buch(
@@ -693,6 +783,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt die Hauptfigur?', ['Friedrich Mergel', 'Johannes Niemand', 'Simon Semmler', 'Aaron']),
       Frage('Wer wird unter der Buche erschlagen?', ['Der Jude Aaron', 'Der Förster Brandis', 'Friedrichs Vater', 'Der Gutsherr']),
       Frage('Was wird in die Buche geritzt?', ['Eine hebräische Inschrift', 'Ein Kreuz', 'Ein Name', 'Eine Jahreszahl']),
+      Frage('Wer hat „Die Judenbuche“ geschrieben?', ['Annette von Droste-Hülshoff', 'Theodor Storm', 'Gottfried Keller', 'Bettina von Arnim']),
+      Frage('Wo wird am Ende ein Toter gefunden?', ['An der Buche, erhängt', 'Im Fluss', 'Im Keller', 'Auf dem Friedhof']),
     ],
   ),
   Buch(
@@ -708,6 +800,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Wachmann?', ['Jonathan Noel', 'Jean-Baptiste Grenouille', 'Herr Sommer', 'Pierre']),
       Frage('Wo arbeitet er?', ['Als Wachmann vor einer Bank', 'In einem Museum', 'In einem Hotel', 'Auf einem Bahnhof']),
       Frage('Was bringt sein Leben durcheinander?', ['Eine Taube vor seiner Zimmertür', 'Eine Frau', 'Ein Brief', 'Ein Diebstahl']),
+      Frage('Wer hat „Die Taube“ geschrieben?', ['Patrick Süskind', 'Bernhard Schlink', 'Daniel Kehlmann', 'Peter Handke']),
+      Frage('In welcher Stadt lebt Jonathan Noel?', ['Paris', 'Berlin', 'Wien', 'Rom']),
     ],
   ),
   Buch(
@@ -723,6 +817,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt die Hauptfigur?', ['Mia Holl', 'Moritz Holl', 'Kramer', 'Sophie']),
       Frage('Wie heißt das Gesundheitssystem des Staates?', ['Die METHODE', 'Das SYSTEM', 'Die ORDNUNG', 'Der PLAN']),
       Frage('Was ist mit Mias Bruder Moritz passiert?', ['Er hat sich im Gefängnis das Leben genommen', 'Er ist geflohen', 'Er ist Richter geworden', 'Er ist verschwunden']),
+      Frage('Wer hat „Corpus Delicti“ geschrieben?', ['Juli Zeh', 'Christa Wolf', 'Herta Müller', 'Jenny Erpenbeck']),
+      Frage('Wofür wurde Moritz verurteilt?', ['Für einen Mord, den er nicht begangen hat', 'Für Diebstahl', 'Für Rauchen', 'Für Spionage']),
     ],
   ),
 
@@ -740,6 +836,8 @@ const katalogKlassiker = <Buch>[
       Frage('Was macht Emma am liebsten?', ['Paare verkuppeln', 'Reisen', 'Malen', 'Reiten']),
       Frage('Wen versucht sie zu verkuppeln?', ['Harriet Smith', 'Jane Fairfax', 'Elizabeth Bennet', 'Marianne Dashwood']),
       Frage('Wen heiratet Emma am Ende?', ['Mr. Knightley', 'Frank Churchill', 'Mr. Elton', 'Mr. Darcy']),
+      Frage('Wer hat „Emma“ geschrieben?', ['Jane Austen', 'Charlotte Brontë', 'George Eliot', 'Virginia Woolf']),
+      Frage('Wie heißt Emma mit Nachnamen?', ['Woodhouse', 'Bennet', 'Dashwood', 'Eyre']),
     ],
   ),
   Buch(
@@ -755,6 +853,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißen die beiden Schwestern?', ['Elinor und Marianne Dashwood', 'Jane und Elizabeth Bennet', 'Emma und Harriet', 'Anne und Mary Elliot']),
       Frage('Welcher Mann bricht Marianne das Herz?', ['Willoughby', 'Colonel Brandon', 'Edward Ferrars', 'Mr. Darcy']),
       Frage('Wen heiratet Marianne am Ende?', ['Colonel Brandon', 'Willoughby', 'Edward Ferrars', 'Niemanden']),
+      Frage('Wer hat „Verstand und Gefühl“ geschrieben?', ['Jane Austen', 'Emily Brontë', 'Charlotte Brontë', 'Mary Shelley']),
+      Frage('Wen heiratet Elinor am Ende?', ['Edward Ferrars', 'Mr. Darcy', 'Willoughby', 'Colonel Brandon']),
     ],
   ),
   Buch(
@@ -770,6 +870,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Junge?', ['Pip', 'Oliver', 'David', 'Tim']),
       Frage('Welche alte Frau trägt seit Jahren ihr Hochzeitskleid?', ['Miss Havisham', 'Estella', 'Mrs. Joe', 'Biddy']),
       Frage('Wer ist Pips geheimer Gönner?', ['Der entflohene Sträfling Magwitch', 'Miss Havisham', 'Joe Gargery', 'Mr. Jaggers']),
+      Frage('Wer hat „Große Erwartungen“ geschrieben?', ['Charles Dickens', 'William Thackeray', 'Thomas Hardy', 'Jane Austen']),
+      Frage('Wie heißt das kühle Mädchen, in das sich Pip verliebt?', ['Estella', 'Biddy', 'Agnes', 'Dora']),
     ],
   ),
   Buch(
@@ -785,6 +887,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt das Land der winzigen Menschen?', ['Liliput', 'Brobdingnag', 'Laputa', 'Nimmerland']),
       Frage('Was ist Gulliver von Beruf?', ['Schiffsarzt', 'Kapitän', 'Kaufmann', 'Pfarrer']),
       Frage('Wer regiert das Land der Houyhnhnms?', ['Kluge Pferde', 'Riesen', 'Affen', 'Zwerge']),
+      Frage('Wer hat „Gullivers Reisen“ geschrieben?', ['Jonathan Swift', 'Daniel Defoe', 'Robert Louis Stevenson', 'Lewis Carroll']),
+      Frage('Wie heißt das Land der Riesen?', ['Brobdingnag', 'Liliput', 'Laputa', 'Nimmerland']),
     ],
   ),
   Buch(
@@ -800,6 +904,8 @@ const katalogKlassiker = <Buch>[
       Frage('Gegen was kämpft Don Quijote, weil er sie für Riesen hält?', ['Windmühlen', 'Bäume', 'Schafe', 'Felsen']),
       Frage('Wie heißt sein Knappe?', ['Sancho Panza', 'Rocinante', 'Dulcinea', 'Pedro']),
       Frage('Wie heißt sein Pferd?', ['Rosinante', 'Bucephalus', 'Shadowfax', 'Jolly Jumper']),
+      Frage('Wer hat „Don Quijote“ geschrieben?', ['Miguel de Cervantes', 'Lope de Vega', 'Gabriel García Márquez', 'Dante Alighieri']),
+      Frage('Woher kommt Don Quijote?', ['Aus der Mancha', 'Aus Andalusien', 'Aus Katalonien', 'Aus Portugal']),
     ],
   ),
   Buch(
@@ -815,6 +921,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Glöckner?', ['Quasimodo', 'Frollo', 'Gringoire', 'Phoebus']),
       Frage('Wie heißt die Tänzerin, die er liebt?', ['Esmeralda', 'Cosette', 'Fantine', 'Carmen']),
       Frage('Wer ist sein Ziehvater, der Erzdiakon?', ['Claude Frollo', 'Jean Valjean', 'Javert', 'Phoebus']),
+      Frage('Wer hat „Der Glöckner von Notre-Dame“ geschrieben?', ['Victor Hugo', 'Alexandre Dumas', 'Émile Zola', 'Jules Verne']),
+      Frage('In welcher Stadt steht Notre-Dame?', ['Paris', 'Lyon', 'Rom', 'Brüssel']),
     ],
   ),
   Buch(
@@ -830,6 +938,8 @@ const katalogKlassiker = <Buch>[
       Frage('Was ist Charles Bovary von Beruf?', ['Landarzt', 'Apotheker', 'Notar', 'Offizier']),
       Frage('Wie stirbt Emma Bovary?', ['Sie vergiftet sich mit Arsen', 'Sie ertrinkt', 'Sie wird erschossen', 'Sie stirbt an Fieber']),
       Frage('Was stürzt Emma zusätzlich ins Unglück?', ['Hohe Schulden', 'Ein Brand', 'Ein Krieg', 'Eine Krankheit ihres Kindes']),
+      Frage('Wer hat „Madame Bovary“ geschrieben?', ['Gustave Flaubert', 'Victor Hugo', 'Émile Zola', 'Stendhal']),
+      Frage('Warum ist Emma unglücklich?', ['Ihr Leben als Arztfrau auf dem Land ist ihr zu langweilig', 'Sie ist arm', 'Sie ist krank', 'Ihr Mann ist grausam']),
     ],
   ),
   Buch(
@@ -845,6 +955,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie lautet der berühmte erste Satz?', ['„Heute ist Mama gestorben."', '„Nennt mich Ismael."', '„Es war einmal."', '„Ich bin müde."']),
       Frage('Wie heißt der Erzähler?', ['Meursault', 'Rieux', 'Raymond', 'Camus']),
       Frage('Wo spielt der Roman?', ['In Algier', 'In Paris', 'In Marseille', 'In Rom']),
+      Frage('Wer hat „Der Fremde“ geschrieben?', ['Albert Camus', 'Jean-Paul Sartre', 'Marcel Proust', 'Antoine de Saint-Exupéry']),
+      Frage('Was tut Meursault am Strand?', ['Er erschießt einen Araber', 'Er rettet ein Kind', 'Er findet einen Schatz', 'Er ertrinkt fast']),
     ],
   ),
   Buch(
@@ -860,6 +972,8 @@ const katalogKlassiker = <Buch>[
       Frage('In welcher Stadt bricht die Pest aus?', ['Oran', 'Algier', 'Paris', 'Marseille']),
       Frage('Was kündigt die Seuche an?', ['Sterbende Ratten', 'Tote Vögel', 'Ein Erdbeben', 'Schwarzer Regen']),
       Frage('Wie heißt der Arzt?', ['Dr. Rieux', 'Dr. Watson', 'Dr. Faust', 'Dr. Castel']),
+      Frage('Wer hat „Die Pest“ geschrieben?', ['Albert Camus', 'Jean-Paul Sartre', 'Gabriel García Márquez', 'Thomas Mann']),
+      Frage('In welchem Land liegt Oran?', ['Algerien', 'Marokko', 'Tunesien', 'Frankreich']),
     ],
   ),
   Buch(
@@ -875,6 +989,8 @@ const katalogKlassiker = <Buch>[
       Frage('In welchem Krieg spielt der Roman?', ['Im Spanischen Bürgerkrieg', 'Im Ersten Weltkrieg', 'Im Amerikanischen Bürgerkrieg', 'Im Koreakrieg']),
       Frage('Was soll Robert Jordan sprengen?', ['Eine Brücke', 'Einen Zug', 'Ein Waffenlager', 'Einen Staudamm']),
       Frage('In wen verliebt er sich?', ['Maria', 'Pilar', 'Catherine', 'Brett']),
+      Frage('Wer hat „Wem die Stunde schlägt“ geschrieben?', ['Ernest Hemingway', 'John Steinbeck', 'George Orwell', 'William Faulkner']),
+      Frage('Woher kommt Robert Jordan?', ['Aus den USA', 'Aus Spanien', 'Aus England', 'Aus Deutschland']),
     ],
   ),
   Buch(
@@ -890,6 +1006,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt die Familie?', ['Joad', 'Hamilton', 'Trask', 'Wilson']),
       Frage('Wohin zieht die Familie?', ['Nach Kalifornien', 'Nach New York', 'Nach Alaska', 'Nach Mexiko']),
       Frage('Aus welchem Bundesstaat kommen sie?', ['Oklahoma', 'Texas', 'Kansas', 'Iowa']),
+      Frage('Wer hat „Früchte des Zorns“ geschrieben?', ['John Steinbeck', 'Ernest Hemingway', 'Mark Twain', 'William Faulkner']),
+      Frage('Warum verlassen die Joads ihre Farm?', ['Wegen Dürre und Staubstürmen verlieren sie ihr Land', 'Wegen eines Krieges', 'Weil sie reich geworden sind', 'Wegen einer Flut']),
     ],
   ),
   Buch(
@@ -905,6 +1023,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wohin will Odysseus zurück?', ['Nach Ithaka', 'Nach Troja', 'Nach Sparta', 'Nach Athen']),
       Frage('Wie heißt der einäugige Riese?', ['Polyphem', 'Zyklop Kyklos', 'Argus', 'Goliath']),
       Frage('Wer wartet zu Hause treu auf ihn?', ['Penelope', 'Helena', 'Kirke', 'Kalypso']),
+      Frage('Wem wird die „Odyssee“ zugeschrieben?', ['Homer', 'Vergil', 'Sophokles', 'Platon']),
+      Frage('Wie täuscht Odysseus den Zyklopen mit seinem Namen?', ['Er nennt sich „Niemand“', 'Er nennt sich „Zeus“', 'Er nennt sich „Achilles“', 'Er sagt gar nichts']),
     ],
   ),
   Buch(
@@ -920,6 +1040,8 @@ const katalogKlassiker = <Buch>[
       Frage('Um welche Stadt wird gekämpft?', ['Troja', 'Athen', 'Sparta', 'Rom']),
       Frage('Welcher Held ist zornig und kämpft zuerst nicht mit?', ['Achilleus', 'Odysseus', 'Hektor', 'Agamemnon']),
       Frage('Wen tötet Achilleus aus Rache für Patroklos?', ['Hektor', 'Paris', 'Priamos', 'Ajax']),
+      Frage('Wem wird die „Ilias“ zugeschrieben?', ['Homer', 'Hesiod', 'Vergil', 'Sokrates']),
+      Frage('Wer ist Achilleus’ bester Freund, der im Kampf fällt?', ['Patroklos', 'Odysseus', 'Ajax', 'Paris']),
     ],
   ),
   Buch(
@@ -935,6 +1057,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der Hund?', ['Buck', 'Wolfsblut', 'Lassie', 'Spitz']),
       Frage('Warum werden Hunde im Norden gebraucht?', ['Wegen des Goldrauschs am Klondike', 'Für die Jagd', 'Für den Krieg', 'Für Hundeschlittenrennen']),
       Frage('Welcher Mensch wird sein bester Freund?', ['John Thornton', 'François', 'Perrault', 'Hal']),
+      Frage('Wer hat „Der Ruf der Wildnis“ geschrieben?', ['Jack London', 'Mark Twain', 'James Fenimore Cooper', 'Ernest Hemingway']),
+      Frage('Wohin zieht es Buck am Ende?', ['Er lebt mit einem Wolfsrudel in der Wildnis', 'Zurück nach Kalifornien', 'In eine Stadt', 'Auf ein Schiff']),
     ],
   ),
   Buch(
@@ -950,6 +1074,8 @@ const katalogKlassiker = <Buch>[
       Frage('Was ist Wolfsblut?', ['Zum Teil Wolf, zum Teil Hund', 'Ein reiner Wolf', 'Ein Bär', 'Ein Fuchs']),
       Frage('Wozu zwingt ihn der grausame Beauty Smith?', ['Zu Hundekämpfen', 'Zum Schlittenziehen', 'Zur Jagd', 'Zum Bewachen']),
       Frage('Wer rettet und zähmt ihn?', ['Weedon Scott', 'John Thornton', 'Grauer Biber', 'Buck']),
+      Frage('Wer hat „Wolfsblut“ geschrieben?', ['Jack London', 'Mark Twain', 'Rudyard Kipling', 'James Fenimore Cooper']),
+      Frage('Wo lebt Wolfsblut am Ende?', ['Bei Weedon Scott in Kalifornien', 'In der Wildnis Alaskas', 'Im Zoo', 'Bei Beauty Smith']),
     ],
   ),
   Buch(
@@ -965,6 +1091,8 @@ const katalogKlassiker = <Buch>[
       Frage('Woher kommt die Familie Otis?', ['Aus Amerika', 'Aus Frankreich', 'Aus Deutschland', 'Aus Schottland']),
       Frage('Womit entfernen sie den Blutfleck?', ['Mit einem Fleckenentferner', 'Mit Weihwasser', 'Mit Farbe', 'Gar nicht']),
       Frage('Wer hilft dem Gespenst, Frieden zu finden?', ['Virginia', 'Die Zwillinge', 'Mr. Otis', 'Der Butler']),
+      Frage('Wer hat „Das Gespenst von Canterville“ geschrieben?', ['Oscar Wilde', 'Charles Dickens', 'Arthur Conan Doyle', 'Edgar Allan Poe']),
+      Frage('In welchem Land steht das Schloss Canterville?', ['England', 'Schottland', 'Irland', 'Amerika']),
     ],
   ),
   Buch(
@@ -980,6 +1108,8 @@ const katalogKlassiker = <Buch>[
       Frage('Unter welchem Namen tritt der Teufel auf?', ['Voland', 'Mephisto', 'Luzifer', 'Behemoth']),
       Frage('Welches Tier gehört zu seinem Gefolge?', ['Ein riesiger Kater', 'Ein Rabe', 'Ein Hund', 'Eine Schlange']),
       Frage('Worüber hat der Meister einen Roman geschrieben?', ['Über Pontius Pilatus', 'Über Napoleon', 'Über Faust', 'Über Moskau']),
+      Frage('Wer hat „Der Meister und Margarita“ geschrieben?', ['Michail Bulgakow', 'Fjodor Dostojewski', 'Leo Tolstoi', 'Boris Pasternak']),
+      Frage('In welcher Stadt taucht der Teufel auf?', ['Moskau', 'Sankt Petersburg', 'Kiew', 'Berlin']),
     ],
   ),
   Buch(
@@ -995,6 +1125,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wer erzählt die Geschichte?', ['Marlow', 'Kurtz', 'Conrad', 'Der Manager']),
       Frage('Wen sucht er?', ['Den Handelsagenten Kurtz', 'Einen Schatz', 'Seinen Bruder', 'Einen Arzt']),
       Frage('Was sind Kurtz\' letzte Worte?', ['„Das Grauen! Das Grauen!"', '„Rosebud"', '„Mehr Licht"', '„Lebt wohl"']),
+      Frage('Wer hat „Herz der Finsternis“ geschrieben?', ['Joseph Conrad', 'Rudyard Kipling', 'Herman Melville', 'Robert Louis Stevenson']),
+      Frage('Auf welchem Fluss fährt Marlow?', ['Auf dem Kongo', 'Auf dem Nil', 'Auf dem Amazonas', 'Auf der Themse']),
     ],
   ),
   Buch(
@@ -1010,6 +1142,8 @@ const katalogKlassiker = <Buch>[
       Frage('Wie heißt der junge Mohikaner?', ['Uncas', 'Chingachgook', 'Magua', 'Winnetou']),
       Frage('Wie wird der weiße Jäger Natty Bumppo genannt?', ['Falkenauge', 'Old Shatterhand', 'Lederstrumpf-Jim', 'Adlerauge']),
       Frage('Wer ist der Bösewicht?', ['Magua', 'Uncas', 'Munro', 'Heyward']),
+      Frage('Wer hat „Der letzte Mohikaner“ geschrieben?', ['James Fenimore Cooper', 'Karl May', 'Mark Twain', 'Jack London']),
+      Frage('Wie heißt Uncas’ Vater?', ['Chingachgook', 'Winnetou', 'Magua', 'Intschu tschuna']),
     ],
   ),
 ];

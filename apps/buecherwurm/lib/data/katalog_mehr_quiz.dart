@@ -16,6 +16,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wer erzählt die Geschichten?', ['Lisa', 'Inga', 'Britta', 'Ole']),
       Frage('Wie viele Höfe gibt es in Bullerbü?', ['Drei', 'Zwei', 'Fünf', 'Einen']),
       Frage('In welchem Land liegt Bullerbü?', ['Schweden', 'Norwegen', 'Dänemark', 'Finnland']),
+      Frage('Wer hat „Wir Kinder aus Bullerbü“ geschrieben?', ['Astrid Lindgren', 'Selma Lagerlöf', 'Tove Jansson', 'Kirsten Boie']),
+      Frage('Wie heißen Lisas Brüder?', ['Lasse und Bosse', 'Ole und Kerstin', 'Michel und Ida', 'Kalle und Anders']),
     ],
   ),
   Buch(
@@ -31,6 +33,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Was will Kalle werden?', ['Meisterdetektiv', 'Polizist', 'Pilot', 'Arzt']),
       Frage('Wie heißen Kalles Freunde?', ['Anders und Eva-Lotte', 'Tommy und Annika', 'Lasse und Bosse', 'Emil und Gustav']),
       Frage('Wer stellt sich als Gauner heraus?', ['Onkel Einar', 'Der Bäcker', 'Kalles Vater', 'Der Lehrer']),
+      Frage('Wer hat „Kalle Blomquist“ geschrieben?', ['Astrid Lindgren', 'Enid Blyton', 'Erich Kästner', 'Selma Lagerlöf']),
+      Frage('Wie heißen die verfeindeten Banden in den Büchern?', ['Die Weiße Rose und die Rote Rose', 'Die Wilden und die Zahmen', 'Die Roten und die Blauen', 'Die Löwen und die Tiger']),
     ],
   ),
   Buch(
@@ -46,6 +50,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt Mio eigentlich?', ['Bo Vilhelm Olsson', 'Karl Löwenherz', 'Kalle Blomquist', 'Nils Holgersson']),
       Frage('Gegen wen muss Mio kämpfen?', ['Gegen den grausamen Ritter Kato', 'Gegen einen Drachen', 'Gegen eine Hexe', 'Gegen Tengil']),
       Frage('Wie heißt Mios weißes Pferd?', ['Miramis', 'Fjalar', 'Grim', 'Kleiner Onkel']),
+      Frage('Wer hat „Mio, mein Mio“ geschrieben?', ['Astrid Lindgren', 'Michael Ende', 'Otfried Preußler', 'Cornelia Funke']),
+      Frage('Wie heißt Mios bester Freund im Land der Ferne?', ['Jum-Jum', 'Jonatan', 'Krümel', 'Lasse']),
     ],
   ),
   Buch(
@@ -61,6 +67,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wer schrumpft Nils?', ['Ein Wichtel', 'Eine Hexe', 'Ein Zauberer', 'Eine Fee']),
       Frage('Auf wem fliegt Nils?', ['Auf dem Gänserich Martin', 'Auf einem Adler', 'Auf einem Drachen', 'Auf einem Raben']),
       Frage('Wie heißt die Anführerin der Wildgänse?', ['Akka von Kebnekajse', 'Martina', 'Gorgo', 'Daunenfein']),
+      Frage('Wer hat „Nils Holgersson“ geschrieben?', ['Selma Lagerlöf', 'Astrid Lindgren', 'Hans Christian Andersen', 'Tove Jansson']),
+      Frage('Durch welches Land reist Nils mit den Wildgänsen?', ['Schweden', 'Norwegen', 'Finnland', 'Dänemark']),
     ],
   ),
   Buch(
@@ -76,6 +84,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt die Insel?', ['Titiwu', 'Lummerland', 'Takatuka', 'Nimmerland']),
       Frage('Wer bringt den Tieren das Sprechen bei?', ['Professor Habakuk Tibatong', 'Wutz', 'König Pumponell', 'Kapitän Blaubär']),
       Frage('Woraus schlüpft das Urmel?', ['Aus einem Ei in einem Eisberg', 'Aus einer Muschel', 'Aus einem Vulkan', 'Aus einer Kiste']),
+      Frage('Wer hat „Urmel aus dem Eis“ geschrieben?', ['Max Kruse', 'Michael Ende', 'Otfried Preußler', 'James Krüss']),
+      Frage('Wer will das Urmel jagen?', ['König Pumponell', 'Professor Tibatong', 'Wawa', 'Ping Pinguin']),
     ],
   ),
   Buch(
@@ -91,6 +101,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wer erzählt die Geschichte?', ['Das Pferd selbst', 'Ein Stallbursche', 'Ein Mädchen', 'Ein Kutscher']),
       Frage('Wie heißt die temperamentvolle Stute, mit der Beauty befreundet ist?', ['Ginger', 'Merrylegs', 'Bella', 'Lady']),
       Frage('Was muss Beauty in London ziehen?', ['Eine Droschke', 'Einen Pflug', 'Einen Zirkuswagen', 'Ein Boot']),
+      Frage('Wer hat „Black Beauty“ geschrieben?', ['Anna Sewell', 'Lucy Maud Montgomery', 'Frances Hodgson Burnett', 'Enid Blyton']),
+      Frage('Was für ein Tier ist Black Beauty?', ['Ein Pferd', 'Ein Hund', 'Eine Katze', 'Ein Esel']),
     ],
   ),
   Buch(
@@ -106,6 +118,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wo hat Mary vorher gelebt?', ['In Indien', 'In Amerika', 'In London', 'In Australien']),
       Frage('Wen findet Mary im Herrenhaus versteckt?', ['Ihren kranken Cousin Colin', 'Einen Geist', 'Ihre Mutter', 'Einen Dieb']),
       Frage('Welcher Junge kann mit Tieren umgehen?', ['Dickon', 'Colin', 'Ben', 'Tom']),
+      Frage('Wer hat „Der geheime Garten“ geschrieben?', ['Frances Hodgson Burnett', 'Lewis Carroll', 'Johanna Spyri', 'Lucy Maud Montgomery']),
+      Frage('Wie findet Mary den Schlüssel zum Garten?', ['Ein Rotkehlchen zeigt ihr die Stelle', 'Sie findet ihn im Kamin', 'Colin gibt ihn ihr', 'Dickon hat ihn']),
     ],
   ),
   Buch(
@@ -121,6 +135,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt der kleine Lord?', ['Cedric Errol', 'Colin Craven', 'Oliver Twist', 'Pip']),
       Frage('Woher kommt Cedric?', ['Aus New York', 'Aus London', 'Aus Indien', 'Aus Schottland']),
       Frage('Wer ist sein mürrischer Großvater?', ['Der Earl of Dorincourt', 'Der König', 'Mr. Hobbs', 'Mr. Havisham']),
+      Frage('Wer hat „Der kleine Lord“ geschrieben?', ['Frances Hodgson Burnett', 'Charles Dickens', 'Mark Twain', 'Lewis Carroll']),
+      Frage('Wohin muss Cedric umziehen?', ['Nach England', 'Nach Schottland', 'Nach Kanada', 'Nach Frankreich']),
     ],
   ),
   Buch(
@@ -136,6 +152,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wen wollten Matthew und Marilla eigentlich aufnehmen?', ['Einen Jungen', 'Ein Baby', 'Zwei Mädchen', 'Einen Hund']),
       Frage('Welche Haarfarbe hat Anne?', ['Rot', 'Schwarz', 'Blond', 'Braun']),
       Frage('Auf welcher Insel liegt Green Gables?', ['Prince Edward Island', 'Neufundland', 'Rügen', 'Isle of Man']),
+      Frage('Wer hat „Anne auf Green Gables“ geschrieben?', ['Lucy Maud Montgomery', 'Louisa May Alcott', 'Frances Hodgson Burnett', 'Johanna Spyri']),
+      Frage('Wie heißt Annes beste Freundin?', ['Diana Barry', 'Marilla Cuthbert', 'Josie Pye', 'Ruby Gillis']),
     ],
   ),
   Buch(
@@ -151,6 +169,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Was für ein Tier ist Bambi?', ['Ein Reh', 'Ein Hirsch-Kalb aus Amerika', 'Ein Hase', 'Ein Fuchs']),
       Frage('Wen nennen die Tiere ehrfürchtig „Er"?', ['Den Menschen', 'Den alten Fürsten', 'Den Wolf', 'Den Bären']),
       Frage('Wie heißt Bambis Freundin?', ['Faline', 'Klopfer', 'Blume', 'Ena']),
+      Frage('Wer hat „Bambi“ geschrieben?', ['Felix Salten', 'Walt Disney', 'Waldemar Bonsels', 'Erich Kästner']),
+      Frage('Was passiert mit Bambis Mutter?', ['Sie wird von Jägern getötet', 'Sie zieht weg', 'Sie wird krank', 'Sie verirrt sich im Schnee']),
     ],
   ),
   Buch(
@@ -166,6 +186,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wo wohnt der kleine Wassermann?', ['Im Mühlenweiher', 'Im Meer', 'In einem Brunnen', 'In einem Fluss in der Stadt']),
       Frage('Wer ist sein bester Freund?', ['Der Karpfen Cyprinus', 'Der Frosch Quak', 'Der Hecht', 'Der Müller']),
       Frage('Welche Farbe hat sein Haar?', ['Grün', 'Blau', 'Rot', 'Weiß']),
+      Frage('Wer hat „Der kleine Wassermann“ geschrieben?', ['Otfried Preußler', 'Michael Ende', 'Paul Maar', 'James Krüss']),
+      Frage('Was trägt der kleine Wassermann auf dem Kopf?', ['Eine rote Zipfelmütze', 'Eine Krone', 'Einen Strohhut', 'Nichts']),
     ],
   ),
   Buch(
@@ -181,6 +203,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Was sammelt der gute Riese?', ['Träume', 'Sterne', 'Kinder', 'Edelsteine']),
       Frage('Was fressen die anderen Riesen am liebsten?', ['Menschen', 'Kotzgurken', 'Bäume', 'Schokolade']),
       Frage('Wer hilft Sophiechen und dem Riesen am Ende?', ['Die Königin von England', 'Die Polizei', 'Ein Zauberer', 'Ihre Eltern']),
+      Frage('Wer hat „Sophiechen und der Riese“ geschrieben?', ['Roald Dahl', 'Michael Ende', 'Astrid Lindgren', 'Cornelia Funke']),
+      Frage('Wie wird der freundliche Riese oft abgekürzt (Englisch)?', ['BFG', 'GFG', 'BGT', 'RFG']),
     ],
   ),
   Buch(
@@ -196,6 +220,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie viele Bauern jagen Mr. Fox?', ['Drei', 'Zwei', 'Fünf', 'Einen']),
       Frage('Was verliert Mr. Fox durch einen Schuss?', ['Seinen Schwanz', 'Ein Ohr', 'Ein Bein', 'Nichts']),
       Frage('Wie entkommt er den Bauern?', ['Er gräbt Tunnel zu ihren Vorratslagern', 'Er fliegt weg', 'Er versteckt sich im Fluss', 'Er verkleidet sich']),
+      Frage('Wer hat „Der fantastische Mr. Fox“ geschrieben?', ['Roald Dahl', 'Beatrix Potter', 'Astrid Lindgren', 'A. A. Milne']),
+      Frage('Wie heißen die drei Bauern?', ['Boggis, Bunce und Bean', 'Tom, Tim und Tobi', 'Hinz, Kunz und Franz', 'Smith, Jones und Brown']),
     ],
   ),
   Buch(
@@ -211,6 +237,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Mit wem reist James im Pfirsich?', ['Mit riesigen Insekten', 'Mit seinen Tanten', 'Mit einem Zauberer', 'Mit Hunden']),
       Frage('Wer trägt den Pfirsich über das Meer?', ['Möwen', 'Ein Wal', 'Ein Flugzeug', 'Ein Sturm']),
       Frage('Wo landet der Pfirsich?', ['In New York', 'In London', 'In Paris', 'Auf einer Insel']),
+      Frage('Wer hat „James und der Riesenpfirsich“ geschrieben?', ['Roald Dahl', 'Michael Ende', 'Enid Blyton', 'Lewis Carroll']),
+      Frage('Bei wem lebt James zu Beginn?', ['Bei seinen zwei bösen Tanten', 'Bei seinen Großeltern', 'Im Waisenhaus', 'Bei seinem Onkel']),
     ],
   ),
   Buch(
@@ -227,6 +255,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Was hat die „andere Mutter" statt Augen?', ['Knöpfe', 'Murmeln', 'Spiegel', 'Löcher']),
       Frage('Welches Tier kann in der anderen Welt sprechen?', ['Eine schwarze Katze', 'Ein Hund', 'Eine Ratte', 'Ein Rabe']),
       Frage('Wie gelangt Coraline in die andere Welt?', ['Durch eine kleine Tür', 'Durch einen Spiegel', 'Durch einen Schrank', 'Durch einen Brunnen']),
+      Frage('Wer hat „Coraline“ geschrieben?', ['Neil Gaiman', 'Roald Dahl', 'Cornelia Funke', 'Lemony Snicket']),
+      Frage('Was will die andere Mutter Coraline annähen?', ['Knöpfe als Augen', 'Flügel', 'Eine Puppe', 'Einen Schwanz']),
     ],
   ),
   Buch(
@@ -332,6 +362,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt das Mädchen?', ['Anna', 'Anne', 'Liesel', 'Lotte']),
       Frage('In welches Land flieht die Familie zuerst?', ['In die Schweiz', 'Nach England', 'Nach Amerika', 'Nach Frankreich']),
       Frage('Was ist das rosa Kaninchen?', ['Annas Stofftier, das zurückbleibt', 'Ein echtes Haustier', 'Ein Geheimcode', 'Ein Buch']),
+      Frage('Wer hat „Als Hitler das rosa Kaninchen stahl“ geschrieben?', ['Judith Kerr', 'Anne Frank', 'Hans Peter Richter', 'Mirjam Pressler']),
+      Frage('Warum muss Annas Familie fliehen?', ['Ihr Vater ist ein jüdischer Hitlergegner', 'Sie sind arm', 'Der Vater hat ein Verbrechen begangen', 'Sie wollen Urlaub machen']),
     ],
   ),
   Buch(
@@ -348,6 +380,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wo sitzt Pierre Anthon und ruft seine Sätze herunter?', ['In einem Pflaumenbaum', 'Auf einem Dach', 'Auf einer Brücke', 'Im Klassenzimmer']),
       Frage('Was sammeln die Schüler in einem Sägewerk?', ['Dinge, die ihnen etwas bedeuten', 'Holz', 'Geld', 'Briefe']),
       Frage('Wie nennen sie ihren Haufen?', ['Berg der Bedeutung', 'Schatzkammer', 'Turm der Wahrheit', 'Haufen der Dinge']),
+      Frage('Wer hat „Nichts. Was im Leben wichtig ist“ geschrieben?', ['Janne Teller', 'Astrid Lindgren', 'Jostein Gaarder', 'Kirsten Boie']),
+      Frage('Was ruft Pierre Anthon?', ['Dass nichts eine Bedeutung hat', 'Dass er König ist', 'Dass er reich werden will', 'Dass die Schule brennt']),
     ],
   ),
   Buch(
@@ -363,6 +397,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt der Erzähler?', ['Quentin', 'Augustus', 'Miles', 'Ben']),
       Frage('Was hinterlässt Margo?', ['Hinweise, die zu ihr führen', 'Einen Abschiedsbrief', 'Ein Video', 'Nichts']),
       Frage('In welchem Bundesstaat wohnen sie?', ['Florida', 'Kalifornien', 'New York', 'Texas']),
+      Frage('Wer hat „Margos Spuren“ geschrieben?', ['John Green', 'Jay Asher', 'Stephen Chbosky', 'Rainbow Rowell']),
+      Frage('Wie heißt der Roman im Original?', ['Paper Towns', 'Looking for Alaska', 'Turtles All the Way Down', 'Will Grayson']),
     ],
   ),
   Buch(
@@ -379,6 +415,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Was sucht Miles im Internat?', ['Das große Vielleicht', 'Seinen Vater', 'Einen Schatz', 'Ruhe']),
       Frage('Wie heißt das Internat?', ['Culver Creek', 'Hogwarts', 'Clearwater High', 'Weston']),
       Frage('Was sammelt Miles gern?', ['Letzte Worte berühmter Menschen', 'Briefmarken', 'Steine', 'Autogramme']),
+      Frage('Wer hat „Eine wie Alaska“ geschrieben?', ['John Green', 'Jay Asher', 'Andreas Steinhöfel', 'Wolfgang Herrndorf']),
+      Frage('Wie wird Miles’ Zimmergenosse Chip genannt?', ['Der Colonel', 'Der Professor', 'Der Kapitän', 'Der General']),
     ],
   ),
   Buch(
@@ -395,6 +433,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt das alte Haus der Familie?', ['Visible', 'Green Gables', 'Bleak House', 'Villa Kunterbunt']),
       Frage('Wie heißt Phils Zwillingsschwester?', ['Dianne', 'Kat', 'Glass', 'Tereza']),
       Frage('Wie heißt Phils Mutter?', ['Glass', 'Dianne', 'Pascal', 'Tereza']),
+      Frage('Wer hat „Die Mitte der Welt“ geschrieben?', ['Andreas Steinhöfel', 'Wolfgang Herrndorf', 'John Green', 'Kirsten Boie']),
+      Frage('Wie heißt Phils Freund, in den er sich verliebt?', ['Nicholas', 'Kat', 'Michael', 'Pascal']),
     ],
   ),
   Buch(
@@ -410,6 +450,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Woraus flieht David?', ['Aus einem Gefangenenlager', 'Aus einem Waisenhaus', 'Aus einem Internat', 'Aus einem Krankenhaus']),
       Frage('In welches Land soll er gehen?', ['Nach Dänemark', 'Nach Frankreich', 'Nach Italien', 'Nach Schweden']),
       Frage('Wen findet David am Ende?', ['Seine Mutter', 'Seinen Vater', 'Seinen Bruder', 'Seinen Freund Johannes']),
+      Frage('Wer hat „Ich bin David“ geschrieben?', ['Anne Holm', 'Astrid Lindgren', 'Judith Kerr', 'Mirjam Pressler']),
+      Frage('Wie alt ist David ungefähr?', ['Etwa zwölf', 'Etwa fünf', 'Etwa achtzehn', 'Etwa dreißig']),
     ],
   ),
 
@@ -482,6 +524,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt der Hexer?', ['Geralt von Riva', 'Rittersporn', 'Vesemir', 'Kvothe']),
       Frage('Wie heißt sein Freund, der Barde?', ['Rittersporn', 'Lambert', 'Ciri', 'Zoltan']),
       Frage('Welche Zauberin lernt Geralt in diesem Buch kennen?', ['Yennefer', 'Triss', 'Ciri', 'Galadriel']),
+      Frage('Wer hat „Der letzte Wunsch“ geschrieben?', ['Andrzej Sapkowski', 'George R. R. Martin', 'Patrick Rothfuss', 'Terry Pratchett']),
+      Frage('Was ist Geralt von Beruf?', ['Hexer, ein Monsterjäger', 'König', 'Barde', 'Schmied']),
     ],
   ),
   Buch(
@@ -497,6 +541,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt der Dämon?', ['Crowley', 'Erziraphael', 'Beelzebub', 'Adam']),
       Frage('Was ist Erziraphael?', ['Ein Engel', 'Ein Dämon', 'Eine Hexe', 'Ein Mensch']),
       Frage('Wer ist der Antichrist?', ['Der Junge Adam', 'Crowley', 'Ein Hund', 'Der Erzengel Gabriel']),
+      Frage('Wer hat „Ein gutes Omen“ zusammen geschrieben?', ['Terry Pratchett und Neil Gaiman', 'Stephen King und Peter Straub', 'Douglas Adams und Terry Pratchett', 'Neil Gaiman und Douglas Adams']),
+      Frage('Was wollen Crowley und Erziraphael verhindern?', ['Das Ende der Welt', 'Eine Hochzeit', 'Einen Bankraub', 'Eine Wahl']),
     ],
   ),
   Buch(
@@ -512,6 +558,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißen die zarten Wesen an der Oberfläche?', ['Eloi', 'Morlocks', 'Marsianer', 'Houyhnhnms']),
       Frage('Wie heißen die Wesen, die unter der Erde leben?', ['Morlocks', 'Eloi', 'Orks', 'Zwerge']),
       Frage('In welches Jahr reist er ungefähr?', ['Ins Jahr 802.701', 'Ins Jahr 2000', 'Ins Jahr 3000', 'Ins Jahr 1.000.000.000']),
+      Frage('Wer hat „Die Zeitmaschine“ geschrieben?', ['H. G. Wells', 'Jules Verne', 'Isaac Asimov', 'Aldous Huxley']),
+      Frage('Wovor haben die Eloi Angst?', ['Vor der Dunkelheit', 'Vor Wasser', 'Vor Feuer', 'Vor Vögeln']),
     ],
   ),
   Buch(
@@ -527,6 +575,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Woher kommen die Angreifer?', ['Vom Mars', 'Vom Mond', 'Von der Venus', 'Aus der Zukunft']),
       Frage('Worauf bewegen sich die Kampfmaschinen?', ['Auf drei Beinen', 'Auf Rädern', 'Durch die Luft', 'Unter der Erde']),
       Frage('Was besiegt die Marsianer am Ende?', ['Irdische Bakterien', 'Atombomben', 'Die Armee', 'Ein Sturm']),
+      Frage('Wer hat „Der Krieg der Welten“ geschrieben?', ['H. G. Wells', 'Jules Verne', 'Arthur C. Clarke', 'Ray Bradbury']),
+      Frage('In welchem Land landen die Marsianer?', ['England', 'USA', 'Frankreich', 'Russland']),
     ],
   ),
   Buch(
@@ -542,6 +592,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie viele Robotergesetze gibt es?', ['Drei', 'Zwei', 'Fünf', 'Zehn']),
       Frage('Was verlangt das erste Gesetz?', ['Ein Roboter darf keinen Menschen verletzen', 'Ein Roboter muss sich selbst schützen', 'Ein Roboter muss immer arbeiten', 'Ein Roboter darf nicht lügen']),
       Frage('Wie heißt die Roboterpsychologin?', ['Susan Calvin', 'Sarah Connor', 'Ellen Ripley', 'Dana Scully']),
+      Frage('Wer hat „Ich, der Robot“ geschrieben?', ['Isaac Asimov', 'Philip K. Dick', 'Arthur C. Clarke', 'Stanisław Lem']),
+      Frage('Was für ein Buch ist „Ich, der Robot“?', ['Eine Sammlung von Erzählungen', 'Ein Sachbuch', 'Ein Theaterstück', 'Ein Gedichtband']),
     ],
   ),
   Buch(
@@ -557,6 +609,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Was bedeckt den Planeten Solaris?', ['Ein lebender Ozean', 'Wüste', 'Eis', 'Wald']),
       Frage('Wie heißt der Psychologe, der auf der Station ankommt?', ['Kris Kelvin', 'Snaut', 'Sartorius', 'Gibarian']),
       Frage('Wer erscheint ihm plötzlich?', ['Seine verstorbene Frau Harey', 'Seine Mutter', 'Ein Außerirdischer', 'Sein Doppelgänger']),
+      Frage('Wer hat „Solaris“ geschrieben?', ['Stanisław Lem', 'Isaac Asimov', 'Arthur C. Clarke', 'Philip K. Dick']),
+      Frage('Wo spielt der Roman?', ['Auf einer Raumstation über dem Planeten', 'In einer U-Bahn', 'In einer Wüste', 'Auf dem Mond']),
     ],
   ),
   Buch(
@@ -572,6 +626,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt der Astronaut?', ['Ryland Grace', 'Mark Watney', 'Dave Bowman', 'Han Solo']),
       Frage('Was bedroht die Sonne?', ['Astrophagen, winzige Lebewesen', 'Ein Meteorit', 'Ein Schwarzes Loch', 'Außerirdische Raumschiffe']),
       Frage('Wie heißt der außerirdische Freund?', ['Rocky', 'Spock', 'E.T.', 'Groot']),
+      Frage('Wer hat „Der Astronaut“ geschrieben?', ['Andy Weir', 'Frank Schätzing', 'Arthur C. Clarke', 'Ernest Cline']),
+      Frage('Was ist Ryland Grace eigentlich von Beruf?', ['Lehrer', 'Pilot', 'Arzt', 'Soldat']),
     ],
   ),
   Buch(
@@ -588,6 +644,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Was fällt in Europa aus?', ['Der Strom', 'Das Internet', 'Das Wasser', 'Das Telefonnetz']),
       Frage('Wie heißt der italienische Ex-Hacker, der die Ursache findet?', ['Piero Manzano', 'Mikael Blomkvist', 'Robert Langdon', 'Marco Rossi']),
       Frage('Worüber dringen die Angreifer ein?', ['Über intelligente Stromzähler', 'Über Handys', 'Über Satelliten', 'Über Autos']),
+      Frage('Wer hat „Blackout“ geschrieben?', ['Marc Elsberg', 'Frank Schätzing', 'Andreas Eschbach', 'Sebastian Fitzek']),
+      Frage('Was passiert ohne Strom bald überall?', ['Wasser, Heizung und Versorgung brechen zusammen', 'Gar nichts', 'Es wird wärmer', 'Alle fahren in den Urlaub']),
     ],
   ),
 
@@ -605,6 +663,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wer wird ermordet?', ['Linnet Doyle', 'Jacqueline de Bellefort', 'Salome Otterbourne', 'Rosalie']),
       Frage('Welcher Detektiv ist an Bord?', ['Hercule Poirot', 'Miss Marple', 'Sherlock Holmes', 'Pater Brown']),
       Frage('Wo spielt der Fall?', ['In Ägypten', 'In Indien', 'In Griechenland', 'In der Türkei']),
+      Frage('Wer hat „Tod auf dem Nil“ geschrieben?', ['Agatha Christie', 'Arthur Conan Doyle', 'Dorothy L. Sayers', 'Edgar Wallace']),
+      Frage('Wo geschieht der Mord?', ['Auf einem Nildampfer', 'In einer Pyramide', 'In einem Hotel in Kairo', 'Im Zug']),
     ],
   ),
   Buch(
@@ -620,6 +680,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Nach welchem Muster wählt der Mörder seine Opfer?', ['Nach dem Alphabet', 'Nach dem Alter', 'Nach dem Wochentag', 'Nach Sternzeichen']),
       Frage('Was liegt bei jedem Opfer?', ['Ein ABC-Fahrplan', 'Eine Spielkarte', 'Eine Rose', 'Ein Brief']),
       Frage('Wem schreibt der Mörder Briefe?', ['Hercule Poirot', 'Scotland Yard', 'Der Zeitung', 'Miss Marple']),
+      Frage('Wer hat „Die Morde des Herrn ABC“ geschrieben?', ['Agatha Christie', 'Arthur Conan Doyle', 'Edgar Wallace', 'Georges Simenon']),
+      Frage('Wer erzählt den Fall?', ['Captain Hastings', 'Miss Marple', 'Dr. Watson', 'Inspektor Japp']),
     ],
   ),
   Buch(
@@ -635,6 +697,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Welche Detektivin löst den Fall?', ['Miss Marple', 'Tuppence', 'Ariadne Oliver', 'Lady Eileen']),
       Frage('In welchem Dorf lebt sie?', ['St. Mary Mead', 'Midsomer', 'Kingsbridge', 'Little Whinging']),
       Frage('Wer wird tot im Pfarrhaus gefunden?', ['Colonel Protheroe', 'Der Pfarrer', 'Der Arzt', 'Ein Maler']),
+      Frage('Wer hat „Mord im Pfarrhaus“ geschrieben?', ['Agatha Christie', 'Dorothy L. Sayers', 'Arthur Conan Doyle', 'P. D. James']),
+      Frage('Wer erzählt die Geschichte?', ['Der Pfarrer', 'Miss Marple', 'Der Polizist', 'Colonel Protheroe']),
     ],
   ),
   Buch(
@@ -650,6 +714,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wer bittet Holmes um Hilfe?', ['Mary Morstan', 'Irene Adler', 'Mrs. Hudson', 'Violet Hunter']),
       Frage('Was bekommt sie jedes Jahr per Post?', ['Eine Perle', 'Einen Ring', 'Eine Rose', 'Geld']),
       Frage('Wen heiratet Dr. Watson am Ende?', ['Mary Morstan', 'Mrs. Hudson', 'Irene Adler', 'Niemanden']),
+      Frage('Wer hat „Das Zeichen der Vier“ geschrieben?', ['Arthur Conan Doyle', 'Agatha Christie', 'Edgar Allan Poe', 'Wilkie Collins']),
+      Frage('Um was für einen Schatz geht es?', ['Den Agra-Schatz aus Indien', 'Das Gold der Inkas', 'Die Kronjuwelen', 'Einen Piratenschatz']),
     ],
   ),
   Buch(
@@ -666,6 +732,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt der junge Anwalt?', ['Caspar Leinen', 'Ferdinand von Schirach', 'Hans Meyer', 'Richard Mattinger']),
       Frage('Welche Nationalität hat Fabrizio Collini?', ['Italienisch', 'Deutsch', 'Französisch', 'Spanisch']),
       Frage('Was ist das Motiv?', ['Rache für ein Kriegsverbrechen im Zweiten Weltkrieg', 'Geld', 'Eifersucht', 'Ein Erbe']),
+      Frage('Wer hat „Der Fall Collini“ geschrieben?', ['Ferdinand von Schirach', 'Bernhard Schlink', 'Sebastian Fitzek', 'Juli Zeh']),
+      Frage('Was ist Collinis Opfer?', ['Ein reicher Industrieller', 'Ein Polizist', 'Ein Anwalt', 'Ein Politiker aus Italien']),
     ],
   ),
   Buch(
@@ -682,6 +750,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt die FBI-Agentin?', ['Clarice Starling', 'Dana Scully', 'Lisbeth Salander', 'Kay Scarpetta']),
       Frage('Wie heißt der inhaftierte Psychiater?', ['Hannibal Lecter', 'Norman Bates', 'Dr. Jekyll', 'Buffalo Bill']),
       Frage('Wie nennt die Presse den gesuchten Serienmörder?', ['Buffalo Bill', 'Der Zahnfee', 'Jack', 'Der Puppenmacher']),
+      Frage('Wer hat „Das Schweigen der Lämmer“ geschrieben?', ['Thomas Harris', 'Stephen King', 'Dean Koontz', 'John Grisham']),
+      Frage('Warum besucht Clarice Hannibal Lecter?', ['Er soll helfen, einen Serienmörder zu fassen', 'Er ist ihr Onkel', 'Er soll sie behandeln', 'Sie will ihn befreien']),
     ],
   ),
   Buch(
@@ -698,6 +768,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Welche Kraft hat Carrie?', ['Telekinese', 'Unsichtbarkeit', 'Fliegen', 'Gedankenlesen']),
       Frage('Was wird Carrie auf dem Abschlussball übergeschüttet?', ['Schweineblut', 'Farbe', 'Wasser', 'Mehl']),
       Frage('Wie ist Carries Mutter?', ['Streng religiös', 'Sehr locker', 'Nie zu Hause', 'Eine Hexe']),
+      Frage('Wer hat „Carrie“ geschrieben?', ['Stephen King', 'Dean Koontz', 'Anne Rice', 'Thomas Harris']),
+      Frage('Was macht Carrie nach dem Streich beim Ball?', ['Sie richtet mit ihrer Kraft eine Katastrophe an', 'Sie läuft weg und kommt nie wieder', 'Sie lacht mit', 'Sie gewinnt den Tanzwettbewerb']),
     ],
   ),
   Buch(
@@ -714,6 +786,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt der Vater der Familie?', ['Louis Creed', 'Jack Torrance', 'Jud Crandall', 'Ben Mears']),
       Frage('Welches Tier kehrt als erstes zurück?', ['Der Kater Church', 'Der Hund Cujo', 'Ein Hase', 'Ein Pferd']),
       Frage('Was ist Louis von Beruf?', ['Arzt', 'Lehrer', 'Schriftsteller', 'Polizist']),
+      Frage('Wer hat „Friedhof der Kuscheltiere“ geschrieben?', ['Stephen King', 'Dean Koontz', 'Edgar Allan Poe', 'Clive Barker']),
+      Frage('Was ist das Besondere an dem Indianerfriedhof hinter dem Tierfriedhof?', ['Dort Begrabene kehren zurück', 'Dort liegt ein Schatz', 'Dort wächst nie Gras', 'Dort wohnt ein Riese']),
     ],
   ),
   Buch(
@@ -730,6 +804,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt der Schriftsteller?', ['Paul Sheldon', 'Jack Torrance', 'Mike Noonan', 'Stephen King']),
       Frage('Wer hält ihn gefangen?', ['Annie Wilkes, eine frühere Krankenschwester', 'Seine Ex-Frau', 'Ein Verleger', 'Ein Polizist']),
       Frage('Was verlangt sie von ihm?', ['Ein neues Buch über Misery', 'Geld', 'Dass er sie heiratet', 'Dass er schweigt']),
+      Frage('Wer hat „Misery“ geschrieben?', ['Stephen King', 'Thomas Harris', 'Dean Koontz', 'Gillian Flynn']),
+      Frage('Wie kommt Paul zu Annie?', ['Sie findet ihn nach einem Autounfall im Schnee', 'Er ist ihr Nachbar', 'Sie gewinnt ihn bei einer Lesung', 'Er mietet ein Zimmer']),
     ],
   ),
   Buch(
@@ -746,6 +822,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Was ist Christine?', ['Ein Auto', 'Ein Mädchen', 'Ein Hund', 'Ein Haus']),
       Frage('Wer kauft Christine?', ['Arnie Cunningham', 'Dennis Guilder', 'Roland LeBay', 'Carrie White']),
       Frage('Welche Automarke ist Christine?', ['Plymouth Fury', 'Ford Mustang', 'VW Käfer', 'Cadillac']),
+      Frage('Wer hat „Christine“ geschrieben?', ['Stephen King', 'Dean Koontz', 'Michael Crichton', 'John Grisham']),
+      Frage('Was ist das Unheimliche an Christine?', ['Das Auto lebt und tötet', 'Es fährt ohne Benzin', 'Es kann fliegen', 'Es spricht']),
     ],
   ),
 
@@ -763,6 +841,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Welche Automarke liebt Ove?', ['Saab', 'Volvo', 'BMW', 'Toyota']),
       Frage('Wie hieß Oves verstorbene Frau?', ['Sonja', 'Parvaneh', 'Anita', 'Maria']),
       Frage('Wer zieht gegenüber ein und stört seine Pläne?', ['Parvaneh mit ihrer Familie', 'Ein Student', 'Seine Schwester', 'Ein Polizist']),
+      Frage('Wer hat „Ein Mann namens Ove“ geschrieben?', ['Fredrik Backman', 'Jonas Jonasson', 'Stieg Larsson', 'Henning Mankell']),
+      Frage('Welches Tier freundet sich mit Ove an?', ['Eine Katze', 'Ein Hund', 'Ein Papagei', 'Ein Igel']),
     ],
   ),
   Buch(
@@ -778,6 +858,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Mit welchem Tier treibt Pi im Boot?', ['Einem bengalischen Tiger', 'Einem Löwen', 'Einem Bären', 'Einem Krokodil']),
       Frage('Wie heißt der Tiger?', ['Richard Parker', 'Shir Khan', 'Rajah', 'Hobbes']),
       Frage('Was betrieb Pis Familie in Indien?', ['Einen Zoo', 'Ein Restaurant', 'Eine Schule', 'Ein Hotel']),
+      Frage('Wer hat „Schiffbruch mit Tiger“ (Das Leben des Pi) geschrieben?', ['Yann Martel', 'Salman Rushdie', 'Paulo Coelho', 'Khaled Hosseini']),
+      Frage('Warum ist Pi im Rettungsboot?', ['Das Frachtschiff mit seiner Familie ist gesunken', 'Er wollte allein segeln', 'Er ist von zu Hause weggelaufen', 'Er wurde ausgesetzt']),
     ],
   ),
   Buch(
@@ -794,6 +876,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt Amirs bester Freund?', ['Hassan', 'Assef', 'Sohrab', 'Rahim']),
       Frage('In welcher Stadt wachsen sie auf?', ['Kabul', 'Teheran', 'Bagdad', 'Islamabad']),
       Frage('Was sagt Hassan zu Amir, bevor er den Drachen holt?', ['„Für dich, tausendmal"', '„Ich komme gleich"', '„Warte hier"', '„Du schuldest mir was"']),
+      Frage('Wer hat „Drachenläufer“ geschrieben?', ['Khaled Hosseini', 'Yann Martel', 'Salman Rushdie', 'Orhan Pamuk']),
+      Frage('Was für ein Wettbewerb ist wichtig im Buch?', ['Ein Drachenkampf (Drachensteigen)', 'Ein Pferderennen', 'Ein Fußballspiel', 'Ein Schachturnier']),
     ],
   ),
   Buch(
@@ -809,6 +893,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt der Junge?', ['Franz Huchel', 'Otto Trsnjek', 'Andreas Egger', 'Hans Giebenrath']),
       Frage('Welcher berühmte Mann ist Stammkunde in der Trafik?', ['Sigmund Freud', 'Albert Einstein', 'Gustav Klimt', 'Stefan Zweig']),
       Frage('In welcher Stadt spielt der Roman?', ['Wien', 'Salzburg', 'Berlin', 'Prag']),
+      Frage('Wer hat „Der Trafikant“ geschrieben?', ['Robert Seethaler', 'Daniel Kehlmann', 'Arno Geiger', 'Thomas Glavinic']),
+      Frage('Was verkauft man in einer Trafik?', ['Zeitungen und Tabak', 'Brot', 'Blumen', 'Kleidung']),
     ],
   ),
   Buch(
@@ -824,6 +910,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Welcher Forscher reist durch Südamerika?', ['Alexander von Humboldt', 'Carl Friedrich Gauß', 'Charles Darwin', 'James Cook']),
       Frage('Welcher Mathematiker bleibt lieber zu Hause?', ['Carl Friedrich Gauß', 'Isaac Newton', 'Leonhard Euler', 'Albert Einstein']),
       Frage('Wo treffen sich die beiden?', ['In Berlin', 'In Paris', 'In Göttingen', 'In Wien']),
+      Frage('Wer hat „Die Vermessung der Welt“ geschrieben?', ['Daniel Kehlmann', 'Patrick Süskind', 'Bernhard Schlink', 'Uwe Timm']),
+      Frage('Was macht Gauß beruflich?', ['Er ist Mathematiker', 'Er ist Seefahrer', 'Er ist Maler', 'Er ist König']),
     ],
   ),
   Buch(
@@ -839,6 +927,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie nennen die Leute Kya?', ['Das Marschmädchen', 'Die Wilde', 'Die Hexe vom Sumpf', 'Das Vogelmädchen']),
       Frage('Wer wird tot aufgefunden?', ['Chase Andrews', 'Tate Walker', 'Jumpin\'', 'Kyas Vater']),
       Frage('In welchem US-Staat liegt das Marschland?', ['North Carolina', 'Florida', 'Louisiana', 'Maine']),
+      Frage('Wer hat „Der Gesang der Flusskrebse“ geschrieben?', ['Delia Owens', 'Celeste Ng', 'Jojo Moyes', 'Gillian Flynn']),
+      Frage('Wie lebt Kya als Kind?', ['Allein im Marschland, nachdem ihre Familie sie verlassen hat', 'Bei reichen Pflegeeltern', 'Im Internat', 'In einer Großstadt']),
     ],
   ),
   Buch(
@@ -854,6 +944,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Was ist Stevens von Beruf?', ['Butler', 'Koch', 'Gärtner', 'Lehrer']),
       Frage('Auf welchem Landsitz hat er gedient?', ['Darlington Hall', 'Downton Abbey', 'Thornfield Hall', 'Pemberley']),
       Frage('Wen besucht er auf seiner Reise?', ['Die frühere Haushälterin Miss Kenton', 'Seinen Bruder', 'Lord Darlington', 'Seinen Sohn']),
+      Frage('Wer hat „Was vom Tage übrig blieb“ geschrieben?', ['Kazuo Ishiguro', 'Ian McEwan', 'Julian Barnes', 'Salman Rushdie']),
+      Frage('In welchem Land spielt der Roman?', ['England', 'Japan', 'USA', 'Frankreich']),
     ],
   ),
   Buch(
@@ -870,6 +962,8 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wie heißt das Internat?', ['Hailsham', 'Culver Creek', 'Darlington', 'Hogwarts']),
       Frage('Wofür sind die Schüler bestimmt?', ['Als Organspender', 'Als Soldaten', 'Als Lehrer', 'Als Raumfahrer']),
       Frage('Wer erzählt die Geschichte?', ['Kathy H.', 'Ruth', 'Tommy', 'Miss Emily']),
+      Frage('Wer hat „Alles, was wir geben mussten“ geschrieben?', ['Kazuo Ishiguro', 'Margaret Atwood', 'Ian McEwan', 'Aldous Huxley']),
+      Frage('Was sind Kathy und ihre Freunde?', ['Klone', 'Roboter', 'Außerirdische', 'Prinzen']),
     ],
   ),
 ];

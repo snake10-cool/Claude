@@ -727,6 +727,8 @@ const _grundstock = <Buch>[
       Frage('Wie heißt der Erzähler?', ['Holden Caulfield', 'Dean Moriarty', 'Charlie Kelmeckis', 'Tom Sawyer']),
       Frage('In welcher Stadt spielt der Großteil?', ['New York', 'Chicago', 'Los Angeles', 'Boston']),
       Frage('Was fragt sich Holden immer wieder?', ['Wohin die Enten im Central Park im Winter fliegen', 'Warum der Himmel blau ist', 'Wer seinen Hut gestohlen hat', 'Wie viele Sterne es gibt']),
+      Frage('Von welcher Schule ist Holden zu Beginn geflogen?', ['Pencey', 'Harvard', 'Eton', 'Hogwarts']),
+      Frage('Wen besucht Holden heimlich in der Wohnung seiner Eltern?', ['Seine kleine Schwester Phoebe', 'Seine Großmutter', 'Seinen Bruder Allie', 'Seinen Lehrer']),
     ],
   ),
   Buch(
@@ -742,6 +744,8 @@ const _grundstock = <Buch>[
       Frage('Was ist Atticus Finch von Beruf?', ['Anwalt', 'Arzt', 'Sheriff', 'Pfarrer']),
       Frage('Wie heißt die Erzählerin?', ['Scout', 'Jem', 'Calpurnia', 'Mayella']),
       Frage('Wie heißt der geheimnisvolle Nachbar?', ['Boo Radley', 'Tom Robinson', 'Bob Ewell', 'Dill']),
+      Frage('Wen verteidigt Atticus vor Gericht?', ['Tom Robinson', 'Bob Ewell', 'Boo Radley', 'Jem']),
+      Frage('Wie heißt Scouts älterer Bruder?', ['Jem', 'Dill', 'Tom', 'Walter']),
     ],
   ),
   Buch(
@@ -808,6 +812,8 @@ const _grundstock = <Buch>[
       Frage('Wie lautet der berühmte erste Satz?', ['Nennt mich Ismael.', 'Es war einmal ein Wal.', 'Das Meer war ruhig.', 'Ich hasse Wale.']),
       Frage('Wie heißt der Kapitän?', ['Ahab', 'Nemo', 'Haken', 'Starbuck']),
       Frage('Wie heißt das Schiff?', ['Pequod', 'Nautilus', 'Hispaniola', 'Bounty']),
+      Frage('Was für ein Tier ist Moby Dick?', ['Ein weißer Pottwal', 'Ein Hai', 'Ein Riesenkrake', 'Ein Blauwal']),
+      Frage('Was hat Ahab durch Moby Dick verloren?', ['Ein Bein', 'Ein Auge', 'Eine Hand', 'Sein erstes Schiff']),
     ],
   ),
   Buch(
@@ -823,6 +829,8 @@ const _grundstock = <Buch>[
       Frage('Wo wohnen Holmes und Watson?', ['Baker Street 221B', 'Downing Street 10', 'Abbey Road 3', 'Fleet Street 186']),
       Frage('Welches Wort steht mit Blut an der Wand?', ['RACHE', 'MÖRDER', 'HILFE', 'SCHULD']),
       Frage('Was war Watson vorher?', ['Armeearzt', 'Polizist', 'Journalist', 'Anwalt']),
+      Frage('Wer hat Sherlock Holmes erfunden?', ['Arthur Conan Doyle', 'Agatha Christie', 'Edgar Allan Poe', 'Charles Dickens']),
+      Frage('In welcher Stadt leben Holmes und Watson?', ['London', 'Edinburgh', 'Paris', 'New York']),
     ],
   ),
 
@@ -895,6 +903,8 @@ const _grundstock = <Buch>[
       Frage('Wie heißt der ermittelnde Mönch?', ['William von Baskerville', 'Adson von Melk', 'Jorge von Burgos', 'Bernard Gui']),
       Frage('Wer erzählt die Geschichte?', ['Adson von Melk', 'William von Baskerville', 'Der Abt', 'Ein Bibliothekar']),
       Frage('Um welches verschollene Buch geht es?', ['Das zweite Buch der Poetik des Aristoteles', 'Die Bibel des Teufels', 'Ein Zauberbuch', 'Das Tagebuch des Abtes']),
+      Frage('Wo spielt der Roman?', ['In einem Kloster in Norditalien', 'In einem Schloss in Frankreich', 'In Rom', 'In einem Kloster in England']),
+      Frage('Womit wurden die Seiten des verbotenen Buchs präpariert?', ['Mit Gift', 'Mit Wachs', 'Mit Blut', 'Mit Säure']),
     ],
   ),
   Buch(
@@ -911,6 +921,8 @@ const _grundstock = <Buch>[
       Frage('Was ist Tom von Beruf?', ['Baumeister', 'Schmied', 'Ritter', 'Mönch']),
       Frage('In welchem Ort wird die Kathedrale gebaut?', ['Kingsbridge', 'Shiring', 'Canterbury', 'London']),
       Frage('In welchem Jahrhundert spielt der Roman?', ['Im 12. Jahrhundert', 'Im 9. Jahrhundert', 'Im 15. Jahrhundert', 'Im 17. Jahrhundert']),
+      Frage('Wer hat „Die Säulen der Erde“ geschrieben?', ['Ken Follett', 'Noah Gordon', 'Dan Brown', 'Umberto Eco']),
+      Frage('Was für ein Gebäude soll entstehen?', ['Eine Kathedrale', 'Eine Burg', 'Eine Brücke', 'Ein Rathaus']),
     ],
   ),
   Buch(
@@ -927,6 +939,8 @@ const _grundstock = <Buch>[
       Frage('Was ist Robert Langdon von Beruf?', ['Symbologe', 'Polizist', 'Archäologe', 'Kunsthändler']),
       Frage('Wo beginnt die Geschichte?', ['Im Louvre in Paris', 'Im Vatikan', 'In London', 'In New York']),
       Frage('Wer hilft Langdon bei der Suche?', ['Sophie Neveu', 'Vittoria Vetra', 'Katherine Solomon', 'Sienna Brooks']),
+      Frage('Wer hat „Sakrileg“ geschrieben?', ['Dan Brown', 'Ken Follett', 'John Grisham', 'Sebastian Fitzek']),
+      Frage('Wer wird zu Beginn im Louvre ermordet?', ['Der Museumskurator Jacques Saunière', 'Ein Wachmann', 'Ein Papst', 'Ein Bischof']),
     ],
   ),
   Buch(
@@ -943,6 +957,8 @@ const _grundstock = <Buch>[
       Frage('Wie wird die Intelligenz im Meer genannt?', ['Yrr', 'Kraken', 'Abyss', 'Leviathan']),
       Frage('In welchem Land beginnt die Geschichte mit dem Wissenschaftler Johanson?', ['Norwegen', 'Japan', 'Kanada', 'Chile']),
       Frage('Was greift unter anderem Menschen an?', ['Wale', 'Haie aus dem All', 'Vögel', 'Ameisen']),
+      Frage('Wer hat „Der Schwarm“ geschrieben?', ['Frank Schätzing', 'Sebastian Fitzek', 'Andreas Eschbach', 'Cornelia Funke']),
+      Frage('Wo lebt der Schwarm?', ['In der Tiefsee', 'Im Weltall', 'Im Erdinneren', 'Im Regenwald']),
     ],
   ),
   Buch(
@@ -959,6 +975,8 @@ const _grundstock = <Buch>[
       Frage('Als was zeigt sich Es meistens?', ['Als Clown Pennywise', 'Als schwarzer Hund', 'Als alte Frau', 'Als Schatten']),
       Frage('In welcher Stadt spielt die Geschichte?', ['Derry', 'Castle Rock', 'Salem\'s Lot', 'Springfield']),
       Frage('Wie nennen sich die Freunde?', ['Club der Verlierer', 'Die Unbesiegbaren', 'Die fünf Freunde', 'Die Wächter']),
+      Frage('Wer hat „Es“ geschrieben?', ['Stephen King', 'Dean Koontz', 'Edgar Allan Poe', 'H. P. Lovecraft']),
+      Frage('Alle wie viele Jahre kehrt Es ungefähr zurück?', ['Etwa alle 27 Jahre', 'Jedes Jahr', 'Alle 100 Jahre', 'Alle 5 Jahre']),
     ],
   ),
   Buch(
@@ -975,6 +993,8 @@ const _grundstock = <Buch>[
       Frage('Wie heißt der Staat?', ['Gilead', 'Panem', 'Ozeanien', 'Eden']),
       Frage('Welche Farbe tragen die Mägde?', ['Rot', 'Blau', 'Grün', 'Schwarz']),
       Frage('Wie heißt die Erzählerin in der deutschen Ausgabe?', ['Desfred', 'Desglen', 'Serena', 'Moira']),
+      Frage('Wer hat „Der Report der Magd“ geschrieben?', ['Margaret Atwood', 'George Orwell', 'Suzanne Collins', 'Aldous Huxley']),
+      Frage('Wozu werden die Mägde gezwungen?', ['Kinder für mächtige Familien zu bekommen', 'Im Bergwerk zu arbeiten', 'Soldat zu werden', 'Bücher abzuschreiben']),
     ],
   ),
   Buch(
@@ -1017,6 +1037,8 @@ const _grundstock = <Buch>[
       Frage('Wie heißt der Astronaut?', ['Mark Watney', 'Matt Kowalski', 'Ryan Stone', 'Cooper']),
       Frage('Was baut er auf dem Mars an?', ['Kartoffeln', 'Tomaten', 'Weizen', 'Salat']),
       Frage('Was ist er außer Ingenieur noch?', ['Botaniker', 'Arzt', 'Pilot', 'Geologe']),
+      Frage('Warum ist Watney allein auf dem Mars?', ['Seine Crew hält ihn nach einem Sturm für tot', 'Er wollte dort bleiben', 'Er wurde bestraft', 'Seine Rakete ist explodiert']),
+      Frage('Wer hat „Der Marsianer“ geschrieben?', ['Andy Weir', 'Isaac Asimov', 'Arthur C. Clarke', 'Frank Schätzing']),
     ],
   ),
   Buch(
@@ -1060,6 +1082,8 @@ const _grundstock = <Buch>[
       Frage('Wie heißt die Glücksdroge?', ['Soma', 'Nektar', 'Lethe', 'Euphoria']),
       Frage('Wie wird der Mann aus dem Reservat genannt?', ['Der Wilde', 'Der Fremde', 'Der Alte', 'Der Rebell']),
       Frage('Wie entstehen Menschen in diesem Staat?', ['Im Labor gezüchtet', 'Durch Klonen auf dem Mond', 'Ganz normal in Familien', 'Aus Robotern']),
+      Frage('Wer hat „Schöne neue Welt“ geschrieben?', ['Aldous Huxley', 'George Orwell', 'Ray Bradbury', 'H. G. Wells']),
+      Frage('Wie viele Kasten gibt es, die mit griechischen Buchstaben bezeichnet werden (Alpha bis Epsilon)?', ['Fünf', 'Drei', 'Zwei', 'Zehn']),
     ],
   ),
 
@@ -1077,6 +1101,8 @@ const _grundstock = <Buch>[
       Frage('Mit welcher Revolution beginnt das Buch?', ['Der kognitiven Revolution', 'Der Französischen Revolution', 'Der Industriellen Revolution', 'Der digitalen Revolution']),
       Frage('Was lässt laut Harari große Gruppen von Menschen zusammenarbeiten?', ['Gemeinsame Geschichten und Mythen', 'Gute Ernährung', 'Starke Anführer', 'Die Sprache der Tiere']),
       Frage('Welche Revolution folgt auf die kognitive?', ['Die landwirtschaftliche Revolution', 'Die wissenschaftliche Revolution', 'Die Industrielle Revolution', 'Die Russische Revolution']),
+      Frage('Wer hat „Eine kurze Geschichte der Menschheit“ geschrieben?', ['Yuval Noah Harari', 'Stephen Hawking', 'Jared Diamond', 'Richard David Precht']),
+      Frage('Wie heißt unsere Menschenart im Buch?', ['Homo sapiens', 'Homo erectus', 'Neandertaler', 'Homo habilis']),
     ],
   ),
   Buch(
@@ -1092,6 +1118,8 @@ const _grundstock = <Buch>[
       Frage('Um wie viel soll man sich laut Titel jeden Tag verbessern?', ['1 %', '10 %', '50 %', '100 %']),
       Frage('Was soll eine gute Gewohnheit laut dem ersten Gesetz sein?', ['Offensichtlich', 'Schwierig', 'Teuer', 'Geheim']),
       Frage('Worauf soll man sich statt auf Ziele konzentrieren?', ['Auf Systeme', 'Auf Belohnungen', 'Auf andere Menschen', 'Auf Glück']),
+      Frage('Wer hat „Die 1%-Methode“ geschrieben?', ['James Clear', 'Dale Carnegie', 'Rolf Dobelli', 'Stephen Covey']),
+      Frage('Wie heißt das Buch im englischen Original?', ['Atomic Habits', 'Tiny Habits', 'The Power of Habit', 'Deep Work']),
     ],
   ),
   Buch(
@@ -1107,6 +1135,8 @@ const _grundstock = <Buch>[
       Frage('Welche Frage steht auf der Speisekarte?', ['Warum bist du hier?', 'Was möchtest du trinken?', 'Wie alt bist du?', 'Wo wohnst du?']),
       Frage('Wie heißt die Kellnerin im Café?', ['Casey', 'Anne', 'Mia', 'Lisa']),
       Frage('Wie kommt John zum Café?', ['Er verfährt sich im Stau und sucht eine Tankstelle', 'Ein Freund lädt ihn ein', 'Er wandert durch die Berge', 'Er sieht es im Fernsehen']),
+      Frage('Wer hat „Das Café am Rande der Welt“ geschrieben?', ['John Strelecky', 'Paulo Coelho', 'Hape Kerkeling', 'Bas Kast']),
+      Frage('Was bedeuten die drei Buchstaben, die im Buch eine wichtige Rolle spielen (ZDE)?', ['Zweck der Existenz', 'Zeit der Erholung', 'Ziel des Essens', 'Zukunft der Erde']),
     ],
   ),
   Buch(

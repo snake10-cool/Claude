@@ -107,6 +107,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der „Steppenwolf"?', ['Harry Haller', 'Hermann Hesse', 'Pablo', 'Siddhartha']),
       Frage('Welche Frau zeigt ihm das Tanzen und Leben?', ['Hermine', 'Maria', 'Kamala', 'Gretchen']),
       Frage('Was erlebt er am Ende?', ['Das magische Theater', 'Eine Reise nach Indien', 'Eine Hochzeit', 'Einen Krieg']),
+      Frage('Wer hat „Der Steppenwolf“ geschrieben?', ['Hermann Hesse', 'Thomas Mann', 'Franz Kafka', 'Max Frisch']),
+      Frage('Welches Schild sieht Harry, das „Nur für Verrückte“ ist?', ['Den Eingang zum Magischen Theater', 'Ein Wirtshausschild', 'Einen Bahnhof', 'Eine Kirche']),
     ],
   ),
   Buch(
@@ -122,6 +124,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der Fährmann, bei dem Siddhartha lernt?', ['Vasudeva', 'Govinda', 'Kamaswami', 'Gotama']),
       Frage('Was ist Siddharthas großer Lehrer am Ende?', ['Der Fluss', 'Ein Buch', 'Ein Tempel', 'Sein Vater']),
       Frage('Wie heißt Siddharthas Jugendfreund?', ['Govinda', 'Vasudeva', 'Kamala', 'Harry']),
+      Frage('Wer hat „Siddhartha“ geschrieben?', ['Hermann Hesse', 'Thomas Mann', 'Rainer Maria Rilke', 'Stefan Zweig']),
+      Frage('Wie heißt die Kurtisane, bei der Siddhartha die Liebe lernt?', ['Kamala', 'Govinda', 'Vasudeva', 'Sita']),
     ],
   ),
   Buch(
@@ -138,6 +142,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der Erzähler?', ['Paul Bäumer', 'Stanislaus Katczinsky', 'Albert Kropp', 'Kantorek']),
       Frage('In welchem Krieg spielt der Roman?', ['Im Ersten Weltkrieg', 'Im Zweiten Weltkrieg', 'Im Dreißigjährigen Krieg', 'Im Vietnamkrieg']),
       Frage('Wer hat die Jungen zum Kriegsdienst überredet?', ['Ihr Lehrer Kantorek', 'Ihre Eltern', 'Der Bürgermeister', 'Ein Pfarrer']),
+      Frage('Wer hat „Im Westen nichts Neues“ geschrieben?', ['Erich Maria Remarque', 'Ernst Jünger', 'Heinrich Böll', 'Thomas Mann']),
+      Frage('Wie heißt Pauls älterer Kamerad, der für ihn wie ein Vater ist?', ['Stanislaus Katczinsky (Kat)', 'Kantorek', 'Himmelstoß', 'Kemmerich']),
     ],
   ),
   Buch(
@@ -233,6 +239,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der Deichgraf?', ['Hauke Haien', 'Tede Volkerts', 'Ole Peters', 'Iven Johns']),
       Frage('Was für ein Pferd reitet er?', ['Einen Schimmel', 'Einen Rappen', 'Ein Pony', 'Einen Fuchs']),
       Frage('Wo spielt die Novelle?', ['An der Nordsee', 'In den Alpen', 'In Berlin', 'An der Donau']),
+      Frage('Wer hat „Der Schimmelreiter“ geschrieben?', ['Theodor Storm', 'Theodor Fontane', 'Gottfried Keller', 'Annette von Droste-Hülshoff']),
+      Frage('Wie stirbt Hauke Haien am Ende?', ['Er stürzt sich mit dem Pferd in die Flut', 'Er wird erschossen', 'Er stirbt an einer Krankheit', 'Er ertrinkt beim Baden']),
     ],
   ),
   Buch(
@@ -275,6 +283,8 @@ const katalogErwachsen = <Buch>[
       Frage('Was ist Walter Faber von Beruf?', ['Ingenieur', 'Arzt', 'Pilot', 'Lehrer']),
       Frage('Wer ist Sabeth in Wirklichkeit?', ['Seine Tochter', 'Seine Schwester', 'Seine Ex-Frau', 'Eine Spionin']),
       Frage('Was passiert auf dem Flug am Anfang?', ['Eine Notlandung in der Wüste', 'Eine Entführung', 'Ein Absturz ins Meer', 'Nichts Besonderes']),
+      Frage('Wer hat „Homo faber“ geschrieben?', ['Max Frisch', 'Friedrich Dürrenmatt', 'Heinrich Böll', 'Günter Grass']),
+      Frage('Woran stirbt Sabeth?', ['An den Folgen eines Sturzes nach einem Schlangenbiss', 'An einem Autounfall', 'An einer Grippe', 'Bei einem Flugzeugabsturz']),
     ],
   ),
   Buch(
@@ -291,6 +301,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der Erzähler?', ['Oskar Matzerath', 'Alfred Matzerath', 'Jan Bronski', 'Bebra']),
       Frage('Was kann Oskar mit seiner Stimme?', ['Glas zersingen', 'Tiere rufen', 'Menschen hypnotisieren', 'Gedanken lesen']),
       Frage('In welcher Stadt wächst Oskar auf?', ['Danzig', 'Berlin', 'Wien', 'Hamburg']),
+      Frage('Wer hat „Die Blechtrommel“ geschrieben?', ['Günter Grass', 'Heinrich Böll', 'Siegfried Lenz', 'Max Frisch']),
+      Frage('Mit welchem Alter beschließt Oskar, nicht mehr zu wachsen?', ['Mit drei Jahren', 'Mit zehn Jahren', 'Mit sechs Jahren', 'Mit einem Jahr']),
     ],
   ),
   Buch(
@@ -307,6 +319,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt die Frau?', ['Hanna Schmitz', 'Hanna Arendt', 'Sophie Scholl', 'Marie Berg']),
       Frage('Welches Geheimnis hat Hanna?', ['Sie kann nicht lesen', 'Sie ist verheiratet', 'Sie ist eine Spionin', 'Sie ist krank']),
       Frage('Was tut Michael für sie, als sie im Gefängnis ist?', ['Er schickt ihr besprochene Kassetten', 'Er besucht sie jede Woche', 'Er befreit sie', 'Er schreibt ein Buch über sie']),
+      Frage('Wer hat „Der Vorleser“ geschrieben?', ['Bernhard Schlink', 'Patrick Süskind', 'Daniel Kehlmann', 'Siegfried Lenz']),
+      Frage('Was macht Michael für Hanna, als sie sich treffen?', ['Er liest ihr vor', 'Er kocht für sie', 'Er malt sie', 'Er singt für sie']),
     ],
   ),
   Buch(
@@ -322,6 +336,8 @@ const katalogErwachsen = <Buch>[
       Frage('Was isst das Känguru am liebsten?', ['Schnapspralinen', 'Eukalyptus', 'Pizza', 'Gummibärchen']),
       Frage('Welche politische Einstellung hat das Känguru?', ['Es ist Kommunist', 'Es ist Royalist', 'Es ist unpolitisch', 'Es ist Liberaler']),
       Frage('In welcher Stadt wohnen die beiden?', ['Berlin', 'Hamburg', 'München', 'Köln']),
+      Frage('Wer hat „Die Känguru-Chroniken“ geschrieben?', ['Marc-Uwe Kling', 'Timur Vermes', 'Horst Evers', 'Jan Weiler']),
+      Frage('Was ist der Erzähler von Beruf?', ['Kleinkünstler', 'Polizist', 'Lehrer', 'Arzt']),
     ],
   ),
   Buch(
@@ -337,6 +353,8 @@ const katalogErwachsen = <Buch>[
       Frage('Was ist Peter von Beruf?', ['Maschinenverschrotter', 'Programmierer', 'Verkäufer', 'Politiker']),
       Frage('Was schickt ihm TheShop?', ['Ein Produkt, das er nicht will', 'Eine Rechnung', 'Einen Roboter', 'Nichts']),
       Frage('Welchen Nachnamen tragen die Menschen in QualityLand?', ['Den Beruf der Eltern zur Zeugung', 'Den Namen der Stadt', 'Eine Nummer', 'Den Namen ihres Lieblingsprodukts']),
+      Frage('Wer hat „QualityLand“ geschrieben?', ['Marc-Uwe Kling', 'Timur Vermes', 'Andreas Eschbach', 'Frank Schätzing']),
+      Frage('Was für ein Produkt bekommt Peter, das er zurückgeben will?', ['Einen pinken Delfin-Vibrator', 'Einen Toaster', 'Ein Auto', 'Ein Handy']),
     ],
   ),
   Buch(
@@ -353,6 +371,8 @@ const katalogErwachsen = <Buch>[
       Frage('In welchem Jahr wacht er auf?', ['2011', '1990', '2000', '2020']),
       Frage('Wofür halten ihn die Menschen?', ['Für einen Komiker', 'Für einen Schauspieler im Film', 'Für einen Politiker', 'Für einen Geist']),
       Frage('Wo wird er berühmt?', ['Im Fernsehen', 'Im Theater', 'Im Bundestag', 'In der Zeitung']),
+      Frage('Wer wacht im Roman wieder auf?', ['Adolf Hitler', 'Napoleon', 'Kaiser Wilhelm', 'Bismarck']),
+      Frage('Wer hat „Er ist wieder da“ geschrieben?', ['Timur Vermes', 'Marc-Uwe Kling', 'Daniel Kehlmann', 'Walter Moers']),
     ],
   ),
 
@@ -370,6 +390,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt die Hauptfigur?', ['Edmond Dantès', 'D\'Artagnan', 'Jean Valjean', 'Fernand Mondego']),
       Frage('In welchem Gefängnis sitzt er?', ['Château d\'If', 'Bastille', 'Alcatraz', 'Tower of London']),
       Frage('Wer verrät ihm im Gefängnis, wo ein Schatz liegt?', ['Abbé Faria', 'Danglars', 'Villefort', 'Mercedes']),
+      Frage('Wer hat „Der Graf von Monte Christo“ geschrieben?', ['Alexandre Dumas', 'Victor Hugo', 'Jules Verne', 'Honoré de Balzac']),
+      Frage('Wie flieht Edmond aus dem Gefängnis?', ['Er lässt sich im Leichensack ins Meer werfen', 'Er gräbt einen Tunnel', 'Er besticht die Wachen', 'Er wird begnadigt']),
     ],
   ),
   Buch(
@@ -385,6 +407,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißen die drei Musketiere?', ['Athos, Porthos und Aramis', 'Athos, Porthos und D\'Artagnan', 'Aramis, Rochefort und Athos', 'Porthos, Planchet und Aramis']),
       Frage('Wer ist ihr großer Gegenspieler?', ['Kardinal Richelieu', 'König Ludwig XIII.', 'Napoleon', 'Der Herzog von Buckingham']),
       Frage('Wie lautet ihr Wahlspruch?', ['Einer für alle, alle für einen', 'Ehre und Treue', 'Für König und Vaterland', 'Niemals aufgeben']),
+      Frage('Wie heißt der junge Held, der zu den Musketieren stößt?', ['D’Artagnan', 'Rochefort', 'Athos', 'Planchet']),
+      Frage('Wer hat „Die drei Musketiere“ geschrieben?', ['Alexandre Dumas', 'Victor Hugo', 'Jules Verne', 'Gustave Flaubert']),
     ],
   ),
   Buch(
@@ -400,6 +424,8 @@ const katalogErwachsen = <Buch>[
       Frage('Warum kam Jean Valjean ins Gefängnis?', ['Er hat ein Brot gestohlen', 'Er hat jemanden getötet', 'Er war ein Spion', 'Er hat Steuern nicht bezahlt']),
       Frage('Wer verfolgt ihn?', ['Inspektor Javert', 'Thénardier', 'Marius', 'Der Bischof']),
       Frage('Welches Mädchen zieht Valjean auf?', ['Cosette', 'Éponine', 'Fantine', 'Esmeralda']),
+      Frage('Wer hat „Die Elenden“ geschrieben?', ['Victor Hugo', 'Alexandre Dumas', 'Émile Zola', 'Honoré de Balzac']),
+      Frage('In welchem Land spielt der Roman?', ['Frankreich', 'England', 'Spanien', 'Italien']),
     ],
   ),
   Buch(
@@ -415,6 +441,8 @@ const katalogErwachsen = <Buch>[
       Frage('In wen verliebt sich Anna?', ['Graf Wronski', 'Lewin', 'Karenin', 'Stepan Oblonski']),
       Frage('Wie endet Anna?', ['Sie wirft sich vor einen Zug', 'Sie flieht nach Paris', 'Sie heiratet Wronski', 'Sie wird Nonne']),
       Frage('Wie beginnt der Roman sinngemäß?', ['Alle glücklichen Familien gleichen einander', 'Es war einmal in Moskau', 'Nennt mich Anna', 'Es war die beste aller Zeiten']),
+      Frage('Wer hat „Anna Karenina“ geschrieben?', ['Leo Tolstoi', 'Fjodor Dostojewski', 'Anton Tschechow', 'Iwan Turgenew']),
+      Frage('Wie heißt Annas Ehemann?', ['Alexej Karenin', 'Konstantin Lewin', 'Stepan Oblonski', 'Graf Wronski']),
     ],
   ),
   Buch(
@@ -431,6 +459,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der Student?', ['Raskolnikow', 'Myschkin', 'Karamasow', 'Oblomow']),
       Frage('Wen tötet er?', ['Eine alte Pfandleiherin', 'Seinen Vermieter', 'Einen Polizisten', 'Seinen Bruder']),
       Frage('Wer bringt ihn schließlich dazu, zu gestehen?', ['Sonja', 'Dunja', 'Porfiri', 'Rasumichin']),
+      Frage('Wer hat „Verbrechen und Strafe“ geschrieben?', ['Fjodor Dostojewski', 'Leo Tolstoi', 'Nikolai Gogol', 'Anton Tschechow']),
+      Frage('In welcher Stadt spielt der Roman?', ['Sankt Petersburg', 'Moskau', 'Kiew', 'Warschau']),
     ],
   ),
   Buch(
@@ -446,6 +476,8 @@ const katalogErwachsen = <Buch>[
       Frage('Auf welchem Landsitz arbeitet Jane?', ['Thornfield Hall', 'Pemberley', 'Wuthering Heights', 'Manderley']),
       Frage('In wen verliebt sie sich?', ['Mr. Rochester', 'St. John Rivers', 'Mr. Darcy', 'Heathcliff']),
       Frage('Wer lebt versteckt auf dem Dachboden?', ['Rochesters erste Frau Bertha', 'Ein Geist', 'Janes Tante', 'Ein entflohener Sträfling']),
+      Frage('Wer hat „Jane Eyre“ geschrieben?', ['Charlotte Brontë', 'Emily Brontë', 'Jane Austen', 'Mary Shelley']),
+      Frage('Was passiert mit Thornfield Hall?', ['Es brennt ab', 'Es wird verkauft', 'Es wird zur Schule', 'Es stürzt bei einem Erdbeben ein']),
     ],
   ),
   Buch(
@@ -461,6 +493,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der Mann, um den sich alles dreht?', ['Heathcliff', 'Edgar Linton', 'Mr. Rochester', 'Hindley']),
       Frage('Wen liebt er?', ['Catherine Earnshaw', 'Isabella Linton', 'Nelly Dean', 'Jane Eyre']),
       Frage('Wer erzählt dem Mieter Lockwood die Geschichte?', ['Die Haushälterin Nelly Dean', 'Heathcliff', 'Catherine', 'Joseph']),
+      Frage('Wer hat „Sturmhöhe“ geschrieben?', ['Emily Brontë', 'Charlotte Brontë', 'Jane Austen', 'Anne Brontë']),
+      Frage('Wen heiratet Catherine statt Heathcliff?', ['Edgar Linton', 'Hindley Earnshaw', 'Mr. Lockwood', 'Hareton']),
     ],
   ),
   Buch(
@@ -476,6 +510,8 @@ const katalogErwachsen = <Buch>[
       Frage('Was altert statt Dorian?', ['Sein Porträt', 'Sein Spiegelbild', 'Sein Zwilling', 'Sein Haus']),
       Frage('Wer hat das Bild gemalt?', ['Basil Hallward', 'Lord Henry', 'Sibyl Vane', 'Alan Campbell']),
       Frage('Wer verführt Dorian zu einem Leben nur für den Genuss?', ['Lord Henry Wotton', 'Basil Hallward', 'James Vane', 'Der Teufel']),
+      Frage('Wer hat „Das Bildnis des Dorian Gray“ geschrieben?', ['Oscar Wilde', 'Bram Stoker', 'Charles Dickens', 'Robert Louis Stevenson']),
+      Frage('Was passiert, als Dorian am Ende auf das Bild einsticht?', ['Er stirbt selbst und wird alt und hässlich', 'Das Bild verschwindet', 'Er wird wieder jung', 'Nichts passiert']),
     ],
   ),
   Buch(
@@ -491,6 +527,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wodurch verwandelt sich Jekyll in Hyde?', ['Durch einen Trank', 'Bei Vollmond', 'Durch einen Fluch', 'Im Schlaf']),
       Frage('Wer ermittelt in dem Fall?', ['Der Anwalt Utterson', 'Sherlock Holmes', 'Inspektor Lestrade', 'Dr. Lanyon']),
       Frage('In welcher Stadt spielt die Geschichte?', ['London', 'Edinburgh', 'Paris', 'New York']),
+      Frage('Wer hat „Dr. Jekyll und Mr. Hyde“ geschrieben?', ['Robert Louis Stevenson', 'Bram Stoker', 'Mary Shelley', 'Arthur Conan Doyle']),
+      Frage('Was ist Jekyll von Beruf?', ['Arzt', 'Anwalt', 'Polizist', 'Pfarrer']),
     ],
   ),
   Buch(
@@ -506,6 +544,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wo spielt der Fall?', ['Im Moor von Dartmoor', 'In London', 'In Schottland', 'In der Schweiz']),
       Frage('Wer reist zuerst allein zum Anwesen?', ['Dr. Watson', 'Sherlock Holmes', 'Inspektor Lestrade', 'Mycroft Holmes']),
       Frage('Wer ist der Erbe, der beschützt werden muss?', ['Sir Henry Baskerville', 'Sir Charles Baskerville', 'Jack Stapleton', 'Dr. Mortimer']),
+      Frage('Welcher Detektiv löst den Fall?', ['Sherlock Holmes', 'Hercule Poirot', 'Miss Marple', 'Inspektor Columbo']),
+      Frage('Wer hat „Der Hund von Baskerville“ geschrieben?', ['Arthur Conan Doyle', 'Agatha Christie', 'Edgar Wallace', 'Edgar Allan Poe']),
     ],
   ),
   Buch(
@@ -521,6 +561,8 @@ const katalogErwachsen = <Buch>[
       Frage('Welcher Detektiv ermittelt?', ['Hercule Poirot', 'Miss Marple', 'Sherlock Holmes', 'Kommissar Maigret']),
       Frage('Warum steht der Zug still?', ['Er steckt im Schnee fest', 'Die Lok ist kaputt', 'Ein Streik', 'Eine Grenzkontrolle']),
       Frage('Wer ist der Täter?', ['Alle Verdächtigen gemeinsam', 'Der Schaffner', 'Der Butler', 'Niemand, es war Selbstmord']),
+      Frage('Wer hat „Mord im Orientexpress“ geschrieben?', ['Agatha Christie', 'Arthur Conan Doyle', 'Dorothy L. Sayers', 'Edgar Wallace']),
+      Frage('Welchem Verbrechen ist der Ermordete schuldig?', ['Der Entführung und dem Tod eines kleinen Mädchens', 'Einem Bankraub', 'Einem Brand', 'Einem Betrug an der Bahn']),
     ],
   ),
   Buch(
@@ -536,6 +578,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie viele Menschen werden auf die Insel eingeladen?', ['Zehn', 'Sieben', 'Zwölf', 'Fünf']),
       Frage('Wonach richten sich die Morde?', ['Nach einem Kinderreim', 'Nach dem Kalender', 'Nach dem Alphabet', 'Nach den Sternzeichen']),
       Frage('Was verschwindet nach jedem Mord?', ['Eine kleine Figur', 'Ein Gemälde', 'Ein Schlüssel', 'Ein Buch']),
+      Frage('Wer hat „Und dann gabs keines mehr“ geschrieben?', ['Agatha Christie', 'Arthur Conan Doyle', 'Edgar Wallace', 'Patricia Highsmith']),
+      Frage('Was haben alle Gäste gemeinsam?', ['Sie sollen alle schuld am Tod eines Menschen sein', 'Sie sind alle verwandt', 'Sie haben alle im Lotto gewonnen', 'Sie sind alle Ärzte']),
     ],
   ),
   Buch(
@@ -552,6 +596,8 @@ const katalogErwachsen = <Buch>[
       Frage('Womit ruft Ralph die Jungen zusammen?', ['Mit einer Muschel', 'Mit einer Trommel', 'Mit einem Feuer', 'Mit einer Pfeife']),
       Frage('Wofür wird Piggys Brille gebraucht?', ['Zum Feuermachen', 'Zum Lesen', 'Als Signal', 'Gar nicht']),
       Frage('Wer wird Ralphs Gegenspieler?', ['Jack', 'Simon', 'Roger', 'Piggy']),
+      Frage('Wie landen die Jungen auf der Insel?', ['Durch einen Flugzeugabsturz', 'Durch ein Schiffsunglück', 'Sie werden ausgesetzt', 'Sie machen einen Schulausflug']),
+      Frage('Wer hat „Herr der Fliegen“ geschrieben?', ['William Golding', 'George Orwell', 'Aldous Huxley', 'J. D. Salinger']),
     ],
   ),
   Buch(
@@ -567,6 +613,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der alte Fischer?', ['Santiago', 'Manolin', 'Pedro', 'Ahab']),
       Frage('Was für einen Fisch fängt er?', ['Einen Marlin', 'Einen Hai', 'Einen Thunfisch', 'Einen Wal']),
       Frage('Was passiert mit dem Fisch auf dem Heimweg?', ['Haie fressen ihn', 'Er entkommt', 'Er wird verkauft', 'Er wird gestohlen']),
+      Frage('Wer hat „Der alte Mann und das Meer“ geschrieben?', ['Ernest Hemingway', 'John Steinbeck', 'Herman Melville', 'Mark Twain']),
+      Frage('Wie heißt der Junge, der dem alten Mann hilft?', ['Manolin', 'Pedro', 'Santiago', 'Pablo']),
     ],
   ),
   Buch(
@@ -582,6 +630,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißen die beiden Freunde?', ['George und Lennie', 'Tom und Huck', 'Sam und Frodo', 'Curley und Slim']),
       Frage('Wovon träumen sie?', ['Von einer eigenen Farm', 'Von Gold', 'Von einer Reise nach Europa', 'Von einem Haus in der Stadt']),
       Frage('Was streichelt Lennie besonders gern?', ['Weiche Dinge wie Mäuse und Welpen', 'Pferde', 'Katzen', 'Vögel']),
+      Frage('Wer hat „Von Mäusen und Menschen“ geschrieben?', ['John Steinbeck', 'Ernest Hemingway', 'Mark Twain', 'J. D. Salinger']),
+      Frage('Was sind George und Lennie von Beruf?', ['Wanderarbeiter auf Farmen', 'Fischer', 'Soldaten', 'Goldgräber']),
     ],
   ),
   Buch(
@@ -597,6 +647,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wo findet Daniel das Buch?', ['Auf dem Friedhof der Vergessenen Bücher', 'Auf dem Dachboden', 'In einer Kirche', 'Auf einem Flohmarkt']),
       Frage('In welcher Stadt spielt der Roman?', ['Barcelona', 'Madrid', 'Paris', 'Lissabon']),
       Frage('Wie heißt der Autor des geheimnisvollen Buchs?', ['Julián Carax', 'Fermín Romero', 'Laín Coubert', 'Daniel Sempere']),
+      Frage('Wer hat „Der Schatten des Windes“ geschrieben?', ['Carlos Ruiz Zafón', 'Paulo Coelho', 'Isabel Allende', 'Gabriel García Márquez']),
+      Frage('Was macht Daniels Vater beruflich?', ['Er hat eine Buchhandlung', 'Er ist Arzt', 'Er ist Polizist', 'Er ist Pfarrer']),
     ],
   ),
   Buch(
@@ -612,6 +664,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der Hundertjährige?', ['Allan Karlsson', 'Ove', 'Julius Jonsson', 'Benny']),
       Frage('Was nimmt er auf der Flucht zufällig mit?', ['Einen Koffer voller Geld', 'Einen Hund', 'Einen Elefanten', 'Ein Auto']),
       Frage('Wovon versteht Allan in seinem Leben besonders viel?', ['Von Sprengstoff', 'Von Kochen', 'Von Musik', 'Von Computern']),
+      Frage('Wer hat „Der Hundertjährige …“ geschrieben?', ['Jonas Jonasson', 'Fredrik Backman', 'Stieg Larsson', 'Henning Mankell']),
+      Frage('Aus welchem Gebäude steigt Allan aus dem Fenster?', ['Aus einem Altersheim', 'Aus einem Gefängnis', 'Aus einem Krankenhaus', 'Aus einem Hotel']),
     ],
   ),
   Buch(
@@ -627,6 +681,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt die Hauptfigur?', ['Louisa Clark', 'Hazel Grace', 'Bridget Jones', 'Anna Scott']),
       Frage('Was ist mit Will passiert?', ['Er ist nach einem Unfall querschnittsgelähmt', 'Er ist blind', 'Er hat sein Gedächtnis verloren', 'Er ist schwer krank']),
       Frage('Welches Kleidungsstück schenkt Will Lou?', ['Gestreifte Strumpfhosen', 'Einen Hut', 'Rote Schuhe', 'Eine Kette']),
+      Frage('Wer hat „Ein ganzes halbes Jahr“ geschrieben?', ['Jojo Moyes', 'Cecelia Ahern', 'Nicholas Sparks', 'Colleen Hoover']),
+      Frage('Als was arbeitet Lou bei Will?', ['Als seine Pflegerin und Gesellschafterin', 'Als Köchin', 'Als Gärtnerin', 'Als Sekretärin']),
     ],
   ),
   Buch(
@@ -643,6 +699,8 @@ const katalogErwachsen = <Buch>[
       Frage('An welchem Tag verschwindet Amy?', ['An ihrem fünften Hochzeitstag', 'An ihrem Geburtstag', 'An Weihnachten', 'Am Hochzeitstag selbst']),
       Frage('Wie heißt ihr Mann?', ['Nick Dunne', 'Desi Collings', 'Tommy O\'Hara', 'Go Dunne']),
       Frage('Wie heißt die Kinderbuchreihe, die Amys Eltern über sie geschrieben haben?', ['Amazing Amy', 'Little Amy', 'Amy und die Welt', 'Perfect Amy']),
+      Frage('Wer hat „Gone Girl“ geschrieben?', ['Gillian Flynn', 'Paula Hawkins', 'Patricia Highsmith', 'Agatha Christie']),
+      Frage('Was steckt hinter Amys Verschwinden?', ['Sie hat es selbst geplant, um Nick zu belasten', 'Sie wurde entführt', 'Sie hatte einen Unfall', 'Sie ist ausgewandert']),
     ],
   ),
   Buch(
@@ -659,6 +717,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt die Hackerin?', ['Lisbeth Salander', 'Erika Berger', 'Harriet Vanger', 'Annika Giannini']),
       Frage('Was ist Mikael Blomkvist von Beruf?', ['Journalist', 'Polizist', 'Anwalt', 'Detektiv']),
       Frage('Wer ist vor vielen Jahren verschwunden?', ['Harriet Vanger', 'Lisbeth Salander', 'Cecilia Vanger', 'Martin Vanger']),
+      Frage('Wer hat „Verblendung“ geschrieben?', ['Stieg Larsson', 'Henning Mankell', 'Jo Nesbø', 'Jussi Adler-Olsen']),
+      Frage('In welchem Land spielt der Roman?', ['Schweden', 'Norwegen', 'Dänemark', 'Finnland']),
     ],
   ),
   Buch(
@@ -675,6 +735,8 @@ const katalogErwachsen = <Buch>[
       Frage('Was wurde gestohlen?', ['Antimaterie', 'Ein Gemälde', 'Ein Code', 'Der Heilige Gral']),
       Frage('Aus welchem Forschungszentrum stammt sie?', ['CERN', 'NASA', 'MIT', 'Max-Planck-Institut']),
       Frage('Wo ist sie versteckt?', ['Im Vatikan', 'Im Louvre', 'In London', 'In Genf']),
+      Frage('Welcher Professor ermittelt in „Illuminati“?', ['Robert Langdon', 'Indiana Jones', 'Sherlock Holmes', 'Mikael Blomkvist']),
+      Frage('Wer hat „Illuminati“ geschrieben?', ['Dan Brown', 'Ken Follett', 'John Grisham', 'Frank Schätzing']),
     ],
   ),
   Buch(
@@ -691,6 +753,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt das Hotel?', ['Overlook Hotel', 'Bates Motel', 'Hotel California', 'Grand Budapest']),
       Frage('Wie heißt der Vater?', ['Jack Torrance', 'Danny Torrance', 'Dick Hallorann', 'Stuart Ullman']),
       Frage('Was ist Dannys „Shining"?', ['Eine übersinnliche Gabe', 'Ein Spielzeug', 'Ein Hund', 'Eine Krankheit']),
+      Frage('Wer hat „Shining“ geschrieben?', ['Stephen King', 'Dean Koontz', 'Edgar Allan Poe', 'Bram Stoker']),
+      Frage('Warum ist die Familie im Hotel?', ['Der Vater soll es im Winter als Hausmeister hüten', 'Sie machen Urlaub', 'Sie haben es geerbt', 'Sie sind auf der Flucht']),
     ],
   ),
   Buch(
@@ -707,6 +771,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der Pate?', ['Vito Corleone', 'Michael Corleone', 'Sonny Corleone', 'Tom Hagen']),
       Frage('Welcher Sohn übernimmt am Ende die Familie?', ['Michael', 'Sonny', 'Fredo', 'Tom']),
       Frage('Was findet der Filmproduzent Woltz in seinem Bett?', ['Den Kopf seines Pferdes', 'Einen toten Fisch', 'Einen Brief', 'Eine Pistole']),
+      Frage('Wer hat „Der Pate“ geschrieben?', ['Mario Puzo', 'John Grisham', 'Don Winslow', 'Truman Capote']),
+      Frage('In welcher Stadt lebt die Familie Corleone?', ['New York', 'Chicago', 'Los Angeles', 'Palermo']),
     ],
   ),
   Buch(
@@ -723,6 +789,8 @@ const katalogErwachsen = <Buch>[
       Frage('Woher stammt die Dino-DNA?', ['Aus Mücken in Bernstein', 'Aus Fossilien', 'Aus Eiern im Eis', 'Aus Vogelfedern']),
       Frage('Wer hat den Park gegründet?', ['John Hammond', 'Alan Grant', 'Ian Malcolm', 'Dennis Nedry']),
       Frage('Wo liegt der Park?', ['Auf der Insel Isla Nublar', 'In Kalifornien', 'In Afrika', 'In Australien']),
+      Frage('Wer hat „Jurassic Park“ geschrieben?', ['Michael Crichton', 'Stephen King', 'Dan Brown', 'Andy Weir']),
+      Frage('Welche Dinosaurier sind besonders schlau und gefährlich?', ['Die Velociraptoren', 'Die Brachiosaurier', 'Die Triceratopse', 'Die Stegosaurier']),
     ],
   ),
   Buch(
@@ -766,6 +834,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der Junge?', ['Ender Wiggin', 'Peter Wiggin', 'Bean', 'Mazer Rackham']),
       Frage('Wo wird er ausgebildet?', ['In der Kampfschule im All', 'Auf dem Mars', 'In einem Bunker', 'Auf dem Mond']),
       Frage('Was glaubt Ender bei der letzten Schlacht?', ['Dass es nur eine Simulation ist', 'Dass er verliert', 'Dass sein Bruder kämpft', 'Dass der Krieg vorbei ist']),
+      Frage('Wer hat „Das große Spiel“ geschrieben?', ['Orson Scott Card', 'Isaac Asimov', 'Frank Herbert', 'Ray Bradbury']),
+      Frage('Wie werden die Außerirdischen genannt?', ['Krabbler', 'Yrr', 'Marsianer', 'Borg']),
     ],
   ),
   Buch(
@@ -782,6 +852,8 @@ const katalogErwachsen = <Buch>[
       Frage('Welche Tiere finden die Stark-Kinder?', ['Schattenwolf-Welpen', 'Drachen-Eier', 'Löwenjunge', 'Raben']),
       Frage('Wie heißt das Familienoberhaupt der Starks?', ['Eddard Stark', 'Robb Stark', 'Jon Snow', 'Robert Baratheon']),
       Frage('Worum kämpfen die Häuser?', ['Den Eisernen Thron', 'Den Heiligen Gral', 'Den Einen Ring', 'Die Krone von Narnia']),
+      Frage('Wer hat „Das Lied von Eis und Feuer“ geschrieben?', ['George R. R. Martin', 'J. R. R. Tolkien', 'Patrick Rothfuss', 'Terry Pratchett']),
+      Frage('Wie lautet der Wahlspruch der Starks?', ['Der Winter naht', 'Feuer und Blut', 'Wir säen nicht', 'Hört mich brüllen']),
     ],
   ),
   Buch(
@@ -797,6 +869,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der Held?', ['Kvothe', 'Bast', 'Denna', 'Ambrose']),
       Frage('Was betreibt er, als die Geschichte beginnt?', ['Ein Gasthaus', 'Eine Schmiede', 'Eine Schule', 'Einen Laden']),
       Frage('Wem erzählt er seine Geschichte?', ['Dem Chronisten', 'Seinem Sohn', 'Einem König', 'Einem Richter']),
+      Frage('Wer hat „Der Name des Windes“ geschrieben?', ['Patrick Rothfuss', 'George R. R. Martin', 'Brandon Sanderson', 'Christopher Paolini']),
+      Frage('Wo studiert Kvothe?', ['An der Universität', 'In einem Kloster', 'An einer Militärschule', 'Bei Hof']),
     ],
   ),
   Buch(
@@ -812,6 +886,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt der junge Mann?', ['Rob Cole', 'Tom Builder', 'Jack Jackson', 'William Kemp']),
       Frage('Zu welchem berühmten Arzt will er?', ['Ibn Sina', 'Hippokrates', 'Galen', 'Paracelsus']),
       Frage('Als was gibt er sich aus, um in Persien studieren zu dürfen?', ['Als Jude', 'Als Mönch', 'Als Prinz', 'Als Händler']),
+      Frage('Wer hat „Der Medicus“ geschrieben?', ['Noah Gordon', 'Ken Follett', 'Rebecca Gablé', 'Umberto Eco']),
+      Frage('In welche Stadt reist Rob, um zu studieren?', ['Isfahan', 'Bagdad', 'Kairo', 'Jerusalem']),
     ],
   ),
   Buch(
@@ -827,6 +903,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie heißt die Hauptfigur?', ['Nora Seed', 'Lou Clark', 'Eleanor Oliphant', 'Hazel Lancaster']),
       Frage('Was steckt in jedem Buch der Bibliothek?', ['Ein anderes mögliches Leben von Nora', 'Ein Zauberspruch', 'Eine Erinnerung an ihre Mutter', 'Ein Rätsel']),
       Frage('Wer ist die Bibliothekarin?', ['Mrs Elm, ihre frühere Schulbibliothekarin', 'Ihre Mutter', 'Eine Fremde', 'Ihre beste Freundin']),
+      Frage('Wer hat „Die Mitternachtsbibliothek“ geschrieben?', ['Matt Haig', 'John Strelecky', 'Paulo Coelho', 'Jojo Moyes']),
+      Frage('Zwischen welchen beiden Zuständen befindet sich Nora in der Bibliothek?', ['Zwischen Leben und Tod', 'Zwischen Traum und Wachsein', 'Zwischen Vergangenheit und Zukunft', 'Zwischen zwei Ländern']),
     ],
   ),
   Buch(
@@ -842,6 +920,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie ist der Roman geschrieben?', ['Nur in E-Mails', 'Als Tagebuch', 'In Briefen per Post', 'Als Chat-Protokoll']),
       Frage('Wie heißen die beiden?', ['Emmi und Leo', 'Anna und Ben', 'Lotte und Werther', 'Lou und Will']),
       Frage('Wie kommt der Kontakt zustande?', ['Durch einen Tippfehler in der Adresse', 'Über eine Dating-App', 'Durch einen Freund', 'Auf einer Party']),
+      Frage('Wer hat „Gut gegen Nordwind“ geschrieben?', ['Daniel Glattauer', 'Daniel Kehlmann', 'Bernhard Schlink', 'Jojo Moyes']),
+      Frage('Wie heißt die Fortsetzung?', ['Alle sieben Wellen', 'Gut gegen Südwind', 'Der Nordwind kehrt zurück', 'Leo und Emmi']),
     ],
   ),
 
@@ -859,6 +939,8 @@ const katalogErwachsen = <Buch>[
       Frage('Welchen Weg geht Kerkeling?', ['Den Jakobsweg', 'Den Rennsteig', 'Den Appalachian Trail', 'Die Seidenstraße']),
       Frage('Wo endet der Weg?', ['In Santiago de Compostela', 'In Rom', 'In Lissabon', 'In Madrid']),
       Frage('In welchem Land ist er die meiste Zeit unterwegs?', ['Spanien', 'Frankreich', 'Portugal', 'Italien']),
+      Frage('Wer hat „Ich bin dann mal weg“ geschrieben?', ['Hape Kerkeling', 'Paulo Coelho', 'Eckart von Hirschhausen', 'Horst Evers']),
+      Frage('Wie reist Kerkeling hauptsächlich?', ['Zu Fuß', 'Mit dem Fahrrad', 'Mit dem Auto', 'Mit dem Pferd']),
     ],
   ),
   Buch(
@@ -874,6 +956,8 @@ const katalogErwachsen = <Buch>[
       Frage('Um welches Organ geht es?', ['Den Darm', 'Das Herz', 'Das Gehirn', 'Die Leber']),
       Frage('Wer hat die Zeichnungen im Buch gemacht?', ['Ihre Schwester Jill Enders', 'Sie selbst', 'Ein Comiczeichner', 'Ein Kind']),
       Frage('Was leben im Darm in riesiger Zahl?', ['Bakterien', 'Würmer', 'Viren', 'Pilze']),
+      Frage('Wer hat „Darm mit Charme“ geschrieben?', ['Giulia Enders', 'Eckart von Hirschhausen', 'Bas Kast', 'Mai Thi Nguyen-Kim']),
+      Frage('Was hat Giulia Enders studiert?', ['Medizin', 'Jura', 'Biologie', 'Kunst']),
     ],
   ),
   Buch(
@@ -889,6 +973,8 @@ const katalogErwachsen = <Buch>[
       Frage('Womit beginnt laut der Physik unser Universum?', ['Mit dem Urknall', 'Mit einem Schwarzen Loch', 'Mit der Sonne', 'Mit der Erde']),
       Frage('Was kann einem Schwarzen Loch nicht entkommen?', ['Nicht einmal Licht', 'Nur Planeten', 'Nur Sterne', 'Nur Raumschiffe']),
       Frage('Was war Stephen Hawking von Beruf?', ['Physiker', 'Astronaut', 'Arzt', 'Philosoph']),
+      Frage('Was ist ein Schwarzes Loch?', ['Ein Bereich, aus dem durch seine Schwerkraft nichts entkommt', 'Ein leerer Raum ohne Sterne', 'Ein erloschener Planet', 'Ein Loch in der Erde']),
+      Frage('Wie heißt die Strahlung, die Hawking für Schwarze Löcher beschrieben hat?', ['Hawking-Strahlung', 'Röntgenstrahlung', 'Urknallstrahlung', 'Gammastrahlung']),
     ],
   ),
   Buch(
@@ -904,6 +990,8 @@ const katalogErwachsen = <Buch>[
       Frage('Was ist mit dem Anteil extrem armer Menschen in den letzten 20 Jahren passiert?', ['Er hat sich fast halbiert', 'Er hat sich verdoppelt', 'Er ist gleich geblieben', 'Er ist leicht gestiegen']),
       Frage('Was war Hans Rosling von Beruf?', ['Arzt und Statistik-Professor', 'Journalist', 'Politiker', 'Banker']),
       Frage('Was ist die Hauptbotschaft?', ['Unser Weltbild ist oft schlechter als die Fakten', 'Die Welt geht unter', 'Nur Reiche sind glücklich', 'Zahlen lügen immer']),
+      Frage('Wer hat „Factfulness“ hauptsächlich geschrieben?', ['Hans Rosling', 'Yuval Noah Harari', 'Steven Pinker', 'Bill Gates']),
+      Frage('Aus welchem Land kam Hans Rosling?', ['Schweden', 'Norwegen', 'Deutschland', 'USA']),
     ],
   ),
   Buch(
@@ -919,6 +1007,8 @@ const katalogErwachsen = <Buch>[
       Frage('Wie nennt Kahneman die zwei Denkweisen?', ['System 1 und System 2', 'Links und rechts', 'Herz und Kopf', 'Alpha und Beta']),
       Frage('Welches System arbeitet schnell und intuitiv?', ['System 1', 'System 2', 'Beide gleich', 'Keines']),
       Frage('Welchen Preis bekam Kahneman?', ['Den Wirtschaftsnobelpreis', 'Den Friedensnobelpreis', 'Einen Oscar', 'Den Pulitzer-Preis']),
+      Frage('Wer hat „Schnelles Denken, langsames Denken“ geschrieben?', ['Daniel Kahneman', 'Rolf Dobelli', 'Malcolm Gladwell', 'Steven Pinker']),
+      Frage('Wie arbeitet System 2?', ['Langsam und anstrengend', 'Schnell und automatisch', 'Nur im Schlaf', 'Nur beim Sport']),
     ],
   ),
 ];

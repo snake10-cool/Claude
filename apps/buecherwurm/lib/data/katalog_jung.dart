@@ -864,6 +864,8 @@ const katalogJung = <Buch>[
       Frage('Wie heißt der Silberdrache?', ['Lung', 'Fuchur', 'Saphira', 'Nesselbrand']),
       Frage('Was ist Schwefelfell?', ['Ein Koboldmädchen', 'Ein Drache', 'Eine Ratte', 'Ein Zwerg']),
       Frage('Was sucht der Drache?', ['Den Saum des Himmels', 'Einen Schatz', 'Seine Mutter', 'Ein Zauberbuch']),
+      Frage('Wer hat „Drachenreiter“ geschrieben?', ['Cornelia Funke', 'Kirsten Boie', 'Michael Ende', 'Paul Maar']),
+      Frage('Wie heißt der Junge, der mit Lung reist?', ['Ben', 'Tim', 'Max', 'Paul']),
     ],
   ),
   Buch(
@@ -976,6 +978,8 @@ const katalogJung = <Buch>[
       Frage('Wie heißt der jüdische Freund des Erzählers?', ['Friedrich Schneider', 'Max Vandenburg', 'Schmuel', 'Peter van Pels']),
       Frage('In welcher Zeit spielt das Buch?', ['1925 bis 1942', '1914 bis 1918', '1950 bis 1960', '1800 bis 1815']),
       Frage('Warum stirbt Friedrich?', ['Man lässt ihn bei einem Bombenangriff nicht in den Luftschutzkeller', 'Er wird krank', 'Er ertrinkt', 'Er stirbt im Krieg an der Front']),
+      Frage('Wer hat „Damals war es Friedrich“ geschrieben?', ['Hans Peter Richter', 'Erich Kästner', 'Judith Kerr', 'Otfried Preußler']),
+      Frage('Was ist der Erzähler von Friedrich?', ['Sein Freund und Nachbar', 'Sein Bruder', 'Sein Lehrer', 'Sein Vater']),
     ],
   ),
   Buch(
@@ -1090,6 +1094,8 @@ const katalogJung = <Buch>[
       Frage('Wie heißt das Mädchen auf den Kassetten?', ['Hannah Baker', 'Hazel Grace', 'Bella Swan', 'Alaska Young']),
       Frage('Wie viele Gründe nennt sie?', ['Dreizehn', 'Sieben', 'Zehn', 'Zwölf']),
       Frage('Wer hört die Kassetten im Buch?', ['Clay Jensen', 'Justin Foley', 'Tony Padilla', 'Bryce Walker']),
+      Frage('Wer hat „Tote Mädchen lügen nicht“ geschrieben?', ['Jay Asher', 'John Green', 'Stephen Chbosky', 'Jennifer Niven']),
+      Frage('Worauf hat Hannah ihre Gründe aufgenommen?', ['Auf Kassetten', 'Auf einem Handy', 'Auf einer CD', 'In einem Tagebuch']),
     ],
   ),
   Buch(
@@ -1154,6 +1160,8 @@ const katalogJung = <Buch>[
       Frage('Wie heißt die virtuelle Welt?', ['OASIS', 'Matrix', 'Metaverse', 'Arena']),
       Frage('Was suchen die Spieler?', ['Ein Easter Egg', 'Einen Drachen', 'Einen Ausgang', 'Den Schöpfer']),
       Frage('Wer hat die virtuelle Welt erschaffen?', ['James Halliday', 'Ogden Morrow', 'Nolan Sorrento', 'Wade Watts']),
+      Frage('Wer hat „Ready Player One“ geschrieben?', ['Ernest Cline', 'Andy Weir', 'Suzanne Collins', 'James Dashner']),
+      Frage('Wie heißt der Held im Spiel?', ['Parzival', 'Art3mis', 'Aech', 'Sorrento']),
     ],
   ),
   Buch(
@@ -1289,6 +1297,8 @@ const katalogJung = <Buch>[
       Frage('In welchem Land steigen sie in den Vulkan?', ['Island', 'Italien', 'Japan', 'Chile']),
       Frage('Wie heißt der Professor?', ['Lidenbrock', 'Aronnax', 'Challenger', 'Moriarty']),
       Frage('Wo kommen sie wieder heraus?', ['Am Stromboli in Italien', 'In Island', 'Am Nordpol', 'In Australien']),
+      Frage('Wer hat „Die Reise zum Mittelpunkt der Erde“ geschrieben?', ['Jules Verne', 'H. G. Wells', 'Arthur Conan Doyle', 'Karl May']),
+      Frage('Wie heißt der Neffe des Professors, der erzählt?', ['Axel', 'Hans', 'Otto', 'Peter']),
     ],
   ),
 ];

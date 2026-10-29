@@ -114,6 +114,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wer wacht ohne Gedächtnis in einem Bus auf?', ['Jason', 'Percy', 'Leo', 'Nico']),
       Frage('Wie heißen seine beiden Freunde?', ['Piper und Leo', 'Annabeth und Grover', 'Hazel und Frank', 'Carter und Sadie']),
       Frage('Welche Göttin ist gefangen und muss befreit werden?', ['Hera', 'Athene', 'Artemis', 'Demeter']),
+      Frage('Wer hat „Helden des Olymp“ geschrieben?', ['Rick Riordan', 'J. K. Rowling', 'Cassandra Clare', 'Christopher Paolini']),
+      Frage('Wessen Sohn ist Jason?', ['Des Jupiter (Zeus)', 'Des Poseidon', 'Des Hades', 'Des Hephaistos']),
     ],
   ),
   Buch(
@@ -129,6 +131,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wie heißen die Geschwister?', ['Carter und Sadie Kane', 'Percy und Tyson', 'Nico und Bianca', 'Jason und Thalia']),
       Frage('Aus welcher Mythologie stammen die Götter?', ['Aus der ägyptischen', 'Aus der griechischen', 'Aus der nordischen', 'Aus der römischen']),
       Frage('Welcher Gott ist der große Gegner?', ['Set', 'Osiris', 'Horus', 'Anubis']),
+      Frage('Wer hat „Die Kane-Chroniken“ geschrieben?', ['Rick Riordan', 'Jonathan Stroud', 'Derek Landy', 'Cassandra Clare']),
+      Frage('Was ist der Vater von Carter und Sadie?', ['Ein Ägyptologe', 'Ein Pilot', 'Ein Polizist', 'Ein Koch']),
     ],
   ),
 
@@ -196,6 +200,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wer verlässt Bella am Anfang?', ['Edward', 'Jacob', 'Charlie', 'Alice']),
       Frage('Was ist Jacob?', ['Ein Werwolf', 'Ein Vampir', 'Ein Mensch ohne besondere Kräfte', 'Ein Zauberer']),
       Frage('Wo leben die Volturi?', ['In Volterra in Italien', 'In Forks', 'In Rumänien', 'In Alaska']),
+      Frage('Wer hat die „Biss“-Reihe geschrieben?', ['Stephenie Meyer', 'Cassandra Clare', 'Suzanne Collins', 'Kerstin Gier']),
+      Frage('Was tut Edward, als er glaubt, Bella sei tot?', ['Er will sich von den Volturi töten lassen', 'Er heiratet eine andere', 'Er wird zum Werwolf', 'Er zieht nach Alaska']),
     ],
   ),
   Buch(
@@ -211,6 +217,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wer stellt eine Armee aus neugeborenen Vampiren auf?', ['Victoria', 'Aro', 'Laurent', 'Rosalie']),
       Frage('Mit wem verbünden sich die Cullens gegen die Armee?', ['Mit den Werwölfen', 'Mit den Volturi', 'Mit Menschen aus Forks', 'Mit niemandem']),
       Frage('Für wen entscheidet sich Bella?', ['Für Edward', 'Für Jacob', 'Für keinen', 'Für Mike']),
+      Frage('Mit wem verlobt sich Bella in „Biss zum Abendrot“?', ['Edward', 'Jacob', 'Carlisle', 'Mike']),
+      Frage('Was ist Victoria?', ['Eine Vampirin, die Rache will', 'Eine Werwölfin', 'Bellas Freundin', 'Eine Hexe']),
     ],
   ),
   Buch(
@@ -226,6 +234,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wie heißt die Tochter von Bella und Edward?', ['Renesmee', 'Esme', 'Alice', 'Rosalie']),
       Frage('Was wird Bella in diesem Buch?', ['Ein Vampir', 'Ein Werwolf', 'Eine Hexe', 'Eine Volturi']),
       Frage('Wer kommt am Ende, um über die Cullens zu richten?', ['Die Volturi', 'Die Werwölfe', 'Die Menschen aus Forks', 'Victoria']),
+      Frage('Wo verbringen Bella und Edward ihre Flitterwochen?', ['Auf einer Insel vor Brasilien', 'In Paris', 'In Italien', 'In Alaska']),
+      Frage('Wer prägt sich auf Renesmee?', ['Jacob', 'Seth', 'Sam', 'Emmett']),
     ],
   ),
   Buch(
@@ -241,6 +251,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wo lernt Eragon bei den Elfen?', ['In Ellesméra', 'In Carvahall', 'In Farthen Dûr', 'In Urû\'baen']),
       Frage('Wer wird sein Lehrer?', ['Der Drachenreiter Oromis', 'Brom', 'Galbatorix', 'Roran']),
       Frage('Wer stellt sich als Eragons Bruder heraus?', ['Murtagh', 'Roran', 'Arya', 'Orik']),
+      Frage('Wer hat „Eragon“ geschrieben?', ['Christopher Paolini', 'Cornelia Funke', 'Rick Riordan', 'Michael Ende']),
+      Frage('Wie heißt Oromis’ Drache?', ['Glaedr', 'Saphira', 'Dorn', 'Shruikan']),
     ],
   ),
 
@@ -258,6 +270,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Was ist Bartimäus?', ['Ein Dschinn', 'Ein Zauberer', 'Ein Drache', 'Ein Kobold']),
       Frage('Wer beschwört ihn?', ['Der Zauberlehrling Nathanael', 'Simon Lovelace', 'Kitty', 'Der Premierminister']),
       Frage('Wem soll Bartimäus das Amulett stehlen?', ['Dem Zauberer Simon Lovelace', 'Der Königin', 'Nathanaels Meister', 'Einem Dämon']),
+      Frage('Wer hat „Bartimäus“ geschrieben?', ['Jonathan Stroud', 'Rick Riordan', 'Derek Landy', 'Philip Pullman']),
+      Frage('In welcher Stadt spielt die Geschichte?', ['London', 'Paris', 'Prag', 'New York']),
     ],
   ),
   Buch(
@@ -274,6 +288,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wie heißt die Hauptfigur?', ['Clary Fray', 'Bella Swan', 'Tessa Gray', 'Isabelle Lightwood']),
       Frage('Was sind Jace, Alec und Isabelle?', ['Schattenjäger', 'Vampire', 'Werwölfe', 'Hexenmeister']),
       Frage('Wie heißt Clarys bester Freund?', ['Simon', 'Jace', 'Magnus', 'Luke']),
+      Frage('Wer hat „Chroniken der Unterwelt“ geschrieben?', ['Cassandra Clare', 'Stephenie Meyer', 'Sarah J. Maas', 'Kerstin Gier']),
+      Frage('In welcher Stadt spielt „City of Bones“?', ['New York', 'London', 'Los Angeles', 'Paris']),
     ],
   ),
   Buch(
@@ -289,6 +305,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Was ist Skulduggery Pleasant?', ['Ein lebendes Skelett', 'Ein Vampir', 'Ein Geist', 'Ein Zauberlehrling']),
       Frage('Wie heißt das Mädchen, das ihm hilft?', ['Stephanie Edgley', 'Tanith Low', 'China Sorrows', 'Clary Fray']),
       Frage('Wer war Stephanies verstorbener Onkel Gordon?', ['Ein Schriftsteller', 'Ein Polizist', 'Ein Arzt', 'Ein Zauberer im Gefängnis']),
+      Frage('Wer hat „Skulduggery Pleasant“ geschrieben?', ['Derek Landy', 'Jonathan Stroud', 'Rick Riordan', 'Eoin Colfer']),
+      Frage('In welchem Land spielt die Reihe?', ['Irland', 'England', 'Schottland', 'USA']),
     ],
   ),
   Buch(
@@ -304,6 +322,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Was ist Lockwood & Co.?', ['Eine Agentur, die Geister bekämpft', 'Eine Zauberschule', 'Ein Detektivbüro für Diebstähle', 'Eine Buchhandlung']),
       Frage('Warum arbeiten dort Jugendliche?', ['Nur sie können Geister wahrnehmen', 'Sie sind billiger', 'Erwachsene haben Angst', 'Es ist ein Schulprojekt']),
       Frage('Wer erzählt die Geschichte?', ['Lucy Carlyle', 'Anthony Lockwood', 'George Cubbins', 'Quill Kipps']),
+      Frage('Wer hat „Lockwood & Co.“ geschrieben?', ['Jonathan Stroud', 'Derek Landy', 'Rick Riordan', 'Anthony Horowitz']),
+      Frage('Womit kämpfen die Agenten vor allem gegen Geister?', ['Mit Rapieren, Eisen und Salz', 'Mit Pistolen', 'Mit Zaubersprüchen', 'Mit Laserstrahlen']),
     ],
   ),
   Buch(
@@ -320,6 +340,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Was ist Celaena Sardothien?', ['Eine Assassinin', 'Eine Prinzessin', 'Eine Heilerin', 'Eine Hexe']),
       Frage('Woher wird sie zu Beginn geholt?', ['Aus den Salzminen von Endovier', 'Aus einem Kloster', 'Aus dem Schloss', 'Aus einem Wald']),
       Frage('Was soll sie im Wettkampf werden?', ['Champion des Königs', 'Königin', 'Anführerin der Rebellen', 'Hofmagierin']),
+      Frage('Wer hat „Throne of Glass“ geschrieben?', ['Sarah J. Maas', 'Cassandra Clare', 'Leigh Bardugo', 'Victoria Aveyard']),
+      Frage('Wer holt Celaena aus der Mine?', ['Prinz Dorian (mit Hauptmann Chaol)', 'Der König selbst', 'Ihre Mutter', 'Ein Drache']),
     ],
   ),
   Buch(
@@ -336,6 +358,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Was tötet Feyre zu Beginn bei der Jagd?', ['Einen Wolf, der ein Fae war', 'Einen Hirsch', 'Einen Bären', 'Einen Drachen']),
       Frage('Wer bringt sie in sein Reich?', ['Tamlin', 'Rhysand', 'Lucien', 'Amarantha']),
       Frage('Zu welchem Hof gehört Tamlin?', ['Zum Frühlingshof', 'Zum Nachthof', 'Zum Winterhof', 'Zum Sommerhof']),
+      Frage('Wer hat „Das Reich der sieben Höfe“ geschrieben?', ['Sarah J. Maas', 'Leigh Bardugo', 'Cassandra Clare', 'Rebecca Yarros']),
+      Frage('Was ist Tamlin?', ['Ein Hochfae', 'Ein Mensch', 'Ein Wolf', 'Ein Zwerg']),
     ],
   ),
 
@@ -354,6 +378,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wer leitet das Sonderdezernat Q?', ['Carl Mørck', 'Harry Hole', 'Kurt Wallander', 'Mikael Blomkvist']),
       Frage('Wie heißt sein syrischer Assistent?', ['Assad', 'Rose', 'Hardy', 'Marcus']),
       Frage('In welcher Stadt arbeitet das Dezernat?', ['Kopenhagen', 'Stockholm', 'Oslo', 'Hamburg']),
+      Frage('Wer hat „Erbarmen“ geschrieben?', ['Jussi Adler-Olsen', 'Jo Nesbø', 'Stieg Larsson', 'Henning Mankell']),
+      Frage('Womit befasst sich das Sonderdezernat Q?', ['Mit ungelösten alten Fällen', 'Mit Verkehrsunfällen', 'Mit Spionage', 'Mit Steuerbetrug']),
     ],
   ),
   Buch(
@@ -370,6 +396,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wie heißt der Ermittler?', ['Harry Hole', 'Carl Mørck', 'Kurt Wallander', 'Van Veeteren']),
       Frage('In welcher Stadt spielt der Roman?', ['Oslo', 'Bergen', 'Stockholm', 'Kopenhagen']),
       Frage('Was hinterlässt der Täter?', ['Einen Schneemann', 'Eine Rose', 'Einen Brief', 'Eine Spielkarte']),
+      Frage('Wer hat „Schneemann“ geschrieben?', ['Jo Nesbø', 'Jussi Adler-Olsen', 'Henning Mankell', 'Stieg Larsson']),
+      Frage('In welchem Land spielt der Krimi?', ['Norwegen', 'Schweden', 'Dänemark', 'Island']),
     ],
   ),
   Buch(
@@ -386,6 +414,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wer ist Ciri?', ['Die Prinzessin von Cintra', 'Geralts Tochter', 'Eine Elfe', 'Eine Hexe aus Novigrad']),
       Frage('Wo bilden die Hexer Ciri aus?', ['In Kaer Morhen', 'In Cintra', 'In Novigrad', 'In Aretusa']),
       Frage('Welche Zauberin unterrichtet Ciri später?', ['Yennefer', 'Triss', 'Philippa', 'Fringilla']),
+      Frage('Wer hat „Das Erbe der Elfen“ geschrieben?', ['Andrzej Sapkowski', 'J. R. R. Tolkien', 'Bernhard Hennen', 'George R. R. Martin']),
+      Frage('Wer ist Ciris Beschützer und Ziehvater?', ['Geralt von Riva', 'Rittersporn', 'Vesemir', 'Emhyr']),
     ],
   ),
   Buch(
@@ -402,6 +432,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wie heißt die Hauptfigur?', ['Claire Randall', 'Jenny Fraser', 'Geillis Duncan', 'Laoghaire']),
       Frage('Wodurch reist sie in der Zeit?', ['Durch einen Steinkreis', 'Mit einer Maschine', 'Durch einen Spiegel', 'Im Traum']),
       Frage('In wen verliebt sie sich in der Vergangenheit?', ['Jamie Fraser', 'Frank Randall', 'Dougal MacKenzie', 'Black Jack Randall']),
+      Frage('Wer hat die „Highland-Saga“ (Outlander) geschrieben?', ['Diana Gabaldon', 'Rebecca Gablé', 'Nora Roberts', 'Philippa Gregory']),
+      Frage('In welches Land reist Claire in der Vergangenheit?', ['Schottland', 'Irland', 'Frankreich', 'Wales']),
     ],
   ),
   Buch(
@@ -417,6 +449,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('In welcher Stadt wachsen die Freundinnen auf?', ['Neapel', 'Rom', 'Mailand', 'Palermo']),
       Frage('Wie heißt die „geniale Freundin"?', ['Lila', 'Elena', 'Pinuccia', 'Carmela']),
       Frage('Womit endet der erste Band?', ['Mit Lilas Hochzeit', 'Mit Elenas Studium', 'Mit einem Umzug', 'Mit einem Todesfall']),
+      Frage('Unter welchem Namen erscheinen die Neapel-Romane?', ['Elena Ferrante', 'Umberto Eco', 'Italo Calvino', 'Natalia Ginzburg']),
+      Frage('Wie heißt die Erzählerin?', ['Elena (Lenù)', 'Lila', 'Pinuccia', 'Carmela']),
     ],
   ),
   Buch(
@@ -433,6 +467,8 @@ const katalogReihenQuiz = <Buch>[
       Frage('Wie heißt die Heldin?', ['Daphne Bridgerton', 'Eloise Bridgerton', 'Penelope Featherington', 'Kate Sheffield']),
       Frage('Welchen Titel hat Simon Basset?', ['Duke of Hastings', 'Earl of Kent', 'Viscount Bridgerton', 'Prinz von Wales']),
       Frage('Was vereinbaren die beiden zu Beginn?', ['Eine vorgetäuschte Werbung', 'Eine Hochzeit', 'Eine Reise', 'Eine Wette']),
+      Frage('Wer hat „Bridgerton“ geschrieben?', ['Julia Quinn', 'Jane Austen', 'Lisa Kleypas', 'Nora Roberts']),
+      Frage('Die wievielte Bridgerton-Tochter ist Daphne?', ['Die älteste', 'Die jüngste', 'Die mittlere von drei', 'Sie ist das einzige Kind']),
     ],
   ),
 ];
