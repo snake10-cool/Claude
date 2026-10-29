@@ -229,4 +229,18 @@ const katalogWalkers = <Buch>[
     Frage('Wen rettet Tiago bei den Kämpfen in Key West?', ['Emily', 'Ella', 'Daisy', 'Jenny']),
     Frage('Wer adoptiert Linus\' Nachwuchs?', ['Miss Bennett', 'Mrs Pelagius', 'Miss White', 'Mr García']),
   ]),
+  Buch(id: 'x_windwalkersverborgeneflugel', titel: 'Windwalkers – Verborgene Flügel', autor: 'Katja Brandis', jahr: 2025, seiten: 337, zielgruppe: Zielgruppe.kinder, tags: {'abenteuer', 'fantasy', 'freundschaft', 'jungeHelden', 'serie', 'spannend', 'tiere'}, beschreibung: 'Band 1: Sierra hilft beim Aufbau der Redcliff High in Kalifornien – und hütet ein großes Geheimnis.', coverUrl: 'https://portal.dnb.de/opac/mvb/cover?isbn=9783401607955', isbn: '9783401607955', quiz: [
+    Frage('Wer ist die Hauptfigur dieses Bandes?', ['Sierra', 'Holly', 'Kiki', 'Summer']),
+    Frage('Was ist Sierras großes Geheimnis?', ['Sie kann sich auch in einen Vogel verwandeln', 'Sie ist ein Mensch', 'Sie arbeitet für Mrs Lennox', 'Sie ist Carags Schwester']),
+    Frage('Wie heißt die neue Wandlerschule in Kalifornien?', ['Redcliff High', 'Blue Reef High', 'Clearwater High', 'Golden Gate High']),
+    Frage('Wer leitet die Schule?', ['Sierras Vater, Mr Blackheart', 'Arula', 'Mr Johnson', 'Mrs Sandras']),
+    Frage('Wer gibt Sierra heimlich Flugunterricht?', ['Der wilde Bussard Ricardo', 'Sky', 'Avery', 'Mr Rogers']),
+    Frage('Welche Tiergestalt hat Avery?', ['Schnee-Eule', 'Weißkopfseeadler', 'Möwe', 'Taube']),
+    Frage('Welche Tiergestalt hat Summer?', ['Tiger', 'Puma', 'Löwe', 'Leopard']),
+    Frage('Welcher Windwalker ist ein Kampfhahn?', ['Victor', 'Sky', 'Crowley', 'Farley']),
+    Frage('Welchen Sittich wirft Philippa vom Balkon?', ['Kiki', 'Bumble', 'Blue', 'Pepper']),
+    Frage('Wie heißt das verdächtige Auffangzentrum für Raubtiere?', ['Tigertown', 'Lion Land', 'Bärenpark', 'Wild Paradise']),
+    Frage('Was geben sich die Windwalker nach dem Duell zwischen Sky und Victor?', ['Einen Ehrenkodex', 'Einen neuen Namen', 'Eine Uniform', 'Ein eigenes Haus']),
+    Frage('Welches Fest feiern die Schüler Ende Oktober?', ['Halloween', 'Thanksgiving', 'Ostern', 'Silvester']),
+  ]),
 ];
