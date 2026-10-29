@@ -76,6 +76,8 @@ def dart_text(s):
 def aufraeumen(s):
     # DNB markiert Nichtsortierzeichen (Artikel) mit ¬ oder Steuerzeichen.
     s = re.sub(r'[\u0098\u009c¬]', '', s or '')
+    s = re.split(r'\s/\s', s)[0]
+    s = re.sub(r'\s*:?\s*\[[^\]]*\]', '', s)
     s = re.sub(r'\s+', ' ', s).strip()
     return s.strip(' /:;,.=').strip()
 
@@ -152,7 +154,8 @@ def dnb_suchen(cql, anzahl=60):
                     break
             if isbn:
                 break
-        sprache = _eins(f, '041', 'a')
+        f008 = (f.get('008') or [{'_': ['']}])[0]['_'][0]
+        sprache = ' '.join([v for x in f.get('041', []) for v in x.get('a', [])] + [f008[35:38]])
         schlagworte = [v for tag in ('650', '655', '689') for x in f.get(tag, []) for v in x.get('a', [])]
         if not titel:
             continue
@@ -172,13 +175,40 @@ UNERWUENSCHT = re.compile(
     r'adventskalender|postkarten|tagebuch zum|figuren|ausmalen|comic', re.I)
 
 
-def anzeige_titel(e, reihe=None):
-    titel = e['titel']
-    if e['teil'] and normal(e['teil']) not in normal(titel):
-        titel = f"{titel} – {e['teil']}"
-    if reihe and normal(reihe) not in normal(titel):
-        titel = f'{reihe} – {titel}'
-    return titel
+# Sammelbände, Planer, Merchandise und Ähnliches bei Reihen.
+KEIN_BAND = re.compile(
+    r'trilogie|gesamtausgabe|vorgeschichte|-saga\b|\bsaga$|doppelband|schulplaner|planer|'
+    r'journal|brosche|kette\b|anhänger|\bvke\b|\bve\b|hausaufgabenheft|geschichten aus|'
+    r'zum film|lesebuch|& friends|und friends|alle meine|unsere schönsten|\d+ weihnacht', re.I)
+
+
+def kern(titel):
+    """Der Teil nach dem letzten Gedankenstrich, z. B. der Bandtitel einer Reihe."""
+    return re.split(r'\s[–-]\s', titel)[-1]
+
+
+def anzeige_titel(e, reihe=None, praefix=True):
+    a, p = e['titel'], e['teil']
+    # „Woodwalkers (5). Feindliche Spuren" → Reihe und Bandtitel trennen.
+    m = re.match(r'^(.*?)\s*\((\d+)\)\.?\s+(.+)$', a)
+    if m and not p:
+        a, p = m.group(1), m.group(3)
+    if not reihe:
+        return f'{a} – {p}' if p and normal(p) not in normal(a) else a
+    k = p or a
+    # DNB schreibt Untertitel oft klein („gefährliche Freundschaft").
+    k = k[:1].upper() + k[1:]
+    if not praefix or normal(reihe) in normal(k):
+        return k
+    return f'{reihe} – {k}'
+
+
+def bandnummer(e):
+    for text in (e['band'], e['nummer'], e['titel']):
+        m = re.search(r'\((\d+)\)|^(\d+)\b|\bBd\.?\s*(\d+)|\b(\d+)$', text or '')
+        if m:
+            return int(next(g for g in m.groups() if g))
+    return None
 
 
 # ───────────────────────── Open Library (Reserve, Cover) ─────────────────────────
@@ -244,6 +274,8 @@ def main():
     quiz = katalog_mit_quiz()
     platz = maximal - len(quiz)
     bekannt = {normal(t) for _, t, _ in quiz}
+    # Kerntitel (ohne Reihenname davor), damit „Lockwood & Co – X" und „X" als gleich gelten.
+    kerne = {normal(kern(t)) for _, t, _ in quiz if len(normal(kern(t))) >= 8}
     print(f'{len(quiz)} Bücher mit Quiz, Platz für {platz} weitere')
 
     buecher = []
@@ -251,9 +283,12 @@ def main():
 
     def hinzufuegen(eintrag):
         schluessel = normal(eintrag['titel'])
-        if schluessel in bekannt or len(buecher) >= platz:
+        k = normal(kern(eintrag['titel']))
+        if schluessel in bekannt or (len(k) >= 8 and k in kerne) or len(buecher) >= platz:
             return False
         bekannt.add(schluessel)
+        if len(k) >= 8:
+            kerne.add(k)
         buecher.append(eintrag)
         return True
 
@@ -262,34 +297,58 @@ def main():
         g_tags = set(gruppe.get('tags', []))
         min_alter = gruppe.get('minAlter', 0)
 
+        praefix = gruppe.get('praefix', ziel != 'erwachsene')
         for r in gruppe.get('reihen', []):
-            # Ohne Autor wird nur nach dem Reihentitel gesucht.
-            abfrage = f'tit="{r["reihe"]}"' + (f' and per={r["autor"]}' if r['autor'] else '')
-            treffer = dnb_suchen(abfrage, 100)
-            time.sleep(0.5)
+            woerter = [normal(w) for w in r['autor'].split()]
+            nachname = r['autor'].split()[-1] if r['autor'] else ''
+            abfragen = [r['reihe']]
+            if re.match(r'^(Die|Der|Das) ', r['reihe']):
+                abfragen.append(r['reihe'].split(' ', 1)[1])  # zweiter Versuch ohne Artikel
             gefunden = {}
-            for e in treffer:
-                if e['sprache'] and 'ger' not in e['sprache']:
+            for reihe_text in abfragen:
+                abfrage = f'tit="{reihe_text}"' + (f' and per={nachname}' if nachname else '')
+                treffer = dnb_suchen(abfrage, 100)
+                time.sleep(0.5)
+                for e in treffer:
+                    if 'ger' not in e['sprache']:
+                        continue
+                    if woerter and not all(w in normal(e['autor']) for w in woerter):
+                        continue
+                    if not 20 <= e['seiten'] <= 1500:
+                        continue  # Schmuck, Kalender, Riesen-Sammelbände
+                    if normal(reihe_text) not in normal(e['titel'] + e['teil'] + e['reihe']):
+                        continue
+                    titel = anzeige_titel(e, r['reihe'], r.get('praefix', praefix))
+                    if UNERWUENSCHT.search(titel) or KEIN_BAND.search(titel) or '`' in titel:
+                        continue
+                    # Ein Buch, das genauso heißt wie die Reihe, ist meist Band 1 –
+                    # aber nur, wenn es nicht nach Sammelband aussieht.
+                    if normal(titel) == normal(r['reihe']) and not 60 <= e['seiten'] <= 900:
+                        continue
+                    nr = bandnummer(e)
+                    schluessel = ('band', nr) if nr else ('kern', normal(kern(titel)))
+                    alt = gefunden.get(schluessel)
+                    # Älteste Ausgabe gewinnt (meist das Original, nicht die Neuauflage).
+                    if alt is None or (e['jahr'] and (not alt['jahr'] or e['jahr'] < alt['jahr'])):
+                        gefunden[schluessel] = dict(e, anzeige=titel, nr=nr)
+                if gefunden:
+                    break
+            # Gleicher Bandtitel unter verschiedenen Nummern/Schreibweisen nur einmal.
+            auswahl, kerne = [], set()
+            for e in sorted(gefunden.values(), key=lambda e: (e['nr'] or 999, e['jahr'] or 9999)):
+                k = normal(kern(e['anzeige']))
+                if k in kerne:
                     continue
-                if r['autor'] and normal(r['autor']) not in normal(e['autor']):
-                    continue
-                titel = anzeige_titel(e, r['reihe'])
-                if UNERWUENSCHT.search(titel) or normal(titel) == normal(r['reihe']):
-                    continue
-                k = normal(titel)
-                alt = gefunden.get(k)
-                # Älteste Ausgabe mit den meisten Angaben gewinnt.
-                if alt is None or (e['jahr'] and (not alt['jahr'] or e['jahr'] < alt['jahr'])) \
-                        or (not alt['seiten'] and e['seiten']):
-                    e = dict(e, anzeige=titel)
-                    gefunden[k] = e
-            auswahl = sorted(gefunden.values(), key=lambda e: (e['jahr'] or 9999, e['anzeige']))[:r['max']]
-            for i, e in enumerate(auswahl):
+                kerne.add(k)
+                auswahl.append(e)
+            auswahl = auswahl[:r['max']]
+            for e in auswahl:
                 hinzufuegen({
                     'titel': e['anzeige'], 'autor': e['autor'], 'jahr': e['jahr'], 'seiten': e['seiten'],
                     'isbn': e['isbn'], 'zielgruppe': ziel, 'minAlter': min_alter,
                     'tags': sorted(g_tags | set(r.get('tags', [])) | tags_aus(e['schlagworte']) | {'serie'}),
-                    'beschreibung': f'Aus der Reihe „{r["reihe"]}".',
+                    'beschreibung': (f'Band {e["nr"]} der Reihe „{r["reihe"]}".' if e['nr']
+                                     else f'Aus der Reihe „{r["reihe"]}".'),
                 })
             bericht.append(f'Reihe {r["reihe"]}: {len(auswahl)} Bände ' +
                            ('| ' + '; '.join(e['anzeige'] for e in auswahl) if auswahl else '– NICHTS GEFUNDEN'))
@@ -303,7 +362,8 @@ def main():
             treffer = dnb_suchen(f'tit="{titel}" and per={nachname(autor)}', 40)
             time.sleep(0.4)
             passend = [e for e in treffer
-                       if normal(anzeige_titel(e)).startswith(normal(titel)[:14])
+                       if 'ger' in e['sprache']
+                       and normal(anzeige_titel(e)).startswith(normal(titel)[:14])
                        and not UNERWUENSCHT.search(anzeige_titel(e))]
             passend.sort(key=lambda e: (not e['seiten'], e['jahr'] or 9999))
             if passend:

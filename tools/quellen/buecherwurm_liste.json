@@ -11,7 +11,7 @@
    "reihen": [
     {
      "reihe": "Woodwalkers",
-     "autor": "Brandis",
+     "autor": "Katja Brandis",
      "max": 14,
      "tags": [
       "fantasy",
@@ -23,7 +23,7 @@
     },
     {
      "reihe": "Seawalkers",
-     "autor": "Brandis",
+     "autor": "Katja Brandis",
      "max": 8,
      "tags": [
       "fantasy",
@@ -35,7 +35,7 @@
     },
     {
      "reihe": "Windwalkers",
-     "autor": "Brandis",
+     "autor": "Katja Brandis",
      "max": 6,
      "tags": [
       "fantasy",
@@ -47,7 +47,7 @@
     },
     {
      "reihe": "Flüsterwald",
-     "autor": "Suchanek",
+     "autor": "Andreas Suchanek",
      "max": 10,
      "tags": [
       "fantasy",
@@ -70,7 +70,7 @@
     },
     {
      "reihe": "Die Schule der magischen Tiere",
-     "autor": "Auer",
+     "autor": "Margit Auer",
      "max": 16,
      "tags": [
       "fantasy",
@@ -82,7 +82,7 @@
     },
     {
      "reihe": "Gregs Tagebuch",
-     "autor": "Kinney",
+     "autor": "Jeff Kinney",
      "max": 16,
      "tags": [
       "humor",
@@ -92,7 +92,7 @@
     },
     {
      "reihe": "Mein Lotta-Leben",
-     "autor": "Pantermüller",
+     "autor": "Alice Pantermüller",
      "max": 12,
      "tags": [
       "humor",
@@ -102,7 +102,7 @@
     },
     {
      "reihe": "Warrior Cats",
-     "autor": "Hunter",
+     "autor": "Erin Hunter",
      "max": 12,
      "tags": [
       "fantasy",
@@ -113,7 +113,7 @@
     },
     {
      "reihe": "Animox",
-     "autor": "Carter",
+     "autor": "Aimée Carter",
      "max": 5,
      "tags": [
       "fantasy",
@@ -124,7 +124,7 @@
     },
     {
      "reihe": "Der kleine Drache Kokosnuss",
-     "autor": "Siegner",
+     "autor": "Ingo Siegner",
      "max": 8,
      "tags": [
       "humor",
@@ -136,7 +136,7 @@
     },
     {
      "reihe": "Die wilden Kerle",
-     "autor": "Masannek",
+     "autor": "Joachim Masannek",
      "max": 6,
      "tags": [
       "abenteuer",
@@ -146,7 +146,7 @@
     },
     {
      "reihe": "Die wilden Hühner",
-     "autor": "Funke",
+     "autor": "Cornelia Funke",
      "max": 5,
      "tags": [
       "freundschaft",
@@ -157,7 +157,7 @@
     },
     {
      "reihe": "Sams",
-     "autor": "Maar",
+     "autor": "Paul Maar",
      "max": 8,
      "tags": [
       "humor",
@@ -167,7 +167,7 @@
     },
     {
      "reihe": "Rico, Oskar",
-     "autor": "Steinhöfel",
+     "autor": "Andreas Steinhöfel",
      "max": 5,
      "tags": [
       "krimi",
@@ -178,7 +178,7 @@
     },
     {
      "reihe": "Petronella Apfelmus",
-     "autor": "Städing",
+     "autor": "Sabine Städing",
      "max": 5,
      "tags": [
       "fantasy",
@@ -188,7 +188,7 @@
     },
     {
      "reihe": "Die Duftapotheke",
-     "autor": "Ruhe",
+     "autor": "Anna Ruhe",
      "max": 5,
      "tags": [
       "fantasy",
@@ -207,7 +207,7 @@
     },
     {
      "reihe": "Die Olchis",
-     "autor": "Dietl",
+     "autor": "Erhard Dietl",
      "max": 6,
      "tags": [
       "humor",
@@ -216,7 +216,7 @@
     },
     {
      "reihe": "Ella",
-     "autor": "Parvela",
+     "autor": "Timo Parvela",
      "max": 6,
      "tags": [
       "humor",
@@ -225,7 +225,7 @@
     },
     {
      "reihe": "Ostwind",
-     "autor": "Schmidbauer",
+     "autor": "Lea Schmidbauer",
      "max": 5,
      "tags": [
       "tiere",
@@ -236,7 +236,7 @@
     },
     {
      "reihe": "Pettersson und Findus",
-     "autor": "Nordqvist",
+     "autor": "Sven Nordqvist",
      "max": 5,
      "tags": [
       "humor",
@@ -246,7 +246,7 @@
     },
     {
      "reihe": "Räuber Hotzenplotz",
-     "autor": "Preußler",
+     "autor": "Otfried Preußler",
      "max": 3,
      "tags": [
       "humor",
@@ -256,7 +256,7 @@
     },
     {
      "reihe": "Jim Knopf",
-     "autor": "Ende",
+     "autor": "Michael Ende",
      "max": 2,
      "tags": [
       "fantasy",
@@ -756,7 +756,7 @@
    "reihen": [
     {
      "reihe": "Magisterium",
-     "autor": "Black",
+     "autor": "Holly Black",
      "max": 6,
      "tags": [
       "fantasy",
@@ -767,7 +767,7 @@
     },
     {
      "reihe": "Percy Jackson",
-     "autor": "Riordan",
+     "autor": "Rick Riordan",
      "max": 6,
      "tags": [
       "fantasy",
@@ -778,7 +778,7 @@
     },
     {
      "reihe": "Helden des Olymp",
-     "autor": "Riordan",
+     "autor": "Rick Riordan",
      "max": 5,
      "tags": [
       "fantasy",
@@ -788,7 +788,7 @@
     },
     {
      "reihe": "Kane-Chroniken",
-     "autor": "Riordan",
+     "autor": "Rick Riordan",
      "max": 3,
      "tags": [
       "fantasy",
@@ -798,7 +798,7 @@
     },
     {
      "reihe": "Die Tribute von Panem",
-     "autor": "Collins",
+     "autor": "Suzanne Collins",
      "max": 5,
      "tags": [
       "dystopie",
@@ -809,7 +809,7 @@
     },
     {
      "reihe": "Biss",
-     "autor": "Meyer",
+     "autor": "Stephenie Meyer",
      "max": 5,
      "tags": [
       "fantasy",
@@ -819,7 +819,7 @@
     },
     {
      "reihe": "Tintenblut",
-     "autor": "Funke",
+     "autor": "Cornelia Funke",
      "max": 1,
      "tags": [
       "fantasy",
@@ -828,7 +828,7 @@
     },
     {
      "reihe": "Tintentod",
-     "autor": "Funke",
+     "autor": "Cornelia Funke",
      "max": 1,
      "tags": [
       "fantasy",
@@ -837,7 +837,7 @@
     },
     {
      "reihe": "Reckless",
-     "autor": "Funke",
+     "autor": "Cornelia Funke",
      "max": 4,
      "tags": [
       "fantasy",
@@ -847,7 +847,7 @@
     },
     {
      "reihe": "Silber",
-     "autor": "Gier",
+     "autor": "Kerstin Gier",
      "max": 3,
      "tags": [
       "fantasy",
@@ -857,7 +857,7 @@
     },
     {
      "reihe": "Die Bestimmung",
-     "autor": "Roth",
+     "autor": "Veronica Roth",
      "max": 4,
      "tags": [
       "dystopie",
@@ -867,7 +867,7 @@
     },
     {
      "reihe": "Die Auserwählten",
-     "autor": "Dashner",
+     "autor": "James Dashner",
      "max": 5,
      "tags": [
       "dystopie",
@@ -878,7 +878,7 @@
     },
     {
      "reihe": "Eragon",
-     "autor": "Paolini",
+     "autor": "Christopher Paolini",
      "max": 4,
      "tags": [
       "fantasy",
@@ -888,7 +888,7 @@
     },
     {
      "reihe": "Selection",
-     "autor": "Cass",
+     "autor": "Kiera Cass",
      "max": 5,
      "tags": [
       "dystopie",
@@ -897,7 +897,7 @@
     },
     {
      "reihe": "Throne of Glass",
-     "autor": "Maas",
+     "autor": "Sarah Maas",
      "max": 8,
      "tags": [
       "fantasy",
@@ -907,7 +907,7 @@
     },
     {
      "reihe": "Das Reich der sieben Höfe",
-     "autor": "Maas",
+     "autor": "Sarah Maas",
      "max": 5,
      "tags": [
       "fantasy",
@@ -917,7 +917,7 @@
     },
     {
      "reihe": "Artemis Fowl",
-     "autor": "Colfer",
+     "autor": "Eoin Colfer",
      "max": 5,
      "tags": [
       "fantasy",
@@ -927,7 +927,7 @@
     },
     {
      "reihe": "Bartimäus",
-     "autor": "Stroud",
+     "autor": "Jonathan Stroud",
      "max": 4,
      "tags": [
       "fantasy",
@@ -937,7 +937,7 @@
     },
     {
      "reihe": "Lockwood",
-     "autor": "Stroud",
+     "autor": "Jonathan Stroud",
      "max": 5,
      "tags": [
       "fantasy",
@@ -948,7 +948,7 @@
     },
     {
      "reihe": "Chroniken der Unterwelt",
-     "autor": "Clare",
+     "autor": "Cassandra Clare",
      "max": 6,
      "tags": [
       "fantasy",
@@ -958,7 +958,7 @@
     },
     {
      "reihe": "Skulduggery Pleasant",
-     "autor": "Landy",
+     "autor": "Derek Landy",
      "max": 6,
      "tags": [
       "fantasy",
@@ -969,7 +969,7 @@
     },
     {
      "reihe": "Die Insel der besonderen Kinder",
-     "autor": "Riggs",
+     "autor": "Ransom Riggs",
      "max": 3,
      "tags": [
       "fantasy",
@@ -979,7 +979,7 @@
     },
     {
      "reihe": "Grisha",
-     "autor": "Bardugo",
+     "autor": "Leigh Bardugo",
      "max": 3,
      "tags": [
       "fantasy",
@@ -988,7 +988,7 @@
     },
     {
      "reihe": "Das Lied der Krähen",
-     "autor": "Bardugo",
+     "autor": "Leigh Bardugo",
      "max": 2,
      "tags": [
       "fantasy",
@@ -998,7 +998,7 @@
     },
     {
      "reihe": "Obsidian",
-     "autor": "Armentrout",
+     "autor": "Jennifer Armentrout",
      "max": 5,
      "tags": [
       "fantasy",
@@ -1008,7 +1008,7 @@
     },
     {
      "reihe": "Die Legende von Shannara",
-     "autor": "Brooks",
+     "autor": "Terry Brooks",
      "max": 3,
      "tags": [
       "fantasy",
@@ -1017,7 +1017,7 @@
     },
     {
      "reihe": "Erebos",
-     "autor": "Poznanski",
+     "autor": "Ursula Poznanski",
      "max": 2,
      "tags": [
       "thriller",
@@ -1026,8 +1026,8 @@
      ]
     },
     {
-     "reihe": "Animant Crumb",
-     "autor": "Ritter",
+     "reihe": "Animant Crumbs Staubchronik",
+     "autor": "Lin Rina",
      "max": 1,
      "tags": [
       "liebe",
@@ -1277,7 +1277,7 @@
    "reihen": [
     {
      "reihe": "Das Lied von Eis und Feuer",
-     "autor": "Martin",
+     "autor": "George Martin",
      "max": 8,
      "tags": [
       "fantasy",
@@ -1288,7 +1288,7 @@
     },
     {
      "reihe": "Hexer",
-     "autor": "Sapkowski",
+     "autor": "Andrzej Sapkowski",
      "max": 8,
      "tags": [
       "fantasy",
@@ -1299,7 +1299,7 @@
     },
     {
      "reihe": "Scheibenwelt",
-     "autor": "Pratchett",
+     "autor": "Terry Pratchett",
      "max": 16,
      "tags": [
       "fantasy",
@@ -1309,7 +1309,7 @@
     },
     {
      "reihe": "Die Zwerge",
-     "autor": "Heitz",
+     "autor": "Markus Heitz",
      "max": 5,
      "tags": [
       "fantasy",
@@ -1319,7 +1319,7 @@
     },
     {
      "reihe": "Sturmlicht",
-     "autor": "Sanderson",
+     "autor": "Brandon Sanderson",
      "max": 4,
      "tags": [
       "fantasy",
@@ -1329,7 +1329,7 @@
     },
     {
      "reihe": "Kinder des Nebels",
-     "autor": "Sanderson",
+     "autor": "Brandon Sanderson",
      "max": 3,
      "tags": [
       "fantasy",
@@ -1339,7 +1339,7 @@
     },
     {
      "reihe": "Foundation",
-     "autor": "Asimov",
+     "autor": "Isaac Asimov",
      "max": 3,
      "tags": [
       "scifi",
@@ -1349,7 +1349,7 @@
     },
     {
      "reihe": "Expanse",
-     "autor": "Corey",
+     "autor": "James Corey",
      "max": 5,
      "tags": [
       "scifi",
@@ -1360,7 +1360,7 @@
     },
     {
      "reihe": "Die drei Sonnen",
-     "autor": "Liu",
+     "autor": "Cixin Liu",
      "max": 3,
      "tags": [
       "scifi",
@@ -1370,7 +1370,7 @@
     },
     {
      "reihe": "Der Dunkle Turm",
-     "autor": "King",
+     "autor": "Stephen King",
      "max": 7,
      "tags": [
       "fantasy",
@@ -1381,7 +1381,7 @@
     },
     {
      "reihe": "Der Wüstenplanet",
-     "autor": "Herbert",
+     "autor": "Frank Herbert",
      "max": 3,
      "tags": [
       "scifi",
@@ -1391,7 +1391,7 @@
     },
     {
      "reihe": "Outlander",
-     "autor": "Gabaldon",
+     "autor": "Diana Gabaldon",
      "max": 5,
      "tags": [
       "historisch",
@@ -1402,7 +1402,7 @@
     },
     {
      "reihe": "Die Königsmörder-Chronik",
-     "autor": "Rothfuss",
+     "autor": "Patrick Rothfuss",
      "max": 2,
      "tags": [
       "fantasy",
@@ -1701,7 +1701,7 @@
    "reihen": [
     {
      "reihe": "Kluftinger",
-     "autor": "Klüpfel",
+     "autor": "Volker Klüpfel",
      "max": 8,
      "tags": [
       "krimi",
@@ -1711,7 +1711,7 @@
     },
     {
      "reihe": "Eberhofer",
-     "autor": "Falk",
+     "autor": "Rita Falk",
      "max": 8,
      "tags": [
       "krimi",
@@ -1721,7 +1721,7 @@
     },
     {
      "reihe": "Sonderdezernat Q",
-     "autor": "Adler-Olsen",
+     "autor": "Jussi Adler-Olsen",
      "max": 8,
      "tags": [
       "krimi",
@@ -1731,7 +1731,7 @@
     },
     {
      "reihe": "Bodenstein",
-     "autor": "Neuhaus",
+     "autor": "Nele Neuhaus",
      "max": 6,
      "tags": [
       "krimi",
@@ -1740,7 +1740,7 @@
     },
     {
      "reihe": "Kommissar Dupin",
-     "autor": "Bannalec",
+     "autor": "Jean-Luc Bannalec",
      "max": 6,
      "tags": [
       "krimi",
@@ -1749,7 +1749,7 @@
     },
     {
      "reihe": "Wallander",
-     "autor": "Mankell",
+     "autor": "Henning Mankell",
      "max": 6,
      "tags": [
       "krimi",
@@ -1758,7 +1758,7 @@
     },
     {
      "reihe": "Harry Hole",
-     "autor": "Nesbø",
+     "autor": "Jo Nesbø",
      "max": 6,
      "tags": [
       "krimi",
@@ -1768,7 +1768,7 @@
     },
     {
      "reihe": "Brunetti",
-     "autor": "Leon",
+     "autor": "Donna Leon",
      "max": 5,
      "tags": [
       "krimi",
@@ -1777,7 +1777,7 @@
     },
     {
      "reihe": "Millennium",
-     "autor": "Larsson",
+     "autor": "Stieg Larsson",
      "max": 3,
      "tags": [
       "krimi",
@@ -2227,7 +2227,7 @@
    "reihen": [
     {
      "reihe": "Neapolitanische Saga",
-     "autor": "Ferrante",
+     "autor": "Elena Ferrante",
      "max": 4,
      "tags": [
       "drama",
@@ -2237,7 +2237,7 @@
     },
     {
      "reihe": "Bridgerton",
-     "autor": "Quinn",
+     "autor": "Julia Quinn",
      "max": 5,
      "tags": [
       "liebe",

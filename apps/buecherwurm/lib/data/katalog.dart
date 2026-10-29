@@ -4,6 +4,7 @@ import 'katalog_extra.dart';
 import 'katalog_jung.dart';
 import 'katalog_klassiker.dart';
 import 'katalog_mehr_quiz.dart';
+import 'katalog_reihen_quiz.dart';
 
 /// Bücher mit Quiz (von Hand geschrieben).
 const katalogMitQuiz = <Buch>[
@@ -12,6 +13,7 @@ const katalogMitQuiz = <Buch>[
   ...katalogErwachsen,
   ...katalogKlassiker,
   ...katalogMehrQuiz,
+  ...katalogReihenQuiz,
 ];
 
 /// Alle eingebauten Bücher: die mit Quiz zuerst, dann die aus der
@@ -268,7 +270,7 @@ const _grundstock = <Buch>[
   ),
   Buch(
     id: 'twilight',
-    titel: 'Bis(s) zum Morgengrauen',
+    titel: 'Biss zum Morgengrauen',
     autor: 'Stephenie Meyer',
     jahr: 2005,
     seiten: 510,
