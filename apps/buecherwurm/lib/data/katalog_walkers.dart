@@ -352,4 +352,17 @@ const katalogWalkers = <Buch>[
     Frage('Was verbreiten Unbekannte über die Redcliff High?', ['Schlimme Gerüchte', 'Gefälschte Zeugnisse', 'Einladungen zu einer Party', 'Gestohlene Fotos']),
     Frage('Was befürchten Sierra und ihre Freunde?', ['Dass Spione unter ihnen sind', 'Dass die Schule schließen muss', 'Dass Ricardo wegzieht', 'Dass Avery die Schule leitet']),
   ]),
+  Buch(id: 'x_windwalkersspioneimschwarm', titel: 'Windwalkers – Spione im Schwarm', autor: 'Katja Brandis', jahr: 2027, seiten: 368, zielgruppe: Zielgruppe.kinder, tags: {'abenteuer', 'fantasy', 'freundschaft', 'jungeHelden', 'serie', 'spannend', 'tiere'}, beschreibung: 'Band 4: Sierra und Sky ermitteln undercover in einer Flugtier-Gilde – und an der Redcliff High sind alte Feinde zurück.', coverUrl: 'https://portal.dnb.de/opac/mvb/cover?isbn=9783401607986', isbn: '9783401607986', quiz: [
+    Frage('Wer ist auf dem Cover dieses Bandes zu sehen?', ['Sky', 'Sierra', 'Alex', 'Summer']),
+    Frage('Welche Tiergestalt hat Sky?', ['Amerikanischer Steinadler', 'Weißkopfseeadler', 'Kondor', 'Wanderfalke']),
+    Frage('In welchen Vogel verwandelt sich Sierra?', ['In einen Blauhäher', 'In eine Schnee-Eule', 'In einen Bussard', 'In einen Raben']),
+    Frage('Mit wem ist Sierra zu Beginn endlich zusammen?', ['Mit Sky', 'Mit Alex', 'Mit Ricardo', 'Mit Victor']),
+    Frage('Was passiert bei einem der ersten gemeinsamen Ausflüge von Sierra und Sky?', ['Sie geraten in eine lebensgefährliche Situation', 'Sie finden einen Schatz', 'Sie verirren sich in der Stadt', 'Sie gewinnen ein Wettfliegen']),
+    Frage('Wo ermitteln Sierra und Sky undercover?', ['In einer Flugtier-Gilde', 'Bei den Wahrheitssuchern', 'In einem Zoo', 'An der Blue Reef High']),
+    Frage('Wer führt die Gilde an?', ['Verity', 'Thanada', 'Avery', 'Mrs Lennox']),
+    Frage('Welche Tiergestalt hat die Anführerin der Gilde?', ['Kondor', 'Steinadler', 'Schnee-Eule', 'Geier']),
+    Frage('Wer lässt sich leichtfertig für einen Auftrag der Gilde anheuern?', ['Sky', 'Sierra', 'Alex', 'Ricardo']),
+    Frage('Welcher Freund von Sierra zweifelt, auf wessen Seite er steht?', ['Der Waschbär-Wandler Alex', 'Der Bussard Ricardo', 'Der Kampfhahn Victor', 'Der Skorpion-Wandler Bryan']),
+    Frage('Wer sorgt an der Redcliff High zusätzlich für Chaos?', ['Eine neue Schülerin', 'Ein neuer Lehrer', 'Ein Fernsehteam', 'Ein entlaufener Tiger']),
+  ]),
 ];
