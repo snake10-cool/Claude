@@ -45,7 +45,7 @@ REIHEN = {
                  'https://lesentogo.de/2022/03/25/flusterwald-das-abenteuer-beginnt/',
                  'https://www.buechereule.de/wbb/thread/103839-fluesterwald-das-abenteuer-beginnt-andreas-suchanek/',
                  'https://www.penguin.de/buecher/reihen/die-fluesterwald-reihe/5006109'],
-        'folgen': r'(kinderbuch-couch\.de/titel/\d+-fl[uü]sterwald[^"#?]*|buechertreff\.de/details/\d+-andreas-suchanek-fl[^"#?]*'
+        'folgen': r'(kinderbuch-couch\.de/titel/\d+-fl(ue|u|ü)sterwald[^"#?]*|buechertreff\.de/details/\d+-andreas-suchanek-fl[^"#?]*'
                   r'|flsterwald-beb\.de/[^"#?]*(band|buch|staffel)[^"#?]*|lovelybooks\.de/autor/Andreas-Suchanek/Fl[^"#?]*-w/'
                   r'|penguin\.de/[^"#?]*fluesterwald[^"#?]*)',
     },
