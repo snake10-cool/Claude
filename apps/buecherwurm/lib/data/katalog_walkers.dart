@@ -339,4 +339,17 @@ const katalogWalkers = <Buch>[
     Frage('Wohin müssen sie tauchen?', ['Auf den Grund eines Sees', 'In einen Brunnen', 'Ins Meer', 'In eine Höhle voller Wasser']),
     Frage('Was schreibt Rani über Lukas und Ella in sein Notizbuch?', ['Vergleiche zwischen den beiden Menschen', 'Schokoladenrezepte', 'Zaubersprüche', 'Gedichte']),
   ]),
+  Buch(id: 'x_windwalkersgiftigegefahr', titel: 'Windwalkers – Giftige Gefahr', autor: 'Katja Brandis', jahr: 2026, seiten: 329, zielgruppe: Zielgruppe.kinder, tags: {'abenteuer', 'fantasy', 'freundschaft', 'jungeHelden', 'krimi', 'serie', 'spannend', 'tiere'}, beschreibung: 'Band 3: Projektwoche zum Thema „Giftige Wandler“, Gerüchte über die Redcliff High – und unsichtbare Feinde.', coverUrl: 'https://portal.dnb.de/opac/mvb/cover?isbn=9783401607979', isbn: '9783401607979', quiz: [
+    Frage('Wer ist auf dem Cover dieses Bandes zu sehen?', ['Avery', 'Sierra', 'Ricardo', 'Sky']),
+    Frage('Welche Tiergestalt hat Avery?', ['Schnee-Eule', 'Bussard', 'Blauhäher', 'Weißkopfseeadler']),
+    Frage('Wer sucht in diesem Band immer wieder Streit mit Sierra?', ['Avery', 'Summer', 'Ricardo', 'Kiki']),
+    Frage('Welches Thema wählt Sierra für die Projektwoche?', ['Giftige Wandler', 'Vögel der Wüste', 'Wölfe in Kalifornien', 'Die Geschichte des Rates']),
+    Frage('Welche gefährliche Wandlerin ist noch auf freiem Fuß?', ['Die Quallenfrau Thanada', 'Mrs Lennox', 'Die Tigerin Latisha', 'Miss Youngblood']),
+    Frage('Was macht Thanada so gefährlich?', ['Ihre Berührung kann tödlich sein', 'Sie kann Gedanken lesen', 'Sie kann unsichtbar werden', 'Sie kann fliegen']),
+    Frage('Welche Tiergestalt hat Nightstar?', ['Klapperschlange', 'Skorpion', 'Qualle', 'Kobra']),
+    Frage('In welches Tier verwandelt sich Bryan?', ['In einen Skorpion', 'In eine Spinne', 'In eine Klapperschlange', 'In einen Bussard']),
+    Frage('Welcher Freund von Sierra ist ein Bussard?', ['Ricardo', 'Bryan', 'Alex', 'Victor']),
+    Frage('Was verbreiten Unbekannte über die Redcliff High?', ['Schlimme Gerüchte', 'Gefälschte Zeugnisse', 'Einladungen zu einer Party', 'Gestohlene Fotos']),
+    Frage('Was befürchten Sierra und ihre Freunde?', ['Dass Spione unter ihnen sind', 'Dass die Schule schließen muss', 'Dass Ricardo wegzieht', 'Dass Avery die Schule leitet']),
+  ]),
 ];
