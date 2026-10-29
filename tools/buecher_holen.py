@@ -173,7 +173,8 @@ UNERWUENSCHT = re.compile(
     r'kochbuch|hörbuch|hörspiel|filmbuch|buch zum film|leserabe|lesestart|erstles|'
     r'arbeitsheft|lektürehilfe|interpretation|lernhilfe|königs erläuterungen|unterricht|'
     r'\bbd\.?\s*\d+\s*[-–]\s*\d+|band\s*\d+\s*[-–]\s*\d+|\d+\s*in\s*1|sonderausgabe|'
-    r'adventskalender|postkarten|tagebuch zum|figuren|ausmalen|comic', re.I)
+    r'adventskalender|postkarten|tagebuch zum|figuren|ausmalen|comic|'
+    r'\bdas 4\. jahr\b', re.I)  # Neuausgabe von „Magisterium – Die silberne Maske“
 
 
 # Sammelbände, Planer, Merchandise und Ähnliches bei Reihen.
