@@ -1,6 +1,7 @@
 import 'package:buecherwurm/data/fragebogen.dart';
 import 'package:buecherwurm/data/katalog.dart';
 import 'package:buecherwurm/models/buch.dart';
+import 'package:buecherwurm/services/quiz_fragen.dart';
 import 'package:flutter_test/flutter_test.dart' hide Tags;
 
 void main() {
@@ -44,5 +45,11 @@ void main() {
       final o = f.optionen.map((o) => o.id).toList();
       expect(o.toSet().length, o.length, reason: f.id);
     }
+  });
+
+  test('Quiz noch nicht erschienener Bücher erst ab Erscheinungstag', () {
+    final ww4 = katalogBuch('x_windwalkersspioneimschwarm')!;
+    expect(quizVerfuegbar(ww4, null, jetzt: DateTime(2027, 1, 17)), isFalse);
+    expect(quizVerfuegbar(ww4, null, jetzt: DateTime(2027, 1, 18)), isTrue);
   });
 }

@@ -20,5 +20,18 @@ List<Frage> quizFragen(Buch buch, Konto? konto, [Random? zufall]) {
   return alle.take(fragenProQuiz(buch.zielgruppe)).toList();
 }
 
-bool quizVerfuegbar(Buch buch, Konto? konto) =>
+/// Bücher, die noch nicht erschienen sind: Ihr Quiz wird erst ab dem
+/// Erscheinungstag freigeschaltet – vorher kann es niemand gelesen haben.
+final quizErstAb = <String, DateTime>{
+  'x_windwalkersspioneimschwarm': DateTime(2027, 1, 18),
+};
+
+/// Erscheinungstag, falls das Buch noch nicht erschienen ist, sonst null.
+DateTime? nochNichtErschienen(Buch buch, {DateTime? jetzt}) {
+  final ab = quizErstAb[buch.id];
+  return ab != null && (jetzt ?? DateTime.now()).isBefore(ab) ? ab : null;
+}
+
+bool quizVerfuegbar(Buch buch, Konto? konto, {DateTime? jetzt}) =>
+    nochNichtErschienen(buch, jetzt: jetzt) == null &&
     buch.quiz.length + (konto?.gemeinschaftsFragen[buch.id]?.length ?? 0) >= mindestFragen;
