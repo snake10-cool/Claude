@@ -365,4 +365,18 @@ const katalogWalkers = <Buch>[
     Frage('Welcher Freund von Sierra zweifelt, auf wessen Seite er steht?', ['Der Waschbär-Wandler Alex', 'Der Bussard Ricardo', 'Der Kampfhahn Victor', 'Der Skorpion-Wandler Bryan']),
     Frage('Wer sorgt an der Redcliff High zusätzlich für Chaos?', ['Eine neue Schülerin', 'Ein neuer Lehrer', 'Ein Fernsehteam', 'Ein entlaufener Tiger']),
   ]),
+  Buch(id: 'x_windwalkersheldenderlufte', titel: 'Windwalkers – Helden der Lüfte', autor: 'Katja Brandis', jahr: 2026, seiten: 333, zielgruppe: Zielgruppe.kinder, tags: {'abenteuer', 'fantasy', 'freundschaft', 'jungeHelden', 'serie', 'spannend', 'tiere'}, beschreibung: 'Band 2: In den Ferien geht es nach Hollywood – wo Wasser verschwendet wird und Wildtiere als Haustiere gehalten werden.', coverUrl: 'https://portal.dnb.de/opac/mvb/cover?isbn=9783401607962', isbn: '9783401607962', quiz: [
+    Frage('Wer ist auf dem Cover dieses Bandes zu sehen?', ['Alex', 'Sierra', 'Summer', 'Ricardo']),
+    Frage('Welche Tiergestalt hat Sierras Freund Alex?', ['Waschbär', 'Fuchs', 'Dachs', 'Stinktier']),
+    Frage('Welche Tiergestalt hat Sierras Freundin Summer?', ['Sibirischer Tiger', 'Löwe', 'Puma', 'Leopard']),
+    Frage('Welche dritte Gestalt hat Sierra neben ihrer Wolfsgestalt entdeckt?', ['Einen Blauhäher', 'Eine Schnee-Eule', 'Einen Bussard', 'Einen Raben']),
+    Frage('Warum will Ricardo nicht auf die Redcliff High gehen?', ['Ihm ist seine Freiheit in der Natur wichtiger', 'Er ist zu alt', 'Er hat Angst vor Wölfen', 'Seine Eltern verbieten es']),
+    Frage('Wohin reisen Sierra, Alex und Summer in den Ferien?', ['Nach Hollywood', 'Nach Florida', 'Nach Wyoming', 'Nach Mexiko']),
+    Frage('Mit welchen befreundeten Schülern reisen sie?', ['Mit Schülern der Clearwater High', 'Mit Schülern der Blue Reef High', 'Mit Schülern aus Namibia', 'Mit Schülern aus Costa Rica']),
+    Frage('Welches Problem bedroht Kalifornien?', ['Wasserknappheit und Dürre', 'Ein Erdbeben', 'Ein Hurrikan', 'Ein Waldbrand']),
+    Frage('Wessen Revier ist durch die Dürre bedroht?', ['Das von Ricardos Bussardfamilie', 'Das von Sierras Wolfsrudel', 'Das von Summers Familie', 'Das der Redcliff High']),
+    Frage('Was halten einige Schauspieler?', ['Wildtiere als Haustiere', 'Geheime Wandler-Schulen', 'Gestohlene Filmrollen', 'Sprechende Papageien']),
+    Frage('Was planen Sierra und ihre Freunde?', ['Die Tiere zu befreien und eine Aktion gegen Wasserverschwendung', 'Einen eigenen Film zu drehen', 'In Hollywood zu bleiben', 'Einen Schauspieler zu entführen']),
+    Frage('Wer scheint plötzlich etwas vor Sierra zu verbergen?', ['Alex', 'Summer', 'Ricardo', 'Sky']),
+  ]),
 ];
