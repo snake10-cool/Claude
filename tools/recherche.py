@@ -51,7 +51,8 @@ REIHEN = {
                  'https://www.lesejury.de/andreas-suchanek/buecher/fluesterwald-das-abenteuer-beginnt-fluesterwald-staffel-i-bd-1/9783764151751'],
         'folgen': r'(kinderbuch-couch\.de/titel/\d+-fl(ue|u|ü)sterwald[^"#?]*|buechertreff\.de/details/\d+-andreas-suchanek-fl[^"#?]*'
                   r'|flsterwald-beb\.de/[^"#?]*(band|buch|staffel)[^"#?]*|lovelybooks\.de/autor/Andreas-Suchanek/Fl[^"#?]*-w/'
-                  r'|penguin\.de/[^"#?]*fluesterwald[^"#?]*)',
+                  r'|penguin\.de/[^"#?]*fluesterwald[^"#?]*|lesejury\.de/andreas-suchanek/buecher/fl[^"#?]*'
+                  r'|lesejury\.de/rezensionen/[^"#?]*)',
     },
     'meisterdiebe': {
         'wiki': [('de', ['Die Schule der Meisterdiebe']),
@@ -68,13 +69,15 @@ REIHEN = {
                  'https://www.lovelybooks.de/autor/J.-J.-Arcanjo/Schule-der-Meisterdiebe-4-Die-schwarze-Festung-18380199342-w/rezension/21184041792/',
                  'https://www.lovelybooks.de/autor/J.-J.-Arcanjo/Schule-der-Meisterdiebe-Die-geheimnisvolle-Insel-12603011140-w/rezension/17343106088/'],
         'folgen': r'(kinderbuch-couch\.de/titel/\d+-schule-der-meisterdiebe[^"#?]*|buechertreff\.de/details/\d+-j-j-arcanjo[^"#?]*'
-                  r'|lovelybooks\.de/autor/J\.-J\.-Arcanjo/[^"#?]*-w/)',
+                  r'|lovelybooks\.de/autor/J\.-J\.-Arcanjo/[^"#?]*-w/(rezension/\d+/)?|lesejury\.de/j-j-arcanjo/buecher/[^"#?]*'
+                  r'|lesejury\.de/rezensionen/[^"#?]*)',
     },
     'windwalkers': {
         'urls': ['https://www.lovelybooks.de/autor/Katja-Brandis/reihe/Windwalkers-in-Reihenfolge-25145151572/',
                  'https://www.lovelybooks.de/isbn/9783401607979',
                  'https://www.lesejury.de/katja-brandis/buecher/windwalkers-2-helden-der-luefte/9783401607962'],
-        'folgen': r'(lovelybooks\.de/autor/Katja-Brandis/Windwalkers[^"#?]*-w/|arena-verlag\.de/artikel/windwalkers-[^"#?]*'
+        'folgen': r'(lovelybooks\.de/autor/Katja-Brandis/Windwalkers[^"#?]*-w/(rezension/\d+/)?'
+                  r'|lesejury\.de/katja-brandis/buecher/windwalkers[^"#?]*|arena-verlag\.de/artikel/windwalkers-[^"#?]*'
                   r'|kinderbuch-couch\.de/titel/\d+-windwalkers[^"#?]*)',
     },
 }
