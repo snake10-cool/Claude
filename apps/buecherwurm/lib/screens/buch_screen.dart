@@ -4,6 +4,7 @@ import '../main.dart';
 import '../models/buch.dart';
 import '../services/quiz_fragen.dart';
 import '../widgets/buch_kachel.dart';
+import '../widgets/lese_fortschritt.dart';
 import 'konto_screen.dart';
 import 'quiz_screen.dart';
 import 'quiz_vorschlag_screen.dart';
@@ -35,6 +36,7 @@ class BuchScreen extends StatelessWidget {
           sterne: sterne ?? alt?.sterne ?? 0,
           format: format ?? alt?.format ?? (speicher.lieblingsFormat == 1 ? Format.gehoert : Format.gelesen),
           notiz: alt?.notiz ?? '',
+          seite: alt?.seite ?? 0,
           datum: status != null && status != alt?.status ? DateTime.now() : alt?.datum,
         ),
       );
@@ -108,6 +110,10 @@ class BuchScreen extends StatelessWidget {
                 ),
             ],
           ),
+          if (eintrag != null && eintrag.status == Status.lese && buch.seiten > 0) ...[
+            const SizedBox(height: 16),
+            LeseFortschritt(key: ValueKey(buchId), buch: buch, eintrag: eintrag),
+          ],
           if (eintrag != null && eintrag.status != Status.wunschliste) ...[
             const SizedBox(height: 20),
             Text('Deine Bewertung', style: theme.textTheme.titleMedium),

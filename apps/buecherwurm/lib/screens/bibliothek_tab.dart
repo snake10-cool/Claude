@@ -73,7 +73,16 @@ class _BibliothekTabState extends State<BibliothekTab> {
                       return ListTile(
                         leading: BuchCover(buch, breite: 36),
                         title: Text(buch.titel),
-                        subtitle: Row(
+                        subtitle: e.status == Status.lese && e.seite > 0 && buch.seiten > 0
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('${buch.autor} · Seite ${e.seite} von ${buch.seiten}'),
+                                  const SizedBox(height: 4),
+                                  LinearProgressIndicator(value: (e.seite / buch.seiten).clamp(0, 1).toDouble()),
+                                ],
+                              )
+                            : Row(
                           children: [
                             if (e.sterne > 0) ...[
                               Sterne(e.sterne, groesse: 16),

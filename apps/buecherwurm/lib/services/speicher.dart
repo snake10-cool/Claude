@@ -119,6 +119,41 @@ class Speicher extends ChangeNotifier {
     return _speichern('pausierteQuizze', pausierteQuizze);
   }
 
+  // ───────── Leseziel, Lese-Tage ─────────
+
+  /// Bücher pro Jahr, 0 = kein Ziel.
+  int get jahresziel => _prefs.getInt('jahresziel') ?? 0;
+
+  Future<void> jahreszielSetzen(int ziel) async {
+    await _prefs.setInt('jahresziel', ziel);
+    notifyListeners();
+  }
+
+  int gelesenImJahr(int jahr) =>
+      eintraege.values.where((e) => e.status == Status.gelesen && e.datum.year == jahr).length;
+
+  /// Tage (yyyy-mm-dd), an denen gelesen wurde – für die Lese-Serie.
+  Set<String> get leseTage => {...(_json('leseTage', []) as List).cast<String>()};
+
+  static String tagSchluessel(DateTime d) =>
+      '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+
+  Future<void> leseTagMerken([DateTime? tag]) async {
+    final tage = leseTage..add(tagSchluessel(tag ?? DateTime.now()));
+    await _speichern('leseTage', tage.toList()..sort());
+  }
+
+  bool get heuteGelesen => leseTage.contains(tagSchluessel(DateTime.now()));
+
+  /// Seite setzen (beim Lesen); zählt auch als Lese-Tag.
+  Future<void> seiteSetzen(String buchId, int seite) async {
+    final e = eintraege[buchId];
+    if (e == null) return;
+    e.seite = seite;
+    await _prefs.setString('eintraege', jsonEncode(eintraege));
+    await leseTagMerken();
+  }
+
   // ───────── Abhaken ─────────
 
   bool get sterneBeimAbhaken => _prefs.getBool('sterneBeimAbhaken') ?? false;

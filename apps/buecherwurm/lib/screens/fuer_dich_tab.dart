@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../services/empfehlung.dart';
 import '../widgets/buch_kachel.dart';
+import '../widgets/leseziel_karte.dart';
 import 'abhaken_screen.dart';
 import 'fragebogen_screen.dart';
 import 'vergleich_screen.dart';
@@ -28,6 +29,7 @@ class FuerDichTab extends StatelessWidget {
           style: theme.textTheme.bodyMedium,
         ),
         const SizedBox(height: 8),
+        const LesezielKarte(),
         Wrap(
           spacing: 8,
           children: [

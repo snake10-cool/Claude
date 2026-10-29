@@ -6,6 +6,7 @@ import 'fragebogen_screen.dart';
 import 'abhaken_screen.dart';
 import 'admin_screen.dart';
 import 'konto_screen.dart';
+import 'statistik_screen.dart';
 import 'vergleich_screen.dart';
 
 class ProfilScreen extends StatelessWidget {
@@ -45,6 +46,11 @@ class ProfilScreen extends StatelessWidget {
                 _Zahl('${speicher.punkte}', 'Quiz-Punkte'),
               ],
             ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.insights),
+            title: const Text('Statistik & Abzeichen'),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const StatistikScreen())),
           ),
           const Divider(),
           ListTile(

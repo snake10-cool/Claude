@@ -161,6 +161,7 @@ class Eintrag {
     this.sterne = 0,
     this.format = Format.gelesen,
     this.notiz = '',
+    this.seite = 0,
     DateTime? datum,
   }) : datum = datum ?? DateTime.now();
 
@@ -170,6 +171,9 @@ class Eintrag {
   int sterne;
   Format format;
   String notiz;
+
+  /// Aktuelle Seite beim Lesen (0 = nicht erfasst).
+  int seite;
   DateTime datum;
 
   Map<String, dynamic> toJson() => {
@@ -177,6 +181,7 @@ class Eintrag {
         'sterne': sterne,
         'format': format.name,
         'notiz': notiz,
+        'seite': seite,
         'datum': datum.toIso8601String(),
       };
 
@@ -185,6 +190,7 @@ class Eintrag {
         sterne: j['sterne'] as int? ?? 0,
         format: Format.values.byName(j['format'] as String? ?? 'gelesen'),
         notiz: j['notiz'] as String? ?? '',
+        seite: j['seite'] as int? ?? 0,
         datum: DateTime.tryParse(j['datum'] as String? ?? ''),
       );
 }
