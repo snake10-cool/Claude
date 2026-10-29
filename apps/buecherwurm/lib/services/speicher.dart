@@ -175,6 +175,7 @@ class Speicher extends ChangeNotifier {
   // ───────── Quiz & Wettbewerb ─────────
 
   int get punkte => quiz.values.fold(0, (s, q) => s + q.punkte);
+  int get gelesen => eintraege.values.where((e) => e.status == Status.gelesen).length;
   int get bewiesen => quiz.values.where((q) => q.bestanden).length;
 
   /// Speichert nur den ersten Versuch. Bestanden heißt: Das Buch kommt als

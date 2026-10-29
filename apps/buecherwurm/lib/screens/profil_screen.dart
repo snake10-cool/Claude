@@ -4,6 +4,7 @@ import '../main.dart';
 import '../models/buch.dart';
 import 'fragebogen_screen.dart';
 import 'gelesen_auswahl_screen.dart';
+import 'konto_screen.dart';
 
 class ProfilScreen extends StatelessWidget {
   const ProfilScreen({super.key});
@@ -60,6 +61,17 @@ class ProfilScreen extends StatelessWidget {
               builder: (_) => const GelesenAuswahlScreen(pflicht: false),
             )),
           ),
+          if (KontoScope.of(context) case final konto?) ...[
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.cloud_outlined),
+              title: const Text('Konto für die Online-Rangliste'),
+              subtitle: Text(konto.angemeldet
+                  ? (konto.name == null ? 'Angemeldet' : 'Angemeldet als @${konto.name}')
+                  : 'Nicht angemeldet'),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const KontoScreen())),
+            ),
+          ],
           const Divider(),
           ListTile(
             leading: Icon(Icons.delete_forever, color: theme.colorScheme.error),
@@ -84,7 +96,7 @@ class ProfilScreen extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.all(16),
-            child: Text('Alle Daten bleiben auf deinem Handy. Bücherwurm 0.1'),
+            child: Text('Deine Bücher bleiben auf deinem Handy. Online gespeichert werden nur @Name, Punkte und Anzahl der Bücher, wenn du ein Konto hast. Bücherwurm 0.2'),
           ),
         ],
       ),

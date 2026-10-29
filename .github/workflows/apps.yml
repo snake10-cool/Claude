@@ -96,6 +96,24 @@ jobs:
           flutter test
           flutter build apk --release
 
+      - name: Bücherwurm AAB für Google Play
+        working-directory: apps/buecherwurm
+        env:
+          KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          PASSWORT: ${{ secrets.ANDROID_KEYSTORE_PASSWORT }}
+        run: |
+          if [ -z "$KEYSTORE" ] || [ -z "$PASSWORT" ]; then
+            echo "Keine Signier-Secrets – AAB wird übersprungen."
+            exit 0
+          fi
+          echo "$KEYSTORE" | base64 -d > android/upload.jks
+          printf 'storeFile=upload.jks\nstorePassword=%s\nkeyAlias=upload\nkeyPassword=%s\n' \
+            "$PASSWORT" "$PASSWORT" > android/key.properties
+          flutter build appbundle --release
+          rm android/key.properties android/upload.jks
+          mkdir -p ../../ausgabe
+          cp build/app/outputs/bundle/release/app-release.aab ../../ausgabe/Buecherwurm-PlayStore.aab
+
       - name: APKs einsammeln
         run: |
           mkdir -p ausgabe
