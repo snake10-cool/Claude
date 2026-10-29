@@ -327,4 +327,16 @@ const katalogWalkers = <Buch>[
     Frage('Wer sorgt dafür, dass keine Menschen in den Flüsterwald kommen?', ['Die echsenähnlichen Warks', 'Die Elfen', 'Die Katzen', 'Die Bolde']),
     Frage('Worüber schreibt Rani ein Buch?', ['Über die Menschen', 'Über Schokolade', 'Über Drachen', 'Über den Wald']),
   ]),
+  Buch(id: 'x_flusterwaldderverscholleneprofessor', titel: 'Flüsterwald – Der verschollene Professor', autor: 'Andreas Suchanek', jahr: 2021, seiten: 245, zielgruppe: Zielgruppe.kinder, tags: {'abenteuer', 'fantasy', 'freundschaft', 'jungeHelden', 'serie', 'spannend'}, beschreibung: 'Band 2: Ella sucht ihren Großvater, der im Flüsterwald verschollen ist – und Lukas muss ihr helfen.', coverUrl: 'https://portal.dnb.de/opac/mvb/cover?isbn=9783764151768', isbn: '9783764151768', quiz: [
+    Frage('Wer ist Ella?', ['Die Enkelin des verschollenen Professors', 'Lukas\' Schwester', 'Eine Elfe', 'Felicitas\' Cousine']),
+    Frage('Wen will Ella im Flüsterwald finden?', ['Ihren Großvater', 'Ihre Katze', 'Ihre Mutter', 'Den Schattenmeister']),
+    Frage('Wem gehörte die geheime Kammer in Lukas\' neuem Haus?', ['Dem verschwundenen Professor', 'Lukas\' Vater', 'Der Elfenkönigin', 'Einem Bold']),
+    Frage('Welche Spur hat der Großvater hinterlassen?', ['Ein seltsames Rätsel', 'Eine Landkarte', 'Einen Schlüssel', 'Ein Tagebuch voller Zeichnungen']),
+    Frage('Wie reagiert Lukas zuerst auf Ellas Bitte?', ['Er weigert sich, sie mitzunehmen', 'Er freut sich sehr', 'Er erzählt es seinen Eltern', 'Er geht allein los']),
+    Frage('Wem gehört die Katze Punchy?', ['Der Elfe Felicitas', 'Ella', 'Rani', 'Lukas']),
+    Frage('Welches Volk suchen die Freunde auf ihrer Suche auf?', ['Das Stollenvolk', 'Das Wolkenvolk', 'Das Baumvolk', 'Das Schattenvolk']),
+    Frage('Wohin lassen sich die Freunde bei der Suche katapultieren?', ['In den Himmel', 'In die Vergangenheit', 'Auf eine Insel', 'In Lukas\' Garten']),
+    Frage('Wohin müssen sie tauchen?', ['Auf den Grund eines Sees', 'In einen Brunnen', 'Ins Meer', 'In eine Höhle voller Wasser']),
+    Frage('Was schreibt Rani über Lukas und Ella in sein Notizbuch?', ['Vergleiche zwischen den beiden Menschen', 'Schokoladenrezepte', 'Zaubersprüche', 'Gedichte']),
+  ]),
 ];
