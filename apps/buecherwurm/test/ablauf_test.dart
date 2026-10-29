@@ -49,10 +49,11 @@ void main() {
     final pippi = speicher.buch('pippi')!;
     for (var i = 0; i < pippi.quiz.length; i++) {
       final frage = pippi.quiz.firstWhere((f) => find.text(f.text).evaluate().isNotEmpty);
+      await tester.scrollUntilVisible(find.text(frage.richtig), 100, scrollable: find.byType(Scrollable).last);
       await tester.tap(find.text(frage.richtig));
       await tester.pump();
       final weiter = find.text(i == pippi.quiz.length - 1 ? 'Ergebnis' : 'Nächste Frage');
-      await tester.ensureVisible(weiter);
+      await tester.scrollUntilVisible(weiter, 100, scrollable: find.byType(Scrollable).last);
       await tester.tap(weiter);
       await tester.pump();
     }

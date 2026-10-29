@@ -32,9 +32,10 @@ void main() {
     await tester.pump();
     // Erste Frage richtig beantworten, dann pausieren.
     final frage = pippi.quiz.firstWhere((f) => find.text(f.text).evaluate().isNotEmpty);
+    await tester.scrollUntilVisible(find.text(frage.richtig), 100, scrollable: find.byType(Scrollable).last);
     await tester.tap(find.text(frage.richtig));
     await tester.pump();
-    await tester.ensureVisible(find.text('Pausieren – später weitermachen'));
+    await tester.scrollUntilVisible(find.text('Pausieren – später weitermachen'), 100, scrollable: find.byType(Scrollable).last);
     await tester.tap(find.text('Pausieren – später weitermachen'));
     await tester.pumpAndSettle();
 
