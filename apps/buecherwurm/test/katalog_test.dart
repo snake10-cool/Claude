@@ -4,9 +4,12 @@ import 'package:buecherwurm/models/buch.dart';
 import 'package:flutter_test/flutter_test.dart' hide Tags;
 
 void main() {
-  test('Buch-IDs sind eindeutig', () {
+  test('Buch-IDs und Titel sind eindeutig', () {
     final ids = katalog.map((b) => b.id).toList();
     expect(ids.toSet().length, ids.length);
+    final titel = katalog.map((b) => b.titel.toLowerCase()).toList();
+    final doppelt = titel.where((t) => titel.indexOf(t) != titel.lastIndexOf(t)).toSet();
+    expect(doppelt, isEmpty);
   });
 
   test('Alle Tags sind bekannt', () {
@@ -24,8 +27,8 @@ void main() {
     }
   });
 
-  test('Jedes Buch hat ein Quiz mit 4 verschiedenen Antworten', () {
-    for (final b in katalog) {
+  test('Jedes Quiz-Buch hat mindestens 3 Fragen mit 4 verschiedenen Antworten', () {
+    for (final b in katalogMitQuiz) {
       expect(b.quiz.length, greaterThanOrEqualTo(3), reason: b.id);
       for (final f in b.quiz) {
         expect(f.antworten.length, 4, reason: '${b.id}: ${f.text}');

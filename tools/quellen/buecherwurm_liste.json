@@ -1,0 +1,3900 @@
+{
+ "_info": "Wunschliste für tools/buecher_holen.py. Reihen werden komplett bei der Deutschen Nationalbibliothek gesucht (bis max Bände), Einzeltitel als [Titel, Autor]. Was nicht gefunden wird, fliegt raus. Reihenfolge = Priorität.",
+ "gruppen": [
+  {
+   "name": "Kinder – Reihen",
+   "zielgruppe": "kinder",
+   "tags": [
+    "jungeHelden",
+    "serie"
+   ],
+   "reihen": [
+    {
+     "reihe": "Woodwalkers",
+     "autor": "Brandis",
+     "max": 14,
+     "tags": [
+      "fantasy",
+      "tiere",
+      "abenteuer",
+      "freundschaft",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Seawalkers",
+     "autor": "Brandis",
+     "max": 8,
+     "tags": [
+      "fantasy",
+      "tiere",
+      "abenteuer",
+      "freundschaft",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Windwalkers",
+     "autor": "Brandis",
+     "max": 6,
+     "tags": [
+      "fantasy",
+      "tiere",
+      "abenteuer",
+      "freundschaft",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Flüsterwald",
+     "autor": "Suchanek",
+     "max": 10,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "freundschaft",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Die Schule der magischen Tiere",
+     "autor": "Auer",
+     "max": 16,
+     "tags": [
+      "fantasy",
+      "tiere",
+      "freundschaft",
+      "gegenwart",
+      "happyend"
+     ]
+    },
+    {
+     "reihe": "Gregs Tagebuch",
+     "autor": "Kinney",
+     "max": 16,
+     "tags": [
+      "humor",
+      "gegenwart",
+      "freundschaft"
+     ]
+    },
+    {
+     "reihe": "Mein Lotta-Leben",
+     "autor": "Pantermüller",
+     "max": 12,
+     "tags": [
+      "humor",
+      "gegenwart",
+      "freundschaft"
+     ]
+    },
+    {
+     "reihe": "Warrior Cats",
+     "autor": "Hunter",
+     "max": 12,
+     "tags": [
+      "fantasy",
+      "tiere",
+      "abenteuer",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Animox",
+     "autor": "Carter",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "tiere",
+      "abenteuer",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Der kleine Drache Kokosnuss",
+     "autor": "Siegner",
+     "max": 8,
+     "tags": [
+      "humor",
+      "abenteuer",
+      "freundschaft",
+      "fantasy",
+      "happyend"
+     ]
+    },
+    {
+     "reihe": "Die wilden Kerle",
+     "autor": "Masannek",
+     "max": 6,
+     "tags": [
+      "abenteuer",
+      "freundschaft",
+      "action"
+     ]
+    },
+    {
+     "reihe": "Die wilden Hühner",
+     "autor": "Funke",
+     "max": 5,
+     "tags": [
+      "freundschaft",
+      "humor",
+      "gegenwart",
+      "liebe"
+     ]
+    },
+    {
+     "reihe": "Sams",
+     "autor": "Maar",
+     "max": 8,
+     "tags": [
+      "humor",
+      "fantasy",
+      "happyend"
+     ]
+    },
+    {
+     "reihe": "Rico, Oskar",
+     "autor": "Steinhöfel",
+     "max": 5,
+     "tags": [
+      "krimi",
+      "humor",
+      "freundschaft",
+      "gegenwart"
+     ]
+    },
+    {
+     "reihe": "Petronella Apfelmus",
+     "autor": "Städing",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "humor",
+      "freundschaft"
+     ]
+    },
+    {
+     "reihe": "Die Duftapotheke",
+     "autor": "Ruhe",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "krimi"
+     ]
+    },
+    {
+     "reihe": "Hexe Lilli",
+     "autor": "Knister",
+     "max": 6,
+     "tags": [
+      "fantasy",
+      "humor"
+     ]
+    },
+    {
+     "reihe": "Die Olchis",
+     "autor": "Dietl",
+     "max": 6,
+     "tags": [
+      "humor",
+      "fantasy"
+     ]
+    },
+    {
+     "reihe": "Ella",
+     "autor": "Parvela",
+     "max": 6,
+     "tags": [
+      "humor",
+      "freundschaft"
+     ]
+    },
+    {
+     "reihe": "Ostwind",
+     "autor": "Schmidbauer",
+     "max": 5,
+     "tags": [
+      "tiere",
+      "abenteuer",
+      "freundschaft",
+      "gefuehl"
+     ]
+    },
+    {
+     "reihe": "Pettersson und Findus",
+     "autor": "Nordqvist",
+     "max": 5,
+     "tags": [
+      "humor",
+      "tiere",
+      "happyend"
+     ]
+    },
+    {
+     "reihe": "Räuber Hotzenplotz",
+     "autor": "Preußler",
+     "max": 3,
+     "tags": [
+      "humor",
+      "abenteuer",
+      "klassiker"
+     ]
+    },
+    {
+     "reihe": "Jim Knopf",
+     "autor": "Ende",
+     "max": 2,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "klassiker"
+     ]
+    }
+   ],
+   "buecher": []
+  },
+  {
+   "name": "Kinder – Einzeltitel und Klassiker",
+   "zielgruppe": "kinder",
+   "tags": [
+    "jungeHelden"
+   ],
+   "reihen": [],
+   "buecher": [
+    [
+     "Wir Kinder aus Bullerbü",
+     "Astrid Lindgren",
+     [
+      "klassiker",
+      "freundschaft",
+      "happyend"
+     ]
+    ],
+    [
+     "Pippi in Taka-Tuka-Land",
+     "Astrid Lindgren",
+     [
+      "klassiker",
+      "humor",
+      "abenteuer",
+      "serie"
+     ]
+    ],
+    [
+     "Pippi geht an Bord",
+     "Astrid Lindgren",
+     [
+      "klassiker",
+      "humor",
+      "abenteuer",
+      "serie"
+     ]
+    ],
+    [
+     "Kalle Blomquist",
+     "Astrid Lindgren",
+     [
+      "klassiker",
+      "krimi",
+      "spannend"
+     ]
+    ],
+    [
+     "Mio, mein Mio",
+     "Astrid Lindgren",
+     [
+      "klassiker",
+      "fantasy",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Madita",
+     "Astrid Lindgren",
+     [
+      "klassiker",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Emil und die drei Zwillinge",
+     "Erich Kästner",
+     [
+      "klassiker",
+      "krimi",
+      "serie"
+     ]
+    ],
+    [
+     "Der kleine Wassermann",
+     "Otfried Preußler",
+     [
+      "klassiker",
+      "fantasy"
+     ]
+    ],
+    [
+     "Urmel aus dem Eis",
+     "Max Kruse",
+     [
+      "klassiker",
+      "humor",
+      "tiere"
+     ]
+    ],
+    [
+     "Nils Holgersson",
+     "Selma Lagerlöf",
+     [
+      "klassiker",
+      "abenteuer",
+      "tiere"
+     ]
+    ],
+    [
+     "Der Wind in den Weiden",
+     "Kenneth Grahame",
+     [
+      "klassiker",
+      "tiere",
+      "freundschaft"
+     ]
+    ],
+    [
+     "Black Beauty",
+     "Anna Sewell",
+     [
+      "klassiker",
+      "tiere",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Der geheime Garten",
+     "Frances Hodgson Burnett",
+     [
+      "klassiker",
+      "gefuehl",
+      "happyend"
+     ]
+    ],
+    [
+     "Der kleine Lord",
+     "Frances Hodgson Burnett",
+     [
+      "klassiker",
+      "gefuehl",
+      "happyend"
+     ]
+    ],
+    [
+     "Anne auf Green Gables",
+     "Lucy Maud Montgomery",
+     [
+      "klassiker",
+      "gefuehl",
+      "humor"
+     ]
+    ],
+    [
+     "Bambi",
+     "Felix Salten",
+     [
+      "klassiker",
+      "tiere",
+      "traurig"
+     ]
+    ],
+    [
+     "Die Biene Maja",
+     "Waldemar Bonsels",
+     [
+      "klassiker",
+      "tiere",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Komet im Mumintal",
+     "Tove Jansson",
+     [
+      "klassiker",
+      "fantasy",
+      "freundschaft"
+     ]
+    ],
+    [
+     "Das NEINhorn",
+     "Marc-Uwe Kling",
+     [
+      "humor",
+      "fantasy"
+     ]
+    ],
+    [
+     "Das Grüffelokind",
+     "Julia Donaldson",
+     [
+      "tiere",
+      "humor"
+     ]
+    ],
+    [
+     "Zog",
+     "Julia Donaldson",
+     [
+      "fantasy",
+      "humor"
+     ]
+    ],
+    [
+     "Für Hund und Katz ist auch noch Platz",
+     "Julia Donaldson",
+     [
+      "fantasy",
+      "humor"
+     ]
+    ],
+    [
+     "Die Schnecke und der Buckelwal",
+     "Julia Donaldson",
+     [
+      "tiere",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Der Regenbogenfisch",
+     "Marcus Pfister",
+     [
+      "tiere",
+      "freundschaft"
+     ]
+    ],
+    [
+     "Wo die wilden Kerle wohnen",
+     "Maurice Sendak",
+     [
+      "fantasy",
+      "klassiker"
+     ]
+    ],
+    [
+     "Oh, wie schön ist Panama",
+     "Janosch",
+     [
+      "humor",
+      "freundschaft",
+      "tiere",
+      "klassiker"
+     ]
+    ],
+    [
+     "Frederick",
+     "Leo Lionni",
+     [
+      "tiere",
+      "klassiker"
+     ]
+    ],
+    [
+     "Weißt du eigentlich, wie lieb ich dich hab?",
+     "Sam McBratney",
+     [
+      "tiere",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Das kleine Ich bin ich",
+     "Mira Lobe",
+     [
+      "klassiker",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Die Häschenschule",
+     "Albert Sixtus",
+     [
+      "klassiker",
+      "tiere"
+     ]
+    ],
+    [
+     "Hilfe, ich habe meine Lehrerin geschrumpft",
+     "Sabine Ludwig",
+     [
+      "humor",
+      "fantasy"
+     ]
+    ],
+    [
+     "Die unlangweiligste Schule der Welt",
+     "Sabrina J. Kirschner",
+     [
+      "humor",
+      "serie"
+     ]
+    ],
+    [
+     "Das Wunder von Narnia",
+     "C. S. Lewis",
+     [
+      "fantasy",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Prinz Kaspian von Narnia",
+     "C. S. Lewis",
+     [
+      "fantasy",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Die Reise auf der Morgenröte",
+     "C. S. Lewis",
+     [
+      "fantasy",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Der silberne Sessel",
+     "C. S. Lewis",
+     [
+      "fantasy",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Der Ritt nach Narnia",
+     "C. S. Lewis",
+     [
+      "fantasy",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Der letzte Kampf",
+     "C. S. Lewis",
+     [
+      "fantasy",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Coraline",
+     "Neil Gaiman",
+     [
+      "fantasy",
+      "horror",
+      "spannend"
+     ]
+    ],
+    [
+     "Charlie und der große gläserne Fahrstuhl",
+     "Roald Dahl",
+     [
+      "humor",
+      "fantasy",
+      "serie"
+     ]
+    ],
+    [
+     "Sophiechen und der Riese",
+     "Roald Dahl",
+     [
+      "fantasy",
+      "humor",
+      "freundschaft"
+     ]
+    ],
+    [
+     "Der fantastische Mr. Fox",
+     "Roald Dahl",
+     [
+      "tiere",
+      "humor",
+      "abenteuer"
+     ]
+    ],
+    [
+     "James und der Riesenpfirsich",
+     "Roald Dahl",
+     [
+      "fantasy",
+      "abenteuer",
+      "humor"
+     ]
+    ],
+    [
+     "Die Zwillinge",
+     "Roald Dahl",
+     [
+      "humor"
+     ]
+    ],
+    [
+     "Die Glücksbäckerei",
+     "Kathryn Littlewood",
+     [
+      "fantasy",
+      "serie"
+     ]
+    ],
+    [
+     "Drachenreiter – Der Fluch des Ersten",
+     "Cornelia Funke",
+     [
+      "fantasy",
+      "abenteuer",
+      "serie"
+     ]
+    ],
+    [
+     "Gespensterjäger auf eisiger Spur",
+     "Cornelia Funke",
+     [
+      "horror",
+      "humor",
+      "serie"
+     ]
+    ],
+    [
+     "Igraine Ohnefurcht",
+     "Cornelia Funke",
+     [
+      "fantasy",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Ritter Trenk",
+     "Kirsten Boie",
+     [
+      "abenteuer",
+      "historisch",
+      "humor"
+     ]
+    ],
+    [
+     "Wir Kinder aus dem Möwenweg",
+     "Kirsten Boie",
+     [
+      "freundschaft",
+      "gegenwart",
+      "serie"
+     ]
+    ],
+    [
+     "Seeräubermoses",
+     "Kirsten Boie",
+     [
+      "abenteuer",
+      "humor"
+     ]
+    ],
+    [
+     "Der kleine Vampir",
+     "Angela Sommer-Bodenburg",
+     [
+      "horror",
+      "humor",
+      "freundschaft",
+      "serie"
+     ]
+    ],
+    [
+     "Das magische Baumhaus",
+     "Mary Pope Osborne",
+     [
+      "abenteuer",
+      "historisch",
+      "serie"
+     ]
+    ],
+    [
+     "Mia and me",
+     "Isabella Mohn",
+     [
+      "fantasy",
+      "serie"
+     ]
+    ]
+   ]
+  },
+  {
+   "name": "Jugend – Reihen",
+   "zielgruppe": "jugend",
+   "tags": [
+    "jungeHelden",
+    "serie"
+   ],
+   "reihen": [
+    {
+     "reihe": "Magisterium",
+     "autor": "Black",
+     "max": 6,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "freundschaft",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Percy Jackson",
+     "autor": "Riordan",
+     "max": 6,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "action",
+      "humor"
+     ]
+    },
+    {
+     "reihe": "Helden des Olymp",
+     "autor": "Riordan",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "action"
+     ]
+    },
+    {
+     "reihe": "Kane-Chroniken",
+     "autor": "Riordan",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "action"
+     ]
+    },
+    {
+     "reihe": "Die Tribute von Panem",
+     "autor": "Collins",
+     "max": 5,
+     "tags": [
+      "dystopie",
+      "scifi",
+      "action",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Biss",
+     "autor": "Meyer",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "liebe",
+      "gefuehl"
+     ]
+    },
+    {
+     "reihe": "Tintenblut",
+     "autor": "Funke",
+     "max": 1,
+     "tags": [
+      "fantasy",
+      "abenteuer"
+     ]
+    },
+    {
+     "reihe": "Tintentod",
+     "autor": "Funke",
+     "max": 1,
+     "tags": [
+      "fantasy",
+      "abenteuer"
+     ]
+    },
+    {
+     "reihe": "Reckless",
+     "autor": "Funke",
+     "max": 4,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Silber",
+     "autor": "Gier",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "liebe",
+      "humor"
+     ]
+    },
+    {
+     "reihe": "Die Bestimmung",
+     "autor": "Roth",
+     "max": 4,
+     "tags": [
+      "dystopie",
+      "scifi",
+      "action"
+     ]
+    },
+    {
+     "reihe": "Die Auserwählten",
+     "autor": "Dashner",
+     "max": 5,
+     "tags": [
+      "dystopie",
+      "scifi",
+      "action",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Eragon",
+     "autor": "Paolini",
+     "max": 4,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "action"
+     ]
+    },
+    {
+     "reihe": "Selection",
+     "autor": "Cass",
+     "max": 5,
+     "tags": [
+      "dystopie",
+      "liebe"
+     ]
+    },
+    {
+     "reihe": "Throne of Glass",
+     "autor": "Maas",
+     "max": 8,
+     "tags": [
+      "fantasy",
+      "action",
+      "liebe"
+     ]
+    },
+    {
+     "reihe": "Das Reich der sieben Höfe",
+     "autor": "Maas",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "liebe",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Artemis Fowl",
+     "autor": "Colfer",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "humor"
+     ]
+    },
+    {
+     "reihe": "Bartimäus",
+     "autor": "Stroud",
+     "max": 4,
+     "tags": [
+      "fantasy",
+      "humor",
+      "abenteuer"
+     ]
+    },
+    {
+     "reihe": "Lockwood",
+     "autor": "Stroud",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "horror",
+      "krimi",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Chroniken der Unterwelt",
+     "autor": "Clare",
+     "max": 6,
+     "tags": [
+      "fantasy",
+      "action",
+      "liebe"
+     ]
+    },
+    {
+     "reihe": "Skulduggery Pleasant",
+     "autor": "Landy",
+     "max": 6,
+     "tags": [
+      "fantasy",
+      "humor",
+      "action",
+      "krimi"
+     ]
+    },
+    {
+     "reihe": "Die Insel der besonderen Kinder",
+     "autor": "Riggs",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "horror",
+      "abenteuer"
+     ]
+    },
+    {
+     "reihe": "Grisha",
+     "autor": "Bardugo",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "action"
+     ]
+    },
+    {
+     "reihe": "Das Lied der Krähen",
+     "autor": "Bardugo",
+     "max": 2,
+     "tags": [
+      "fantasy",
+      "action",
+      "krimi"
+     ]
+    },
+    {
+     "reihe": "Obsidian",
+     "autor": "Armentrout",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "liebe",
+      "scifi"
+     ]
+    },
+    {
+     "reihe": "Die Legende von Shannara",
+     "autor": "Brooks",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "abenteuer"
+     ]
+    },
+    {
+     "reihe": "Erebos",
+     "autor": "Poznanski",
+     "max": 2,
+     "tags": [
+      "thriller",
+      "scifi",
+      "spannend"
+     ]
+    },
+    {
+     "reihe": "Animant Crumb",
+     "autor": "Ritter",
+     "max": 1,
+     "tags": [
+      "liebe",
+      "historisch"
+     ]
+    }
+   ],
+   "buecher": [
+    [
+     "Saphirblau",
+     "Kerstin Gier",
+     [
+      "fantasy",
+      "liebe",
+      "humor",
+      "serie"
+     ]
+    ],
+    [
+     "Smaragdgrün",
+     "Kerstin Gier",
+     [
+      "fantasy",
+      "liebe",
+      "humor",
+      "serie"
+     ]
+    ],
+    [
+     "Der goldene Kompass",
+     "Philip Pullman",
+     [
+      "fantasy",
+      "abenteuer",
+      "serie"
+     ]
+    ],
+    [
+     "Das magische Messer",
+     "Philip Pullman",
+     [
+      "fantasy",
+      "abenteuer",
+      "serie"
+     ]
+    ],
+    [
+     "Das Bernstein-Teleskop",
+     "Philip Pullman",
+     [
+      "fantasy",
+      "abenteuer",
+      "serie"
+     ]
+    ],
+    [
+     "Margos Spuren",
+     "John Green",
+     [
+      "gegenwart",
+      "liebe",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Eine wie Alaska",
+     "John Green",
+     [
+      "gegenwart",
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "Schlaft gut, ihr fiesen Gedanken",
+     "John Green",
+     [
+      "gegenwart",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Die Mitte der Welt",
+     "Andreas Steinhöfel",
+     [
+      "gegenwart",
+      "liebe",
+      "drama"
+     ]
+    ],
+    [
+     "Nichts. Was im Leben wichtig ist",
+     "Janne Teller",
+     [
+      "nachdenklich",
+      "drama"
+     ]
+    ],
+    [
+     "Löcher",
+     "Louis Sachar",
+     [
+      "abenteuer",
+      "humor",
+      "krimi"
+     ]
+    ],
+    [
+     "Ich bin David",
+     "Anne Holm",
+     [
+      "historisch",
+      "abenteuer",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Als Hitler das rosa Kaninchen stahl",
+     "Judith Kerr",
+     [
+      "historisch",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Ich bin Malala",
+     "Malala Yousafzai",
+     [
+      "sachbuch",
+      "gegenwart",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Nur drei Worte",
+     "Becky Albertalli",
+     [
+      "liebe",
+      "gegenwart",
+      "humor"
+     ]
+    ],
+    [
+     "Eleanor & Park",
+     "Rainbow Rowell",
+     [
+      "liebe",
+      "gegenwart"
+     ]
+    ],
+    [
+     "Das Graveyard-Buch",
+     "Neil Gaiman",
+     [
+      "fantasy",
+      "horror"
+     ]
+    ],
+    [
+     "Niemalsland",
+     "Neil Gaiman",
+     [
+      "fantasy",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Der Sternwanderer",
+     "Neil Gaiman",
+     [
+      "fantasy",
+      "liebe",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Die Tribute von Panem X – Das Lied von Vogel und Schlange",
+     "Suzanne Collins",
+     [
+      "dystopie",
+      "scifi"
+     ]
+    ],
+    [
+     "Das Joshua-Profil",
+     "Sebastian Fitzek",
+     [
+      "thriller",
+      "spannend"
+     ]
+    ],
+    [
+     "Wolkenschloss",
+     "Kerstin Gier",
+     [
+      "liebe",
+      "humor",
+      "krimi"
+     ]
+    ],
+    [
+     "Die Vermessung der Welt",
+     "Daniel Kehlmann",
+     [
+      "historisch",
+      "humor"
+     ]
+    ],
+    [
+     "Ein Sommer in Sommerby",
+     "Kirsten Boie",
+     [
+      "gegenwart",
+      "freundschaft",
+      "serie"
+     ]
+    ],
+    [
+     "Die Chroniken von Alice – Finsternis im Wunderland",
+     "Christina Henry",
+     [
+      "fantasy",
+      "horror"
+     ]
+    ],
+    [
+     "Wunder – Auggie & ich",
+     "R. J. Palacio",
+     [
+      "gegenwart",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Herr Klee und Herr Feld",
+     "Michael Köhlmeier",
+     [
+      "humor"
+     ]
+    ]
+   ]
+  },
+  {
+   "name": "Fantasy & Science-Fiction",
+   "zielgruppe": "erwachsene",
+   "tags": [],
+   "reihen": [
+    {
+     "reihe": "Das Lied von Eis und Feuer",
+     "autor": "Martin",
+     "max": 8,
+     "tags": [
+      "fantasy",
+      "drama",
+      "action",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Hexer",
+     "autor": "Sapkowski",
+     "max": 8,
+     "tags": [
+      "fantasy",
+      "action",
+      "abenteuer",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Scheibenwelt",
+     "autor": "Pratchett",
+     "max": 16,
+     "tags": [
+      "fantasy",
+      "humor",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Die Zwerge",
+     "autor": "Heitz",
+     "max": 5,
+     "tags": [
+      "fantasy",
+      "action",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Sturmlicht",
+     "autor": "Sanderson",
+     "max": 4,
+     "tags": [
+      "fantasy",
+      "action",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Kinder des Nebels",
+     "autor": "Sanderson",
+     "max": 3,
+     "tags": [
+      "fantasy",
+      "action",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Foundation",
+     "autor": "Asimov",
+     "max": 3,
+     "tags": [
+      "scifi",
+      "klassiker",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Expanse",
+     "autor": "Corey",
+     "max": 5,
+     "tags": [
+      "scifi",
+      "action",
+      "spannend",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Die drei Sonnen",
+     "autor": "Liu",
+     "max": 3,
+     "tags": [
+      "scifi",
+      "nachdenklich",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Der Dunkle Turm",
+     "autor": "King",
+     "max": 7,
+     "tags": [
+      "fantasy",
+      "horror",
+      "abenteuer",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Der Wüstenplanet",
+     "autor": "Herbert",
+     "max": 3,
+     "tags": [
+      "scifi",
+      "abenteuer",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Outlander",
+     "autor": "Gabaldon",
+     "max": 5,
+     "tags": [
+      "historisch",
+      "liebe",
+      "fantasy",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Die Königsmörder-Chronik",
+     "autor": "Rothfuss",
+     "max": 2,
+     "tags": [
+      "fantasy",
+      "abenteuer",
+      "serie"
+     ]
+    }
+   ],
+   "buecher": [
+    [
+     "Die zwei Türme",
+     "J. R. R. Tolkien",
+     [
+      "fantasy",
+      "abenteuer",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Die Rückkehr des Königs",
+     "J. R. R. Tolkien",
+     [
+      "fantasy",
+      "abenteuer",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Das Silmarillion",
+     "J. R. R. Tolkien",
+     [
+      "fantasy",
+      "klassiker"
+     ]
+    ],
+    [
+     "Der letzte Wunsch",
+     "Andrzej Sapkowski",
+     [
+      "fantasy",
+      "action",
+      "serie"
+     ]
+    ],
+    [
+     "American Gods",
+     "Neil Gaiman",
+     [
+      "fantasy",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Ein gutes Omen",
+     "Terry Pratchett",
+     [
+      "fantasy",
+      "humor"
+     ]
+    ],
+    [
+     "Die Zeitmaschine",
+     "H. G. Wells",
+     [
+      "scifi",
+      "klassiker"
+     ]
+    ],
+    [
+     "Der Krieg der Welten",
+     "H. G. Wells",
+     [
+      "scifi",
+      "klassiker",
+      "spannend"
+     ]
+    ],
+    [
+     "Der Unsichtbare",
+     "H. G. Wells",
+     [
+      "scifi",
+      "klassiker"
+     ]
+    ],
+    [
+     "Ich, der Robot",
+     "Isaac Asimov",
+     [
+      "scifi",
+      "klassiker"
+     ]
+    ],
+    [
+     "Solaris",
+     "Stanisław Lem",
+     [
+      "scifi",
+      "klassiker",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Träumen Androiden von elektrischen Schafen?",
+     "Philip K. Dick",
+     [
+      "scifi",
+      "dystopie",
+      "klassiker"
+     ]
+    ],
+    [
+     "Neuromancer",
+     "William Gibson",
+     [
+      "scifi",
+      "klassiker"
+     ]
+    ],
+    [
+     "Der Astronaut",
+     "Andy Weir",
+     [
+      "scifi",
+      "humor",
+      "spannend"
+     ]
+    ],
+    [
+     "Artemis",
+     "Andy Weir",
+     [
+      "scifi",
+      "krimi"
+     ]
+    ],
+    [
+     "Dark Matter. Der Zeitenläufer",
+     "Blake Crouch",
+     [
+      "scifi",
+      "thriller",
+      "spannend"
+     ]
+    ],
+    [
+     "Ich bin Legende",
+     "Richard Matheson",
+     [
+      "horror",
+      "scifi",
+      "klassiker"
+     ]
+    ],
+    [
+     "Das Jesus-Video",
+     "Andreas Eschbach",
+     [
+      "thriller",
+      "scifi",
+      "spannend"
+     ]
+    ],
+    [
+     "Eine Billion Dollar",
+     "Andreas Eschbach",
+     [
+      "thriller",
+      "gegenwart"
+     ]
+    ],
+    [
+     "NSA – Nationales Sicherheits-Amt",
+     "Andreas Eschbach",
+     [
+      "thriller",
+      "historisch",
+      "dystopie"
+     ]
+    ],
+    [
+     "Blackout",
+     "Marc Elsberg",
+     [
+      "thriller",
+      "gegenwart",
+      "spannend"
+     ]
+    ],
+    [
+     "Zero",
+     "Marc Elsberg",
+     [
+      "thriller",
+      "gegenwart",
+      "dystopie"
+     ]
+    ],
+    [
+     "Helix",
+     "Marc Elsberg",
+     [
+      "thriller",
+      "scifi"
+     ]
+    ],
+    [
+     "Limit",
+     "Frank Schätzing",
+     [
+      "thriller",
+      "scifi"
+     ]
+    ],
+    [
+     "Die Tore der Welt",
+     "Ken Follett",
+     [
+      "historisch",
+      "drama",
+      "serie"
+     ]
+    ],
+    [
+     "Das Fundament der Ewigkeit",
+     "Ken Follett",
+     [
+      "historisch",
+      "drama",
+      "serie"
+     ]
+    ],
+    [
+     "Kingsbridge – Der Morgen einer neuen Zeit",
+     "Ken Follett",
+     [
+      "historisch",
+      "drama",
+      "serie"
+     ]
+    ],
+    [
+     "Sturz der Titanen",
+     "Ken Follett",
+     [
+      "historisch",
+      "drama",
+      "serie"
+     ]
+    ],
+    [
+     "Winter der Welt",
+     "Ken Follett",
+     [
+      "historisch",
+      "drama",
+      "serie"
+     ]
+    ],
+    [
+     "Kinder der Freiheit",
+     "Ken Follett",
+     [
+      "historisch",
+      "drama",
+      "serie"
+     ]
+    ],
+    [
+     "Die Nebel von Avalon",
+     "Marion Zimmer Bradley",
+     [
+      "fantasy",
+      "historisch"
+     ]
+    ],
+    [
+     "Die Physiker der Zukunft",
+     "Michio Kaku",
+     [
+      "sachbuch",
+      "scifi"
+     ]
+    ]
+   ]
+  },
+  {
+   "name": "Krimi & Thriller",
+   "zielgruppe": "erwachsene",
+   "tags": [
+    "spannend"
+   ],
+   "minAlter": 14,
+   "reihen": [
+    {
+     "reihe": "Kluftinger",
+     "autor": "Klüpfel",
+     "max": 8,
+     "tags": [
+      "krimi",
+      "humor",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Eberhofer",
+     "autor": "Falk",
+     "max": 8,
+     "tags": [
+      "krimi",
+      "humor",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Sonderdezernat Q",
+     "autor": "Adler-Olsen",
+     "max": 8,
+     "tags": [
+      "krimi",
+      "thriller",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Bodenstein",
+     "autor": "Neuhaus",
+     "max": 6,
+     "tags": [
+      "krimi",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Kommissar Dupin",
+     "autor": "Bannalec",
+     "max": 6,
+     "tags": [
+      "krimi",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Wallander",
+     "autor": "Mankell",
+     "max": 6,
+     "tags": [
+      "krimi",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Harry Hole",
+     "autor": "Nesbø",
+     "max": 6,
+     "tags": [
+      "krimi",
+      "thriller",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Brunetti",
+     "autor": "Leon",
+     "max": 5,
+     "tags": [
+      "krimi",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Millennium",
+     "autor": "Larsson",
+     "max": 3,
+     "tags": [
+      "krimi",
+      "thriller",
+      "serie"
+     ]
+    }
+   ],
+   "buecher": [
+    [
+     "Die Therapie",
+     "Sebastian Fitzek",
+     [
+      "thriller"
+     ]
+    ],
+    [
+     "Der Seelenbrecher",
+     "Sebastian Fitzek",
+     [
+      "thriller"
+     ]
+    ],
+    [
+     "Passagier 23",
+     "Sebastian Fitzek",
+     [
+      "thriller"
+     ]
+    ],
+    [
+     "Das Paket",
+     "Sebastian Fitzek",
+     [
+      "thriller"
+     ]
+    ],
+    [
+     "Der Augensammler",
+     "Sebastian Fitzek",
+     [
+      "thriller",
+      "krimi"
+     ]
+    ],
+    [
+     "Amokspiel",
+     "Sebastian Fitzek",
+     [
+      "thriller"
+     ]
+    ],
+    [
+     "Splitter",
+     "Sebastian Fitzek",
+     [
+      "thriller"
+     ]
+    ],
+    [
+     "Abgeschnitten",
+     "Sebastian Fitzek",
+     [
+      "thriller",
+      "krimi"
+     ]
+    ],
+    [
+     "Der Insasse",
+     "Sebastian Fitzek",
+     [
+      "thriller"
+     ]
+    ],
+    [
+     "Der Heimweg",
+     "Sebastian Fitzek",
+     [
+      "thriller"
+     ]
+    ],
+    [
+     "Das Schweigen der Lämmer",
+     "Thomas Harris",
+     [
+      "thriller",
+      "krimi",
+      "horror"
+     ]
+    ],
+    [
+     "Girl on the Train",
+     "Paula Hawkins",
+     [
+      "thriller",
+      "gegenwart"
+     ]
+    ],
+    [
+     "Die stumme Patientin",
+     "Alex Michaelides",
+     [
+      "thriller",
+      "gegenwart"
+     ]
+    ],
+    [
+     "Liebes Kind",
+     "Romy Hausmann",
+     [
+      "thriller",
+      "gegenwart"
+     ]
+    ],
+    [
+     "Der Schakal",
+     "Frederick Forsyth",
+     [
+      "thriller",
+      "historisch"
+     ]
+    ],
+    [
+     "Dame, König, As, Spion",
+     "John le Carré",
+     [
+      "thriller",
+      "historisch"
+     ]
+    ],
+    [
+     "Diabolus",
+     "Dan Brown",
+     [
+      "thriller",
+      "serie"
+     ]
+    ],
+    [
+     "Das verlorene Symbol",
+     "Dan Brown",
+     [
+      "thriller",
+      "serie"
+     ]
+    ],
+    [
+     "Inferno",
+     "Dan Brown",
+     [
+      "thriller",
+      "serie"
+     ]
+    ],
+    [
+     "Origin",
+     "Dan Brown",
+     [
+      "thriller",
+      "serie"
+     ]
+    ],
+    [
+     "Meteor",
+     "Dan Brown",
+     [
+      "thriller"
+     ]
+    ],
+    [
+     "Vergebung",
+     "Stieg Larsson",
+     [
+      "krimi",
+      "thriller",
+      "serie"
+     ]
+    ],
+    [
+     "Verdammnis",
+     "Stieg Larsson",
+     [
+      "krimi",
+      "thriller",
+      "serie"
+     ]
+    ],
+    [
+     "Tod auf dem Nil",
+     "Agatha Christie",
+     [
+      "krimi",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Alibi",
+     "Agatha Christie",
+     [
+      "krimi",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Die Morde des Herrn ABC",
+     "Agatha Christie",
+     [
+      "krimi",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Das Böse unter der Sonne",
+     "Agatha Christie",
+     [
+      "krimi",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Mord im Pfarrhaus",
+     "Agatha Christie",
+     [
+      "krimi",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "16 Uhr 50 ab Paddington",
+     "Agatha Christie",
+     [
+      "krimi",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Ein Mord wird angekündigt",
+     "Agatha Christie",
+     [
+      "krimi",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Das Zeichen der Vier",
+     "Arthur Conan Doyle",
+     [
+      "krimi",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Die Abenteuer des Sherlock Holmes",
+     "Arthur Conan Doyle",
+     [
+      "krimi",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Maigret und die junge Tote",
+     "Georges Simenon",
+     [
+      "krimi",
+      "klassiker",
+      "serie"
+     ]
+    ],
+    [
+     "Der Richter und sein Henker",
+     "Friedrich Dürrenmatt",
+     [
+      "krimi",
+      "klassiker"
+     ]
+    ],
+    [
+     "Das Versprechen",
+     "Friedrich Dürrenmatt",
+     [
+      "krimi",
+      "klassiker"
+     ]
+    ],
+    [
+     "Verbrechen",
+     "Ferdinand von Schirach",
+     [
+      "krimi",
+      "gegenwart"
+     ]
+    ],
+    [
+     "Schuld",
+     "Ferdinand von Schirach",
+     [
+      "krimi",
+      "gegenwart"
+     ]
+    ],
+    [
+     "Der Fall Collini",
+     "Ferdinand von Schirach",
+     [
+      "krimi",
+      "gegenwart",
+      "historisch"
+     ]
+    ],
+    [
+     "Terror",
+     "Ferdinand von Schirach",
+     [
+      "drama",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Tannöd",
+     "Andrea Maria Schenkel",
+     [
+      "krimi",
+      "historisch"
+     ]
+    ],
+    [
+     "Der Kalligraph des Bischofs",
+     "Rafik Schami",
+     [
+      "historisch"
+     ]
+    ]
+   ]
+  },
+  {
+   "name": "Stephen King & Grusel",
+   "zielgruppe": "erwachsene",
+   "tags": [
+    "horror",
+    "spannend"
+   ],
+   "minAlter": 16,
+   "reihen": [],
+   "buecher": [
+    [
+     "Carrie",
+     "Stephen King",
+     []
+    ],
+    [
+     "Friedhof der Kuscheltiere",
+     "Stephen King",
+     []
+    ],
+    [
+     "Misery",
+     "Stephen King",
+     []
+    ],
+    [
+     "Sie",
+     "Stephen King",
+     []
+    ],
+    [
+     "Brennen muss Salem",
+     "Stephen King",
+     []
+    ],
+    [
+     "Das letzte Gefecht",
+     "Stephen King",
+     []
+    ],
+    [
+     "Die Arena",
+     "Stephen King",
+     [
+      "scifi"
+     ]
+    ],
+    [
+     "Der Anschlag",
+     "Stephen King",
+     [
+      "scifi",
+      "historisch"
+     ]
+    ],
+    [
+     "Das Institut",
+     "Stephen King",
+     [
+      "thriller",
+      "jungeHelden"
+     ]
+    ],
+    [
+     "Christine",
+     "Stephen King",
+     []
+    ],
+    [
+     "Cujo",
+     "Stephen King",
+     [
+      "tiere"
+     ]
+    ],
+    [
+     "Spuk in Hill House",
+     "Shirley Jackson",
+     [
+      "klassiker"
+     ]
+    ],
+    [
+     "Das Gespenst von Canterville",
+     "Oscar Wilde",
+     [
+      "humor",
+      "klassiker"
+     ]
+    ],
+    [
+     "Der Exorzist",
+     "William Peter Blatty",
+     []
+    ]
+   ]
+  },
+  {
+   "name": "Romane der Gegenwart",
+   "zielgruppe": "erwachsene",
+   "tags": [
+    "gegenwart"
+   ],
+   "reihen": [
+    {
+     "reihe": "Neapolitanische Saga",
+     "autor": "Ferrante",
+     "max": 4,
+     "tags": [
+      "drama",
+      "freundschaft",
+      "serie"
+     ]
+    },
+    {
+     "reihe": "Bridgerton",
+     "autor": "Quinn",
+     "max": 5,
+     "tags": [
+      "liebe",
+      "historisch",
+      "serie"
+     ]
+    }
+   ],
+   "buecher": [
+    [
+     "Unterleuten",
+     "Juli Zeh",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Über Menschen",
+     "Juli Zeh",
+     [
+      "drama",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Corpus Delicti",
+     "Juli Zeh",
+     [
+      "dystopie",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Tyll",
+     "Daniel Kehlmann",
+     [
+      "historisch",
+      "humor"
+     ]
+    ],
+    [
+     "Herkunft",
+     "Saša Stanišić",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Vor dem Fest",
+     "Saša Stanišić",
+     [
+      "humor"
+     ]
+    ],
+    [
+     "Altes Land",
+     "Dörte Hansen",
+     [
+      "drama",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Mittagsstunde",
+     "Dörte Hansen",
+     [
+      "drama",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Was man von hier aus sehen kann",
+     "Mariana Leky",
+     [
+      "gefuehl",
+      "humor"
+     ]
+    ],
+    [
+     "Vom Ende der Einsamkeit",
+     "Benedict Wells",
+     [
+      "drama",
+      "traurig",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Hard Land",
+     "Benedict Wells",
+     [
+      "jungeHelden",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Kafka am Strand",
+     "Haruki Murakami",
+     [
+      "fantasy",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Naokos Lächeln",
+     "Haruki Murakami",
+     [
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "1Q84",
+     "Haruki Murakami",
+     [
+      "fantasy",
+      "liebe"
+     ]
+    ],
+    [
+     "Drachenläufer",
+     "Khaled Hosseini",
+     [
+      "drama",
+      "traurig",
+      "freundschaft"
+     ]
+    ],
+    [
+     "Tausend strahlende Sonnen",
+     "Khaled Hosseini",
+     [
+      "drama",
+      "traurig"
+     ]
+    ],
+    [
+     "Der Gesang der Flusskrebse",
+     "Delia Owens",
+     [
+      "krimi",
+      "gefuehl",
+      "tiere"
+     ]
+    ],
+    [
+     "Die Nachtigall",
+     "Kristin Hannah",
+     [
+      "historisch",
+      "drama",
+      "traurig"
+     ]
+    ],
+    [
+     "Das Spiel des Engels",
+     "Carlos Ruiz Zafón",
+     [
+      "krimi",
+      "historisch",
+      "serie"
+     ]
+    ],
+    [
+     "Der Gefangene des Himmels",
+     "Carlos Ruiz Zafón",
+     [
+      "krimi",
+      "historisch",
+      "serie"
+     ]
+    ],
+    [
+     "Das Labyrinth der Lichter",
+     "Carlos Ruiz Zafón",
+     [
+      "krimi",
+      "historisch",
+      "serie"
+     ]
+    ],
+    [
+     "Das Geisterhaus",
+     "Isabel Allende",
+     [
+      "fantasy",
+      "historisch",
+      "drama"
+     ]
+    ],
+    [
+     "Hundert Jahre Einsamkeit",
+     "Gabriel García Márquez",
+     [
+      "klassiker",
+      "fantasy"
+     ]
+    ],
+    [
+     "Die Liebe in den Zeiten der Cholera",
+     "Gabriel García Márquez",
+     [
+      "klassiker",
+      "liebe"
+     ]
+    ],
+    [
+     "Elf Minuten",
+     "Paulo Coelho",
+     [
+      "liebe",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Veronika beschließt zu sterben",
+     "Paulo Coelho",
+     [
+      "nachdenklich",
+      "drama"
+     ]
+    ],
+    [
+     "Ein ganzes neues Leben",
+     "Jojo Moyes",
+     [
+      "liebe",
+      "gefuehl",
+      "serie"
+     ]
+    ],
+    [
+     "Ein Bild von dir",
+     "Jojo Moyes",
+     [
+      "liebe",
+      "historisch"
+     ]
+    ],
+    [
+     "Wie ein einziger Tag",
+     "Nicholas Sparks",
+     [
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "Weit wie das Meer",
+     "Nicholas Sparks",
+     [
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "Zeit im Wind",
+     "Nicholas Sparks",
+     [
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "P.S. Ich liebe Dich",
+     "Cecelia Ahern",
+     [
+      "liebe",
+      "traurig",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Nur noch ein einziges Mal",
+     "Colleen Hoover",
+     [
+      "liebe",
+      "drama"
+     ]
+    ],
+    [
+     "Was perfekt war",
+     "Colleen Hoover",
+     [
+      "liebe",
+      "drama"
+     ]
+    ],
+    [
+     "Verity",
+     "Colleen Hoover",
+     [
+      "thriller",
+      "spannend"
+     ]
+    ],
+    [
+     "Weil ich Layken liebe",
+     "Colleen Hoover",
+     [
+      "liebe",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Normale Menschen",
+     "Sally Rooney",
+     [
+      "liebe",
+      "drama"
+     ]
+    ],
+    [
+     "Die Mitternachtsrose",
+     "Lucinda Riley",
+     [
+      "liebe",
+      "historisch"
+     ]
+    ],
+    [
+     "Die sieben Schwestern",
+     "Lucinda Riley",
+     [
+      "liebe",
+      "historisch",
+      "serie"
+     ]
+    ],
+    [
+     "Ein Mann namens Ove",
+     "Fredrik Backman",
+     [
+      "humor",
+      "gefuehl",
+      "happyend"
+     ]
+    ],
+    [
+     "Oma lässt grüßen und sagt, es tut ihr leid",
+     "Fredrik Backman",
+     [
+      "humor",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Die Analphabetin, die rechnen konnte",
+     "Jonas Jonasson",
+     [
+      "humor",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Mondscheintarif",
+     "Ildikó von Kürthy",
+     [
+      "humor",
+      "liebe"
+     ]
+    ],
+    [
+     "Vollidiot",
+     "Tommy Jaud",
+     [
+      "humor"
+     ]
+    ],
+    [
+     "Resturlaub",
+     "Tommy Jaud",
+     [
+      "humor"
+     ]
+    ],
+    [
+     "Mieses Karma",
+     "David Safier",
+     [
+      "humor",
+      "fantasy"
+     ]
+    ],
+    [
+     "Jesus liebt mich",
+     "David Safier",
+     [
+      "humor",
+      "liebe"
+     ]
+    ],
+    [
+     "Das Känguru-Manifest",
+     "Marc-Uwe Kling",
+     [
+      "humor",
+      "serie"
+     ]
+    ],
+    [
+     "Die Känguru-Offenbarung",
+     "Marc-Uwe Kling",
+     [
+      "humor",
+      "serie"
+     ]
+    ],
+    [
+     "Die Känguru-Apokryphen",
+     "Marc-Uwe Kling",
+     [
+      "humor",
+      "serie"
+     ]
+    ],
+    [
+     "QualityLand 2.0",
+     "Marc-Uwe Kling",
+     [
+      "humor",
+      "dystopie",
+      "serie"
+     ]
+    ],
+    [
+     "Der Trafikant",
+     "Robert Seethaler",
+     [
+      "historisch",
+      "jungeHelden"
+     ]
+    ],
+    [
+     "Ein ganzes Leben",
+     "Robert Seethaler",
+     [
+      "nachdenklich",
+      "traurig"
+     ]
+    ],
+    [
+     "Abbitte",
+     "Ian McEwan",
+     [
+      "drama",
+      "historisch",
+      "liebe"
+     ]
+    ],
+    [
+     "Was vom Tage übrig blieb",
+     "Kazuo Ishiguro",
+     [
+      "drama",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Alles, was wir geben mussten",
+     "Kazuo Ishiguro",
+     [
+      "scifi",
+      "traurig",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Die unerträgliche Leichtigkeit des Seins",
+     "Milan Kundera",
+     [
+      "liebe",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Das Leben des Pi",
+     "Yann Martel",
+     [
+      "abenteuer",
+      "tiere",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Der Drache mit den roten Augen",
+     "Astrid Lindgren",
+     [
+      "tiere"
+     ]
+    ],
+    [
+     "Die Wand",
+     "Marlen Haushofer",
+     [
+      "nachdenklich",
+      "dystopie"
+     ]
+    ],
+    [
+     "Die Glasglocke",
+     "Sylvia Plath",
+     [
+      "drama",
+      "klassiker"
+     ]
+    ],
+    [
+     "Menschenkind",
+     "Toni Morrison",
+     [
+      "historisch",
+      "drama",
+      "klassiker"
+     ]
+    ],
+    [
+     "Die Farbe Lila",
+     "Alice Walker",
+     [
+      "historisch",
+      "drama"
+     ]
+    ],
+    [
+     "Wer hat Angst vor Virginia Woolf?",
+     "Edward Albee",
+     [
+      "drama",
+      "klassiker"
+     ]
+    ]
+   ]
+  },
+  {
+   "name": "Deutschsprachige Klassiker",
+   "zielgruppe": "erwachsene",
+   "tags": [
+    "klassiker"
+   ],
+   "reihen": [],
+   "buecher": [
+    [
+     "Die Räuber",
+     "Friedrich Schiller",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Kabale und Liebe",
+     "Friedrich Schiller",
+     [
+      "drama",
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "Wilhelm Tell",
+     "Friedrich Schiller",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Maria Stuart",
+     "Friedrich Schiller",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Don Karlos",
+     "Friedrich Schiller",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Iphigenie auf Tauris",
+     "Johann Wolfgang von Goethe",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Die Wahlverwandtschaften",
+     "Johann Wolfgang von Goethe",
+     [
+      "liebe",
+      "drama"
+     ]
+    ],
+    [
+     "Götz von Berlichingen",
+     "Johann Wolfgang von Goethe",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Faust. Der Tragödie zweiter Teil",
+     "Johann Wolfgang von Goethe",
+     [
+      "drama",
+      "fantasy"
+     ]
+    ],
+    [
+     "Nathan der Weise",
+     "Gotthold Ephraim Lessing",
+     [
+      "drama",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Emilia Galotti",
+     "Gotthold Ephraim Lessing",
+     [
+      "drama",
+      "traurig"
+     ]
+    ],
+    [
+     "Minna von Barnhelm",
+     "Gotthold Ephraim Lessing",
+     [
+      "humor",
+      "liebe"
+     ]
+    ],
+    [
+     "Michael Kohlhaas",
+     "Heinrich von Kleist",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Der zerbrochne Krug",
+     "Heinrich von Kleist",
+     [
+      "humor"
+     ]
+    ],
+    [
+     "Die Marquise von O.",
+     "Heinrich von Kleist",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Der Sandmann",
+     "E. T. A. Hoffmann",
+     [
+      "horror",
+      "fantasy"
+     ]
+    ],
+    [
+     "Das Fräulein von Scuderi",
+     "E. T. A. Hoffmann",
+     [
+      "krimi"
+     ]
+    ],
+    [
+     "Woyzeck",
+     "Georg Büchner",
+     [
+      "drama",
+      "traurig"
+     ]
+    ],
+    [
+     "Dantons Tod",
+     "Georg Büchner",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Lenz",
+     "Georg Büchner",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Irrungen, Wirrungen",
+     "Theodor Fontane",
+     [
+      "liebe",
+      "drama"
+     ]
+    ],
+    [
+     "Der Stechlin",
+     "Theodor Fontane",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Kleider machen Leute",
+     "Gottfried Keller",
+     [
+      "humor"
+     ]
+    ],
+    [
+     "Romeo und Julia auf dem Dorfe",
+     "Gottfried Keller",
+     [
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "Immensee",
+     "Theodor Storm",
+     [
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "Pole Poppenspäler",
+     "Theodor Storm",
+     [
+      "gefuehl"
+     ]
+    ],
+    [
+     "Bahnwärter Thiel",
+     "Gerhart Hauptmann",
+     [
+      "drama",
+      "traurig"
+     ]
+    ],
+    [
+     "Die Weber",
+     "Gerhart Hauptmann",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Buddenbrooks",
+     "Thomas Mann",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Der Zauberberg",
+     "Thomas Mann",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Der Tod in Venedig",
+     "Thomas Mann",
+     [
+      "drama",
+      "traurig"
+     ]
+    ],
+    [
+     "Tonio Kröger",
+     "Thomas Mann",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Der Untertan",
+     "Heinrich Mann",
+     [
+      "humor",
+      "drama"
+     ]
+    ],
+    [
+     "Das Schloss",
+     "Franz Kafka",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Der Verschollene",
+     "Franz Kafka",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Das Urteil",
+     "Franz Kafka",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Unterm Rad",
+     "Hermann Hesse",
+     [
+      "jungeHelden",
+      "traurig"
+     ]
+    ],
+    [
+     "Narziß und Goldmund",
+     "Hermann Hesse",
+     [
+      "freundschaft",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Demian",
+     "Hermann Hesse",
+     [
+      "jungeHelden",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Mutter Courage und ihre Kinder",
+     "Bertolt Brecht",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Der gute Mensch von Sezuan",
+     "Bertolt Brecht",
+     [
+      "drama",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Die Dreigroschenoper",
+     "Bertolt Brecht",
+     [
+      "drama",
+      "humor"
+     ]
+    ],
+    [
+     "Leben des Galilei",
+     "Bertolt Brecht",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Sternstunden der Menschheit",
+     "Stefan Zweig",
+     [
+      "historisch",
+      "sachbuch"
+     ]
+    ],
+    [
+     "Brief einer Unbekannten",
+     "Stefan Zweig",
+     [
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "Ungeduld des Herzens",
+     "Stefan Zweig",
+     [
+      "liebe",
+      "drama"
+     ]
+    ],
+    [
+     "Radetzkymarsch",
+     "Joseph Roth",
+     [
+      "historisch",
+      "drama"
+     ]
+    ],
+    [
+     "Hiob",
+     "Joseph Roth",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Berlin Alexanderplatz",
+     "Alfred Döblin",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Kleiner Mann – was nun?",
+     "Hans Fallada",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Jeder stirbt für sich allein",
+     "Hans Fallada",
+     [
+      "historisch",
+      "drama",
+      "spannend"
+     ]
+    ],
+    [
+     "Fabian",
+     "Erich Kästner",
+     [
+      "drama",
+      "historisch"
+     ]
+    ],
+    [
+     "Drei Kameraden",
+     "Erich Maria Remarque",
+     [
+      "freundschaft",
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "Arc de Triomphe",
+     "Erich Maria Remarque",
+     [
+      "historisch",
+      "liebe"
+     ]
+    ],
+    [
+     "Die verlorene Ehre der Katharina Blum",
+     "Heinrich Böll",
+     [
+      "drama",
+      "gegenwart"
+     ]
+    ],
+    [
+     "Ansichten eines Clowns",
+     "Heinrich Böll",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Andorra",
+     "Max Frisch",
+     [
+      "drama",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Biedermann und die Brandstifter",
+     "Max Frisch",
+     [
+      "humor",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Stiller",
+     "Max Frisch",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Katz und Maus",
+     "Günter Grass",
+     [
+      "jungeHelden",
+      "historisch"
+     ]
+    ],
+    [
+     "Deutschstunde",
+     "Siegfried Lenz",
+     [
+      "historisch",
+      "jungeHelden"
+     ]
+    ],
+    [
+     "Der geteilte Himmel",
+     "Christa Wolf",
+     [
+      "liebe",
+      "historisch"
+     ]
+    ],
+    [
+     "Kassandra",
+     "Christa Wolf",
+     [
+      "historisch"
+     ]
+    ],
+    [
+     "Die neuen Leiden des jungen W.",
+     "Ulrich Plenzdorf",
+     [
+      "jungeHelden",
+      "humor"
+     ]
+    ],
+    [
+     "Die Taube",
+     "Patrick Süskind",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Der Hauptmann von Köpenick",
+     "Carl Zuckmayer",
+     [
+      "humor",
+      "historisch"
+     ]
+    ],
+    [
+     "Jugend ohne Gott",
+     "Ödön von Horváth",
+     [
+      "krimi",
+      "historisch"
+     ]
+    ],
+    [
+     "Traumnovelle",
+     "Arthur Schnitzler",
+     [
+      "liebe",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Fräulein Else",
+     "Arthur Schnitzler",
+     [
+      "drama",
+      "traurig"
+     ]
+    ],
+    [
+     "Die Verwirrungen des Zöglings Törleß",
+     "Robert Musil",
+     [
+      "jungeHelden",
+      "drama"
+     ]
+    ],
+    [
+     "Das siebte Kreuz",
+     "Anna Seghers",
+     [
+      "historisch",
+      "spannend"
+     ]
+    ],
+    [
+     "Transit",
+     "Anna Seghers",
+     [
+      "historisch"
+     ]
+    ],
+    [
+     "Frühlings Erwachen",
+     "Frank Wedekind",
+     [
+      "jungeHelden",
+      "drama"
+     ]
+    ],
+    [
+     "Aus dem Leben eines Taugenichts",
+     "Joseph von Eichendorff",
+     [
+      "humor",
+      "abenteuer"
+     ]
+    ],
+    [
+     "Die Judenbuche",
+     "Annette von Droste-Hülshoff",
+     [
+      "krimi"
+     ]
+    ],
+    [
+     "Heidi kann brauchen, was es gelernt hat",
+     "Johanna Spyri",
+     [
+      "serie"
+     ]
+    ]
+   ]
+  },
+  {
+   "name": "Weltliteratur",
+   "zielgruppe": "erwachsene",
+   "tags": [
+    "klassiker"
+   ],
+   "reihen": [],
+   "buecher": [
+    [
+     "Romeo und Julia",
+     "William Shakespeare",
+     [
+      "liebe",
+      "drama",
+      "traurig"
+     ]
+    ],
+    [
+     "Hamlet",
+     "William Shakespeare",
+     [
+      "drama",
+      "traurig"
+     ]
+    ],
+    [
+     "Macbeth",
+     "William Shakespeare",
+     [
+      "drama",
+      "horror"
+     ]
+    ],
+    [
+     "Ein Sommernachtstraum",
+     "William Shakespeare",
+     [
+      "humor",
+      "fantasy",
+      "liebe"
+     ]
+    ],
+    [
+     "Othello",
+     "William Shakespeare",
+     [
+      "drama",
+      "liebe",
+      "traurig"
+     ]
+    ],
+    [
+     "König Lear",
+     "William Shakespeare",
+     [
+      "drama",
+      "traurig"
+     ]
+    ],
+    [
+     "Der Kaufmann von Venedig",
+     "William Shakespeare",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Emma",
+     "Jane Austen",
+     [
+      "liebe",
+      "humor"
+     ]
+    ],
+    [
+     "Verstand und Gefühl",
+     "Jane Austen",
+     [
+      "liebe",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Überredung",
+     "Jane Austen",
+     [
+      "liebe"
+     ]
+    ],
+    [
+     "Große Erwartungen",
+     "Charles Dickens",
+     [
+      "drama",
+      "jungeHelden"
+     ]
+    ],
+    [
+     "David Copperfield",
+     "Charles Dickens",
+     [
+      "drama",
+      "jungeHelden"
+     ]
+    ],
+    [
+     "Gullivers Reisen",
+     "Jonathan Swift",
+     [
+      "abenteuer",
+      "humor",
+      "fantasy"
+     ]
+    ],
+    [
+     "Don Quijote",
+     "Miguel de Cervantes",
+     [
+      "abenteuer",
+      "humor"
+     ]
+    ],
+    [
+     "Der Glöckner von Notre-Dame",
+     "Victor Hugo",
+     [
+      "drama",
+      "historisch",
+      "traurig"
+     ]
+    ],
+    [
+     "Madame Bovary",
+     "Gustave Flaubert",
+     [
+      "liebe",
+      "drama"
+     ]
+    ],
+    [
+     "Krieg und Frieden",
+     "Leo Tolstoi",
+     [
+      "historisch",
+      "drama"
+     ]
+    ],
+    [
+     "Der Idiot",
+     "Fjodor Dostojewski",
+     [
+      "drama",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Die Brüder Karamasow",
+     "Fjodor Dostojewski",
+     [
+      "drama",
+      "krimi",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Die toten Seelen",
+     "Nikolai Gogol",
+     [
+      "humor"
+     ]
+    ],
+    [
+     "Der Meister und Margarita",
+     "Michail Bulgakow",
+     [
+      "fantasy",
+      "humor"
+     ]
+    ],
+    [
+     "Der Fremde",
+     "Albert Camus",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Die Pest",
+     "Albert Camus",
+     [
+      "drama",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Wem die Stunde schlägt",
+     "Ernest Hemingway",
+     [
+      "historisch",
+      "drama"
+     ]
+    ],
+    [
+     "Fiesta",
+     "Ernest Hemingway",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Früchte des Zorns",
+     "John Steinbeck",
+     [
+      "historisch",
+      "drama"
+     ]
+    ],
+    [
+     "Jenseits von Eden",
+     "John Steinbeck",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Unterwegs",
+     "Jack Kerouac",
+     [
+      "abenteuer"
+     ]
+    ],
+    [
+     "Odyssee",
+     "Homer",
+     [
+      "abenteuer",
+      "fantasy",
+      "historisch"
+     ]
+    ],
+    [
+     "Ilias",
+     "Homer",
+     [
+      "action",
+      "historisch"
+     ]
+    ],
+    [
+     "Die göttliche Komödie",
+     "Dante Alighieri",
+     [
+      "fantasy",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Der Ruf der Wildnis",
+     "Jack London",
+     [
+      "abenteuer",
+      "tiere"
+     ]
+    ],
+    [
+     "Wolfsblut",
+     "Jack London",
+     [
+      "abenteuer",
+      "tiere"
+     ]
+    ],
+    [
+     "Onkel Toms Hütte",
+     "Harriet Beecher Stowe",
+     [
+      "historisch",
+      "drama"
+     ]
+    ],
+    [
+     "Der Untergang des Hauses Usher",
+     "Edgar Allan Poe",
+     [
+      "horror"
+     ]
+    ],
+    [
+     "Der letzte Mohikaner",
+     "James Fenimore Cooper",
+     [
+      "abenteuer",
+      "historisch"
+     ]
+    ],
+    [
+     "Ivanhoe",
+     "Walter Scott",
+     [
+      "abenteuer",
+      "historisch"
+     ]
+    ],
+    [
+     "Lolita",
+     "Vladimir Nabokov",
+     [
+      "drama"
+     ]
+    ],
+    [
+     "Herz der Finsternis",
+     "Joseph Conrad",
+     [
+      "abenteuer",
+      "nachdenklich"
+     ]
+    ]
+   ]
+  },
+  {
+   "name": "Sachbücher",
+   "zielgruppe": "erwachsene",
+   "tags": [
+    "sachbuch"
+   ],
+   "reihen": [],
+   "buecher": [
+    [
+     "Homo Deus",
+     "Yuval Noah Harari",
+     [
+      "nachdenklich",
+      "scifi"
+     ]
+    ],
+    [
+     "21 Lektionen für das 21. Jahrhundert",
+     "Yuval Noah Harari",
+     [
+      "nachdenklich",
+      "gegenwart"
+     ]
+    ],
+    [
+     "Die Kunst des klaren Denkens",
+     "Rolf Dobelli",
+     [
+      "selbsthilfe"
+     ]
+    ],
+    [
+     "Der Ernährungskompass",
+     "Bas Kast",
+     [
+      "selbsthilfe"
+     ]
+    ],
+    [
+     "Becoming",
+     "Michelle Obama",
+     [
+      "gegenwart"
+     ]
+    ],
+    [
+     "Das geheime Leben der Bäume",
+     "Peter Wohlleben",
+     [
+      "tiere"
+     ]
+    ],
+    [
+     "Im Grunde gut",
+     "Rutger Bregman",
+     [
+      "nachdenklich",
+      "historisch"
+     ]
+    ],
+    [
+     "Wie man Freunde gewinnt",
+     "Dale Carnegie",
+     [
+      "selbsthilfe"
+     ]
+    ],
+    [
+     "Trotzdem Ja zum Leben sagen",
+     "Viktor E. Frankl",
+     [
+      "historisch",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Die 7 Wege zur Effektivität",
+     "Stephen R. Covey",
+     [
+      "selbsthilfe"
+     ]
+    ],
+    [
+     "Magic Cleaning",
+     "Marie Kondo",
+     [
+      "selbsthilfe"
+     ]
+    ],
+    [
+     "Jetzt! Die Kraft der Gegenwart",
+     "Eckhart Tolle",
+     [
+      "selbsthilfe",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Eine kurze Geschichte von fast allem",
+     "Bill Bryson",
+     [
+      "humor",
+      "scifi"
+     ]
+    ],
+    [
+     "Das egoistische Gen",
+     "Richard Dawkins",
+     [
+      "tiere",
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Die kleinste gemeinsame Wirklichkeit",
+     "Mai Thi Nguyen-Kim",
+     [
+      "gegenwart"
+     ]
+    ],
+    [
+     "Kosmos",
+     "Carl Sagan",
+     [
+      "scifi"
+     ]
+    ],
+    [
+     "Der Mensch erscheint im Holozän",
+     "Max Frisch",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Sorge dich nicht – lebe!",
+     "Dale Carnegie",
+     [
+      "selbsthilfe"
+     ]
+    ],
+    [
+     "Die subtile Kunst des Daraufscheißens",
+     "Mark Manson",
+     [
+      "selbsthilfe",
+      "humor"
+     ]
+    ],
+    [
+     "Deep Work",
+     "Cal Newport",
+     [
+      "selbsthilfe"
+     ]
+    ],
+    [
+     "Das Kind in dir muss Heimat finden",
+     "Stefanie Stahl",
+     [
+      "selbsthilfe",
+      "gefuehl"
+     ]
+    ],
+    [
+     "Leben und Schicksal",
+     "Wassili Grossman",
+     [
+      "historisch",
+      "klassiker"
+     ]
+    ],
+    [
+     "Der Gotteswahn",
+     "Richard Dawkins",
+     [
+      "nachdenklich"
+     ]
+    ],
+    [
+     "Die Welt von gestern",
+     "Stefan Zweig",
+     [
+      "historisch",
+      "klassiker"
+     ]
+    ],
+    [
+     "Geschichte des Westens",
+     "Heinrich August Winkler",
+     [
+      "historisch"
+     ]
+    ],
+    [
+     "Steve Jobs",
+     "Walter Isaacson",
+     [
+      "gegenwart"
+     ]
+    ],
+    [
+     "Ikigai",
+     "Héctor García",
+     [
+      "selbsthilfe"
+     ]
+    ],
+    [
+     "Die Gesellschaft der Singularitäten",
+     "Andreas Reckwitz",
+     [
+      "gegenwart",
+      "nachdenklich"
+     ]
+    ]
+   ]
+  }
+ ]
+}

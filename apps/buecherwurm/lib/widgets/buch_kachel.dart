@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/katalog_cover.dart';
 import '../models/buch.dart';
 
 /// Farbiges Platzhalter-Cover mit den Anfangsbuchstaben des Titels.
@@ -50,7 +51,7 @@ class BuchCover extends StatelessWidget {
         ),
       ),
     );
-    final url = buch.coverUrl;
+    final url = buch.coverUrl ?? katalogCover[buch.id];
     if (url == null) return platzhalter;
     return ClipRRect(
       borderRadius: BorderRadius.circular(breite / 10),
