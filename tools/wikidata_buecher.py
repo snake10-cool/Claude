@@ -53,6 +53,12 @@ SCHLUESSEL = {
     'gegenwart': ['gegenwart', 'zeitroman'],
 }
 VERBOTEN = re.compile(r'erotik|erotisch|pornograf|pornograph', re.I)
+# Schriftwerke, die keine Lesebücher sind: Gesetze, Verträge, heilige Schriften, Zeitschriften …
+KEIN_LESEBUCH = re.compile(
+    r'gesetz|verfassung|vertrag|abkommen|charta|deklaration|erklärung der|resolution|verordnung|'
+    r'bibel|evangeli|testament|koran|sure\b|psalm|brief des|brief an die|enzyklika|katechismus|'
+    r'zeitschrift|zeitung|magazin|periodikum|wörterbuch|lexikon|enzyklopädie|handschrift|kodex|'
+    r'codex|inschrift|urkunde|lehrbuch|schulbuch', re.I)
 
 
 def normal(s):
@@ -66,7 +72,7 @@ def holen(url, daten=None, versuche=4):
             req = urllib.request.Request(url, data=daten, headers={
                 'User-Agent': UA, 'Accept': 'application/sparql-results+json, application/json'})
             with urllib.request.urlopen(req, timeout=120) as r:
-                return json.loads(r.read())
+                return json.loads(r.read(), strict=False)  # Wikidata-Titel enthalten manchmal Steuerzeichen
         except urllib.error.HTTPError as e:
             print(f'  HTTP {e.code} – Versuch {i + 1}')
             time.sleep(10 * (i + 1) if e.code == 429 else 3 * (i + 1))
@@ -185,8 +191,10 @@ def main():
             genre_namen = [personen.get(g, '') for g in genres]
             publikum_namen = [personen.get(p, '') for p in publikum]
             text = ' | '.join(genre_namen + publikum_namen + [beschreibung]).lower()
-            if VERBOTEN.search(text):
+            if VERBOTEN.search(text) or KEIN_LESEBUCH.search(text):
                 continue
+            if not autoren:
+                continue  # ohne bekannten Autor meist kein Lesebuch
             jahr = min(jahre) if jahre else 0
             tags = {t for t, woerter in SCHLUESSEL.items() if any(w in text for w in woerter)}
             if 0 < jahr < 1950:
