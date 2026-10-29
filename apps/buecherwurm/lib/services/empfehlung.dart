@@ -31,6 +31,7 @@ Map<String, double> leseprofil(
   Map<String, Eintrag> eintraege,
   Buch? Function(String id) buchFinden, {
   Map<String, double> vorlieben = const {},
+  Set<String> nichtFuerMich = const {},
 }) {
   final profil = <String, double>{};
   void plus(String tag, double w) => profil[tag] = (profil[tag] ?? 0) + w;
@@ -64,6 +65,14 @@ Map<String, double> leseprofil(
   // „Bücher gegeneinander": direkte Aussagen wie „Liebesgeschichten mag ich
   // nicht" zählen stark.
   vorlieben.forEach((t, w) => plus(t, w * 2));
+
+  // Swipe nach links: leicht abwerten (ein Buch kann aus vielen Gründen
+  // nicht passen, daher schwächer als eine schlechte Bewertung).
+  for (final id in nichtFuerMich) {
+    for (final t in buchFinden(id)?.tags ?? const <String>{}) {
+      plus(t, -0.3);
+    }
+  }
   return profil;
 }
 
@@ -73,9 +82,12 @@ List<Empfehlung> empfehlen({
   List<Buch> buecher = katalog,
   int anzahl = 20,
   Map<String, double> vorlieben = const {},
+  Set<String> nichtFuerMich = const {},
+  Set<String> ausschliessen = const {},
 }) {
   final nachId = {for (final b in buecher) b.id: b};
-  final profil = leseprofil(antworten, eintraege, (id) => nachId[id], vorlieben: vorlieben);
+  final profil = leseprofil(antworten, eintraege, (id) => nachId[id],
+      vorlieben: vorlieben, nichtFuerMich: nichtFuerMich);
   final alter = antwortWert(antworten, 'alter');
   final laenge = antwortWert(antworten, 'laenge');
 
@@ -88,6 +100,7 @@ List<Empfehlung> empfehlen({
   final ergebnis = <Empfehlung>[];
   for (final buch in buecher) {
     if (buch.eigenes || eintraege.containsKey(buch.id)) continue;
+    if (nichtFuerMich.contains(buch.id) || ausschliessen.contains(buch.id)) continue;
     if (alter != null && buch.minAlter > alter) continue;
 
     var punkte = 0.0;

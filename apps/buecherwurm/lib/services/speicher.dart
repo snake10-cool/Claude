@@ -60,6 +60,7 @@ class Speicher extends ChangeNotifier {
         key: (value as num).toDouble(),
     };
     geprueft = {...(_json('geprueft', []) as List).cast<String>()};
+    abgelehnt = {...(_json('abgelehnt', []) as List).cast<String>()};
     pausierteQuizze = {
       for (final MapEntry(:key, :value) in _json('pausierteQuizze', {}).entries)
         key: value as Map<String, dynamic>,
@@ -85,6 +86,14 @@ class Speicher extends ChangeNotifier {
 
   /// Beim Abhaken als „nicht gelesen" markierte Bücher (werden nicht mehr gefragt).
   late Set<String> geprueft;
+
+  /// Beim Swipen als „nicht für mich" markiert – senkt diese Merkmale etwas.
+  late Set<String> abgelehnt;
+
+  Future<void> ablehnen(String buchId) {
+    abgelehnt.add(buchId);
+    return _speichern('abgelehnt', abgelehnt.toList());
+  }
 
   /// Angefangene Quizze zum Weitermachen: Buch-ID → Zustand.
   late Map<String, Map<String, dynamic>> pausierteQuizze;
@@ -304,6 +313,8 @@ class Speicher extends ChangeNotifier {
         eintraege: eintraege,
         buecher: alleBuecher,
         vorlieben: vorlieben,
+        nichtFuerMich: abgelehnt,
+        ausschliessen: geprueft,
       );
 
   /// Ergebnis von „Bücher gegeneinander" übernehmen: Vorlieben fließen
@@ -399,6 +410,7 @@ class Speicher extends ChangeNotifier {
     freunde = [];
     vorlieben = {};
     geprueft = {};
+    abgelehnt = {};
     pausierteQuizze = {};
     notifyListeners();
   }

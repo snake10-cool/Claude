@@ -7,6 +7,7 @@ import '../widgets/buch_kachel.dart';
 import '../widgets/leseziel_karte.dart';
 import 'abhaken_screen.dart';
 import 'fragebogen_screen.dart';
+import 'swipe_screen.dart';
 import 'vergleich_screen.dart';
 import 'start_screen.dart';
 
@@ -40,6 +41,15 @@ class FuerDichTab extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         const LesezielKarte(),
+        Card(
+          color: theme.colorScheme.primaryContainer,
+          child: ListTile(
+            leading: const Text('🎲', style: TextStyle(fontSize: 28)),
+            title: const Text('Was lese ich als Nächstes?'),
+            subtitle: const Text('Bücher wischen: → Wunschliste, ← nicht für mich, ↑ gelesen, ↓ überspringen'),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SwipeScreen())),
+          ),
+        ),
         Wrap(
           spacing: 8,
           children: [
