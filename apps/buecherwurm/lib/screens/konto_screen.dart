@@ -16,6 +16,7 @@ class _KontoScreenState extends State<KontoScreen> {
   final _passwort = TextEditingController();
   final _name = TextEditingController();
   var _neu = true;
+  Stream<List<Vorschlag>>? _vorschlaege;
   var _laedt = false;
   String? _fehler;
 
@@ -148,6 +149,66 @@ class _KontoScreenState extends State<KontoScreen> {
         ),
         const SizedBox(height: 8),
         const Text('Dein Stand wird automatisch hochgeladen, sobald du ein Quiz machst.'),
+        if (!(konto.nutzer?.emailVerified ?? true)) ...[
+          const SizedBox(height: 12),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Deine E-Mail-Adresse ist noch nicht bestätigt.'),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      OutlinedButton(
+                        onPressed: _laedt
+                            ? null
+                            : () => _ausfuehren(konto.bestaetigungSenden,
+                                erfolg: 'Bestätigungs-Mail verschickt. Schau in dein Postfach.'),
+                        child: const Text('Mail senden'),
+                      ),
+                      TextButton(
+                        onPressed: _laedt ? null : () => _ausfuehren(konto.neuLaden),
+                        child: const Text('Ich habe bestätigt'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+        const SizedBox(height: 16),
+        Text('Deine Quizfragen', style: theme.textTheme.titleMedium),
+        StreamBuilder<List<Vorschlag>>(
+          stream: _vorschlaege ??= konto.meineVorschlaege(),
+          builder: (context, snap) {
+            final liste = snap.data ?? const [];
+            if (liste.isEmpty) {
+              return const Padding(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                child: Text('Noch keine. Bei jedem Buch kannst du Quizfragen vorschlagen.'),
+              );
+            }
+            return Column(
+              children: [
+                for (final v in liste)
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(v.frage),
+                    subtitle: Text(v.buchTitel),
+                    trailing: Text(switch (v.status) {
+                      'frei' => '✅ frei',
+                      'abgelehnt' => '❌ abgelehnt',
+                      _ => '⏳ wird geprüft',
+                    }),
+                  ),
+              ],
+            );
+          },
+        ),
         if (_fehler != null) ...[
           const SizedBox(height: 12),
           Text(_fehler!, style: TextStyle(color: theme.colorScheme.error)),

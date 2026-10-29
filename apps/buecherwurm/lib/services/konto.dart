@@ -4,7 +4,41 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
+import '../models/buch.dart';
 import 'speicher.dart';
+
+/// Administrator: gibt Quizfragen frei (muss mit firestore.rules übereinstimmen).
+const adminEmail = 'snakejoni10@yahoo.com';
+
+/// Eine von Lesern vorgeschlagene Quizfrage.
+class Vorschlag {
+  const Vorschlag(this.id, this.buchId, this.buchTitel, this.frage, this.antworten, this.name, this.status);
+
+  final String id;
+  final String buchId;
+  final String buchTitel;
+  final String frage;
+
+  /// Die richtige Antwort steht zuerst.
+  final List<String> antworten;
+  final String name;
+
+  /// neu, frei oder abgelehnt.
+  final String status;
+
+  factory Vorschlag.ausDoc(DocumentSnapshot<Map<String, dynamic>> d) {
+    final j = d.data() ?? const {};
+    return Vorschlag(
+      d.id,
+      j['buchId'] as String? ?? '',
+      j['buchTitel'] as String? ?? '',
+      j['frage'] as String? ?? '',
+      List<String>.from(j['antworten'] as List? ?? const []),
+      j['name'] as String? ?? '?',
+      j['status'] as String? ?? 'neu',
+    );
+  }
+}
 
 /// Ein Eintrag in der Online-Rangliste.
 class Spieler {
@@ -46,12 +80,28 @@ class Konto extends ChangeNotifier {
   Konto(this._speicher) {
     _abo = _auth.authStateChanges().listen(_nutzerGeaendert);
     _speicher.addListener(_hochladen);
+    _fragenAbo = _db.collection('quizfragen').limit(5000).snapshots().listen((s) {
+      final neu = <String, List<Frage>>{};
+      for (final d in s.docs) {
+        final j = d.data();
+        final antworten = List<String>.from(j['antworten'] as List? ?? const []);
+        final buchId = j['buchId'] as String?;
+        if (buchId == null || antworten.length != 4) continue;
+        neu.putIfAbsent(buchId, () => []).add(Frage(j['frage'] as String? ?? '', antworten));
+      }
+      gemeinschaftsFragen = neu;
+      notifyListeners();
+    }, onError: (Object e) => debugPrint('Quizfragen nicht geladen: $e'));
   }
 
   final Speicher _speicher;
   final _auth = FirebaseAuth.instance;
   final _db = FirebaseFirestore.instance;
   late final StreamSubscription<User?> _abo;
+  late final StreamSubscription<QuerySnapshot<Map<String, dynamic>>> _fragenAbo;
+
+  /// Freigegebene Quizfragen der Leser, nach Buch-ID.
+  Map<String, List<Frage>> gemeinschaftsFragen = const {};
 
   /// Eigener @Name, sobald das Profil geladen ist.
   String? name;
@@ -59,6 +109,7 @@ class Konto extends ChangeNotifier {
 
   User? get nutzer => _auth.currentUser;
   bool get angemeldet => nutzer != null;
+  bool get istAdmin => nutzer?.email == adminEmail && (nutzer?.emailVerified ?? false);
 
   CollectionReference<Map<String, dynamic>> get _spieler => _db.collection('spieler');
   DocumentReference<Map<String, dynamic>> _namensDoc(String n) => _db.collection('namen').doc(n);
@@ -68,6 +119,7 @@ class Konto extends ChangeNotifier {
   @override
   void dispose() {
     _abo.cancel();
+    _fragenAbo.cancel();
     _speicher.removeListener(_hochladen);
     super.dispose();
   }
@@ -143,6 +195,14 @@ class Konto extends ChangeNotifier {
 
   Future<void> abmelden() => _auth.signOut();
 
+  Future<void> bestaetigungSenden() => _fehler(() => nutzer!.sendEmailVerification());
+
+  /// Lädt den Nutzer neu, z. B. nachdem die E-Mail bestätigt wurde.
+  Future<void> neuLaden() async {
+    await _fehler(() => nutzer!.reload());
+    notifyListeners();
+  }
+
   /// Löscht Rangliste-Eintrag, Freunde, @Name und das Konto selbst.
   Future<void> kontoLoeschen(String passwort) async {
     final u = nutzer;
@@ -202,6 +262,58 @@ class Konto extends ChangeNotifier {
     if (u == null) return;
     await _fehler(() => _freunde(u.uid).doc(uid).delete());
   }
+
+  // ───────── Quizfragen der Leser ─────────
+
+  Future<void> quizVorschlagen(Buch buch, String frage, List<String> antworten) async {
+    final u = nutzer;
+    if (u == null) throw const KontoFehler('Bitte melde dich zuerst an.');
+    await _fehler(() => _db.collection('quizvorschlaege').add({
+          'buchId': buch.id,
+          'buchTitel': buch.titel,
+          'frage': frage.trim(),
+          'antworten': [for (final a in antworten) a.trim()],
+          'uid': u.uid,
+          'name': name ?? '',
+          'status': 'neu',
+          'erstellt': FieldValue.serverTimestamp(),
+        }));
+  }
+
+  /// Eigene Vorschläge mit ihrem Status.
+  Stream<List<Vorschlag>> meineVorschlaege() {
+    final u = nutzer;
+    if (u == null) return Stream.value(const []);
+    return _db
+        .collection('quizvorschlaege')
+        .where('uid', isEqualTo: u.uid)
+        .snapshots()
+        .map((s) => s.docs.map(Vorschlag.ausDoc).toList());
+  }
+
+  /// Nur für den Admin: alle Vorschläge, die noch geprüft werden müssen.
+  Stream<List<Vorschlag>> offeneVorschlaege() => _db
+      .collection('quizvorschlaege')
+      .where('status', isEqualTo: 'neu')
+      .snapshots()
+      .map((s) => s.docs.map(Vorschlag.ausDoc).toList());
+
+  Future<void> freigeben(Vorschlag v) async {
+    final batch = _db.batch()
+      ..set(_db.collection('quizfragen').doc(v.id), {
+        'buchId': v.buchId,
+        'buchTitel': v.buchTitel,
+        'frage': v.frage,
+        'antworten': v.antworten,
+        'von': v.name,
+        'erstellt': FieldValue.serverTimestamp(),
+      })
+      ..update(_db.collection('quizvorschlaege').doc(v.id), {'status': 'frei'});
+    await _fehler(batch.commit);
+  }
+
+  Future<void> ablehnen(Vorschlag v) =>
+      _fehler(() => _db.collection('quizvorschlaege').doc(v.id).update({'status': 'abgelehnt'}));
 
   /// Übersetzt Firebase-Fehler in verständliche deutsche Meldungen.
   Future<T> _fehler<T>(Future<T> Function() aktion) async {

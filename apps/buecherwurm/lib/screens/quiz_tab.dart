@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import '../models/buch.dart';
+import '../services/quiz_fragen.dart';
 import '../widgets/buch_kachel.dart';
 import 'quiz_screen.dart';
 
@@ -19,7 +20,8 @@ class QuizTab extends StatelessWidget {
       return s == Status.gelesen || s == Status.lese ? 0 : 1;
     }
 
-    final buecher = speicher.alleBuecher.where((b) => b.hatQuiz).toList()
+    final konto = KontoScope.of(context);
+    final buecher = speicher.alleBuecher.where((b) => quizVerfuegbar(b, konto)).toList()
       ..sort((a, b) => rang(a).compareTo(rang(b)));
 
     return ListView(
@@ -57,7 +59,7 @@ class QuizTab extends StatelessWidget {
                   ? '${ergebnis.richtig}/${ergebnis.gesamt} richtig · ${ergebnis.punkte} Punkte'
                   : status == Status.gelesen
                       ? 'Gelesen – jetzt beweisen!'
-                      : '${buch.quiz.length} Fragen'),
+                      : buch.autor),
               trailing: ergebnis == null
                   ? const Icon(Icons.play_circle_outline)
                   : Icon(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import '../models/buch.dart';
+import '../services/quiz_fragen.dart';
 
 /// Zeit pro Frage. Kurz genug, dass Nachschlagen kaum klappt.
 const sekundenProFrage = 20;
@@ -24,7 +25,8 @@ class QuizScreen extends StatefulWidget {
 class _QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
   final _zufall = Random();
   late final List<(Frage, List<String>)> _fragen = [
-    for (final f in [...widget.buch.quiz]..shuffle(_zufall)) (f, [...f.antworten]..shuffle(_zufall)),
+    for (final f in quizFragen(widget.buch, KontoScope.of(context), _zufall)..shuffle(_zufall))
+      (f, [...f.antworten]..shuffle(_zufall)),
   ];
 
   /// Nur der erste Versuch zählt, danach ist es Übung.

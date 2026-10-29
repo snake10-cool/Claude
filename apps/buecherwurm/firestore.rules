@@ -13,6 +13,25 @@ service cloud.firestore {
       return angemeldet() && request.auth.uid == uid;
     }
 
+    // Administrator: gibt Quizfragen frei. Nur mit bestätigter E-Mail.
+    // Muss mit adminEmail in lib/services/konto.dart übereinstimmen.
+    function istAdmin() {
+      return angemeldet()
+          && request.auth.token.email == 'snakejoni10@yahoo.com'
+          && request.auth.token.email_verified == true;
+    }
+
+    function gueltigeFrage(d) {
+      return d.buchId is string && d.buchId.size() <= 60
+          && d.buchTitel is string && d.buchTitel.size() <= 200
+          && d.frage is string && d.frage.size() >= 5 && d.frage.size() <= 200
+          && d.antworten is list && d.antworten.size() == 4
+          && d.antworten[0] is string && d.antworten[0].size() >= 1 && d.antworten[0].size() <= 100
+          && d.antworten[1] is string && d.antworten[1].size() >= 1 && d.antworten[1].size() <= 100
+          && d.antworten[2] is string && d.antworten[2].size() >= 1 && d.antworten[2].size() <= 100
+          && d.antworten[3] is string && d.antworten[3].size() >= 1 && d.antworten[3].size() <= 100;
+    }
+
     function gueltigerName(n) {
       return n is string && n.matches('^[a-z0-9_.]{3,20}$');
     }
@@ -48,6 +67,33 @@ service cloud.firestore {
             && gueltigerName(request.resource.data.name)
             && request.resource.data.seit == request.time;
       }
+    }
+
+    // Quizfragen-Vorschläge der Leser: nur der Admin sieht alle und
+    // entscheidet. Die richtige Antwort steht immer zuerst.
+    match /quizvorschlaege/{id} {
+      allow create: if angemeldet()
+          && request.resource.data.keys().hasOnly(['buchId', 'buchTitel', 'frage', 'antworten', 'uid', 'name', 'status', 'erstellt'])
+          && gueltigeFrage(request.resource.data)
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.name is string && request.resource.data.name.size() <= 20
+          && request.resource.data.status == 'neu'
+          && request.resource.data.erstellt == request.time;
+      allow read: if istAdmin() || (angemeldet() && resource.data.uid == request.auth.uid);
+      allow update: if istAdmin()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+          && request.resource.data.status in ['frei', 'abgelehnt'];
+      allow delete: if istAdmin()
+          || (angemeldet() && resource.data.uid == request.auth.uid && resource.data.status == 'neu');
+    }
+
+    // Freigegebene Quizfragen: für alle lesbar, nur der Admin schreibt.
+    match /quizfragen/{id} {
+      allow read: if true;
+      allow create, update: if istAdmin()
+          && request.resource.data.keys().hasOnly(['buchId', 'buchTitel', 'frage', 'antworten', 'von', 'erstellt'])
+          && gueltigeFrage(request.resource.data);
+      allow delete: if istAdmin();
     }
 
     // @Namen sind eindeutig: Ein Dokument pro Name, nur einmal anlegbar.

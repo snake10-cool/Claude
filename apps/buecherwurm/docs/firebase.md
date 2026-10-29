@@ -50,11 +50,27 @@ Claude trägt diese 4 Werte in `lib/firebase_options.dart` ein:
 
 Die Werte sind nicht geheim. Geschützt wird die Datenbank durch die Regeln aus Schritt 3.
 
+## Quizfragen der Leser freigeben (Admin)
+
+Angemeldete Leser können bei jedem Buch Quizfragen vorschlagen. Nur der Admin
+`snakejoni10@yahoo.com` sieht die Vorschläge und gibt sie frei.
+
+1. In der App ein Konto mit `snakejoni10@yahoo.com` anlegen.
+2. Unter **Profil → Konto** auf „Mail senden" tippen und den Link in der E-Mail
+   öffnen, danach „Ich habe bestätigt" tippen. Ohne bestätigte E-Mail gibt es
+   keine Admin-Rechte.
+3. Unter **Profil → Quizfragen prüfen** erscheinen alle offenen Vorschläge.
+
+Freigegebene Fragen sehen alle Leser sofort. Ein Buch ohne eingebautes Quiz
+bekommt eins, sobald 3 Fragen freigegeben sind.
+
 ## Was online gespeichert wird
 
 - `spieler/{uid}`: @Name, Punkte, bewiesene und gelesene Bücher (öffentlich lesbar)
 - `spieler/{uid}/freunde`: die eigene Freundesliste (nur für einen selbst sichtbar)
 - `namen/{name}`: sorgt dafür, dass jeder @Name nur einmal vergeben wird
+- `quizvorschlaege`: vorgeschlagene Fragen (nur für den Admin und den Verfasser sichtbar)
+- `quizfragen`: freigegebene Fragen (für alle lesbar)
 
 Bücher, Bewertungen, Notizen und der Fragebogen bleiben **nur auf dem Handy**.
 „Konto löschen" in der App entfernt alles Online-Gespeicherte. Das ist Pflicht für den Play Store.

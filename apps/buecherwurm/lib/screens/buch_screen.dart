@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import '../models/buch.dart';
+import '../services/quiz_fragen.dart';
 import '../widgets/buch_kachel.dart';
+import 'konto_screen.dart';
 import 'quiz_screen.dart';
+import 'quiz_vorschlag_screen.dart';
 
 class BuchScreen extends StatelessWidget {
   const BuchScreen(this.buchId, {super.key});
@@ -19,6 +22,8 @@ class BuchScreen extends StatelessWidget {
     }
     final eintrag = speicher.eintraege[buchId];
     final quiz = speicher.quiz[buchId];
+    final konto = KontoScope.of(context);
+    final fragen = buch.quiz.length + (konto?.gemeinschaftsFragen[buchId]?.length ?? 0);
     final theme = Theme.of(context);
 
     void setzen({Status? status, int? sterne, Format? format}) {
@@ -76,7 +81,7 @@ class BuchScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          Text(buch.beschreibung, style: theme.textTheme.bodyLarge),
+          if (buch.beschreibung.isNotEmpty) Text(buch.beschreibung, style: theme.textTheme.bodyLarge),
           if (buch.tags.isNotEmpty) ...[
             const SizedBox(height: 12),
             Wrap(
@@ -119,7 +124,7 @@ class BuchScreen extends StatelessWidget {
             const SizedBox(height: 12),
             _Notiz(buchId: buchId, eintrag: eintrag),
           ],
-          if (buch.hatQuiz) ...[
+          if (quizVerfuegbar(buch, konto)) ...[
             const Divider(height: 32),
             Text('Quiz', style: theme.textTheme.titleMedium),
             const SizedBox(height: 8),
@@ -141,7 +146,24 @@ class BuchScreen extends StatelessWidget {
                 builder: (_) => QuizScreen(buch: buch),
               )),
               icon: const Icon(Icons.play_arrow),
-              label: Text(quiz == null ? 'Quiz starten (${buch.quiz.length} Fragen)' : 'Nochmal üben (ohne Punkte)'),
+              label: Text(quiz == null ? 'Quiz starten' : 'Nochmal üben (ohne Punkte)'),
+            ),
+          ] else if (!buch.eigenes) ...[
+            const Divider(height: 32),
+            Text('Quiz', style: theme.textTheme.titleMedium),
+            const SizedBox(height: 4),
+            Text(fragen == 0
+                ? 'Zu diesem Buch gibt es noch kein Quiz.'
+                : 'Noch ${mindestFragen - fragen} Frage(n), dann gibt es ein Quiz.'),
+          ],
+          if (konto != null && !buch.eigenes) ...[
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => konto.angemeldet ? QuizVorschlagScreen(buch: buch) : const KontoScreen(),
+              )),
+              icon: const Icon(Icons.add_comment_outlined),
+              label: Text(konto.angemeldet ? 'Quizfrage vorschlagen' : 'Anmelden, um Quizfragen vorzuschlagen'),
             ),
           ],
         ],

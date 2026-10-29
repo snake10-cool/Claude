@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../models/buch.dart';
 import 'fragebogen_screen.dart';
+import 'admin_screen.dart';
 import 'gelesen_auswahl_screen.dart';
 import 'konto_screen.dart';
 
@@ -71,6 +72,12 @@ class ProfilScreen extends StatelessWidget {
                   : 'Nicht angemeldet'),
               onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const KontoScreen())),
             ),
+            if (konto.istAdmin)
+              ListTile(
+                leading: const Icon(Icons.admin_panel_settings_outlined),
+                title: const Text('Quizfragen prüfen (Admin)'),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminScreen())),
+              ),
           ],
           const Divider(),
           ListTile(
