@@ -34,6 +34,7 @@ void main() {
     final frage = pippi.quiz.firstWhere((f) => find.text(f.text).evaluate().isNotEmpty);
     await tester.tap(find.text(frage.richtig));
     await tester.pump();
+    await tester.ensureVisible(find.text('Pausieren – später weitermachen'));
     await tester.tap(find.text('Pausieren – später weitermachen'));
     await tester.pumpAndSettle();
 

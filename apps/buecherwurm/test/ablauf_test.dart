@@ -51,7 +51,9 @@ void main() {
       final frage = pippi.quiz.firstWhere((f) => find.text(f.text).evaluate().isNotEmpty);
       await tester.tap(find.text(frage.richtig));
       await tester.pump();
-      await tester.tap(find.text(i == pippi.quiz.length - 1 ? 'Ergebnis' : 'Nächste Frage'));
+      final weiter = find.text(i == pippi.quiz.length - 1 ? 'Ergebnis' : 'Nächste Frage');
+      await tester.ensureVisible(weiter);
+      await tester.tap(weiter);
       await tester.pump();
     }
     await tester.pump();
