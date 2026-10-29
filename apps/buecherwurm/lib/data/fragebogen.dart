@@ -35,6 +35,12 @@ const fragebogen = <FragebogenFrage>[
     Option('18', '18–29', wert: 20),
     Option('30', '30 oder älter', wert: 35),
   ]),
+  FragebogenFrage('geschlecht', 'Bist du …', [
+    Option('w', 'ein Mädchen / eine Frau'),
+    Option('m', 'ein Junge / ein Mann'),
+    Option('d', 'divers'),
+    Option('k', 'Möchte ich nicht sagen'),
+  ]),
   FragebogenFrage(
     'genres',
     'Welche Genres magst du?',

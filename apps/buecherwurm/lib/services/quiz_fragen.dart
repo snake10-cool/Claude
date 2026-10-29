@@ -6,11 +6,18 @@ import 'konto.dart';
 /// Mindestens so viele Fragen braucht ein Quiz.
 const mindestFragen = 3;
 
-/// Fragen für ein Quiz: alle eingebauten plus freigegebene Leserfragen
-/// (höchstens 2 zusätzlich, bei Büchern ohne eigenes Quiz höchstens 5).
+/// So viele Fragen hat ein Quiz höchstens – je nach Altersgruppe des Buchs.
+int fragenProQuiz(Zielgruppe z) => switch (z) {
+      Zielgruppe.kinder => 10,
+      Zielgruppe.jugend => 12,
+      Zielgruppe.erwachsene => 15,
+    };
+
+/// Fragen für ein Quiz: zufällig aus den eingebauten und den freigegebenen
+/// Leserfragen. Gibt es mehr als nötig, ist jede Runde etwas anders.
 List<Frage> quizFragen(Buch buch, Konto? konto, [Random? zufall]) {
-  final leser = [...?konto?.gemeinschaftsFragen[buch.id]]..shuffle(zufall);
-  return [...buch.quiz, ...leser.take(buch.quiz.isEmpty ? 5 : 2)];
+  final alle = [...buch.quiz, ...?konto?.gemeinschaftsFragen[buch.id]]..shuffle(zufall);
+  return alle.take(fragenProQuiz(buch.zielgruppe)).toList();
 }
 
 bool quizVerfuegbar(Buch buch, Konto? konto) =>

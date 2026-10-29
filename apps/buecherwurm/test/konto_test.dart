@@ -19,7 +19,7 @@ void main() {
 
   test('Ohne Konto zählen nur die eingebauten Quizfragen', () {
     final mitQuiz = katalogMitQuiz.first;
-    expect(quizFragen(mitQuiz, null), mitQuiz.quiz);
+    expect(quizFragen(mitQuiz, null).toSet(), mitQuiz.quiz.toSet());
     expect(quizVerfuegbar(mitQuiz, null), isTrue);
     for (final b in katalog.where((b) => b.quiz.isEmpty)) {
       expect(quizVerfuegbar(b, null), isFalse);

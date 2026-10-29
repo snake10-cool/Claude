@@ -7,14 +7,7 @@ import 'katalog_mehr_quiz.dart';
 import 'katalog_reihen_quiz.dart';
 
 /// Bücher mit Quiz (von Hand geschrieben).
-const katalogMitQuiz = <Buch>[
-  ..._grundstock,
-  ...katalogJung,
-  ...katalogErwachsen,
-  ...katalogKlassiker,
-  ...katalogMehrQuiz,
-  ...katalogReihenQuiz,
-];
+const katalogMitQuiz = <Buch>[..._grundstock, ...katalogJung, ...katalogErwachsen, ...katalogKlassiker, ...katalogMehrQuiz, ...katalogReihenQuiz];
 
 /// Alle eingebauten Bücher: die mit Quiz zuerst, dann die aus der
 /// Nationalbibliothek (ohne Quiz).
@@ -190,6 +183,17 @@ const _grundstock = <Buch>[
       Frage('In welches Haus kommt Harry?', ['Gryffindor', 'Slytherin', 'Hufflepuff', 'Ravenclaw']),
       Frage('Wie heißt der dreiköpfige Hund?', ['Fluffy', 'Fang', 'Norbert', 'Seidenschnabel']),
       Frage('Auf welcher Position spielt Harry Quidditch?', ['Sucher', 'Hüter', 'Treiber', 'Jäger']),
+      Frage('Wo wohnt Harry bei den Dursleys?', ['Im Ligusterweg 4', 'Im Grimmauldplatz 12', 'Im Fuchsbau', 'In der Winkelgasse 7']),
+      Frage('Wo schläft Harry anfangs bei den Dursleys?', ['Im Schrank unter der Treppe', 'Auf dem Dachboden', 'Im Keller', 'In der Garage']),
+      Frage('Von welchem Gleis fährt der Hogwarts-Express?', ['Gleis 9¾', 'Gleis 7½', 'Gleis 10', 'Gleis 3¼']),
+      Frage('Wer überbringt Harry, dass er ein Zauberer ist?', ['Hagrid', 'Dumbledore', 'McGonagall', 'Snape']),
+      Frage('Wie heißt die Zaubererbank?', ['Gringotts', 'Ollivanders', 'Flourish & Blotts', 'Borgin & Burkes']),
+      Frage('Welcher Lehrer trägt Voldemort am Hinterkopf?', ['Professor Quirrell', 'Professor Snape', 'Professor Flitwick', 'Professor Sprout']),
+      Frage('Wer hat den Stein der Weisen hergestellt?', ['Nicolas Flamel', 'Albus Dumbledore', 'Salazar Slytherin', 'Gellert Grindelwald']),
+      Frage('Was zeigt der Spiegel Nerhegeb?', ['Den tiefsten Wunsch des Betrachters', 'Die Zukunft', 'Die Wahrheit', 'Den eigenen Tod']),
+      Frage('Wie heißt das Drachenbaby, das bei Hagrid schlüpft?', ['Norbert', 'Fluffy', 'Fang', 'Seidenschnabel']),
+      Frage('Welchen Besen bekommt Harry geschenkt?', ['Einen Nimbus 2000', 'Einen Feuerblitz', 'Einen Sauberwisch 5', 'Einen Komet 260']),
+      Frage('Wer bekommt am Ende die entscheidenden Punkte für den Hauspokal?', ['Neville Longbottom', 'Hermine Granger', 'Ron Weasley', 'Fred Weasley']),
     ],
   ),
   Buch(
@@ -374,7 +378,12 @@ const _grundstock = <Buch>[
     quiz: [
       Frage('Welches Schwein reißt die Macht an sich?', ['Napoleon', 'Schneeball', 'Schwatzwutz', 'Old Major']),
       Frage('Welches Tier arbeitet am härtesten?', ['Das Pferd Boxer', 'Der Esel Benjamin', 'Die Ziege Muriel', 'Der Rabe Moses']),
-      Frage('Wie lautet das letzte Gebot?', ['Alle Tiere sind gleich, aber manche sind gleicher', 'Vier Beine gut, zwei Beine schlecht', 'Kein Tier soll ein anderes töten', 'Kein Tier soll in einem Bett schlafen']),
+      Frage('Wie lautet das letzte Gebot?', [
+        'Alle Tiere sind gleich, aber manche sind gleicher',
+        'Vier Beine gut, zwei Beine schlecht',
+        'Kein Tier soll ein anderes töten',
+        'Kein Tier soll in einem Bett schlafen',
+      ]),
     ],
   ),
   Buch(
