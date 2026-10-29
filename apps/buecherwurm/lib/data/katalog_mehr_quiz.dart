@@ -316,7 +316,7 @@ const katalogMehrQuiz = <Buch>[
       Frage('Wonach lässt die Direktorin die Jungen in Wahrheit graben?', ['Nach dem Schatz der küssenden Kate Barlow', 'Nach Wasser', 'Nach Gold aus einer Mine', 'Nach Dinosaurierknochen']),
       Frage('Welche Tiere im Camp sind tödlich giftig?', ['Gelbgefleckte Eidechsen', 'Skorpione', 'Klapperschlangen', 'Spinnen']),
       Frage('Was bringt Stanley Zero heimlich bei?', ['Lesen und Schreiben', 'Schwimmen', 'Boxen', 'Fahrradfahren']),
-      Frage('Was essen Stanley und Zero auf ihrer Flucht am Berg?', ['Zwiebeln', 'Pfirsiche', 'Kakteen', 'Fische']),
+      Frage('Wovon leben Stanley und Zero oben auf dem Berg, nachdem das Pfirsich-Zeug aus dem Boot aufgebraucht ist?', ['Von wilden Zwiebeln', 'Von Fischen', 'Von Kakteen', 'Von Eidechsen']),
     ],
   ),
   Buch(
