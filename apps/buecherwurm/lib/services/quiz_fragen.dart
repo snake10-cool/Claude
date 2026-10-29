@@ -4,7 +4,7 @@ import '../models/buch.dart';
 import 'konto.dart';
 
 /// Mindestens so viele Fragen braucht ein Quiz.
-const mindestFragen = 3;
+const mindestFragen = 3; // Ziel: 5, sobald alle Quizze mindestens 5 Fragen haben
 
 /// So viele Fragen hat ein Quiz höchstens – je nach Altersgruppe des Buchs.
 int fragenProQuiz(Zielgruppe z) => switch (z) {

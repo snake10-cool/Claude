@@ -1,6 +1,16 @@
 /// Für wen ein Buch gedacht ist.
 enum Zielgruppe { kinder, jugend, erwachsene }
 
+/// Wie schwer ein Quiz ist – angezeigt als „leicht“, „mittel“ oder „schwierig“.
+enum Schwierigkeit {
+  leicht('leicht'),
+  mittel('mittel'),
+  schwierig('schwierig');
+
+  const Schwierigkeit(this.text);
+  final String text;
+}
+
 /// Eine Quizfrage. Die erste Antwort in [antworten] ist die richtige,
 /// angezeigt werden sie gemischt.
 class Frage {
@@ -27,6 +37,7 @@ class Buch {
     this.eigenes = false,
     this.coverUrl,
     this.isbn,
+    this.schwierigkeit,
   });
 
   final String id;
@@ -48,6 +59,18 @@ class Buch {
   /// Cover aus der Online-Suche, sonst null (dann Platzhalter).
   final String? coverUrl;
   final String? isbn;
+
+  /// Nur setzen, wenn das Quiz deutlich leichter oder schwerer ist als für
+  /// die Altersgruppe üblich – sonst gilt [stufe] nach der Zielgruppe.
+  final Schwierigkeit? schwierigkeit;
+
+  Schwierigkeit get stufe =>
+      schwierigkeit ??
+      switch (zielgruppe) {
+        Zielgruppe.kinder => Schwierigkeit.leicht,
+        Zielgruppe.jugend => Schwierigkeit.mittel,
+        Zielgruppe.erwachsene => Schwierigkeit.schwierig,
+      };
 
   bool get hatQuiz => quiz.isNotEmpty;
 

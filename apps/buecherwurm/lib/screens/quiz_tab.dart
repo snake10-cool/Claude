@@ -4,6 +4,7 @@ import '../main.dart';
 import '../models/buch.dart';
 import '../services/quiz_fragen.dart';
 import '../widgets/buch_kachel.dart';
+import '../widgets/stufe.dart';
 import 'quiz_screen.dart';
 
 /// Alle Bücher mit Quiz. Gelesene stehen oben.
@@ -62,12 +63,20 @@ class QuizTab extends StatelessWidget {
                   : status == Status.gelesen
                       ? 'Gelesen – jetzt beweisen!'
                       : buch.autor),
-              trailing: ergebnis == null
-                  ? const Icon(Icons.play_circle_outline)
-                  : Icon(
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  StufeSchild(buch.stufe),
+                  const SizedBox(width: 8),
+                  if (ergebnis == null)
+                    const Icon(Icons.play_circle_outline)
+                  else
+                    Icon(
                       ergebnis.bestanden ? Icons.verified : Icons.cancel_outlined,
                       color: ergebnis.bestanden ? Colors.green : theme.colorScheme.error,
                     ),
+                ],
+              ),
               onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => QuizScreen(buch: buch))),
             );
           }),

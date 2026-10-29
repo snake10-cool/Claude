@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../main.dart';
@@ -6,6 +8,7 @@ import '../services/quiz_fragen.dart';
 import '../widgets/buch_kachel.dart';
 import '../widgets/lese_fortschritt.dart';
 import '../widgets/rezensionen.dart';
+import '../widgets/stufe.dart';
 import 'konto_screen.dart';
 import 'quiz_screen.dart';
 import 'quiz_vorschlag_screen.dart';
@@ -145,7 +148,15 @@ class BuchScreen extends StatelessWidget {
           ],
           if (quizVerfuegbar(buch, konto)) ...[
             const Divider(height: 32),
-            Text('Quiz', style: theme.textTheme.titleMedium),
+            Row(
+              children: [
+                Text('Quiz', style: theme.textTheme.titleMedium),
+                const SizedBox(width: 8),
+                StufeSchild(buch.stufe),
+                const Spacer(),
+                Text('${min(fragen, fragenProQuiz(buch.zielgruppe))} Fragen', style: theme.textTheme.bodySmall),
+              ],
+            ),
             const SizedBox(height: 8),
             if (quiz != null)
               Card(
