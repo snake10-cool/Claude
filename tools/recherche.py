@@ -75,6 +75,9 @@ REIHEN = {
     'windwalkers': {
         'urls': ['https://www.lovelybooks.de/autor/Katja-Brandis/reihe/Windwalkers-in-Reihenfolge-25145151572/',
                  'https://www.lovelybooks.de/isbn/9783401607979',
+                 'https://www.katja-brandis.de/2025/09/25/windwalkers-2-helden-der-luefte/',
+                 'https://www.katja-brandis.de/2026/10/01/windwalkers-4-spione-im-schwarm/',
+                 'https://www.katja-brandis.de/kategorie/ab-10/windwalkers/',
                  'https://www.lesejury.de/katja-brandis/buecher/windwalkers-2-helden-der-luefte/9783401607962'],
         'folgen': r'(lovelybooks\.de/autor/Katja-Brandis/Windwalkers[^"#?]*-w/(rezension/\d+/)?'
                   r'|lesejury\.de/katja-brandis/buecher/windwalkers[^"#?]*|arena-verlag\.de/artikel/windwalkers-[^"#?]*'
