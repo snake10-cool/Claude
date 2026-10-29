@@ -8,6 +8,7 @@ Nur zum Nachlesen beim Schreiben der Quizfragen – nichts davon kommt in die Ap
 import html
 import json
 import re
+import sys
 import time
 import urllib.parse
 import urllib.request
@@ -44,7 +45,10 @@ REIHEN = {
                  'https://www.buechertreff.de/details/1437770-andreas-suchanek-fluesterwald/',
                  'https://lesentogo.de/2022/03/25/flusterwald-das-abenteuer-beginnt/',
                  'https://www.buechereule.de/wbb/thread/103839-fluesterwald-das-abenteuer-beginnt-andreas-suchanek/',
-                 'https://www.penguin.de/buecher/reihen/die-fluesterwald-reihe/5006109'],
+                 'https://www.penguin.de/buecher/reihen/die-fluesterwald-reihe/5006109',
+                 'https://www.lesejury.de/andreas-suchanek/buecher/fluesterwald/9783570317648',
+                 'https://www.lesejury.de/andreas-suchanek/buecher/fluesterwald/9783570317655',
+                 'https://www.lesejury.de/andreas-suchanek/buecher/fluesterwald-das-abenteuer-beginnt-fluesterwald-staffel-i-bd-1/9783764151751'],
         'folgen': r'(kinderbuch-couch\.de/titel/\d+-fl(ue|u|ü)sterwald[^"#?]*|buechertreff\.de/details/\d+-andreas-suchanek-fl[^"#?]*'
                   r'|flsterwald-beb\.de/[^"#?]*(band|buch|staffel)[^"#?]*|lovelybooks\.de/autor/Andreas-Suchanek/Fl[^"#?]*-w/'
                   r'|penguin\.de/[^"#?]*fluesterwald[^"#?]*)',
@@ -57,13 +61,19 @@ REIHEN = {
                  'https://www.buechertreff.de/buchreihe/175722-schule-der-meisterdiebe-j-j-arcanjo-reihenfolge/',
                  'https://www.buechertreff.de/details/1568289-j-j-arcanjo-schule-der-meisterdiebe/',
                  'https://www.lovelybooks.de/autor/J.-J.-Arcanjo/reihe/Schule-der-Meisterdiebe-in-Reihenfolge-14039937446/',
-                 'https://www.lovelybooks.de/autor/J.-J.-Arcanjo/Schule-der-Meisterdiebe-8858746670-w/'],
+                 'https://www.lovelybooks.de/autor/J.-J.-Arcanjo/Schule-der-Meisterdiebe-8858746670-w/',
+                 'https://www.lesejury.de/j-j-arcanjo/buecher/schule-der-meisterdiebe/9783505150821',
+                 'https://www.lesejury.de/rezensionen/deeplink/884586/Product',
+                 'https://www.lesejury.de/rezensionen/deeplink/888730/Product',
+                 'https://www.lovelybooks.de/autor/J.-J.-Arcanjo/Schule-der-Meisterdiebe-4-Die-schwarze-Festung-18380199342-w/rezension/21184041792/',
+                 'https://www.lovelybooks.de/autor/J.-J.-Arcanjo/Schule-der-Meisterdiebe-Die-geheimnisvolle-Insel-12603011140-w/rezension/17343106088/'],
         'folgen': r'(kinderbuch-couch\.de/titel/\d+-schule-der-meisterdiebe[^"#?]*|buechertreff\.de/details/\d+-j-j-arcanjo[^"#?]*'
                   r'|lovelybooks\.de/autor/J\.-J\.-Arcanjo/[^"#?]*-w/)',
     },
     'windwalkers': {
         'urls': ['https://www.lovelybooks.de/autor/Katja-Brandis/reihe/Windwalkers-in-Reihenfolge-25145151572/',
-                 'https://www.arena-verlag.de/artikel/windwalkers-2-helden-der-luefte-978-3-401-60796-2'],
+                 'https://www.lovelybooks.de/isbn/9783401607979',
+                 'https://www.lesejury.de/katja-brandis/buecher/windwalkers-2-helden-der-luefte/9783401607962'],
         'folgen': r'(lovelybooks\.de/autor/Katja-Brandis/Windwalkers[^"#?]*-w/|arena-verlag\.de/artikel/windwalkers-[^"#?]*'
                   r'|kinderbuch-couch\.de/titel/\d+-windwalkers[^"#?]*)',
     },
@@ -191,7 +201,10 @@ def bereinigen(wikitext):
 
 def main():
     ZIEL.mkdir(parents=True, exist_ok=True)
+    auswahl = [a for a in sys.argv[1:] if a in REIHEN] or list(REIHEN)
     for reihe, q in REIHEN.items():
+        if reihe not in auswahl:
+            continue
         print(reihe)
         texte = []
         for sprache, titel_liste in q.get('wiki', []):
