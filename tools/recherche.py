@@ -5,6 +5,7 @@ Fandom, falls vorhanden. Ergebnis: tools/quellen/recherche/<reihe>.txt
 Nur zum Nachlesen beim Schreiben der Quizfragen – nichts davon kommt in die App.
 """
 
+import html
 import json
 import re
 import time
@@ -34,13 +35,37 @@ REIHEN = {
                r'|Havoc|Master (Joseph|Rufus)|Anastasia Tarquin|Constantine Madden|Alastair Hunt)$',
     },
     'fluesterwald': {
-        'wiki': [('de', ['Flüsterwald', 'Andreas Suchanek'])],
-        'fandom': ['fluesterwald', 'flusterwald', 'flüsterwald'],
+        'wiki': [('de', ['Flüsterwald'])],
+        # Keine Wikis – Rezensionen und Verlagsseiten (Links eine Ebene tief verfolgt).
+        'urls': ['https://www.xn--flsterwald-beb.de/', 'https://www.xn--flsterwald-beb.de/die-buecher/',
+                 'https://www.xn--flsterwald-beb.de/die-buecher-staffel-1/',
+                 'https://www.xn--flsterwald-beb.de/die-buecher-staffel-2/',
+                 'https://www.kinderbuch-couch.de/titel/2491-fluesterwald-das-abenteuer-beginnt/',
+                 'https://www.buechertreff.de/details/1437770-andreas-suchanek-fluesterwald/',
+                 'https://lesentogo.de/2022/03/25/flusterwald-das-abenteuer-beginnt/',
+                 'https://www.buechereule.de/wbb/thread/103839-fluesterwald-das-abenteuer-beginnt-andreas-suchanek/',
+                 'https://www.penguin.de/buecher/reihen/die-fluesterwald-reihe/5006109'],
+        'folgen': r'(kinderbuch-couch\.de/titel/\d+-fl[uü]sterwald[^"#?]*|buechertreff\.de/details/\d+-andreas-suchanek-fl[^"#?]*'
+                  r'|flsterwald-beb\.de/[^"#?]*(band|buch|staffel)[^"#?]*|lovelybooks\.de/autor/Andreas-Suchanek/Fl[^"#?]*-w/'
+                  r'|penguin\.de/[^"#?]*fluesterwald[^"#?]*)',
     },
     'meisterdiebe': {
         'wiki': [('de', ['Die Schule der Meisterdiebe']),
                  ('en', ['Crookhaven (novel)', 'Crookhaven: The School for Thieves', 'J. J. Arcanjo'])],
         'fandom': ['crookhaven'],
+        'urls': ['https://www.kinderbuch-couch.de/titel/5936-schule-der-meisterdiebe/',
+                 'https://www.buechertreff.de/buchreihe/175722-schule-der-meisterdiebe-j-j-arcanjo-reihenfolge/',
+                 'https://www.buechertreff.de/details/1568289-j-j-arcanjo-schule-der-meisterdiebe/',
+                 'https://www.lovelybooks.de/autor/J.-J.-Arcanjo/reihe/Schule-der-Meisterdiebe-in-Reihenfolge-14039937446/',
+                 'https://www.lovelybooks.de/autor/J.-J.-Arcanjo/Schule-der-Meisterdiebe-8858746670-w/'],
+        'folgen': r'(kinderbuch-couch\.de/titel/\d+-schule-der-meisterdiebe[^"#?]*|buechertreff\.de/details/\d+-j-j-arcanjo[^"#?]*'
+                  r'|lovelybooks\.de/autor/J\.-J\.-Arcanjo/[^"#?]*-w/)',
+    },
+    'windwalkers': {
+        'urls': ['https://www.lovelybooks.de/autor/Katja-Brandis/reihe/Windwalkers-in-Reihenfolge-25145151572/',
+                 'https://www.arena-verlag.de/artikel/windwalkers-2-helden-der-luefte-978-3-401-60796-2'],
+        'folgen': r'(lovelybooks\.de/autor/Katja-Brandis/Windwalkers[^"#?]*-w/|arena-verlag\.de/artikel/windwalkers-[^"#?]*'
+                  r'|kinderbuch-couch\.de/titel/\d+-windwalkers[^"#?]*)',
     },
 }
 
@@ -115,6 +140,47 @@ def fandom(name, nur=None):
     return texte
 
 
+def seite_text(url):
+    """HTML-Seite als reiner Text plus Liste aller Links."""
+    for i in range(2):
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Buecherwurm-Recherche)'})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                roh = r.read().decode('utf-8', 'replace')
+            break
+        except Exception as e:  # noqa: BLE001
+            print(f'  {url[:90]} – {e}')
+            roh = ''
+            time.sleep(2)
+    links = [urllib.parse.urljoin(url, html.unescape(h)) for h in re.findall(r'href="([^"]+)"', roh)]
+    t = re.sub(r'(?is)<(script|style|nav|header|footer|noscript)[^>]*>.*?</\1>', ' ', roh)
+    t = re.sub(r'(?i)<br\s*/?>|</p>|</h\d>|</li>|</div>', '\n', t)
+    t = html.unescape(re.sub(r'<[^>]+>', ' ', t))
+    t = '\n'.join(z.strip() for z in re.sub(r'[ \t]+', ' ', t).split('\n') if len(z.strip()) > 40)
+    return t, links
+
+
+def webseiten(urls, folgen):
+    texte, gesehen, warte = [], set(), list(urls)
+    while warte and len(gesehen) < 60:
+        url = warte.pop(0)
+        if url in gesehen:
+            continue
+        gesehen.add(url)
+        text, links = seite_text(url)
+        if text:
+            texte.append(f'##### {url}\n{text[:30000]}')
+        if folgen and url in urls:
+            for l in links:
+                if re.search(folgen, l) and l not in gesehen:
+                    warte.append(l)
+                    if 'lovelybooks.de' in l and l.endswith('-w/'):
+                        warte.append(l + 'rezensionen/')
+        time.sleep(1)
+    print(f'  {len(gesehen)} Webseiten')
+    return texte
+
+
 def bereinigen(wikitext):
     t = re.sub(r'<ref[^>]*?/>|<ref.*?</ref>', '', wikitext, flags=re.S)
     t = re.sub(r'\[\[(?:Datei|File|Bild|Kategorie|Category):[^\]]*\]\]', '', t)
@@ -128,7 +194,7 @@ def main():
     for reihe, q in REIHEN.items():
         print(reihe)
         texte = []
-        for sprache, titel_liste in q['wiki']:
+        for sprache, titel_liste in q.get('wiki', []):
             for titel in titel_liste:
                 r = wikipedia(sprache, titel)
                 if r:
@@ -136,6 +202,7 @@ def main():
                 time.sleep(0.5)
         for name in q.get('fandom', []):
             texte += fandom(name, q.get('nur'))
+        texte += webseiten(q.get('urls', []), q.get('folgen'))
         (ZIEL / f'{reihe}.txt').write_text('\n\n'.join(texte) + '\n', encoding='utf-8')
         print(f'  {sum(len(t) for t in texte)} Zeichen')
 
