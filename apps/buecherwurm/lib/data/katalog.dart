@@ -2,9 +2,17 @@ import '../models/buch.dart';
 import 'katalog_erwachsen.dart';
 import 'katalog_extra.dart';
 import 'katalog_jung.dart';
+import 'katalog_klassiker.dart';
+import 'katalog_mehr_quiz.dart';
 
 /// Bücher mit Quiz (von Hand geschrieben).
-const katalogMitQuiz = <Buch>[..._grundstock, ...katalogJung, ...katalogErwachsen];
+const katalogMitQuiz = <Buch>[
+  ..._grundstock,
+  ...katalogJung,
+  ...katalogErwachsen,
+  ...katalogKlassiker,
+  ...katalogMehrQuiz,
+];
 
 /// Alle eingebauten Bücher: die mit Quiz zuerst, dann die aus der
 /// Nationalbibliothek (ohne Quiz).
