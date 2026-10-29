@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../models/buch.dart';
 import 'fragebogen_screen.dart';
+import 'abhaken_screen.dart';
 import 'admin_screen.dart';
-import 'gelesen_auswahl_screen.dart';
 import 'konto_screen.dart';
 
 class ProfilScreen extends StatelessWidget {
@@ -56,11 +56,10 @@ class ProfilScreen extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.checklist),
-            title: const Text('Gelesene Bücher auswählen'),
-            subtitle: const Text('Schnell viele Bücher abhaken und bewerten'),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => const GelesenAuswahlScreen(pflicht: false),
-            )),
+            title: const Text('Bücher abhaken'),
+            subtitle: Text('${speicher.alleBuecher.where((b) => speicher.abgehakt(b.id)).length} von '
+                '${speicher.alleBuecher.length} erledigt – nach Bereichen, jederzeit unterbrechbar'),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AbhakenScreen())),
           ),
           if (KontoScope.of(context) case final konto?) ...[
             const Divider(),

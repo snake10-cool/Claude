@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../services/empfehlung.dart';
 import '../widgets/buch_kachel.dart';
+import 'abhaken_screen.dart';
 import 'fragebogen_screen.dart';
 import 'start_screen.dart';
 
@@ -26,15 +27,22 @@ class FuerDichTab extends StatelessWidget {
           style: theme.textTheme.bodyMedium,
         ),
         const SizedBox(height: 8),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: TextButton.icon(
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => const FragebogenScreen(pflicht: false),
-            )),
-            icon: const Icon(Icons.tune),
-            label: const Text('Fragebogen neu machen'),
-          ),
+        Wrap(
+          spacing: 8,
+          children: [
+            TextButton.icon(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const FragebogenScreen(pflicht: false),
+              )),
+              icon: const Icon(Icons.tune),
+              label: Text(speicher.fragebogenEntwurf == null ? 'Fragebogen neu machen' : 'Fragebogen fortsetzen'),
+            ),
+            TextButton.icon(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AbhakenScreen())),
+              icon: const Icon(Icons.checklist),
+              label: const Text('Bücher abhaken'),
+            ),
+          ],
         ),
         if (liste.isEmpty)
           const Padding(

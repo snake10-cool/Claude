@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../models/buch.dart';
 import '../widgets/buch_kachel.dart';
+import 'abhaken_screen.dart';
 import 'online_suche_screen.dart';
 import 'start_screen.dart';
 
@@ -126,6 +127,12 @@ class _BibliothekTabState extends State<BibliothekTab> {
               title: const Text('Strichcode scannen'),
               subtitle: const Text('ISBN auf der Rückseite des Buchs'),
               onTap: () => oeffnen(const OnlineSucheScreen(scannen: true)),
+            ),
+            ListTile(
+              leading: const Icon(Icons.checklist),
+              title: const Text('Viele Bücher abhaken'),
+              subtitle: const Text('Alle Bücher der App durchgehen: gelesen ja/nein'),
+              onTap: () => oeffnen(const AbhakenScreen()),
             ),
             ListTile(
               leading: const Icon(Icons.edit_note),
