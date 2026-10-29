@@ -6,6 +6,7 @@ import 'fragebogen_screen.dart';
 import 'abhaken_screen.dart';
 import 'admin_screen.dart';
 import 'konto_screen.dart';
+import 'vergleich_screen.dart';
 
 class ProfilScreen extends StatelessWidget {
   const ProfilScreen({super.key});
@@ -60,6 +61,14 @@ class ProfilScreen extends StatelessWidget {
             subtitle: Text('${speicher.alleBuecher.where((b) => speicher.abgehakt(b.id)).length} von '
                 '${speicher.alleBuecher.length} erledigt – nach Bereichen, jederzeit unterbrechbar'),
             onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AbhakenScreen())),
+          ),
+          ListTile(
+            leading: const Icon(Icons.compare_arrows),
+            title: const Text('Bücher gegeneinander'),
+            subtitle: Text(speicher.vergleiche == 0
+                ? 'Vergleiche Bücher Thema für Thema – verbessert die Empfehlungen'
+                : '${speicher.vergleiche} Vergleich(e) gemacht'),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const VergleichScreen())),
           ),
           if (KontoScope.of(context) case final konto?) ...[
             const Divider(),

@@ -5,6 +5,7 @@ import '../services/empfehlung.dart';
 import '../widgets/buch_kachel.dart';
 import 'abhaken_screen.dart';
 import 'fragebogen_screen.dart';
+import 'vergleich_screen.dart';
 import 'start_screen.dart';
 
 class FuerDichTab extends StatelessWidget {
@@ -41,6 +42,11 @@ class FuerDichTab extends StatelessWidget {
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AbhakenScreen())),
               icon: const Icon(Icons.checklist),
               label: const Text('Bücher abhaken'),
+            ),
+            TextButton.icon(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const VergleichScreen())),
+              icon: const Icon(Icons.compare_arrows),
+              label: const Text('Bücher gegeneinander'),
             ),
           ],
         ),
