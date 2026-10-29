@@ -138,9 +138,27 @@ class Speicher extends ChangeNotifier {
   static String tagSchluessel(DateTime d) =>
       '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
 
+  /// Wird nach jedem neuen Lese-Tag aufgerufen (plant die Erinnerung neu).
+  VoidCallback? nachLeseTag;
+
   Future<void> leseTagMerken([DateTime? tag]) async {
-    final tage = leseTage..add(tagSchluessel(tag ?? DateTime.now()));
-    await _speichern('leseTage', tage.toList()..sort());
+    final schluessel = tagSchluessel(tag ?? DateTime.now());
+    final tage = leseTage;
+    if (tage.contains(schluessel)) return;
+    await _speichern('leseTage', (tage..add(schluessel)).toList()..sort());
+    nachLeseTag?.call();
+  }
+
+  /// Lese-Minuten pro Buch (Lese-Timer).
+  int leseMinuten(String buchId) => _prefs.getInt('minuten_$buchId') ?? 0;
+  int get leseMinutenGesamt =>
+      _prefs.getKeys().where((k) => k.startsWith('minuten_')).fold(0, (s, k) => s + (_prefs.getInt(k) ?? 0));
+
+  Future<void> leseZeitHinzufuegen(String buchId, int minuten) async {
+    if (minuten <= 0) return;
+    await _prefs.setInt('minuten_$buchId', leseMinuten(buchId) + minuten);
+    await leseTagMerken();
+    notifyListeners();
   }
 
   bool get heuteGelesen => leseTage.contains(tagSchluessel(DateTime.now()));
@@ -321,6 +339,7 @@ class Speicher extends ChangeNotifier {
   Future<bool> quizBeendet(String buchId, QuizErgebnis ergebnis) async {
     if (quiz.containsKey(buchId)) return false;
     quiz[buchId] = ergebnis;
+    await leseTagMerken();
     if (ergebnis.bestanden && eintraege[buchId]?.status != Status.gelesen) {
       final alt = eintraege[buchId];
       eintraege[buchId] = Eintrag(

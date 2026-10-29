@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import '../models/buch.dart';
+import '../widgets/erinnerung_einstellung.dart';
 import 'fragebogen_screen.dart';
 import 'abhaken_screen.dart';
 import 'admin_screen.dart';
@@ -47,6 +48,7 @@ class ProfilScreen extends StatelessWidget {
               ],
             ),
           ),
+          const ErinnerungEinstellung(),
           ListTile(
             leading: const Icon(Icons.insights),
             title: const Text('Statistik & Abzeichen'),

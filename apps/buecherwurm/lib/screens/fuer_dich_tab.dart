@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../main.dart';
+import '../services/abzeichen.dart';
 import '../services/empfehlung.dart';
 import '../widgets/buch_kachel.dart';
 import '../widgets/leseziel_karte.dart';
@@ -21,7 +22,16 @@ class FuerDichTab extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        Text('Hallo ${speicher.name}! 👋', style: theme.textTheme.titleLarge),
+        Row(
+          children: [
+            Expanded(child: Text('Hallo ${speicher.name}! 👋', style: theme.textTheme.titleLarge)),
+            if (leseSerie(speicher) >= 2)
+              Tooltip(
+                message: 'Tage in Folge gelesen',
+                child: Chip(label: Text('🔥 ${leseSerie(speicher)}'), visualDensity: VisualDensity.compact),
+              ),
+          ],
+        ),
         const SizedBox(height: 4),
         Text(
           'Diese Bücher passen zu deinem Fragebogen und deinen Bewertungen. '

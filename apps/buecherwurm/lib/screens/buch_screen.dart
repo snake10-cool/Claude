@@ -8,6 +8,7 @@ import '../widgets/lese_fortschritt.dart';
 import 'konto_screen.dart';
 import 'quiz_screen.dart';
 import 'quiz_vorschlag_screen.dart';
+import 'timer_screen.dart';
 
 class BuchScreen extends StatelessWidget {
   const BuchScreen(this.buchId, {super.key});
@@ -114,6 +115,17 @@ class BuchScreen extends StatelessWidget {
             const SizedBox(height: 16),
             LeseFortschritt(key: ValueKey(buchId), buch: buch, eintrag: eintrag),
           ],
+          if (eintrag != null && eintrag.status == Status.lese)
+            Align(
+              alignment: Alignment.centerLeft,
+              child: OutlinedButton.icon(
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TimerScreen(buch: buch))),
+                icon: const Icon(Icons.timer_outlined),
+                label: Text(speicher.leseMinuten(buchId) == 0
+                    ? 'Lese-Timer starten'
+                    : 'Lese-Timer (${speicher.leseMinuten(buchId)} Min. bisher)'),
+              ),
+            ),
           if (eintrag != null && eintrag.status != Status.wunschliste) ...[
             const SizedBox(height: 20),
             Text('Deine Bewertung', style: theme.textTheme.titleMedium),
