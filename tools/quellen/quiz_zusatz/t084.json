@@ -1,242 +1,1602 @@
 {
-"wd_Q3319940": {"s": "mittel", "q": [
-["Wer schrieb „Mein Onkel Benjamin“?", "Claude Tillier", "Honoré de Balzac", "Alexandre Dumas", "Victor Hugo"],
-["Wie lautet der Originaltitel?", "Mon oncle Benjamin", "Mon oncle Jules", "L’Oncle Benjamin", "Mon père"],
-["Wann erschien der Roman?", "1843", "1823", "1863", "1883"],
-["Wie heißt der Großonkel mit vollem Namen?", "Benjamin Rathery", "Benjamin Constant", "Benjamin Roque", "Benjamin Kobus"],
-["Wo spielt die Handlung?", "In Clamecy", "In Paris", "In Lyon", "In Hunebourg"]]},
-"wd_Q3206962": {"s": "mittel", "q": [
-["Wer schrieb „Das Scheit“?", "Guy de Maupassant", "Émile Zola", "Gustave Flaubert", "Prosper Mérimée"],
-["Wie lautet der französische Titel?", "La Bûche", "Le Feu", "La Cheminée", "Le Bois"],
-["Wann erschien die Novelle erstmals?", "Am 26. Januar 1882", "1872", "1892", "1899"],
-["In welcher Zeitschrift?", "Gil Blas", "Revue de Paris", "Le Figaro", "Le Gaulois"],
-["Was fällt aus dem Kamin?", "Ein brennendes Holzscheit", "Ein Brief", "Eine Katze", "Ein Ring"]]},
-"wd_Q3223930": {"s": "mittel", "q": [
-["Wer schrieb „Der Löwe, der Affe und die beiden Esel“?", "Jean de La Fontaine", "Äsop", "Lessing", "Gellert"],
-["Wann wurde sie erstmals veröffentlicht?", "1678", "1668", "1688", "1698"],
-["Die wievielte Fabel im elften Buch ist sie?", "Die fünfte", "Die erste", "Die zehnte", "Die fünfzehnte"],
-["Wie lautet der französische Titel?", "Le Lion, le Singe et les Deux Ânes", "Le Lion et le Rat", "Les Deux Ânes", "Le Singe et le Chat"],
-["Wen zeichnete der Dichter in seinen Tierfabeln?", "Menschen aus allen Schichten", "Nur Könige", "Nur Bauern", "Nur Tiere"]]},
-"wd_Q3224090": {"s": "leicht", "q": [
-["Wer schrieb „Der Wolf als Schäfer“?", "Jean de La Fontaine", "Die Brüder Grimm", "Äsop", "Lessing"],
-["Wann veröffentlichte er die Fabel?", "1668", "1648", "1688", "1708"],
-["Als was verkleidet sich der Wolf?", "Als Schäfer", "Als Großmutter", "Als Schaf", "Als Hund"],
-["Was will er tun?", "Schafe von der Weide weglocken", "Den Hund fangen", "Den Hirten beraten", "Gras fressen"],
-["Was tun Hirte, Hund und Herde gerade?", "Sie schlafen", "Sie essen", "Sie tanzen", "Sie wandern"]]},
-"wd_Q3223934": {"s": "leicht", "q": [
-["Wer schrieb „Patricia und der Löwe“?", "Joseph Kessel", "Romain Gary", "Antoine de Saint-Exupéry", "Albert Camus"],
-["Wie lautet der Originaltitel?", "Le Lion", "La Lionne", "Patricia", "L’Afrique"],
-["Wann wurde er veröffentlicht?", "1958", "1948", "1968", "1978"],
-["Wo spielt er?", "In einem Nationalpark in Kenia", "In Südafrika", "In Indien", "In Marokko"],
-["Wie alt ist Patricia?", "13", "8", "17", "10"]]},
-"wd_Q3301883": {"s": "mittel", "q": [
-["Wer schrieb „Schwere Naturen“?", "Anton Tschechow", "Iwan Turgenew", "Nikolai Gogol", "Iwan Bunin"],
-["Wann erschien die Geschichte?", "Am 7. Oktober 1886", "1876", "1896", "1906"],
-["In welcher Zeitung?", "Nowoje wremja", "Oskolki", "Peterburgskaja gaseta", "Die Grille"],
-["Was ist Johann?", "Ein Pope", "Ein Gutsbesitzer", "Ein Arzt", "Ein Soldat"],
-["Was hatte er geschenkt bekommen?", "Ein kleines Landgut", "Ein Pferd", "Eine Uhr", "Ein Haus in der Stadt"]]},
-"wd_Q3548595": {"s": "mittel", "q": [
-["Wer schrieb „Un fil à la patte“?", "Georges Feydeau", "Eugène Labiche", "Molière", "Alfred Jarry"],
-["Was bedeutet der Titel sinngemäß?", "Ein Klotz am Bein", "Ein Faden im Kopf", "Ein Floh im Ohr", "Ein Stein im Schuh"],
-["Wie viele Akte hat die Komödie?", "Drei", "Fünf", "Zwei", "Vier"],
-["Wann wurde sie uraufgeführt?", "Am 9. Januar 1894", "1884", "1904", "1914"],
-["Wie oft wurde sie aufgeführt?", "129 Mal", "12 Mal", "500 Mal", "1000 Mal"]]},
-"wd_Q3744835": {"s": "mittel", "q": [
-["Wer schrieb „Wie’s uns gefällt“?", "Angela Carter", "Jeanette Winterson", "A. S. Byatt", "Muriel Spark"],
-["Wie lautet der Originaltitel?", "Wise Children", "As You Like It", "Nights at the Circus", "The Magic Toyshop"],
-["Wann erschien er in Großbritannien?", "1991", "1981", "2001", "1971"],
-["Was ist er für die Autorin?", "Ihr letzter Roman", "Ihr erster Roman", "Ihr einziger Roman", "Ein Jugendwerk"],
-["Wessen Leben thematisiert er?", "Das von Zwillingen", "Das eines Königs", "Das eines Hundes", "Das eines Seemanns"]]},
-"wd_Q3828828": {"s": "mittel", "q": [
-["Wer schrieb „Le meraviglie del Duemila“?", "Emilio Salgari", "Italo Calvino", "Jules Verne", "Carlo Collodi"],
-["Was bedeutet der Titel?", "Die Wunder des Zweitausends", "Die Reise zum Mond", "Das Jahr 3000", "Die Maschinen"],
-["Aus welchem Jahr stammen die zwei Freunde?", "Aus 1903", "Aus 1803", "Aus 1953", "Aus 1900"],
-["Wie lange verbringen sie im Koma?", "100 Jahre", "50 Jahre", "10 Jahre", "1000 Jahre"],
-["Womit gelingt das?", "Mit dem Saft einer Pflanze", "Mit Eis", "Mit einer Maschine", "Mit Zauberei"]]},
-"wd_Q3351660": {"s": "schwierig", "q": [
-["Wer schrieb „Olympie“?", "Voltaire", "Racine", "Corneille", "Diderot"],
-["Was für ein Stück ist es?", "Eine Tragödie in fünf Aufzügen", "Eine Komödie", "Eine Oper", "Ein Einakter"],
-["In wie vielen Tagen stellte er die erste Fassung fertig?", "In sechs", "In sechzig", "In einem", "In dreißig"],
-["Wo wurde es am 30. September 1762 aufgeführt?", "Im Schlosstheater Schwetzingen", "In Paris", "In Versailles", "In Genf"],
-["Wer besorgte die erste Buchausgabe?", "Cosimo Alessandro Collini", "Diderot", "Friedrich II.", "Rousseau"]]},
-"wd_Q3349863": {"s": "leicht", "q": [
-["Wer schrieb „Halb und halb für drei“?", "Marie-Aude Murail", "Susie Morgenstern", "Daniel Pennac", "Timothée de Fombelle"],
-["Wie lautet der Originaltitel?", "Oh, Boy!", "Trois pour toujours", "Simple", "Maïté coiffure"],
-["Wann erschien er?", "2000", "1990", "2010", "1995"],
-["Wer übersetzte ihn ins Deutsche?", "Tobias Scheffel", "Peter Handke", "Elisabeth Edl", "Barbara Heller"],
-["Unter welchem neuen Titel erschien er 2010?", "Drei für immer", "Oh Boy", "Halb und Halb", "Geschwister"]]},
-"wd_Q4375121": {"s": "schwierig", "q": [
-["Wer schrieb „Die Abenteuer Tschitschikows“?", "Michail Bulgakow", "Nikolai Gogol", "Michail Soschtschenko", "Juri Olescha"],
-["Was für ein Text ist es?", "Eine phantastische Groteske", "Ein Epos", "Ein Drama", "Ein Gedicht"],
-["Wann erschien er?", "Am 24. September 1922", "1912", "1932", "1925"],
-["In welcher Zeitschrift?", "Nakanune", "Snamja", "Nowy Mir", "Oskolki"],
-["Wo erschien diese russischsprachige Zeitschrift?", "In Berlin", "In Moskau", "In Paris", "In Prag"]]},
-"wd_Q4378271": {"s": "schwierig", "q": [
-["Wer schrieb „Gespenster“?", "Iwan Turgenew", "Nikolai Gogol", "Anton Tschechow", "Alexander Puschkin"],
-["Wann wurde die Novelle vollendet?", "Im Sommer 1863", "1853", "1873", "1883"],
-["In welcher Zeitschrift erschien sie 1864?", "Epocha", "Westnik Jewropy", "Russkaja mysl", "Sowremennik"],
-["Wer übertrug sie ins Deutsche?", "Friedrich von Bodenstedt", "Eugen Marx", "Adolf Laun", "Paul Heyse"],
-["Unter welchem deutschen Titel erschien sie 1865?", "Erscheinungen", "Gespenster", "Phantome", "Visionen"]]},
-"wd_Q3557019": {"s": "schwierig", "q": [
-["Wer schrieb „Opfer der Pflicht“?", "Eugène Ionesco", "Samuel Beckett", "Jean Genet", "Arthur Adamov"],
-["Was für ein Stück ist es?", "Ein Einakter", "Ein Fünfakter", "Ein Roman", "Eine Oper"],
-["Wann entstand es?", "1953", "1943", "1963", "1973"],
-["Wie bezeichnete es der Autor?", "Als „Pseudodrama“", "Als „Antikomödie“", "Als „Farce“", "Als „Tragödie“"],
-["Wie heißt die gesuchte Person?", "Mallot", "Bérenger", "Choubert", "Godot"]]},
-"wd_Q3563353": {"s": "mittel", "q": [
-["Wer schrieb „Hochzeitsreise“?", "Patrick Modiano", "Philippe Sollers", "Michel Tournier", "Jean Echenoz"],
-["Wie lautet der Originaltitel?", "Voyage de noces", "Fleurs de ruine", "Des inconnues", "Dora Bruder"],
-["Wann erschien er?", "1990", "1980", "2000", "1970"],
-["Wer übersetzte ihn ins Deutsche?", "Andrea Spingler", "Elisabeth Edl", "Peter Handke", "Walter Schürenberg"],
-["Wie heißt der Erzähler?", "Jean B.", "Patrick M.", "Pierre L.", "Jacques D."]]},
-"wd_Q3927652": {"s": "mittel", "q": [
-["Wer schrieb „Was ich liebte“?", "Siri Hustvedt", "Paul Auster", "Jennifer Egan", "Donna Tartt"],
-["Wie lautet der Originaltitel?", "What I Loved", "The Blazing World", "The Summer Without Men", "Memories of the Future"],
-["Wann erschien er?", "2003", "1993", "2013", "1999"],
-["Was ist der Erzähler Leon Hertzberg?", "Kunsthistoriker", "Maler", "Arzt", "Pianist"],
-["Wie heißt der befreundete Maler?", "William Wechsler", "Erica", "Paul", "Mark"]]},
-"wd_Q3819136": {"s": "schwierig", "q": [
-["Wer schrieb „Blaue Ära“?", "Yukio Mishima", "Yasunari Kawabata", "Kenzaburō Ōe", "Haruki Murakami"],
-["Die wievielte Novelle des Autors ist sie?", "Die zweite", "Die erste", "Die zehnte", "Die letzte"],
-["Wann wurde sie veröffentlicht?", "Am 25. Dezember 1950", "1940", "1960", "1970"],
-["Bei welchem Verlag?", "Shinchosha", "Kodansha", "Iwanami", "Bungei Shunju"],
-["Wie alt war der Autor bei seiner Berühmtheit?", "24", "18", "30", "40"]]},
-"wd_Q3818306": {"s": "mittel", "q": [
-["Wer schrieb „Der Coach“?", "John Grisham", "Nicholas Sparks", "Stephen King", "Harlan Coben"],
-["Wie lautet der Originaltitel?", "Bleachers", "The Coach", "Playing for Pizza", "Calico Joe"],
-["Wann erschien die englische Erstauflage?", "Am 22. Juni 2004", "1994", "2014", "2000"],
-["Wie heißt die Kleinstadt?", "Messina", "Clanton", "Ford County", "Sparta"],
-["Wie heißt der Trainer?", "Eddie Rake", "Neely Crenshaw", "Jake Brigance", "Rick Dockery"]]},
-"wd_Q4738955": {"s": "leicht", "q": [
-["Wer schrieb „Am kürzeren Ende der Sonnenallee“?", "Thomas Brussig", "Leander Haußmann", "Jana Hensel", "Ingo Schulze"],
-["Der wievielte Roman des Autors ist er?", "Der dritte", "Der erste", "Der zweite", "Der fünfte"],
-["Wann erschien er?", "1999", "1989", "2009", "1995"],
-["In welcher Stadt spielt er?", "In Ost-Berlin", "In Leipzig", "In Dresden", "In Rostock"],
-["In welchem Ortsteil liegt der Schauplatz?", "Baumschulenweg", "Prenzlauer Berg", "Kreuzberg", "Marzahn"]]},
-"wd_Q3934709": {"s": "schwierig", "q": [
-["Wer schrieb die „Philosophischen Untersuchungen über das Wesen der menschlichen Freiheit“?", "Friedrich Wilhelm Joseph Schelling", "Hegel", "Fichte", "Kant"],
-["Wann erschien das Werk?", "1809", "1789", "1829", "1849"],
-["Worum bemüht er sich darin?", "Um eine Freiheitstheorie", "Um eine Farbenlehre", "Um eine Staatslehre", "Um eine Musiktheorie"],
-["Aus welcher Metaphysik entfaltet er sie?", "Aus einer Metaphysik des Bösen", "Aus einer Metaphysik der Zahl", "Aus einer Metaphysik der Sprache", "Aus einer Metaphysik des Lichts"],
-["Wie ist das Werk vom Umfang her?", "Kurz", "Mehrbändig", "Über 1000 Seiten", "Unvollendet in zehn Teilen"]]},
-"wd_Q4508574": {"s": "mittel", "q": [
-["Wer schrieb „Der Wachtposten“?", "Nikolai Leskow", "Leo Tolstoi", "Iwan Gontscharow", "Anton Tschechow"],
-["Wann erschien die Erzählung?", "1887", "1867", "1907", "1877"],
-["Unter welchem Titel erschien sie zuerst?", "Rettung eines Ertrinkenden", "Der Mensch im Schilderhaus", "Der Zar", "Winternacht"],
-["In welchem Jahr spielt sie?", "Im Winter 1839", "1812", "1861", "1900"],
-["Wo spielt sie?", "Im Petersburger Winterpalais", "Im Kreml", "In Odessa", "In Kiew"]]},
-"wd_Q4656556": {"s": "schwierig", "q": [
-["Wer schrieb „A Dolorosa Raiz do Micondó“?", "Conceição Lima", "Mia Couto", "Paulina Chiziane", "Alda Espírito Santo"],
-["Woher stammt die Dichterin?", "Aus São Tomé und Príncipe", "Aus Angola", "Aus Mosambik", "Aus Brasilien"],
-["Was bedeutet der Titel?", "Die schmerzvolle Wurzel des Affenbrotbaums", "Der Baum der Insel", "Die Wurzel des Meeres", "Das Lied der Palme"],
-["Wie viele Gedichte enthält der Band?", "Siebenundzwanzig", "Zehn", "Hundert", "Fünfzig"],
-["Wann wurde er veröffentlicht?", "2006", "1996", "2016", "1986"]]},
-"wd_Q4009727": {"s": "mittel", "q": [
-["Wer schrieb „Der Sturm aus dem Nichts“?", "J. G. Ballard", "John Wyndham", "Brian Aldiss", "Arthur C. Clarke"],
-["Wie lautet der Originaltitel?", "The Wind from Nowhere", "The Drowned World", "The Storm", "Crash"],
-["Wann erschien er?", "1962", "1952", "1972", "1982"],
-["Um wie viel beschleunigt der Sturm jeden Tag?", "Um fünf Stundenmeilen", "Um 100 Meilen", "Um eine Meile", "Gar nicht"],
-["Wo suchen die Menschen Schutz?", "In Kellern und Bunkern", "Auf Bergen", "In Flugzeugen", "Auf Schiffen"]]},
-"wd_Q5226419": {"s": "mittel", "q": [
-["Wer schrieb „Das Königsprojekt“?", "Carl Amery", "Wolfgang Jeschke", "Herbert W. Franke", "Andreas Eschbach"],
-["Wann erschien der Roman?", "1974", "1964", "1984", "1994"],
-["Was ist die MYST?", "Eine Zeitmaschine", "Ein Raumschiff", "Ein Roboter", "Ein Buch"],
-["Wer konstruierte sie im Roman?", "Leonardo da Vinci", "Galileo Galilei", "Isaac Newton", "Albert Einstein"],
-["Wer besitzt sie?", "Die katholische Kirche", "Ein König", "Die NASA", "Ein Wissenschaftler"]]},
-"wd_Q4323899": {"s": "schwierig", "q": [
-["Wer schrieb „Die Ernennung“?", "Alexander Bek", "Wassili Grossman", "Juri Trifonow", "Daniil Granin"],
-["Was ist er für den Autor?", "Sein letzter Roman", "Sein erster Roman", "Ein Drama", "Eine Erzählung"],
-["Wann erschien er in der Bundesrepublik?", "1971", "1961", "1981", "1991"],
-["In welcher Moskauer Zeitschrift erschien er 1986?", "Snamja", "Nowy Mir", "Oktjabr", "Junost"],
-["Was ist die Hauptfigur Alexander von Beruf?", "Walzwerkingenieur", "Arzt", "Lehrer", "Bauer"]]},
-"wd_Q4329937": {"s": "mittel", "q": [
-["Wer schrieb „Die Schlucht“?", "Iwan Gontscharow", "Iwan Turgenew", "Leo Tolstoi", "Fjodor Dostojewski"],
-["Was ist er für den Autor?", "Sein letzter Roman", "Sein erster Roman", "Sein einziges Drama", "Ein Gedichtband"],
-["Wann erschien er?", "1869", "1849", "1889", "1909"],
-["In welcher Zeitschrift?", "Westnik Jewropy", "Epocha", "Russkaja mysl", "Sowremennik"],
-["Wovon wendet sich der Autor ab?", "Vom Nihilismus", "Vom Glauben", "Von der Kunst", "Von der Natur"]]},
-"wd_Q4180640": {"s": "schwierig", "q": [
-["Wer schrieb „Liebe in Bastschuhen“?", "Nikolai Leskow", "Iwan Turgenew", "Alexei Pissemski", "Nikolai Nekrassow"],
-["Wann erschien die Erzählung?", "1863", "1843", "1883", "1903"],
-["Unter welchem Pseudonym?", "M. Stebnizki", "S. Jaroslawzew", "Antoscha Tschechonte", "Maxim Gorki"],
-["Wie heißt sie auch?", "Nastja", "Natalja", "Anna", "Mascha"],
-["Was bedeutet der russische Titel?", "Das Leben einer Bäuerin", "Liebe im Dorf", "Die Bastschuhe", "Die Hochzeit"]]},
-"wd_Q4024507": {"s": "mittel", "q": [
-["Wer schrieb „Onkels Erwachen“?", "P. G. Wodehouse", "Evelyn Waugh", "Jerome K. Jerome", "Saki"],
-["Wie lautet der Originaltitel?", "Uncle Fred in the Springtime", "Full Moon", "Summer Lightning", "Leave It to Psmith"],
-["Wann wurde er in den USA erstveröffentlicht?", "Am 18. August 1939", "1929", "1949", "1959"],
-["Zu welcher Saga gehört er?", "Zur Blandings Castle-Saga", "Zur Jeeves-Saga", "Zur Psmith-Saga", "Zur Ukridge-Saga"],
-["Wie heißt der Hausherr von Blandings?", "Lord Emsworth", "Lord Peter", "Lord Ickenham", "Lord Grantham"]]},
-"wd_Q5000310": {"s": "schwierig", "q": [
-["Wer schrieb „Burr“?", "Gore Vidal", "Norman Mailer", "E. L. Doctorow", "John Updike"],
-["Wann erschien der Roman?", "1973", "1963", "1983", "1993"],
-["Der wievielte Band von „Narratives of Empire“ ist er?", "Der erste", "Der siebte", "Der dritte", "Der zweite"],
-["Wessen fiktive Lebenserinnerungen enthält er?", "Die von Aaron Burr", "Die von Lincoln", "Die von Washington", "Die von Hamilton"],
-["Wie heißt der Protagonist?", "Charles Schermerhorn Schuyler", "Aaron Burr", "Henry Adams", "John Jay"]]},
-"wd_Q5054699": {"s": "mittel", "q": [
-["Wer schrieb „Klein-Kinder-Bewahr-Anstalt“?", "Hilaire Belloc", "Lewis Carroll", "Edward Lear", "Roald Dahl"],
-["Wie lautet der Originaltitel?", "Cautionary Tales for Children", "Struwwelpeter", "Nonsense Songs", "Just So Stories"],
-["Wann erschien es?", "1907", "1887", "1927", "1947"],
-["Wer illustrierte es?", "Basil Temple Blackwood", "John Tenniel", "Quentin Blake", "Edward Lear"],
-["Wer schuf die deutsche Nachdichtung?", "Hans Magnus Enzensberger", "Erich Kästner", "Harry Rowohlt", "Christian Morgenstern"]]},
-"wd_Q5309566": {"s": "schwierig", "q": [
-["Wer schrieb „Suchodol“?", "Iwan Bunin", "Anton Tschechow", "Maxim Gorki", "Leonid Andrejew"],
-["Was bedeutet der Titel?", "Das trockene Tal", "Der dunkle Wald", "Das grüne Feld", "Der stille Fluss"],
-["Wann erschien sie?", "1912", "1902", "1922", "1932"],
-["In welcher Zeitschrift?", "Westnik Jewropy", "Snamja", "Nowy Mir", "Epocha"],
-["Wie heißt die Magd?", "Natalja", "Nastja", "Mascha", "Anna"]]},
-"wd_Q4837924": {"s": "mittel", "q": [
-["Wer schrieb „Babiole“?", "Marie-Catherine d’Aulnoy", "Charles Perrault", "Jeanne-Marie Leprince de Beaumont", "George Sand"],
-["Was für ein Märchen ist es?", "Ein Feenmärchen", "Ein Tiermärchen", "Eine Sage", "Ein Schwank"],
-["Wann erschien es?", "1697", "1797", "1597", "1897"],
-["Wie heißt die Fee?", "Fanferluche", "Morgana", "Carabosse", "Mélusine"],
-["Wozu wird die Tochter?", "Zu einem Äffchen", "Zu einem Frosch", "Zu einer Katze", "Zu einem Vogel"]]},
-"wd_Q5522763": {"s": "schwierig", "q": [
-["Wie nennt sich der Verfasser von „Garel vom blühenden Tal“?", "Pleier", "Stricker", "Wernher", "Hartmann"],
-["Wann entstand die Erzählung wahrscheinlich?", "Zwischen 1260 und 1280", "Um 1100", "Um 1400", "Um 1500"],
-["Zu welcher Gruppe gehört sie?", "Zu den nachklassischen Artus-Romanen", "Zu den Heldenepen", "Zu den Minneliedern", "Zu den Schwänken"],
-["Wo entstand sie?", "Im österreichischen Raum", "In Flandern", "In Sachsen", "In Frankreich"],
-["Wie viele Überbleibsel der Originalhandschrift sind erhalten?", "Zwei", "Keines", "Zehn", "Eines vollständig"]]},
-"wd_Q5508104": {"s": "mittel", "q": [
-["Wer schrieb „Vollmond über Blandings Castle“?", "P. G. Wodehouse", "Agatha Christie", "Evelyn Waugh", "Nancy Mitford"],
-["Wie lautet der Originaltitel?", "Full Moon", "Summer Lightning", "Heavy Weather", "Blandings Castle"],
-["Der wievielte Blandings-Roman ist er?", "Der sechste", "Der erste", "Der dritte", "Der zehnte"],
-["Wie heißt Lord Emsworths Sohn?", "Freddie", "Galahad", "Bertie", "Psmith"],
-["Wie heißen die zwei Nichten?", "Prudence Garland und Veronica Wedge", "Mary und Jane", "Emma und Lucy", "Daisy und Rose"]]},
-"wd_Q5509185": {"s": "leicht", "q": [
-["Wer schuf „Fungus der Bogeymann“?", "Raymond Briggs", "Quentin Blake", "Roald Dahl", "Maurice Sendak"],
-["Wann erschien das Comicbuch?", "1977", "1967", "1987", "1997"],
-["Wie heißt Fungus’ Frau auf Deutsch?", "Ekeltraut", "Mildew", "Morchel", "Schimmela"],
-["Wie heißt sein Sohn auf Deutsch?", "Morchel", "Mould", "Pilz", "Moder"],
-["Wo lebt die Familie?", "In Bogeydom unter der Erde", "Auf dem Mond", "Im Wald", "Im Meer"]]},
-"wd_Q5287304": {"s": "leicht", "q": [
-["Wer schrieb „Doktor De Soto“?", "William Steig", "Leo Lionni", "Dr. Seuss", "Arnold Lobel"],
-["Wann erschien das Bilderbuch?", "1982", "1972", "1992", "1962"],
-["Was ist Doktor De Soto von Beruf?", "Zahnarzt", "Tierarzt", "Bäcker", "Lehrer"],
-["Welches Tier kommt mit Zahnschmerzen?", "Ein Fuchs", "Ein Wolf", "Ein Bär", "Eine Katze"],
-["Wer ist seine Assistentin?", "Seine Frau", "Seine Tochter", "Eine Ratte", "Ein Hase"]]},
-"wd_Q5462012": {"s": "leicht", "q": [
-["Wer schrieb „Das Baby-Projekt“?", "Anne Fine", "Jacqueline Wilson", "Judy Blume", "Roald Dahl"],
-["Wie lautet der Originaltitel?", "Flour Babies", "Madame Doubtfire", "Baby Project", "Bill’s New Frock"],
-["Wann erschien er?", "1992", "1982", "2002", "1972"],
-["Wie alt sind die Schüler?", "13", "10", "16", "8"],
-["Wer übersetzte ihn ins Deutsche?", "Barbara Heller", "Tobias Scheffel", "Harry Rowohlt", "Gabriele Haefs"]]},
-"wd_Q5681091": {"s": "leicht", "q": [
-["Wer schrieb „Allein in der Wildnis“?", "Gary Paulsen", "Jack London", "Jean Craighead George", "Farley Mowat"],
-["Wie lautet der Originaltitel?", "Hatchet", "Brian’s Winter", "Into the Wild", "Wildnis"],
-["Wann erschien das Original?", "1987", "1977", "1997", "1967"],
-["Was überlebt Brian?", "Einen Flugzeugabsturz", "Einen Schiffbruch", "Ein Erdbeben", "Eine Lawine"],
-["Wie alt ist Brian?", "13", "10", "16", "18"]]},
-"wd_Q5823891": {"s": "schwierig", "q": [
-["Wer schrieb „Die Harfe und der Schatten“?", "Alejo Carpentier", "Gabriel García Márquez", "Carlos Fuentes", "Mario Vargas Llosa"],
-["Was ist er für den Autor?", "Sein letzter Roman", "Sein erster Roman", "Ein Drama", "Ein Gedichtband"],
-["Wann wurde er veröffentlicht?", "1979", "1969", "1989", "1959"],
-["Wen wollen zwei Päpste seligsprechen?", "Christoph Kolumbus", "Amerigo Vespucci", "Hernán Cortés", "Magellan"],
-["Wer übersetzte ihn ins Deutsche?", "Anneliese Botond", "Curt Meyer-Clason", "Elke Wehr", "Erich Hackl"]]},
-"wd_Q5813573": {"s": "mittel", "q": [
-["Wer schrieb „Schlaf in der Sonne“?", "Adolfo Bioy Casares", "Jorge Luis Borges", "Julio Cortázar", "Ernesto Sábato"],
-["Wie lautet der Originaltitel?", "Dormir al sol", "La invención de Morel", "El sueño de los héroes", "Rayuela"],
-["Wann erschien die Originalausgabe?", "1973", "1963", "1983", "1953"],
-["Wann wurde die deutsche Übersetzung publiziert?", "1976", "1973", "1986", "1966"],
-["In welcher Stadt spielt der Roman?", "In Buenos Aires", "In Montevideo", "In Madrid", "In Santiago"]]}
+"wd_Q3319940": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Mein Onkel Benjamin“?",
+"Claude Tillier",
+"Honoré de Balzac",
+"Alexandre Dumas",
+"Victor Hugo"
+],
+[
+"Wie lautet der Originaltitel?",
+"Mon oncle Benjamin",
+"Mon oncle Jules",
+"L’Oncle Benjamin",
+"Mon père"
+],
+[
+"Wann erschien der Roman?",
+"1843",
+"1823",
+"1863",
+"1883"
+],
+[
+"Wie heißt der Großonkel mit vollem Namen?",
+"Benjamin Rathery",
+"Benjamin Constant",
+"Benjamin Roque",
+"Benjamin Kobus"
+],
+[
+"Wo spielt die Handlung?",
+"In Clamecy",
+"In Paris",
+"In Lyon",
+"In Hunebourg"
+]
+]
+},
+"wd_Q3206962": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Das Scheit“?",
+"Guy de Maupassant",
+"Émile Zola",
+"Gustave Flaubert",
+"Prosper Mérimée"
+],
+[
+"Wie lautet der französische Titel?",
+"La Bûche",
+"Le Feu",
+"La Cheminée",
+"Le Bois"
+],
+[
+"Wann erschien die Novelle erstmals?",
+"Am 26. Januar 1882",
+"1872",
+"1892",
+"1899"
+],
+[
+"In welcher Zeitschrift?",
+"Gil Blas",
+"Revue de Paris",
+"Le Figaro",
+"Le Gaulois"
+],
+[
+"Was fällt aus dem Kamin?",
+"Ein brennendes Holzscheit",
+"Ein Brief",
+"Eine Katze",
+"Ein Ring"
+]
+]
+},
+"wd_Q3223930": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der Löwe, der Affe und die beiden Esel“?",
+"Jean de La Fontaine",
+"Äsop",
+"Lessing",
+"Gellert"
+],
+[
+"Wann wurde sie erstmals veröffentlicht?",
+"1678",
+"1668",
+"1688",
+"1698"
+],
+[
+"Die wievielte Fabel im elften Buch ist sie?",
+"Die fünfte",
+"Die erste",
+"Die zehnte",
+"Die fünfzehnte"
+],
+[
+"Wie lautet der französische Titel?",
+"Le Lion, le Singe et les Deux Ânes",
+"Le Lion et le Rat",
+"Les Deux Ânes",
+"Le Singe et le Chat"
+],
+[
+"Wen zeichnete der Dichter in seinen Tierfabeln?",
+"Menschen aus allen Schichten",
+"Nur Könige",
+"Nur Bauern",
+"Nur Tiere"
+]
+]
+},
+"wd_Q3224090": {
+"s": "leicht",
+"q": [
+[
+"Wer schrieb „Der Wolf als Schäfer“?",
+"Jean de La Fontaine",
+"Die Brüder Grimm",
+"Äsop",
+"Lessing"
+],
+[
+"Wann veröffentlichte er die Fabel?",
+"1668",
+"1648",
+"1688",
+"1708"
+],
+[
+"Als was verkleidet sich der Wolf?",
+"Als Schäfer",
+"Als Großmutter",
+"Als Schaf",
+"Als Hund"
+],
+[
+"Was will er tun?",
+"Schafe von der Weide weglocken",
+"Den Hund fangen",
+"Den Hirten beraten",
+"Gras fressen"
+],
+[
+"Was tun Hirte, Hund und Herde gerade?",
+"Sie schlafen",
+"Sie essen",
+"Sie tanzen",
+"Sie wandern"
+]
+]
+},
+"wd_Q3223934": {
+"s": "leicht",
+"q": [
+[
+"Wer schrieb „Patricia und der Löwe“?",
+"Joseph Kessel",
+"Romain Gary",
+"Antoine de Saint-Exupéry",
+"Albert Camus"
+],
+[
+"Wie lautet der Originaltitel?",
+"Le Lion",
+"La Lionne",
+"Patricia",
+"L’Afrique"
+],
+[
+"Wann wurde er veröffentlicht?",
+"1958",
+"1948",
+"1968",
+"1978"
+],
+[
+"Wo spielt er?",
+"In einem Nationalpark in Kenia",
+"In Südafrika",
+"In Indien",
+"In Marokko"
+],
+[
+"Wie alt ist Patricia?",
+"13",
+"8",
+"17",
+"10"
+]
+]
+},
+"wd_Q3301883": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Schwere Naturen“?",
+"Anton Tschechow",
+"Iwan Turgenew",
+"Nikolai Gogol",
+"Iwan Bunin"
+],
+[
+"Wann erschien die Geschichte?",
+"Am 7. Oktober 1886",
+"1876",
+"1896",
+"1906"
+],
+[
+"In welcher Zeitung?",
+"Nowoje wremja",
+"Oskolki",
+"Peterburgskaja gaseta",
+"Die Grille"
+],
+[
+"Was ist Johann?",
+"Ein Pope",
+"Ein Gutsbesitzer",
+"Ein Arzt",
+"Ein Soldat"
+],
+[
+"Was hatte er geschenkt bekommen?",
+"Ein kleines Landgut",
+"Ein Pferd",
+"Eine Uhr",
+"Ein Haus in der Stadt"
+]
+]
+},
+"wd_Q3548595": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Un fil à la patte“?",
+"Georges Feydeau",
+"Eugène Labiche",
+"Molière",
+"Alfred Jarry"
+],
+[
+"Was bedeutet der Titel sinngemäß?",
+"Ein Klotz am Bein",
+"Ein Faden im Kopf",
+"Ein Floh im Ohr",
+"Ein Stein im Schuh"
+],
+[
+"Wie viele Akte hat die Komödie?",
+"Drei",
+"Fünf",
+"Zwei",
+"Vier"
+],
+[
+"Wann wurde sie uraufgeführt?",
+"Am 9. Januar 1894",
+"1884",
+"1904",
+"1914"
+],
+[
+"Wie oft wurde sie aufgeführt?",
+"129 Mal",
+"12 Mal",
+"500 Mal",
+"1000 Mal"
+]
+]
+},
+"wd_Q3744835": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Wie’s uns gefällt“?",
+"Angela Carter",
+"Jeanette Winterson",
+"A. S. Byatt",
+"Muriel Spark"
+],
+[
+"Wie lautet der Originaltitel?",
+"Wise Children",
+"As You Like It",
+"Nights at the Circus",
+"The Magic Toyshop"
+],
+[
+"Wann erschien er in Großbritannien?",
+"1991",
+"1981",
+"2001",
+"1971"
+],
+[
+"Was ist er für die Autorin?",
+"Ihr letzter Roman",
+"Ihr erster Roman",
+"Ihr einziger Roman",
+"Ein Jugendwerk"
+],
+[
+"Wessen Leben thematisiert er?",
+"Das von Zwillingen",
+"Das eines Königs",
+"Das eines Hundes",
+"Das eines Seemanns"
+]
+]
+},
+"wd_Q3828828": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Le meraviglie del Duemila“?",
+"Emilio Salgari",
+"Italo Calvino",
+"Jules Verne",
+"Carlo Collodi"
+],
+[
+"Was bedeutet der Titel?",
+"Die Wunder des Zweitausends",
+"Die Reise zum Mond",
+"Das Jahr 3000",
+"Die Maschinen"
+],
+[
+"Aus welchem Jahr stammen die zwei Freunde?",
+"Aus 1903",
+"Aus 1803",
+"Aus 1953",
+"Aus 1900"
+],
+[
+"Wie lange verbringen sie im Koma?",
+"100 Jahre",
+"50 Jahre",
+"10 Jahre",
+"1000 Jahre"
+],
+[
+"Womit gelingt das?",
+"Mit dem Saft einer Pflanze",
+"Mit Eis",
+"Mit einer Maschine",
+"Mit Zauberei"
+]
+]
+},
+"wd_Q3351660": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Olympie“?",
+"Voltaire",
+"Racine",
+"Corneille",
+"Diderot"
+],
+[
+"Was für ein Stück ist es?",
+"Eine Tragödie in fünf Aufzügen",
+"Eine Komödie",
+"Eine Oper",
+"Ein Einakter"
+],
+[
+"In wie vielen Tagen stellte er die erste Fassung fertig?",
+"In sechs",
+"In sechzig",
+"In einem",
+"In dreißig"
+],
+[
+"Wo wurde es am 30. September 1762 aufgeführt?",
+"Im Schlosstheater Schwetzingen",
+"In Paris",
+"In Versailles",
+"In Genf"
+],
+[
+"Wer besorgte die erste Buchausgabe?",
+"Cosimo Alessandro Collini",
+"Diderot",
+"Friedrich II.",
+"Rousseau"
+]
+]
+},
+"wd_Q3349863": {
+"s": "leicht",
+"q": [
+[
+"Wer schrieb „Halb und halb für drei“?",
+"Marie-Aude Murail",
+"Susie Morgenstern",
+"Daniel Pennac",
+"Timothée de Fombelle"
+],
+[
+"Wie lautet der Originaltitel?",
+"Oh, Boy!",
+"Trois pour toujours",
+"Simple",
+"Maïté coiffure"
+],
+[
+"Wann erschien er?",
+"2000",
+"1990",
+"2010",
+"1995"
+],
+[
+"Wer übersetzte ihn ins Deutsche?",
+"Tobias Scheffel",
+"Peter Handke",
+"Elisabeth Edl",
+"Barbara Heller"
+],
+[
+"Unter welchem neuen Titel erschien er 2010?",
+"Drei für immer",
+"Oh Boy",
+"Halb und Halb",
+"Geschwister"
+]
+]
+},
+"wd_Q4375121": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Die Abenteuer Tschitschikows“?",
+"Michail Bulgakow",
+"Nikolai Gogol",
+"Michail Soschtschenko",
+"Juri Olescha"
+],
+[
+"Was für ein Text ist es?",
+"Eine phantastische Groteske",
+"Ein Epos",
+"Ein Drama",
+"Ein Gedicht"
+],
+[
+"Wann erschien er?",
+"Am 24. September 1922",
+"1912",
+"1932",
+"1925"
+],
+[
+"In welcher Zeitschrift?",
+"Nakanune",
+"Snamja",
+"Nowy Mir",
+"Oskolki"
+],
+[
+"Wo erschien diese russischsprachige Zeitschrift?",
+"In Berlin",
+"In Moskau",
+"In Paris",
+"In Prag"
+]
+]
+},
+"wd_Q4378271": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Gespenster“?",
+"Iwan Turgenew",
+"Nikolai Gogol",
+"Anton Tschechow",
+"Alexander Puschkin"
+],
+[
+"Wann wurde die Novelle vollendet?",
+"Im Sommer 1863",
+"1853",
+"1873",
+"1883"
+],
+[
+"In welcher Zeitschrift erschien sie 1864?",
+"Epocha",
+"Westnik Jewropy",
+"Russkaja mysl",
+"Sowremennik"
+],
+[
+"Wer übertrug sie ins Deutsche?",
+"Friedrich von Bodenstedt",
+"Eugen Marx",
+"Adolf Laun",
+"Paul Heyse"
+],
+[
+"Unter welchem deutschen Titel erschien sie 1865?",
+"Erscheinungen",
+"Gespenster",
+"Phantome",
+"Visionen"
+]
+]
+},
+"wd_Q3557019": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Opfer der Pflicht“?",
+"Eugène Ionesco",
+"Samuel Beckett",
+"Jean Genet",
+"Arthur Adamov"
+],
+[
+"Was für ein Stück ist es?",
+"Ein Einakter",
+"Ein Fünfakter",
+"Ein Roman",
+"Eine Oper"
+],
+[
+"Wann entstand es?",
+"1953",
+"1943",
+"1963",
+"1973"
+],
+[
+"Wie bezeichnete es der Autor?",
+"Als „Pseudodrama“",
+"Als „Antikomödie“",
+"Als „Farce“",
+"Als „Tragödie“"
+],
+[
+"Wie heißt die gesuchte Person?",
+"Mallot",
+"Bérenger",
+"Choubert",
+"Godot"
+]
+]
+},
+"wd_Q3563353": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Hochzeitsreise“?",
+"Patrick Modiano",
+"Philippe Sollers",
+"Michel Tournier",
+"Jean Echenoz"
+],
+[
+"Wie lautet der Originaltitel?",
+"Voyage de noces",
+"Fleurs de ruine",
+"Des inconnues",
+"Dora Bruder"
+],
+[
+"Wann erschien er?",
+"1990",
+"1980",
+"2000",
+"1970"
+],
+[
+"Wer übersetzte ihn ins Deutsche?",
+"Andrea Spingler",
+"Elisabeth Edl",
+"Peter Handke",
+"Walter Schürenberg"
+],
+[
+"Wie heißt der Erzähler?",
+"Jean B.",
+"Patrick M.",
+"Pierre L.",
+"Jacques D."
+]
+]
+},
+"wd_Q3927652": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Was ich liebte“?",
+"Siri Hustvedt",
+"Paul Auster",
+"Jennifer Egan",
+"Donna Tartt"
+],
+[
+"Wie lautet der Originaltitel?",
+"What I Loved",
+"The Blazing World",
+"The Summer Without Men",
+"Memories of the Future"
+],
+[
+"Wann erschien er?",
+"2003",
+"1993",
+"2013",
+"1999"
+],
+[
+"Was ist der Erzähler Leon Hertzberg?",
+"Kunsthistoriker",
+"Maler",
+"Arzt",
+"Pianist"
+],
+[
+"Wie heißt der befreundete Maler?",
+"William Wechsler",
+"Erica",
+"Paul",
+"Mark"
+]
+]
+},
+"wd_Q3819136": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Blaue Ära“?",
+"Yukio Mishima",
+"Yasunari Kawabata",
+"Kenzaburō Ōe",
+"Haruki Murakami"
+],
+[
+"Die wievielte Novelle des Autors ist sie?",
+"Die zweite",
+"Die erste",
+"Die zehnte",
+"Die letzte"
+],
+[
+"Wann wurde sie veröffentlicht?",
+"Am 25. Dezember 1950",
+"1940",
+"1960",
+"1970"
+],
+[
+"Bei welchem Verlag?",
+"Shinchosha",
+"Kodansha",
+"Iwanami",
+"Bungei Shunju"
+],
+[
+"Wie alt war der Autor bei seiner Berühmtheit?",
+"24",
+"18",
+"30",
+"40"
+]
+]
+},
+"wd_Q3818306": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der Coach“?",
+"John Grisham",
+"Nicholas Sparks",
+"Stephen King",
+"Harlan Coben"
+],
+[
+"Wie lautet der Originaltitel?",
+"Bleachers",
+"The Coach",
+"Playing for Pizza",
+"Calico Joe"
+],
+[
+"Wann erschien die englische Erstauflage?",
+"Am 22. Juni 2004",
+"1994",
+"2014",
+"2000"
+],
+[
+"Wie heißt die Kleinstadt?",
+"Messina",
+"Clanton",
+"Ford County",
+"Sparta"
+],
+[
+"Wie heißt der Trainer?",
+"Eddie Rake",
+"Neely Crenshaw",
+"Jake Brigance",
+"Rick Dockery"
+]
+]
+},
+"wd_Q4738955": {
+"s": "leicht",
+"q": [
+[
+"Wer schrieb „Am kürzeren Ende der Sonnenallee“?",
+"Thomas Brussig",
+"Leander Haußmann",
+"Jana Hensel",
+"Ingo Schulze"
+],
+[
+"Der wievielte Roman des Autors ist er?",
+"Der dritte",
+"Der erste",
+"Der zweite",
+"Der fünfte"
+],
+[
+"Wann erschien er?",
+"1999",
+"1989",
+"2009",
+"1995"
+],
+[
+"In welcher Stadt spielt er?",
+"In Ost-Berlin",
+"In Leipzig",
+"In Dresden",
+"In Rostock"
+],
+[
+"In welchem Ortsteil liegt der Schauplatz?",
+"Baumschulenweg",
+"Prenzlauer Berg",
+"Kreuzberg",
+"Marzahn"
+]
+]
+},
+"wd_Q3934709": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb die „Philosophischen Untersuchungen über das Wesen der menschlichen Freiheit“?",
+"Friedrich Wilhelm Joseph Schelling",
+"Hegel",
+"Fichte",
+"Kant"
+],
+[
+"Wann erschien das Werk?",
+"1809",
+"1789",
+"1829",
+"1849"
+],
+[
+"Worum bemüht er sich darin?",
+"Um eine Freiheitstheorie",
+"Um eine Farbenlehre",
+"Um eine Staatslehre",
+"Um eine Musiktheorie"
+],
+[
+"Aus welcher Metaphysik entfaltet er sie?",
+"Aus einer Metaphysik des Bösen",
+"Aus einer Metaphysik der Zahl",
+"Aus einer Metaphysik der Sprache",
+"Aus einer Metaphysik des Lichts"
+],
+[
+"Wie ist das Werk vom Umfang her?",
+"Kurz",
+"Mehrbändig",
+"Über 1000 Seiten",
+"Unvollendet in zehn Teilen"
+]
+]
+},
+"wd_Q4508574": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der Wachtposten“?",
+"Nikolai Leskow",
+"Leo Tolstoi",
+"Iwan Gontscharow",
+"Anton Tschechow"
+],
+[
+"Wann erschien die Erzählung?",
+"1887",
+"1867",
+"1907",
+"1877"
+],
+[
+"Unter welchem Titel erschien sie zuerst?",
+"Rettung eines Ertrinkenden",
+"Der Mensch im Schilderhaus",
+"Der Zar",
+"Winternacht"
+],
+[
+"In welchem Jahr spielt sie?",
+"Im Winter 1839",
+"1812",
+"1861",
+"1900"
+],
+[
+"Wo spielt sie?",
+"Im Petersburger Winterpalais",
+"Im Kreml",
+"In Odessa",
+"In Kiew"
+]
+]
+},
+"wd_Q4656556": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „A Dolorosa Raiz do Micondó“?",
+"Conceição Lima",
+"Mia Couto",
+"Paulina Chiziane",
+"Alda Espírito Santo"
+],
+[
+"Woher stammt die Dichterin?",
+"Aus São Tomé und Príncipe",
+"Aus Angola",
+"Aus Mosambik",
+"Aus Brasilien"
+],
+[
+"Was bedeutet der Titel?",
+"Die schmerzvolle Wurzel des Affenbrotbaums",
+"Der Baum der Insel",
+"Die Wurzel des Meeres",
+"Das Lied der Palme"
+],
+[
+"Wie viele Gedichte enthält der Band?",
+"Siebenundzwanzig",
+"Zehn",
+"Hundert",
+"Fünfzig"
+],
+[
+"Wann wurde er veröffentlicht?",
+"2006",
+"1996",
+"2016",
+"1986"
+]
+]
+},
+"wd_Q4009727": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der Sturm aus dem Nichts“?",
+"J. G. Ballard",
+"John Wyndham",
+"Brian Aldiss",
+"Arthur C. Clarke"
+],
+[
+"Wie lautet der Originaltitel?",
+"The Wind from Nowhere",
+"The Drowned World",
+"The Storm",
+"Crash"
+],
+[
+"Wann erschien er?",
+"1962",
+"1952",
+"1972",
+"1982"
+],
+[
+"Um wie viel beschleunigt der Sturm jeden Tag?",
+"Um fünf Stundenmeilen",
+"Um 100 Meilen",
+"Um eine Meile",
+"Gar nicht"
+],
+[
+"Wo suchen die Menschen Schutz?",
+"In Kellern und Bunkern",
+"Auf Bergen",
+"In Flugzeugen",
+"Auf Schiffen"
+]
+]
+},
+"wd_Q5226419": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Das Königsprojekt“?",
+"Carl Amery",
+"Wolfgang Jeschke",
+"Herbert W. Franke",
+"Andreas Eschbach"
+],
+[
+"Wann erschien der Roman?",
+"1974",
+"1964",
+"1984",
+"1994"
+],
+[
+"Was ist die MYST?",
+"Eine Zeitmaschine",
+"Ein Raumschiff",
+"Ein Roboter",
+"Ein Buch"
+],
+[
+"Wer konstruierte sie im Roman?",
+"Leonardo da Vinci",
+"Galileo Galilei",
+"Isaac Newton",
+"Albert Einstein"
+],
+[
+"Wer besitzt sie?",
+"Die katholische Kirche",
+"Ein König",
+"Die NASA",
+"Ein Wissenschaftler"
+]
+]
+},
+"wd_Q4323899": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Die Ernennung“?",
+"Alexander Bek",
+"Wassili Grossman",
+"Juri Trifonow",
+"Daniil Granin"
+],
+[
+"Was ist er für den Autor?",
+"Sein letzter Roman",
+"Sein erster Roman",
+"Ein Drama",
+"Eine Erzählung"
+],
+[
+"Wann erschien er in der Bundesrepublik?",
+"1971",
+"1961",
+"1981",
+"1991"
+],
+[
+"In welcher Moskauer Zeitschrift erschien er 1986?",
+"Snamja",
+"Nowy Mir",
+"Oktjabr",
+"Junost"
+],
+[
+"Was ist die Hauptfigur Alexander von Beruf?",
+"Walzwerkingenieur",
+"Arzt",
+"Lehrer",
+"Bauer"
+]
+]
+},
+"wd_Q4329937": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Die Schlucht“?",
+"Iwan Gontscharow",
+"Iwan Turgenew",
+"Leo Tolstoi",
+"Fjodor Dostojewski"
+],
+[
+"Was ist er für den Autor?",
+"Sein letzter Roman",
+"Sein erster Roman",
+"Sein einziges Drama",
+"Ein Gedichtband"
+],
+[
+"Wann erschien er?",
+"1869",
+"1849",
+"1889",
+"1909"
+],
+[
+"In welcher Zeitschrift?",
+"Westnik Jewropy",
+"Epocha",
+"Russkaja mysl",
+"Sowremennik"
+],
+[
+"Wovon wendet sich der Autor ab?",
+"Vom Nihilismus",
+"Vom Glauben",
+"Von der Kunst",
+"Von der Natur"
+]
+]
+},
+"wd_Q4180640": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Liebe in Bastschuhen“?",
+"Nikolai Leskow",
+"Iwan Turgenew",
+"Alexei Pissemski",
+"Nikolai Nekrassow"
+],
+[
+"Wann erschien die Erzählung?",
+"1863",
+"1843",
+"1883",
+"1903"
+],
+[
+"Unter welchem Pseudonym?",
+"M. Stebnizki",
+"S. Jaroslawzew",
+"Antoscha Tschechonte",
+"Maxim Gorki"
+],
+[
+"Wie heißt sie auch?",
+"Nastja",
+"Natalja",
+"Anna",
+"Mascha"
+],
+[
+"Was bedeutet der russische Titel?",
+"Das Leben einer Bäuerin",
+"Liebe im Dorf",
+"Die Bastschuhe",
+"Die Hochzeit"
+]
+]
+},
+"wd_Q4024507": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Onkels Erwachen“?",
+"P. G. Wodehouse",
+"Evelyn Waugh",
+"Jerome K. Jerome",
+"Saki"
+],
+[
+"Wie lautet der Originaltitel?",
+"Uncle Fred in the Springtime",
+"Full Moon",
+"Summer Lightning",
+"Leave It to Psmith"
+],
+[
+"Wann wurde er in den USA erstveröffentlicht?",
+"Am 18. August 1939",
+"1929",
+"1949",
+"1959"
+],
+[
+"Zu welcher Saga gehört er?",
+"Zur Blandings Castle-Saga",
+"Zur Jeeves-Saga",
+"Zur Psmith-Saga",
+"Zur Ukridge-Saga"
+],
+[
+"Wie heißt der Hausherr von Blandings?",
+"Lord Emsworth",
+"Lord Peter",
+"Lord Ickenham",
+"Lord Grantham"
+]
+]
+},
+"wd_Q5000310": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Burr“?",
+"Gore Vidal",
+"Norman Mailer",
+"E. L. Doctorow",
+"John Updike"
+],
+[
+"Wann erschien der Roman?",
+"1973",
+"1963",
+"1983",
+"1993"
+],
+[
+"Der wievielte Band von „Narratives of Empire“ ist er?",
+"Der erste",
+"Der siebte",
+"Der dritte",
+"Der zweite"
+],
+[
+"Wessen fiktive Lebenserinnerungen enthält er?",
+"Die von Aaron Burr",
+"Die von Lincoln",
+"Die von Washington",
+"Die von Hamilton"
+],
+[
+"Wie heißt der Protagonist?",
+"Charles Schermerhorn Schuyler",
+"Aaron Burr",
+"Henry Adams",
+"John Jay"
+]
+]
+},
+"wd_Q5054699": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Klein-Kinder-Bewahr-Anstalt“?",
+"Hilaire Belloc",
+"Lewis Carroll",
+"Edward Lear",
+"Roald Dahl"
+],
+[
+"Wie lautet der Originaltitel?",
+"Cautionary Tales for Children",
+"Struwwelpeter",
+"Nonsense Songs",
+"Just So Stories"
+],
+[
+"Wann erschien es?",
+"1907",
+"1887",
+"1927",
+"1947"
+],
+[
+"Wer illustrierte es?",
+"Basil Temple Blackwood",
+"John Tenniel",
+"Quentin Blake",
+"Edward Lear"
+],
+[
+"Wer schuf die deutsche Nachdichtung?",
+"Hans Magnus Enzensberger",
+"Erich Kästner",
+"Harry Rowohlt",
+"Christian Morgenstern"
+]
+]
+},
+"wd_Q5309566": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Suchodol“?",
+"Iwan Bunin",
+"Anton Tschechow",
+"Maxim Gorki",
+"Leonid Andrejew"
+],
+[
+"Was bedeutet der Titel?",
+"Das trockene Tal",
+"Der dunkle Wald",
+"Das grüne Feld",
+"Der stille Fluss"
+],
+[
+"Wann erschien sie?",
+"1912",
+"1902",
+"1922",
+"1932"
+],
+[
+"In welcher Zeitschrift?",
+"Westnik Jewropy",
+"Snamja",
+"Nowy Mir",
+"Epocha"
+],
+[
+"Wie heißt die Magd?",
+"Natalja",
+"Nastja",
+"Mascha",
+"Anna"
+]
+]
+},
+"wd_Q4837924": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Babiole“?",
+"Marie-Catherine d’Aulnoy",
+"Charles Perrault",
+"Jeanne-Marie Leprince de Beaumont",
+"George Sand"
+],
+[
+"Was für ein Märchen ist es?",
+"Ein Feenmärchen",
+"Ein Tiermärchen",
+"Eine Sage",
+"Ein Schwank"
+],
+[
+"Wann erschien es?",
+"1697",
+"1797",
+"1597",
+"1897"
+],
+[
+"Wie heißt die Fee?",
+"Fanferluche",
+"Morgana",
+"Carabosse",
+"Mélusine"
+],
+[
+"Wozu wird die Tochter?",
+"Zu einem Äffchen",
+"Zu einem Frosch",
+"Zu einer Katze",
+"Zu einem Vogel"
+]
+]
+},
+"wd_Q5522763": {
+"s": "schwierig",
+"q": [
+[
+"Wie nennt sich der Verfasser von „Garel vom blühenden Tal“?",
+"Pleier",
+"Stricker",
+"Wernher",
+"Hartmann"
+],
+[
+"Wann entstand die Erzählung wahrscheinlich?",
+"Zwischen 1260 und 1280",
+"Um 1100",
+"Um 1400",
+"Um 1500"
+],
+[
+"Zu welcher Gruppe gehört sie?",
+"Zu den nachklassischen Artus-Romanen",
+"Zu den Heldenepen",
+"Zu den Minneliedern",
+"Zu den Schwänken"
+],
+[
+"Wo entstand sie?",
+"Im österreichischen Raum",
+"In Flandern",
+"In Sachsen",
+"In Frankreich"
+],
+[
+"Wie viele Überbleibsel der Originalhandschrift sind erhalten?",
+"Zwei",
+"Keines",
+"Zehn",
+"Eines vollständig"
+]
+]
+},
+"wd_Q5508104": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Vollmond über Blandings Castle“?",
+"P. G. Wodehouse",
+"Agatha Christie",
+"Evelyn Waugh",
+"Nancy Mitford"
+],
+[
+"Wie lautet der Originaltitel?",
+"Full Moon",
+"Summer Lightning",
+"Heavy Weather",
+"Blandings Castle"
+],
+[
+"Der wievielte Blandings-Roman ist er?",
+"Der sechste",
+"Der erste",
+"Der dritte",
+"Der zehnte"
+],
+[
+"Wie heißt Lord Emsworths Sohn?",
+"Freddie",
+"Galahad",
+"Bertie",
+"Psmith"
+],
+[
+"Wie heißen die zwei Nichten?",
+"Prudence Garland und Veronica Wedge",
+"Mary und Jane",
+"Emma und Lucy",
+"Daisy und Rose"
+]
+]
+},
+"wd_Q5509185": {
+"s": "leicht",
+"q": [
+[
+"Wer schuf „Fungus der Bogeymann“?",
+"Raymond Briggs",
+"Quentin Blake",
+"Roald Dahl",
+"Maurice Sendak"
+],
+[
+"Wann erschien das Comicbuch?",
+"1977",
+"1967",
+"1987",
+"1997"
+],
+[
+"Wie heißt Fungus’ Frau auf Deutsch?",
+"Ekeltraut",
+"Mildew",
+"Morchel",
+"Schimmela"
+],
+[
+"Wie heißt sein Sohn auf Deutsch?",
+"Morchel",
+"Mould",
+"Pilz",
+"Moder"
+],
+[
+"Wo lebt die Familie?",
+"In Bogeydom unter der Erde",
+"Auf dem Mond",
+"Im Wald",
+"Im Meer"
+]
+]
+},
+"wd_Q5287304": {
+"s": "leicht",
+"q": [
+[
+"Wer schrieb „Doktor De Soto“?",
+"William Steig",
+"Leo Lionni",
+"Dr. Seuss",
+"Arnold Lobel"
+],
+[
+"Wann erschien das Bilderbuch?",
+"1982",
+"1972",
+"1992",
+"1962"
+],
+[
+"Was ist Doktor De Soto von Beruf?",
+"Zahnarzt",
+"Tierarzt",
+"Bäcker",
+"Lehrer"
+],
+[
+"Welches Tier kommt mit Zahnschmerzen?",
+"Ein Fuchs",
+"Ein Wolf",
+"Ein Bär",
+"Eine Katze"
+],
+[
+"Wann erschien die deutsche Erstausgabe?",
+"1983",
+"1982",
+"1993",
+"1973"
+]
+]
+},
+"wd_Q5462012": {
+"s": "leicht",
+"q": [
+[
+"Wer schrieb „Das Baby-Projekt“?",
+"Anne Fine",
+"Jacqueline Wilson",
+"Judy Blume",
+"Roald Dahl"
+],
+[
+"Wie lautet der Originaltitel?",
+"Flour Babies",
+"Madame Doubtfire",
+"Baby Project",
+"Bill’s New Frock"
+],
+[
+"Wann erschien er?",
+"1992",
+"1982",
+"2002",
+"1972"
+],
+[
+"Wie alt sind die Schüler?",
+"13",
+"10",
+"16",
+"8"
+],
+[
+"Wer übersetzte ihn ins Deutsche?",
+"Barbara Heller",
+"Tobias Scheffel",
+"Harry Rowohlt",
+"Gabriele Haefs"
+]
+]
+},
+"wd_Q5681091": {
+"s": "leicht",
+"q": [
+[
+"Wer schrieb „Allein in der Wildnis“?",
+"Gary Paulsen",
+"Jack London",
+"Jean Craighead George",
+"Farley Mowat"
+],
+[
+"Wie lautet der Originaltitel?",
+"Hatchet",
+"Brian’s Winter",
+"Into the Wild",
+"Wildnis"
+],
+[
+"Wann erschien das Original?",
+"1987",
+"1977",
+"1997",
+"1967"
+],
+[
+"Was überlebt Brian?",
+"Einen Flugzeugabsturz",
+"Einen Schiffbruch",
+"Ein Erdbeben",
+"Eine Lawine"
+],
+[
+"Wie alt ist Brian?",
+"13",
+"10",
+"16",
+"18"
+]
+]
+},
+"wd_Q5823891": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Die Harfe und der Schatten“?",
+"Alejo Carpentier",
+"Gabriel García Márquez",
+"Carlos Fuentes",
+"Mario Vargas Llosa"
+],
+[
+"Was ist er für den Autor?",
+"Sein letzter Roman",
+"Sein erster Roman",
+"Ein Drama",
+"Ein Gedichtband"
+],
+[
+"Wann wurde er veröffentlicht?",
+"1979",
+"1969",
+"1989",
+"1959"
+],
+[
+"Wen wollen zwei Päpste seligsprechen?",
+"Christoph Kolumbus",
+"Amerigo Vespucci",
+"Hernán Cortés",
+"Magellan"
+],
+[
+"Wer übersetzte ihn ins Deutsche?",
+"Anneliese Botond",
+"Curt Meyer-Clason",
+"Elke Wehr",
+"Erich Hackl"
+]
+]
+},
+"wd_Q5813573": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Schlaf in der Sonne“?",
+"Adolfo Bioy Casares",
+"Jorge Luis Borges",
+"Julio Cortázar",
+"Ernesto Sábato"
+],
+[
+"Wie lautet der Originaltitel?",
+"Dormir al sol",
+"La invención de Morel",
+"El sueño de los héroes",
+"Rayuela"
+],
+[
+"Wann erschien die Originalausgabe?",
+"1973",
+"1963",
+"1983",
+"1953"
+],
+[
+"Wann wurde die deutsche Übersetzung publiziert?",
+"1976",
+"1973",
+"1986",
+"1966"
+],
+[
+"In welcher Stadt spielt der Roman?",
+"In Buenos Aires",
+"In Montevideo",
+"In Madrid",
+"In Santiago"
+]
+]
+}
 }
