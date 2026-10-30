@@ -58,7 +58,7 @@
 ["Wann erschien der Roman?", "1988", "1978", "1998", "2008"],
 ["Wie heißt der Dunkelelf?", "Drizzt Do’Urden", "Legolas", "Elminster", "Raistlin"],
 ["Wie heißt der Zwerg?", "Bruenor Heldenhammer", "Gimli", "Thorin", "Regis"],
-["Wie heißt das böse Artefakt?", "Crenshinibon", "Der Eine Ring", "Der Arkenstein", "Excalibur"]]},
+["Wie heißt das böse Artefakt?", "Creshinibon", "Der Eine Ring", "Der Arkenstein", "Excalibur"]]},
 "wd_Q2026669": {"s": "mittel", "q": [
 ["Wer schrieb „Frieden auf Erden“?", "Stanisław Lem", "Arkadi Strugazki", "Isaac Asimov", "Philip K. Dick"],
 ["Wie lautet der polnische Titel?", "Pokój na ziemi", "Solaris", "Fiasko", "Eden"],
@@ -74,7 +74,7 @@
 "wd_Q1323271": {"s": "schwierig", "q": [
 ["In welcher Sprache ist die Ekloge des Theodulus verfasst?", "Latein", "Griechisch", "Deutsch", "Französisch"],
 ["Wann entstand sie vermutlich?", "Im 9. oder 10. Jahrhundert", "Im 13. Jahrhundert", "Im 5. Jahrhundert", "Im 16. Jahrhundert"],
-["Wofür bedeutet „Alathia“?", "Wahrheit", "Lüge", "Vernunft", "Glaube"],
+["Was bedeutet „Alathia“?", "Wahrheit", "Lüge", "Vernunft", "Glaube"],
 ["Wer tritt als Schiedsrichterin auf?", "Phronesis", "Pseustis", "Alathia", "Sophia"],
 ["Wofür war sie im Mittelalter verbreitet?", "Als Schultext", "Als Gesetz", "Als Kochbuch", "Als Landkarte"]]},
 "wd_Q3045861": {"s": "mittel", "q": [
