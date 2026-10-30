@@ -1,206 +1,1362 @@
 {
-"wd_Q10533239": {"s": "leicht", "q": [
-["Wer schrieb „Im Land der Dämmerung“?", "Astrid Lindgren", "Selma Lagerlöf", "Tove Jansson", "Elsa Beskow"],
-["Wie heißt das Märchen auch?", "Herr Lilienstengel", "Mio, mein Mio", "Die Brüder Löwenherz", "Nils Karlsson"],
-["Wie heißt der kranke Junge?", "Göran", "Mio", "Nils", "Emil"],
-["Wie lange ist er schon ans Bett gefesselt?", "Seit einem Jahr", "Seit einer Woche", "Seit zehn Jahren", "Seit einem Monat"],
-["Wer besucht ihn?", "Herr Lilienstengel", "Ein Engel", "Der Weihnachtsmann", "Karlsson"]]},
-"wd_Q10983406": {"s": "mittel", "q": [
-["Wer schrieb „Und ewig singen die Wälder“?", "Trygve Gulbranssen", "Knut Hamsun", "Sigrid Undset", "Henrik Ibsen"],
-["Wann erschien der Roman?", "1933", "1923", "1943", "1953"],
-["In welchem Verlag?", "Aschehoug", "Gyldendal", "Bonnier", "Diogenes"],
-["In welcher Sprachvariante ist er verfasst?", "Riksmål", "Nynorsk", "Dänisch", "Schwedisch"],
-["Was bedeutet der Originaltitel wörtlich etwa?", "Und jenseits singen die Wälder", "Der Wald schweigt", "Die Bauern", "Der Hof"]]},
-"wd_Q12366899": {"s": "mittel", "q": [
-["Wer schrieb „Kevade“?", "Oskar Luts", "Anton Hansen Tammsaare", "Eduard Vilde", "Jaan Kross"],
-["Was bedeutet „Kevade“?", "Frühling", "Sommer", "Schule", "Kindheit"],
-["Wann erschien der erste Teil?", "1912", "1902", "1922", "1932"],
-["Was schildert das Werk?", "Ein Schuljahr an einer ländlichen Schule", "Einen Krieg", "Eine Seereise", "Ein Königreich"],
-["Woraus speist es sich?", "Aus Kindheitserinnerungen des Autors", "Aus Zeitungsberichten", "Aus Märchen", "Aus Briefen"]]},
-"wd_Q13360022": {"s": "mittel", "q": [
-["Wer schrieb „Die Sphinx ohne Geheimnis“?", "Oscar Wilde", "Arthur Conan Doyle", "Robert Louis Stevenson", "Rudyard Kipling"],
-["In welcher Sammlung ist sie enthalten?", "Lord Arthur Saviles Verbrechen und andere Geschichten", "Das Bildnis des Dorian Gray", "Märchen", "Der glückliche Prinz"],
-["Wann erschien die Sammlung?", "1887", "1897", "1877", "1907"],
-["Wie hieß die Erzählung ursprünglich?", "Lady Alroy", "Die Sphinx", "Ein Geheimnis", "Lady Windermere"],
-["Welche Erzählung enthält die Sammlung außerdem?", "Das Gespenst von Canterville", "Der selbstsüchtige Riese", "Salome", "Bunbury"]]},
-"wd_Q15844728": {"s": "mittel", "q": [
-["Wer schrieb „Die sonderbare Buchhandlung des Mr. Penumbra“?", "Robin Sloan", "Carlos Ruiz Zafón", "Neil Gaiman", "Jasper Fforde"],
-["Wann erschien der Roman?", "2012", "2002", "2018", "2008"],
-["Was ist er für den Autor?", "Sein Debütroman", "Sein letzter Roman", "Ein Sachbuch", "Ein Kinderbuch"],
-["Wie lautet der Originaltitel?", "Mr. Penumbra’s 24-Hour Bookstore", "The Bookshop", "Sourdough", "The Night Store"],
-["Wie viele Wochen stand er auf einer Bestsellerliste?", "30", "3", "100", "10"]]},
-"wd_Q15909011": {"s": "mittel", "q": [
-["Wer schrieb „Kugelblitz“?", "Liu Cixin", "Ken Liu", "Mo Yan", "Yu Hua"],
-["Wann erschien die deutsche Ausgabe?", "Am 11. Mai 2020", "2010", "2015", "2023"],
-["Wer übersetzte sie?", "Marc Hermann", "Karin Betz", "Martina Hasse", "Johannes Frey"],
-["Welches Phänomen steht im Mittelpunkt?", "Der Kugelblitz", "Ein Erdbeben", "Ein Komet", "Ein Tsunami"],
-["Welchen Konflikt beschreibt der Roman?", "Zwischen Forschung und militärischem Missbrauch", "Zwischen zwei Familien", "Zwischen Göttern", "Zwischen Tieren"]]},
-"wd_Q15455567": {"s": "mittel", "q": [
-["Wer schrieb die Novelle „Don Juan“?", "E. T. A. Hoffmann", "Mozart", "Lord Byron", "Molière"],
-["Wann wurde sie vorabgedruckt?", "Am 31. März 1813", "1803", "1823", "1833"],
-["Wo wurde sie vorabgedruckt?", "In der Allgemeinen musikalischen Zeitung", "Im Teutschen Merkur", "In der Thalia", "In den Horen"],
-["Welche Oper wird besucht?", "Mozarts Don Giovanni", "Beethovens Fidelio", "Webers Freischütz", "Glucks Orpheus"],
-["Welche Figur verehrt der Enthusiast?", "Donna Anna", "Zerlina", "Donna Elvira", "Leporello"]]},
-"wd_Q15052495": {"s": "mittel", "q": [
-["Wer schrieb „Seitenwechsel“?", "Nella Larsen", "Zora Neale Hurston", "Toni Morrison", "Alice Walker"],
-["Wie lautet der Originaltitel?", "Passing", "Quicksand", "Beloved", "Jazz"],
-["Wann wurde er erstmals veröffentlicht?", "1929", "1919", "1939", "1949"],
-["Wie heißen die beiden Frauen?", "Irene und Clare", "Celie und Nettie", "Janie und Pheoby", "Sula und Nel"],
-["Wann erschien die erste deutsche Übersetzung?", "2011", "1929", "1990", "2001"]]},
-"wd_Q14920548": {"s": "mittel", "q": [
-["Wer schrieb „A History of New York“?", "Washington Irving", "Mark Twain", "James Fenimore Cooper", "Edgar Allan Poe"],
-["Was ist das Werk?", "Eine als Geschichtswerk getarnte Satire", "Ein echtes Geschichtsbuch", "Ein Roman über Indianer", "Ein Gedichtband"],
-["Wann wurde es veröffentlicht?", "1809", "1829", "1789", "1849"],
-["Unter welchem Pseudonym?", "Diedrich Knickerbocker", "Geoffrey Crayon", "Mark Twain", "Jonathan Oldstyle"],
-["Bis zu welchem Ende reicht die Geschichte laut Titel?", "Bis zum Ende der niederländischen Dynastie", "Bis 1809", "Bis zur Unabhängigkeit", "Bis zum Bürgerkrieg"]]},
-"wd_Q16002914": {"s": "schwierig", "q": [
-["Wer schrieb den „Abriss der Psychoanalyse“?", "Sigmund Freud", "Anna Freud", "C. G. Jung", "Melanie Klein"],
-["Wann entstand er?", "1938", "1928", "1918", "1908"],
-["Wann wurde er postum veröffentlicht?", "1940", "1938", "1950", "1945"],
-["Wie heißt das erste Kapitel?", "Der psychische Apparat", "Die Traumdeutung", "Das Ich und das Es", "Die Triebe"],
-["Was umfasst das Es?", "Alles Ererbte, v. a. die Triebe", "Nur das Gewissen", "Nur das Bewusstsein", "Die Sprache"]]},
-"wd_Q16386684": {"s": "mittel", "q": [
-["Wer schrieb „Das Leben Arsenjews“?", "Iwan Bunin", "Boris Pasternak", "Vladimir Nabokov", "Maxim Gorki"],
-["Wo entstand der Roman?", "In Frankreich", "In Russland", "In Deutschland", "In den USA"],
-["Wann entstand er?", "1929 bis 1939", "1909 bis 1919", "1949 bis 1959", "1900"],
-["Wann erschien er vollständig?", "1952", "1939", "1960", "1945"],
-["Welchen Zeitraum umfasst die Handlung etwa?", "1871 bis 1891", "1900 bis 1920", "1850 bis 1860", "1920 bis 1940"]]},
-"wd_Q16934363": {"s": "mittel", "q": [
-["Wer schrieb „Das Elfenbeinkind“?", "H. Rider Haggard", "Arthur Conan Doyle", "Rudyard Kipling", "Edgar Rice Burroughs"],
-["Wie lautet der Originaltitel?", "The Ivory Child", "King Solomon’s Mines", "She", "Allan Quatermain"],
-["Wann wurde es erstmals veröffentlicht?", "1916", "1886", "1926", "1906"],
-["Wie heißt der Jäger und Afrikareisende?", "Allan Quatermain", "Lord Ragnall", "Savage", "Tarzan"],
-["Wie heißt Lord Ragnalls Verlobte?", "Luna Holmes", "Jane Porter", "Ayesha", "Lady Isabel"]]},
-"wd_Q18326710": {"s": "mittel", "q": [
-["Wer schrieb „Damit du dich im Viertel nicht verirrst“?", "Patrick Modiano", "Michel Houellebecq", "Annie Ernaux", "Philippe Djian"],
-["Der wievielte Roman Modianos ist es?", "Der 28.", "Der 1.", "Der 10.", "Der 50."],
-["In welchem Jahr erhielt Modiano den Nobelpreis?", "2014", "2004", "2020", "2010"],
-["Wer übersetzte den Roman?", "Elisabeth Edl", "Uli Aumüller", "Hinrich Schmidt-Henkel", "Claudia Hamm"],
-["Wann erschien die deutsche Übersetzung?", "2015", "2014", "2018", "2010"]]},
-"wd_Q19125128": {"s": "mittel", "q": [
-["Wer schrieb den Text von „Ach bleib mit deiner Gnade“?", "Josua Stegmann", "Paul Gerhardt", "Martin Luther", "Matthias Claudius"],
-["Aus welchem Jahr stammt der Text?", "1627", "1527", "1727", "1827"],
-["An welcher Universität wirkte der Autor?", "Rinteln", "Wittenberg", "Jena", "Tübingen"],
-["Unter welcher Nummer steht es im Evangelischen Gesangbuch?", "347", "436", "276", "149"],
-["Was für ein Text ist es?", "Ein geistliches Lied", "Ein Gedicht über die Natur", "Ein Trinklied", "Ein Kinderreim"]]},
-"wd_Q21203239": {"s": "mittel", "q": [
-["Wer schrieb „Foto 51“?", "Anna Ziegler", "Lucy Prebble", "Caryl Churchill", "Sarah Ruhl"],
-["Wer ist die Protagonistin?", "Rosalind Franklin", "Marie Curie", "Lise Meitner", "Ada Lovelace"],
-["Wo arbeitete sie?", "Am King’s College in London", "In Cambridge", "In Paris", "In Berlin"],
-["Was entdeckt sie?", "Röntgenbeugungsdiagramme der DNA", "Penicillin", "Radium", "Insulin"],
-["Worauf bezieht sich der Titel?", "Auf Photo 51", "Auf ein Gemälde", "Auf eine Hausnummer", "Auf ein Jahr"]]},
-"wd_Q21465365": {"s": "mittel", "q": [
-["Wer schrieb „Pallieter“?", "Felix Timmermans", "Hugo Claus", "Cees Nooteboom", "Ernest Claes"],
-["Wann erschien der Roman?", "1916", "1906", "1926", "1936"],
-["Als was kann er interpretiert werden?", "Als Ode an das Leben", "Als Kriegsbericht", "Als Kriminalroman", "Als Reisebericht"],
-["Wofür wurde die Figur zum Symbol?", "Für das flämische Volk", "Für den Krieg", "Für die Kirche", "Für die Stadt"],
-["In wie viele Sprachen wurde er übersetzt?", "Mehr als 40", "Fünf", "Zehn", "Zwei"]]},
-"wd_Q24950508": {"s": "mittel", "q": [
-["Wer schrieb „Der Knecht Jemeljan und die leere Trommel“?", "Leo Tolstoi", "Anton Tschechow", "Nikolai Leskow", "Iwan Turgenew"],
-["Was für eine Geschichte ist es?", "Eine Antikriegsgeschichte in Märchengestalt", "Ein Liebesroman", "Eine Kriminalgeschichte", "Ein Reisebericht"],
-["Wann entstand sie?", "1886", "1866", "1906", "1876"],
-["Wessen Märchen bearbeitete Tolstoi?", "Dmitri Sadownikows", "Puschkins", "Afanassjews", "Gogols"],
-["Wo erschien sie 1891?", "In Genf", "In Moskau", "In Paris", "In Berlin"]]},
-"wd_Q28793114": {"s": "leicht", "q": [
-["Wer schrieb „Wir gehen auf Bärenjagd“?", "Michael Rosen", "Julia Donaldson", "Eric Carle", "Martin Waddell"],
-["Wer zeichnete die Bilder?", "Helen Oxenbury", "Axel Scheffler", "Quentin Blake", "Judith Kerr"],
-["Wann erschien das Bilderbuch?", "1989", "1979", "1999", "1969"],
-["Wie viele Geschwister gehen spazieren?", "Fünf", "Drei", "Zwei", "Sieben"],
-["Wer begleitet sie?", "Ihr Hund", "Ihre Katze", "Ihr Opa", "Ein Bär"]]},
-"wd_Q30320748": {"s": "schwierig", "q": [
-["Wer schrieb „De ecclesia“?", "Jan Hus", "John Wyclif", "Martin Luther", "Erasmus"],
-["Was bedeutet der Titel?", "Über die Kirche", "Über den Papst", "Über die Bibel", "Über Gott"],
-["An wessen Kirchenkritik knüpft Hus an?", "An die John Wyclifs", "An die Luthers", "An die Calvins", "An die des Papstes"],
-["Wer ist laut Hus das Haupt der Kirche?", "Christus", "Der Papst", "Der Kaiser", "Der König"],
-["Was ist die wahre Kirche laut Hus?", "Die Gemeinschaft der Gläubigen", "Die päpstliche Institution", "Der Staat", "Ein Gebäude"]]},
-"wd_Q56277009": {"s": "mittel", "q": [
-["Wer schrieb „Die Wurzeln des Lebens“?", "Richard Powers", "Jonathan Franzen", "Barbara Kingsolver", "Peter Wohlleben"],
-["Wie lautet der Originaltitel?", "The Overstory", "The Echo Maker", "Bewilderment", "The Gold Bug Variations"],
-["Wann erschien der Roman?", "2018", "2008", "2021", "2014"],
-["Wie viele Protagonisten hat er?", "Neun", "Zwei", "Vier", "Zwölf"],
-["Womit sind ihre Leben verbunden?", "Mit Bäumen", "Mit dem Meer", "Mit Pferden", "Mit Sternen"]]},
-"wd_Q56753771": {"s": "mittel", "q": [
-["Über wessen Boxstil ist „Kompromissloses Pendel“?", "Cus D’Amato", "Angelo Dundee", "Emanuel Steward", "Freddie Roach"],
-["Wer schrieb das Buch?", "Oleh Malzew", "Mike Tyson", "Floyd Patterson", "José Torres"],
-["Wie viele Weltmeister zog der Trainer groß?", "Drei", "Einen", "Zehn", "Fünf"],
-["Welcher Boxer gehört dazu?", "Mike Tyson", "Muhammad Ali", "Joe Frazier", "George Foreman"],
-["Aus wie vielen Kapiteln besteht das Buch?", "Elf", "Drei", "Zwanzig", "Sieben"]]},
-"wd_Q65042675": {"s": "mittel", "q": [
-["Wer schrieb „Der Orden des geheimen Baumes“?", "Samantha Shannon", "Leigh Bardugo", "Sarah J. Maas", "Naomi Novik"],
-["Wie lautet der Originaltitel?", "The Priory of the Orange Tree", "The Bone Season", "A Day of Fallen Night", "The Orange Tree"],
-["Wann wurde er veröffentlicht?", "Am 26. Februar 2019", "2009", "2022", "2015"],
-["In wie vielen Teilen erschien die deutsche Übersetzung?", "Zwei", "Einem", "Drei", "Vier"],
-["Wie heißt der erste deutsche Teil?", "Die Magierin", "Die Königin", "Der Drache", "Der Baum"]]},
-"wd_Q97188282": {"s": "leicht", "q": [
-["Zu welcher Reihe gehört „Der Goldene Hinkelstein“?", "Asterix", "Lucky Luke", "Tim und Struppi", "Isnogud"],
-["Wann erschien der Sonderband?", "Im Oktober 2020", "1967", "1990", "2010"],
-["Wann wurde die Geschichte ursprünglich geschrieben?", "1967", "1959", "1980", "2000"],
-["Wozu erschien sie ursprünglich?", "Als Schallplattenbegleitbuch", "Als Zeitungscomic", "Als Film", "Als Hörbuch"],
-["Wer ist Troubadix?", "Der Barde des Gallierdorfs", "Der Druide", "Der Häuptling", "Der Schmied"]]},
-"wd_Q111914310": {"s": "mittel", "q": [
-["Wer schrieb „Das Licht ungewöhnlicher Sterne“?", "Ryka Aoki", "Becky Chambers", "N. K. Jemisin", "Martha Wells"],
-["Wann erschien der Roman?", "2021", "2011", "2024", "2018"],
-["Welche Genres verbindet er?", "Science-Fiction und Fantasy", "Krimi und Western", "Horror und Romanze", "Satire und Drama"],
-["Wer ist Shizuka Satomi?", "Eine berühmte Violinenlehrerin", "Eine Ärztin", "Eine Astronautin", "Eine Köchin"],
-["Wer übersetzte ihn ins Deutsche?", "Michael Pfingstl", "Michael Siefener", "Bernhard Kempen", "Gerald Jung"]]},
-"wd_Q116225249": {"s": "mittel", "q": [
-["Wer schrieb „Eine Frage der Chemie“?", "Bonnie Garmus", "Celeste Ng", "Taylor Jenkins Reid", "Delia Owens"],
-["Wie lautet der Originaltitel?", "Lessons in Chemistry", "Chemistry Class", "The Chemist", "Elements"],
-["Was ist der Roman für die Autorin?", "Ihr Debütroman", "Ihr zehnter Roman", "Ein Sachbuch", "Ein Kinderbuch"],
-["Wie heißt die Hauptfigur?", "Elizabeth Zott", "Rosalind Franklin", "Alicia Western", "Eliza Sommers"],
-["Was moderiert sie in den 60er Jahren?", "Eine Kochsendung", "Eine Nachrichtensendung", "Eine Quizshow", "Eine Sportsendung"]]},
-"wd_Q124328485": {"s": "leicht", "q": [
-["Wer schrieb „Percy Jackson – Der Zorn der dreifachen Göttin“?", "Rick Riordan", "J. K. Rowling", "Suzanne Collins", "Michael Scott"],
-["Der wievielte Teil ist es?", "Der siebte", "Der sechste", "Der erste", "Der zehnte"],
-["Wann erschien das Buch?", "2024", "2014", "2020", "2005"],
-["Wie heißt der sechste Teil?", "Der Kelch der Götter", "Die letzte Göttin", "Diebe im Olymp", "Der Fluch des Titanen"],
-["Was für ein Roman ist es?", "Ein Fantasy-Roman", "Ein Krimi", "Ein Sachbuch", "Ein Western"]]},
-"wd_Q1213763": {"s": "mittel", "q": [
-["Wer schrieb „Die Karte meiner Träume“?", "Reif Larsen", "Jonathan Safran Foer", "Mark Haddon", "Brian Selznick"],
-["Wie lautet der Originaltitel?", "The Selected Works of T. S. Spivet", "The Map", "Spivet’s Journey", "Maps"],
-["Wann erschien der Roman?", "2009", "1999", "2019", "2005"],
-["Woher stammt der Junge?", "Aus Butte (Montana)", "Aus New York", "Aus Chicago", "Aus Boston"],
-["Womit ist die Handlung begleitet?", "Mit Illustrationen und Karten", "Mit Fotos", "Mit Liedern", "Mit nichts"]]},
-"wd_Q304535": {"s": "mittel", "q": [
-["Wer schrieb „In Patagonien“?", "Bruce Chatwin", "Paul Theroux", "Redmond O’Hanlon", "Peter Matthiessen"],
-["Wann erschien das Buch?", "1977", "1987", "1967", "1997"],
-["Was regte die Reise an?", "Ein Stück Haut eines angeblichen Brontosauriers", "Ein Brief", "Ein Traum", "Ein Film"],
-["Wer brachte es mit?", "Der Cousin seiner Großmutter", "Sein Vater", "Ein Freund", "Ein Lehrer"],
-["In welchen Ländern liegt Patagonien?", "Argentinien und Chile", "Brasilien und Peru", "Mexiko", "Australien"]]},
-"wd_Q428439": {"s": "schwierig", "q": [
-["Wer stellte die Clementinae zusammen?", "Papst Clemens V.", "Papst Johannes XXII.", "Papst Gregor IX.", "Papst Bonifatius VIII."],
-["Wessen Dekrete enthalten sie?", "Die des Konzils von Vienne", "Die des Konzils von Trient", "Die des Konzils von Nicäa", "Die des Konzils von Konstanz"],
-["Wann wurden sie promulgiert?", "Am 1. November 1317", "1311", "1400", "1250"],
-["Wovon sind sie das letzte Hauptstück?", "Vom Corpus Iuris Canonici", "Von der Bibel", "Vom Codex Justinianus", "Vom Sachsenspiegel"],
-["In wie viele Bücher ist die Sammlung gegliedert?", "Fünf", "Drei", "Zehn", "Zwei"]]},
-"wd_Q543871": {"s": "mittel", "q": [
-["Wer schrieb „Der Teil und das Ganze“?", "Werner Heisenberg", "Max Planck", "Albert Einstein", "Niels Bohr"],
-["Welchen Preis hatte der Autor erhalten?", "Den Nobelpreis", "Den Pulitzer", "Den Büchner-Preis", "Den Oscar"],
-["Welche Entwicklung zeichnet das Buch nach?", "Die der Quantenmechanik und Atomphysik", "Die der Raumfahrt", "Die der Medizin", "Die der Chemie"],
-["Mit wem führte er viele Gespräche?", "Mit Niels Bohr", "Mit Sigmund Freud", "Mit Thomas Mann", "Mit Hitler"],
-["Was für Züge hat das Buch?", "Autobiographische", "Romanhafte", "Märchenhafte", "Keine"]]},
-"wd_Q1218246": {"s": "mittel", "q": [
-["Wer schrieb „Die folgende Geschichte“?", "Cees Nooteboom", "Harry Mulisch", "Hella Haasse", "Arnon Grunberg"],
-["Wie lautet der niederländische Titel?", "Het volgende verhaal", "Paradijs verloren", "Rituelen", "Allerzielen"],
-["Wann wurde sie veröffentlicht?", "1991", "1981", "2001", "1971"],
-["Als was wurde sie veröffentlicht?", "Als Boekenweekgeschenk", "Als Fortsetzungsroman", "Als Hörspiel", "Als Theaterstück"],
-["Wie viele Jahre liegt die erinnerte Episode zurück?", "20", "5", "50", "2"]]},
-"wd_Q331028": {"s": "mittel", "q": [
-["Wer schrieb „Über den Umgang mit Menschen“?", "Adolph Knigge", "Christian Fürchtegott Gellert", "Moses Mendelssohn", "Immanuel Kant"],
-["Wann erschien es erstmals?", "1788", "1768", "1808", "1748"],
-["Wann lebte Knigge?", "1752–1796", "1700–1750", "1800–1850", "1730–1770"],
-["Was ist es laut Text keineswegs?", "Ein Benimmbuch mit Ratschlägen zu Fragen der Etikette", "Ein Buch über Menschen", "Ein bekanntes Werk", "Übersetzt"],
-["Womit beschäftigt es sich?", "Mit guten Umgangsformen", "Mit Kochkunst", "Mit Kriegsführung", "Mit Astronomie"]]},
-"wd_Q1219879": {"s": "mittel", "q": [
-["Wer schrieb „Die wilde Geschichte vom Wassertrinker“?", "John Irving", "Philip Roth", "Kurt Vonnegut", "Richard Ford"],
-["Wie lautet der Originaltitel?", "The Water-Method Man", "The World According to Garp", "Setting Free the Bears", "The Cider House Rules"],
-["Wann erschien der Roman?", "1972", "1982", "1962", "1992"],
-["Wie heißt der Student?", "Fred „Bogus“ Trumper", "Patrick Wallingford", "Garp", "Homer Wells"],
-["Wo lernt er die Skiläuferin kennen?", "In Kaprun", "In Kitzbühel", "In St. Moritz", "In Innsbruck"]]},
-"wd_Q1248279": {"s": "schwierig", "q": [
-["Wer schrieb „Euclid and his Modern Rivals“?", "Lewis Carroll", "George Boole", "Bertrand Russell", "Isaac Newton"],
-["Wie hieß der Autor eigentlich?", "Charles Lutwidge Dodgson", "Charles Darwin", "John Tenniel", "George MacDonald"],
-["Wann erschien das Buch?", "1879", "1859", "1899", "1865"],
-["In welcher Form ist es geschrieben?", "Als Drama", "Als Roman", "Als Gedicht", "Als Brief"],
-["Was verteidigt es?", "Euklids Elemente", "Die Relativitätstheorie", "Die Algebra", "Die Astronomie"]]}
+"wd_Q10533239": {
+"s": "leicht",
+"q": [
+[
+"Wer schrieb „Im Land der Dämmerung“?",
+"Astrid Lindgren",
+"Selma Lagerlöf",
+"Tove Jansson",
+"Elsa Beskow"
+],
+[
+"Wie heißt das Märchen auch?",
+"Herr Lilienstengel",
+"Mio, mein Mio",
+"Die Brüder Löwenherz",
+"Nils Karlsson"
+],
+[
+"Wie heißt der kranke Junge?",
+"Göran",
+"Mio",
+"Nils",
+"Emil"
+],
+[
+"Wie lange ist er schon ans Bett gefesselt?",
+"Seit einem Jahr",
+"Seit einer Woche",
+"Seit zehn Jahren",
+"Seit einem Monat"
+],
+[
+"Wer besucht ihn?",
+"Herr Lilienstengel",
+"Ein Engel",
+"Der Weihnachtsmann",
+"Karlsson"
+]
+]
+},
+"wd_Q10983406": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Und ewig singen die Wälder“?",
+"Trygve Gulbranssen",
+"Knut Hamsun",
+"Sigrid Undset",
+"Henrik Ibsen"
+],
+[
+"Wann erschien der Roman?",
+"1933",
+"1923",
+"1943",
+"1953"
+],
+[
+"In welchem Verlag?",
+"Aschehoug",
+"Gyldendal",
+"Bonnier",
+"Diogenes"
+],
+[
+"In welcher Sprachvariante ist er verfasst?",
+"Riksmål",
+"Nynorsk",
+"Dänisch",
+"Schwedisch"
+],
+[
+"Was bedeutet der Originaltitel wörtlich etwa?",
+"Und jenseits singen die Wälder",
+"Der Wald schweigt",
+"Die Bauern",
+"Der Hof"
+]
+]
+},
+"wd_Q12366899": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Kevade“?",
+"Oskar Luts",
+"Anton Hansen Tammsaare",
+"Eduard Vilde",
+"Jaan Kross"
+],
+[
+"Was bedeutet „Kevade“?",
+"Frühling",
+"Sommer",
+"Schule",
+"Kindheit"
+],
+[
+"Wann erschien der erste Teil?",
+"1912",
+"1902",
+"1922",
+"1932"
+],
+[
+"Was schildert das Werk?",
+"Ein Schuljahr an einer ländlichen Schule",
+"Einen Krieg",
+"Eine Seereise",
+"Ein Königreich"
+],
+[
+"Woraus speist es sich?",
+"Aus Kindheitserinnerungen des Autors",
+"Aus Zeitungsberichten",
+"Aus Märchen",
+"Aus Briefen"
+]
+]
+},
+"wd_Q13360022": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Die Sphinx ohne Geheimnis“?",
+"Oscar Wilde",
+"Arthur Conan Doyle",
+"Robert Louis Stevenson",
+"Rudyard Kipling"
+],
+[
+"In welcher Sammlung ist sie enthalten?",
+"Lord Arthur Saviles Verbrechen und andere Geschichten",
+"Das Bildnis des Dorian Gray",
+"Märchen",
+"Der glückliche Prinz"
+],
+[
+"Wann erschien die Sammlung?",
+"1887",
+"1897",
+"1877",
+"1907"
+],
+[
+"Wie hieß die Erzählung ursprünglich?",
+"Lady Alroy",
+"Die Sphinx",
+"Ein Geheimnis",
+"Lady Windermere"
+],
+[
+"Welche Erzählung enthält die Sammlung außerdem?",
+"Das Gespenst von Canterville",
+"Der selbstsüchtige Riese",
+"Salome",
+"Bunbury"
+]
+]
+},
+"wd_Q15844728": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Die sonderbare Buchhandlung des Mr. Penumbra“?",
+"Robin Sloan",
+"Carlos Ruiz Zafón",
+"Neil Gaiman",
+"Jasper Fforde"
+],
+[
+"Wann erschien der Roman?",
+"2012",
+"2002",
+"2018",
+"2008"
+],
+[
+"Was ist er für den Autor?",
+"Sein Debütroman",
+"Sein letzter Roman",
+"Ein Sachbuch",
+"Ein Kinderbuch"
+],
+[
+"Wie lautet der Originaltitel?",
+"Mr. Penumbra’s 24-Hour Bookstore",
+"The Bookshop",
+"Sourdough",
+"The Night Store"
+],
+[
+"Wie viele Wochen stand er auf einer Bestsellerliste?",
+"30",
+"3",
+"100",
+"10"
+]
+]
+},
+"wd_Q15909011": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Kugelblitz“?",
+"Liu Cixin",
+"Ken Liu",
+"Mo Yan",
+"Yu Hua"
+],
+[
+"Wann erschien die deutsche Ausgabe?",
+"Am 11. Mai 2020",
+"2010",
+"2015",
+"2023"
+],
+[
+"Wer übersetzte sie?",
+"Marc Hermann",
+"Karin Betz",
+"Martina Hasse",
+"Johannes Frey"
+],
+[
+"Welches Phänomen steht im Mittelpunkt?",
+"Der Kugelblitz",
+"Ein Erdbeben",
+"Ein Komet",
+"Ein Tsunami"
+],
+[
+"Welchen Konflikt beschreibt der Roman?",
+"Zwischen Forschung und militärischem Missbrauch",
+"Zwischen zwei Familien",
+"Zwischen Göttern",
+"Zwischen Tieren"
+]
+]
+},
+"wd_Q15455567": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb die Novelle „Don Juan“?",
+"E. T. A. Hoffmann",
+"Mozart",
+"Lord Byron",
+"Molière"
+],
+[
+"Wann wurde sie vorabgedruckt?",
+"Am 31. März 1813",
+"1803",
+"1823",
+"1833"
+],
+[
+"Wo wurde sie vorabgedruckt?",
+"In der Allgemeinen musikalischen Zeitung",
+"Im Teutschen Merkur",
+"In der Thalia",
+"In den Horen"
+],
+[
+"Welche Oper wird besucht?",
+"Mozarts Don Giovanni",
+"Beethovens Fidelio",
+"Webers Freischütz",
+"Glucks Orpheus"
+],
+[
+"Welche Figur verehrt der Enthusiast?",
+"Donna Anna",
+"Zerlina",
+"Donna Elvira",
+"Leporello"
+]
+]
+},
+"wd_Q15052495": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Seitenwechsel“?",
+"Nella Larsen",
+"Zora Neale Hurston",
+"Toni Morrison",
+"Alice Walker"
+],
+[
+"Wie lautet der Originaltitel?",
+"Passing",
+"Quicksand",
+"Beloved",
+"Jazz"
+],
+[
+"Wann wurde er erstmals veröffentlicht?",
+"1929",
+"1919",
+"1939",
+"1949"
+],
+[
+"Wie heißen die beiden Frauen?",
+"Irene und Clare",
+"Celie und Nettie",
+"Janie und Pheoby",
+"Sula und Nel"
+],
+[
+"Wann erschien die erste deutsche Übersetzung?",
+"2011",
+"1929",
+"1990",
+"2001"
+]
+]
+},
+"wd_Q14920548": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „A History of New York“?",
+"Washington Irving",
+"Mark Twain",
+"James Fenimore Cooper",
+"Edgar Allan Poe"
+],
+[
+"Was ist das Werk?",
+"Eine als Geschichtswerk getarnte Satire",
+"Ein echtes Geschichtsbuch",
+"Ein Roman über Indianer",
+"Ein Gedichtband"
+],
+[
+"Wann wurde es veröffentlicht?",
+"1809",
+"1829",
+"1789",
+"1849"
+],
+[
+"Unter welchem Pseudonym?",
+"Diedrich Knickerbocker",
+"Geoffrey Crayon",
+"Mark Twain",
+"Jonathan Oldstyle"
+],
+[
+"Bis zu welchem Ende reicht die Geschichte laut Titel?",
+"Bis zum Ende der niederländischen Dynastie",
+"Bis 1809",
+"Bis zur Unabhängigkeit",
+"Bis zum Bürgerkrieg"
+]
+]
+},
+"wd_Q16002914": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb den „Abriss der Psychoanalyse“?",
+"Sigmund Freud",
+"Anna Freud",
+"C. G. Jung",
+"Melanie Klein"
+],
+[
+"Wann entstand er?",
+"1938",
+"1928",
+"1918",
+"1908"
+],
+[
+"Wann wurde er postum veröffentlicht?",
+"1940",
+"1938",
+"1950",
+"1945"
+],
+[
+"Wie heißt das erste Kapitel?",
+"Der psychische Apparat",
+"Die Traumdeutung",
+"Das Ich und das Es",
+"Die Triebe"
+],
+[
+"Was umfasst das Es?",
+"Alles Ererbte, v. a. die Triebe",
+"Nur das Gewissen",
+"Nur das Bewusstsein",
+"Die Sprache"
+]
+]
+},
+"wd_Q16386684": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Das Leben Arsenjews“?",
+"Iwan Bunin",
+"Boris Pasternak",
+"Vladimir Nabokov",
+"Maxim Gorki"
+],
+[
+"Wo entstand der Roman?",
+"In Frankreich",
+"In Russland",
+"In Deutschland",
+"In den USA"
+],
+[
+"Wann entstand er?",
+"1929 bis 1939",
+"1909 bis 1919",
+"1949 bis 1959",
+"1900"
+],
+[
+"Wann erschien er vollständig?",
+"1952",
+"1939",
+"1960",
+"1945"
+],
+[
+"Welchen Zeitraum umfasst die Handlung etwa?",
+"1871 bis 1891",
+"1900 bis 1920",
+"1850 bis 1860",
+"1920 bis 1940"
+]
+]
+},
+"wd_Q16934363": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Das Elfenbeinkind“?",
+"H. Rider Haggard",
+"Arthur Conan Doyle",
+"Rudyard Kipling",
+"Edgar Rice Burroughs"
+],
+[
+"Wie lautet der Originaltitel?",
+"The Ivory Child",
+"King Solomon’s Mines",
+"She",
+"Allan Quatermain"
+],
+[
+"Wann wurde es erstmals veröffentlicht?",
+"1916",
+"1886",
+"1926",
+"1906"
+],
+[
+"Wie heißt der Jäger und Afrikareisende?",
+"Allan Quatermain",
+"Lord Ragnall",
+"Savage",
+"Tarzan"
+],
+[
+"Wie heißt Lord Ragnalls Verlobte?",
+"Luna Holmes",
+"Jane Porter",
+"Ayesha",
+"Lady Isabel"
+]
+]
+},
+"wd_Q18326710": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Damit du dich im Viertel nicht verirrst“?",
+"Patrick Modiano",
+"Michel Houellebecq",
+"Annie Ernaux",
+"Philippe Djian"
+],
+[
+"Der wievielte Roman Modianos ist es?",
+"Der 28.",
+"Der 1.",
+"Der 10.",
+"Der 50."
+],
+[
+"In welchem Jahr erhielt Modiano den Nobelpreis?",
+"2014",
+"2004",
+"2020",
+"2010"
+],
+[
+"Wer übersetzte den Roman?",
+"Elisabeth Edl",
+"Uli Aumüller",
+"Hinrich Schmidt-Henkel",
+"Claudia Hamm"
+],
+[
+"Wann erschien die deutsche Übersetzung?",
+"2015",
+"2014",
+"2018",
+"2010"
+]
+]
+},
+"wd_Q19125128": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb den Text von „Ach bleib mit deiner Gnade“?",
+"Josua Stegmann",
+"Paul Gerhardt",
+"Martin Luther",
+"Matthias Claudius"
+],
+[
+"Aus welchem Jahr stammt der Text?",
+"1627",
+"1527",
+"1727",
+"1827"
+],
+[
+"An welcher Universität wirkte der Autor?",
+"Rinteln",
+"Wittenberg",
+"Jena",
+"Tübingen"
+],
+[
+"Unter welcher Nummer steht es im Evangelischen Gesangbuch?",
+"347",
+"436",
+"276",
+"149"
+],
+[
+"Was für ein Text ist es?",
+"Ein geistliches Lied",
+"Ein Gedicht über die Natur",
+"Ein Trinklied",
+"Ein Kinderreim"
+]
+]
+},
+"wd_Q21203239": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Foto 51“?",
+"Anna Ziegler",
+"Lucy Prebble",
+"Caryl Churchill",
+"Sarah Ruhl"
+],
+[
+"Wer ist die Protagonistin?",
+"Rosalind Franklin",
+"Marie Curie",
+"Lise Meitner",
+"Ada Lovelace"
+],
+[
+"Wo arbeitete sie?",
+"Am King’s College in London",
+"In Cambridge",
+"In Paris",
+"In Berlin"
+],
+[
+"Was entdeckt sie?",
+"Röntgenbeugungsdiagramme der DNA",
+"Penicillin",
+"Radium",
+"Insulin"
+],
+[
+"Worauf bezieht sich der Titel?",
+"Auf Photo 51",
+"Auf ein Gemälde",
+"Auf eine Hausnummer",
+"Auf ein Jahr"
+]
+]
+},
+"wd_Q21465365": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Pallieter“?",
+"Felix Timmermans",
+"Hugo Claus",
+"Cees Nooteboom",
+"Ernest Claes"
+],
+[
+"Wann erschien der Roman?",
+"1916",
+"1906",
+"1926",
+"1936"
+],
+[
+"Als was kann er interpretiert werden?",
+"Als Ode an das Leben",
+"Als Kriegsbericht",
+"Als Kriminalroman",
+"Als Reisebericht"
+],
+[
+"Wofür wurde die Figur zum Symbol?",
+"Für das flämische Volk",
+"Für den Krieg",
+"Für die Kirche",
+"Für die Stadt"
+],
+[
+"In wie viele Sprachen wurde er übersetzt?",
+"Mehr als 40",
+"Fünf",
+"Zehn",
+"Zwei"
+]
+]
+},
+"wd_Q24950508": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der Knecht Jemeljan und die leere Trommel“?",
+"Leo Tolstoi",
+"Anton Tschechow",
+"Nikolai Leskow",
+"Iwan Turgenew"
+],
+[
+"Was für eine Geschichte ist es?",
+"Eine Antikriegsgeschichte in Märchengestalt",
+"Ein Liebesroman",
+"Eine Kriminalgeschichte",
+"Ein Reisebericht"
+],
+[
+"Wann entstand sie?",
+"1886",
+"1866",
+"1906",
+"1876"
+],
+[
+"Wessen Märchen bearbeitete Tolstoi?",
+"Dmitri Sadownikows",
+"Puschkins",
+"Afanassjews",
+"Gogols"
+],
+[
+"Wo erschien sie 1891?",
+"In Genf",
+"In Moskau",
+"In Paris",
+"In Berlin"
+]
+]
+},
+"wd_Q28793114": {
+"s": "leicht",
+"q": [
+[
+"Wer schrieb „Wir gehen auf Bärenjagd“?",
+"Michael Rosen",
+"Julia Donaldson",
+"Eric Carle",
+"Martin Waddell"
+],
+[
+"Wer zeichnete die Bilder?",
+"Helen Oxenbury",
+"Axel Scheffler",
+"Quentin Blake",
+"Judith Kerr"
+],
+[
+"Wann erschien das Bilderbuch?",
+"1989",
+"1979",
+"1999",
+"1969"
+],
+[
+"Wie viele Geschwister gehen spazieren?",
+"Fünf",
+"Drei",
+"Zwei",
+"Sieben"
+],
+[
+"Wer begleitet sie?",
+"Ihr Hund",
+"Ihre Katze",
+"Ihr Opa",
+"Ein Bär"
+]
+]
+},
+"wd_Q30320748": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „De ecclesia“?",
+"Jan Hus",
+"John Wyclif",
+"Martin Luther",
+"Erasmus"
+],
+[
+"Was bedeutet der Titel?",
+"Über die Kirche",
+"Über den Papst",
+"Über die Bibel",
+"Über Gott"
+],
+[
+"An wessen Kirchenkritik knüpft Hus an?",
+"An die John Wyclifs",
+"An die Luthers",
+"An die Calvins",
+"An die des Papstes"
+],
+[
+"Wer ist laut Hus das Haupt der Kirche?",
+"Christus",
+"Der Papst",
+"Der Kaiser",
+"Der König"
+],
+[
+"Was ist die wahre Kirche laut Hus?",
+"Die Gemeinschaft der Gläubigen",
+"Die päpstliche Institution",
+"Der Staat",
+"Ein Gebäude"
+]
+]
+},
+"wd_Q56277009": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Die Wurzeln des Lebens“?",
+"Richard Powers",
+"Jonathan Franzen",
+"Barbara Kingsolver",
+"Peter Wohlleben"
+],
+[
+"Wie lautet der Originaltitel?",
+"The Overstory",
+"The Echo Maker",
+"Bewilderment",
+"The Gold Bug Variations"
+],
+[
+"Wann erschien der Roman?",
+"2018",
+"2008",
+"2021",
+"2014"
+],
+[
+"Wie viele Protagonisten hat er?",
+"Neun",
+"Zwei",
+"Vier",
+"Zwölf"
+],
+[
+"Womit sind ihre Leben verbunden?",
+"Mit Bäumen",
+"Mit dem Meer",
+"Mit Pferden",
+"Mit Sternen"
+]
+]
+},
+"wd_Q56753771": {
+"s": "mittel",
+"q": [
+[
+"Über wessen Boxstil ist „Kompromissloses Pendel“?",
+"Cus D’Amato",
+"Angelo Dundee",
+"Emanuel Steward",
+"Freddie Roach"
+],
+[
+"Wer schrieb das Buch?",
+"Oleh Malzew",
+"Mike Tyson",
+"Floyd Patterson",
+"José Torres"
+],
+[
+"Wie viele Weltmeister zog der Trainer groß?",
+"Drei",
+"Einen",
+"Zehn",
+"Fünf"
+],
+[
+"Welcher Boxer gehört dazu?",
+"Mike Tyson",
+"Muhammad Ali",
+"Joe Frazier",
+"George Foreman"
+],
+[
+"Aus wie vielen Kapiteln besteht das Buch?",
+"Elf",
+"Drei",
+"Zwanzig",
+"Sieben"
+]
+]
+},
+"wd_Q65042675": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der Orden des geheimen Baumes“?",
+"Samantha Shannon",
+"Leigh Bardugo",
+"Sarah J. Maas",
+"Naomi Novik"
+],
+[
+"Wie lautet der Originaltitel?",
+"The Priory of the Orange Tree",
+"The Bone Season",
+"A Day of Fallen Night",
+"The Orange Tree"
+],
+[
+"Wann wurde er veröffentlicht?",
+"Am 26. Februar 2019",
+"2009",
+"2022",
+"2015"
+],
+[
+"In wie vielen Teilen erschien die deutsche Übersetzung?",
+"Zwei",
+"Einem",
+"Drei",
+"Vier"
+],
+[
+"Wie heißt der erste deutsche Teil?",
+"Die Magierin",
+"Die Königin",
+"Der Drache",
+"Der Baum"
+]
+]
+},
+"wd_Q97188282": {
+"s": "leicht",
+"q": [
+[
+"Zu welcher Reihe gehört „Der Goldene Hinkelstein“?",
+"Asterix",
+"Lucky Luke",
+"Tim und Struppi",
+"Isnogud"
+],
+[
+"Wann erschien der Sonderband?",
+"Im Oktober 2020",
+"1967",
+"1990",
+"2010"
+],
+[
+"Wann wurde die Geschichte ursprünglich geschrieben?",
+"1967",
+"1959",
+"1980",
+"2000"
+],
+[
+"Wozu erschien sie ursprünglich?",
+"Als Schallplattenbegleitbuch",
+"Als Zeitungscomic",
+"Als Film",
+"Als Hörbuch"
+],
+[
+"Wer ist Troubadix?",
+"Der Barde des Gallierdorfs",
+"Der Druide",
+"Der Häuptling",
+"Der Schmied"
+]
+]
+},
+"wd_Q111914310": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Das Licht ungewöhnlicher Sterne“?",
+"Ryka Aoki",
+"Becky Chambers",
+"N. K. Jemisin",
+"Martha Wells"
+],
+[
+"Wann erschien der Roman?",
+"2021",
+"2011",
+"2024",
+"2018"
+],
+[
+"Welche Genres verbindet er?",
+"Science-Fiction und Fantasy",
+"Krimi und Western",
+"Horror und Romanze",
+"Satire und Drama"
+],
+[
+"Wer ist Shizuka Satomi?",
+"Eine berühmte Violinenlehrerin",
+"Eine Ärztin",
+"Eine Astronautin",
+"Eine Köchin"
+],
+[
+"Wer übersetzte ihn ins Deutsche?",
+"Michael Pfingstl",
+"Michael Siefener",
+"Bernhard Kempen",
+"Gerald Jung"
+]
+]
+},
+"wd_Q116225249": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Eine Frage der Chemie“?",
+"Bonnie Garmus",
+"Celeste Ng",
+"Taylor Jenkins Reid",
+"Delia Owens"
+],
+[
+"Wie lautet der Originaltitel?",
+"Lessons in Chemistry",
+"Chemistry Class",
+"The Chemist",
+"Elements"
+],
+[
+"Was ist der Roman für die Autorin?",
+"Ihr Debütroman",
+"Ihr zehnter Roman",
+"Ein Sachbuch",
+"Ein Kinderbuch"
+],
+[
+"Wie heißt die Hauptfigur?",
+"Elizabeth Zott",
+"Rosalind Franklin",
+"Alicia Western",
+"Eliza Sommers"
+],
+[
+"Was moderiert sie in den 60er Jahren?",
+"Eine Kochsendung",
+"Eine Nachrichtensendung",
+"Eine Quizshow",
+"Eine Sportsendung"
+]
+]
+},
+"wd_Q124328485": {
+"s": "leicht",
+"q": [
+[
+"Wer schrieb „Percy Jackson – Der Zorn der dreifachen Göttin“?",
+"Rick Riordan",
+"J. K. Rowling",
+"Suzanne Collins",
+"Michael Scott"
+],
+[
+"Der wievielte Teil ist es?",
+"Der siebte",
+"Der sechste",
+"Der erste",
+"Der zehnte"
+],
+[
+"Wann erschien das Buch?",
+"2024",
+"2014",
+"2020",
+"2005"
+],
+[
+"Wie heißt der sechste Teil?",
+"Der Kelch der Götter",
+"Die letzte Göttin",
+"Diebe im Olymp",
+"Der Fluch des Titanen"
+],
+[
+"Was für ein Roman ist es?",
+"Ein Fantasy-Roman",
+"Ein Krimi",
+"Ein Sachbuch",
+"Ein Western"
+]
+]
+},
+"wd_Q1213763": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Die Karte meiner Träume“?",
+"Reif Larsen",
+"Jonathan Safran Foer",
+"Mark Haddon",
+"Brian Selznick"
+],
+[
+"Wie lautet der Originaltitel?",
+"The Selected Works of T. S. Spivet",
+"The Map",
+"Spivet’s Journey",
+"Maps"
+],
+[
+"Wann erschien der Roman?",
+"2009",
+"1999",
+"2019",
+"2005"
+],
+[
+"Woher stammt der Junge?",
+"Aus Butte (Montana)",
+"Aus New York",
+"Aus Chicago",
+"Aus Boston"
+],
+[
+"Womit ist die Handlung begleitet?",
+"Mit Illustrationen und Karten",
+"Mit Fotos",
+"Mit Liedern",
+"Mit nichts"
+]
+]
+},
+"wd_Q304535": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „In Patagonien“?",
+"Bruce Chatwin",
+"Paul Theroux",
+"Redmond O’Hanlon",
+"Peter Matthiessen"
+],
+[
+"Wann erschien das Buch?",
+"1977",
+"1987",
+"1967",
+"1997"
+],
+[
+"Was regte die Reise an?",
+"Ein Stück Haut eines angeblichen Brontosauriers",
+"Ein Brief",
+"Ein Traum",
+"Ein Film"
+],
+[
+"Wer brachte es mit?",
+"Der Cousin seiner Großmutter",
+"Sein Vater",
+"Ein Freund",
+"Ein Lehrer"
+],
+[
+"In welchen Ländern liegt Patagonien?",
+"Argentinien und Chile",
+"Brasilien und Peru",
+"Mexiko",
+"Australien"
+]
+]
+},
+"wd_Q428439": {
+"s": "schwierig",
+"q": [
+[
+"Wer stellte die Clementinae zusammen?",
+"Papst Clemens V.",
+"Papst Johannes XXII.",
+"Papst Gregor IX.",
+"Papst Bonifatius VIII."
+],
+[
+"Wessen Dekrete enthalten sie?",
+"Die des Konzils von Vienne",
+"Die des Konzils von Trient",
+"Die des Konzils von Nicäa",
+"Die des Konzils von Konstanz"
+],
+[
+"Wann wurden sie promulgiert?",
+"Am 1. November 1317",
+"1311",
+"1400",
+"1250"
+],
+[
+"Wovon sind sie das letzte Hauptstück?",
+"Vom Corpus Iuris Canonici",
+"Von der Bibel",
+"Vom Codex Justinianus",
+"Vom Sachsenspiegel"
+],
+[
+"In wie viele Bücher ist die Sammlung gegliedert?",
+"Fünf",
+"Drei",
+"Zehn",
+"Zwei"
+]
+]
+},
+"wd_Q543871": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Der Teil und das Ganze“?",
+"Werner Heisenberg",
+"Max Planck",
+"Albert Einstein",
+"Niels Bohr"
+],
+[
+"Welchen Preis hatte der Autor erhalten?",
+"Den Nobelpreis",
+"Den Pulitzer",
+"Den Büchner-Preis",
+"Den Oscar"
+],
+[
+"Welche Entwicklung zeichnet das Buch nach?",
+"Die der Quantenmechanik und Atomphysik",
+"Die der Raumfahrt",
+"Die der Medizin",
+"Die der Chemie"
+],
+[
+"Mit wem führte er viele Gespräche?",
+"Mit Niels Bohr",
+"Mit Sigmund Freud",
+"Mit Thomas Mann",
+"Mit Charles Darwin"
+],
+[
+"Was für Züge hat das Buch?",
+"Autobiographische",
+"Romanhafte",
+"Märchenhafte",
+"Keine"
+]
+]
+},
+"wd_Q1218246": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Die folgende Geschichte“?",
+"Cees Nooteboom",
+"Harry Mulisch",
+"Hella Haasse",
+"Arnon Grunberg"
+],
+[
+"Wie lautet der niederländische Titel?",
+"Het volgende verhaal",
+"Paradijs verloren",
+"Rituelen",
+"Allerzielen"
+],
+[
+"Wann wurde sie veröffentlicht?",
+"1991",
+"1981",
+"2001",
+"1971"
+],
+[
+"Als was wurde sie veröffentlicht?",
+"Als Boekenweekgeschenk",
+"Als Fortsetzungsroman",
+"Als Hörspiel",
+"Als Theaterstück"
+],
+[
+"Wie viele Jahre liegt die erinnerte Episode zurück?",
+"20",
+"5",
+"50",
+"2"
+]
+]
+},
+"wd_Q331028": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Über den Umgang mit Menschen“?",
+"Adolph Knigge",
+"Christian Fürchtegott Gellert",
+"Moses Mendelssohn",
+"Immanuel Kant"
+],
+[
+"Wann erschien es erstmals?",
+"1788",
+"1768",
+"1808",
+"1748"
+],
+[
+"Wann lebte Knigge?",
+"1752–1796",
+"1700–1750",
+"1800–1850",
+"1730–1770"
+],
+[
+"Was ist das Buch laut Text?",
+"Sein bekanntestes Werk",
+"Sein erstes Gedicht",
+"Ein Roman",
+"Ein verschollenes Werk"
+],
+[
+"Womit beschäftigt es sich?",
+"Mit guten Umgangsformen",
+"Mit Kochkunst",
+"Mit Kriegsführung",
+"Mit Astronomie"
+]
+]
+},
+"wd_Q1219879": {
+"s": "mittel",
+"q": [
+[
+"Wer schrieb „Die wilde Geschichte vom Wassertrinker“?",
+"John Irving",
+"Philip Roth",
+"Kurt Vonnegut",
+"Richard Ford"
+],
+[
+"Wie lautet der Originaltitel?",
+"The Water-Method Man",
+"The World According to Garp",
+"Setting Free the Bears",
+"The Cider House Rules"
+],
+[
+"Wann erschien der Roman?",
+"1972",
+"1982",
+"1962",
+"1992"
+],
+[
+"Wie heißt der Student?",
+"Fred „Bogus“ Trumper",
+"Patrick Wallingford",
+"Garp",
+"Homer Wells"
+],
+[
+"Wo lernt er die Skiläuferin kennen?",
+"In Kaprun",
+"In Kitzbühel",
+"In St. Moritz",
+"In Innsbruck"
+]
+]
+},
+"wd_Q1248279": {
+"s": "schwierig",
+"q": [
+[
+"Wer schrieb „Euclid and his Modern Rivals“?",
+"Lewis Carroll",
+"George Boole",
+"Bertrand Russell",
+"Isaac Newton"
+],
+[
+"Wie hieß der Autor eigentlich?",
+"Charles Lutwidge Dodgson",
+"Charles Darwin",
+"John Tenniel",
+"George MacDonald"
+],
+[
+"Wann erschien das Buch?",
+"1879",
+"1859",
+"1899",
+"1865"
+],
+[
+"In welcher Form ist es geschrieben?",
+"Als Drama",
+"Als Roman",
+"Als Gedicht",
+"Als Brief"
+],
+[
+"Was verteidigt es?",
+"Euklids Elemente",
+"Die Relativitätstheorie",
+"Die Algebra",
+"Die Astronomie"
+]
+]
+}
 }
