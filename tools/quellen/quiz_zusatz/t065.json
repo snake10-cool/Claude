@@ -114,7 +114,7 @@
 ["In welchem Jahrhundert spielt er?", "Im 22. Jahrhundert", "Im 21. Jahrhundert", "Im 30. Jahrhundert", "Im 19. Jahrhundert"],
 ["Wer beherrscht die Erde?", "Eine kleine Kaste mit übermenschlichen Fähigkeiten", "Roboter", "Außerirdische allein", "Ein König"]]},
 "wd_Q666405": {"s": "mittel", "q": [
-["Wer schrieb „Inversionen“?", "Iain M. Banks", "Iain Banks unter anderem Namen allein", "Greg Egan", "Ken MacLeod"],
+["Wer schrieb „Inversionen“?", "Iain M. Banks", "Alastair Reynolds", "Greg Egan", "Ken MacLeod"],
 ["Wie lautet der Originaltitel?", "Inversions", "Matter", "Excession", "Look to Windward"],
 ["Wann erschien der Roman?", "1998", "1988", "2008", "1994"],
 ["Der wievielte Kultur-Roman ist es?", "Der fünfte", "Der erste", "Der dritte", "Der achte"],
@@ -160,11 +160,11 @@
 ["Was ist das Stück?", "Ein pantomimisches Kurzstück", "Ein Roman", "Ein Gedicht", "Ein Drama in fünf Akten"],
 ["Welches Stück setzt es fort?", "Akt ohne Worte I", "Warten auf Godot", "Endspiel", "Atem"],
 ["In welcher Sprache schrieb Beckett es ursprünglich?", "Französisch", "Englisch", "Deutsch", "Gälisch"],
-["Wann wurde es geschrieben?", "In den späten 1950er Jahren", "In den 1930er Jahren", "In den 1980er Jahren", "In den 1960er Jahren spät"]]},
+["Wann wurde es geschrieben?", "In den späten 1950er Jahren", "In den 1930er Jahren", "In den 1980er Jahren", "In den 1990er Jahren"]]},
 "wd_Q1167868": {"s": "mittel", "q": [
 ["Wer schrieb „Das Fischkonzert“?", "Halldór Laxness", "Sjón", "Gunnar Gunnarsson", "Einar Kárason"],
 ["Wann erschien es in Island?", "1957", "1947", "1967", "1937"],
-["Wie heißt der Bauernhof?", "Brekkukot", "Kõrboja", "Brekkukots", "Bjartur"],
+["Wie heißt der Bauernhof?", "Brekkukot", "Kõrboja", "Vargamäe", "Bjartur"],
 ["Wo liegt der Hof?", "Am Rande von Reykjavík", "Im Norden Islands", "Auf den Westmännerinseln", "In Akureyri"],
 ["Wie heißt der Erzähler?", "Álfgrímur Hansen", "Ugla", "Bjartur", "Jón Hreggviðsson"]]}
 }
