@@ -333,6 +333,12 @@ def main():
                     if normal(titel) == normal(r['reihe']) and not 60 <= e['seiten'] <= 900:
                         continue
                     nr = bandnummer(e)
+                    # Nummer aus einer Nebenreihe („Woodwalkers – Graphic Novel ; 1“,
+                    # Erstleser-Ableger …) ist nicht die Bandnummer der Hauptreihe.
+                    if nr and e['reihe'] and normal(e['reihe']) not in (normal(reihe_text), normal(r['reihe'])):
+                        nr = None
+                    if nr and re.search(r'graphicnovel|comic|erstleser|leseloewen|leselowen|lesestufe', normal(e['titel'] + ' ' + e['reihe'])):
+                        nr = None
                     schluessel = ('band', nr) if nr else ('kern', normal(kern(titel)))
                     alt = gefunden.get(schluessel)
                     # Älteste Ausgabe gewinnt (meist das Original, nicht die Neuauflage).
