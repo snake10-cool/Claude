@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/katalog.dart';
 import '../data/katalog_zusatz.dart';
+import '../data/korrekturen.dart';
 import '../models/buch.dart';
 import '../models/meldung.dart';
 import 'challenges.dart';
@@ -253,7 +254,16 @@ class Speicher extends ChangeNotifier {
 
   // ───────── Bücher ─────────
 
-  List<Buch> get alleBuecher => [...katalog, ...katalogZusatz, ...eigeneBuecher];
+  List<Buch> get alleBuecher => buchKorrekturen.isEmpty
+      ? [...katalog, ...katalogZusatz, ...eigeneBuecher]
+      : [
+          for (final b in [...katalog, ...katalogZusatz, ...korrekturNeueBuecher])
+            if (!ausgeblendet(b.id)) korrigiert(b),
+          ...eigeneBuecher,
+        ];
+
+  /// Nach neuen Katalog-Korrekturen aus Firestore neu zeichnen.
+  void katalogAktualisiert() => notifyListeners();
 
   // Empfehlungen zwischenspeichern: Bei 20.000 Büchern nicht bei jedem
   // Neuzeichnen neu rechnen, nur nach Änderungen.
@@ -267,7 +277,10 @@ class Speicher extends ChangeNotifier {
 
   Buch? buch(String id) {
     final k = katalogBuch(id);
-    if (k != null) return k;
+    if (k != null) return korrigiert(k);
+    for (final b in korrekturNeueBuecher) {
+      if (b.id == id) return b;
+    }
     for (final b in eigeneBuecher) {
       if (b.id == id) return b;
     }

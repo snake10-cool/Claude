@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
+import '../data/katalog.dart';
+import '../data/korrekturen.dart';
 import '../models/buch.dart';
 import '../models/meldung.dart';
 import 'speicher.dart';
@@ -160,6 +162,10 @@ class Konto extends ChangeNotifier {
       gemeinschaftsFragen = neu;
       notifyListeners();
     }, onError: (Object e) => debugPrint('Quizfragen nicht geladen: $e'));
+    _korrekturAbo = _db.collection('buchkorrekturen').snapshots().listen((s) {
+      korrekturenSetzen({for (final d in s.docs) d.id: d.data()}, (id) => katalogBuch(id) != null);
+      _speicher.katalogAktualisiert();
+    }, onError: (Object e) => debugPrint('Katalog-Korrekturen nicht geladen: $e'));
   }
 
   final Speicher _speicher;
@@ -167,6 +173,7 @@ class Konto extends ChangeNotifier {
   final _db = FirebaseFirestore.instance;
   late final StreamSubscription<User?> _abo;
   late final StreamSubscription<QuerySnapshot<Map<String, dynamic>>> _fragenAbo;
+  late final StreamSubscription<QuerySnapshot<Map<String, dynamic>>> _korrekturAbo;
 
   /// Freigegebene Quizfragen der Leser, nach Buch-ID.
   Map<String, List<Frage>> gemeinschaftsFragen = const {};
@@ -188,6 +195,7 @@ class Konto extends ChangeNotifier {
   void dispose() {
     _abo.cancel();
     _fragenAbo.cancel();
+    _korrekturAbo.cancel();
     _speicher.removeListener(_hochladen);
     super.dispose();
   }

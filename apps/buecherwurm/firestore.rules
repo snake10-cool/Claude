@@ -112,6 +112,13 @@ service cloud.firestore {
       allow delete: if istAdmin();
     }
 
+    // Katalog-Korrekturen ohne App-Update (Dokument-ID = Buch-ID): für alle
+    // lesbar, nur der Admin schreibt. Felder siehe lib/data/korrekturen.dart.
+    match /buchkorrekturen/{id} {
+      allow read: if true;
+      allow write: if istAdmin();
+    }
+
     // Rezensionen: eine pro Leser und Buch (ID = buchId_uid), für alle
     // lesbar. Löschen darf der Verfasser oder der Admin.
     match /rezensionen/{id} {
