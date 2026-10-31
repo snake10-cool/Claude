@@ -88,11 +88,40 @@ jobs:
           flutter test
           flutter build apk --release
 
+      - name: Bücherwurm prüfen und bauen
+        working-directory: apps/buecherwurm
+        run: |
+          flutter pub get
+          flutter analyze
+          flutter test
+          flutter build apk --release
+
+      # Eigener Upload-Schlüssel für Bücherwurm (Secrets
+      # BUECHERWURM_KEYSTORE_BASE64 und BUECHERWURM_KEYSTORE_PASSWORT).
+      - name: Bücherwurm AAB für Google Play
+        working-directory: apps/buecherwurm
+        env:
+          KEYSTORE: ${{ secrets.BUECHERWURM_KEYSTORE_BASE64 }}
+          PASSWORT: ${{ secrets.BUECHERWURM_KEYSTORE_PASSWORT }}
+        run: |
+          if [ -z "$KEYSTORE" ] || [ -z "$PASSWORT" ]; then
+            echo "Keine Signier-Secrets – AAB wird übersprungen."
+            exit 0
+          fi
+          echo "$KEYSTORE" | base64 -d > android/upload.jks
+          printf 'storeFile=upload.jks\nstorePassword=%s\nkeyAlias=upload\nkeyPassword=%s\n' \
+            "$PASSWORT" "$PASSWORT" > android/key.properties
+          flutter build appbundle --release
+          rm android/key.properties android/upload.jks
+          mkdir -p ../../ausgabe
+          cp build/app/outputs/bundle/release/app-release.aab ../../ausgabe/Buecherwurm-PlayStore.aab
+
       - name: APKs einsammeln
         run: |
           mkdir -p ausgabe
           cp apps/austro_angler/build/app/outputs/flutter-apk/app-release.apk ausgabe/AustroAngler.apk
           cp apps/lernapp/build/app/outputs/flutter-apk/app-release.apk ausgabe/Lernfuchs.apk
+          cp apps/buecherwurm/build/app/outputs/flutter-apk/app-release.apk ausgabe/Buecherwurm.apk
 
       - uses: actions/upload-artifact@v4
         with:
@@ -184,6 +213,7 @@ jobs:
           NOTIZ="Zuletzt aktualisiert aus ${GITHUB_SHA::7}.
 
           📱 Handy: AustroAngler.apk antippen und installieren.
+          📚 Bücherwurm: Buecherwurm.apk antippen und installieren.
           💻 PC: AustroAngler-Setup.exe herunterladen und starten. Bei der Windows-Warnung auf \"Weitere Informationen\" → \"Trotzdem ausführen\" klicken. Ohne Installation: AustroAngler-Windows.zip entpacken und AustroAngler.exe starten."
           # Vorhandene Dateien der anderen Plattform bleiben erhalten, nur die
           # neu gebauten werden ersetzt.

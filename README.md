@@ -6,6 +6,7 @@ Android-Apps, gebaut mit Flutter, für Google Play.
 |---|---|---|
 | 🎣 **Austro Angler** | `apps/austro_angler` | Angel-App für ganz Österreich (über 22.000 Gewässer, Filter nach Bezirk und Ort), Schwerpunkt Braunau, mit Community |
 | 🦊 **Lernfuchs** (Arbeitsname, pausiert) | `apps/lernapp` | Lern-App für Volksschule 1–4 und Mittelschule 1–4 |
+| 📚 **Bücherwurm** (Arbeitsname) | `apps/buecherwurm` | Bücher verwalten, Empfehlungen nach deinen Vorlieben, Quiz und Lese-Wettbewerb |
 
 ## Testversion holen
 
@@ -58,6 +59,22 @@ Startbildschirm-Widget (Android) · Unwetter-Warnung für Angeltage · Wochen-Ch
 Länge per Foto messen · Jungangler-Modus mit Wörterbuch · Fangstatistik-PDF fürs Revier ·
 Fahrgemeinschaften · Ausrüstungs-Tagebuch · Wassertemperatur (Schätzung + Messungen) ·
 Vereins-Rangliste · Fang-Geschichten · Schonzeit-Countdown.
+
+## 📚 Bücherwurm – was drin ist
+
+- **Fragebogen** (15 Multiple-Choice-Fragen) beim ersten Start Pflicht, später jederzeit neu (Profil oder „Für dich").
+- **Gelesene Bücher auswählen** mit Sternen, gleich nach dem Fragebogen und später im Profil.
+- **Für dich**: Empfehlungen aus Fragebogen und Bewertungen, mit Begründung („Fantasy", „Wie 1984 (5★)"). Altersgrenzen werden beachtet.
+- **Meine Bücher**: Wunschliste, Lese ich gerade, Gelesen, Abgebrochen; Sterne, gelesen/gehört, Notiz.
+- **Jedes Buch der Welt finden**: Online-Suche (Open Library, Google Books als Reserve) mit Cover, oder **Strichcode scannen**. Bücher aus dem Katalog werden erkannt.
+- **Quiz** zu 154 bekannten Büchern: 20 Sekunden pro Frage, Tempo-Bonus, nur der erste Versuch zählt. Wer die App während einer Frage verlässt (z. B. zum Googeln), verliert die Frage. Vor dem ersten Quiz gibt man ein **Ehrenwort**.
+- **Wettbewerb**: Rangliste nach Quiz-Punkten. Mit Konto online: **Freunde** (per @Name) und **Weltweit** (Top 50). Ohne Konto per Code (z. B. über WhatsApp teilen).
+
+**Online-Rangliste einschalten:** Bücherwurm braucht ein eigenes Firebase-Projekt (10 Minuten). Die Anleitung steht in [`apps/buecherwurm/docs/firebase.md`](apps/buecherwurm/docs/firebase.md). Bis dahin läuft alles ohne Konto.
+
+**Play Store:** Bücherwurm hat einen eigenen Upload-Schlüssel. Sobald die GitHub-Secrets `BUECHERWURM_KEYSTORE_BASE64` und `BUECHERWURM_KEYSTORE_PASSWORT` angelegt sind, baut GitHub zusätzlich `Buecherwurm-PlayStore.aab`.
+
+Bücher und Quizfragen: `apps/buecherwurm/lib/data/katalog*.dart`, Fragebogen: `lib/data/fragebogen.dart`.
 
 ## 🔥 Firebase
 

@@ -1,0 +1,51 @@
+name: buecherwurm
+description: "Bücher verwalten, Empfehlungen, Quiz und Lese-Wettbewerb."
+publish_to: 'none'
+version: 0.2.0+2
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  cloud_firestore: ^7.1.0
+  firebase_auth: ^7.0.1
+  firebase_core: ^5.1.0
+  flutter:
+    sdk: flutter
+  flutter_local_notifications: ^22.3.1
+  http: ^1.6.0
+  mobile_scanner: ^7.4.2
+  shared_preferences: ^2.5.5
+  timezone: ^0.11.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.8
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/daten/katalog_wikidata.json.gz
+    - assets/daten/quiz_zusatz.json.gz
+
+# Icon und Startbild neu erzeugen (nach `python tools/buecherwurm_icon.py`):
+#   dart run flutter_launcher_icons && dart run flutter_native_splash:create
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: assets/icon/icon.png
+  adaptive_icon_background: "#2E7D6B"
+  adaptive_icon_foreground: assets/icon/icon_vordergrund.png
+  min_sdk_android: 23
+
+flutter_native_splash:
+  color: "#2E7D6B"
+  image: assets/icon/splash.png
+  android_12:
+    color: "#2E7D6B"
+    image: assets/icon/splash.png
+  ios: false
+  web: false
