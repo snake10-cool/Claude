@@ -210,6 +210,13 @@ def anzeige_titel(e, reihe=None, praefix=True):
     return k
 
 
+# Ableger, die bei der DNB unter dem Hauptreihen-Namen nummeriert sind
+# (meist Graphic Novels ohne Hinweis im Titel). Keine Bandnummer anzeigen.
+NUMMER_FALSCH = {normal(t) for t in (
+    'Die Schlacht am Jericho Hill',
+)}
+
+
 def bandnummer(e):
     for text in (e['band'], e['nummer'], e['titel']):
         m = re.search(r'\((\d+)\)|^(\d+)\b|\bBd\.?\s*(\d+)|\b(\d+)$', text or '')
@@ -336,6 +343,8 @@ def main():
                     # Nummer aus einer Nebenreihe („Woodwalkers – Graphic Novel ; 1“,
                     # Erstleser-Ableger …) ist nicht die Bandnummer der Hauptreihe.
                     if nr and e['reihe'] and normal(e['reihe']) not in (normal(reihe_text), normal(r['reihe'])):
+                        nr = None
+                    if nr and normal(titel) in NUMMER_FALSCH:
                         nr = None
                     if nr and re.search(r'graphicnovel|comic|erstleser|leseloewen|leselowen|lesestufe', normal(e['titel'] + ' ' + e['reihe'])):
                         nr = None
