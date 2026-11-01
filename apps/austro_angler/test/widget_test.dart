@@ -154,7 +154,7 @@ void main() {
 
   testWidgets('App startet ohne Firebase und alle Tabs öffnen',
       (tester) async {
-    SharedPreferences.setMockInitialValues({'einfuehrung': true});
+    SharedPreferences.setMockInitialValues({'einfuehrung': true, 'wasIstNeu': 99});
     final speicher = await Speicher.oeffnen();
     await tester.runAsync(alleGewaesser.laden);
     await tester.pumpWidget(AustroAnglerApp(speicher: speicher));
@@ -181,6 +181,8 @@ void main() {
       await tester.tap(find.text(tab).last);
       await tester.pumpAndSettle();
     }
+    await tester.scrollUntilVisible(find.text('FAQ – Fragen & Antworten'), 200,
+        scrollable: find.byType(Scrollable).first);
     expect(find.text('FAQ – Fragen & Antworten'), findsOneWidget);
     await tester.tap(find.text('FAQ – Fragen & Antworten'));
     await tester.pumpAndSettle();

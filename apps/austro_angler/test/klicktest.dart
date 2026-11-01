@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 const _mehr = [
   '⭐ Premium',
   'Einstellungen',
+  'Neu in Austro Angler',
   'Einführung ansehen',
   'FAQ – Fragen & Antworten',
   'Statistik & Abzeichen',
@@ -50,7 +51,7 @@ Future<void> _starten(WidgetTester tester) async {
   tester.view.physicalSize = const Size(1080, 2400);
   tester.view.devicePixelRatio = 2.5;
   addTearDown(tester.view.reset);
-  SharedPreferences.setMockInitialValues({'einfuehrung': true});
+  SharedPreferences.setMockInitialValues({'einfuehrung': true, 'wasIstNeu': 99});
   final speicher = await Speicher.oeffnen();
   await tester.runAsync(alleGewaesser.laden);
   await tester.pumpWidget(AustroAnglerApp(speicher: speicher));

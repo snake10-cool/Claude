@@ -46,6 +46,9 @@ class Speicher extends ChangeNotifier {
   /// Einführung beim ersten Start schon gezeigt?
   bool einfuehrungGesehen = false;
 
+  /// Bis zu welchem Stand „Neu in Austro Angler“ gezeigt wurde.
+  int wasIstNeuGesehen = 0;
+
   /// Zuletzt weggeklicktes Fern-Banner (dessen ID).
   String bannerWeg = '';
 
@@ -70,6 +73,7 @@ class Speicher extends ChangeNotifier {
     jungangler = _prefs.getBool('jungangler') ?? false;
     einfuehrungGesehen = _prefs.getBool('einfuehrung') ?? false;
     bannerWeg = _prefs.getString('bannerWeg') ?? '';
+    wasIstNeuGesehen = _prefs.getInt('wasIstNeu') ?? 0;
     favoriten = _prefs.getStringList('favoriten') ?? const [];
     lieblingsfische =
         _prefs.getStringList('lieblingsfische') ?? lieblingsfische;
@@ -102,6 +106,11 @@ class Speicher extends ChangeNotifier {
     favoriten = neu;
     notifyListeners();
     await _prefs.setStringList('favoriten', neu);
+  }
+
+  Future<void> wasIstNeuErledigt(int stand) async {
+    wasIstNeuGesehen = stand;
+    await _prefs.setInt('wasIstNeu', stand);
   }
 
   Future<void> bannerAusblenden(String id) async {

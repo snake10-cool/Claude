@@ -25,6 +25,7 @@ import 'pruefung_screen.dart';
 import 'widgets.dart';
 import 'album_screen.dart';
 import '../services/fern_konfig.dart';
+import 'neu_screen.dart';
 
 class MehrScreen extends StatelessWidget {
   const MehrScreen({super.key});
@@ -64,6 +65,9 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.settings_outlined, 'Einstellungen',
               'Heimatort, Jungangler-Modus, Countdown',
               () => _oeffnen(context, const EinstellungenScreen())),
+          _Eintrag(Icons.new_releases_outlined, 'Neu in Austro Angler',
+              'Was das letzte Update gebracht hat', () => _oeffnen(context,
+                  const NeuScreen())),
           _Eintrag(Icons.waving_hand_outlined, 'Einführung ansehen',
               'Die App in 6 Schritten erklärt', () => _oeffnen(context,
                   const EinfuehrungScreen())),
