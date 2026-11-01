@@ -1330,9 +1330,17 @@ class InfoKnoepfe extends StatelessWidget {
     return false;
   }
 
+  /// Schon gewünschte Gewässer (pro App-Start) – mehrfaches Tippen schickt
+  /// den Wunsch nur einmal.
+  static final _gewuenscht = <String>{};
+
   Future<void> _wuenschen(BuildContext context) async {
     if (!await _angemeldet(context) || !context.mounted) return;
     final konto = KontoScope.of(context)!;
+    if (!_gewuenscht.add('${konto.uid}|${g.id}')) {
+      meldung(context, 'Dein Wunsch ist schon beim Team.');
+      return;
+    }
     try {
       await fangDienst.infosWuenschen(
         uid: konto.uid!,
@@ -1344,6 +1352,7 @@ class InfoKnoepfe extends StatelessWidget {
         meldung(context, 'Danke! Dein Wunsch ist beim Team angekommen.');
       }
     } catch (_) {
+      _gewuenscht.remove('${konto.uid}|${g.id}');
       if (context.mounted) meldung(context, 'Senden fehlgeschlagen.');
     }
   }
