@@ -76,7 +76,7 @@ class BuchScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       [
-                        if (buch.jahr != 0) '${buch.jahr}',
+                        if (buch.jahr != 0) buch.jahrText,
                         if (buch.seiten != 0) '${buch.seiten} Seiten',
                         if (buch.minAlter > 0) 'ab ${buch.minAlter}',
                       ].join(' · '),

@@ -203,7 +203,7 @@ class _Karte extends StatelessWidget {
                 Text(buch.titel, textAlign: TextAlign.center, style: theme.textTheme.headlineSmall),
                 const SizedBox(height: 4),
                 Text(
-                  [buch.autor, if (buch.jahr > 0) '${buch.jahr}', if (buch.seiten > 0) '${buch.seiten} S.'].join(' · '),
+                  [buch.autor, if (buch.jahr > 0) buch.jahrText, if (buch.seiten > 0) '${buch.seiten} S.'].join(' · '),
                   textAlign: TextAlign.center,
                   style: theme.textTheme.bodyMedium,
                 ),

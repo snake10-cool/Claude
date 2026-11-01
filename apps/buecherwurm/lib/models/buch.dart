@@ -74,6 +74,12 @@ class Buch {
 
   bool get hatQuiz => quiz.isNotEmpty;
 
+  /// Noch nicht erschienen (Vorankündigung der Nationalbibliothek).
+  bool get angekuendigt => jahr > DateTime.now().year;
+
+  /// Jahr zum Anzeigen, z. B. „2024“ oder „erscheint 2027“.
+  String get jahrText => angekuendigt ? 'erscheint $jahr' : '$jahr';
+
   Map<String, dynamic> toJson() => {
         'id': id,
         'titel': titel,

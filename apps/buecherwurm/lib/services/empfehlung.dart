@@ -100,6 +100,7 @@ List<Empfehlung> empfehlen({
   final ergebnis = <Empfehlung>[];
   for (final buch in buecher) {
     if (buch.eigenes || eintraege.containsKey(buch.id)) continue;
+    if (buch.angekuendigt) continue; // noch nicht zu kaufen
     if (nichtFuerMich.contains(buch.id) || ausschliessen.contains(buch.id)) continue;
     if (alter != null && buch.minAlter > alter) continue;
 
