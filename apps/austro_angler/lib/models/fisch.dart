@@ -89,6 +89,11 @@ class Regel {
   }
 }
 
+/// Korrekturen aus der Ferne (Fern-Konfig): Fisch-ID → Land → Regel.
+/// Gehen den eingebauten Regeln vor, damit ein Fehler ohne App-Update
+/// behoben werden kann.
+final Map<String, Map<Bundesland, Regel>> regelKorrekturen = {};
+
 class Fisch {
   const Fisch({
     required this.id,
@@ -122,7 +127,8 @@ class Fisch {
   final bool ausgestorben;
   final Map<Bundesland, Regel> regeln;
 
-  Regel regel(Bundesland land) => regeln[land] ?? const Regel.unbekannt();
+  Regel regel(Bundesland land) =>
+      regelKorrekturen[id]?[land] ?? regeln[land] ?? const Regel.unbekannt();
 }
 
 /// Ganze Kalendertage von [a] bis [b] – in UTC gerechnet, sonst fehlt über

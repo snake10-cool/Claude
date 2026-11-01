@@ -9,6 +9,8 @@ import '../main.dart';
 import '../models/gewaesser.dart';
 import '../services/alle_gewaesser.dart';
 import 'gewaesser_screen.dart';
+import '../services/fern_konfig.dart';
+import 'widgets.dart';
 
 /// Öffnet einen Punkt in der Google-Maps-App (dort auch mit Route).
 Future<void> inGoogleMapsOeffnen(double lat, double lon) => launchUrl(
@@ -106,6 +108,11 @@ class _KarteScreenState extends State<KarteScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (!funktionAn('karte')) {
+      return Scaffold(
+          appBar: AppBar(title: const Text('Karte')),
+          body: const FunktionAus('Die Karte'));
+    }
     // Die Google-Karte gibt es nur in der Handy-App.
     // (In Tests gibt es keine echte Karte.)
     final handy = !kIsWeb &&

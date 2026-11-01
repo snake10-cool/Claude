@@ -43,6 +43,31 @@ class AlleGewaesser extends ChangeNotifier {
 
   Future<void>? _laden;
 
+  /// Korrekturen aus der Ferne (Lage, Hinweis) je Gewässer-ID.
+  Map<String, ({LatLng? position, String? hinweis})> _korrekturen = const {};
+
+  void korrekturenSetzen(
+      Map<String, ({LatLng? position, String? hinweis})> k) {
+    _korrekturen = k;
+    if (k.isEmpty) return;
+    _korrekturenAnwenden();
+    notifyListeners();
+  }
+
+  void _korrekturenAnwenden() {
+    if (_korrekturen.isEmpty) return;
+    liste = [
+      for (final g in liste)
+        if (_korrekturen[g.id] case final k?)
+          g.mitKorrektur(position: k.position, hinweis: k.hinweis)
+        else
+          g,
+    ];
+    for (final g in liste.reversed) {
+      _nachName[g.anzeigeName.toLowerCase()] = g;
+    }
+  }
+
   Future<void> laden() => _laden ??= _ladeJetzt();
 
   Future<void> _ladeJetzt() async {
@@ -63,6 +88,7 @@ class AlleGewaesser extends ChangeNotifier {
         _nachName[g.anzeigeName.toLowerCase()] = g;
       }
     }
+    _korrekturenAnwenden();
     geladen = true;
     notifyListeners();
   }

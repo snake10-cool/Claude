@@ -23,6 +23,8 @@ import 'konto_screen.dart';
 import 'lexikon_screen.dart';
 import 'pruefung_screen.dart';
 import 'widgets.dart';
+import 'album_screen.dart';
+import '../services/fern_konfig.dart';
 
 class MehrScreen extends StatelessWidget {
   const MehrScreen({super.key});
@@ -71,6 +73,10 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.bar_chart, 'Statistik & Abzeichen',
               'Rekorde, Auswertungen, PDF-Export', () => _oeffnen(context,
                   const StatistikScreen())),
+          if (funktionAn('album'))
+          _Eintrag(Icons.collections_bookmark_outlined, 'Arten-Sammelalbum',
+              'Alle Fischarten sammeln – wie viele hast du?', () => _oeffnen(context,
+                  const AlbumScreen())),
           _Eintrag(Icons.event_available, 'Meine Angeltage ⭐',
               'Ganze Tage erfassen, auch Schneidertage', () => _oeffnen(context,
                   const AusfluegeScreen())),

@@ -111,6 +111,29 @@ class Gewaesser {
       (z >= 10 ? z.toStringAsFixed(0) : z.toStringAsFixed(1))
           .replaceAll('.', ',');
 
+  /// Kopie mit korrigierter Lage oder Hinweis (Fern-Konfig).
+  Gewaesser mitKorrektur({LatLng? position, String? hinweis}) => Gewaesser(
+        id: id,
+        name: name,
+        typ: typ,
+        land: land,
+        ort: ort,
+        position: position ?? this.position,
+        beschreibung: beschreibung,
+        fischarten: fischarten,
+        preise: preise,
+        kartenverkauf: kartenverkauf,
+        quelle: quelle,
+        stand: stand,
+        hinweis: hinweis ?? this.hinweis,
+        lizenzUrl: lizenzUrl,
+        bezirk: bezirk,
+        gemeinden: gemeinden,
+        groesse: groesse,
+        ausOsm: ausOsm,
+        fischQuelle: fischQuelle,
+      );
+
   /// Kopie mit Bezirk und Gemeinden (für die geprüften Gewässer).
   Gewaesser mitOrt({required String bezirk, required List<String> gemeinden}) =>
       Gewaesser(

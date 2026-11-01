@@ -329,3 +329,43 @@ class GewaesserFeld extends StatelessWidget {
     );
   }
 }
+
+/// Platzhalter, wenn eine Funktion aus der Ferne abgeschaltet ist.
+class FunktionAus extends StatelessWidget {
+  const FunktionAus(this.name, {super.key});
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) => Center(
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('🛠️', style: TextStyle(fontSize: 44)),
+              const SizedBox(height: 8),
+              Text('$name ist gerade vorübergehend nicht verfügbar.',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleMedium),
+              const SizedBox(height: 4),
+              const Text('Wir arbeiten daran – bald geht es wieder.',
+                  textAlign: TextAlign.center),
+            ],
+          ),
+        ),
+      );
+}
+
+/// Ganze Seite mit [FunktionAus] (für eigene Bildschirme).
+class FunktionAusSeite extends StatelessWidget {
+  const FunktionAusSeite(this.name, {super.key});
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(title: Text(name)),
+        body: FunktionAus(name),
+      );
+}

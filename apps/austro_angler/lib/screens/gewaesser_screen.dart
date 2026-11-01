@@ -19,6 +19,7 @@ import 'konto_screen.dart';
 import 'melden.dart';
 import 'widgets.dart';
 import 'karte_screen.dart';
+import '../services/fern_konfig.dart';
 
 class GewaesserScreen extends StatefulWidget {
   const GewaesserScreen({super.key});
@@ -38,6 +39,7 @@ enum _Sortierung { groesse, name, entfernung, heimat }
 class _GewaesserScreenState extends State<GewaesserScreen> {
   String _suche = '';
   GewaesserTyp? _typ;
+  bool _nurFavoriten = false;
   _Sortierung? _sortierung;
 
   @override
@@ -57,6 +59,8 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
   List<Gewaesser> _gefiltert(Speicher speicher) {
     final suche = _suche.toLowerCase();
     final liste = alleGewaesser.liste.where((g) {
+      // „Meine Gewässer“ gelten für ganz Österreich.
+      if (_nurFavoriten) return speicher.istFavorit(g.id);
       if (g.land != speicher.bundesland) return false;
       if (speicher.bezirk.isNotEmpty && g.bezirk != speicher.bezirk) {
         return false;
@@ -86,10 +90,12 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
           _Sortierung.entfernung => kmVonBraunau(a).compareTo(kmVonBraunau(b)),
           _Sortierung.groesse => _gewicht(b).compareTo(_gewicht(a)),
         };
-    // Geprüfte Gewässer mit Lizenzinfos immer zuerst.
-    liste.sort((a, b) => a.ausOsm == b.ausOsm
-        ? vergleich(a, b)
-        : (a.ausOsm ? 1 : -1));
+    // Gewässer, denen ich folge, dann geprüfte mit Lizenzinfos zuerst.
+    liste.sort((a, b) {
+      final fa = speicher.istFavorit(a.id), fb = speicher.istFavorit(b.id);
+      if (fa != fb) return fa ? -1 : 1;
+      return a.ausOsm == b.ausOsm ? vergleich(a, b) : (a.ausOsm ? 1 : -1);
+    });
     return liste;
   }
 
@@ -189,6 +195,15 @@ class _GewaesserScreenState extends State<GewaesserScreen> {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 6),
+              child: FilterChip(
+                avatar: const Text('⭐'),
+                label: Text('Meine (${speicher.favoriten.length})'),
+                selected: _nurFavoriten,
+                onSelected: (v) => setState(() => _nurFavoriten = v),
+              ),
+            ),
             for (final t in [
               null,
               GewaesserTyp.fluss,
@@ -413,7 +428,28 @@ class GewaesserDetail extends StatelessWidget {
     final heute = DateTime.now();
 
     return Scaffold(
-      appBar: AppBar(title: Text(g.name)),
+      appBar: AppBar(
+        title: Text(g.name),
+        actions: [
+          ListenableBuilder(
+            listenable: SpeicherScope.of(context),
+            builder: (context, _) {
+              final speicher = SpeicherScope.of(context);
+              final an = speicher.istFavorit(g.id);
+              return IconButton(
+                tooltip: an ? 'Nicht mehr folgen' : 'Gewässer folgen',
+                icon: Icon(an ? Icons.star : Icons.star_border,
+                    color: an ? Colors.amber : null),
+                onPressed: () {
+                  speicher.favoritUmschalten(g.id);
+                  meldung(context,
+                      an ? 'Du folgst ${g.name} nicht mehr.' : '⭐ Du folgst ${g.name}.');
+                },
+              );
+            },
+          ),
+        ],
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -432,8 +468,10 @@ class GewaesserDetail extends StatelessWidget {
             HinweisKarte(g.hinweis!, icon: Icons.warning_amber),
           ],
           const SizedBox(height: 12),
-          WetterKarte(g),
-          BeisszeitKarte(g),
+          if (funktionAn('wetter')) ...[
+            WetterKarte(g),
+            BeisszeitKarte(g),
+          ],
           DaemmerungKarte(g),
           WassertempKarte(g),
           if (KontoScope.of(context) != null) WasBeisstKarte(g),
@@ -1300,9 +1338,17 @@ class InfoKnoepfe extends StatelessWidget {
     return false;
   }
 
+  /// Schon gewünschte Gewässer (pro App-Start) – mehrfaches Tippen schickt
+  /// den Wunsch nur einmal.
+  static final _gewuenscht = <String>{};
+
   Future<void> _wuenschen(BuildContext context) async {
     if (!await _angemeldet(context) || !context.mounted) return;
     final konto = KontoScope.of(context)!;
+    if (!_gewuenscht.add('${konto.uid}|${g.id}')) {
+      meldung(context, 'Dein Wunsch ist schon beim Team.');
+      return;
+    }
     try {
       await fangDienst.infosWuenschen(
         uid: konto.uid!,
@@ -1314,6 +1360,7 @@ class InfoKnoepfe extends StatelessWidget {
         meldung(context, 'Danke! Dein Wunsch ist beim Team angekommen.');
       }
     } catch (_) {
+      _gewuenscht.remove('${konto.uid}|${g.id}');
       if (context.mounted) meldung(context, 'Senden fehlgeschlagen.');
     }
   }

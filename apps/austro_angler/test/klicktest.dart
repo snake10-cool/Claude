@@ -11,11 +11,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// Alle Einträge unter "Mehr", die einen Bildschirm in der App öffnen.
 const _mehr = [
-  'Einführung ansehen',
   '⭐ Premium',
   'Einstellungen',
+  'Einführung ansehen',
   'FAQ – Fragen & Antworten',
   'Statistik & Abzeichen',
+  'Arten-Sammelalbum',
   'Meine Angeltage ⭐',
   'Köder-Box',
   'Meine Ausrüstung',
