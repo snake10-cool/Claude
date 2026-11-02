@@ -1,0 +1,43 @@
+name: Wikidata-Bücher holen
+
+# Holt bis zu 20.000 bekannte Bücher (mit deutschem Wikipedia-Artikel) für
+# Bücherwurm aus Wikidata und legt sie als gepacktes Datenpaket ab:
+# apps/buecherwurm/assets/daten/katalog_wikidata.json.gz
+# Von Hand starten oder automatisch, wenn sich das Skript ändert.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tools/wikidata_buecher.py'
+      - '.github/workflows/wikidata.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wikidata-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  holen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Bücher aus Wikidata laden
+        run: python -u tools/wikidata_buecher.py
+
+      - name: Ins Repo übernehmen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/buecherwurm/assets/daten/katalog_wikidata.json.gz tools/quellen/wikidata_bericht.txt
+          git diff --cached --quiet && { echo "Keine Änderungen"; exit 0; }
+          git commit -m "Bücherwurm: Bücher aus Wikidata aktualisiert"
+          git pull --rebase
+          git push

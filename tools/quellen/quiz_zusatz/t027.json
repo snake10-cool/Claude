@@ -1,0 +1,247 @@
+{
+"wd_Q1304875": {"s": "mittel", "q": [
+ ["Wer schrieb „Ein Lotterie-Los“?", "Jules Verne", "Henrik Ibsen", "Knut Hamsun", "Selma Lagerlöf"],
+ ["In welchem Jahr erschien der Roman?", "1886", "1870", "1900", "1860"],
+ ["Welche Nummer trägt das Los?", "9672", "1234", "7777", "1886"],
+ ["In welchem Land beginnt die Geschichte?", "In Norwegen", "In Schweden", "In Dänemark", "In Island"],
+ ["Als was arbeitet Joël?", "Als Berg- und Reiseführer", "Als Fischer", "Als Lehrer", "Als Seemann"]
+]},
+"wd_Q1215553": {"s": "mittel", "q": [
+ ["Wer schrieb „Die Propellerinsel“?", "Jules Verne", "H. G. Wells", "Jonathan Swift", "Edgar Rice Burroughs"],
+ ["In welchem Jahr erschien die Originalausgabe?", "1895", "1870", "1910", "1885"],
+ ["Was sind die vier Franzosen von Beruf?", "Musiker", "Ingenieure", "Ärzte", "Soldaten"],
+ ["Wohin waren sie unterwegs?", "Von San Francisco nach San Diego", "Von New York nach Boston", "Von Paris nach Lyon", "Von London nach Dover"],
+ ["Wie heißt der Mann, der sie mitnimmt?", "Jeremias Fender", "Robur", "Phileas Fogg", "Cyrus Smith"]
+]},
+"wd_Q1216126": {"s": "mittel", "q": [
+ ["Wer schrieb „Die Schule der Robinsons“?", "Jules Verne", "Daniel Defoe", "Johann David Wyss", "Robert Louis Stevenson"],
+ ["In welchem Jahr erschien der Roman?", "1882", "1865", "1900", "1719"],
+ ["Wie heißt der Millionär?", "William W. Kolderup", "J. R. Taskinar", "Phileas Fogg", "Hypperbone"],
+ ["Welche Insel ersteigert er?", "Die Insel Spencer", "Die Insel Lincoln", "Die Schatzinsel", "Die Insel Tabor"],
+ ["Für wie viel Geld?", "Für 4.000.000 Dollar", "Für 1000 Dollar", "Für 100 Millionen Dollar", "Für einen Goldbarren"]
+]},
+"wd_Q2271021": {"s": "schwierig", "q": [
+ ["Wer schrieb „La Araucana“?", "Alonso de Ercilla y Zúñiga", "Miguel de Cervantes", "Garcilaso de la Vega", "Lope de Vega"],
+ ["Wo wurde der Autor geboren?", "In Madrid", "In Sevilla", "In Santiago de Chile", "In Toledo"],
+ ["Womit beschäftigte er sich als erster europäischer Dichter?", "Mit den Kolonialkriegen in Amerika", "Mit der Seefahrt nach Indien", "Mit den Kreuzzügen", "Mit dem Leben am Hof"],
+ ["Welche Provinz steht im Mittelpunkt des ersten Teils?", "Chile", "Peru", "Mexiko", "Kuba"],
+ ["Aus wie vielen Gesängen besteht der erste Teil?", "15", "5", "50", "12"]
+]},
+"wd_Q1331310": {"s": "mittel", "q": [
+ ["Wer schrieb „Vom Ende einer Geschichte“?", "Julian Barnes", "Ian McEwan", "Kazuo Ishiguro", "Martin Amis"],
+ ["Wie lautet der Originaltitel?", "The Sense of an Ending", "Atonement", "The Remains of the Day", "Flaubert’s Parrot"],
+ ["In welchem Jahr erschien der Roman?", "2011", "2001", "1998", "2015"],
+ ["Welchen Preis erhielt er?", "Den Man Booker Prize", "Den Pulitzer-Preis", "Den Nobelpreis", "Den Costa Book Award"],
+ ["Wie heißt der Ich-Erzähler?", "Tony Webster", "Adrian Finn", "Stevens", "Briony Tallis"]
+]},
+"wd_Q2087365": {"s": "schwierig", "q": [
+ ["Was ist die „Kleine Ilias“?", "Ein nicht erhaltenes Epos des Epischen Zyklus", "Eine Kurzfassung der Ilias für Kinder", "Ein Theaterstück", "Ein Gedicht von Vergil"],
+ ["Welchem Dichter wird sie bisweilen zugeschrieben?", "Lesches", "Homer", "Hesiod", "Pindar"],
+ ["Aus wie vielen Büchern bestand sie?", "Aus vier", "Aus vierundzwanzig", "Aus zwölf", "Aus einem"],
+ ["In wessen Chrestomathie ist eine Inhaltsangabe überliefert?", "In der des Proklos", "In der des Plutarch", "In der des Strabon", "In der des Aristoteles"],
+ ["Zu welchem Sagenkreis gehörte sie?", "Zum trojanischen", "Zum thebanischen", "Zum Argonautensagenkreis", "Zum Artussagenkreis"]
+]},
+"wd_Q2641274": {"s": "mittel", "q": [
+ ["Wer schrieb „Wenn der Wind singt“?", "Haruki Murakami", "Kenzaburō Ōe", "Yukio Mishima", "Ryū Murakami"],
+ ["In welchem Jahr erschien der Roman auf Japanisch?", "1979", "1989", "1999", "1969"],
+ ["Was ist er für den Autor?", "Sein Erstlingswerk", "Sein letztes Werk", "Sein einziger Krimi", "Seine Autobiografie"],
+ ["Wann erschien die deutsche Übersetzung?", "2015", "1980", "1995", "2005"],
+ ["Was beschließt Ratte zu werden?", "Schriftsteller", "Musiker", "Arzt", "Fabrikant"]
+]},
+"wd_Q2701030": {"s": "mittel", "q": [
+ ["Wer schrieb „Der Horla“?", "Guy de Maupassant", "Émile Zola", "Gustave Flaubert", "Prosper Mérimée"],
+ ["Wann erschien die erste Fassung?", "Am 26. Oktober 1886", "1850", "1900", "1870"],
+ ["In welcher Zeitung erschien sie?", "In Le Gil Blas", "In Le Figaro", "In Le Monde", "In Le Temps"],
+ ["Wie ist die Endfassung aufgebaut?", "Tagebuchartig", "Als Dialog", "Als Brief", "In Versen"],
+ ["Was trinkt das unsichtbare Wesen?", "Wasser", "Wein", "Milch", "Blut"]
+]},
+"wd_Q2623505": {"s": "mittel", "q": [
+ ["Wer schrieb „Weißes Rauschen“?", "Don DeLillo", "Thomas Pynchon", "Paul Auster", "Philip Roth"],
+ ["Wie lautet der Originaltitel?", "White Noise", "Underworld", "Libra", "Cosmopolis"],
+ ["In welchem Jahr erschien der Roman?", "1985", "1975", "1995", "2005"],
+ ["Worauf ist Jack Gladney spezialisiert?", "Auf „Hitler-Studien“", "Auf Mittelalter", "Auf Astronomie", "Auf Musik"],
+ ["Wie heißt die fiktive Kleinstadt?", "Blacksmith", "Springfield", "Derry", "Castle Rock"]
+]},
+"wd_Q2450161": {"s": "mittel", "q": [
+ ["Wer schrieb „Der Baron auf den Bäumen“?", "Italo Calvino", "Umberto Eco", "Dino Buzzati", "Primo Levi"],
+ ["In welchem Jahr erschien der Roman?", "1957", "1947", "1967", "1979"],
+ ["Wie heißt der Baron?", "Cosimo Piovasco di Rondò", "Biagio", "Medardo", "Agilulf"],
+ ["Wer erzählt seine Geschichte?", "Sein jüngerer Bruder Biagio", "Seine Schwester", "Sein Vater", "Er selbst"],
+ ["Zu welcher Trilogie gehört der Roman?", "„Unsere Vorfahren“", "„Die unsichtbaren Städte“", "„Italienische Märchen“", "„Kosmikomische Geschichten“"]
+]},
+"wd_Q28836534": {"s": "mittel", "q": [
+ ["Wer schrieb „Die Ermordung des Commendatore“?", "Haruki Murakami", "Yoko Ogawa", "Banana Yoshimoto", "Kazuo Ishiguro"],
+ ["Wann erschien der Roman auf Japanisch?", "Im Februar 2017", "2007", "2020", "1997"],
+ ["Welchen Beruf hat der Ich-Erzähler?", "Kunstmaler", "Schriftsteller", "Musiker", "Lehrer"],
+ ["Mit welchem Auto reist er durch Japan?", "Mit einem Peugeot 205", "Mit einem Toyota", "Mit einem Volkswagen", "Mit einem Mini"],
+ ["Wessen verstecktes Bild findet er auf dem Dachboden?", "Das des Malers Tomohiko Amada", "Das seiner Frau", "Das eines Mönchs", "Das seines Vaters"]
+]},
+"wd_Q1215306": {"s": "schwierig", "q": [
+ ["Wer schrieb „Die Ordnung der Dinge“?", "Michel Foucault", "Jacques Derrida", "Roland Barthes", "Claude Lévi-Strauss"],
+ ["In welchem Jahr erschien das Buch?", "1966", "1950", "1980", "1945"],
+ ["Wie lautet der französische Originaltitel?", "Les mots et les choses", "Surveiller et punir", "Histoire de la folie", "L’Archéologie du savoir"],
+ ["Wie nennt Foucault seine Methode?", "„Archäologie“", "„Genealogie“", "„Dekonstruktion“", "„Hermeneutik“"],
+ ["Wessen Entstehung untersucht er?", "Die der Humanwissenschaften", "Die der Physik", "Die der Kirche", "Die der Demokratie"]
+]},
+"wd_Q1306656": {"s": "schwierig", "q": [
+ ["Wer schrieb „Eine Untersuchung über den menschlichen Verstand“?", "David Hume", "John Locke", "George Berkeley", "Thomas Reid"],
+ ["In welchem Jahr erschien sie?", "1748", "1690", "1781", "1739"],
+ ["In welcher Stadt?", "In London", "In Edinburgh", "In Paris", "In Oxford"],
+ ["Aus wie vielen Essays besteht das Buch?", "Zwölf", "Drei", "Fünf", "Zwanzig"],
+ ["Welche Variante des Empirismus vertritt es?", "Eine sensualistische", "Eine rationalistische", "Eine idealistische", "Eine mystische"]
+]},
+"wd_Q1853142": {"s": "mittel", "q": [
+ ["Wer schrieb „North and South“?", "Elizabeth Gaskell", "Charlotte Brontë", "George Eliot", "Jane Austen"],
+ ["Wann erschien der Roman als Buch?", "1855", "1813", "1880", "1900"],
+ ["In welcher fiktiven Industriestadt spielt er?", "In Milton", "In Middlemarch", "In Coketown", "In Wessex"],
+ ["Wie heißt die Hauptfigur?", "Margaret Hale", "Jane Eyre", "Dorothea Brooke", "Elizabeth Bennet"],
+ ["Welchen Beruf hat ihr Vater?", "Landpfarrer", "Fabrikant", "Arzt", "Soldat"]
+]},
+"wd_Q611356": {"s": "mittel", "q": [
+ ["Wer schrieb „Die Welt ohne uns“?", "Alan Weisman", "Bill Bryson", "Jared Diamond", "Al Gore"],
+ ["In welchem Jahr erschien das Buch?", "2007", "1997", "2017", "2001"],
+ ["Welche Frage behandelt es?", "Was passieren würde, wenn alle Menschen verschwänden", "Wie man zum Mars fliegt", "Wie die Dinosaurier ausstarben", "Wie man reich wird"],
+ ["In wie viele Kapitel ist es unterteilt?", "In 19", "In 5", "In 50", "In 12"],
+ ["Über welches indigene Volk berichtet der Prolog?", "Über die Zápara in Ecuador", "Über die Maori", "Über die Inuit", "Über die Massai"]
+]},
+"wd_Q3141613": {"s": "schwierig", "q": [
+ ["Wer schrieb „Qu’est-ce que le Tiers-État?“?", "Abbé Sieyès", "Robespierre", "Danton", "Voltaire"],
+ ["In welchem Jahr erschien das Pamphlet?", "1789", "1750", "1815", "1830"],
+ ["Was bedeutet der Titel?", "Was ist der Dritte Stand?", "Wer ist der König?", "Was ist die Nation?", "Wo ist die Freiheit?"],
+ ["Wie lautet die Antwort auf die erste Frage?", "Alles", "Nichts", "Etwas", "Das Volk"],
+ ["Wofür plädiert Sieyès?", "Für eine allgemeine Nationalversammlung", "Für die absolute Monarchie", "Für die Kirche", "Für den Adel"]
+]},
+"wd_Q1197966": {"s": "mittel", "q": [
+ ["Wer schrieb „Der Weg nach Wigan Pier“?", "George Orwell", "Charles Dickens", "Friedrich Engels", "Aldous Huxley"],
+ ["In welchem Jahr wurde das Buch veröffentlicht?", "1937", "1945", "1925", "1949"],
+ ["In welcher Reihe erschien es?", "Im Left Book Club", "Bei Penguin Classics", "Bei Reclam", "Im Book-of-the-Month Club"],
+ ["Welches Gebiet beschreibt der erste Teil?", "Das nordenglische Industriegebiet", "London", "Schottland", "Wales"],
+ ["Zwischen welchen Städten liegt Wigan etwa?", "Zwischen Liverpool und Manchester", "Zwischen London und Oxford", "Zwischen Leeds und York", "Zwischen Bristol und Bath"]
+]},
+"wd_Q1198638": {"s": "mittel", "q": [
+ ["Wer schrieb „Der Fünfte Berg“?", "Paulo Coelho", "Jorge Amado", "Gabriel García Márquez", "Isabel Allende"],
+ ["Aus welchem Land stammt der Autor?", "Aus Brasilien", "Aus Portugal", "Aus Argentinien", "Aus Kolumbien"],
+ ["Wessen Geschichte wird erzählt?", "Die des Propheten Elia", "Die des Mose", "Die des Jona", "Die Davids"],
+ ["Welchem König trägt Elia die Prophezeiung vor?", "König Ahab", "König Salomo", "König Saul", "König Herodes"],
+ ["Wen verehrte Königin Isebel?", "Baal", "Zeus", "Osiris", "Mithras"]
+]},
+"wd_Q1747160": {"s": "schwierig", "q": [
+ ["Wer verfasste das „Tableau économique“?", "François Quesnay", "Adam Smith", "Jean-Baptiste Say", "Turgot"],
+ ["Welcher Schule gehörte der Autor an?", "Den Physiokraten", "Den Merkantilisten", "Den Marxisten", "Den Keynesianern"],
+ ["Welchen Beruf hatte er?", "Arzt", "Bankier", "Bauer", "Priester"],
+ ["Wovon adaptierte er sein Modell?", "Vom Blutkreislauf", "Vom Wasserkreislauf", "Von den Planetenbahnen", "Von einer Uhr"],
+ ["Welche Klasse ist für ihn die produktive?", "Die Landwirte und Bodenpächter", "Die Händler", "Die Handwerker", "Die Grundbesitzer"]
+]},
+"wd_Q58765": {"s": "schwierig", "q": [
+ ["Wer schrieb „Das Westzimmer“?", "Wang Shifu", "Tang Xianzu", "Cao Xueqin", "Guan Hanqing"],
+ ["Während welcher Dynastie wurde es geschrieben?", "Während der Yuan-Dynastie", "Während der Han-Dynastie", "Während der Qing-Dynastie", "Während der Ming-Dynastie"],
+ ["Während welcher Dynastie spielt es?", "Während der Tang-Dynastie", "Während der Song-Dynastie", "Während der Zhou-Dynastie", "Während der Qin-Dynastie"],
+ ["Wie heißt die Tochter des Staatsministers?", "Cui Yingying", "Hongniang", "Lin Daiyu", "Du Liniang"],
+ ["Wer spielt eine Mittlerrolle?", "Die Zofe Hongniang", "Ein Mönch", "Der Kaiser", "Ein Drache"]
+]},
+"wd_Q211927": {"s": "mittel", "q": [
+ ["Wer schrieb „Es ist nicht leicht, ein Gott zu sein“?", "Arkadi und Boris Strugazki", "Stanisław Lem", "Iwan Jefremow", "Kir Bulytschow"],
+ ["In welchem Jahr erschien der Roman?", "1964", "1971", "1957", "1985"],
+ ["Wie heißt das Königreich?", "Arkanar", "Regis", "Solaris", "Urras"],
+ ["Welche Identität nimmt Anton an?", "Die des Adligen Don Rumata", "Die eines Mönchs", "Die des Königs", "Die eines Bauern"],
+ ["Seit wie vielen Jahren lebt er dort unerkannt?", "Seit fünf Jahren", "Seit einem Jahr", "Seit zwanzig Jahren", "Seit hundert Jahren"]
+]},
+"wd_Q692649": {"s": "leicht", "q": [
+ ["Wer schrieb „Der fliegende Koffer“?", "Hans Christian Andersen", "Die Brüder Grimm", "Wilhelm Hauff", "Charles Perrault"],
+ ["Wann wurde das Märchen veröffentlicht?", "Am 19. Oktober 1839", "1812", "1900", "1844"],
+ ["Was hatte der junge Mann verschleudert?", "Sein gesamtes Erbe", "Seinen Koffer", "Seine Bücher", "Sein Pferd"],
+ ["Was steckt er in den Koffer?", "Sich selbst", "Seine Kleider", "Gold", "Seinen Hund"],
+ ["In welches Land fliegt der Koffer?", "Ins Land der Türken", "Nach China", "Nach Ägypten", "Nach Indien"]
+]},
+"wd_Q1170617": {"s": "schwierig", "q": [
+ ["Wer schrieb „Das Unbehagen der Geschlechter“?", "Judith Butler", "Simone de Beauvoir", "bell hooks", "Luce Irigaray"],
+ ["Wie lautet der englische Titel?", "Gender Trouble", "The Second Sex", "Bodies That Matter", "Undoing Gender"],
+ ["In welchem Jahr erschien das Buch?", "1990", "1949", "2004", "1975"],
+ ["Auf wessen Schrift spielt der deutsche Titel an?", "Auf Sigmund Freuds „Das Unbehagen in der Kultur“", "Auf Kants „Kritik der reinen Vernunft“", "Auf Marx’ „Kapital“", "Auf Nietzsches „Zarathustra“"],
+ ["In wie viele Kapitel ist es unterteilt?", "In drei", "In zehn", "In zwei", "In zwölf"]
+]},
+"wd_Q1171108": {"s": "mittel", "q": [
+ ["Wer überarbeitete und vervollständigte „Das erstaunliche Abenteuer der Expedition Barsac“?", "Michel Verne", "Pierre-Jules Hetzel", "Jules Verne allein", "Alexandre Dumas"],
+ ["Wann erschien die französische Originalausgabe?", "1919", "1905", "1889", "1930"],
+ ["Wie viele Kapitel umfasste Jules Vernes Manuskript?", "Fünf", "Zwanzig", "Eins", "Zehn"],
+ ["Womit beginnt der Roman?", "Mit einem Banküberfall in London", "Mit einem Schiffbruch", "Mit einer Ballonfahrt", "Mit einer Hochzeit"],
+ ["Wie heißt der Verdächtige?", "Lewis-Robert Buxton", "Barsac", "Lord Glenor", "Robur"]
+]},
+"wd_Q223784": {"s": "mittel", "q": [
+ ["Wie lautet der Originaltitel von „3001 – Die letzte Odyssee“?", "3001: The Final Odyssey", "2061: Odyssey Three", "The Lost Worlds of 2001", "Childhood’s End"],
+ ["In welchem Jahr erschien der Roman?", "1997", "1987", "2001", "1968"],
+ ["Wessen Erlebnisse verfolgt er?", "Die des Astronauten Frank Poole", "Die von Dave Bowman", "Die von Heywood Floyd", "Die von HAL 9000"],
+ ["Wer hatte Poole in „2001“ getötet?", "HAL 9000", "Dave Bowman", "Ein Monolith", "Ein Außerirdischer"],
+ ["Wo wird sein Körper gefunden?", "Im Kuipergürtel", "Auf dem Mond", "Auf dem Mars", "Auf Europa"]
+]},
+"wd_Q470012": {"s": "leicht", "q": [
+ ["An welcher Stelle der Kinder- und Hausmärchen steht „Der goldene Vogel“?", "An Stelle 57", "An Stelle 1", "An Stelle 100", "An Stelle 21"],
+ ["Was trägt der Baum im Garten des Königs?", "Goldene Äpfel", "Silberne Birnen", "Rote Kirschen", "Goldene Nüsse"],
+ ["Wie viele Söhne hat der König?", "Drei", "Zwei", "Sieben", "Zwölf"],
+ ["Welcher Sohn schläft beim Wachen nicht ein?", "Der Jüngste", "Der Älteste", "Der Mittlere", "Keiner"],
+ ["Was sieht er?", "Einen goldenen Vogel, der einen Apfel nimmt", "Einen Dieb", "Einen Drachen", "Einen Fuchs"]
+]},
+"wd_Q595128": {"s": "mittel", "q": [
+ ["Wie lautet der Originaltitel von „Ab die Post“?", "Going Postal", "Making Money", "Raising Steam", "Thud!"],
+ ["Der wievielte Scheibenwelt-Roman ist er?", "Der dreiunddreißigste", "Der erste", "Der zehnte", "Der vierzigste"],
+ ["In welchem Jahr wurde er publiziert?", "2004", "1994", "2014", "2000"],
+ ["Wie heißt der Trickbetrüger, der die Post reorganisieren soll?", "Feucht von Lipwig", "Rincewind", "Mumm", "Vetinari"],
+ ["Wer verurteilt ihn zum Tode?", "Lord Vetinari", "Oma Wetterwachs", "Der Bibliothekar", "Tod"]
+]},
+"wd_Q287323": {"s": "schwierig", "q": [
+ ["Wer schrieb die „Tristia“?", "Ovid", "Vergil", "Horaz", "Catull"],
+ ["Was bedeutet der Titel?", "Trauriges oder Klagelieder", "Heiteres", "Kriegsberichte", "Liebesbriefe"],
+ ["Von wo schrieb der Dichter?", "Aus Tomis am Schwarzen Meer", "Aus Rom", "Aus Athen", "Aus Alexandria"],
+ ["Aus wie vielen Büchern bestehen sie?", "Aus fünf", "Aus drei", "Aus zwölf", "Aus einem"],
+ ["Welches Werk setzt sie fort?", "Epistulae ex Ponto", "Metamorphosen", "Ars amatoria", "Fasti"]
+]},
+"wd_Q338034": {"s": "mittel", "q": [
+ ["Wer schrieb „Der Bauch von Paris“?", "Émile Zola", "Honoré de Balzac", "Victor Hugo", "Guy de Maupassant"],
+ ["In welchem Jahr erschien der Roman?", "1873", "1850", "1890", "1862"],
+ ["Wo spielt die Handlung größtenteils?", "Auf dem Markt Les Halles", "Im Louvre", "In Montmartre", "An der Seine"],
+ ["Der wievielte Teil des Rougon-Macquart-Zyklus ist er?", "Der dritte", "Der erste", "Der neunte", "Der zwanzigste"],
+ ["Wie heißt die Hauptfigur?", "Florent", "Quenu", "Lantier", "Coupeau"]
+]},
+"wd_Q340515": {"s": "mittel", "q": [
+ ["Wer schrieb „Der Fall von Gondolin“?", "J. R. R. Tolkien", "C. S. Lewis", "Christopher Paolini", "Terry Brooks"],
+ ["Wann erschien die Geschichte als eigenständiges Buch?", "2018", "1977", "1954", "2007"],
+ ["Wie lautete der Titel der ersten Version?", "Von Tuor und dem Fall von Gondolin", "Die Kinder Húrins", "Beren und Lúthien", "Das Lied von Leithian"],
+ ["Wer gab das Silmarillion heraus?", "Christopher Tolkien", "Alan Lee", "Rayner Unwin", "C. S. Lewis"],
+ ["In welcher fiktiven Welt spielt die Geschichte?", "In Mittelerde", "In Narnia", "In Erdsee", "In Westeros"]
+]},
+"wd_Q574887": {"s": "mittel", "q": [
+ ["Wer schrieb „Daisy Miller“?", "Henry James", "Edith Wharton", "Mark Twain", "Nathaniel Hawthorne"],
+ ["In welchem Jahr erschien die Novelle?", "1878", "1850", "1900", "1890"],
+ ["Wie heißt der Amerikaner, der Daisy begegnet?", "Frederick Winterbourne", "Ralph Touchett", "Gilbert Osmond", "Caspar Goodwood"],
+ ["In welchem Schweizer Kurort begegnen sie sich?", "In Vevey", "In Davos", "In Montreux", "In St. Moritz"],
+ ["Welches Schloss wollen sie besuchen?", "Das Schloss Chillon", "Das Schloss Neuschwanstein", "Das Schloss Versailles", "Das Schloss Lenzburg"]
+]},
+"wd_Q239725": {"s": "mittel", "q": [
+ ["Welches Buch setzt „Das schwarze Haus“ fort?", "Der Talisman", "Es", "Christine", "Friedhof der Kuscheltiere"],
+ ["Wer schrieb beide Romane?", "Stephen King und Peter Straub", "Stephen King allein", "Peter Straub allein", "Dean Koontz"],
+ ["In welchem Jahr erschien „Das schwarze Haus“?", "2001", "1984", "1995", "2010"],
+ ["Wie heißt der Protagonist?", "Jack Sawyer", "Danny Torrance", "Bill Denbrough", "Johnny Smith"],
+ ["Wie nennt man das Wechseln zwischen den Welten?", "„Flippen“", "„Springen“", "„Zappen“", "„Gleiten“"]
+]},
+"wd_Q247364": {"s": "mittel", "q": [
+ ["Wie lautet der Originaltitel von „Wolfsmond“?", "Wolves of the Calla", "Wizard and Glass", "Song of Susannah", "The Waste Lands"],
+ ["Der wievielte Band von Der Dunkle Turm ist er?", "Der fünfte", "Der erste", "Der achte", "Der dritte"],
+ ["In welchem Jahr erschien er?", "2003", "1997", "2012", "1982"],
+ ["Wie heißt der Ort der Fremden?", "Calla Bryn Sturgis", "Gilead", "Debaria", "Lud"],
+ ["Wie heißt die Gemeinschaft der Gefährten?", "Ka-Tet", "Tafelrunde", "Gefährten des Rings", "Bruderschaft"]
+]},
+"wd_Q909502": {"s": "mittel", "q": [
+ ["Wie lautet der Originaltitel von Stephen Kings „Wahn“?", "Duma Key", "Lisey’s Story", "Insomnia", "Bag of Bones"],
+ ["In welchem Jahr erschien der Roman?", "2008", "1998", "2018", "2002"],
+ ["Wie heißt der Bauunternehmer?", "Edgar Freemantle", "Mike Noonan", "Ralph Roberts", "Johnny Smith"],
+ ["Aus welchem Bundesstaat stammt er?", "Aus Minnesota", "Aus Maine", "Aus Florida", "Aus Texas"],
+ ["Was verliert er bei dem Unfall?", "Seinen rechten Arm", "Ein Auge", "Ein Bein", "Sein Gehör"]
+]},
+"wd_Q927768": {"s": "mittel", "q": [
+ ["Wie heißt der Scheibenwelt-Roman mit dem Dämonologen Eric?", "Eric (Faust Eric)", "Mort", "Pyramiden", "Der Zauberhut"],
+ ["Der wievielte Scheibenwelt-Roman ist er?", "Der neunte", "Der erste", "Der fünfte", "Der zwanzigste"],
+ ["Wer illustrierte die Hardcover-Erstausgabe?", "Josh Kirby", "Paul Kidby", "Chris Riddell", "Alan Lee"],
+ ["Wie alt ist Eric Thursley?", "Dreizehn", "Zehn", "Zwanzig", "Achtzig"],
+ ["Welche Werke paraphrasiert der Roman?", "Goethes Faust und Dantes Inferno", "Shakespeares Hamlet", "Homers Odyssee", "Miltons Paradise Lost"]
+]}
+}

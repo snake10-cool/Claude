@@ -1,0 +1,187 @@
+rules_version = '2';
+
+// Sicherheitsregeln für Bücherwurm (eigenes Firebase-Projekt).
+// In der Firebase-Konsole unter Firestore → Regeln einfügen und veröffentlichen.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function angemeldet() {
+      return request.auth != null;
+    }
+
+    function ich(uid) {
+      return angemeldet() && request.auth.uid == uid;
+    }
+
+    // Administrator: gibt Quizfragen frei. Nur mit bestätigter E-Mail.
+    // Muss mit adminEmail in lib/services/konto.dart übereinstimmen.
+    function istAdmin() {
+      return angemeldet()
+          && request.auth.token.email == 'snakejoni10@yahoo.com'
+          && request.auth.token.email_verified == true;
+    }
+
+    function gueltigeFrage(d) {
+      return d.buchId is string && d.buchId.size() <= 60
+          && d.buchTitel is string && d.buchTitel.size() <= 200
+          && d.frage is string && d.frage.size() >= 5 && d.frage.size() <= 200
+          && d.antworten is list && d.antworten.size() == 4
+          && d.antworten[0] is string && d.antworten[0].size() >= 1 && d.antworten[0].size() <= 100
+          && d.antworten[1] is string && d.antworten[1].size() >= 1 && d.antworten[1].size() <= 100
+          && d.antworten[2] is string && d.antworten[2].size() >= 1 && d.antworten[2].size() <= 100
+          && d.antworten[3] is string && d.antworten[3].size() >= 1 && d.antworten[3].size() <= 100;
+    }
+
+    function gueltigerName(n) {
+      return n is string && n.matches('^[a-z0-9_.]{3,20}$');
+    }
+
+    // Was ein Ranglisten-Eintrag enthalten darf. Die Punkte selbst beruhen
+    // auf Vertrauen – geprüft werden nur sinnvolle Grenzen.
+    function gueltigerStand(d) {
+      return d.keys().hasOnly(['name', 'punkte', 'bewiesen', 'gelesen', 'aktualisiert'])
+          && gueltigerName(d.name)
+          && d.punkte is int && d.punkte >= 0 && d.punkte <= 100000
+          && d.bewiesen is int && d.bewiesen >= 0 && d.bewiesen <= 5000
+          && d.gelesen is int && d.gelesen >= 0 && d.gelesen <= 100000
+          && d.aktualisiert == request.time;
+    }
+
+    // Öffentliche Rangliste.
+    match /spieler/{uid} {
+      allow read: if true;
+      // Beim Anlegen muss der @Name im selben Schreibvorgang reserviert sein.
+      allow create: if ich(uid)
+          && gueltigerStand(request.resource.data)
+          && getAfter(/databases/$(database)/documents/namen/$(request.resource.data.name)).data.uid == uid;
+      allow update: if ich(uid)
+          && gueltigerStand(request.resource.data)
+          && request.resource.data.name == resource.data.name;
+      allow delete: if ich(uid);
+
+      // Freundesliste: nur der Besitzer sieht und ändert sie.
+      match /freunde/{freundUid} {
+        allow read, delete: if ich(uid);
+        allow create, update: if ich(uid)
+            && request.resource.data.keys().hasOnly(['name', 'seit'])
+            && gueltigerName(request.resource.data.name)
+            && request.resource.data.seit == request.time;
+      }
+    }
+
+    // Quizfragen-Vorschläge der Leser: nur der Admin sieht alle und
+    // entscheidet. Die richtige Antwort steht immer zuerst.
+    // Gemeldete Quizfragen: jeder Angemeldete darf melden, nur der Admin liest.
+    match /fragemeldungen/{id} {
+      allow create: if angemeldet()
+          && request.resource.data.keys().hasOnly(['buchId', 'buchTitel', 'frage', 'richtig', 'gewaehlt', 'grund', 'text', 'uid', 'name', 'status', 'erstellt'])
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.grund in ['keine', 'falsch', 'mehrere', 'unklar', 'spoiler', 'tippfehler', 'sonstiges']
+          && request.resource.data.text is string && request.resource.data.text.size() <= 500
+          && request.resource.data.frage is string && request.resource.data.frage.size() <= 300
+          && request.resource.data.status == 'neu'
+          && request.resource.data.erstellt == request.time;
+      allow read, delete: if istAdmin();
+      allow update: if istAdmin()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+          && request.resource.data.status == 'erledigt';
+    }
+
+    match /quizvorschlaege/{id} {
+      allow create: if angemeldet()
+          && request.resource.data.keys().hasOnly(['buchId', 'buchTitel', 'frage', 'antworten', 'uid', 'name', 'status', 'erstellt'])
+          && gueltigeFrage(request.resource.data)
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.name is string && request.resource.data.name.size() <= 20
+          && request.resource.data.status == 'neu'
+          && request.resource.data.erstellt == request.time;
+      allow read: if istAdmin() || (angemeldet() && resource.data.uid == request.auth.uid);
+      allow update: if istAdmin()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+          && request.resource.data.status in ['frei', 'abgelehnt'];
+      allow delete: if istAdmin()
+          || (angemeldet() && resource.data.uid == request.auth.uid && resource.data.status == 'neu');
+    }
+
+    // Freigegebene Quizfragen: für alle lesbar, nur der Admin schreibt.
+    match /quizfragen/{id} {
+      allow read: if true;
+      allow create, update: if istAdmin()
+          && request.resource.data.keys().hasOnly(['buchId', 'buchTitel', 'frage', 'antworten', 'von', 'erstellt'])
+          && gueltigeFrage(request.resource.data);
+      allow delete: if istAdmin();
+    }
+
+    // Katalog-Korrekturen ohne App-Update (Dokument-ID = Buch-ID): für alle
+    // lesbar, nur der Admin schreibt. Felder siehe lib/data/korrekturen.dart.
+    match /buchkorrekturen/{id} {
+      allow read: if true;
+      allow write: if istAdmin();
+    }
+
+    // Rezensionen: eine pro Leser und Buch (ID = buchId_uid), für alle
+    // lesbar. Löschen darf der Verfasser oder der Admin.
+    match /rezensionen/{id} {
+      allow read: if true;
+      allow create, update: if angemeldet()
+          && id == request.resource.data.buchId + '_' + request.auth.uid
+          && request.resource.data.keys().hasOnly(['buchId', 'uid', 'name', 'sterne', 'text', 'spoiler', 'erstellt'])
+          && request.resource.data.uid == request.auth.uid
+          && gueltigerName(request.resource.data.name)
+          && request.resource.data.sterne is int
+          && request.resource.data.sterne >= 1 && request.resource.data.sterne <= 5
+          && request.resource.data.text is string && request.resource.data.text.size() <= 1500
+          && request.resource.data.spoiler is bool
+          && request.resource.data.erstellt == request.time;
+      allow delete: if istAdmin() || (angemeldet() && resource.data.uid == request.auth.uid);
+
+      // 👍 „hilfreich": ein Dokument pro Leser.
+      match /hilfreich/{uid} {
+        allow read: if true;
+        allow create: if ich(uid) && request.resource.data.keys().hasOnly(['am']);
+        allow delete: if ich(uid) || istAdmin();
+      }
+    }
+
+    // Lesegruppen: Mitglieder sehen und ändern die Gruppe; wer den Code
+    // kennt, darf sich selbst hinzufügen. Alle Angemeldeten dürfen lesen
+    // (nötig, um eine Gruppe über ihren Code zu finden).
+    match /gruppen/{gid} {
+      function mitglied() {
+        return angemeldet() && request.auth.uid in resource.data.mitglieder;
+      }
+      allow read: if angemeldet();
+      allow create: if angemeldet()
+          && request.resource.data.keys().hasOnly(['name', 'code', 'ersteller', 'mitglieder', 'namen', 'erstellt'])
+          && request.resource.data.ersteller == request.auth.uid
+          && request.resource.data.mitglieder == [request.auth.uid]
+          && request.resource.data.name is string
+          && request.resource.data.name.size() >= 1 && request.resource.data.name.size() <= 40
+          && request.resource.data.code is string && request.resource.data.code.size() == 6;
+      // Mitglieder: Buch wählen, selbst austreten. Andere: nur sich selbst eintragen.
+      allow update: if angemeldet()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['mitglieder', 'namen', 'buchId', 'buchTitel'])
+          && request.resource.data.mitglieder.size() <= 50
+          && (mitglied()
+              || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['mitglieder', 'namen'])
+                  && request.resource.data.mitglieder.toSet() == resource.data.mitglieder.toSet().union([request.auth.uid].toSet())));
+      allow delete: if angemeldet() && resource.data.ersteller == request.auth.uid;
+
+      match /fortschritt/{uid} {
+        allow read: if angemeldet() && request.auth.uid in get(/databases/$(database)/documents/gruppen/$(gid)).data.mitglieder;
+        allow write: if ich(uid)
+            && request.auth.uid in get(/databases/$(database)/documents/gruppen/$(gid)).data.mitglieder;
+      }
+    }
+
+    // @Namen sind eindeutig: Ein Dokument pro Name, nur einmal anlegbar.
+    match /namen/{name} {
+      allow read: if true;
+      allow create: if angemeldet()
+          && gueltigerName(name)
+          && request.resource.data.keys().hasOnly(['uid'])
+          && request.resource.data.uid == request.auth.uid;
+      allow delete: if angemeldet() && resource.data.uid == request.auth.uid;
+    }
+  }
+}
