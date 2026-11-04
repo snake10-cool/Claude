@@ -194,25 +194,29 @@ music *= fade
 
 # ------------------------------------------------------------------ Effekte
 def s_type(v):
-    t = t_arr(.04)
+    """Weicher, tiefer Tastenanschlag („thock“ statt hohem Klicken)."""
+    t = t_arr(.07)
     r = np.random.default_rng(v)
-    n = r.standard_normal(len(t)) * np.exp(-t * 300)
-    n = np.diff(n, prepend=0)
-    tone = np.sin(2 * np.pi * (1800 + r.random() * 600) * t) * np.exp(-t * 200) * .4
-    return (n * .5 + tone) * (.55 + .45 * r.random()), (r.random() - .5) * .5
+    n = fft_filter(r.standard_normal(len(t)), lo=250, hi=1600) * np.exp(-t * 160)
+    tone = np.sin(2 * np.pi * (330 + r.random() * 120) * t) * np.exp(-t * 90) * .7
+    return (n * .8 + tone) * (.6 + .4 * r.random()), (r.random() - .5) * .5
 
 
 def s_tick(v, hi=0):
-    t = t_arr(.05)
-    f = 1500 + v * 45 if hi else 2400 + (v % 5) * 90
-    return np.sin(2 * np.pi * f * t) * np.exp(-t * 90)
+    t = t_arr(.06)
+    f = 700 + v * 30 if hi else 520 + (v % 5) * 40
+    return (np.sin(2 * np.pi * f * t) + .4 * np.sin(4 * np.pi * f * t)) * np.exp(-t * 80)
 
 
 def s_pop(f):
-    t = t_arr(.3)
-    fr = f * (1 + 1.2 * np.exp(-t * 60))
+    """Heller, luftiger „Blub“: kurzer Aufwärts-Chirp mit Glanz statt dumpfem Abwärts-Ton."""
+    t = t_arr(.22)
+    f = f * 2
+    fr = f * (1.5 - .5 * np.exp(-t * 70))
     ph = 2 * np.pi * np.cumsum(fr) / SR
-    return (np.sin(ph) + .3 * np.sin(2 * ph)) * np.exp(-t * 14)
+    body = (np.sin(ph) + .25 * np.sin(2 * ph) + .12 * np.sin(3.01 * ph)) * np.exp(-t * 22)
+    click = fft_filter(rng.standard_normal(len(t)), lo=3000) * np.exp(-t * 400) * .25
+    return (body + click) * np.minimum(t / .003, 1)
 
 
 def s_send():
@@ -285,8 +289,8 @@ for e in cfg["events"]:
     elif ty == "tick":
         add(fx, s_tick(e["v"], e.get("hi", 0)), at, .16 if not e.get("hi") else .2)
     elif ty == "pop":
-        add(fx, s_pop(e["f"]), at, .35)
-        add(fx_wet, s_pop(e["f"]), at, .2)
+        add(fx, s_pop(e["f"]), at, .26)
+        add(fx_wet, s_pop(e["f"]), at, .12)
     elif ty == "send":
         add(fx, s_send(), at, .35)
     elif ty == "whoosh":
