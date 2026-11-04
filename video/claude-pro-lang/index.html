@@ -665,7 +665,7 @@ scene({
     const node = (t, x, y, draw, label, col) => { const p = pop(lt, t); if (p <= 0) return; scaled(x, y, p, draw); text(label, x, y + 105, { size: 32, weight: 700, color: col, align: 'center', alpha: clamp(p) }); };
     node(b + 2.4, 330, 330, () => { const g = ctx.createRadialGradient(330, 330, 10, 330, 330, 90); g.addColorStop(0, '#FFE08A'); g.addColorStop(1, 'rgba(255,200,80,0)'); ctx.fillStyle = g; ctx.fillRect(230, 230, 200, 200); ctx.fillStyle = '#FFD45C'; ctx.beginPath(); ctx.arc(330, 330, 50, 0, 6.283); ctx.fill(); }, 'Licht', '#FFD45C');
     node(b + 3.0, 330, 770, () => { ctx.fillStyle = '#6FB6E8'; ctx.beginPath(); ctx.moveTo(330, 700); ctx.bezierCurveTo(290, 760, 290, 810, 330, 815); ctx.bezierCurveTo(370, 810, 370, 760, 330, 700); ctx.fill(); }, 'Wasser', '#6FB6E8');
-    node(b + 3.7, 960, 300 - 40, () => { for (const [ox, oy, r] of [[-30, 0, 34], [30, -10, 26], [5, 30, 20]]) { ctx.strokeStyle = '#BDB5AC'; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(960 + ox, 260 + oy, r, 0, 6.283); ctx.stroke(); } text('CO₂', 960, 272, { size: 28, weight: 800, color: '#BDB5AC', align: 'center' }); }, '', C.dim);
+    node(b + 3.7, 960, 260, () => { ctx.fillStyle = 'rgba(189,181,172,.14)'; ctx.strokeStyle = '#BDB5AC'; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(960, 260, 50, 0, 6.283); ctx.fill(); ctx.stroke(); text('CO₂', 960, 272, { size: 32, weight: 800, color: '#E5DED6', align: 'center' }); }, '', C.dim);
     if (lt >= b + 3.7) text('Kohlendioxid', 960, 360, { size: 30, weight: 700, color: '#BDB5AC', align: 'center', alpha: fadeUp(lt, b + 3.7) });
     node(b + 5.0, 1590, 380, () => { rr(1540, 330, 100, 100, 16); ctx.fillStyle = '#F2E6D0'; ctx.fill(); ctx.strokeStyle = '#C9B48E'; ctx.lineWidth = 4; ctx.stroke(); }, 'Zucker', '#F2E6D0');
     node(b + 5.7, 1590, 740, () => { for (const [ox, oy, r] of [[-26, 0, 30], [26, 0, 30]]) { ctx.fillStyle = 'rgba(127,178,229,.35)'; ctx.beginPath(); ctx.arc(1590 + ox, 740 + oy, r, 0, 6.283); ctx.fill(); } text('O₂', 1590, 752, { size: 30, weight: 800, align: 'center' }); }, 'Sauerstoff', C.blue);
@@ -831,7 +831,7 @@ const TERM = [
   ['● ', 'Lese das Projekt …', 5.6, 'out'],
   ['● ', 'Schreibe index.html  (Animation, 11 Szenen)', 6.6, 'out'],
   ['● ', 'Schreibe synth.py  (Musik & Sounds)', 7.6, 'out'],
-  ['● ', 'Erzeuge Sprecherstimme', 8.6, 'out'],
+  ['● ', 'Baue Untertitel & Timing', 8.6, 'out'],
   ['● ', 'Rendere alle Bilder …', 9.6, 'prog'],
   ['✓ ', 'Fertig: claude-pro-lang.mp4', 12.6, 'done'],
 ];
@@ -943,8 +943,8 @@ scene({
 scene({
   id: 'price', chapter: 7, music: 'big', min: 14,
   voice: [
-    [.4, 'Und das alles kostet zwanzig Dollar im Monat.'],
-    [4.5, 'Im Jahresabo sind es sogar nur siebzehn. Das sind ungefähr siebenundsechzig Cent am Tag.'],
+    [.4, 'Und das alles kostet 20 Dollar im Monat.'],
+    [4.5, 'Im Jahresabo sind es sogar nur 17. Das sind ungefähr 67 Cent am Tag.'],
   ],
   sfx: s => { const out = []; for (let i = 1; i <= 20; i++) out.push(['tick', 1.0 + (1 - Math.pow(1 - i / 20, 1 / 3)) * 1.2, { v: i, hi: 1 }]); out.push(['chime', 2.2, { big: 1 }], ['pop', entryAt(s, 1, 4.5), { f: 600 }], ['pop', clipAt(s, 2, 7), { f: 800 }]); return out; },
   draw(lt, D, s) {
