@@ -1,0 +1,8 @@
+voice/
+voice_cache/
+audio.wav
+timeline.json
+voice_in.json
+voice_out.json
+segments/
+stills/
