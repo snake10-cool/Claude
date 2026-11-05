@@ -1,6 +1,6 @@
 # 🎬 Claude Pro – lange Version (≈ 6 Minuten)
 
-**Video:** [`claude-pro-lang.mp4`](claude-pro-lang.mp4) (1920×1080, 30 fps, mit Musik, Soundeffekten und Untertiteln)
+**Video:** [`claude-pro-lang.mp4`](claude-pro-lang.mp4) (1920×1080, 30 fps, 5:50 min, mit Sprecherstimme von ElevenLabs, Musik, Soundeffekten und Untertiteln)
 
 Wie die kurze Version komplett aus Code, aber mit 7 Kapiteln und Live-Demos:
 
