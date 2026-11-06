@@ -367,7 +367,8 @@ def reverb(x, rt=1.8):
 wet = reverb(wetb + voice * .15 + pad * .6)
 mix = music * .62 + fxb + wet * .3 + voice * 1.05
 mix = filt(mix, lo=28)
-mix = np.tanh(mix * 1.25) / np.tanh(1.25)
+mix *= .8 / np.percentile(np.abs(mix), 99.95)   # erst sauber pegeln …
+mix = np.tanh(mix * 1.1) / np.tanh(1.1)          # … dann nur sanft begrenzen
 mix *= .9 / np.max(np.abs(mix))
 end = int(END * SR); mix = mix[:, :end]
 mix[:, -int(.05 * SR):] *= np.linspace(1, 0, int(.05 * SR))
