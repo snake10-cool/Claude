@@ -99,11 +99,15 @@ class LiveAngeln extends ChangeNotifier {
   Sitzung? sitzung;
   bool _geladen = false;
 
+  /// Abgeschlossene Live-Angeltage ab 30 Minuten (für die Angel-Karriere).
+  int tage = 0;
+
   Future<void> laden() async {
     if (_geladen) return;
     _geladen = true;
     try {
       final p = await SharedPreferences.getInstance();
+      tage = p.getInt('live_tage') ?? 0;
       final roh = p.getString('live_sitzung');
       if (roh != null) {
         sitzung = Sitzung.fromJson(jsonDecode(roh) as Map<String, dynamic>);
@@ -155,6 +159,11 @@ class LiveAngeln extends ChangeNotifier {
   Future<Sitzung?> beenden() async {
     final s = sitzung;
     sitzung = null;
+    if (s != null && s.dauer(DateTime.now()).inMinutes >= 30) {
+      tage++;
+      final p = await SharedPreferences.getInstance();
+      await p.setInt('live_tage', tage);
+    }
     await _speichern();
     return s;
   }

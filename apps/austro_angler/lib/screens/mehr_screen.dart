@@ -18,6 +18,7 @@ import 'koeder_screen.dart';
 import 'neu_screen.dart';
 import 'lizenzen_screen.dart';
 import 'fischerkarte_screen.dart';
+import 'karriere_screen.dart';
 import 'live_angeln_screen.dart';
 import 'petri_screen.dart';
 import 'regeln_screen.dart';
@@ -108,6 +109,10 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.bar_chart, 'Statistik & Abzeichen',
               'Rekorde, Auswertungen, PDF-Export', () => _oeffnen(context,
                   const StatistikScreen())),
+          if (funktionAn('karriere'))
+          _Eintrag(Icons.military_tech_outlined, 'Angel-Karriere',
+              'Level, Ränge und deine Punkte', () => _oeffnen(context,
+                  const KarriereScreen())),
           if (funktionAn('album'))
           _Eintrag(Icons.collections_bookmark_outlined, 'Arten-Sammelalbum',
               'Alle Fischarten sammeln – wie viele hast du?', () => _oeffnen(context,

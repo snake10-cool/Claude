@@ -15,6 +15,7 @@ import 'aktivitaeten_screen.dart';
 import 'darf_ich_screen.dart';
 import 'fangbuch_screen.dart';
 import 'fischerkarte_screen.dart';
+import 'karriere_screen.dart';
 import 'live_angeln_screen.dart';
 import 'petri_screen.dart';
 import 'regeln_screen.dart';
@@ -83,11 +84,23 @@ class _HeuteScreenState extends State<HeuteScreen> {
         builder: (context, _) => ListView(
           padding: const EdgeInsets.all(12),
           children: [
-            Text(
-                '${_gruss(jetzt)}${name == null || name.isEmpty ? '' : ', $name'}!',
-                style: Theme.of(context).textTheme.headlineSmall),
-            Text('${wt[jetzt.weekday - 1]}, ${jetzt.day}.${jetzt.month}.'
-                '${speicher.heimatName.isEmpty ? '' : ' · ${speicher.heimatName}'}'),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                          '${_gruss(jetzt)}${name == null || name.isEmpty ? '' : ', $name'}!',
+                          style: Theme.of(context).textTheme.headlineSmall),
+                      Text('${wt[jetzt.weekday - 1]}, ${jetzt.day}.${jetzt.month}.'
+                          '${speicher.heimatName.isEmpty ? '' : ' · ${speicher.heimatName}'}'),
+                    ],
+                  ),
+                ),
+                const KarriereChip(),
+              ],
+            ),
             const SizedBox(height: 12),
             if (funktionAn('darf_ich')) const DarfIchFeld(),
             const SizedBox(height: 4),

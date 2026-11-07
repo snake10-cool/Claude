@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 import '../data/fragen.dart';
 import 'widgets.dart';
 
@@ -48,6 +50,9 @@ class _PruefungsModusScreenState extends State<PruefungsModusScreen> {
   void _abgeben() {
     _timer?.cancel();
     setState(() => _fertig = true);
+    if (_richtig >= (_fragen.length * 0.8).ceil()) {
+      SpeicherScope.of(context).pruefungBestandenSetzen();
+    }
   }
 
   int get _richtig => [

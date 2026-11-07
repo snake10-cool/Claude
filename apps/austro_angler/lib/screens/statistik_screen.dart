@@ -9,6 +9,7 @@ import '../services/csv_export.dart';
 import '../services/pdf_export.dart';
 import 'angeljahr_screen.dart';
 import 'premium_screen.dart';
+import 'karriere_screen.dart';
 import 'widgets.dart';
 import 'zuruecksetzen_screen.dart';
 import '../services/fern_konfig.dart';
@@ -45,6 +46,17 @@ class _StatistikScreenState extends State<StatistikScreen> {
           return ListView(
             padding: const EdgeInsets.all(12),
             children: [
+              if (funktionAn('karriere'))
+                Card(
+                  child: ListTile(
+                    leading: const Text('🏆', style: TextStyle(fontSize: 28)),
+                    title: const Text('Deine Angel-Karriere'),
+                    subtitle: const Text('Level, Rang und wofür es Punkte gibt'),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const KarriereScreen())),
+                  ),
+                ),
               PremiumSperre(
                 titel: 'Dein Angeljahr',
                 kind: Card(

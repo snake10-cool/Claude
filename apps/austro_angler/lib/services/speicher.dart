@@ -24,6 +24,12 @@ class Speicher extends ChangeNotifier {
   Bundesland bundesland = Bundesland.ooe;
   int besteQuizPunkte = 0;
 
+  /// Prüfungsmodus schon einmal bestanden (Angel-Karriere).
+  bool pruefungBestanden = false;
+
+  /// Zuletzt gesehenes Karriere-Level (für „Level-up!“).
+  int karriereGesehen = 1;
+
   /// Filter im Gewässer-Tab ('' = alle).
   String bezirk = 'Braunau';
   String gemeinde = '';
@@ -76,6 +82,8 @@ class Speicher extends ChangeNotifier {
     bundesland =
         Bundesland.ausName(_prefs.getString('bundesland')) ?? Bundesland.ooe;
     besteQuizPunkte = _prefs.getInt('besteQuizPunkte') ?? 0;
+    pruefungBestanden = _prefs.getBool('pruefungBestanden') ?? false;
+    karriereGesehen = _prefs.getInt('karriereGesehen') ?? 1;
     bezirk = _prefs.getString('bezirk') ??
         (bundesland == Bundesland.ooe ? 'Braunau' : '');
     gemeinde = _prefs.getString('gemeinde') ?? '';
@@ -262,6 +270,20 @@ class Speicher extends ChangeNotifier {
     notifyListeners();
     await _prefs.setString('bezirk', bezirk);
     await _prefs.setString('gemeinde', gemeinde);
+  }
+
+  Future<void> pruefungBestandenSetzen() async {
+    if (pruefungBestanden) return;
+    pruefungBestanden = true;
+    notifyListeners();
+    await _prefs.setBool('pruefungBestanden', true);
+  }
+
+  Future<void> karriereGesehenSetzen(int level) async {
+    if (level == karriereGesehen) return;
+    karriereGesehen = level;
+    notifyListeners();
+    await _prefs.setInt('karriereGesehen', level);
   }
 
   Future<void> quizErgebnis(int punkte) async {

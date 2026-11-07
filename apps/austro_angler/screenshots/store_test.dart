@@ -26,6 +26,7 @@ import 'package:austro_angler/services/abo.dart';
 import 'package:austro_angler/services/fern_konfig.dart';
 import 'package:austro_angler/services/ki.dart';
 import 'package:austro_angler/screens/petri_screen.dart';
+import 'package:austro_angler/screens/karriere_screen.dart';
 import 'package:austro_angler/services/live_angeln.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/speicher.dart';
@@ -425,6 +426,19 @@ void main() {
     await _starten(tester, extra: neuDunkel);
     await _foto(tester, '20_heute_ki');
     kiAus();
+  });
+
+  testWidgets('21 Angel-Karriere', (tester) async {
+    liveAngeln.tage = 4;
+    await _starten(tester, extra: {
+      ...neuDunkel,
+      'besteQuizPunkte': 9,
+      'pruefungBestanden': true,
+      'live_tage': 4,
+    });
+    await _oeffnen(tester, const KarriereScreen());
+    await _foto(tester, '21_karriere');
+    liveAngeln.tage = 0;
   });
 
   // Design-Prüfung: jeder Bildschirm im neuen Design, hell und dunkel.

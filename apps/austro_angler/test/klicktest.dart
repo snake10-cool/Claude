@@ -23,6 +23,7 @@ const _mehr = [
   'Einführung ansehen',
   'FAQ – Fragen & Antworten',
   'Statistik & Abzeichen',
+  'Angel-Karriere',
   'Arten-Sammelalbum',
   'Eigene Wettfischen',
   'Meine Angeltage ⭐',

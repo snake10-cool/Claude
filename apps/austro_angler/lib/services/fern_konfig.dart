@@ -17,6 +17,7 @@ const fernFunktionen = <String, String>{
   'darf_ich': 'Darf ich …?',
   'zielfisch': 'Zielfisch',
   'ki': 'Petri-KI (Chat + Foto-Erkennung)',
+  'karriere': 'Angel-Karriere',
   'live_angeln': 'Live-Angeln',
   'regeln': 'Regeln heute',
   'fischerkarte': 'Fischerkarte',

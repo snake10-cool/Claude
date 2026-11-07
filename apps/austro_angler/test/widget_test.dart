@@ -17,6 +17,9 @@ import 'package:austro_angler/screens/kalender_screen.dart';
 import 'package:austro_angler/screens/regeln_screen.dart';
 import 'package:austro_angler/services/live_angeln.dart';
 import 'package:austro_angler/services/ki.dart';
+import 'package:austro_angler/services/karriere.dart';
+import 'package:austro_angler/services/abzeichen.dart';
+import 'package:austro_angler/screens/karriere_screen.dart';
 import 'package:austro_angler/screens/petri_screen.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/konto.dart';
@@ -404,5 +407,60 @@ void main() {
     expect(find.widgetWithText(TextField, 'Und morgen?'), findsOneWidget);
     expect(petriKi.verlauf.length, 2);
     expect((gesendet.last['verlauf'] as List).length, 3);
+  });
+
+  test('Angel-Karriere: Level, Ränge und Punkte', () {
+    expect(xpFuerLevel(1), 0);
+    expect(xpFuerLevel(2), 100);
+    expect(levelFuer(99), 1);
+    expect(levelFuer(100), 2);
+    expect(levelFuer(4500), 10);
+    expect(rangFuer(1).titel, 'Grünschnabel');
+    expect(rangFuer(10).titel, 'Uferkenner');
+    expect(rangFuer(99).titel, 'Huchen-König');
+    expect(xpText(1240), '1.240');
+    expect(xpText(1234567), '1.234.567');
+
+    final faenge = [
+      Fang(id: 'a', fischId: 'hecht', datum: DateTime(2026, 6, 1),
+          laengeCm: 70, zurueckgesetzt: true),
+      Fang(id: 'b', fischId: 'huchen', datum: DateTime(2026, 6, 2)),
+    ];
+    final abzeichen = alleAbzeichen.where((a) => a.erreicht(faenge)).length;
+    final k = karriereBerechnen(
+      faenge: faenge,
+      challenges: 2,
+      liveTage: 1,
+      pruefungBestanden: true,
+      quizRekord: 8,
+    );
+    // 2 Fänge, 1 gemessen, 1 zurück, 2 Arten, Huchen legendär (+50), ...
+    expect(k.xp,
+        20 + 5 + 5 + 60 + 50 + 50 + abzeichen * 50 + 20 + 100 + 40);
+    expect(k.level, levelFuer(k.xp));
+    expect(k.fortschritt, inInclusiveRange(0, 1));
+    expect(karriereBerechnen(faenge: const []).level, 1);
+  });
+
+  testWidgets('Angel-Karriere: Level-up wird gefeiert und gemerkt',
+      (tester) async {
+    SharedPreferences.setMockInitialValues({
+      'einfuehrung': true,
+      'wasIstNeu': 99,
+      'besteQuizPunkte': 10,
+      'pruefungBestanden': true,
+    });
+    final speicher = await Speicher.oeffnen();
+    await tester.pumpWidget(AustroAnglerApp(speicher: speicher));
+    await tester.pump();
+    expect(find.text('LEVEL-UP!'), findsOneWidget);
+    tester.state<NavigatorState>(find.byType(Navigator).first).push(
+        MaterialPageRoute(builder: (_) => const KarriereScreen()));
+    for (var i = 0; i < 30; i++) {
+      await tester.pump(const Duration(milliseconds: 100));
+    }
+    expect(find.text('Level 2 erreicht!'), findsOneWidget);
+    expect(speicher.karriereGesehen, 2);
+    expect(find.text('🐣 Grünschnabel'), findsOneWidget);
   });
 }
