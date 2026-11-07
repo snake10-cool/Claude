@@ -25,6 +25,7 @@ import 'statistik_screen.dart';
 import 'story_screen.dart';
 import 'widgets.dart';
 import '../services/fern_konfig.dart';
+import '../services/ki.dart';
 
 class FangbuchScreen extends StatefulWidget {
   const FangbuchScreen({super.key});
@@ -507,6 +508,36 @@ class _FangFormularState extends State<FangFormular> {
     }
   }
   bool _speichert = false;
+
+  /// Petri-KI bestimmt gerade die Art auf dem Foto.
+  bool _erkennt = false;
+
+  Future<void> _artErkennen() async {
+    final bild = _neuesFoto;
+    if (bild == null || _erkennt) return;
+    final konto = KontoScope.of(context);
+    setState(() => _erkennt = true);
+    try {
+      final e = await petriKi.fotoBestimmen(bild, konto: konto);
+      if (!mounted) return;
+      final f = e.fischId == null ? null : fischById(e.fischId!);
+      if (e.erkannt && f != null) {
+        setState(() => _fischId = f.id);
+        meldung(context,
+            'Petri erkennt: ${f.name.split(' (').first} (${e.sicherheitText})');
+      } else {
+        meldung(
+            context,
+            e.hinweis.isEmpty
+                ? 'Petri erkennt auf dem Foto keinen Fisch.'
+                : e.hinweis);
+      }
+    } on KiFehler catch (e) {
+      if (mounted) meldung(context, e.text);
+    } finally {
+      if (mounted) setState(() => _erkennt = false);
+    }
+  }
   bool _loescht = false;
   String? _neueId;
   LatLng? _ort;
@@ -785,6 +816,21 @@ class _FangFormularState extends State<FangFormular> {
                   ),
               ],
             ),
+            if (_neuesFoto != null && funktionAn('ki'))
+              Align(
+                alignment: Alignment.centerLeft,
+                child: FilledButton.tonalIcon(
+                  onPressed: _erkennt ? null : _artErkennen,
+                  icon: _erkennt
+                      ? const SizedBox.square(
+                          dimension: 16,
+                          child: CircularProgressIndicator(strokeWidth: 2))
+                      : const Icon(Icons.auto_awesome_outlined),
+                  label: Text(_erkennt
+                      ? 'Petri schaut genau hin …'
+                      : 'Fischart per KI erkennen'),
+                ),
+              ),
             if (videoMoeglich) ...[
               if (_neuesVideo != null)
                 ClipRRect(
@@ -834,6 +880,8 @@ class _FangFormularState extends State<FangFormular> {
             ],
           ],
           DropdownButtonFormField<String>(
+            // Neu aufbauen, wenn die Art von außen (KI) gesetzt wird.
+            key: ValueKey(_fischId),
             initialValue: _fischId,
             // Lange Artnamen kürzen statt über den Rand zu ragen.
             isExpanded: true,

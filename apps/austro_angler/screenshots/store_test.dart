@@ -446,6 +446,22 @@ void main() {
     liveAngeln.tage = 0;
   });
 
+  testWidgets('23 Karriere teilen', (tester) async {
+    liveAngeln.tage = 4;
+    await _starten(tester, extra: {
+      ...neuDunkel,
+      'besteQuizPunkte': 9,
+      'pruefungBestanden': true,
+      'live_tage': 4,
+      'karriereGesehen': 9,
+    });
+    await _oeffnen(tester, const KarriereScreen());
+    await tester.tap(find.byTooltip('Karriere teilen'));
+    await _warten(tester);
+    await _foto(tester, '23_karriere_teilen');
+    liveAngeln.tage = 0;
+  });
+
   testWidgets('22 Angelplaner', (tester) async {
     // Beispielwetter: jeder Tag anders, je Ort leicht verschieden.
     const trend = [0.0, -0.2, 0.3, -0.5, 0.1, -0.3, 0.25, 0.0];

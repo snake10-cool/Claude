@@ -1,6 +1,11 @@
+import 'dart:io';
 import 'dart:math';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../design.dart';
 import '../main.dart';
@@ -174,11 +179,25 @@ class _KarriereScreenState extends State<KarriereScreen>
     if (!funktionAn('karriere')) {
       return const FunktionAusSeite('Angel-Karriere');
     }
-    return Scaffold(
-      appBar: AppBar(title: const Text('Angel-Karriere')),
-      body: MeineFaenge(
-        builder: (context, faenge) {
-          final k = meineKarriere(context, faenge);
+    return MeineFaenge(
+      builder: (context, faenge) {
+        final k = meineKarriere(context, faenge);
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Angel-Karriere'),
+            actions: [
+              IconButton(
+                tooltip: 'Karriere teilen',
+                icon: const Icon(Icons.share_outlined),
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) =>
+                        KarriereTeilenScreen(k, arten: {
+                          for (final f in faenge) f.fischId
+                        }.length, faenge: faenge.length))),
+              ),
+            ],
+          ),
+          body: Builder(builder: (context) {
           _feiernWennNeu(k);
           return Stack(
             children: [
@@ -212,7 +231,175 @@ class _KarriereScreenState extends State<KarriereScreen>
               ),
             ],
           );
-        },
+          }),
+        );
+      },
+    );
+  }
+}
+
+/// Karriere als Bild zum Teilen (WhatsApp, Instagram …).
+class KarriereTeilenScreen extends StatefulWidget {
+  const KarriereTeilenScreen(this.k,
+      {super.key, required this.arten, required this.faenge});
+
+  final Karriere k;
+  final int arten;
+  final int faenge;
+
+  @override
+  State<KarriereTeilenScreen> createState() => _KarriereTeilenScreenState();
+}
+
+class _KarriereTeilenScreenState extends State<KarriereTeilenScreen> {
+  final _schluessel = GlobalKey();
+  bool _teilt = false;
+
+  Future<void> _teilen() async {
+    setState(() => _teilt = true);
+    try {
+      final grenze = _schluessel.currentContext!.findRenderObject()!
+          as RenderRepaintBoundary;
+      final bild = await grenze.toImage(pixelRatio: 3);
+      final daten = await bild.toByteData(format: ui.ImageByteFormat.png);
+      final ordner = await getTemporaryDirectory();
+      final datei = File('${ordner.path}/austro_angler_karriere.png');
+      await datei.writeAsBytes(daten!.buffer.asUint8List());
+      final k = widget.k;
+      await SharePlus.instance.share(ShareParams(
+        files: [XFile(datei.path, mimeType: 'image/png')],
+        text: 'Ich bin Level ${k.level} – ${k.rang.symbol} ${k.rang.titel} '
+            'in Austro Angler! 🎣 Wie weit bist du?',
+      ));
+    } catch (e) {
+      if (mounted) meldung(context, 'Teilen fehlgeschlagen: $e');
+    } finally {
+      if (mounted) setState(() => _teilt = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Karriere teilen')),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          Center(
+            child: RepaintBoundary(
+              key: _schluessel,
+              child: _KarriereKarte(widget.k,
+                  arten: widget.arten, faenge: widget.faenge),
+            ),
+          ),
+          const SizedBox(height: 16),
+          FilledButton.icon(
+            onPressed: _teilt ? null : _teilen,
+            icon: const Icon(Icons.share),
+            label: const Text('Bild teilen'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Das Bild selbst – immer im dunklen Austro-Angler-Look, egal welches Design.
+class _KarriereKarte extends StatelessWidget {
+  const _KarriereKarte(this.k, {required this.arten, required this.faenge});
+
+  final Karriere k;
+  final int arten;
+  final int faenge;
+
+  static const _gross = TextStyle(
+      fontFamily: 'BebasNeue',
+      fontFamilyFallback: ['NotoColorEmoji'],
+      color: Colors.white,
+      height: 1);
+  static const _klein = TextStyle(
+      fontFamily: 'Barlow',
+      fontFamilyFallback: ['NotoColorEmoji'],
+      color: Color(0xFFB8D4D2),
+      fontSize: 13);
+
+  @override
+  Widget build(BuildContext context) {
+    const akzent = Color(0xFF3FD0C9);
+    Widget zahl(String wert, String was) => Expanded(
+          child: Column(
+            children: [
+              Text(wert, style: _gross.copyWith(fontSize: 30)),
+              const SizedBox(height: 2),
+              Text(was.toUpperCase(),
+                  style: _klein.copyWith(fontSize: 11, letterSpacing: 1)),
+            ],
+          ),
+        );
+    return Container(
+      width: 320,
+      padding: const EdgeInsets.fromLTRB(22, 22, 22, 18),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF0B2226), Color(0xFF14444A)],
+        ),
+      ),
+      child: Column(
+        children: [
+          const Align(alignment: Alignment.centerLeft, child: RotWeissRot()),
+          const SizedBox(height: 10),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text('MEINE ANGEL-KARRIERE',
+                style: _klein.copyWith(
+                    color: akzent, letterSpacing: 1.6, fontSize: 12,
+                    fontWeight: FontWeight.w600)),
+          ),
+          const SizedBox(height: 14),
+          SizedBox(
+            width: 168,
+            height: 168,
+            child: CustomPaint(
+              painter: _RingMaler(
+                  wert: k.fortschritt,
+                  farbe: akzent,
+                  grund: const Color(0xFF24565B),
+                  dicke: 12),
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('LEVEL',
+                        style: _klein.copyWith(letterSpacing: 1.6, fontSize: 12)),
+                    Text('${k.level}', style: _gross.copyWith(fontSize: 72)),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+          Text('${k.rang.symbol} ${k.rang.titel}',
+              style: _gross.copyWith(fontSize: 34)),
+          const SizedBox(height: 4),
+          Text('${xpText(k.xp)} Punkte',
+              style: _klein.copyWith(
+                  color: akzent, fontSize: 16, fontWeight: FontWeight.w600)),
+          const SizedBox(height: 18),
+          Row(
+            children: [
+              zahl('$faenge', 'Fänge'),
+              zahl('$arten', 'Arten'),
+              zahl('${k.quellen.firstWhere((q) => q.symbol == '🏅').anzahl}',
+                  'Abzeichen'),
+            ],
+          ),
+          const SizedBox(height: 18),
+          Text('Austro Angler · Die Angel-App für Österreich',
+              style: _klein.copyWith(fontSize: 12)),
+        ],
       ),
     );
   }

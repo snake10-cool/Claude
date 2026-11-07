@@ -58,14 +58,17 @@ class NeuScreen extends StatelessWidget {
                 () => _oeffnen(context, const PetriScreen())),
             _Punkt('📷', 'Fisch per Foto bestimmen',
                 'Foto machen – Petri erkennt die Art, die App zeigt gleich '
-                'Schonzeit und Brittelmaß.',
+                'Schonzeit und Brittelmaß. Geht auch direkt beim Fang eintragen.',
                 () => _oeffnen(context, const PetriFotoScreen())),
             _Punkt('📊', 'Petri wertet dein Fangbuch aus',
                 'Unter Statistik: wann, wo und womit du am besten fängst.'),
+            _Punkt('🌊', 'Petri kennt jedes Gewässer',
+                'In der Gewässer-Ansicht: „Petri zu diesem Gewässer fragen“.'),
           ],
           _Punkt('🏆', 'Angel-Karriere',
               'Level und Ränge vom Grünschnabel bis zum Huchen-König. Punkte '
-              'gibt es für Fänge, neue Arten, Challenges und vieles mehr.',
+              'gibt es für Fänge, neue Arten, Challenges und vieles mehr – '
+              'und dein Level als Bild zum Teilen.',
               () => _oeffnen(context, const KarriereScreen())),
           _Punkt('📅', 'Angelplaner',
               'Der beste Angeltag der Woche für deine Gewässer – mit '

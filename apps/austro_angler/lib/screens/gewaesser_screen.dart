@@ -17,6 +17,7 @@ import 'glossar_screen.dart';
 import 'heimat_screen.dart';
 import 'konto_screen.dart';
 import 'melden.dart';
+import 'petri_screen.dart';
 import 'widgets.dart';
 import '../services/fern_konfig.dart';
 import 'karte_screen.dart';
@@ -550,6 +551,25 @@ class GewaesserDetail extends StatelessWidget {
             const SizedBox(height: 12),
             GepruefteInfosKarte(g),
             InfoKnoepfe(g),
+          ],
+          if (funktionAn('ki')) ...[
+            const SizedBox(height: 16),
+            OutlinedButton.icon(
+              onPressed: () {
+                final arten = [
+                  for (final id in g.fischarten.take(12))
+                    fischById(id)?.name.split(' (').first ?? id,
+                ];
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => PetriScreen(
+                        frage: 'Ich will heute am Gewässer „${g.name}“ angeln '
+                            '(${g.typ.name}, ${g.ort}, ${g.land.name}'
+                            '${arten.isEmpty ? '' : '; Fischarten laut App: ${arten.join(', ')}'}). '
+                            'Worauf soll ich gehen, und wie gehe ich es an?')));
+              },
+              icon: const Icon(Icons.auto_awesome_outlined),
+              label: const Text('Petri zu diesem Gewässer fragen'),
+            ),
           ],
           const SizedBox(height: 16),
           FilledButton.icon(
