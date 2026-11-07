@@ -1,0 +1,114 @@
+<title>Java-Kurs mit Claude</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: Kopf mit Kurs-Idee, dann der Lernpfad als nummerierte Lektionen (echte Reihenfolge), darunter „So läuft eine Lektion“. Gleiche Farben wie die Lektionen. */
+:root {
+  --bg: #F4F6FA; --surface: #FFFFFF; --surface-2: #EEF2F8; --fg: #172033; --muted: #5C6880; --line: #DCE3EE;
+  --accent: #C9620A; --accent-soft: #FCEBDD; --blue: #2B67B0; --code-bg: #0D1220; --code-fg: #E6ECF6;
+  --ui: "Lexend", "Segoe UI", system-ui, sans-serif; --mono: "JetBrains Mono", "DejaVu Sans Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0B0F18; --surface: #131A27; --surface-2: #1A2232; --fg: #E7ECF5; --muted: #95A1B8; --line: #263043;
+  --accent: #F2953B; --accent-soft: #3A2513; --blue: #73A8EA; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0B0F18; --surface: #131A27; --surface-2: #1A2232; --fg: #E7ECF5; --muted: #95A1B8; --line: #263043;
+  --accent: #F2953B; --accent-soft: #3A2513; --blue: #73A8EA; color-scheme: dark }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--ui); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+.page { max-width: 980px; margin: 0 auto; display: grid; gap: 36px; }
+h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+.kick { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.hero h1 { font-size: clamp(36px, 7vw, 60px); font-weight: 800; letter-spacing: -.02em; margin: 6px 0 12px; }
+.hero p { margin: 0; color: var(--muted); font-size: 18px; max-width: 46ch; }
+.term { background: var(--code-bg); color: var(--code-fg); border-radius: 16px; padding: 18px 20px; font: 14px/1.7 var(--mono); font-variant-ligatures: none; overflow-x: auto; box-shadow: 0 18px 40px -24px rgba(5,12,30,.6); }
+.term .c { color: #6F7D99; } .term .k { color: #FF9D5C; } .term .t { color: #7FC3FF; } .term .s { color: #A8E07C; } .term .o { color: #5FD39B; }
+.path { display: grid; gap: 14px; }
+.path h2, .how h2 { font-size: 22px; }
+.lesson { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 18px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; text-decoration: none; color: inherit; transition: border-color .2s, transform .2s; }
+.lesson:hover, .lesson:focus-visible { border-color: var(--accent); transform: translateY(-1px); outline: none; }
+.num { width: 56px; height: 56px; border-radius: 14px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font: 800 24px var(--ui); }
+.lesson h3 { font-size: 19px; }
+.lesson p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag { font: 12px var(--mono); background: var(--surface-2); border-radius: 6px; padding: 2px 7px; color: var(--fg); font-variant-ligatures: none; }
+.go { font-weight: 700; color: var(--accent); white-space: nowrap; }
+.lesson.soon { opacity: .6; border-style: dashed; }
+.lesson.soon .num { background: var(--surface-2); color: var(--muted); }
+.how ol { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.how li { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 4px; align-content: start; }
+.how li b { font-size: 15px; }
+.how li span { color: var(--muted); font-size: 14px; }
+.how .step { font: 700 12px var(--mono); color: var(--accent); }
+.grades { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
+.foot { text-align: center; color: var(--muted); font-size: 13px; }
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; }
+  .how ol { grid-template-columns: 1fr 1fr; }
+  .lesson { grid-template-columns: 46px minmax(0, 1fr); }
+  .num { width: 46px; height: 46px; font-size: 20px; }
+  .go { grid-column: 2; }
+}
+@media (prefers-reduced-motion: reduce) { .lesson { transition: none; } }
+</style>
+<div class="page">
+  <header class="hero">
+    <div>
+      <div class="kick">Java-Kurs · 4 Lektionen</div>
+      <h1>Java lernen – Schritt für Schritt</h1>
+      <p>Animierte Lektionen ohne Stimme, Java direkt im Browser und echte Aufgaben mit Noten von 1 bis 5. Das Video wartet, bis du deine Lösung abgegeben hast.</p>
+    </div>
+    <pre class="term" aria-label="Beispielprogramm"><span class="k">public class</span> <span class="t">Main</span> {
+    <span class="k">public static void</span> main(<span class="t">String</span>[] args) {
+        <span class="t">System</span>.out.println(<span class="s">"Servus Java!"</span>);
+    }
+}
+<span class="c">&gt; java Main.java</span>
+<span class="o">Servus Java!</span></pre>
+  </header>
+
+  <section class="path" aria-label="Lernpfad">
+    <h2>Dein Lernpfad</h2>
+    <a class="lesson" href="https://claude.ai/artifact/W2WCM2NQbB1BqAATpmkpW8" target="_blank" rel="noopener">
+      <div class="num">1</div>
+      <div><h3>Hallo Java!</h3><p>Was Java ist, wie aus Text ein Programm wird, Ausgaben, Fehler lesen, Kommentare.</p><div class="tags"><span class="tag">println</span><span class="tag">print</span><span class="tag">\n \t \"</span><span class="tag">// Kommentar</span></div></div>
+      <span class="go">Starten →</span>
+    </a>
+    <a class="lesson" href="https://claude.ai/artifact/HNMkZnpAWhwydTEG6tX7Ew" target="_blank" rel="noopener">
+      <div class="num">2</div>
+      <div><h3>Variablen &amp; Datentypen</h3><p>Werte speichern, rechnen, die Ganzzahl-Falle und Text mit Zahlen verbinden.</p><div class="tags"><span class="tag">int</span><span class="tag">double</span><span class="tag">String</span><span class="tag">7 / 2 == 3</span><span class="tag">%</span></div></div>
+      <span class="go">Starten →</span>
+    </a>
+    <a class="lesson" href="https://claude.ai/artifact/QT4NxYuTccwUZsURVGEa1n" target="_blank" rel="noopener">
+      <div class="num">3</div>
+      <div><h3>Eingaben &amp; Entscheidungen</h3><p>Der Benutzer tippt etwas ein, dein Programm vergleicht und entscheidet.</p><div class="tags"><span class="tag">Scanner</span><span class="tag">if / else</span><span class="tag">&amp;&amp; ||</span><span class="tag">equals</span><span class="tag">printf</span></div></div>
+      <span class="go">Starten →</span>
+    </a>
+    <a class="lesson" href="https://claude.ai/artifact/WZbgDospMFYMGRxt4aqPuZ" target="_blank" rel="noopener">
+      <div class="num">4</div>
+      <div><h3>Schleifen</h3><p>Wiederholen mit while und for, Muster, Zufallszahlen und dein erstes Spiel: Zahlenraten.</p><div class="tags"><span class="tag">while</span><span class="tag">for</span><span class="tag">do-while</span><span class="tag">break</span><span class="tag">Random</span></div></div>
+      <span class="go">Starten →</span>
+    </a>
+    <div class="lesson soon" aria-disabled="true">
+      <div class="num">5</div>
+      <div><h3>Als Nächstes: Arrays, Methoden &amp; Objekte</h3><p>Viele Werte in einer Variable, eigene Methoden und deine ersten Klassen – kommt in den nächsten Lektionen.</p></div>
+    </div>
+  </section>
+
+  <section class="how">
+    <h2>So läuft eine Lektion</h2>
+    <ol>
+      <li><span class="step">Schritt 1</span><b>Video ansehen</b><span>Code tippt sich selbst, Erklärtexte, Schaubilder. Pausieren und Tempo wählen geht jederzeit.</span></li>
+      <li><span class="step">Schritt 2</span><b>Kurz-Checks</b><span>Zwischendurch kleine Quizfragen – nicht benotet, nur zum Merken.</span></li>
+      <li><span class="step">Schritt 3</span><b>Aufgabe lösen</b><span>Das Video sperrt sich. Du programmierst, testest mit „Ausführen“ und gibst ab.</span></li>
+      <li><span class="step">Schritt 4</span><b>Note bekommen</b><span>Claude bewertet nach österreichischem System (1–5) mit Lob und Tipps. Dann geht’s weiter.</span></li>
+    </ol>
+    <p class="grades">Notengrenzen: ab 90 Punkten 1 · ab 78 → 2 · ab 64 → 3 · ab 50 → 4 · darunter 5. Deine Noten stehen auf jeder Lektionsseite unter „Deine Noten“.</p>
+  </section>
+
+  <footer class="foot">Gebaut von Claude · Video, Java-Interpreter und Benotung komplett aus Code</footer>
+</div>

@@ -5,6 +5,8 @@ und Aufgaben. Erreicht das Video eine Aufgabe, wird es **für den Account gesper
 abgegeben ist (auch nach Neuladen und auf anderen Geräten). Danach gibt es eine **Note (1–5)** mit Feedback
 von Claude; ohne Claude-Zugriff benotet die Seite automatisch über Tests.
 
+**Kursübersicht:** https://claude.ai/artifact/53GsWKWmffRpVzvoNmqmwo
+
 | Lektion | Thema | Aufgaben | Link |
 |---|---|---|---|
 | 1 | Hallo Java! – erstes Programm, print/println, Fehler, Kommentare | Steckbrief · ASCII-Kunst | https://claude.ai/artifact/W2WCM2NQbB1BqAATpmkpW8 |
