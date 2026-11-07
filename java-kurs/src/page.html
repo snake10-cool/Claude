@@ -1,0 +1,44 @@
+<title>{{PAGETITLE}}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<style>{{CSS}}</style>
+<div class="page">
+  <header class="hero">
+    <div class="crumbs">{{COURSELINK}}<span>Lektion {{NR}} von {{COUNT}}</span></div>
+    <h1>{{TITLE}}</h1>
+    <p class="lead">{{SUB}}</p>
+    <div class="meta"><span>⏱ ca. {{MIN}} Minuten</span><span>📝 {{NTASKS}}</span><span>❓ {{NQUIZ}}</span><span>🔇 ohne Ton verständlich</span></div>
+  </header>
+  <section id="player" class="player" aria-label="Lektions-Video">
+    <div id="stage" class="stage" data-lay="title"></div>
+    <div class="controls">
+      <button id="c-play" class="cbtn play" aria-label="Abspielen">▶</button>
+      <div class="seekwrap"><input id="c-seek" type="range" min="0" max="100" value="0" step="1" aria-label="Position im Video"><div id="c-marks" class="marks"></div></div>
+      <span id="c-time" class="time">0:00</span>
+      <select id="c-speed" aria-label="Tempo"><option value="0.75">0,75×</option><option value="1" selected>1×</option><option value="1.25">1,25×</option><option value="1.5">1,5×</option><option value="2">2×</option></select>
+      <button id="c-sfx" class="cbtn" aria-label="Soundeffekte an/aus" title="Soundeffekte">🔊</button>
+      <button id="c-music" class="cbtn" aria-label="Hintergrundmusik an/aus" title="Hintergrundmusik">♫</button>
+      <button id="c-fs" class="cbtn" aria-label="Vollbild" title="Vollbild">⛶</button>
+    </div>
+    <div class="nowchap" id="c-chap"></div>
+  </section>
+  <section id="task" class="task" hidden></section>
+  <div class="cols">
+    <section class="card"><h2>Kapitel</h2><ol id="chapters" class="chapters"></ol></section>
+    <section class="card"><h2>Deine Noten <span class="avg">Schnitt: <b id="grade-avg">–</b></span></h2><div id="grades" class="grades"></div><p id="store-note" class="muted small"></p></section>
+  </div>
+  <section class="card playground">
+    <h2>Spielplatz – probier selbst</h2>
+    <p class="muted" style="margin:0">Hier kannst du jederzeit Java ausprobieren. Dein Code bleibt in diesem Browser gespeichert.</p>
+    <div id="playground-ed"></div>
+    <div class="task-btns"><button id="pg-run" class="btn">▶ Ausführen</button><button id="pg-stop" class="btn ghost" disabled>■ Stopp</button></div>
+    <div class="task-con"><div class="pane-head">Konsole</div><div id="playground-con" class="con-live" role="log"><div class="cl"><span class="k-meta">Drück ▶ Ausführen.</span></div></div></div>
+  </section>
+  <footer class="foot">Java-Kurs von Claude · Video, Java-Interpreter und Benotung sind komplett aus Code gebaut · „Mini-Java“ ist eine Lernversion von Java</footer>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>{{MINIJAVA}}</script>
+<script>window.LESSON = {{LESSON}};</script>
+<script>{{PLAYER}}</script>
