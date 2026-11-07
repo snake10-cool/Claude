@@ -132,6 +132,111 @@ export default {
         System.out.println("Längster Fisch: " + max + " cm");
         System.out.println("Kürzester Fisch: " + min + " cm");
         System.out.println("Mindestens 40 cm: " + erlaubt + " Fische");`, AR), run: true, hl: [10, 15], say: 'Abgegeben! So könnte es aussehen: eine einzige Schleife, die alles auf einmal erledigt – Summe, Maximum, Minimum und Zähler. Petri Heil!' },
+      ],
+    },
+    {
+      title: 'Sortieren & Suchen',
+      steps: [
+        { t: 'Kapitel 5', h: 'Sortieren & Suchen', sub: 'Ordnung ins Array bringen', after: 'code' },
+        { layout: 'code', console: 'clear', code: prog(R`
+        int[] punkte = {320, 870, 150, 990, 410};
+        Arrays.sort(punkte);
+        System.out.println(Arrays.toString(punkte));
+        System.out.println("Höchster Wert: " + punkte[punkte.length - 1]);`, AR), hl: [4, 6], say: 'Mit `Arrays.sort` sortierst du ein Array mit einem einzigen Befehl – aufsteigend, vom kleinsten zum größten Wert. Danach steht das Maximum ganz hinten.' },
+        { run: true, say: 'Sortiert! Und weil das Maximum jetzt am Ende steht, holen wir es mit `punkte[punkte.length - 1]`.' },
+        { console: 'clear', code: prog(R`
+        int[] punkte = {320, 870, 150, 990, 410};
+        int gesucht = 410;
+        int position = -1;
+        for (int i = 0; i < punkte.length; i++) {
+            if (punkte[i] == gesucht) {
+                position = i;
+                break;
+            }
+        }
+        if (position >= 0) {
+            System.out.println(gesucht + " gefunden an Index " + position);
+        } else {
+            System.out.println(gesucht + " nicht gefunden");
+        }`), hl: [5, 11], say: 'Und so **suchst** du einen Wert: Geh das Array durch, bis du ihn findest. Mit `break` hörst du auf, sobald er gefunden ist. Bleibt die Position -1, war er nicht drin.' },
+        { run: true, say: '410 steht an Index 4 – also im fünften Fach. Dieses Muster nennt man **lineare Suche**.' },
+        { quiz: { id: 'l5-q3', q: 'Was steht nach `Arrays.sort` in `zahlen[0]`?', options: ['die größte Zahl', 'die kleinste Zahl', 'die erste Zahl von vorher', 'die Länge des Arrays'], correct: 1, explain: '`Arrays.sort` sortiert aufsteigend. Ganz vorne – bei Index 0 – steht danach die kleinste Zahl.' } },
+      ],
+    },
+    {
+      title: 'Aufgabe: Highscore-Liste',
+      steps: [
+        { t: 'Aufgabe 2', h: 'Highscore-Liste', sub: 'Arrays mit Eingabe', after: 'visual' },
+        { layout: 'visual', visual: { kind: 'bullets', title: 'Aufgabe 2: Highscore-Liste', items: ['Lies **5 Punktestände** mit dem Scanner in ein Array ein', 'Sortiere sie und gib sie aus', 'Gib den **Highscore** aus', 'Lies eine Zahl ein und sag, ob sie in der Liste vorkommt'], gap: 0.9 }, say: 'Letzte Aufgabe für heute: eine **Highscore-Liste**. Diesmal kommen die Werte vom Benutzer – du füllst das Array mit einer Schleife und dem Scanner.' },
+        {
+          task: {
+            id: 'l5-highscore', nr: 2, title: 'Highscore-Liste',
+            text: ['Lies fünf Punktestände (ganze Zahlen) mit dem Scanner ein und speichere sie in einem Array der Größe 5.', 'Sortiere das Array, gib es aus und nenne den Highscore (den größten Wert). Danach liest das Programm eine weitere Zahl ein und sagt, ob dieser Punktestand in der Liste vorkommt.'],
+            req: ['Ein `int`-Array der Größe 5, befüllt mit einer Schleife und `nextInt()`', 'Sortieren mit `Arrays.sort`', 'Ausgabe der sortierten Liste und des Highscores', 'Eine Suche: „… ist in der Liste“ oder „… ist nicht in der Liste“'],
+            example: 'Punkte 1: 320\nPunkte 2: 870\nPunkte 3: 150\nPunkte 4: 990\nPunkte 5: 410\nSortiert: [150, 320, 410, 870, 990]\nHighscore: 990\nWelchen Punktestand suchst du? 410\n410 ist in der Liste.',
+            starter: prog(R`
+        Scanner sc = new Scanner(System.in);
+        int[] punkte = new int[5];
+        // Werte einlesen, sortieren, Highscore, Suche
+
+`, 'import java.util.Arrays;\nimport java.util.Scanner;\n\n'),
+            solution: prog(R`
+        Scanner sc = new Scanner(System.in);
+        int[] punkte = new int[5];
+        for (int i = 0; i < punkte.length; i++) {
+            System.out.print("Punkte " + (i + 1) + ": ");
+            punkte[i] = sc.nextInt();
+        }
+        Arrays.sort(punkte);
+        System.out.println("Sortiert: " + Arrays.toString(punkte));
+        System.out.println("Highscore: " + punkte[punkte.length - 1]);
+        System.out.print("Welchen Punktestand suchst du? ");
+        int gesucht = sc.nextInt();
+        boolean gefunden = false;
+        for (int p : punkte) {
+            if (p == gesucht) {
+                gefunden = true;
+                break;
+            }
+        }
+        if (gefunden) {
+            System.out.println(gesucht + " ist in der Liste.");
+        } else {
+            System.out.println(gesucht + " ist nicht in der Liste.");
+        }`, 'import java.util.Arrays;\nimport java.util.Scanner;\n\n'),
+            tests: [
+              { name: 'Wert vorhanden', input: ['320', '870', '150', '990', '410', '410'], expect: [{ re: '150\\D+320\\D+410\\D+870\\D+990', label: 'sortierte Liste' }, { re: 'highscore[^\\n]*990|990[^\\n]*highscore', label: 'Highscore 990' }, { re: '410[^\\n]*(ist in|gefunden|vorhanden|enthalten)', label: '410 wird gefunden' }] },
+              { name: 'Wert fehlt', input: ['5', '3', '9', '1', '7', '4'], expect: [{ re: '1\\D+3\\D+5\\D+7\\D+9', label: 'sortierte Liste' }, { re: '4[^\\n]*(nicht)', label: '4 wird nicht gefunden' }] },
+            ],
+            codeChecks: [{ label: 'Arrays.sort verwendet', re: 'Arrays\\.sort\\s*\\(' }, { label: 'Array mit Größe 5', re: 'new\\s+int\\s*\\[\\s*5\\s*\\]' }],
+            rubric: [['Programm kompiliert und läuft', 15], ['Array mit Schleife und Scanner befüllt', 25], ['Sortiert und Highscore richtig', 25], ['Suche liefert richtig „in der Liste“ / „nicht in der Liste“', 25], ['Verständliche Ausgabe', 10]],
+            tip: 'Nach `Arrays.sort` steht der größte Wert bei `punkte[punkte.length - 1]`.',
+          },
+        },
+        { layout: 'code', console: 'clear', code: prog(R`
+        Scanner sc = new Scanner(System.in);
+        int[] punkte = new int[5];
+        for (int i = 0; i < punkte.length; i++) {
+            System.out.print("Punkte " + (i + 1) + ": ");
+            punkte[i] = sc.nextInt();
+        }
+        Arrays.sort(punkte);
+        System.out.println("Sortiert: " + Arrays.toString(punkte));
+        System.out.println("Highscore: " + punkte[punkte.length - 1]);
+        System.out.print("Welchen Punktestand suchst du? ");
+        int gesucht = sc.nextInt();
+        boolean gefunden = false;
+        for (int p : punkte) {
+            if (p == gesucht) {
+                gefunden = true;
+                break;
+            }
+        }
+        if (gefunden) {
+            System.out.println(gesucht + " ist in der Liste.");
+        } else {
+            System.out.println(gesucht + " ist nicht in der Liste.");
+        }`, 'import java.util.Arrays;\nimport java.util.Scanner;\n\n'), run: true, input: ['320', '870', '150', '990', '410', '410'], hl: [7, 11], say: 'Abgegeben! So könnte es aussehen: Eine Schleife füllt das Array, `Arrays.sort` sortiert, und eine zweite Schleife sucht den Wert.' },
         { layout: 'visual', visual: { kind: 'bullets', title: 'Das kannst du jetzt', items: ['Arrays anlegen: `{…}` oder `new int[5]`', 'Zugriff mit Index ab **0**, `length` für die Größe', 'Arrays mit `for` und for-each durchlaufen', 'Summe, Durchschnitt, Maximum und Minimum finden', '`Arrays.toString` für die Ausgabe'], gap: 0.7 }, say: 'Das war Lektion 5! Mit Arrays und Schleifen kannst du jetzt ganze Datenmengen auswerten. Als Nächstes lernst du, eigene **Methoden** zu schreiben.' },
       ],
     },
