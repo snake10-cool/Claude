@@ -345,6 +345,18 @@ void main() {
     expect(k, contains('Beste Köder: Gummifisch (1)'));
     expect(k, contains('Hecht: offen · 1.2. – 30.4. · 60 cm'));
     expect(k.length, lessThan(20000));
+
+    final viele = kiKontext(
+      jetzt: DateTime(2026, 11, 7, 18, 5),
+      land: Bundesland.values.first,
+      faenge: [
+        for (var i = 0; i < 4; i++)
+          Fang(id: '$i', fischId: 'zander', datum: DateTime(2026, 10, 1 + i, 19),
+              laengeCm: 50.0 + i * 10, gewaesser: 'Inn', koeder: 'Gummifisch'),
+      ],
+    );
+    expect(viele, contains('- Zander: 4 Fänge; Ø 65 cm, max 80 cm; meist Abend (18–22); '
+        'Monate: Okt (4); Köder: Gummifisch (4); Gewässer: Inn (4)'));
   });
 
   test('Petri-KI: Foto-Ergebnis und Bildformat', () {

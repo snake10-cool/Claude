@@ -1,12 +1,17 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:latlong2/latlong.dart';
 
 import '../data/fische.dart';
 import '../models/bundesland.dart';
 import '../models/fang.dart';
+import 'beisszeit.dart';
 import 'konto.dart';
+import 'sonne.dart';
+import 'wetter.dart';
 
 /// Eine Nachricht im Chat mit Petri.
 typedef KiNachricht = ({bool vonMir, String text});
@@ -179,14 +184,15 @@ class PetriKi extends ChangeNotifier {
   /// Stellt Petri eine Frage. Frage und Antwort landen im [verlauf].
   /// [kontext] wird nur beim ersten Mal im Chat gebaut und bleibt dann gleich.
   Future<void> fragen(String frage,
-      {required Konto? konto, required String Function() kontext}) async {
+      {required Konto? konto,
+      required FutureOr<String> Function() kontext}) async {
     final f = frage.trim();
     if (f.isEmpty || denkt) return;
-    _kontext ??= kontext();
     verlauf.add((vonMir: true, text: f));
     denkt = true;
     notifyListeners();
     try {
+      _kontext ??= await kontext();
       // Der Server nimmt bis zu 20 Nachrichten; die erste muss eine Frage sein.
       var schicken = verlauf.length > 19
           ? verlauf.sublist(verlauf.length - 19)
@@ -282,8 +288,46 @@ String kiKontext({
       ..writeln('  Häufigste Arten: ${top(zaehlen(faenge.map((f) => name(f.fischId))))}');
     final koeder = zaehlen(faenge.map((f) => f.koeder));
     if (koeder.isNotEmpty) b.writeln('  Beste Köder: ${top(koeder)}');
+    if (faenge.length >= 3) {
+      b.writeln('  Fangmuster je Art:');
+      final nachArt = <String, List<Fang>>{};
+      for (final f in faenge) {
+        (nachArt[f.fischId] ??= []).add(f);
+      }
+      final arten = nachArt.entries.toList()
+        ..sort((a, b) => b.value.length.compareTo(a.value.length));
+      const monate = ['Jän', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug',
+          'Sep', 'Okt', 'Nov', 'Dez'];
+      for (final e in arten.take(6)) {
+        final l = e.value;
+        final laengen = [for (final f in l) if (f.laengeCm != null) f.laengeCm!];
+        final stunden = zaehlen(l.map((f) => switch (f.datum.hour) {
+              < 5 => 'Nacht',
+              < 9 => 'früh (5–9)',
+              < 12 => 'Vormittag',
+              < 15 => 'Mittag',
+              < 18 => 'Nachmittag',
+              < 22 => 'Abend (18–22)',
+              _ => 'Nacht',
+            }));
+        final teile = [
+          '${l.length} Fänge',
+          if (laengen.isNotEmpty)
+            'Ø ${(laengen.reduce((a, b) => a + b) / laengen.length).round()} cm, '
+                'max ${laengen.reduce((a, b) => a > b ? a : b).round()} cm',
+          'meist ${(stunden.entries.toList()..sort((a, b) => b.value.compareTo(a.value))).first.key}',
+          'Monate: ${top(zaehlen(l.map((f) => monate[f.datum.month - 1])))}',
+          if (zaehlen(l.map((f) => f.koeder)).isNotEmpty)
+            'Köder: ${top(zaehlen(l.map((f) => f.koeder)))}',
+          if (zaehlen(l.map((f) => f.gewaesser)).isNotEmpty)
+            'Gewässer: ${top(zaehlen(l.map((f) => f.gewaesser)))}',
+        ];
+        b.writeln('  - ${name(e.key)}: ${teile.join('; ')}');
+      }
+    }
     b.writeln('  Letzte Fänge:');
-    for (final f in faenge.take(3)) {
+    final neueste = List.of(faenge)..sort((a, b) => b.datum.compareTo(a.datum));
+    for (final f in neueste.take(3)) {
       b.writeln('  - ${f.datum.day}.${f.datum.month}.${f.datum.year}: '
           '${name(f.fischId)}'
           '${f.laengeCm == null ? '' : ' ${f.laengeCm!.round()} cm'}'
@@ -314,4 +358,51 @@ String kiKontext({
         '${hinweis.isEmpty ? '' : ' · $hinweis'}');
   }
   return b.toString().trim();
+}
+
+/// Wetter und Beißindex heute am [ort] als kurzer Text für Petri – oder null.
+Future<String?> kiWetter(LatLng ort, {DateTime? jetzt}) async {
+  try {
+    final j = jetzt ?? DateTime.now();
+    final stunden =
+        await stundenWetter(ort).timeout(const Duration(seconds: 6));
+    final sonne = sonnenZeiten(j, ort.latitude, ort.longitude);
+    final index = beissindex(stunden, j,
+        aufgang: sonne.aufgang, untergang: sonne.untergang);
+    Stunde? bei(DateTime t) {
+      for (final s in stunden) {
+        if (s.zeit.year == t.year &&
+            s.zeit.month == t.month &&
+            s.zeit.day == t.day &&
+            s.zeit.hour == t.hour) {
+          return s;
+        }
+      }
+      return null;
+    }
+
+    String uhr(DateTime t) =>
+        '${t.hour}:${t.minute.toString().padLeft(2, '0')}';
+    final jetztS = bei(j);
+    final vorher = bei(j.subtract(const Duration(hours: 3)));
+    final teile = <String>[
+      if (index != null)
+        'Beißindex heute ${index.wert}/100 (${index.wort}), beste Zeiten '
+            '${index.fensterText} Uhr',
+      if (jetztS != null)
+        'jetzt ${jetztS.temp.round()} °C, Luftdruck ${jetztS.druck.round()} hPa'
+            '${vorher == null ? '' : switch (jetztS.druck - vorher.druck) {
+                < -1 => ' (fallend)',
+                > 1 => ' (steigend)',
+                _ => ' (stabil)',
+              }}, Wind ${jetztS.wind.round()} km/h, Wolken ${jetztS.wolken.round()} %',
+      if (sonne.aufgang != null && sonne.untergang != null)
+        'Sonnenaufgang ${uhr(sonne.aufgang!)}, Sonnenuntergang '
+            '${uhr(sonne.untergang!)}',
+    ];
+    return teile.join('; ');
+  } catch (e) {
+    debugPrint('Petri-Wetter: $e');
+    return null;
+  }
 }

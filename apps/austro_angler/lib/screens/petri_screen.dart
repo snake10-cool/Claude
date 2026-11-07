@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:latlong2/latlong.dart';
 
 import '../data/fische.dart';
 import '../design.dart';
 import '../main.dart';
+import '../services/fang_dienst.dart';
 import '../services/fern_konfig.dart';
 import '../services/ki.dart';
 import 'fangbuch_screen.dart';
@@ -55,14 +57,37 @@ class _PetriScreenState extends State<PetriScreen> {
     super.dispose();
   }
 
-  String _kontext() {
+  /// Was Petri wissen soll – angemeldet mit den Fängen aus der Cloud und dem
+  /// Wetter am Heimatort.
+  Future<String> _kontext() async {
     final s = SpeicherScope.of(context);
+    final uid = KontoScope.of(context)?.uid;
+    final land = s.bundesland;
+    final heimatName = s.heimatName;
+    final lieblinge = s.lieblingsfische;
+    final heimat = s.heimatLat == null || s.heimatLon == null
+        ? null
+        : LatLng(s.heimatLat!, s.heimatLon!);
+    var faenge = s.faenge;
+    if (uid != null && !PetriKi.testModus) {
+      try {
+        faenge = await fangDienst
+            .meineFaenge(uid)
+            .first
+            .timeout(const Duration(seconds: 6));
+      } catch (e) {
+        debugPrint('Petri-Fänge: $e');
+      }
+    }
+    final wetter =
+        heimat == null || PetriKi.testModus ? null : await kiWetter(heimat);
     return kiKontext(
       jetzt: DateTime.now(),
-      land: s.bundesland,
-      heimat: s.heimatName,
-      lieblinge: s.lieblingsfische,
-      faenge: s.faenge,
+      land: land,
+      heimat: heimatName,
+      lieblinge: lieblinge,
+      faenge: faenge,
+      wetter: wetter,
     );
   }
 

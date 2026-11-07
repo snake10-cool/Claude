@@ -10,6 +10,7 @@ import '../services/pdf_export.dart';
 import 'angeljahr_screen.dart';
 import 'premium_screen.dart';
 import 'karriere_screen.dart';
+import 'petri_screen.dart';
 import 'widgets.dart';
 import 'zuruecksetzen_screen.dart';
 import '../services/fern_konfig.dart';
@@ -46,6 +47,20 @@ class _StatistikScreenState extends State<StatistikScreen> {
           return ListView(
             padding: const EdgeInsets.all(12),
             children: [
+              if (funktionAn('ki') && f.length >= 3)
+                Card(
+                  child: ListTile(
+                    leading: const Text('🎣', style: TextStyle(fontSize: 28)),
+                    title: const Text('Petri, werte mein Fangbuch aus'),
+                    subtitle: const Text('Die KI sucht Muster in deinen Fängen'),
+                    trailing: const Icon(Icons.auto_awesome_outlined),
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const PetriScreen(
+                            frage: 'Werte mein Fangbuch aus: Wann, wo und womit '
+                                'fange ich am besten – und was sollte ich öfter '
+                                'probieren?'))),
+                  ),
+                ),
               if (funktionAn('karriere'))
                 Card(
                   child: ListTile(
