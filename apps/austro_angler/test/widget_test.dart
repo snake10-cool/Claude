@@ -18,6 +18,7 @@ import 'package:austro_angler/screens/regeln_screen.dart';
 import 'package:austro_angler/services/live_angeln.dart';
 import 'package:austro_angler/services/ki.dart';
 import 'package:austro_angler/services/karriere.dart';
+import 'package:austro_angler/services/angelplaner.dart';
 import 'package:austro_angler/services/abzeichen.dart';
 import 'package:austro_angler/screens/karriere_screen.dart';
 import 'package:austro_angler/screens/petri_screen.dart';
@@ -26,6 +27,7 @@ import 'package:austro_angler/services/konto.dart';
 import 'package:austro_angler/services/speicher.dart';
 import 'package:austro_angler/services/wochen_challenges.dart';
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -462,5 +464,28 @@ void main() {
     expect(find.text('Level 2 erreicht!'), findsOneWidget);
     expect(speicher.karriereGesehen, 2);
     expect(find.text('🐣 Grünschnabel'), findsOneWidget);
+  });
+
+  test('Angelplaner: 7 Tage, bester Termin', () async {
+    // Am 10.11. fällt der Luftdruck, es ist bewölkt und windstill.
+    planerTestWetter = (_) async => [
+          for (var d = -1; d < 8; d++)
+            for (var h = 0; h < 24; h++)
+              Stunde(DateTime(2026, 11, 7 + d, h),
+                  1015 - (d == 3 ? h * 0.4 : 0), 8, d == 3 ? 80 : 15,
+                  d == 3 ? 6 : 28),
+        ];
+    addTearDown(() => planerTestWetter = null);
+    final plan = await planen(
+        [('Inn', const LatLng(48.25, 13.04)), ('See', const LatLng(47.9, 13.5))],
+        ab: DateTime(2026, 11, 7, 9));
+    expect(plan.length, 2);
+    expect(plan.first.tage.length, 7);
+    final bester = besterTermin(plan, jetzt: DateTime(2026, 11, 7, 9))!;
+    expect(bester.tag.tag, DateTime(2026, 11, 10));
+    expect(bester.ort.name, 'Inn');
+    // Ist das Zeitfenster heute schon vorbei, zählt der Tag nicht mehr.
+    final spaet = besterTermin(plan, jetzt: DateTime(2026, 11, 10, 23));
+    expect(spaet!.tag.tag, isNot(DateTime(2026, 11, 10)));
   });
 }

@@ -18,6 +18,7 @@ import 'koeder_screen.dart';
 import 'neu_screen.dart';
 import 'lizenzen_screen.dart';
 import 'fischerkarte_screen.dart';
+import 'angelplaner_screen.dart';
 import 'karriere_screen.dart';
 import 'live_angeln_screen.dart';
 import 'petri_screen.dart';
@@ -86,6 +87,10 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.timer_outlined, 'Live-Angeln',
               'Angeltag am Wasser live mitschreiben', () => _oeffnen(context,
                   const LiveAngelnScreen())),
+          if (funktionAn('planer'))
+          _Eintrag(Icons.date_range_outlined, 'Angelplaner',
+              'Bester Angeltag der Woche – für deine Gewässer', () => _oeffnen(context,
+                  const AngelplanerScreen())),
           if (funktionAn('regeln'))
           _Eintrag(Icons.rule, 'Regeln heute',
               'Alle Arten: offen oder geschont, mit Brittelmaß', () => _oeffnen(context,

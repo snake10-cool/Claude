@@ -27,6 +27,9 @@ import 'package:austro_angler/services/fern_konfig.dart';
 import 'package:austro_angler/services/ki.dart';
 import 'package:austro_angler/screens/petri_screen.dart';
 import 'package:austro_angler/screens/karriere_screen.dart';
+import 'package:austro_angler/screens/angelplaner_screen.dart';
+import 'package:austro_angler/services/angelplaner.dart';
+import 'package:austro_angler/data/gewaesser.dart';
 import 'package:austro_angler/services/live_angeln.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/speicher.dart';
@@ -439,6 +442,38 @@ void main() {
     await _oeffnen(tester, const KarriereScreen());
     await _foto(tester, '21_karriere');
     liveAngeln.tage = 0;
+  });
+
+  testWidgets('22 Angelplaner', (tester) async {
+    // Beispielwetter: jeder Tag anders, je Ort leicht verschieden.
+    const trend = [0.0, -0.2, 0.3, -0.5, 0.1, -0.3, 0.25, 0.0];
+    const wolken = [20.0, 60.0, 10.0, 85.0, 40.0, 70.0, 30.0, 50.0];
+    const wind = [10.0, 22.0, 30.0, 8.0, 15.0, 12.0, 26.0, 18.0];
+    planerTestWetter = (ort) async {
+      final heute = DateTime.now();
+      final versatz = ((ort.latitude * 10) % 3).round() * 8.0;
+      return [
+        for (var d = -1; d < 8; d++)
+          for (var h = 0; h < 24; h++)
+            Stunde(
+                DateTime(heute.year, heute.month, heute.day + d, h),
+                1016 - (d < 0 ? 0.0 : trend[d]) * h,
+                7 + h / 4,
+                ((d < 0 ? 40 : wolken[d]) + versatz).clamp(0, 100).toDouble(),
+                d < 0 ? 15.0 : wind[d]),
+      ];
+    };
+    final ids = [
+      for (final name in ['Inn bei Braunau', 'Mattig (SAC Mattig, Braunau)', 'Ibmer See'])
+        ...gewaesserListe.where((g) => g.name == name).map((g) => g.id),
+    ];
+    await _starten(tester, extra: {...neuDunkel, 'favoriten': ids});
+    await _oeffnen(tester, const AngelplanerScreen());
+    await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 300)));
+    await _warten(tester);
+    await _foto(tester, '22_angelplaner');
+    planerTestWetter = null;
   });
 
   // Design-Prüfung: jeder Bildschirm im neuen Design, hell und dunkel.

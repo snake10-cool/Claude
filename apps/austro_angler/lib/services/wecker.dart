@@ -117,10 +117,54 @@ class Wecker {
   }
 
   /// Plant alle Erinnerungen (Schonzeiten und Lizenzen) neu.
+  /// Erinnerung an einen geplanten Angeltag (Angelplaner). Es gibt immer nur
+  /// eine – eine neue ersetzt die alte. Gibt false zurück, wenn es am Gerät
+  /// keine Benachrichtigungen gibt.
+  Future<bool> planerErinnern(DateTime wann, String titel, String text) async {
+    if (!unterstuetzt) return false;
+    await _starten();
+    await _plugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.requestNotificationsPermission();
+    final p = await SharedPreferences.getInstance();
+    await p.setString(
+        'planer_erinnerung',
+        jsonEncode(
+            {'zeit': wann.toIso8601String(), 'titel': titel, 'text': text}));
+    await _planerEinplanen(p);
+    return true;
+  }
+
+  Future<void> _planerEinplanen(SharedPreferences p) async {
+    final roh = p.getString('planer_erinnerung');
+    if (roh == null) return;
+    final j = jsonDecode(roh) as Map<String, dynamic>;
+    final zeit = DateTime.tryParse(j['zeit'] as String? ?? '');
+    if (zeit == null || zeit.isBefore(DateTime.now())) return;
+    await _plugin.zonedSchedule(
+      id: 9000,
+      title: j['titel'] as String? ?? 'Angeltag',
+      body: j['text'] as String? ?? '',
+      scheduledDate: tz.TZDateTime.from(zeit, tz.local),
+      notificationDetails: const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'planer',
+          'Angelplaner',
+          channelDescription: 'Erinnert an deinen geplanten Angeltag',
+          importance: Importance.high,
+          priority: Priority.high,
+        ),
+      ),
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+    );
+  }
+
   Future<void> alleEinplanen(Bundesland land) async {
     if (!unterstuetzt) return;
     await _starten();
     await _plugin.cancelAll();
+    await _planerEinplanen(await SharedPreferences.getInstance());
     final jetzt = DateTime.now();
     var id = 0;
     for (final l in await lizenzen()) {

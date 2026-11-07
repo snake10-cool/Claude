@@ -160,15 +160,15 @@ class Stunde {
   final double wind;
 }
 
-/// Stündliches Wetter von gestern bis in 3 Tagen (für die Beißzeit).
-Future<List<Stunde>> stundenWetter(LatLng p) async {
+/// Stündliches Wetter von gestern bis in [tage] - 1 Tagen (für die Beißzeit).
+Future<List<Stunde>> stundenWetter(LatLng p, {int tage = 4}) async {
   final uri = Uri.https('api.open-meteo.com', '/v1/forecast', {
     'latitude': p.latitude.toStringAsFixed(3),
     'longitude': p.longitude.toStringAsFixed(3),
     'hourly': 'surface_pressure,temperature_2m,cloud_cover,wind_speed_10m',
     'timezone': 'Europe/Vienna',
     'past_days': '1',
-    'forecast_days': '4',
+    'forecast_days': '$tage',
   });
   final antwort = await http.get(uri).timeout(const Duration(seconds: 10));
   if (antwort.statusCode != 200) throw Exception('Wetter nicht verfügbar');

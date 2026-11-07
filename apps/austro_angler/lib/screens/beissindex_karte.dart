@@ -4,17 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../design.dart';
+import 'angelplaner_screen.dart';
 import '../services/beisszeit.dart';
+import '../services/fern_konfig.dart';
 import '../services/sonne.dart';
 import '../services/wetter.dart';
 
 /// Beißindex 0–100 als Ring, dazu Wetter-Kacheln und die besten Zeiten
 /// des Tages – für die Heute-Seite und die Gewässer-Ansicht.
 class BeissindexKarte extends StatefulWidget {
-  const BeissindexKarte(this.ort, {super.key, this.ortName});
+  const BeissindexKarte(this.ort,
+      {super.key, this.ortName, this.planer = false});
 
   final LatLng ort;
   final String? ortName;
+
+  /// Knopf zum Angelplaner zeigen (Heute-Seite).
+  final bool planer;
 
   /// Nur für Tests und Store-Bilder: feste Wetterdaten statt Internet.
   @visibleForTesting
@@ -118,12 +124,25 @@ class _BeissindexKarteState extends State<BeissindexKarte> {
                   children: [
                     const _Label('BESTE ZEIT'),
                     const SizedBox(height: 10),
-                    _Zeitleiste(index),
+                    BeissZeitleiste(index),
                     const SizedBox(height: 8),
                     Text(index.fensterText,
                         style: text.titleSmall),
                     Text('Schätzung aus Wetter, Mond und Dämmerung.',
                         style: text.bodySmall),
+                    if (widget.planer && funktionAn('planer'))
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton.icon(
+                          style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero),
+                          onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (_) => const AngelplanerScreen())),
+                          icon: const Icon(Icons.date_range_outlined),
+                          label: const Text('Ganze Woche planen'),
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -242,8 +261,8 @@ class _RingMaler extends CustomPainter {
 }
 
 /// Tagesleiste 4–22 Uhr: helle Abschnitte sind die besten Zeiten.
-class _Zeitleiste extends StatelessWidget {
-  const _Zeitleiste(this.index);
+class BeissZeitleiste extends StatelessWidget {
+  const BeissZeitleiste(this.index, {super.key});
 
   final Beissindex index;
 

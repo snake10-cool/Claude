@@ -18,6 +18,7 @@ const fernFunktionen = <String, String>{
   'zielfisch': 'Zielfisch',
   'ki': 'Petri-KI (Chat + Foto-Erkennung)',
   'karriere': 'Angel-Karriere',
+  'planer': 'Angelplaner (7 Tage)',
   'live_angeln': 'Live-Angeln',
   'regeln': 'Regeln heute',
   'fischerkarte': 'Fischerkarte',

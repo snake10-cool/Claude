@@ -16,6 +16,7 @@ const _mehr = [
   'Einstellungen',
   'Darf ich …? ⭐',
   'Live-Angeln',
+  'Angelplaner',
   'Regeln heute',
   'Zielfisch',
   'Wünsche & Ideen',

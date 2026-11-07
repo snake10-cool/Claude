@@ -245,6 +245,7 @@ class _WetterKarteState extends State<_WetterKarte> {
     if (funktionAn('beissindex')) {
       return BeissindexKarte(
           LatLng(speicher.heimatLat!, speicher.heimatLon!),
+          planer: true,
           ortName: speicher.heimatName);
     }
     _laden(LatLng(speicher.heimatLat!, speicher.heimatLon!));
