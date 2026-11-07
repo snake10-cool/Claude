@@ -551,7 +551,10 @@ class _Punkte extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('${q.titel}: ${q.anzahl}',
+                          Text(
+                              q.symbol == '🎓'
+                                  ? '${q.titel}: ${q.anzahl > 0 ? 'ja' : 'noch nicht'}'
+                                  : '${q.titel}: ${q.anzahl}',
                               style: text.titleSmall),
                           Text(q.wie,
                               style: text.bodySmall?.copyWith(color: leise)),

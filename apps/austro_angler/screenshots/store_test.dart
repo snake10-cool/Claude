@@ -494,6 +494,94 @@ void main() {
     planerTestWetter = null;
   });
 
+  // Design-Prüfung der neuen 1.3-Bildschirme (mit eingeschalteter KI).
+  // Aufruf: QA=<Ordner> flutter test screenshots/store_test.dart --plain-name "QA13" --update-goldens
+  final qa13 = Platform.environment['QA'];
+  if (qa13 != null) {
+    for (final hell in ['dunkel', 'hell']) {
+      testWidgets('QA13 $hell', (tester) async {
+        kiAn();
+        PetriKi.testServer = (_) async => (200, <String, dynamic>{
+              'antwort': 'Probier es am Abend mit **Gummifisch** an der Strömungskante.',
+              'rest': 19,
+              'ergebnis': {
+                'erkannt': true,
+                'fisch_id': 'hecht',
+                'sicherheit': 'mittel',
+                'merkmale': ['Entenschnabel-Maul', 'Rückenflosse weit hinten'],
+                'alternativen': [
+                  {'fisch_id': 'zander', 'grund': 'Ähnlich langgestreckt'}
+                ],
+                'hinweis': 'Achte auf die Zähne.',
+              },
+            });
+        planerTestWetter = (ort) async {
+          final h = DateTime.now();
+          return [
+            for (var d = -1; d < 8; d++)
+              for (var x = 0; x < 24; x++)
+                Stunde(DateTime(h.year, h.month, h.day + d, x),
+                    1016 - (d.isEven ? 0.3 : -0.2) * x, 8, d * 11.0 % 100, 12),
+          ];
+        };
+        liveAngeln.sitzung = null;
+        await _starten(tester, extra: {
+          'design': 'neu',
+          'darstellung': hell,
+          'favoriten': gewaesserListe.take(2).map((g) => g.id).toList(),
+        });
+        var n = 0;
+        Future<void> knips(String name) async {
+          await _warten(tester);
+          await expectLater(find.byType(MaterialApp).first,
+              matchesGoldenFile('$qa13/q13_${hell}_${(n++).toString().padLeft(2, '0')}_$name.png'));
+        }
+        Future<void> zurueck() async {
+          tester.state<NavigatorState>(find.byType(Navigator).first).pop();
+          await _warten(tester);
+        }
+        await knips('heute');
+        await _oeffnen(tester, const PetriScreen());
+        await knips('petri_leer');
+        await tester.tap(find.text(petriBeispiele.first));
+        await tester.pump(const Duration(milliseconds: 300));
+        await knips('petri_antwort');
+        await zurueck();
+        petriKi.neuerChat();
+        await _oeffnen(tester, const PetriFotoScreen());
+        await knips('foto_start');
+        await zurueck();
+        await _oeffnen(tester, PetriFotoScreen(
+            testBild: File('assets/bilder/fische/hecht.jpg').readAsBytesSync()));
+        await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 500)));
+        await tester.drag(find.byType(Scrollable).first, const Offset(0, -400));
+        await knips('foto_ergebnis');
+        await zurueck();
+        await _oeffnen(tester, const KarriereScreen());
+        await knips('karriere');
+        await tester.drag(find.byType(Scrollable).first, const Offset(0, -900));
+        await knips('karriere_unten');
+        await tester.tap(find.byTooltip('Karriere teilen'));
+        await knips('karriere_teilen');
+        await zurueck();
+        await zurueck();
+        await _oeffnen(tester, const AngelplanerScreen());
+        await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 300)));
+        await knips('planer');
+        await zurueck();
+        await _oeffnen(tester, const LiveAngelnScreen());
+        await knips('live_start');
+        await zurueck();
+        await _oeffnen(tester, const NeuScreen());
+        await knips('neu');
+        await zurueck();
+        debugDisableShadows = true;
+        kiAus();
+        planerTestWetter = null;
+      });
+    }
+  }
+
   // Design-Prüfung: jeder Bildschirm im neuen Design, hell und dunkel.
   // Aufruf: QA=<Ordner> flutter test screenshots/store_test.dart --plain-name QA --update-goldens
   final qaOrdner = Platform.environment['QA'];
