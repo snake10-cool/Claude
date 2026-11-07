@@ -1,5 +1,6 @@
 /* Layout: Kopf mit Lektionstitel, darunter der „Video“-Player (immer dunkel, 16:9 auf breiten Schirmen,
    gestapelt auf dem Handy), dann Aufgabe, Kapitel/Noten und Spielplatz. Farben: Java-Orange + Java-Blau. */
+code, pre, .ed-code, .ce-hl, .ce-ta, .con-out, .con-live, .vcode, .cmp-code, .example, .time, .fname, .box-val, .box-type, .box-name { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
 :root {
   --bg: #F4F6FA; --surface: #FFFFFF; --surface-2: #EEF2F8; --fg: #172033; --muted: #5C6880; --line: #DCE3EE;
   --accent: #C9620A; --accent-soft: #FCEBDD; --blue: #2B67B0; --good: #1F8A5B; --bad: #C2413B;
@@ -318,3 +319,6 @@ h4 { font-size: 15px; margin: 16px 0 6px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Keine Ligaturen im Code: >= soll als >= erscheinen, nicht als Sonderzeichen */
+.stage *, .ce *, .con-live, .con-live *, code, pre, pre * { font-variant-ligatures: none !important; font-feature-settings: "liga" 0, "calt" 0 !important; }

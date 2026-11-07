@@ -92,6 +92,8 @@
     if (st.code !== undefined) code = st.code.replace(/^\n/, '');
     st.codeAfter = code;
     st.diff = diffCode(st.codeBefore, st.codeAfter);
+    // großer Wechsel (neues Programm): nicht alles löschen und neu tippen, sondern direkt zeigen
+    if (!st.type && st.diff.del.length > 40 && (st.diff.pre.length + st.diff.suf.length) < 0.4 * st.codeAfter.length) st.diff = { pre: st.codeAfter, del: '', ins: '', suf: '' };
     if (st.file) file = st.file; st.fileName = file;
     if (st.console === 'clear') cons = [];
     st.consBefore = cons;

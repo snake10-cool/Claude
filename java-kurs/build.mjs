@@ -64,7 +64,7 @@ for (const [i, L] of lessons.entries()) {
     // grobe Dauer (die echte rechnet der Player)
     est += Math.max(st.say ? 1.6 + st.say.length / 15 : 0, st.t ? 3.2 : 0, 1.2) + (st.wait || 0);
   }
-  if (L.playground) { const r = MJ.runSync(L.playground, []); if (r.error) warn('Spielplatz-Code läuft nicht: ' + r.error.text); }
+  if (L.playground) { const r = MJ.runSync(L.playground, ['17']); if (r.error && r.error.kind === 'compile') warn('Spielplatz-Code kompiliert nicht: ' + r.error.text); }
   // 2) Seite bauen
   const next = lessons[i + 1] ? links[lessons[i + 1].id] : null;
   const data = Object.assign({}, L, { next: next || null, count: COUNT });
