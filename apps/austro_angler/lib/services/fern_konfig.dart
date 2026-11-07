@@ -12,6 +12,9 @@ import 'alle_gewaesser.dart';
 const fernFunktionen = <String, String>{
   'darf_ich': 'Darf ich …?',
   'zielfisch': 'Zielfisch',
+  'live_angeln': 'Live-Angeln',
+  'regeln': 'Regeln heute',
+  'fischerkarte': 'Fischerkarte',
   'wetter': 'Wetter & Beißzeit',
   'beissindex': 'Beißindex (statt Wetter-Karte)',
   'karte': 'Karte',

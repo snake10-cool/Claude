@@ -21,12 +21,14 @@ import 'services/abo.dart';
 import 'services/alle_gewaesser.dart';
 import 'services/hintergrund.dart';
 import 'services/konto.dart';
+import 'services/live_angeln.dart';
 import 'services/speicher.dart';
 import 'services/wecker.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   schriftLizenzenEintragen();
+  liveAngeln.laden();
   final speicher = await Speicher.oeffnen();
   // Schonzeit-Wecker für das nächste Jahr neu planen (im Hintergrund).
   Wecker.instanz.alleEinplanen(speicher.bundesland).catchError((_) {});

@@ -9,10 +9,14 @@ import '../models/gewaesser.dart';
 import '../services/alle_gewaesser.dart';
 import '../services/beisszeit.dart';
 import '../services/fang_dienst.dart';
+import '../services/live_angeln.dart';
 import '../services/wetter.dart';
 import 'aktivitaeten_screen.dart';
 import 'darf_ich_screen.dart';
 import 'fangbuch_screen.dart';
+import 'fischerkarte_screen.dart';
+import 'live_angeln_screen.dart';
+import 'regeln_screen.dart';
 import 'gewaesser_screen.dart';
 import 'heimat_screen.dart';
 import 'lexikon_screen.dart';
@@ -86,6 +90,8 @@ class _HeuteScreenState extends State<HeuteScreen> {
             const SizedBox(height: 12),
             if (funktionAn('darf_ich')) const DarfIchFeld(),
             const SizedBox(height: 4),
+            const _Schnellzugriff(),
+            const SizedBox(height: 4),
             if (funktionAn('wetter')) const _WetterKarte(),
             const SizedBox(height: 4),
             const _MeineGewaesser(),
@@ -103,6 +109,59 @@ class _HeuteScreenState extends State<HeuteScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Drei große Knöpfe: Live-Angeln, Regeln heute, Fischerkarte.
+class _Schnellzugriff extends StatelessWidget {
+  const _Schnellzugriff();
+
+  @override
+  Widget build(BuildContext context) {
+    void oeffnen(Widget w) =>
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
+    return ListenableBuilder(
+      listenable: liveAngeln,
+      builder: (context, _) {
+        final laeuft = liveAngeln.sitzung != null;
+        final knoepfe = [
+          if (funktionAn('live_angeln'))
+            (laeuft ? '🔴' : '🎣', laeuft ? 'Live läuft' : 'Live-Angeln',
+                () => oeffnen(const LiveAngelnScreen())),
+          if (funktionAn('regeln'))
+            ('📋', 'Regeln heute', () => oeffnen(const RegelnScreen())),
+          if (funktionAn('fischerkarte'))
+            ('🎫', 'Fischerkarte', () => oeffnen(const FischerkarteScreen())),
+        ];
+        if (knoepfe.isEmpty) return const SizedBox.shrink();
+        return Row(
+          children: [
+            for (final (symbol, titel, tap) in knoepfe)
+              Expanded(
+                child: Card(
+                  margin: const EdgeInsets.fromLTRB(0, 4, 6, 4),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(12),
+                    onTap: tap,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      child: Column(
+                        children: [
+                          Text(symbol, style: const TextStyle(fontSize: 26)),
+                          const SizedBox(height: 4),
+                          Text(titel,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.labelLarge),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
     );
   }
 }

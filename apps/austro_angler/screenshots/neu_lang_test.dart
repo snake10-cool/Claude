@@ -42,6 +42,18 @@ void main() {
       '$_schriften/Roboto-Bold.ttf',
     ]);
     await _schrift('MaterialIcons', ['$_schriften/MaterialIcons-Regular.otf']);
+    await _schrift('BebasNeue', ['assets/schriften/BebasNeue-Regular.ttf']);
+    await _schrift('BarlowCondensed', [
+      'assets/schriften/BarlowCondensed-Medium.ttf',
+      'assets/schriften/BarlowCondensed-SemiBold.ttf',
+      'assets/schriften/BarlowCondensed-Bold.ttf',
+    ]);
+    await _schrift('Barlow', [
+      'assets/schriften/Barlow-Regular.ttf',
+      'assets/schriften/Barlow-Medium.ttf',
+      'assets/schriften/Barlow-SemiBold.ttf',
+      'assets/schriften/Barlow-Bold.ttf',
+    ]);
     await _schrift(
         'NotoColorEmoji', ['/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf']);
   });
@@ -58,6 +70,7 @@ void main() {
         'einfuehrung': true,
         'wasIstNeu': 99,
         'bundesland': 'Oberösterreich',
+        'design': 'neu',
       });
       final speicher = await Speicher.oeffnen();
       await tester.runAsync(alleGewaesser.laden);

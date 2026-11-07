@@ -12,10 +12,11 @@ import 'package:austro_angler/models/bundesland.dart';
 import 'package:austro_angler/models/fang.dart';
 import 'package:austro_angler/models/fisch.dart';
 import 'package:austro_angler/screens/kalender_screen.dart';
+import 'package:austro_angler/screens/regeln_screen.dart';
+import 'package:austro_angler/services/live_angeln.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/konto.dart';
 import 'package:austro_angler/services/speicher.dart';
-import 'package:austro_angler/services/wetter.dart';
 import 'package:austro_angler/services/wochen_challenges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -272,5 +273,46 @@ void main() {
     await tester.tap(find.text('FAQ – Fragen & Antworten'));
     await tester.pumpAndSettle();
     expect(find.text('Was ist Austro Angler?'), findsOneWidget);
+  });
+
+  test('Live-Angeln: Sitzung zählt, rechnet und überlebt JSON', () {
+    final start = DateTime(2026, 6, 1, 6);
+    final s = Sitzung(start: start, gewaesser: 'Wörthersee', koeder: 'Wurm');
+    s.eintraege.addAll([
+      (zeit: start.add(const Duration(minutes: 10)), art: Ereignis.biss, text: 'Wurm'),
+      (zeit: start.add(const Duration(minutes: 20)), art: Ereignis.koeder, text: 'Spinner'),
+      (zeit: start.add(const Duration(minutes: 30)), art: Ereignis.fang, text: 'Spinner'),
+      (zeit: start.add(const Duration(minutes: 40)), art: Ereignis.notiz, text: 'Wind'),
+    ]);
+    final ende = start.add(const Duration(hours: 2));
+    expect(s.zaehle(Ereignis.biss), 1);
+    expect(s.bisseProStunde(ende), 1.0);
+    expect(s.besterKoeder(), 'Spinner');
+    final kopie = Sitzung.fromJson(
+        Map<String, dynamic>.from(s.toJson()..['eintraege'] =
+            [for (final e in s.toJson()['eintraege'] as List) Map<String, dynamic>.from(e as Map)]))!;
+    expect(kopie.gewaesser, 'Wörthersee');
+    expect(kopie.eintraege.length, 4);
+    expect(kopie.eintraege[2].art, Ereignis.fang);
+  });
+
+  test('Regeln heute: Status passt zu den Regeln', () {
+    final hecht = fische.firstWhere((f) => f.id == 'hecht');
+    for (final land in Bundesland.values) {
+      for (final tag in [DateTime(2026, 3, 15), DateTime(2026, 8, 1)]) {
+        final st = RegelStatus.von(hecht, land, tag);
+        final r = hecht.regel(land);
+        if (r.ganzjaehrigGeschont) {
+          expect(st, RegelStatus.ganzjaehrig);
+        } else {
+          expect(st == RegelStatus.geschont, r.istGeschont(tag) == true);
+        }
+      }
+    }
+    final geschuetzt = fische.where((f) => f.geschuetzt);
+    for (final f in geschuetzt) {
+      expect(RegelStatus.von(f, Bundesland.values.first, DateTime(2026, 8, 1)),
+          RegelStatus.geschuetzt);
+    }
   });
 }

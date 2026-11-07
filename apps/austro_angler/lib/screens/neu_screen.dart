@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../design.dart';
 import '../main.dart';
 import '../services/darf_ich.dart';
 import 'album_screen.dart';
 import 'darf_ich_screen.dart';
+import 'einstellungen_screen.dart';
+import 'fischerkarte_screen.dart';
+import 'live_angeln_screen.dart';
+import 'regeln_screen.dart';
 import 'premium_screen.dart';
 import 'wettfischen_screen.dart';
 import 'zielfisch_screen.dart';
 
 /// Stand der Neuigkeiten. Bei jedem Update mit neuem „Was ist neu“ erhöhen.
-const neuigkeitenStand = 11;
+const neuigkeitenStand = 12;
 
 /// „Was ist neu?“ – nach einem Update einmal gezeigt, sonst unter Mehr.
 class NeuScreen extends StatelessWidget {
@@ -33,14 +38,38 @@ class NeuScreen extends StatelessWidget {
           FutureBuilder<String>(
             future: _version,
             builder: (context, snap) => Text(
-              'Update 1.1${(snap.data ?? '').isEmpty ? '' : ' · Version ${snap.data}'}',
+              'Update 1.2${(snap.data ?? '').isEmpty ? '' : ' · Version ${snap.data}'}',
               style: text.labelLarge,
             ),
           ),
           const SizedBox(height: 8),
-          const _DarfIchHeld(),
+          const _DesignHeld(),
           const SizedBox(height: 16),
-          Text('Außerdem neu', style: text.titleLarge),
+          Text('Neu in 1.2', style: text.titleLarge),
+          const SizedBox(height: 8),
+          _Punkt('🎯', 'Beißindex 0–100',
+              'Eine Zahl für heute: Luftdruck, Mond, Wolken, Wind und Dämmerung '
+              'zusammen – dazu die besten Zeiten des Tages.'),
+          _Punkt('⏱️', 'Live-Angeln',
+              'Angeltag starten, Uhr läuft. Biss, Fang und Köderwechsel mit '
+              'einem Tipp – am Ende siehst du, welcher Köder lief.',
+              () => _oeffnen(context, const LiveAngelnScreen())),
+          _Punkt('📋', 'Regeln heute',
+              'Alle Fischarten deines Bundeslands: offen oder geschont, mit '
+              'Brittelmaß. Deine Lieblingsfische oben.',
+              () => _oeffnen(context, const RegelnScreen())),
+          _Punkt('🎫', 'Digitale Fischerkarte',
+              'Name, Nummer und Ablauf mit QR-Code – am Wasser griffbereit.',
+              () => _oeffnen(context, const FischerkarteScreen())),
+          _Punkt('🗺️', 'Google-Karte mit Suche',
+              'Gewässer suchen, nach Flüssen, Seen und geprüften Gewässern filtern.'),
+          _Punkt('🎨', 'Hell, dunkel oder automatisch',
+              'Unabhängig vom Design einstellbar.',
+              () => _oeffnen(context, const EinstellungenScreen())),
+          const SizedBox(height: 16),
+          Text('Aus Update 1.1', style: text.titleLarge),
+          const SizedBox(height: 8),
+          const _DarfIchHeld(),
           const SizedBox(height: 8),
           _Punkt('🏠', 'Heute-Startseite',
               'Wetter, Beißzeit, deine Gewässer und Lieblingsfische auf einen Blick.'),
@@ -75,6 +104,51 @@ class NeuScreen extends StatelessWidget {
             child: const Text('Los geht’s – Petri Heil!'),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Das neue Design groß vorgestellt – direkt umschaltbar.
+class _DesignHeld extends StatelessWidget {
+  const _DesignHeld();
+
+  @override
+  Widget build(BuildContext context) {
+    final speicher = SpeicherScope.of(context);
+    final text = Theme.of(context).textTheme;
+    final akzent = DesignInfo.von(context).akzent;
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const RotWeissRot(),
+            const SizedBox(height: 12),
+            Text('DAS GROSSE UPDATE',
+                style: text.labelLarge
+                    ?.copyWith(color: akzent, letterSpacing: 1.4)),
+            Text('Neues Design. Mehr am Wasser.', style: text.headlineMedium),
+            const SizedBox(height: 6),
+            const Text('Klarer, dunkler, österreichischer. Gefällt dir das '
+                'alte besser? Einfach umschalten – jederzeit auch in den '
+                'Einstellungen.'),
+            const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: SegmentedButton<AppDesign>(
+                segments: [
+                  for (final d in AppDesign.values)
+                    ButtonSegment(value: d, label: Text(d.titel)),
+                ],
+                selected: {speicher.design},
+                onSelectionChanged: (w) => speicher.designSetzen(w.first),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

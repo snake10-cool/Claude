@@ -48,6 +48,9 @@ class Speicher extends ChangeNotifier {
   /// Einführung beim ersten Start schon gezeigt?
   bool einfuehrungGesehen = false;
 
+  /// Digitale Fischerkarte (nur zur Übersicht, ersetzt nicht die amtliche).
+  Map<String, String> fischerkarte = const {};
+
   /// Aussehen: Design und hell/dunkel (unabhängig voneinander).
   AppDesign design = AppDesign.klassisch;
   Darstellung darstellung = Darstellung.system;
@@ -85,6 +88,12 @@ class Speicher extends ChangeNotifier {
     // ihr gewohntes, bis sie selbst umschalten.
     design = AppDesign.values.asNameMap()[_prefs.getString('design')] ??
         (einfuehrungGesehen ? AppDesign.klassisch : AppDesign.neu);
+    final karte = _prefs.getString('fischerkarte');
+    if (karte != null) {
+      try {
+        fischerkarte = Map<String, String>.from(jsonDecode(karte) as Map);
+      } catch (_) {}
+    }
     darstellung =
         Darstellung.values.asNameMap()[_prefs.getString('darstellung')] ??
             Darstellung.system;
@@ -142,6 +151,12 @@ class Speicher extends ChangeNotifier {
   Future<void> wasIstNeuErledigt(int stand) async {
     wasIstNeuGesehen = stand;
     await _prefs.setInt('wasIstNeu', stand);
+  }
+
+  Future<void> fischerkarteSetzen(Map<String, String> karte) async {
+    fischerkarte = karte;
+    notifyListeners();
+    await _prefs.setString('fischerkarte', jsonEncode(karte));
   }
 
   Future<void> designSetzen(AppDesign d) async {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import '../services/wecker.dart';
+import 'fischerkarte_screen.dart';
 import 'widgets.dart';
 
 /// Eigene Fischerkarten und Lizenzen mit Ablaufdatum und Erinnerung.
@@ -79,7 +80,17 @@ class _LizenzenScreenState extends State<LizenzenScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Meine Lizenzen')),
+      appBar: AppBar(
+        title: const Text('Meine Lizenzen'),
+        actions: [
+          IconButton(
+            tooltip: 'Fischerkarte',
+            icon: const Icon(Icons.qr_code_2),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const FischerkarteScreen())),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _liste == null ? null : _neu,
         icon: const Icon(Icons.add),

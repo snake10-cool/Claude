@@ -443,9 +443,13 @@ class FangKarte extends StatelessWidget {
 }
 
 class FangFormular extends StatefulWidget {
-  const FangFormular({super.key, this.fang});
+  const FangFormular({super.key, this.fang, this.vorGewaesser, this.vorKoeder});
 
   final Fang? fang;
+
+  /// Vorbelegung für einen neuen Fang (z. B. aus Live-Angeln).
+  final String? vorGewaesser;
+  final String? vorKoeder;
 
   @override
   State<FangFormular> createState() => _FangFormularState();
@@ -463,9 +467,10 @@ class _FangFormularState extends State<FangFormular> {
   );
   late final _gewicht =
       TextEditingController(text: widget.fang?.gewichtG?.toString() ?? '');
-  late final _gewaesser =
-      TextEditingController(text: widget.fang?.gewaesser ?? '');
-  late final _koeder = TextEditingController(text: widget.fang?.koeder ?? '');
+  late final _gewaesser = TextEditingController(
+      text: widget.fang?.gewaesser ?? widget.vorGewaesser ?? '');
+  late final _koeder = TextEditingController(
+      text: widget.fang?.koeder ?? widget.vorKoeder ?? '');
   late final _notiz = TextEditingController(text: widget.fang?.notiz ?? '');
   late final _ausruestung =
       TextEditingController(text: widget.fang?.ausruestung ?? '');
@@ -650,7 +655,8 @@ class _FangFormularState extends State<FangFormular> {
           _ausFormular(widget.fang?.id ?? speicher.neueId()),
         );
       }
-      if (mounted) Navigator.pop(context);
+      // true = gespeichert (z. B. für Live-Angeln).
+      if (mounted) Navigator.pop(context, true);
     } catch (e) {
       if (mounted) {
         setState(() => _speichert = false);

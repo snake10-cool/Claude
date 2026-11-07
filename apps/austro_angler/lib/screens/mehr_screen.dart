@@ -17,6 +17,9 @@ import 'heimat_screen.dart';
 import 'koeder_screen.dart';
 import 'neu_screen.dart';
 import 'lizenzen_screen.dart';
+import 'fischerkarte_screen.dart';
+import 'live_angeln_screen.dart';
+import 'regeln_screen.dart';
 import 'quiz_screen.dart';
 import 'vereine_screen.dart';
 import 'faq_screen.dart';
@@ -73,6 +76,14 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.chat_bubble_outline, 'Darf ich …? ⭐',
               'Frag nach Schonzeit, Brittelmaß und Gewässer', () => _oeffnen(context,
                   const DarfIchScreen())),
+          if (funktionAn('live_angeln'))
+          _Eintrag(Icons.timer_outlined, 'Live-Angeln',
+              'Angeltag am Wasser live mitschreiben', () => _oeffnen(context,
+                  const LiveAngelnScreen())),
+          if (funktionAn('regeln'))
+          _Eintrag(Icons.rule, 'Regeln heute',
+              'Alle Arten: offen oder geschont, mit Brittelmaß', () => _oeffnen(context,
+                  const RegelnScreen())),
           if (funktionAn('zielfisch'))
           _Eintrag(Icons.my_location, 'Zielfisch',
               'Ich will Hecht → wo, wann, womit', () => _oeffnen(context,
@@ -81,7 +92,7 @@ class MehrScreen extends StatelessWidget {
               'Was soll die App noch können?', () => _oeffnen(context,
                   const WuenscheScreen())),
           _Eintrag(Icons.new_releases_outlined, 'Was ist neu?',
-              'Alle Neuerungen von Update 1.1', () => _oeffnen(context,
+              'Alle Neuerungen von Update 1.2', () => _oeffnen(context,
                   const NeuScreen())),
           _Eintrag(Icons.waving_hand_outlined, 'Einführung ansehen',
               'Die App in 6 Schritten erklärt', () => _oeffnen(context,
@@ -109,6 +120,10 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.handyman_outlined, 'Meine Ausrüstung',
               'Ruten, Rollen, Schnüre', () => _oeffnen(context,
                   const AusruestungScreen())),
+          if (funktionAn('fischerkarte'))
+          _Eintrag(Icons.qr_code_2, 'Fischerkarte',
+              'Deine Karte digital mit QR-Code', () => _oeffnen(context,
+                  const FischerkarteScreen())),
           _Eintrag(Icons.badge, 'Meine Lizenzen',
               'Ablaufdatum und Erinnerung', () => _oeffnen(context,
                   const LizenzenScreen())),

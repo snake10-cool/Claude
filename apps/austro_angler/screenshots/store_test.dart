@@ -13,12 +13,16 @@ import 'package:austro_angler/screens/beissindex_karte.dart';
 import 'package:austro_angler/screens/darf_ich_screen.dart';
 import 'package:austro_angler/services/wetter.dart';
 import 'package:austro_angler/screens/neu_screen.dart';
+import 'package:austro_angler/screens/regeln_screen.dart';
+import 'package:austro_angler/screens/fischerkarte_screen.dart';
+import 'package:austro_angler/screens/live_angeln_screen.dart';
 import 'package:austro_angler/screens/einfuehrung_screen.dart';
 import 'package:austro_angler/screens/zielfisch_screen.dart';
 import 'package:austro_angler/screens/kalender_screen.dart';
 import 'package:austro_angler/screens/lexikon_screen.dart';
 import 'package:austro_angler/screens/statistik_screen.dart';
 import 'package:austro_angler/services/abo.dart';
+import 'package:austro_angler/services/live_angeln.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/speicher.dart';
 import 'package:austro_angler/services/wochen_challenges.dart';
@@ -272,4 +276,61 @@ void main() {
       await _foto(tester, 'design_${design}_$hell');
     });
   }
+
+  const neuDunkel = {'design': 'neu', 'darstellung': 'dunkel'};
+
+  testWidgets('14 Regeln heute', (tester) async {
+    await _starten(tester, extra: {...neuDunkel, 'lieblingsfische': ['hecht', 'zander']});
+    await _oeffnen(tester, const RegelnScreen());
+    await _foto(tester, '14_regeln');
+  });
+
+  testWidgets('15 Fischerkarte', (tester) async {
+    await _starten(tester, extra: {
+      ...neuDunkel,
+      'fischerkarte': jsonEncode({
+        'name': 'Jasmin Aigner',
+        'art': 'Amtliche Fischerkarte Oberösterreich',
+        'nummer': 'OÖ-2026-04711',
+        'bis': DateTime(DateTime.now().year, 12, 31).toIso8601String(),
+      }),
+    });
+    await _oeffnen(tester, const FischerkarteScreen());
+    await _foto(tester, '15_fischerkarte');
+  });
+
+  testWidgets('16 Live-Angeln', (tester) async {
+    final start = DateTime.now().subtract(const Duration(hours: 2, minutes: 14));
+    Map<String, String> e(int min, String art, String text) => {
+          'zeit': start.add(Duration(minutes: min)).toIso8601String(),
+          'art': art,
+          'text': text,
+        };
+    await _starten(tester, extra: {
+      ...neuDunkel,
+      'live_sitzung': jsonEncode({
+        'start': start.toIso8601String(),
+        'gewaesser': 'Inn bei Braunau',
+        'koeder': 'Gummifisch 10 cm',
+        'eintraege': [
+          e(18, 'biss', 'Spinner Gr. 3'),
+          e(41, 'koeder', 'Gummifisch 10 cm'),
+          e(55, 'biss', 'Gummifisch 10 cm'),
+          e(72, 'fang', 'Gummifisch 10 cm'),
+          e(96, 'notiz', 'Wind dreht auf West'),
+          e(118, 'biss', 'Gummifisch 10 cm'),
+        ],
+      }),
+    });
+    await _oeffnen(tester, const LiveAngelnScreen());
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 300)));
+    await _warten(tester);
+    await _foto(tester, '16_live_angeln');
+  });
+
+  testWidgets('17 Heute neu', (tester) async {
+    liveAngeln.sitzung = null;
+    await _starten(tester, extra: neuDunkel);
+    await _foto(tester, '17_heute_neu');
+  });
 }
