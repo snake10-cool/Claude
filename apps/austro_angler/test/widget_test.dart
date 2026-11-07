@@ -440,6 +440,24 @@ void main() {
     expect(find.widgetWithText(TextField, 'Und morgen?'), findsOneWidget);
     expect(petriKi.verlauf.length, 2);
     expect((gesendet.last['verlauf'] as List).length, 3);
+
+    // Kaputte Server-Antwort: klarer Hinweis statt Absturz.
+    PetriKi.testServer = (_) async => (200, <String, dynamic>{'antwort': 42});
+    tester
+        .state<ScaffoldMessengerState>(find.byType(ScaffoldMessenger).first)
+        .clearSnackBars();
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Senden'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('nicht geklappt'), findsOneWidget);
+    expect(petriKi.verlauf.length, 2);
+    // Ohne Ergebnis: „nicht erkannt“ – mit kaputtem Ergebnis: klarer Fehler.
+    final jpg = Uint8List.fromList([0xFF, 0xD8, 0xFF, 0, 0]);
+    expect((await petriKi.fotoBestimmen(jpg, konto: null)).erkannt, isFalse);
+    PetriKi.testServer =
+        (_) async => (200, <String, dynamic>{'ergebnis': 'kaputt'});
+    await expectLater(
+        petriKi.fotoBestimmen(jpg, konto: null), throwsA(isA<KiFehler>()));
   });
 
   test('Angel-Karriere: Level, Ränge und Punkte', () {

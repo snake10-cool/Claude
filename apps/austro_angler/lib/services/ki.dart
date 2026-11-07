@@ -211,10 +211,12 @@ class PetriKi extends ChangeNotifier {
         vonMir: false,
         text: antwort.isEmpty ? 'Hm, da fällt mir gerade nichts ein.' : antwort,
       ));
-    } catch (_) {
+    } catch (e) {
       // Frage zurücknehmen, damit sie nochmal gestellt werden kann.
       verlauf.removeLast();
-      rethrow;
+      if (e is KiFehler) rethrow;
+      debugPrint('Petri: $e');
+      throw const KiFehler('Das hat nicht geklappt. Probier es nochmal.');
     } finally {
       denkt = false;
       notifyListeners();
@@ -234,6 +236,12 @@ class PetriKi extends ChangeNotifier {
           konto, {'modus': 'foto', 'typ': typ, 'bild': base64Encode(bild)});
       return FotoErgebnis.ausJson(
           (d['ergebnis'] as Map?)?.cast<String, dynamic>() ?? const {});
+    } on KiFehler {
+      rethrow;
+    } catch (e) {
+      // Unerwartete Antwort – lieber ein klarer Hinweis als ein Absturz.
+      debugPrint('Petri-Foto: $e');
+      throw const KiFehler('Das hat nicht geklappt. Probier es nochmal.');
     } finally {
       notifyListeners();
     }
