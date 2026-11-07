@@ -19,6 +19,7 @@ import 'lexikon_screen.dart';
 import 'widgets.dart';
 import 'zielfisch_screen.dart';
 import '../services/fern_konfig.dart';
+import 'beissindex_karte.dart';
 
 /// Startseite: was heute am Wasser zählt – auf einen Blick.
 class HeuteScreen extends StatefulWidget {
@@ -141,6 +142,11 @@ class _WetterKarteState extends State<_WetterKarte> {
               MaterialPageRoute(builder: (_) => const HeimatScreen())),
         ),
       );
+    }
+    if (funktionAn('beissindex')) {
+      return BeissindexKarte(
+          LatLng(speicher.heimatLat!, speicher.heimatLon!),
+          ortName: speicher.heimatName);
     }
     _laden(LatLng(speicher.heimatLat!, speicher.heimatLon!));
     return Card(

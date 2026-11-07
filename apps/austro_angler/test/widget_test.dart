@@ -1,6 +1,8 @@
 import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/data/gewicht.dart';
 import 'package:austro_angler/services/csv_export.dart';
+import 'package:austro_angler/services/beisszeit.dart';
+import 'package:austro_angler/services/wetter.dart';
 import 'package:austro_angler/services/fern_konfig.dart';
 import 'package:austro_angler/services/wettfischen.dart';
 import 'package:austro_angler/data/fragen.dart';
@@ -205,6 +207,25 @@ void main() {
     fernKonfig.uebernehmen(FernDaten.aus(null));
     expect(funktionAn('darf_ich'), isTrue);
     expect(hecht.regel(Bundesland.ooe).mindestmassCm, isNot(55));
+  });
+
+  test('Beißindex', () {
+    final tag = DateTime(2026, 6, 10);
+    final stunden = [
+      for (var h = 0; h < 24; h++)
+        Stunde(DateTime(2026, 6, 10, h), 1016 - (h >= 6 ? (h - 6) * 0.4 : 0),
+            18, 70, 10),
+    ];
+    final i = beissindex(stunden, tag,
+        aufgang: DateTime(2026, 6, 10, 5, 10),
+        untergang: DateTime(2026, 6, 10, 21, 0))!;
+    expect(i.wert, inInclusiveRange(55, 100));
+    expect(i.gruende, contains('Luftdruck fällt leicht'));
+    expect(i.fenster, isNotEmpty);
+    // Die besten Zeiten liegen in der Dämmerung, nicht zu Mittag.
+    expect(i.fenster.any((f) => f.$1 <= 6), isTrue);
+    expect(i.fenster.any((f) => f.$1 <= 12 && f.$2 > 13), isFalse);
+    expect(beissindex(const [], tag), isNull);
   });
 
   test('Mondphase', () {

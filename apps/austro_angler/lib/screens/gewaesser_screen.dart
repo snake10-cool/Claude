@@ -20,6 +20,7 @@ import 'melden.dart';
 import 'widgets.dart';
 import '../services/fern_konfig.dart';
 import 'karte_screen.dart';
+import 'beissindex_karte.dart';
 
 class GewaesserScreen extends StatefulWidget {
   const GewaesserScreen({super.key});
@@ -470,6 +471,7 @@ class GewaesserDetail extends StatelessWidget {
           const SizedBox(height: 12),
           if (funktionAn('wetter')) ...[
             WetterKarte(g),
+            if (funktionAn('beissindex')) BeissindexKarte(g.position),
             BeisszeitKarte(g),
           ],
           DaemmerungKarte(g),

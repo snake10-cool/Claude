@@ -9,7 +9,9 @@ import 'dart:io';
 import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/main.dart';
 import 'package:austro_angler/screens/album_screen.dart';
+import 'package:austro_angler/screens/beissindex_karte.dart';
 import 'package:austro_angler/screens/darf_ich_screen.dart';
+import 'package:austro_angler/services/wetter.dart';
 import 'package:austro_angler/screens/neu_screen.dart';
 import 'package:austro_angler/screens/einfuehrung_screen.dart';
 import 'package:austro_angler/screens/zielfisch_screen.dart';
@@ -141,6 +143,15 @@ void main() {
   });
 
   setUpAll(() async {
+    // Feste Beispiel-Wetterdaten für den Beißindex (kein Internet im Test).
+    BeissindexKarte.testWetter = (_) async {
+      final heute = DateTime.now();
+      return [
+        for (var h = 0; h < 24; h++)
+          Stunde(DateTime(heute.year, heute.month, heute.day, h),
+              1018 - (h >= 6 ? (h - 6) * 0.3 : 0), 6 + h / 3, 75, 9),
+      ];
+    };
     await _schrift('Roboto', [
       '$_schriften/Roboto-Regular.ttf',
       '$_schriften/Roboto-Medium.ttf',

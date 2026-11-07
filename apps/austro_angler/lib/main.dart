@@ -204,16 +204,25 @@ class _StartseiteState extends State<Startseite> {
           selectedIndex: _index,
           onDestinationSelected: (i) => setState(() => _index = i),
           destinations: [
-            NavigationDestination(icon: Icon(Icons.today), label: 'Heute'),
+            NavigationDestination(
+                icon: Icon(Icons.wb_sunny_outlined),
+                selectedIcon: Icon(Icons.wb_sunny),
+                label: 'Heute'),
             NavigationDestination(icon: Icon(Icons.water), label: 'Gewässer'),
-            NavigationDestination(icon: Icon(Icons.map), label: 'Karte'),
-            NavigationDestination(icon: Icon(Icons.book), label: 'Fangbuch'),
+            NavigationDestination(
+                icon: Icon(Icons.place_outlined),
+                selectedIcon: Icon(Icons.place),
+                label: 'Karte'),
+            NavigationDestination(
+                icon: Icon(Icons.book_outlined),
+                selectedIcon: Icon(Icons.book),
+                label: 'Fangbuch'),
             NavigationDestination(
               icon: NeuigkeitenZaehler(
                 builder: (context, n) => Badge(
                   isLabelVisible: n > 0,
                   label: Text('$n'),
-                  child: const Icon(Icons.groups),
+                  child: const Icon(Icons.groups_outlined),
                 ),
               ),
               label: 'Feed',
