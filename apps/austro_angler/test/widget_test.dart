@@ -279,6 +279,8 @@ void main() {
     await tester.scrollUntilVisible(find.text('FAQ – Fragen & Antworten'), 200,
         scrollable: find.byType(Scrollable).first);
     expect(find.text('FAQ – Fragen & Antworten'), findsOneWidget);
+    await tester.ensureVisible(find.text('FAQ – Fragen & Antworten'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('FAQ – Fragen & Antworten'));
     await tester.pumpAndSettle();
     expect(find.text('Was ist Austro Angler?'), findsOneWidget);
