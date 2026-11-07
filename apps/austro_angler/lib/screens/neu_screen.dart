@@ -60,6 +60,8 @@ class NeuScreen extends StatelessWidget {
                 'Foto machen – Petri erkennt die Art, die App zeigt gleich '
                 'Schonzeit und Brittelmaß.',
                 () => _oeffnen(context, const PetriFotoScreen())),
+            _Punkt('📊', 'Petri wertet dein Fangbuch aus',
+                'Unter Statistik: wann, wo und womit du am besten fängst.'),
           ],
           _Punkt('🏆', 'Angel-Karriere',
               'Level und Ränge vom Grünschnabel bis zum Huchen-König. Punkte '
@@ -69,8 +71,13 @@ class NeuScreen extends StatelessWidget {
               'Der beste Angeltag der Woche für deine Gewässer – mit '
               'Erinnerung aufs Handy.',
               () => _oeffnen(context, const AngelplanerScreen())),
+          _Punkt('🧺', 'Tageslimit beim Live-Angeln',
+              'Limit laut Revier eintragen – die App zählt mit, was du '
+              'mitnimmst, und warnt rechtzeitig.',
+              () => _oeffnen(context, const LiveAngelnScreen())),
           _Punkt('✨', 'Feinschliff',
-              'Das neue Design auf allen Seiten geprüft und verbessert.'),
+              'Das neue Design auf allen Seiten geprüft, lange Fischnamen im '
+              'Fang-Formular passen jetzt.'),
           const SizedBox(height: 16),
           Text('Aus Update 1.2', style: text.titleLarge),
           const SizedBox(height: 8),
