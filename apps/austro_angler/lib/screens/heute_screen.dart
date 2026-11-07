@@ -16,6 +16,7 @@ import 'darf_ich_screen.dart';
 import 'fangbuch_screen.dart';
 import 'fischerkarte_screen.dart';
 import 'live_angeln_screen.dart';
+import 'petri_screen.dart';
 import 'regeln_screen.dart';
 import 'gewaesser_screen.dart';
 import 'heimat_screen.dart';
@@ -92,6 +93,7 @@ class _HeuteScreenState extends State<HeuteScreen> {
             const SizedBox(height: 4),
             const _Schnellzugriff(),
             const SizedBox(height: 4),
+            if (funktionAn('ki')) const _PetriKarte(),
             if (funktionAn('wetter')) const _WetterKarte(),
             const SizedBox(height: 4),
             const _MeineGewaesser(),
@@ -108,6 +110,31 @@ class _HeuteScreenState extends State<HeuteScreen> {
               challenges(speicher.faenge),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Einstieg zur Petri-KI.
+class _PetriKarte extends StatelessWidget {
+  const _PetriKarte();
+
+  @override
+  Widget build(BuildContext context) {
+    void oeffnen(Widget w) =>
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
+    return Card(
+      child: ListTile(
+        contentPadding: const EdgeInsets.fromLTRB(16, 6, 8, 6),
+        leading: const Text('🎣', style: TextStyle(fontSize: 30)),
+        title: const Text('Frag Petri – dein KI-Angelguide'),
+        subtitle: const Text('Köder, Regeln, Taktik – oder Fisch per Foto bestimmen'),
+        trailing: IconButton(
+          tooltip: 'Fisch per Foto bestimmen',
+          icon: const Icon(Icons.photo_camera_outlined),
+          onPressed: () => oeffnen(const PetriFotoScreen()),
+        ),
+        onTap: () => oeffnen(const PetriScreen()),
       ),
     );
   }

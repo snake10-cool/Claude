@@ -19,6 +19,7 @@ import 'neu_screen.dart';
 import 'lizenzen_screen.dart';
 import 'fischerkarte_screen.dart';
 import 'live_angeln_screen.dart';
+import 'petri_screen.dart';
 import 'regeln_screen.dart';
 import 'quiz_screen.dart';
 import 'vereine_screen.dart';
@@ -76,6 +77,10 @@ class MehrScreen extends StatelessWidget {
           _Eintrag(Icons.chat_bubble_outline, 'Darf ich …? ⭐',
               'Frag nach Schonzeit, Brittelmaß und Gewässer', () => _oeffnen(context,
                   const DarfIchScreen())),
+          if (funktionAn('ki'))
+          _Eintrag(Icons.auto_awesome_outlined, 'Petri-KI ✨',
+              'KI-Angelguide und Fischerkennung per Foto', () => _oeffnen(context,
+                  const PetriScreen())),
           if (funktionAn('live_angeln'))
           _Eintrag(Icons.timer_outlined, 'Live-Angeln',
               'Angeltag am Wasser live mitschreiben', () => _oeffnen(context,

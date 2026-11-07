@@ -6,7 +6,9 @@ import '../design.dart';
 import '../main.dart';
 import '../services/fang_dienst.dart';
 import '../services/live_angeln.dart';
+import '../services/fern_konfig.dart';
 import 'fangbuch_screen.dart';
+import 'petri_screen.dart';
 import 'widgets.dart';
 
 /// Live-Angeln: den Angeltag am Wasser mitschreiben – Uhr läuft, Bisse,
@@ -269,6 +271,22 @@ class _LiveAngelnScreenState extends State<LiveAngelnScreen> {
           icon: const Icon(Icons.edit_note),
           label: const Text('Notiz'),
         ),
+        if (funktionAn('ki'))
+          TextButton.icon(
+            onPressed: () {
+              final d = s.dauer(DateTime.now());
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => PetriScreen(
+                      frage: 'Ich angle gerade am ${s.gewaesser}'
+                          '${s.koeder.isEmpty ? '' : ' mit ${s.koeder}'}. Seit '
+                          '${d.inHours} h ${d.inMinutes % 60} min hatte ich '
+                          '${s.zaehle(Ereignis.biss)} Bisse und '
+                          '${s.zaehle(Ereignis.fang)} Fänge. Was soll ich '
+                          'jetzt probieren?')));
+            },
+            icon: const Icon(Icons.auto_awesome_outlined),
+            label: const Text('KI-Tipp von Petri'),
+          ),
         const SizedBox(height: 12),
         if (s.eintraege.isNotEmpty) ...[
           Text('VERLAUF', style: text.labelMedium),

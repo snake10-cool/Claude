@@ -11,6 +11,7 @@ import 'package:austro_angler/main.dart';
 import 'package:austro_angler/screens/album_screen.dart';
 import 'package:austro_angler/screens/beissindex_karte.dart';
 import 'package:austro_angler/screens/darf_ich_screen.dart';
+import 'package:austro_angler/screens/fangbuch_screen.dart';
 import 'package:austro_angler/services/wetter.dart';
 import 'package:austro_angler/screens/neu_screen.dart';
 import 'package:austro_angler/screens/regeln_screen.dart';
@@ -22,6 +23,9 @@ import 'package:austro_angler/screens/kalender_screen.dart';
 import 'package:austro_angler/screens/lexikon_screen.dart';
 import 'package:austro_angler/screens/statistik_screen.dart';
 import 'package:austro_angler/services/abo.dart';
+import 'package:austro_angler/services/fern_konfig.dart';
+import 'package:austro_angler/services/ki.dart';
+import 'package:austro_angler/screens/petri_screen.dart';
 import 'package:austro_angler/services/live_angeln.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/speicher.dart';
@@ -81,6 +85,8 @@ Future<void> _starten(WidgetTester tester,
   tester.view.physicalSize = const Size(1080, 1920);
   tester.view.devicePixelRatio = 2.75;
   addTearDown(tester.view.reset);
+  // Echte Schatten statt schwarzer Test-Ränder (am Testende in _foto zurück).
+  debugDisableShadows = false;
   SharedPreferences.setMockInitialValues({
     'einfuehrung': true, 'wasIstNeu': 99,
     'bundesland': 'Oberösterreich',
@@ -131,6 +137,7 @@ Future<void> _foto(WidgetTester tester, String name) async {
   await tester.pump(const Duration(seconds: 1));
   await expectLater(find.byType(MaterialApp).first,
       matchesGoldenFile('../docs/store/screenshots/$name.png'));
+  debugDisableShadows = true;
 }
 
 void main() {
@@ -333,4 +340,153 @@ void main() {
     await _starten(tester, extra: neuDunkel);
     await _foto(tester, '17_heute_neu');
   });
+
+  void kiAn() {
+    fernKonfig.uebernehmen(FernDaten(ein: const {'ki'}));
+    PetriKi.testServer = (_) async => (200, <String, dynamic>{});
+    petriKi.neuerChat();
+  }
+
+  void kiAus() {
+    petriKi.neuerChat();
+    petriKi.rest = null;
+    PetriKi.testServer = null;
+    fernKonfig.uebernehmen(FernDaten());
+  }
+
+  testWidgets('18 Petri-KI Chat', (tester) async {
+    kiAn();
+    // Beispieltexte für das Store-Bild – keine echte KI-Antwort.
+    petriKi.verlauf.addAll([
+      (vonMir: true, text: 'Was beißt heute bei mir?'),
+      (
+        vonMir: false,
+        text: 'Heute Abend schaut’s am Inn gut aus: Der Luftdruck fällt leicht '
+            'und es ist bewölkt – typisches Raubfischwetter im November.\n\n'
+            '• **Zander**: ab der Dämmerung (ca. 16:30–19 Uhr) an Buhnenköpfen '
+            'und Strömungskanten, Gummifisch 10–12 cm langsam am Grund.\n'
+            '• **Hecht**: tagsüber in ruhigen Buchten und Altarmen, großer '
+            'Gummifisch oder toter Köderfisch.\n\n'
+            'Beide sind in Oberösterreich gerade offen (Brittelmaß Hecht 60 cm, '
+            'Zander 50 cm). Die Revierordnung kann strenger sein.',
+      ),
+      (vonMir: true, text: 'Welcher Gummifisch genau?'),
+      (
+        vonMir: false,
+        text: 'Bei kaltem Wasser am Inn: **schlanke Shads** mit 10–12 cm in '
+            'Weiß, Perlmutt oder Barsch-Dekor. Jigkopf 14–21 g, je nach '
+            'Strömung – der Köder soll den Grund spüren. Kurze Sprünge, lange '
+            'Pausen: Die meisten Bisse kommen beim Absinken.',
+      ),
+    ]);
+    petriKi.rest = 18;
+    await _starten(tester, extra: neuDunkel);
+    await _oeffnen(tester, const PetriScreen());
+    await _foto(tester, '18_petri_ki');
+    kiAus();
+  });
+
+  testWidgets('19 Petri-KI Foto', (tester) async {
+    kiAn();
+    PetriKi.testServer = (_) async => (200, <String, dynamic>{
+          'rest': 17,
+          'ergebnis': {
+            'erkannt': true,
+            'fisch_id': 'zander',
+            'sicherheit': 'hoch',
+            'merkmale': [
+              'Große, glasige Augen',
+              'Zwei getrennte Rückenflossen, die vordere stachelig',
+              'Langgestreckter Körper mit dunklen Querbinden',
+            ],
+            'alternativen': [
+              {
+                'fisch_id': 'flussbarsch',
+                'grund': 'Auch stachelige Rückenflosse, aber hochrückiger',
+              },
+            ],
+            'hinweis': 'Ganz sicher bist du mit den Glasaugen und den '
+                'spitzen Fangzähnen.',
+          },
+        });
+    await _starten(tester, extra: neuDunkel);
+    final bild = File('assets/bilder/fische/zander.jpg').readAsBytesSync();
+    await _oeffnen(tester, PetriFotoScreen(testBild: bild));
+    await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 600)));
+    await _warten(tester);
+    await _foto(tester, '19_petri_foto');
+    kiAus();
+  });
+
+  testWidgets('20 Heute mit Petri', (tester) async {
+    kiAn();
+    liveAngeln.sitzung = null;
+    await _starten(tester, extra: neuDunkel);
+    await _foto(tester, '20_heute_ki');
+    kiAus();
+  });
+
+  // Design-Prüfung: jeder Bildschirm im neuen Design, hell und dunkel.
+  // Aufruf: QA=<Ordner> flutter test screenshots/store_test.dart --plain-name QA --update-goldens
+  final qaOrdner = Platform.environment['QA'];
+  if (qaOrdner != null) {
+    for (final hell in ['dunkel', 'hell']) {
+      testWidgets('QA $hell', (tester) async {
+        liveAngeln.sitzung = null;
+        await _starten(tester, extra: {'design': 'neu', 'darstellung': hell});
+        var n = 0;
+        Future<void> knips(String name) async {
+          await _warten(tester);
+          await expectLater(find.byType(MaterialApp).first,
+              matchesGoldenFile('$qaOrdner/${hell}_${(n++).toString().padLeft(2, '0')}_$name.png'));
+        }
+        Future<void> zurueck() async {
+          tester.state<NavigatorState>(find.byType(Navigator).first).pop();
+          await _warten(tester);
+        }
+        for (final tab in ['Heute', 'Gewässer', 'Karte', 'Fangbuch', 'Feed', 'Mehr']) {
+          await tester.tap(find.text(tab).last);
+          await knips('tab_$tab');
+        }
+        await tester.tap(find.text('Gewässer').last);
+        await _warten(tester);
+        await tester.scrollUntilVisible(find.text('✅ Inn bei Braunau'), 200,
+            scrollable: find.byType(Scrollable).first);
+        await tester.tap(find.text('✅ Inn bei Braunau'));
+        await knips('gewaesser_detail');
+        await tester.drag(find.byType(Scrollable).last, const Offset(0, -1400));
+        await knips('gewaesser_detail_unten');
+        await zurueck();
+        await _oeffnen(tester, const FangFormular());
+        await knips('fang_formular');
+        await zurueck();
+        await _oeffnen(tester, FischDetail(fische.firstWhere((f) => f.id == 'hecht')));
+        await knips('fisch_detail');
+        await zurueck();
+        await tester.tap(find.text('Mehr').last);
+        await _warten(tester);
+        for (final titel in _qaMehr) {
+          final ziel = find.text(titel);
+          await tester.scrollUntilVisible(ziel, 300,
+              scrollable: find.byType(Scrollable).first);
+          await tester.tap(ziel);
+          await knips(titel.replaceAll(RegExp(r'[^A-Za-zÄÖÜäöüß]+'), '_'));
+          await zurueck();
+        }
+        debugDisableShadows = true;
+      });
+    }
+  }
 }
+
+const _qaMehr = [
+  '⭐ Premium', 'Einstellungen', 'Darf ich …? ⭐', 'Live-Angeln', 'Regeln heute',
+  'Zielfisch', 'Wünsche & Ideen', 'Was ist neu?', 'Einführung ansehen',
+  'FAQ – Fragen & Antworten', 'Statistik & Abzeichen', 'Arten-Sammelalbum',
+  'Eigene Wettfischen', 'Meine Angeltage ⭐', 'Köder-Box', 'Meine Ausrüstung',
+  'Fischerkarte', 'Meine Lizenzen', 'Mein Heimatort', 'Angelgeschäfte',
+  'Vereine & Verbände', 'Fisch-Quiz', 'Ausrüstungs-Checkliste',
+  'Welcher Fisch ist das?', 'Fischlexikon', 'Schonzeit-Kalender',
+  'Angel-Wörterbuch', 'Fischerprüfung üben', 'Knoten',
+];

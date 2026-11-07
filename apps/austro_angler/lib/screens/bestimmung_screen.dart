@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../services/fern_konfig.dart';
+
 import '../data/bestimmung.dart';
 import '../data/bilder.dart';
 import '../data/fische.dart';
 import '../models/fisch.dart';
 import 'lexikon_screen.dart';
+import 'petri_screen.dart';
 import 'widgets.dart';
 
 /// Fisch bestimmen: ein paar Fragen beantworten, die App zeigt passende Arten.
@@ -116,6 +119,15 @@ class _BestimmungScreenState extends State<BestimmungScreen> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          if (funktionAn('ki')) ...[
+            FilledButton.tonalIcon(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => const PetriFotoScreen())),
+              icon: const Icon(Icons.photo_camera_outlined),
+              label: const Text('Mit Foto bestimmen (Petri-KI)'),
+            ),
+            const SizedBox(height: 12),
+          ],
           const HinweisKarte(
             'Beantworte, was du siehst – den Rest einfach auslassen. Die Liste '
             'unten wird sofort kleiner.',

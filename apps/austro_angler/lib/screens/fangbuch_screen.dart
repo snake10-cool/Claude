@@ -443,7 +443,8 @@ class FangKarte extends StatelessWidget {
 }
 
 class FangFormular extends StatefulWidget {
-  const FangFormular({super.key, this.fang, this.vorGewaesser, this.vorKoeder});
+  const FangFormular(
+      {super.key, this.fang, this.vorGewaesser, this.vorKoeder, this.vorFischId});
 
   final Fang? fang;
 
@@ -451,12 +452,18 @@ class FangFormular extends StatefulWidget {
   final String? vorGewaesser;
   final String? vorKoeder;
 
+  /// Vorbelegte Fischart (z. B. aus der Foto-Bestimmung).
+  final String? vorFischId;
+
   @override
   State<FangFormular> createState() => _FangFormularState();
 }
 
 class _FangFormularState extends State<FangFormular> {
-  late String _fischId = widget.fang?.fischId ?? fische.first.id;
+  late String _fischId = widget.fang?.fischId ??
+      (widget.vorFischId != null && fischById(widget.vorFischId!) != null
+          ? widget.vorFischId!
+          : fische.first.id);
   late DateTime _datum = widget.fang?.datum ?? DateTime.now();
   late bool _zurueck = widget.fang?.zurueckgesetzt ?? false;
   late bool _oeffentlich = widget.fang?.oeffentlich ?? true;

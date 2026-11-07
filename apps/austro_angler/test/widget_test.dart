@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:austro_angler/data/fische.dart';
 import 'package:austro_angler/data/gewicht.dart';
 import 'package:austro_angler/services/csv_export.dart';
@@ -14,6 +16,8 @@ import 'package:austro_angler/models/fisch.dart';
 import 'package:austro_angler/screens/kalender_screen.dart';
 import 'package:austro_angler/screens/regeln_screen.dart';
 import 'package:austro_angler/services/live_angeln.dart';
+import 'package:austro_angler/services/ki.dart';
+import 'package:austro_angler/screens/petri_screen.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/konto.dart';
 import 'package:austro_angler/services/speicher.dart';
@@ -314,5 +318,91 @@ void main() {
       expect(RegelStatus.von(f, Bundesland.values.first, DateTime(2026, 8, 1)),
           RegelStatus.geschuetzt);
     }
+  });
+
+  test('Petri-KI: Kontext enthält Tag, Regeln und Fangbuch', () {
+    final k = kiKontext(
+      jetzt: DateTime(2026, 11, 7, 18, 5),
+      land: Bundesland.values.firstWhere((b) => b.name == 'Oberösterreich'),
+      heimat: 'Braunau am Inn',
+      lieblinge: const ['hecht'],
+      faenge: [
+        Fang(id: 'a', fischId: 'hecht', datum: DateTime(2026, 11, 6),
+            laengeCm: 78, gewaesser: 'Inn', bundesland: 'Oberösterreich',
+            koeder: 'Gummifisch'),
+      ],
+    );
+    expect(k, contains('Samstag, 7.11.2026, 18:05 Uhr'));
+    expect(k, contains('Bundesland: Oberösterreich'));
+    expect(k, contains('Lieblingsfische: Hecht'));
+    expect(k, contains('Beste Köder: Gummifisch (1)'));
+    expect(k, contains('Hecht: offen · 1.2. – 30.4. · 60 cm'));
+    expect(k.length, lessThan(20000));
+  });
+
+  test('Petri-KI: Foto-Ergebnis und Bildformat', () {
+    final e = FotoErgebnis.ausJson({
+      'erkannt': true,
+      'fisch_id': 'zander',
+      'sicherheit': 'mittel',
+      'merkmale': ['Glasaugen', ''],
+      'alternativen': [
+        {'fisch_id': 'flussbarsch', 'grund': 'Stachelige Rückenflosse'},
+        {'fisch_id': 'delfin', 'grund': 'gibt es nicht'},
+      ],
+    });
+    expect(e.erkannt, isTrue);
+    expect(e.sicherheitText, 'ziemlich sicher');
+    expect(e.merkmale, ['Glasaugen']);
+    expect(e.alternativen.length, 1);
+    expect(FotoErgebnis.ausJson({'erkannt': true, 'fisch_id': 'delfin'}).erkannt,
+        isFalse);
+    expect(bildTyp(Uint8List.fromList([0xFF, 0xD8, 0xFF, 0xE0, 0])), 'image/jpeg');
+    expect(bildTyp(Uint8List.fromList([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, 0])),
+        'image/png');
+    expect(bildTyp(Uint8List.fromList([1, 2, 3, 4, 5])), isNull);
+  });
+
+  testWidgets('Petri-KI: Frage, Antwort und Tageslimit', (tester) async {
+    fernKonfig.uebernehmen(FernDaten(ein: const {'ki'}));
+    addTearDown(() => fernKonfig.uebernehmen(FernDaten()));
+    final gesendet = <Map<String, dynamic>>[];
+    var limit = false;
+    PetriKi.testServer = (body) async {
+      gesendet.add(body);
+      if (limit) return (429, <String, dynamic>{'fehler': 'limit', 'rest': 0});
+      return (200, <String, dynamic>{'antwort': 'Probier es mit **Gummifisch**.', 'rest': 19});
+    };
+    addTearDown(() {
+      PetriKi.testServer = null;
+      petriKi.neuerChat();
+      petriKi.rest = null;
+    });
+    SharedPreferences.setMockInitialValues({'einfuehrung': true, 'wasIstNeu': 99});
+    final speicher = await Speicher.oeffnen();
+    await tester.pumpWidget(AustroAnglerApp(speicher: speicher));
+    await tester.pump();
+    tester.state<NavigatorState>(find.byType(Navigator).first).push(
+        MaterialPageRoute(builder: (_) => const PetriScreen()));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text(petriBeispiele.first));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Gummifisch', findRichText: true), findsOneWidget);
+    expect(find.text('Heute noch 19 KI-Fragen'), findsOneWidget);
+    final erste = gesendet.single;
+    expect(erste['modus'], 'chat');
+    expect(erste['kontext'], contains('Bundesland:'));
+    expect((erste['verlauf'] as List).single['text'], petriBeispiele.first);
+
+    limit = true;
+    await tester.enterText(find.byType(TextField), 'Und morgen?');
+    await tester.tap(find.byTooltip('Senden'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('aufgebraucht'), findsOneWidget);
+    // Die Frage bleibt im Eingabefeld, der Verlauf bleibt gültig.
+    expect(find.widgetWithText(TextField, 'Und morgen?'), findsOneWidget);
+    expect(petriKi.verlauf.length, 2);
+    expect((gesendet.last['verlauf'] as List).length, 3);
   });
 }

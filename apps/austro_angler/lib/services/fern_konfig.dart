@@ -8,10 +8,15 @@ import '../models/bundesland.dart';
 import '../models/fisch.dart';
 import 'alle_gewaesser.dart';
 
+/// Funktionen, die erst eingeschaltet werden müssen (Standard: aus) –
+/// z. B. weil sie erst am Server eingerichtet werden.
+const fernOptIn = {'ki'};
+
 /// Funktionen, die der Admin aus der Ferne abschalten kann (Schlüssel → Name).
 const fernFunktionen = <String, String>{
   'darf_ich': 'Darf ich …?',
   'zielfisch': 'Zielfisch',
+  'ki': 'Petri-KI (Chat + Foto-Erkennung)',
   'live_angeln': 'Live-Angeln',
   'regeln': 'Regeln heute',
   'fischerkarte': 'Fischerkarte',
@@ -40,12 +45,16 @@ typedef GewaesserKorrektur = ({LatLng? position, String? hinweis});
 class FernDaten {
   FernDaten({
     this.aus = const {},
+    this.ein = const {},
     this.banner,
     this.gewaesser = const {},
     this.schonzeiten = const {},
   });
 
   final Set<String> aus;
+
+  /// Eingeschaltete Opt-in-Funktionen (siehe [fernOptIn]).
+  final Set<String> ein;
   final FernBanner? banner;
   final Map<String, GewaesserKorrektur> gewaesser;
   final Map<String, Map<Bundesland, Regel>> schonzeiten;
@@ -56,6 +65,10 @@ class FernDaten {
     if (d == null) return FernDaten();
     final aus = <String>{
       for (final a in (d['aus'] as List?) ?? const [])
+        if (a is String) a,
+    };
+    final ein = <String>{
+      for (final a in (d['an'] as List?) ?? const [])
         if (a is String) a,
     };
 
@@ -104,7 +117,11 @@ class FernDaten {
       }
     }
     return FernDaten(
-        aus: aus, banner: banner, gewaesser: gewaesser, schonzeiten: schonzeiten);
+        aus: aus,
+        ein: ein,
+        banner: banner,
+        gewaesser: gewaesser,
+        schonzeiten: schonzeiten);
   }
 
   static Regel? _regel(Map r) {
@@ -158,12 +175,21 @@ class FernKonfig extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool an(String funktion) => !daten.aus.contains(funktion);
+  bool an(String funktion) => fernOptIn.contains(funktion)
+      ? daten.ein.contains(funktion) && !daten.aus.contains(funktion)
+      : !daten.aus.contains(funktion);
 
   // ── Nur Admin (siehe Regeln) ──
 
   Future<void> funktionSetzen(String funktion, {required bool an}) =>
-      _doc.set({
+      fernOptIn.contains(funktion)
+          ? _doc.set({
+              'an': an
+                  ? FieldValue.arrayUnion([funktion])
+                  : FieldValue.arrayRemove([funktion]),
+              'aus': FieldValue.arrayRemove([funktion]),
+            }, SetOptions(merge: true))
+          : _doc.set({
         'aus': an
             ? FieldValue.arrayRemove([funktion])
             : FieldValue.arrayUnion([funktion]),

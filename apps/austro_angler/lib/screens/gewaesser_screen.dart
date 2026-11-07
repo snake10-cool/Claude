@@ -1575,7 +1575,8 @@ class SchonzeitCountdown extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: SizedBox(
-        height: 64,
+        // Platz für zwei Zeilen – auch mit der höheren Schrift im neuen Design.
+        height: 74,
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: [

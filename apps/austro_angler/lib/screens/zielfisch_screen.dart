@@ -14,6 +14,7 @@ import '../services/wetter.dart';
 import 'darf_ich_screen.dart';
 import 'gewaesser_screen.dart';
 import '../services/fern_konfig.dart';
+import 'petri_screen.dart';
 import 'widgets.dart';
 
 /// „Ich will Hecht“ → wo, wann, womit.
@@ -70,6 +71,20 @@ class _ZielfischScreenState extends State<ZielfischScreen> {
               if (f != null) ...[
                 const SizedBox(height: 16),
                 _Heute(f),
+                if (funktionAn('ki'))
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: OutlinedButton.icon(
+                      onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (_) => PetriScreen(
+                                  frage: 'Gib mir 3 konkrete Tipps, wie ich '
+                                      'heute ${f.name.split(' (').first} fange: '
+                                      'Köder, Uhrzeit und Stelle.'))),
+                      icon: const Icon(Icons.auto_awesome_outlined),
+                      label: const Text('KI-Tipp für heute'),
+                    ),
+                  ),
                 const SizedBox(height: 8),
                 _Koeder(f),
                 const SizedBox(height: 8),
