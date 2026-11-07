@@ -15,6 +15,7 @@ dependencies:
     sdk: flutter
   flutter_local_notifications: ^22.3.1
   flutter_map: ^8.3.2
+  google_maps_flutter: ^2.19.0
   home_widget: ^0.10.0
   http: ^1.6.0
   image_picker: ^1.2.3
@@ -46,6 +47,29 @@ flutter:
     - assets/bilder/knoten/
     - assets/icon/app.png
     - assets/daten/gewaesser_at.json.gz
+    - assets/schriften/OFL-BebasNeue.txt
+    - assets/schriften/OFL-Barlow.txt
+  fonts:
+    - family: BebasNeue
+      fonts:
+        - asset: assets/schriften/BebasNeue-Regular.ttf
+    - family: BarlowCondensed
+      fonts:
+        - asset: assets/schriften/BarlowCondensed-Medium.ttf
+          weight: 500
+        - asset: assets/schriften/BarlowCondensed-SemiBold.ttf
+          weight: 600
+        - asset: assets/schriften/BarlowCondensed-Bold.ttf
+          weight: 700
+    - family: Barlow
+      fonts:
+        - asset: assets/schriften/Barlow-Regular.ttf
+        - asset: assets/schriften/Barlow-Medium.ttf
+          weight: 500
+        - asset: assets/schriften/Barlow-SemiBold.ttf
+          weight: 600
+        - asset: assets/schriften/Barlow-Bold.ttf
+          weight: 700
 
 flutter_launcher_icons:
   android: true

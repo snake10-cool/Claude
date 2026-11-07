@@ -12,9 +12,11 @@ import 'screens/fangbuch_screen.dart';
 import 'screens/gewaesser_screen.dart';
 import 'screens/aktivitaeten_screen.dart';
 import 'screens/heute_screen.dart';
+import 'screens/karte_screen.dart';
 import 'screens/neu_screen.dart';
 import 'screens/konto_screen.dart';
 import 'screens/mehr_screen.dart';
+import 'design.dart';
 import 'services/abo.dart';
 import 'services/alle_gewaesser.dart';
 import 'services/hintergrund.dart';
@@ -24,6 +26,7 @@ import 'services/wecker.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  schriftLizenzenEintragen();
   final speicher = await Speicher.oeffnen();
   // Schonzeit-Wecker für das nächste Jahr neu planen (im Hintergrund).
   Wecker.instanz.alleEinplanen(speicher.bundesland).catchError((_) {});
@@ -69,25 +72,6 @@ class KontoScope extends InheritedNotifier<Konto> {
       context.dependOnInheritedWidgetOfExactType<KontoScope>()?.notifier;
 }
 
-ThemeData _thema(Color farbe, Brightness helligkeit) => ThemeData(
-  colorSchemeSeed: farbe,
-  brightness: helligkeit,
-  useMaterial3: true,
-  // Am Handy übernimmt das System die Emojis; im Test (Store-Screenshots)
-  // braucht es die Schrift ausdrücklich.
-  fontFamilyFallback: const ['NotoColorEmoji'],
-  // Kleinere Beschriftung, damit "Gewässer" & Co. nicht umbrechen.
-  navigationBarTheme: const NavigationBarThemeData(
-    labelTextStyle: WidgetStatePropertyAll(
-      TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
-    ),
-  ),
-  tabBarTheme: const TabBarThemeData(
-    labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-    unselectedLabelStyle: TextStyle(fontSize: 13),
-  ),
-);
-
 class AustroAnglerApp extends StatelessWidget {
   const AustroAnglerApp({super.key, required this.speicher, this.konto});
 
@@ -96,29 +80,32 @@ class AustroAnglerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const farbe = Color(0xFF1E6F5C);
     return SpeicherScope(
       speicher: speicher,
       child: KontoScope(
         konto: konto,
-        child: MaterialApp(
-          title: 'Austro Angler',
-          debugShowCheckedModeBanner: false,
-          theme: _thema(farbe, Brightness.light),
-          darkTheme: _thema(farbe, Brightness.dark),
-          home: const _Weiche(),
-          // Jungangler-Modus: etwas größere Schrift.
-          builder: (context, kind) => ListenableBuilder(
-            listenable: Listenable.merge([speicher, fernKonfig]),
-            builder: (context, _) => speicher.jungangler
-                ? MediaQuery(
-                    data: MediaQuery.of(context).copyWith(
-                      textScaler: MediaQuery.textScalerOf(context)
-                          .clamp(minScaleFactor: 1.15),
-                    ),
-                    child: kind!,
-                  )
-                : kind!,
+        child: ListenableBuilder(
+          listenable: speicher,
+          builder: (context, _) => MaterialApp(
+            title: 'Austro Angler',
+            debugShowCheckedModeBanner: false,
+            theme: designThema(speicher.design, Brightness.light),
+            darkTheme: designThema(speicher.design, Brightness.dark),
+            themeMode: speicher.darstellung.modus,
+            home: const _Weiche(),
+            // Jungangler-Modus: etwas größere Schrift.
+            builder: (context, kind) => ListenableBuilder(
+              listenable: Listenable.merge([speicher, fernKonfig]),
+              builder: (context, _) => speicher.jungangler
+                  ? MediaQuery(
+                      data: MediaQuery.of(context).copyWith(
+                        textScaler: MediaQuery.textScalerOf(context)
+                            .clamp(minScaleFactor: 1.15),
+                      ),
+                      child: kind!,
+                    )
+                  : kind!,
+            ),
           ),
         ),
       ),
@@ -168,13 +155,20 @@ class _StartseiteState extends State<Startseite> {
       if (!speicher.einfuehrungGesehen) {
         // Neu installiert: Einführung statt „Was ist neu?“.
         speicher.wasIstNeuErledigt(neuigkeitenStand);
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).push(
+          MaterialPageRoute(
             fullscreenDialog: true,
-            builder: (_) => const EinfuehrungScreen()));
+            builder: (_) => const EinfuehrungScreen(),
+          ),
+        );
       } else if (speicher.wasIstNeuGesehen < neuigkeitenStand) {
         speicher.wasIstNeuErledigt(neuigkeitenStand);
-        Navigator.of(context).push(MaterialPageRoute(
-            fullscreenDialog: true, builder: (_) => const NeuScreen()));
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            fullscreenDialog: true,
+            builder: (_) => const NeuScreen(),
+          ),
+        );
       }
       updatePruefen(ScaffoldMessenger.of(context));
     });
@@ -183,6 +177,7 @@ class _StartseiteState extends State<Startseite> {
   static const _seiten = [
     HeuteScreen(),
     GewaesserScreen(),
+    KarteScreen(),
     FangbuchScreen(),
     CommunityScreen(),
     MehrScreen(),
@@ -194,7 +189,9 @@ class _StartseiteState extends State<Startseite> {
       body: Column(
         children: [
           const _OfflineHinweis(),
-          Expanded(child: IndexedStack(index: _index, children: _seiten)),
+          Expanded(
+            child: IndexedStack(index: _index, children: _seiten),
+          ),
           const _FernBanner(),
         ],
       ),
@@ -209,6 +206,7 @@ class _StartseiteState extends State<Startseite> {
           destinations: [
             NavigationDestination(icon: Icon(Icons.today), label: 'Heute'),
             NavigationDestination(icon: Icon(Icons.water), label: 'Gewässer'),
+            NavigationDestination(icon: Icon(Icons.map), label: 'Karte'),
             NavigationDestination(icon: Icon(Icons.book), label: 'Fangbuch'),
             NavigationDestination(
               icon: NeuigkeitenZaehler(
@@ -239,18 +237,24 @@ class _FernBanner extends StatelessWidget {
     if (b == null || speicher.bannerWeg == b.id) return const SizedBox.shrink();
     final farben = Theme.of(context).colorScheme;
     final grund = b.warnung ? farben.errorContainer : farben.secondaryContainer;
-    final schrift =
-        b.warnung ? farben.onErrorContainer : farben.onSecondaryContainer;
+    final schrift = b.warnung
+        ? farben.onErrorContainer
+        : farben.onSecondaryContainer;
     return Material(
       color: grund,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
         child: Row(
           children: [
-            Icon(b.warnung ? Icons.warning_amber : Icons.info_outline,
-                color: schrift, size: 20),
+            Icon(
+              b.warnung ? Icons.warning_amber : Icons.info_outline,
+              color: schrift,
+              size: 20,
+            ),
             const SizedBox(width: 8),
-            Expanded(child: Text(b.text, style: TextStyle(color: schrift))),
+            Expanded(
+              child: Text(b.text, style: TextStyle(color: schrift)),
+            ),
             IconButton(
               tooltip: 'Ausblenden',
               icon: Icon(Icons.close, color: schrift, size: 20),
@@ -274,7 +278,8 @@ class _OfflineHinweis extends StatelessWidget {
     return StreamBuilder<List<ConnectivityResult>>(
       stream: _stream,
       builder: (context, snap) {
-        final offline = snap.data != null &&
+        final offline =
+            snap.data != null &&
             snap.data!.every((r) => r == ConnectivityResult.none);
         if (!offline) return const SizedBox.shrink();
         return Material(

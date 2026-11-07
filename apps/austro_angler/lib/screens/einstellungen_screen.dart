@@ -5,6 +5,7 @@ import '../main.dart';
 import 'glossar_screen.dart';
 import 'heimat_screen.dart';
 import 'widgets.dart';
+import '../design.dart';
 
 class EinstellungenScreen extends StatefulWidget {
   const EinstellungenScreen({super.key});
@@ -33,6 +34,42 @@ class _EinstellungenScreenState extends State<EinstellungenScreen> {
               trailing: const Icon(Icons.chevron_right),
               onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const HeimatScreen())),
+            ),
+          ),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Titel('🎨 Aussehen'),
+                  const SizedBox(height: 8),
+                  Text('Design', style: text.titleSmall),
+                  const SizedBox(height: 4),
+                  SegmentedButton<AppDesign>(
+                    showSelectedIcon: false,
+                    segments: [
+                      for (final d in AppDesign.values)
+                        ButtonSegment(value: d, label: Text(d.titel)),
+                    ],
+                    selected: {speicher.design},
+                    onSelectionChanged: (s) => speicher.designSetzen(s.first),
+                  ),
+                  const SizedBox(height: 12),
+                  Text('Hell oder dunkel', style: text.titleSmall),
+                  const SizedBox(height: 4),
+                  SegmentedButton<Darstellung>(
+                    showSelectedIcon: false,
+                    segments: [
+                      for (final d in Darstellung.values)
+                        ButtonSegment(value: d, label: Text(d.titel)),
+                    ],
+                    selected: {speicher.darstellung},
+                    onSelectionChanged: (s) =>
+                        speicher.darstellungSetzen(s.first),
+                  ),
+                ],
+              ),
             ),
           ),
           Card(

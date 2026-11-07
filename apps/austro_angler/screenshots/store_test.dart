@@ -70,7 +70,8 @@ List<Map<String, dynamic>> _beispielFaenge() {
   ];
 }
 
-Future<void> _starten(WidgetTester tester) async {
+Future<void> _starten(WidgetTester tester,
+    {Map<String, Object> extra = const {}}) async {
   tester.view.physicalSize = const Size(1080, 1920);
   tester.view.devicePixelRatio = 2.75;
   addTearDown(tester.view.reset);
@@ -87,6 +88,7 @@ Future<void> _starten(WidgetTester tester) async {
       for (final c in challengesDerWoche(DateTime.now()))
         challengeSchluessel(DateTime.now(), c),
     ],
+    ...extra,
   });
   final speicher = await Speicher.oeffnen();
   // Store-Bilder zeigen die App mit Premium.
@@ -145,6 +147,19 @@ void main() {
       '$_schriften/Roboto-Bold.ttf',
     ]);
     await _schrift('MaterialIcons', ['$_schriften/MaterialIcons-Regular.otf']);
+    // Schriften des neuen Designs.
+    await _schrift('BebasNeue', ['assets/schriften/BebasNeue-Regular.ttf']);
+    await _schrift('BarlowCondensed', [
+      'assets/schriften/BarlowCondensed-Medium.ttf',
+      'assets/schriften/BarlowCondensed-SemiBold.ttf',
+      'assets/schriften/BarlowCondensed-Bold.ttf',
+    ]);
+    await _schrift('Barlow', [
+      'assets/schriften/Barlow-Regular.ttf',
+      'assets/schriften/Barlow-Medium.ttf',
+      'assets/schriften/Barlow-SemiBold.ttf',
+      'assets/schriften/Barlow-Bold.ttf',
+    ]);
     await _schrift(
         'NotoColorEmoji', ['/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf']);
   });
@@ -235,4 +250,15 @@ void main() {
     await _oeffnen(tester, const NeuScreen());
     await _foto(tester, '13_neu');
   });
+
+  for (final (design, hell) in [
+    ('neu', 'dunkel'),
+    ('neu', 'hell'),
+    ('klassisch', 'dunkel'),
+  ]) {
+    testWidgets('Design $design $hell', (tester) async {
+      await _starten(tester, extra: {'design': design, 'darstellung': hell});
+      await _foto(tester, 'design_${design}_$hell');
+    });
+  }
 }

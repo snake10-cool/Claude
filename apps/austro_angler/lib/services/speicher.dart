@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../design.dart';
+
 import '../models/bundesland.dart';
 import '../models/fang.dart';
 
@@ -46,6 +48,10 @@ class Speicher extends ChangeNotifier {
   /// Einführung beim ersten Start schon gezeigt?
   bool einfuehrungGesehen = false;
 
+  /// Aussehen: Design und hell/dunkel (unabhängig voneinander).
+  AppDesign design = AppDesign.klassisch;
+  Darstellung darstellung = Darstellung.system;
+
   /// Zuletzt weggeklicktes Fern-Banner (dessen ID).
   String bannerWeg = '';
 
@@ -75,6 +81,13 @@ class Speicher extends ChangeNotifier {
     heimatLon = _prefs.getDouble('heimatLon');
     jungangler = _prefs.getBool('jungangler') ?? false;
     einfuehrungGesehen = _prefs.getBool('einfuehrung') ?? false;
+    // Neue Installationen starten im neuen Design, bisherige Nutzer behalten
+    // ihr gewohntes, bis sie selbst umschalten.
+    design = AppDesign.values.asNameMap()[_prefs.getString('design')] ??
+        (einfuehrungGesehen ? AppDesign.klassisch : AppDesign.neu);
+    darstellung =
+        Darstellung.values.asNameMap()[_prefs.getString('darstellung')] ??
+            Darstellung.system;
     wasIstNeuGesehen = _prefs.getInt('wasIstNeu') ?? 0;
     bannerWeg = _prefs.getString('bannerWeg') ?? '';
     neuigkeitenGesehen = DateTime.fromMillisecondsSinceEpoch(
@@ -129,6 +142,18 @@ class Speicher extends ChangeNotifier {
   Future<void> wasIstNeuErledigt(int stand) async {
     wasIstNeuGesehen = stand;
     await _prefs.setInt('wasIstNeu', stand);
+  }
+
+  Future<void> designSetzen(AppDesign d) async {
+    design = d;
+    notifyListeners();
+    await _prefs.setString('design', d.name);
+  }
+
+  Future<void> darstellungSetzen(Darstellung d) async {
+    darstellung = d;
+    notifyListeners();
+    await _prefs.setString('darstellung', d.name);
   }
 
   Future<void> einfuehrungErledigt() async {

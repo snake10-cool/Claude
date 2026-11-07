@@ -13,6 +13,7 @@ const fernFunktionen = <String, String>{
   'darf_ich': 'Darf ich …?',
   'zielfisch': 'Zielfisch',
   'wetter': 'Wetter & Beißzeit',
+  'karte': 'Karte',
   'feed': 'Community-Feed',
   'angeltage': 'Angeltage',
   'wettfischen': 'Eigene Wettfischen',
