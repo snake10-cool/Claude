@@ -35,6 +35,10 @@ const _seiten = [
   _Seite('👥', 'Gemeinsam fischen',
       'Fänge teilen, Petri Heil geben, Freunde finden, Angeltage mit '
           'Fahrgemeinschaft ausmachen und in der Rangliste mitmischen.'),
+  _Seite('🏆', 'Werd zum Huchen-König',
+      'Mit der Angel-Karriere sammelst du Punkte und steigst im Rang auf. '
+          'Der Beißindex und der Angelplaner zeigen dir die besten Tage, '
+          'Live-Angeln schreibt deinen Angeltag mit.'),
 ];
 
 class _EinfuehrungScreenState extends State<EinfuehrungScreen> {
