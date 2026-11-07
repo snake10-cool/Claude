@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:austro_angler/data/fische.dart';
@@ -22,6 +23,8 @@ import 'package:austro_angler/services/angelplaner.dart';
 import 'package:austro_angler/services/abzeichen.dart';
 import 'package:austro_angler/screens/karriere_screen.dart';
 import 'package:austro_angler/screens/petri_screen.dart';
+import 'package:austro_angler/screens/live_angeln_screen.dart';
+import 'package:austro_angler/screens/fangbuch_screen.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
 import 'package:austro_angler/services/konto.dart';
 import 'package:austro_angler/services/speicher.dart';
@@ -290,10 +293,10 @@ void main() {
     final start = DateTime(2026, 6, 1, 6);
     final s = Sitzung(start: start, gewaesser: 'Wörthersee', koeder: 'Wurm');
     s.eintraege.addAll([
-      (zeit: start.add(const Duration(minutes: 10)), art: Ereignis.biss, text: 'Wurm'),
-      (zeit: start.add(const Duration(minutes: 20)), art: Ereignis.koeder, text: 'Spinner'),
-      (zeit: start.add(const Duration(minutes: 30)), art: Ereignis.fang, text: 'Spinner'),
-      (zeit: start.add(const Duration(minutes: 40)), art: Ereignis.notiz, text: 'Wind'),
+      (zeit: start.add(const Duration(minutes: 10)), art: Ereignis.biss, text: 'Wurm', mit: false),
+      (zeit: start.add(const Duration(minutes: 20)), art: Ereignis.koeder, text: 'Spinner', mit: false),
+      (zeit: start.add(const Duration(minutes: 30)), art: Ereignis.fang, text: 'Spinner', mit: false),
+      (zeit: start.add(const Duration(minutes: 40)), art: Ereignis.notiz, text: 'Wind', mit: false),
     ]);
     final ende = start.add(const Duration(hours: 2));
     expect(s.zaehle(Ereignis.biss), 1);
@@ -305,6 +308,20 @@ void main() {
     expect(kopie.gewaesser, 'Wörthersee');
     expect(kopie.eintraege.length, 4);
     expect(kopie.eintraege[2].art, Ereignis.fang);
+
+    // Tageslimit: nur mitgenommene Fische zählen.
+    final mitLimit = Sitzung(start: start, gewaesser: 'Inn', koeder: '', limit: 2)
+      ..eintraege.addAll([
+        (zeit: start, art: Ereignis.fang, text: '', mit: true),
+        (zeit: start, art: Ereignis.fang, text: '', mit: false),
+      ]);
+    expect(mitLimit.mitgenommen, 1);
+    expect(mitLimit.limitErreicht, isFalse);
+    mitLimit.eintraege.add((zeit: start, art: Ereignis.fang, text: '', mit: true));
+    expect(mitLimit.limitErreicht, isTrue);
+    final json = Sitzung.fromJson(jsonDecode(jsonEncode(mitLimit.toJson())) as Map<String, dynamic>)!;
+    expect(json.limit, 2);
+    expect(json.mitgenommen, 2);
   });
 
   test('Regeln heute: Status passt zu den Regeln', () {
@@ -501,5 +518,46 @@ void main() {
     // Ist das Zeitfenster heute schon vorbei, zählt der Tag nicht mehr.
     final spaet = besterTermin(plan, jetzt: DateTime(2026, 11, 10, 23));
     expect(spaet!.tag.tag, isNot(DateTime(2026, 11, 10)));
+  });
+
+  testWidgets('Live-Angeln: Fang aus dem Formular zählt fürs Tageslimit',
+      (tester) async {
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 2.5;
+    addTearDown(tester.view.reset);
+    SharedPreferences.setMockInitialValues({'einfuehrung': true, 'wasIstNeu': 99});
+    final speicher = await Speicher.oeffnen();
+    liveAngeln.sitzung = Sitzung(
+        start: DateTime.now().subtract(const Duration(hours: 1)),
+        gewaesser: 'Inn',
+        koeder: 'Wurm',
+        limit: 1);
+    addTearDown(() => liveAngeln.sitzung = null);
+    await tester.pumpWidget(AustroAnglerApp(speicher: speicher));
+    await tester.pump();
+    tester.state<NavigatorState>(find.byType(Navigator).first).push(
+        MaterialPageRoute(builder: (_) => const LiveAngelnScreen()));
+    for (var i = 0; i < 5; i++) {
+      await tester.pump(const Duration(milliseconds: 200));
+    }
+    expect(find.text('Mitgenommen: 0 von 1'), findsOneWidget);
+    await tester.tap(find.text('Fang'));
+    for (var i = 0; i < 5; i++) {
+      await tester.pump(const Duration(milliseconds: 200));
+    }
+    final speichern = find.widgetWithText(FilledButton, 'Speichern');
+    await tester.scrollUntilVisible(speichern, 300,
+        scrollable: find
+            .descendant(
+                of: find.byType(FangFormular), matching: find.byType(Scrollable))
+            .first);
+    await tester.tap(speichern);
+    for (var i = 0; i < 10; i++) {
+      await tester.pump(const Duration(milliseconds: 200));
+    }
+    expect(speicher.faenge.length, 1);
+    expect(liveAngeln.sitzung!.mitgenommen, 1);
+    expect(find.text('Mitgenommen: 1 von 1'), findsOneWidget);
+    expect(find.textContaining('Tageslimit erreicht'), findsWidgets);
   });
 }

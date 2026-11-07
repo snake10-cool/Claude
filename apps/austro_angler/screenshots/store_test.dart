@@ -312,10 +312,11 @@ void main() {
 
   testWidgets('16 Live-Angeln', (tester) async {
     final start = DateTime.now().subtract(const Duration(hours: 2, minutes: 14));
-    Map<String, String> e(int min, String art, String text) => {
+    Map<String, Object> e(int min, String art, String text) => {
           'zeit': start.add(Duration(minutes: min)).toIso8601String(),
           'art': art,
           'text': text,
+          if (art == 'fang') 'mit': true,
         };
     await _starten(tester, extra: {
       ...neuDunkel,
@@ -323,6 +324,7 @@ void main() {
         'start': start.toIso8601String(),
         'gewaesser': 'Inn bei Braunau',
         'koeder': 'Gummifisch 10 cm',
+        'limit': 2,
         'eintraege': [
           e(18, 'biss', 'Spinner Gr. 3'),
           e(41, 'koeder', 'Gummifisch 10 cm'),

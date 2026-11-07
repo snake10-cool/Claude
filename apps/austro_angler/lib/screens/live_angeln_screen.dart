@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../design.dart';
 import '../main.dart';
+import '../models/fang.dart';
 import '../services/fang_dienst.dart';
 import '../services/live_angeln.dart';
 import '../services/fern_konfig.dart';
@@ -23,6 +24,7 @@ class LiveAngelnScreen extends StatefulWidget {
 class _LiveAngelnScreenState extends State<LiveAngelnScreen> {
   String _gewaesser = '';
   final _koeder = TextEditingController();
+  final _limit = TextEditingController();
   Timer? _uhr;
 
   @override
@@ -39,6 +41,7 @@ class _LiveAngelnScreenState extends State<LiveAngelnScreen> {
   void dispose() {
     _uhr?.cancel();
     _koeder.dispose();
+    _limit.dispose();
     super.dispose();
   }
 
@@ -68,13 +71,24 @@ class _LiveAngelnScreenState extends State<LiveAngelnScreen> {
   }
 
   Future<void> _fang(Sitzung s) async {
-    final gespeichert = await Navigator.of(context).push<bool>(
+    final ergebnis = await Navigator.of(context).push<Object?>(
       MaterialPageRoute(
         builder: (_) => FangFormular(
             vorGewaesser: s.gewaesser, vorKoeder: s.koeder),
       ),
     );
-    if (gespeichert == true) await liveAngeln.eintragen(Ereignis.fang);
+    if (ergebnis is! Fang) return;
+    final mit = !ergebnis.zurueckgesetzt;
+    final schonVoll = s.limitErreicht;
+    await liveAngeln.eintragen(Ereignis.fang, null, mit);
+    if (!mounted || !mit || s.limit == null) return;
+    if (schonVoll) {
+      meldung(context,
+          'Achtung: Dein Tageslimit von ${s.limit} Fischen war schon erreicht!');
+    } else if (s.limitErreicht) {
+      meldung(context,
+          'Tageslimit erreicht (${s.limit} Fische) – ab jetzt nur noch zurücksetzen.');
+    }
   }
 
   Future<void> _beenden() async {
@@ -170,6 +184,16 @@ class _LiveAngelnScreenState extends State<LiveAngelnScreen> {
             prefixIcon: Icon(Icons.phishing),
           ),
         ),
+        const SizedBox(height: 12),
+        TextField(
+          controller: _limit,
+          keyboardType: TextInputType.number,
+          decoration: const InputDecoration(
+            labelText: 'Tageslimit laut Revier (optional)',
+            hintText: 'z. B. 2 – so viele Fische dürfen mit',
+            prefixIcon: Icon(Icons.shopping_basket_outlined),
+          ),
+        ),
         const SizedBox(height: 20),
         FilledButton.icon(
           onPressed: () {
@@ -177,7 +201,8 @@ class _LiveAngelnScreenState extends State<LiveAngelnScreen> {
               meldung(context, 'Bitte zuerst ein Gewässer wählen.');
               return;
             }
-            liveAngeln.starten(_gewaesser, _koeder.text);
+            liveAngeln.starten(_gewaesser, _koeder.text,
+                limit: int.tryParse(_limit.text.trim()));
           },
           icon: const Icon(Icons.play_arrow),
           label: const Text('Los geht’s'),
@@ -221,6 +246,7 @@ class _LiveAngelnScreenState extends State<LiveAngelnScreen> {
             _Zahl('BISSE/H', s.bisseProStunde(jetzt).toStringAsFixed(1)),
           ],
         ),
+        if (s.limit != null) _Limit(s),
         Card(
           child: ListTile(
             leading: const Text('🪝', style: TextStyle(fontSize: 24)),
@@ -322,6 +348,35 @@ String _zusammenfassungText(Sitzung s, DateTime ende) {
     '${s.zaehle(Ereignis.biss)} Bisse, ${s.zaehle(Ereignis.fang)} Fänge',
     if (koeder != null) 'Bester Köder: $koeder',
   ].join(' · ');
+}
+
+/// Tageslimit: mitgenommene Fische von erlaubten.
+class _Limit extends StatelessWidget {
+  const _Limit(this.s);
+
+  final Sitzung s;
+
+  @override
+  Widget build(BuildContext context) {
+    final schema = Theme.of(context).colorScheme;
+    final voll = s.limitErreicht;
+    return Card(
+      color: voll ? schema.errorContainer : null,
+      child: ListTile(
+        leading: Text(voll ? '⛔' : '🧺', style: const TextStyle(fontSize: 24)),
+        title: Text('Mitgenommen: ${s.mitgenommen} von ${s.limit}',
+            style: TextStyle(color: voll ? schema.onErrorContainer : null)),
+        subtitle: Text(
+          voll
+              ? 'Tageslimit erreicht – ab jetzt nur noch zurücksetzen.'
+              : s.limit! - s.mitgenommen == 1
+                  ? 'Noch 1 Fisch darf mit.'
+                  : 'Noch ${s.limit! - s.mitgenommen} Fische dürfen mit.',
+          style: TextStyle(color: voll ? schema.onErrorContainer : null),
+        ),
+      ),
+    );
+  }
 }
 
 class _Zahl extends StatelessWidget {

@@ -636,6 +636,7 @@ class _FangFormularState extends State<FangFormular> {
     }
     setState(() => _speichert = true);
     try {
+      final Fang gespeichert;
       if (_online) {
         if (widget.fang == null) _neueId ??= fangDienst.neueFangId();
         var fang = _ausFormular(widget.fang?.id ?? _neueId!);
@@ -656,14 +657,14 @@ class _FangFormularState extends State<FangFormular> {
         if (_ortGeaendert) {
           await fangDienst.fangortSpeichern(fang.uid, id, _ort);
         }
+        gespeichert = fang;
       } else {
         final speicher = SpeicherScope.of(context);
-        await speicher.fangSpeichern(
-          _ausFormular(widget.fang?.id ?? speicher.neueId()),
-        );
+        gespeichert = _ausFormular(widget.fang?.id ?? speicher.neueId());
+        await speicher.fangSpeichern(gespeichert);
       }
-      // true = gespeichert (z. B. für Live-Angeln).
-      if (mounted) Navigator.pop(context, true);
+      // Der gespeicherte Fang als Ergebnis (z. B. für Live-Angeln).
+      if (mounted) Navigator.pop(context, gespeichert);
     } catch (e) {
       if (mounted) {
         setState(() => _speichert = false);
@@ -834,10 +835,14 @@ class _FangFormularState extends State<FangFormular> {
           ],
           DropdownButtonFormField<String>(
             initialValue: _fischId,
+            // Lange Artnamen kürzen statt über den Rand zu ragen.
+            isExpanded: true,
             decoration: const InputDecoration(labelText: 'Fischart'),
             items: [
               for (final f in fische)
-                DropdownMenuItem(value: f.id, child: Text(f.name)),
+                DropdownMenuItem(
+                    value: f.id,
+                    child: Text(f.name, overflow: TextOverflow.ellipsis)),
             ],
             onChanged: (v) => setState(() => _fischId = v!),
           ),

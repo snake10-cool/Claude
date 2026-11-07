@@ -15,7 +15,8 @@ enum Ereignis {
   final String titel;
 }
 
-typedef Eintrag = ({DateTime zeit, Ereignis art, String text});
+/// [mit]: bei einem Fang, ob der Fisch mitgenommen wurde (Tageslimit).
+typedef Eintrag = ({DateTime zeit, Ereignis art, String text, bool mit});
 
 /// Laufender Angeltag („Live-Angeln“): Zeit, Bisse, Fänge und Köderwechsel.
 /// Wird am Gerät gespeichert, damit nichts verloren geht, wenn das Handy
@@ -25,8 +26,18 @@ class Sitzung {
     required this.start,
     required this.gewaesser,
     required this.koeder,
+    this.limit,
     List<Eintrag>? eintraege,
   }) : eintraege = eintraege ?? [];
+
+  /// Tageslimit laut Revier: so viele Fische dürfen mit (null = keins).
+  final int? limit;
+
+  /// Mitgenommene Fische.
+  int get mitgenommen =>
+      eintraege.where((e) => e.art == Ereignis.fang && e.mit).length;
+
+  bool get limitErreicht => limit != null && mitgenommen >= limit!;
 
   final DateTime start;
   final String gewaesser;
@@ -63,9 +74,15 @@ class Sitzung {
         'start': start.toIso8601String(),
         'gewaesser': gewaesser,
         'koeder': koeder,
+        if (limit != null) 'limit': limit,
         'eintraege': [
           for (final e in eintraege)
-            {'zeit': e.zeit.toIso8601String(), 'art': e.art.name, 'text': e.text},
+            {
+              'zeit': e.zeit.toIso8601String(),
+              'art': e.art.name,
+              'text': e.text,
+              if (e.mit) 'mit': true,
+            },
         ],
       };
 
@@ -76,6 +93,7 @@ class Sitzung {
       start: start,
       gewaesser: j['gewaesser'] as String? ?? '',
       koeder: j['koeder'] as String? ?? '',
+      limit: (j['limit'] as num?)?.toInt(),
       eintraege: [
         for (final e in (j['eintraege'] as List?) ?? const [])
           if (e is Map &&
@@ -85,6 +103,7 @@ class Sitzung {
               zeit: DateTime.parse(e['zeit'] as String),
               art: Ereignis.values.asNameMap()[e['art']]!,
               text: e['text'] as String? ?? '',
+              mit: e['mit'] == true,
             ),
       ],
     );
@@ -129,13 +148,16 @@ class LiveAngeln extends ChangeNotifier {
     }
   }
 
-  Future<void> starten(String gewaesser, String koeder) {
+  Future<void> starten(String gewaesser, String koeder, {int? limit}) {
     sitzung = Sitzung(
-        start: DateTime.now(), gewaesser: gewaesser.trim(), koeder: koeder.trim());
+        start: DateTime.now(),
+        gewaesser: gewaesser.trim(),
+        koeder: koeder.trim(),
+        limit: limit != null && limit > 0 ? limit : null);
     return _speichern();
   }
 
-  Future<void> eintragen(Ereignis art, [String? text]) {
+  Future<void> eintragen(Ereignis art, [String? text, bool mit = false]) {
     final s = sitzung;
     if (s == null) return Future.value();
     if (art == Ereignis.koeder && text != null) s.koeder = text.trim();
@@ -143,6 +165,7 @@ class LiveAngeln extends ChangeNotifier {
       zeit: DateTime.now(),
       art: art,
       text: (text ?? (art == Ereignis.notiz ? '' : s.koeder)).trim(),
+      mit: art == Ereignis.fang && mit,
     ));
     return _speichern();
   }
