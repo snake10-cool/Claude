@@ -26,30 +26,48 @@ const ANTHROPIC_API_KEY = defineSecret("ANTHROPIC_API_KEY");
 const KI_MODELL = defineString("KI_MODELL", { default: "claude-opus-5-5" });
 /** KI-Anfragen pro Nutzer und Tag. */
 const KI_LIMIT_TAG = defineInt("KI_LIMIT_TAG", { default: 20 });
+/** KI-Anfragen aller Nutzer zusammen pro Tag – Kostenbremse. */
+const KI_LIMIT_GESAMT = defineInt("KI_LIMIT_GESAMT", { default: 1000 });
 
 initializeApp();
 
-/** Zählt eine Anfrage. Gibt die restlichen Anfragen für heute zurück oder null (Limit erreicht). */
-async function zaehlen(uid: string, limit: number): Promise<number | null> {
+/** Dokument mit dem Zähler aller Nutzer zusammen (keine echte uid). */
+const GESAMT = "_gesamt";
+
+/**
+ * Zählt eine Anfrage für den Nutzer und für alle zusammen. Gibt die restlichen
+ * Anfragen des Nutzers für heute zurück, oder "nutzer" / "gesamt", wenn ein
+ * Limit erreicht ist.
+ */
+async function zaehlen(
+  uid: string,
+  limit: number,
+  limitGesamt: number,
+): Promise<number | "nutzer" | "gesamt"> {
   const db = getFirestore();
   const ref = db.collection("ki_nutzung").doc(uid);
+  const gesamtRef = db.collection("ki_nutzung").doc(GESAMT);
   const tag = tagSchluessel(new Date());
   return db.runTransaction(async (t) => {
-    const d = (await t.get(ref)).data();
+    const [d, g] = (await t.getAll(ref, gesamtRef)).map((s) => s.data());
     const bisher = d && d["tag"] === tag ? Number(d["anzahl"]) || 0 : 0;
-    if (bisher >= limit) return null;
+    const alle = g && g["tag"] === tag ? Number(g["anzahl"]) || 0 : 0;
+    if (bisher >= limit) return "nutzer";
+    if (alle >= limitGesamt) return "gesamt";
     t.set(ref, { tag, anzahl: bisher + 1, zuletzt: FieldValue.serverTimestamp() });
+    t.set(gesamtRef, { tag, anzahl: alle + 1 });
     return limit - bisher - 1;
   });
 }
 
 /** Gibt eine Anfrage zurück, wenn die KI nicht antworten konnte. */
 async function zurueckgeben(uid: string): Promise<void> {
+  const db = getFirestore();
   try {
-    await getFirestore()
-      .collection("ki_nutzung")
-      .doc(uid)
-      .update({ anzahl: FieldValue.increment(-1) });
+    const batch = db.batch();
+    batch.update(db.collection("ki_nutzung").doc(uid), { anzahl: FieldValue.increment(-1) });
+    batch.update(db.collection("ki_nutzung").doc(GESAMT), { anzahl: FieldValue.increment(-1) });
+    await batch.commit();
   } catch (e) {
     logger.warn("Zurückgeben fehlgeschlagen", e);
   }
@@ -173,9 +191,14 @@ export const petri = onRequest(
       throw e;
     }
 
-    const rest = await zaehlen(uid, KI_LIMIT_TAG.value());
-    if (rest === null) {
+    const rest = await zaehlen(uid, KI_LIMIT_TAG.value(), KI_LIMIT_GESAMT.value());
+    if (rest === "nutzer") {
       res.status(429).json({ fehler: "limit", rest: 0 });
+      return;
+    }
+    if (rest === "gesamt") {
+      logger.warn("Tageslimit aller Nutzer erreicht");
+      res.status(503).json({ fehler: "ausgelastet" });
       return;
     }
 

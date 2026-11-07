@@ -43,7 +43,10 @@ Umstellen ohne Code-Änderung über die Datei `functions/.env`:
 ```
 KI_MODELL=claude-haiku-5-5
 KI_LIMIT_TAG=20
+KI_LIMIT_GESAMT=1000
 ```
+
+`KI_LIMIT_GESAMT` ist die Kostenbremse: höchstens so viele Anfragen gibt es pro Tag für alle Nutzer zusammen. Ist sie erreicht, sagt Petri „ausgelastet“. Mit dem Standardmodell kostet das am Tag höchstens etwa 20–40 €.
 
 Danach `firebase deploy --only functions`.
 
@@ -51,7 +54,7 @@ Bei Ablehnungen durch die Sicherheitsfilter springt bei Opus und Sonnet automati
 
 ## Technik
 
-- `src/index.ts`: HTTP-Funktion (Region `europe-west3`, Frankfurt). Sie prüft das Firebase-ID-Token, zählt das Tageslimit in `ki_nutzung/{uid}` (nur der Server schreibt dort) und ruft Claude auf
+- `src/index.ts`: HTTP-Funktion (Region `europe-west3`, Frankfurt). Sie prüft das Firebase-ID-Token, zählt das Tageslimit in `ki_nutzung/{uid}` und für alle zusammen in `ki_nutzung/_gesamt` (nur der Server schreibt dort) und ruft Claude auf
 - `src/petri.ts`: Prompts, JSON-Schema für die Foto-Antwort und Eingabeprüfung
 - `src/arten.ts`: Artenliste, automatisch erzeugt mit `dart run tool/arten_export.dart`. Nach Änderungen an `lib/data/fische.dart` neu erzeugen
 - Tests ohne Netz und ohne Kosten: `npm test`
