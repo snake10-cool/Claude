@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:austro_angler/main.dart';
 import 'package:austro_angler/screens/neu_screen.dart';
 import 'package:austro_angler/services/alle_gewaesser.dart';
+import 'package:austro_angler/services/fern_konfig.dart';
 import 'package:austro_angler/services/speicher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -60,7 +61,7 @@ void main() {
 
   for (final dunkel in [false, true]) {
     testWidgets('Was ist neu lang ${dunkel ? 'dunkel' : 'hell'}', (tester) async {
-      tester.view.physicalSize = const Size(1080, 7400);
+      tester.view.physicalSize = const Size(1080, 6200);
       tester.view.devicePixelRatio = 2.75;
       addTearDown(tester.view.reset);
       tester.platformDispatcher.platformBrightnessTestValue =
@@ -72,6 +73,9 @@ void main() {
         'bundesland': 'Oberösterreich',
         'design': 'neu',
       });
+      // Für die Update-Seite: so wie es mit eingeschalteter Petri-KI aussieht.
+      fernKonfig.uebernehmen(FernDaten(ein: const {'ki'}));
+      addTearDown(() => fernKonfig.uebernehmen(FernDaten()));
       final speicher = await Speicher.oeffnen();
       await tester.runAsync(alleGewaesser.laden);
       await tester.pumpWidget(AustroAnglerApp(speicher: speicher));

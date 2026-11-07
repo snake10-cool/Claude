@@ -103,7 +103,7 @@ class MehrScreen extends StatelessWidget {
               'Was soll die App noch können?', () => _oeffnen(context,
                   const WuenscheScreen())),
           _Eintrag(Icons.new_releases_outlined, 'Was ist neu?',
-              'Alle Neuerungen von Update 1.2', () => _oeffnen(context,
+              'Alle Neuerungen von Update 1.3', () => _oeffnen(context,
                   const NeuScreen())),
           _Eintrag(Icons.waving_hand_outlined, 'Einführung ansehen',
               'Die App in 6 Schritten erklärt', () => _oeffnen(context,

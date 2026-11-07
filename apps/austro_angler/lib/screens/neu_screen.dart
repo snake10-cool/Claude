@@ -4,7 +4,11 @@ import 'package:package_info_plus/package_info_plus.dart';
 import '../design.dart';
 import '../main.dart';
 import '../services/darf_ich.dart';
+import '../services/fern_konfig.dart';
 import 'album_screen.dart';
+import 'angelplaner_screen.dart';
+import 'karriere_screen.dart';
+import 'petri_screen.dart';
 import 'darf_ich_screen.dart';
 import 'einstellungen_screen.dart';
 import 'fischerkarte_screen.dart';
@@ -15,7 +19,7 @@ import 'wettfischen_screen.dart';
 import 'zielfisch_screen.dart';
 
 /// Stand der Neuigkeiten. Bei jedem Update mit neuem „Was ist neu“ erhöhen.
-const neuigkeitenStand = 12;
+const neuigkeitenStand = 13;
 
 /// „Was ist neu?“ – nach einem Update einmal gezeigt, sonst unter Mehr.
 class NeuScreen extends StatelessWidget {
@@ -38,14 +42,39 @@ class NeuScreen extends StatelessWidget {
           FutureBuilder<String>(
             future: _version,
             builder: (context, snap) => Text(
-              'Update 1.2${(snap.data ?? '').isEmpty ? '' : ' · Version ${snap.data}'}',
+              'Update 1.3${(snap.data ?? '').isEmpty ? '' : ' · Version ${snap.data}'}',
               style: text.labelLarge,
             ),
           ),
           const SizedBox(height: 8),
-          const _DesignHeld(),
+          const _Held13(),
           const SizedBox(height: 16),
-          Text('Neu in 1.2', style: text.titleLarge),
+          Text('Neu in 1.3', style: text.titleLarge),
+          const SizedBox(height: 8),
+          if (funktionAn('ki')) ...[
+            _Punkt('🎣', 'Petri-KI – dein KI-Angelguide',
+                'Frag alles rund ums Angeln. Petri kennt die Regeln deines '
+                'Bundeslands, dein Fangbuch und den heutigen Tag.',
+                () => _oeffnen(context, const PetriScreen())),
+            _Punkt('📷', 'Fisch per Foto bestimmen',
+                'Foto machen – Petri erkennt die Art, die App zeigt gleich '
+                'Schonzeit und Brittelmaß.',
+                () => _oeffnen(context, const PetriFotoScreen())),
+          ],
+          _Punkt('🏆', 'Angel-Karriere',
+              'Level und Ränge vom Grünschnabel bis zum Huchen-König. Punkte '
+              'gibt es für Fänge, neue Arten, Challenges und vieles mehr.',
+              () => _oeffnen(context, const KarriereScreen())),
+          _Punkt('📅', 'Angelplaner',
+              'Der beste Angeltag der Woche für deine Gewässer – mit '
+              'Erinnerung aufs Handy.',
+              () => _oeffnen(context, const AngelplanerScreen())),
+          _Punkt('✨', 'Feinschliff',
+              'Das neue Design auf allen Seiten geprüft und verbessert.'),
+          const SizedBox(height: 16),
+          Text('Aus Update 1.2', style: text.titleLarge),
+          const SizedBox(height: 8),
+          const _DesignHeld(),
           const SizedBox(height: 8),
           _Punkt('🎯', 'Beißindex 0–100',
               'Eine Zahl für heute: Luftdruck, Mond, Wolken, Wind und Dämmerung '
@@ -66,9 +95,14 @@ class NeuScreen extends StatelessWidget {
           _Punkt('🎨', 'Hell, dunkel oder automatisch',
               'Unabhängig vom Design einstellbar.',
               () => _oeffnen(context, const EinstellungenScreen())),
-          const SizedBox(height: 16),
-          Text('Aus Update 1.1', style: text.titleLarge),
           const SizedBox(height: 8),
+          ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            childrenPadding: EdgeInsets.zero,
+            shape: const Border(),
+            collapsedShape: const Border(),
+            title: Text('Aus Update 1.1', style: text.titleLarge),
+            children: [
           const _DarfIchHeld(),
           const SizedBox(height: 8),
           _Punkt('🏠', 'Heute-Startseite',
@@ -98,12 +132,77 @@ class NeuScreen extends StatelessWidget {
               'Beim Angeltag Freunde auswählen – sie bekommen eine Einladung.'),
           _Punkt('⬇️', 'Updates in der App',
               'Neue Versionen laden im Hintergrund – ein Tipp zum Neustarten.'),
+            ],
+          ),
           const SizedBox(height: 16),
           FilledButton(
             onPressed: () => Navigator.of(context).pop(),
             child: const Text('Los geht’s – Petri Heil!'),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Der große Aufmacher von 1.3: Petri-KI (wenn eingeschaltet), sonst die
+/// Angel-Karriere.
+class _Held13 extends StatelessWidget {
+  const _Held13();
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    final akzent = DesignInfo.von(context).akzent;
+    void oeffnen(Widget w) =>
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
+    final ki = funktionAn('ki');
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const RotWeissRot(),
+            const SizedBox(height: 12),
+            Text(ki ? 'DAS KI-UPDATE' : 'DAS GROSSE UPDATE',
+                style: text.labelLarge
+                    ?.copyWith(color: akzent, letterSpacing: 1.4)),
+            Text(ki ? 'Petri – dein KI-Angelguide.' : 'Deine Angel-Karriere.',
+                style: text.headlineMedium),
+            const SizedBox(height: 6),
+            Text(ki
+                ? 'Frag Petri alles rund ums Angeln – Köder, Taktik, Regeln. Oder '
+                    'fotografier deinen Fang: Petri erkennt die Art und sagt dir '
+                    'gleich, ob sie heute geschont ist.'
+                : 'Ab sofort sammelst du Punkte für alles, was du am Wasser '
+                    'erlebst und in der App lernst – vom Grünschnabel bis zum '
+                    'Huchen-König. Schau, welches Level du schon hast!'),
+            const SizedBox(height: 12),
+            if (ki)
+              Row(
+                children: [
+                  Expanded(
+                    child: FilledButton.icon(
+                      onPressed: () => oeffnen(const PetriScreen()),
+                      icon: const Icon(Icons.chat_bubble_outline),
+                      label: const Text('Frag Petri'),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () => oeffnen(const PetriFotoScreen()),
+                      icon: const Icon(Icons.photo_camera_outlined),
+                      label: const Text('Foto'),
+                    ),
+                  ),
+                ],
+              )
+            else
+              const KarriereChip(),
+          ],
+        ),
       ),
     );
   }
