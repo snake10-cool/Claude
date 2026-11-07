@@ -13,6 +13,7 @@ von Claude; ohne Claude-Zugriff benotet die Seite automatisch über Tests.
 | 2 | Variablen & Datentypen – rechnen, Ganzzahl-Falle, Konstanten | Taschengeld-Rechner · Angel-Statistik | https://claude.ai/artifact/HNMkZnpAWhwydTEG6tX7Ew |
 | 3 | Eingaben & Entscheidungen – Scanner, if/else, &&/‖, equals, printf | Ticket-Automat · Notenrechner | https://claude.ai/artifact/QT4NxYuTccwUZsURVGEa1n |
 | 4 | Schleifen – while, for, do-while, Zufall | Einmaleins · Zahlenraten | https://claude.ai/artifact/WZbgDospMFYMGRxt4aqPuZ |
+| 5 | Arrays – anlegen, durchlaufen, auswerten (kompakt) | Fang-Auswertung | https://claude.ai/artifact/9efPU2NEizyRR6X91cwYa3 |
 
 ## Aufbau
 
