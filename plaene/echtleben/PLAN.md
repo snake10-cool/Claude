@@ -1,12 +1,20 @@
 # 🌍 Echtleben – Spielplan (Arbeitsname)
 
-> **Stand:** 10.11.2026 · **Status:** nur Planung, es wird noch nichts gebaut
+> **Stand:** 10.11.2026 (2. Fassung, mit deinen Antworten) · **Status:** nur Planung, es wird noch nichts gebaut
 > **1. Regel:** Beeile dich niemals. Mach gründlich.
 > **Grundsatz:** Ein Meilenstein soll dauern. Erst wenn einer wirklich fertig ist, kommt der nächste.
 
 Dieser Plan arbeitet die zwei Zettel „Ein Spiel“ aus. Alles, was auf den Zetteln steht, ist hier drin.
 Wo ich etwas **ehrlich als schwierig oder rechtlich problematisch** sehe, steht das dabei, zusammen mit einem Vorschlag.
-Wo ich deine Schrift oder Idee **nicht sicher verstanden** habe, ist das mit ❓ markiert (Liste ganz unten).
+Deine Antworten auf meine Fragen stehen ganz unten unter **„Entscheidungen“**.
+
+### Grundsatz für alles: „Zeig, wie, was, wo“
+Bei **jedem** Teil des Spiels (nicht nur bei der KI) wird gezeigt und erklärt:
+- **Was** gebaut wurde,
+- **wie** es funktioniert,
+- **wo** es im Projekt liegt.
+
+Dafür bekommt jeder Meilenstein eine eigene Erklär-Seite im Repo (`plaene/echtleben/erklaert/`).
 
 ---
 
@@ -58,12 +66,14 @@ Für **„soll echt aussehen“** ist Unreal Engine 5 die passende Wahl:
 
 ### 1.3 Was du dafür brauchst
 
-| Was | Mindestens | Besser |
-|---|---|---|
-| Grafikkarte | RTX 3060 (8 GB) | RTX 4070 oder stärker |
-| Arbeitsspeicher | 32 GB | 64 GB |
-| Speicherplatz | 300 GB freie SSD | 1 TB SSD |
-| Prozessor | 6 Kerne | 8+ Kerne |
+| Was | Mindestens | Besser | Du hast |
+|---|---|---|---|
+| Grafikkarte | RTX 3060 | RTX 4070 oder stärker | **RTX 3060** ✅ reicht zum Bauen |
+| Arbeitsspeicher | 32 GB | 64 GB | **16 GB** ⚠️ knapp |
+| Speicherplatz | 300 GB freie SSD | 1 TB SSD | ❓ |
+| Prozessor | 6 Kerne | 8+ Kerne | ❓ |
+
+**Zu den 16 GB Arbeitsspeicher:** Für M0 und die ersten Tests geht das. Sobald Unreal, viele MetaHumans, eine ganze Stadt und die KI gleichzeitig laufen, werden 16 GB zu wenig (Absturz oder sehr langsam). **Ein Aufrüsten auf 32 GB** ist bei Desktop-PCs meist einfach und nicht teuer, und es ist die wichtigste Verbesserung für dieses Projekt. Muss aber nicht sofort sein.
 
 ⚠️ **Wichtig:** Anders als bei deinen Apps kann GitHub dieses Spiel **nicht automatisch bauen**, und ich kann es in meiner Cloud-Umgebung nicht starten. Unreal braucht einen echten PC mit Grafikkarte.
 So würden wir arbeiten:
@@ -129,10 +139,22 @@ Echtleben
 
 **Vom Zettel:** Gras, Rasen/Boden, Wald, Pflanzen, Tiere, Wasser. Gebäude sollen keine Quader mit Farbe sein, sondern echt aussehen. (Alles andere natürlich auch.)
 
-**Erste Spielwelt (Vorschlag):** eine **erfundene österreichische Kleinstadt** mit Umgebung, ca. 2 × 2 km Stadt plus Land rundherum:
-- Altstadt, Wohnsiedlung, Gewerbegebiet, Schule, Supermarkt, Arzt, Bahnhof
-- Felder, Wiesen, ein Wald, ein Fluss, ein Teich (passt übrigens gut zu deinem Angel-Wissen 🎣)
-- Später kann man weitere Orte anschließen.
+**Erste Spielwelt: Mattighofen (echt).** ✅ entschieden
+
+So wird der echte Ort nachgebaut:
+
+| Was | Woher |
+|---|---|
+| Gelände (Höhen, Hügel, Täler, Flusslauf der Mattig) | Offene Geländedaten von Österreich (data.gv.at / Land OÖ) |
+| Straßen, Wege, Gebäude-Umrisse, Wälder, Felder, Gewässer | OpenStreetMap (frei nutzbar, muss im Spiel genannt werden) |
+| Wie die Gebäude aussehen | Luftbilder (basemap.at) und eigene Fotos von dir vor Ort als Vorlage |
+| Oberflächen (Mauern, Dächer, Asphalt, Wiese) | Megascans, passend zu den Vorlagen |
+
+Wichtig dabei:
+- **Fotos von dir** sind Gold wert: Hausfassaden, Plätze, Geschäfte, Ufer. Je mehr echte Vorlagen, desto echter das Spiel.
+- **Echte Firmennamen und Logos** (Geschäfte, Firmen in Mattighofen) darf man nicht einfach ins Spiel nehmen, das ist Markenrecht. Gebäude und Orte ja, Firmennamen bekommen leicht veränderte Namen.
+- **Privathäuser** werden nachgebaut, aber ohne echte Namen der Bewohner. Die Menschen im Spiel sind erfunden.
+- Start ist der Ortskern mit Umgebung. Später kommen die Nachbarorte und das Umland dazu.
 
 **Echt aussehen heißt konkret:**
 
@@ -175,7 +197,13 @@ Tausende Menschen gleichzeitig in voller 3D-Grafik zu berechnen, schafft kein PC
 
 Wenn der Spieler in die Nähe kommt, wird aus der „fernen“ Person nahtlos eine „nahe“ an genau der Stelle, wo sie laut Simulation gerade ist.
 
-**Größe:** Start mit ca. **500 Einwohnern** in der Kleinstadt. Wenn das stabil läuft, auf 2.000+ erhöhen.
+**Größe:** Mattighofen hat in echt einige tausend Einwohner. Wir starten mit ca. **500 Menschen** im Ortskern. Wenn das stabil läuft, wird schrittweise bis auf die echte Einwohnerzahl erhöht.
+
+**Das volle Programm (entschieden):** Krankheit, Tod, Verbrechen und Polizei, Unfälle, alles drin. Dafür braucht es zusätzlich:
+- Arzt, Krankenhaus, Rettung
+- Polizei, Strafen, Gericht, Gefängnis
+- Versicherungen, Erbe, Begräbnis
+- Das Spiel wird damit **ab 16 oder 18** freigegeben.
 
 **Fertig, wenn …**
 - [ ] 500 Menschen leben mit vollständigen Daten (wie Punkt 1).
@@ -195,34 +223,46 @@ Wenn der Spieler in die Nähe kommt, wird aus der „fernen“ Person nahtlos ei
 | Hälfte | Aufgabe |
 |---|---|
 | **A) Quatsch-KI (50 %)** | Die Menschen im Spiel können frei mit dir reden. Sie wissen, wer sie sind (Name, Job, Familie, Laune, was heute passiert ist) und antworten passend. |
-| **B) Klassische KI (50 %)** ❓ | Entweder (1) die **Verhaltens-KI**: wie Menschen und Tiere entscheiden, was sie tun und wohin sie gehen; oder (2) eine **Assistenten-KI** im Spiel, z. B. auf den Ingame-Handys, wie ein eingebauter Chat-Assistent. Bitte sagen, was gemeint ist. |
+| **B) Klassische KI (50 %)** | (1) Die **Verhaltens-KI**: wie Menschen und Tiere entscheiden, was sie tun und wohin sie gehen, und (2) ein **Assistent** am Ingame-Handy. |
 
-**„Von 0 auf, keine Wikipedia“ – was das ehrlich bedeutet:**
+**Teil B (klassische KI):** Ist dir egal, also nehme ich **beides**: die Verhaltens-KI der Menschen (brauchen wir sowieso für Punkt 3) und später einen Assistenten am Ingame-Handy.
 
-Ein Sprachmodell lernt nur aus den Texten, die man ihm gibt. Fertige Modelle (ChatGPT, Claude, Llama …) haben fast alle Wikipedia und große Teile des Internets gelernt. **Die darf man nach deiner Regel also nicht nehmen.** Das heißt, wir trainieren ein **eigenes kleines Modell von null**.
+**Warum deine erste KI kaputt war (und wie wir es diesmal machen):**
+
+Du hast erzählt: Du fragst „Was ist die Hauptstadt von Deutschland?“ und sie erzählt etwas über den Zweiten Weltkrieg. Das liegt nicht daran, dass Wikipedia „böse“ ist, sondern am **Training**:
+- Ein Modell, das nur Wikipedia-Texte gelernt hat, kann nur eins: **Text weiterschreiben, der so ähnlich klingt wie Wikipedia.** Es weiß gar nicht, dass eine Frage eine Antwort will. Bei „Deutschland“ schreibt es einfach einen Wikipedia-artigen Absatz über Deutschland weiter.
+- Ein kleines Modell kann außerdem nicht Millionen Fakten auswendig lernen. Es bringt sie durcheinander.
+
+**Die Lösung, in drei Teilen:**
+1. **Reden lernen aus Gesprächen:** Das Modell wird mit **Frage-Antwort- und Gesprächs-Beispielen** trainiert, nicht mit Lexikon-Text. So lernt es: Frage → kurze, passende Antwort.
+2. **Wissen nachschlagen statt auswendig lernen:** Fakten stehen in einer Wissens-Datenbank. Vor jeder Antwort sucht das Spiel die passenden Fakten heraus und gibt sie dem Modell mit. Dann antwortet es „Berlin.“ statt eines Romans.
+3. **Ingame-Wikipedia:** Du hast gesagt, Wikipedia ist okay als Wissen im Spiel. Also gibt es ein **Lexikon im Spiel** (auf den Ingame-PCs und Handys lesbar), und die KI darf darin **nachschlagen**. So wird Wikipedia nützlich, ohne das Modell kaputt zu machen.
+
+Wir trainieren trotzdem ein **eigenes Modell von null** (dein „von 0 auf“).
 
 | | Eigenes Modell von 0 |
 |---|---|
-| ✅ | Wirklich deins. Weiß nur das, was in deiner Welt existiert. Kein „Internetwissen“, das die Spielwelt kaputt macht |
+| ✅ | Wirklich deins. Wissen kommt kontrolliert über das Nachschlagen, nicht durcheinander gelernt |
 | ✅ | Läuft direkt auf dem Spieler-PC, keine Kosten pro Nachricht, kein Internet nötig |
 | ⚠️ | Ohne riesige Textmengen bleibt es einfacher als ChatGPT. Es wird kürzere, einfachere Sätze können, aber gut **über das Spiel reden**, wenn wir genug Spiel-Texte haben |
 | ⚠️ | Die meiste Arbeit sind die **Trainingstexte**: zigtausende Gesprächs-Beispiele im Stil der Spielwelt, die wir selbst schreiben bzw. aus Vorlagen erzeugen |
 
 **Plan für die KI (eigener Teilplan):**
 1. **Lern-Modell:** Ein sehr kleines Modell von null, um den ganzen Weg einmal gründlich durchzugehen (Text → Training → Antworten).
-2. **Spiel-Sprache:** Eigene Trainingstexte schreiben: Alltagsgespräche (Grüßen, Wetter, Arbeit, Familie, Einkaufen, Streit, Flirt …), auf Deutsch, auch mit österreichischen Ausdrücken.
-3. **Gedächtnis:** Jede Person bekommt ihre Fakten (wer bin ich, was ist heute passiert, wie stehe ich zum Spieler) vor jeder Antwort mitgegeben. So muss das Modell selbst keine Fakten auswendig wissen.
+2. **Spiel-Sprache:** Eigene Trainingstexte schreiben: Alltagsgespräche (Grüßen, Wetter, Arbeit, Familie, Einkaufen, Streit, Flirt …), auf Deutsch, auch mit österreichischen und Innviertler Ausdrücken. **Immer als Gespräch** (Frage → Antwort), nie als reiner Lexikon-Text.
+3. **Gedächtnis und Nachschlagen:** Jede Person bekommt ihre Fakten (wer bin ich, was ist heute passiert, wie stehe ich zum Spieler) vor jeder Antwort mitgegeben. Allgemeines Wissen kommt aus dem Ingame-Lexikon. So muss das Modell selbst keine Fakten auswendig wissen.
+   **Prüfung:** Die Frage „Was ist die Hauptstadt von Deutschland?“ muss mit „Berlin“ beantwortet werden. Das wird ein fester Test.
 4. **Einbau ins Spiel:** Das Modell läuft lokal auf der Grafikkarte, neben dem Spiel.
 5. **Austauschbar:** Die KI hängt hinter einer klaren Schnittstelle. Wenn du später **„ok“** sagst, kann man ein größeres Modell oder mehr Wissen anschließen, ohne das Spiel umzubauen.
 
-**„Zeig, wie, was, wo“** ❓: Ich habe das so gelesen, dass du bei der KI **jeden Schritt gezeigt und erklärt** haben willst (wie sie funktioniert, was sie lernt, wo es im Code steht). Das machen wir so: jeder KI-Schritt bekommt eine eigene Erklär-Seite im Repo.
 
 **Fertig, wenn …**
-- [ ] Eigenes Modell von 0 trainiert, ohne Wikipedia/Internet-Texte (Liste aller Trainingstexte liegt im Repo, nachprüfbar).
+- [ ] Eigenes Modell von 0 trainiert, mit Gesprächen statt Lexikon-Text (Liste aller Trainingstexte liegt im Repo, nachprüfbar).
+- [ ] Einfache Wissensfragen werden kurz und richtig beantwortet (z. B. Hauptstadt-Test).
 - [ ] Spielfiguren antworten passend zu ihrer Person, ihrer Laune und dem, was passiert ist.
 - [ ] Sie erinnern sich an frühere Gespräche mit dem Spieler.
 - [ ] Antwort kommt in unter 2 Sekunden, das Spiel ruckelt dabei nicht.
-- [ ] Teil B (klassische KI) fertig, sobald geklärt ist, was gemeint ist.
+- [ ] Verhaltens-KI und Handy-Assistent funktionieren.
 
 ---
 
@@ -247,14 +287,19 @@ Ein Sprachmodell lernt nur aus den Texten, die man ihm gibt. Fertige Modelle (Ch
 - **Ingame-Handys** laufen mit **echtem Android ohne Google** (Open Source).
 - Damit sie im Spiel erfunden aussehen dürfen, bekommen die Geräte erfundene Markennamen. Die Software darin ist trotzdem echt.
 - Nur **das Gerät, das der Spieler gerade benutzt**, läuft wirklich. Die anderen zeigen ein gespeichertes Bild (sonst schafft das kein PC).
-- **Offene Frage:** Soll das Ingame-Internet echt sein (echte Websites) oder eine eigene Spiel-Welt-Seiten haben? Echtes Internet würde die Spielwelt „aufbrechen“ und widerspricht vermutlich der Regel „keine Wikipedia“.
+
+**Ingame-Internet: gemischt (entschieden)**
+- **Erfundene Spiel-Seiten** für alles, was mit dem Spielleben zu tun hat: **Ingame-Bank** (Kontostand, Überweisungen mit Ingame-Geld), Shops, Jobsuche, Wohnungssuche, Nachrichten aus Mattighofen, Ingame-Lexikon.
+- **Ein paar echte Seiten** sind erreichbar, aber nur ausgewählte.
+- **Echtes Online-Banking (Sparkasse, Raiffeisen usw.) ist gesperrt.** Im Spiel verwaltet man nur sein Spielgeld, nie echtes Geld. Echte Bank- und Bezahlseiten kommen auf eine Sperrliste.
 
 **Fertig, wenn …**
 - [ ] PC und Handy können im Spiel gekauft werden und sind Besitz.
 - [ ] Ein echtes Linux läuft auf dem Ingame-PC, mit Maus und Tastatur bedienbar.
 - [ ] Ein echtes Android (ohne Google) läuft auf dem Ingame-Handy.
 - [ ] Ein Gerät zu benutzen bremst das Spiel nicht spürbar aus.
-- [ ] Geräte verbinden sich mit der Spielwelt (z. B. Ingame-Bank, Nachrichten an andere Spielfiguren) ❓ (gewünscht?)
+- [ ] Ingame-Bank, Shops und Nachrichten an andere Spielfiguren funktionieren über die Geräte.
+- [ ] Ausgewählte echte Seiten gehen, echte Bank-/Bezahlseiten sind gesperrt.
 
 ---
 
@@ -266,7 +311,7 @@ Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt ers
 |---|---|---|
 | **M0** | Fundament | PC einrichten, Unreal installieren, leeres Projekt im Repo, Git LFS, erste Testszene. Technik-Tests: MetaHuman altern, eine Linux-VM auf einem Bildschirm im Spiel, Mini-KI-Training. **Damit wissen wir früh, ob die schwierigen Teile gehen.** |
 | **M1** | Charakter | Punkt 1 komplett |
-| **M2** | Welt | Punkt 2 komplett (die Kleinstadt) |
+| **M2** | Welt | Punkt 2 komplett (Mattighofen) |
 | **M3** | Andere Menschen | Punkt 3 komplett, inklusive Wirtschaft (Jobs, Geld, Geschäfte, Wohnungen) |
 | **M4** | KI | Punkt 4 komplett (eigenes Modell, Gespräche) |
 | **M5** | Geräte | Punkt 5 komplett (PCs, Handys, echtes Betriebssystem) |
@@ -276,17 +321,24 @@ Warum **M0** davor: Bei drei Dingen (Altern, echtes Betriebssystem im Spiel, eig
 
 ---
 
-## 4. Offene Fragen an dich ❓
+## 4. Entscheidungen
 
-1. **Klassische KI (Punkt 4):** Ist mit „50 % als klassische KI“ die **Verhaltens-KI** der Menschen gemeint oder eine **Assistenten-KI** (wie ChatGPT) im Spiel, z. B. am Ingame-Handy?
-2. **„Zeig, wie, was, wo“:** Habe ich richtig gelesen, dass du jeden KI-Schritt erklärt bekommen willst? Oder soll die KI im Spiel dem Spieler etwas zeigen (z. B. den Weg)?
-3. **Engine:** Passt Unreal Engine 5?
-4. **Dein PC:** Welche Grafikkarte, wie viel Arbeitsspeicher hast du?
-5. **Spielwelt:** Passt eine erfundene österreichische Kleinstadt als erste Welt?
-6. **Sicht:** Erste Person (durch die Augen), dritte Person (Figur von hinten) oder umschaltbar?
-7. **Alleine oder mit Freunden:** Nur Einzelspieler, oder später auch online zusammen?
-8. **Ingame-Internet:** Echte Websites oder nur erfundene Spiel-Seiten?
-9. **Grenzen:** Gibt es Dinge aus dem echten Leben, die **nicht** ins Spiel sollen (z. B. Verbrechen, Krankheit, Tod)? Davon hängt auch die Altersfreigabe ab.
-10. **Name:** „Echtleben“ ist nur ein Arbeitsname. Hast du einen eigenen?
+| Frage | Entscheidung |
+|---|---|
+| Grafikkarte / Arbeitsspeicher | RTX 3060, 16 GB (Aufrüsten auf 32 GB empfohlen, siehe 1.3) |
+| Klassische KI | Egal → beides: Verhaltens-KI und Handy-Assistent |
+| „Zeig, wie, was, wo“ | Gilt für **alles**, nicht nur für die KI |
+| Spielwelt | Echter Ort: **Mattighofen** |
+| Sicht | Umschaltbar (erste und dritte Person) |
+| Ingame-Internet | Gemischt: Spiel-Seiten (inkl. Ingame-Bank) und einige echte Seiten; echtes Online-Banking gesperrt |
+| Wikipedia | Als Ingame-Lexikon erlaubt, die KI darf darin nachschlagen. Trainiert wird sie aber mit Gesprächen |
+| Harte Themen | Volles Programm: Krankheit, Tod, Verbrechen und Polizei, Unfälle (Freigabe ab 16/18) |
+| Engine | Unreal Engine 5 (kein Einspruch) |
 
-Sobald die Fragen beantwortet sind, arbeite ich als Nächstes **M0 (Fundament)** im Detail aus, Schritt für Schritt.
+## 5. Noch offen (hat Zeit)
+
+- Allein oder später auch online mit Freunden?
+- Eigener Name für das Spiel?
+- Speicherplatz und Prozessor deines PCs
+
+**Nächster Schritt:** M0 (Fundament) im Detail ausarbeiten, Schritt für Schritt.
