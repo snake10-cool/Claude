@@ -66,14 +66,19 @@ Für **„soll echt aussehen“** ist Unreal Engine 5 die passende Wahl:
 
 ### 1.3 Was du dafür brauchst
 
-| Was | Mindestens | Besser | Du hast |
+| Was | Mindestens | Besser | Du hast (Stand 10.11.2026) |
 |---|---|---|---|
-| Grafikkarte | RTX 3060 | RTX 4070 oder stärker | **RTX 3060** ✅ reicht zum Bauen |
-| Arbeitsspeicher | 32 GB | 64 GB | **16 GB** ⚠️ knapp |
-| Speicherplatz | 300 GB freie SSD | 1 TB SSD | ❓ |
-| Prozessor | 6 Kerne | 8+ Kerne | ❓ |
+| Grafikkarte | RTX 3060 | RTX 4070 oder stärker | **RTX 3060 Ti, 8 GB** ✅ reicht zum Bauen |
+| Arbeitsspeicher | 32 GB | 64 GB | **16 GB DDR4-3200** ⚠️ knapp |
+| Speicherplatz | 300 GB freie SSD | 1 TB SSD | **1 TB NVMe (WD Blue SN5100)** ✅ + alte 750-GB-Festplatte |
+| Prozessor | 6 Kerne | 8+ Kerne | **i7-5820K** (6 Kerne, Baujahr 2014) ⚠️ größte Bremse |
 
-**Zu den 16 GB Arbeitsspeicher:** Für M0 und die ersten Tests geht das. Sobald Unreal, viele MetaHumans, eine ganze Stadt und die KI gleichzeitig laufen, werden 16 GB zu wenig (Absturz oder sehr langsam). **Ein Aufrüsten auf 32 GB** ist bei Desktop-PCs meist einfach und nicht teuer, und es ist die wichtigste Verbesserung für dieses Projekt. Muss aber nicht sofort sein.
+**Weihnachts-Upgrade (Budget 150–200 €), Plan:**
+- **Schritt 1 (Weihnachten): neuer Prozessor + Mainboard.** Vorschlag: AMD Ryzen 7 5700X (8 Kerne) + ein B550-Mainboard. Der vorhandene **DDR4-3200-Arbeitsspeicher passt** und wird weiterverwendet, Grafikkarte und SSD bleiben auch. Laut Preisvergleich (Nov. 2026) ca. 150 € (Tray-Version) + ca. 80 € (günstiges B550) ≈ 230 €. Wenn das zu viel ist: ein günstigerer Ryzen mit 6 Kernen.
+  - Die Tray-Version hat **keinen Kühler** dabei: prüfen, ob der jetzige Kühler auf AM4 passt, sonst einen günstigen Kühler dazurechnen.
+  - Nach dem Mainboard-Tausch muss Windows eventuell neu aktiviert werden (geht über das Microsoft-Konto).
+- **Schritt 2 (später): auf 32 GB Arbeitsspeicher.** DDR4 ist gerade sehr teuer (32-GB-Kits ca. 235 € und mehr). Darum warten, bis die Preise fallen, oder gebraucht 16 GB DDR4-3200 dazukaufen.
+- M0 (Fundament) kann schon **vor** dem Upgrade starten.
 
 ⚠️ **Wichtig:** Anders als bei deinen Apps kann GitHub dieses Spiel **nicht automatisch bauen**, und ich kann es in meiner Cloud-Umgebung nicht starten. Unreal braucht einen echten PC mit Grafikkarte.
 So würden wir arbeiten:
