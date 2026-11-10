@@ -303,6 +303,40 @@ Wir trainieren trotzdem ein **eigenes Modell von null** (dein „von 0 auf“).
 
 ---
 
+## 2b. Echt handeln statt „Drücke E“ (gilt für alles)
+
+**Wunsch:** Man soll viele neue Situationen und sogar **Jobs ausprobieren** können. Darum keine Abkürzungen wie „hinstellen, E drücken, Gemüse ist geerntet“. Alles wird **so gemacht wie in echt**.
+
+**So funktioniert Handeln im Spiel:**
+- **Echte Hände:** Die Figur hat Hände, die man steuert. Man greift Dinge, hält sie, dreht sie, legt sie ab, wirft sie. Ein Gegenstand liegt so in der Hand, wie man ihn gegriffen hat.
+- **Echte Schritte:** Jede Tätigkeit besteht aus den Schritten, die sie auch in echt hat. Kein Fortschrittsbalken ersetzt die Arbeit.
+- **Echtes Werkzeug:** Was man braucht, muss man haben, holen und richtig benutzen (Messer, Schaufel, Schraubenschlüssel, Kassa, Traktor).
+- **Physik:** Dinge haben Gewicht, fallen um, gehen kaputt, werden schmutzig. Ein voller Sack ist schwer, ein Teller zerbricht.
+- **Können wächst mit Übung:** Am Anfang ist man langsam und macht Fehler, mit Übung wird man besser und schneller. Fehler haben Folgen (kaputte Ernte, Kunde beschwert sich, Chef ist sauer).
+- **Hinweise ja, Abkürzungen nein:** Wer etwas zum ersten Mal macht, kann sich zeigen lassen, wie es geht (z. B. vom Kollegen im Spiel). Machen muss man es aber selbst.
+
+**Beispiel Bauer, Gemüse ernten:**
+1. In der Früh aufstehen, Arbeitskleidung und Stiefel anziehen.
+2. Kiste und Messer aus der Scheune holen.
+3. Zum Feld gehen, sich hinknien.
+4. Reifes Gemüse erkennen (Farbe, Größe). Unreifes bleibt stehen.
+5. Mit der Hand halten, mit dem Messer abschneiden oder aus der Erde ziehen.
+6. In die Kiste legen. Die volle Kiste ist schwer, tragen oder auf den Anhänger.
+7. Zum Hof fahren, waschen, sortieren, verkaufen oder liefern.
+8. Zu viel kaputt gemacht oder zu spät geerntet → weniger Geld.
+
+**Jobs, ehrlich:** Jeder Job, der wirklich echt sein soll, ist viel Arbeit. Darum:
+- **Zuerst 3 Jobs komplett echt**, passend zu Mattighofen (Vorschlag): **Bauer**, **Supermarkt (Regale, Kassa)**, **Kfz-Mechaniker**.
+- Danach kommen Job für Job weitere dazu (Koch, Büro am echten Linux-PC, Polizist, Arzt, Lehrer, Handwerker …).
+- Die anderen Menschen arbeiten in allen Jobs, auch die, die der Spieler noch nicht selbst machen kann.
+
+**Fertig, wenn …** (wird Teil von M1 und M3)
+- [ ] Es gibt im ganzen Spiel keine „Drücke E für …“-Abkürzung.
+- [ ] Greifen, Halten, Tragen, Benutzen mit den Händen funktioniert mit Physik.
+- [ ] Die 3 ersten Jobs sind Schritt für Schritt echt spielbar, mit Lohn, Chef, Fehlern und Übung.
+
+---
+
 ## 3. Meilensteine (Reihenfolge)
 
 Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt erst, wenn die „Fertig, wenn …“-Liste vollständig abgehakt ist.
@@ -321,6 +355,17 @@ Warum **M0** davor: Bei drei Dingen (Altern, echtes Betriebssystem im Spiel, eig
 
 ---
 
+## Für den PC (Claude Code am PC)
+
+Dieser Plan wurde in einem eigenen Planungs-Chat gemacht. **Gebaut wird am PC.** Wer dort codet, hält sich an:
+1. **1. Regel: Beeile dich niemals. Mach gründlich.**
+2. Mit **M0** anfangen. Ein Meilenstein ist erst fertig, wenn seine „Fertig, wenn …“-Liste vollständig abgehakt ist.
+3. **„Zeig, wie, was, wo“:** zu jedem Schritt eine Erklär-Seite in `plaene/echtleben/erklaert/`.
+4. **Keine „Drücke E“-Abkürzungen** (Abschnitt 2b).
+5. Bei Unklarheit lieber nachfragen als raten. Größere Änderungen am Plan zuerst im Planungs-Chat besprechen.
+
+---
+
 ## 4. Entscheidungen
 
 | Frage | Entscheidung |
@@ -334,6 +379,8 @@ Warum **M0** davor: Bei drei Dingen (Altern, echtes Betriebssystem im Spiel, eig
 | Wikipedia | Als Ingame-Lexikon erlaubt, die KI darf darin nachschlagen. Trainiert wird sie aber mit Gesprächen |
 | Harte Themen | Volles Programm: Krankheit, Tod, Verbrechen und Polizei, Unfälle (Freigabe ab 16/18) |
 | Engine | Unreal Engine 5 (kein Einspruch) |
+| Handeln | Alles echt, keine „Drücke E“-Abkürzungen; Jobs ausprobieren, zuerst 3 Jobs komplett |
+| Arbeitsweise | Dieser Chat plant, gebaut wird am PC. Der Plan kommt als Artefakt zum PC |
 
 ## 5. Noch offen (hat Zeit)
 
