@@ -223,9 +223,9 @@ Wenn der Spieler in die Nähe kommt, wird aus der „fernen“ Person nahtlos ei
 | Hälfte | Aufgabe |
 |---|---|
 | **A) Quatsch-KI (50 %)** | Die Menschen im Spiel können frei mit dir reden. Sie wissen, wer sie sind (Name, Job, Familie, Laune, was heute passiert ist) und antworten passend. |
-| **B) Klassische KI (50 %)** | (1) Die **Verhaltens-KI**: wie Menschen und Tiere entscheiden, was sie tun und wohin sie gehen, und (2) ein **Assistent** am Ingame-Handy. |
+| **B) Eigene KI (50 %)** | Eine **richtige, eigene KI** wie ein Chat-Assistent, **abgeschottet vom Spiel**, mit Internetsuche und Wikipedia. Nebenprojekt, kommt erst wenn das Spiel einigermaßen fertig ist (siehe M7). Später kann sie auch im Spiel vorkommen. |
 
-**Teil B (klassische KI):** Ist dir egal, also nehme ich **beides**: die Verhaltens-KI der Menschen (brauchen wir sowieso für Punkt 3) und später einen Assistenten am Ingame-Handy.
+**Verhaltens-KI** (wie Menschen und Tiere entscheiden, was sie tun) gehört zu Punkt 3 und wird dort gebaut. **Teil B** ist deine eigene KI, siehe unten und M7.
 
 **Warum deine erste KI kaputt war (und wie wir es diesmal machen):**
 
@@ -256,13 +256,39 @@ Wir trainieren trotzdem ein **eigenes Modell von null** (dein „von 0 auf“).
 5. **Austauschbar:** Die KI hängt hinter einer klaren Schnittstelle. Wenn du später **„ok“** sagst, kann man ein größeres Modell oder mehr Wissen anschließen, ohne das Spiel umzubauen.
 
 
-**Fertig, wenn …**
+### Teil B: Deine eigene KI (Nebenprojekt, nach dem Spiel)
+
+**Was sie sein soll:** Eine richtige KI, die dir gehört. Man kann mit ihr chatten wie mit Claude, sie kann **im Internet suchen**, **Wikipedia lesen** und das Gefundene **gescheit auswerten**. Sie läuft **eigenständig, getrennt vom Spiel**. Später kann man sie zusätzlich ins Spiel holen, zum Beispiel als Assistent am Ingame-Handy.
+
+**Aufbauend auf Teil A:** Was wir für die Spiel-KI lernen (Training von null, mit Gesprächen trainieren, Wissen nachschlagen statt auswendig lernen), ist genau das Fundament für diese KI. Darum kommt sie danach.
+
+**Wie Internetsuche bei einer KI funktioniert:**
+1. Du stellst eine Frage.
+2. Die KI entscheidet: Weiß ich das, oder muss ich suchen? Wenn suchen: sie schreibt selbst einen Suchbegriff.
+3. Ein Programm schickt den Suchbegriff an eine Suchmaschine und holt die besten Treffer (Seiten, Wikipedia-Artikel).
+4. Die KI liest die Treffer, sucht die wichtigen Stellen heraus und antwortet kurz, **mit Quellen**.
+5. Wenn nötig, sucht sie noch einmal genauer (mehrere Schritte, wie ich es mache).
+
+**Ehrlich dazu:**
+- **Google direkt** darf man nicht einfach automatisch abfragen. Es braucht eine **Such-Schnittstelle** (es gibt bezahlte Such-Dienste und eine freie Lösung zum Selbst-Betreiben, z. B. SearXNG). Das klären wir, wenn es so weit ist.
+- **Wie klug sie wird, hängt an der Größe.** Ein kleines Modell von null auf deinem PC wird nicht so klug wie ich. Es kann aber gut genug werden, um Suchergebnisse zusammenzufassen, weil es die Fakten nicht selbst wissen muss, sondern nachliest.
+- Dein Fehler von früher (Frage nach der Hauptstadt → Text über den Zweiten Weltkrieg) wird hier ein **fester Test**: Sie muss kurz und richtig antworten und darf nicht abschweifen.
+
+**Fertig, wenn …** (M7)
+- [ ] Eigenständige KI-App, getrennt vom Spiel, mit Chat-Fenster.
+- [ ] Sucht selbst im Internet und in Wikipedia, wenn sie etwas nicht weiß.
+- [ ] Antwortet kurz, richtig und mit Quellen; schweift nicht ab.
+- [ ] Merkt, wenn sie etwas nicht sicher weiß, und sagt das.
+- [ ] Läuft auf deinem PC.
+- [ ] Optional: auch im Spiel als Assistent nutzbar.
+
+#### Teil A: Fertig, wenn …
+
 - [ ] Eigenes Modell von 0 trainiert, mit Gesprächen statt Lexikon-Text (Liste aller Trainingstexte liegt im Repo, nachprüfbar).
 - [ ] Einfache Wissensfragen werden kurz und richtig beantwortet (z. B. Hauptstadt-Test).
 - [ ] Spielfiguren antworten passend zu ihrer Person, ihrer Laune und dem, was passiert ist.
 - [ ] Sie erinnern sich an frühere Gespräche mit dem Spieler.
 - [ ] Antwort kommt in unter 2 Sekunden, das Spiel ruckelt dabei nicht.
-- [ ] Verhaltens-KI und Handy-Assistent funktionieren.
 
 ---
 
@@ -350,6 +376,7 @@ Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt ers
 | **M4** | KI | Punkt 4 komplett (eigenes Modell, Gespräche) |
 | **M5** | Geräte | Punkt 5 komplett (PCs, Handys, echtes Betriebssystem) |
 | **M6** | Alles zusammen | Spielstart-Menü, Speichern, Einstellungen, langes Testspielen, Fehler beheben |
+| **M7** | Deine eigene KI (Nebenprojekt) | Punkt 4 Teil B: eigenständige KI mit Internetsuche und Wikipedia, getrennt vom Spiel. Erst wenn das Spiel einigermaßen fertig ist |
 
 Warum **M0** davor: Bei drei Dingen (Altern, echtes Betriebssystem im Spiel, eigene KI) ist nicht sicher, wie gut sie gehen. Das testen wir am Anfang klein, statt nach einem Jahr Arbeit draufzukommen.
 
@@ -371,7 +398,7 @@ Dieser Plan wurde in einem eigenen Planungs-Chat gemacht. **Gebaut wird am PC.**
 | Frage | Entscheidung |
 |---|---|
 | Grafikkarte / Arbeitsspeicher | RTX 3060, 16 GB (Aufrüsten auf 32 GB empfohlen, siehe 1.3) |
-| Klassische KI | Egal → beides: Verhaltens-KI und Handy-Assistent |
+| KI Teil B (50 %) | Eigene, richtige KI mit Internetsuche und Wikipedia, abgeschottet vom Spiel, als Nebenprojekt nach dem Spiel (M7); darf später auch ins Spiel |
 | „Zeig, wie, was, wo“ | Gilt für **alles**, nicht nur für die KI |
 | Spielwelt | Echter Ort: **Mattighofen** |
 | Sicht | Umschaltbar (erste und dritte Person) |
