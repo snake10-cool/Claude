@@ -462,6 +462,43 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 
 ---
 
+## 2e. Gefühle und Empfindungen spüren
+
+**Wunsch:** Man soll **sehen und spüren**, wie es der Figur geht: Schmerzen, Sucht, Müdigkeit, Angst usw. Weil es fast keine Anzeigen gibt (2d), passiert das **über Bild, Ton, Steuerung und Gedanken**, nicht über Balken.
+
+**Vier Wege, wie man es spürt:**
+1. **Bild:** Farben, Schärfe, Ränder, Wackeln.
+2. **Ton:** Herzschlag, Atmen, Rauschen, gedämpfte Geräusche.
+3. **Körper und Steuerung:** Die Figur bewegt sich anders, die Hände zittern, Greifen wird ungenauer, man wird langsamer.
+4. **Gedanken:** kurze innere Sätze als Untertitel, z. B. „Mein Knie tut voll weh.“ oder „Ich brauch jetzt eine Zigarette.“
+
+| Zustand | Was man sieht, hört und spürt |
+|---|---|
+| **Schmerz** | Bildränder pulsieren rot, man humpelt oder hält sich die Stelle, Stöhnen, die betroffene Hand oder das Bein ist schwächer. Je nachdem, **wo** es weh tut, anders |
+| **Hunger / Durst** | Bauchknurren, man wird schwächer und unkonzentrierter, Gedanken ans Essen |
+| **Müdigkeit** | Bild wird kurz schwarz (Blinzeln), Gähnen, alles langsamer, Fehler bei der Arbeit |
+| **Kälte / Hitze** | Zittern, sichtbarer Atem, Schwitzen, Hände ungeschickt |
+| **Krankheit** | Je nach Krankheit: Husten, Fieber (Bild flimmert leicht), Übelkeit, Schwindel |
+| **Betrunken** | Bild schwankt, Steuerung verzögert, Sprache lallt, man stolpert |
+| **Unter Drogen** (nur voller Modus) | Je nach Droge: Farben, Wahrnehmung und Zeitgefühl verändert, danach der Absturz |
+| **Sucht / Entzug** | Zitternde Hände (Greifen wird schwer), Schwitzen, Unruhe, Gereiztheit, **Gedanken kreisen immer wieder um die Sucht**, schlechter Schlaf |
+| **Angst / Stress** | Herzschlag wird lauter, Tunnelblick, schneller Atem, Hände zittern |
+| **Traurigkeit** | Farben werden blasser, Musik leiser und langsamer, weniger Lust auf Dinge |
+| **Freude / Verliebt** | Farben wärmer und heller, beschwingte Bewegungen |
+| **Wut** | Bildränder dunkler, Figur angespannt, kurze Antworten im Gespräch |
+
+**Auch bei den anderen Menschen:** Man sieht ihre Gefühle **an Gesicht und Körpersprache** (traurig, wütend, verliebt, krank, betrunken) und an ihrer Stimme. Und sie reagieren auf deinen Zustand („Du schaust aber fertig aus.“).
+
+**Einstellungen:** Die Stärke der Effekte ist im Menü einstellbar, z. B. weniger Wackeln für Leute, denen schnell schlecht wird.
+
+**Fertig, wenn …** (wird Teil von M1 und M3)
+- [ ] Jeder Zustand aus der Tabelle ist ohne Anzeige-Balken klar spürbar.
+- [ ] Zustände wirken auf die Steuerung und die Hände (z. B. Zittern beim Entzug).
+- [ ] Die Gedanken passen zur Lage und wiederholen sich nicht dauernd.
+- [ ] Die Menschen im Spiel zeigen Gefühle sichtbar und reagieren auf deinen Zustand.
+
+---
+
 ## 3. Meilensteine (Reihenfolge)
 
 Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt erst, wenn die „Fertig, wenn …“-Liste vollständig abgehakt ist.
