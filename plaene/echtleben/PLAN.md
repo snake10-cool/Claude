@@ -756,6 +756,46 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 
 ---
 
+## 2k. Antworten aus dem Sprach-Chat (11.11.2026)
+
+### Welt, Personen, Tod
+| Thema | Entscheidung |
+|---|---|
+| Spiel aus | **Die Welt bleibt stehen**, solange nicht gespielt wird |
+| Person wechseln | **Jederzeit** in eine andere Person der Welt wechselbar. Die bisherige Person **lebt danach ganz normal weiter**, gesteuert wie alle anderen Menschen (nach Grundregel entschieden, passt zu Punkt 3) |
+| Nach dem Tod | **Kurze Cutscene**, auch wenn kein Begräbnis stattfindet. Danach wählt man eine **bestehende Person aus einer Liste** oder erstellt eine neue |
+
+### Speichern
+| Thema | Entscheidung |
+|---|---|
+| Autosave | **Alle 2 Minuten** (fest, nicht einstellbar) und **beim Beenden**. Es gibt **nur einen Spielstand pro Welt**, jeder Autosave überschreibt den alten. Keine extra Sicherheitskopien |
+| Beim Vorspulen | Gespeichert wird **erst am Ende** des Vorspulens |
+| Gespräch beim Beenden | Nur der Satz, der gerade gesprochen wird, geht verloren. Der Rest des Gesprächs bleibt erhalten |
+| Technik-Hinweis | Damit ein Absturz beim Speichern den Spielstand nicht kaputt macht: zuerst in eine neue Datei schreiben, dann die alte ersetzen. Für den Spieler bleibt es ein einziger Spielstand |
+
+### Sprache und Untertitel
+| Thema | Entscheidung |
+|---|---|
+| Untertitel bei Dialekt | **Umschaltbar** (wie gesprochen / Hochdeutsch) |
+| Dialekt | Lässt sich **ganz an- und ausschalten**. Aus = alle Menschen reden Hochdeutsch bzw. Umgangsdeutsch |
+
+### Innenleben der Figur
+| Thema | Entscheidung |
+|---|---|
+| Innere Stimme | Die Figur hat eine **hörbare innere Stimme**, die kommentiert und reagiert. Dazu **Gedanken- und Gefühls-Untertitel**: seelische Gefühle und Körperschmerz **mit Ort** („Mein linkes Knie …“) |
+| Eigene Vorlieben | Die Figur hat **eigene Vorlieben, unabhängig vom Spieler** (Essen, Musik, Menschen, Hobbys). Tut man etwas, das sie nicht mag, merkt man das an Stimmung und innerer Stimme |
+| Schlafen | **Einschlafen und Aufwachen** werden selbst erlebt, dazwischen wird vorgespult |
+| Schlaf und Stimmung | Zu wenig Schlaf wirkt sich aus: beim Aufwachen müde und schlecht gelaunt, tagsüber unkonzentriert |
+| Liebe | Liebe hat **echte Folgen**, z. B. Leid nach einer Trennung. **Unerwiderte Liebe** gibt es auch, mit Leid und Folgen |
+
+### Klargestellt
+- **Altersfreigabe:** Einstellbar, wie in 2d: **voller Modus ab 18**, dazu ein **Jugendmodus**. Die alte Angabe „ab 16/18“ wurde korrigiert.
+- **Intimität:** Laut 2d entschieden: Flirten, Beziehung, Heiraten ja, **Intimes wird ausgeblendet** (Bildschirm schwarz). Gilt in beiden Modi, bis es anders entschieden wird.
+
+Die übrigen Fragen aus 2j sind noch offen.
+
+---
+
 ## 3. Meilensteine (Reihenfolge)
 
 Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt erst, wenn die „Fertig, wenn …“-Liste vollständig abgehakt ist.
@@ -798,7 +838,7 @@ Dieser Plan wurde in einem eigenen Planungs-Chat gemacht. **Gebaut wird am PC.**
 | Sicht | Umschaltbar (erste und dritte Person) |
 | Ingame-Internet | Gemischt: Spiel-Seiten (inkl. Ingame-Bank) und einige echte Seiten; echtes Online-Banking gesperrt |
 | Wikipedia | Als Ingame-Lexikon erlaubt, die KI darf darin nachschlagen. Trainiert wird sie aber mit Gesprächen |
-| Harte Themen | Volles Programm: Krankheit, Tod, Verbrechen und Polizei, Unfälle (Freigabe ab 16/18) |
+| Harte Themen | Volles Programm: Krankheit, Tod, Verbrechen und Polizei, Unfälle. Freigabe **einstellbar**: voller Modus ab 18, Jugendmodus (siehe 2d) |
 | Engine | Unreal Engine 5 (kein Einspruch) |
 | Spielregeln | Siehe Abschnitt 2c: 1 Spieltag = 1 Stunde fest, Schlafen + Warten vorspulbar, nach dem Tod als neue fremde Person weiter, Startalter frei, automatisch speichern ohne Zurück, echte Preise, echter Führerschein, echte Schule |
 | Reden | Mikrofon + Tippen, Antworten mit Stimme, Dialekt gemischt wie in echt |
