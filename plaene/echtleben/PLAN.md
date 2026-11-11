@@ -287,6 +287,16 @@ Wir trainieren trotzdem ein **eigenes Modell von null** (dein „von 0 auf“).
 - [ ] Läuft auf deinem PC.
 - [ ] Optional: auch im Spiel als Assistent nutzbar.
 
+#### Trainings-Regel (gilt für alle KI-Teile: A, B, C)
+
+Der PC soll **nicht tagelang am Stück** trainieren. Darum wird jedes Training so gebaut:
+1. **Pausierbar:** Regelmäßige Zwischenstände (Checkpoints). Training jederzeit stoppen und später genau dort weitermachen.
+2. **In Etappen:** z. B. nur nachts ein paar Stunden oder am Wochenende. Ein Zeitlimit pro Etappe ist einstellbar.
+3. **Grafikkarte gedrosselt:** Standard-Grenze z. B. 70 % Leistung. Etwas langsamer, aber deutlich weniger Strom, leiser und kühler.
+4. **Klein anfangen:** Zuerst kleine Modelle, die in Stunden fertig sind. Große Trainings erst, wenn die Trainings-Daten wirklich gut sind.
+5. **Erst Probelauf, dann lang:** Kurzer Test vor jedem längeren Training.
+6. **Anzeige:** Wie weit das Training ist, wie lange es noch ungefähr dauert und wie viel Strom es bisher ungefähr gebraucht hat.
+
 #### Teil A: Fertig, wenn …
 
 - [ ] Eigenes Modell von 0 trainiert, mit Gesprächen statt Lexikon-Text (Liste aller Trainingstexte liegt im Repo, nachprüfbar).
