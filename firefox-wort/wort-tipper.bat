@@ -3,10 +3,6 @@ chcp 1252 >nul
 setlocal
 
 rem ================== EINSTELLUNGEN ==================
-rem Das Wort/der Text, der getippt werden soll:
-set "WORT=Hallo Welt"
-rem Tippgeschwindigkeit in Woertern pro Minute (1 Wort = 5 Zeichen):
-set "WPM=500"
 rem Tastenkuerzel (z.B. CTRL+ALT+W, CTRL+SHIFT+F1, ALT+F9):
 set "HOTKEY=CTRL+ALT+W"
 rem ===================================================
@@ -14,9 +10,13 @@ rem ===================================================
 set "DIR=%APPDATA%\WortTipper"
 if not exist "%DIR%" mkdir "%DIR%"
 
-rem Zeile 1 = Wort, Zeile 2 = WPM (kann spaeter direkt in wort.txt geaendert werden)
->"%DIR%\wort.txt" echo(%WORT%
->>"%DIR%\wort.txt" echo(%WPM%
+rem Eingabefelder fuer Wort und WPM anzeigen (vorausgefuellt mit den letzten Werten)
+powershell -NoProfile -Command "Add-Type -AssemblyName Microsoft.VisualBasic; $f='%DIR%\wort.txt'; $a=@('Hallo Welt','500'); if(Test-Path $f){$a=@(Get-Content $f)+@('','')}; $w=[Microsoft.VisualBasic.Interaction]::InputBox('Welches Wort soll in Firefox getippt werden?','WortTipper',$a[0]); if(!$w){exit 1}; $p=[Microsoft.VisualBasic.Interaction]::InputBox('Geschwindigkeit in WPM:','WortTipper',$(if($a[1]){$a[1]}else{'500'})); if($p -notmatch '^[0-9]+$'){$p='500'}; Set-Content -LiteralPath $f -Value $w,$p -Encoding Default"
+if errorlevel 1 (
+  echo Abgebrochen.
+  pause
+  goto :eof
+)
 
 rem VBS-Skript (unten in dieser Datei) extrahieren
 powershell -NoProfile -Command "$t=Get-Content -LiteralPath '%~f0'; $i=[array]::IndexOf($t,':VBS'); $t[($i+1)..($t.Count-1)] | Set-Content -LiteralPath '%DIR%\tippen.vbs' -Encoding Default"
@@ -25,8 +25,8 @@ rem Verknuepfung mit Tastenkuerzel im Startmenue anlegen
 powershell -NoProfile -Command "$s=(New-Object -ComObject WScript.Shell).CreateShortcut([Environment]::GetFolderPath('Programs')+'\WortTipper.lnk'); $s.TargetPath='wscript.exe'; $s.Arguments='\"%DIR%\tippen.vbs\"'; $s.Hotkey='%HOTKEY%'; $s.Save()"
 
 echo.
-echo Fertig! Druecke %HOTKEY%, um "%WORT%" mit %WPM% WPM in Firefox zu tippen.
-echo Aendern: diese .bat anpassen und neu starten (oder %DIR%\wort.txt bearbeiten).
+echo Fertig! Druecke in Firefox %HOTKEY%, um dein Wort ins aktive Eingabefeld zu tippen.
+echo Wort aendern: diese .bat einfach nochmal starten.
 echo Entfernen: Startmenue-Verknuepfung "WortTipper" und Ordner %DIR% loeschen.
 pause
 goto :eof
