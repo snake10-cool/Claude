@@ -630,20 +630,129 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 
 ## 2j. Offene Fragen (für den Sprach-Chat)
 
-Diese Fragen werden in einem eigenen Sprach-Chat beantwortet. Bei jeder gibt es wirklich zwei gute Möglichkeiten.
+100 Fragen, bei denen es wirklich mehrere gute Möglichkeiten gibt. In Klammern stehen die Möglichkeiten. Die Grundregel „im Zweifel echt“ gilt weiter. **Antworten bitte als nummerierte Liste (1–100) in den Planungs-Chat zurückbringen.** Übersprungene Fragen werden nach der Grundregel entschieden.
 
-1. **Wenn das Spiel aus ist:** Läuft die Welt weiter (z. B. eine Woche nicht gespielt = eine Woche ist vergangen), oder bleibt sie stehen?
-2. **Person wechseln, ohne zu sterben:** Darf man jederzeit in eine andere Person der Welt schlüpfen, oder bleibt man bis zum Tod dieselbe?
-3. **Nach dem Tod:** Startet die neue Person sofort, oder vergeht vorher Zeit (z. B. man sieht noch das eigene Begräbnis)?
-4. **Untertitel bei Dialekt:** Steht im Untertitel der Dialekt so, wie er gesprochen wird, oder auf Hochdeutsch übersetzt (oder umschaltbar)?
-5. **Sicherheitskopien:** Spielstände sollen kein Zurück haben. Darf man trotzdem eine Kopie machen (z. B. falls der PC abstürzt), auch wenn man damit schummeln könnte?
-6. **Online später:** Kommen Freunde in **deine** Welt, oder gibt es eine **gemeinsame** Welt, in der alle leben?
-7. **Andere Orte:** Lieber wenige Orte, die so genau sind wie Mattighofen, oder viele Orte aus dem Baukasten, die weniger genau sind?
-8. **Erste spielbare Version:** Was soll man als Allererstes wirklich spielen können? Zum Beispiel „ein Tag als Bauer in Mattighofen“, „ein Schultag“ oder „einfach durch Mattighofen gehen“.
-9. **Kinder spielen:** Wenn man als kleines Kind spielt, sind viele Dinge noch nicht erlaubt. Soll man die Kindheit wirklich ganz spielen, oder darf man sie schneller durchlaufen?
-10. **Kamera beim Tod:** Was sieht man in dem Moment, in dem die Figur stirbt? Schwarz, langsames Ausblenden, oder ein kurzer Rückblick aufs Leben?
+### A. Zeit und Welt
+1. Wenn das Spiel aus ist: Läuft die Welt weiter, oder bleibt sie stehen? (weiter / stehen)
+2. Darf man jederzeit in eine andere Person der Welt schlüpfen, oder bleibt man bis zum Tod dieselbe? (jederzeit / erst nach dem Tod)
+3. Nach dem Tod: Startet die neue Person sofort, oder vergeht vorher Zeit, z. B. man sieht noch das eigene Begräbnis? (sofort / Zeit vergeht)
+4. Ein Spieljahr dauert bei 1 Tag = 1 Stunde **365 echte Stunden**. Ist das okay? (so lassen / Jahre laufen schneller, ein Tag bleibt eine Stunde)
+5. Ein ganzes Leben wären rund **30.000 Spielstunden**. Altert man im echten Tempo? (echt / schneller altern als die Uhr / einstellbar)
+6. Bei 1 Tag = 1 Stunde müsste man ca. alle 20 Minuten essen und oft aufs Klo. Bedürfnisse im echten Takt? (echter Takt / seltener, damit es nicht nervt)
+7. Nachts: stockdunkel wie in echt, oder ein bisschen heller, damit man etwas sieht? (echt dunkel / etwas heller)
+8. Wetter: Zufall nach dem echten Klima von Mattighofen, oder das echte Wetter vom selben Tag aus früheren Jahren? (Zufall nach Klima / echte alte Wetterdaten)
+9. Verändert sich der Ort über die Jahre (neue Häuser, Abriss, Geschäfte sperren zu und auf)? (ja / bleibt gleich)
+10. Echte Straßennamen und Hausnummern? (echt / erfunden)
+11. Können alle Häuser von innen betreten werden? (alle, unwichtige einfacher gebaut / nur wichtige)
+12. Am Land sind Haustüren oft offen. Im Spiel auch? (wie echt, manche offen / immer zugesperrt)
+13. Mit wie vielen Menschen startet Mattighofen? (500 und dann mehr / gleich die echte Einwohnerzahl, dafür einfacher)
+14. Gibt es Zuzug und Wegzug von außerhalb? (ja / nur Geburten und Tod)
 
-Antworten bitte als nummerierte Liste in den Planungs-Chat zurückbringen.
+### B. Steuerung und Bild
+15. Hände steuern: Maus bewegt die Hand ganz frei, oder halb-automatisch (zielen + klicken, die Hand greift selbst richtig)? (ganz frei / halb-automatisch / umschaltbar)
+16. Sieht man in der Ich-Sicht den eigenen Körper (Beine, Bauch)? (ja / nur Hände)
+17. Kopfwackeln beim Gehen: echt, oder ruhiger? (echt / ruhig / einstellbar)
+18. Ist das Handy auch das Menü (Einstellungen, Speichern über eine Handy-App)? (ja, Handy = Menü / normales Menü)
+19. Karte: nur echte Karten (Papier, Karten-App am Handy), oder eine kleine Karte am Bildschirm? (nur echte / kleine Karte)
+20. Wegfinden: Navi-App am Handy, oder muss man Leute fragen und sich merken? (Navi-App / fragen)
+21. Wenn Leute in der Nähe miteinander reden: kann man mitlesen (Untertitel)? (ja / nur hören)
+22. Untertitel bei Dialekt: so wie gesprochen, auf Hochdeutsch übersetzt, oder umschaltbar? (wie gesprochen / Hochdeutsch / umschaltbar)
+23. Soll es einen Fotomodus mit freier Kamera geben? (ja / nur Fotos mit dem Ingame-Handy)
+24. Häuser betreten ohne Ladebildschirm (schwerer zu bauen) oder mit kurzen Ladezeiten? (nahtlos / kurze Ladezeiten okay)
+25. Gedanken-Untertitel in Ich-Form („Mir ist kalt“) oder als Beschreibung („Dir ist kalt“)? (Ich-Form / Du-Form)
+26. Wie oft kommen Gedanken? (oft / selten / einstellbar)
+
+### C. Menschen
+27. Merken sich die Menschen alles für immer, oder vergessen sie langsam wie echt? (für immer / vergessen langsam)
+28. Hält Groll ewig, oder verblasst er mit der Zeit? (ewig / verblasst)
+29. Sprechen dich fremde Menschen von selbst an? (oft / selten wie in echt / nur Bekannte)
+30. In Mattighofen leben auch Menschen, die zu Hause andere Sprachen sprechen. Im Spiel auch, und reden sie manchmal so? (ja / alle reden nur Deutsch)
+31. Reden kleine Kinder im Spiel wie echte Kinder (mit Fehlern, einfachen Sätzen)? (ja / normal)
+32. Schreiben dir Menschen von selbst am Handy? (oft / selten / nur enge Leute)
+33. Adoption und Pflegekinder möglich? (ja / nein)
+34. Wenn man als Erwachsener startet: Hat die Figur schon eine Vergangenheit (Freunde, Ex, Schulden, Erinnerungen)? (ja, automatisch / leer, alles neu)
+35. Gerichtsverhandlung selbst erleben, oder zusammengefasst? (selbst erleben / zusammengefasst)
+36. Kann die neue Person nach dem Tod das Erbe bekommen, wenn sie im Testament steht? (ja, erlaubt / nein, wäre Schummeln)
+37. Kann man von Menschen gestalkt oder belästigt werden? (ja, selten mit Hilfe / nein)
+38. Haben die Menschen Hobbys, bei denen man mitmachen kann (z. B. jemand nimmt dich zum Angeln mit)? (ja / nein)
+
+### D. Arbeit und Geld
+39. Arbeitstag (ca. 20 echte Minuten): ganz spielen, oder dürfen Teile vorgespult werden? (ganz / Teile vorspulbar)
+40. Arbeitsweg: selbst fahren/gehen, oder vorspulbar? (selbst / vorspulbar)
+41. Die ersten 3 Jobs: Bauer, Supermarkt, Kfz-Mechaniker. Passt das, oder andere? (passt / andere: welche?)
+42. Bewerbung: selbst schreiben (die KI im Spiel liest sie), oder auswählen? (selbst schreiben / auswählen)
+43. Vorstellungsgespräch per Mikrofon wirklich führen? (ja / nein, Text)
+44. Eine Ingame-Plattform für Kleinanzeigen (wie willhaben, erfundener Name) zum Kaufen und Verkaufen? (ja / nein)
+45. Aktien und Krypto im Spiel (nur Spielgeld)? (ja / nein)
+46. Lohnzettel mit allen Abzügen im Detail? (ja / nur Netto)
+47. Preise: einmal heutige echte Preise und dann Inflation im Spiel, oder per Update an echte Preise anpassen? (Inflation im Spiel / echte Updates)
+48. Kann man schwarzarbeiten oder schwarz Geld verdienen (mit Risiko)? (ja / nein)
+49. Trinkgeld, Spenden, Betteln, Straßenmusik? (ja / nein)
+50. Kann man Lotto gewinnen und Millionär werden (sehr selten, wie echt)? (ja / nein)
+
+### E. Wohnen und Besitz
+51. Startwohnung als Erwachsener: zufällig oder selbst aussuchen? (Zufall / aussuchen)
+52. Möbel: im Möbelhaus kaufen und **selbst zusammenbauen** (Schritt für Schritt)? (ja / werden fertig geliefert / beides)
+53. Nachbarn: Lärm, Hausordnung, Streit? (ja / nein)
+54. Kann man alles stehlen, was nicht festgemacht ist? (ja, mit Folgen / nur bestimmte Dinge)
+55. Bauernhof mit Tieren: Schlachten zeigen oder ausblenden? (zeigen / ausblenden / nur im vollen Modus)
+56. Smart Home, Solaranlage, Wärmepumpe? (ja / später)
+
+### F. Gesundheit und schwere Themen
+57. Wie oft wird man krank? (wie echt / seltener)
+58. Psychische Krankheiten (Depression, Burnout, Angst) mit Therapie? (ja, vorsichtig / nein)
+59. Sehr schwere Themen wie Suizid: komplett weglassen, oder nur sehr vorsichtig mit Hilfe-Infos? (weglassen / vorsichtig mit Hilfe)
+60. Schwangerschaft selbst spielen, mit Beschwerden, die man spürt? (ja / nur nebenbei)
+61. Geburt zeigen oder ausblenden? (zeigen, nicht blutig / ausblenden)
+62. Demenz im Alter möglich (Figur vergisst Dinge)? (ja / nein)
+63. Sieht man andere Menschen sterben (z. B. Großeltern im Krankenhaus)? (ja, ruhig / ausblenden)
+64. Erbrechen und ekelige Dinge zeigen? (ja / ausblenden)
+65. Wie viel Blut im vollen Modus? (realistisch / wenig)
+66. Narben und bleibende Spuren am Körper sichtbar? (ja / nein)
+
+### G. Verbrechen und Polizei
+67. Wie gut ist die Polizei? (wie echt, manches wird nie aufgeklärt / strenger, man wird fast immer erwischt)
+68. Erkennt die Polizei dich später an Gesicht, Kleidung, Auto, Kameras? (ja / einfacher)
+69. Kann man selbst Polizist werden und echt ermitteln? (ja, als Job / später)
+70. Hacken am Ingame-PC (in der Spielwelt, z. B. Ingame-Bank)? (ja / nein)
+71. Wie viele Verbrechen begehen die anderen Menschen? (wie echte Statistik / etwas mehr)
+72. Anwalt nehmen, Pflichtverteidiger? (ja / nein)
+
+### H. Geräte und Internet
+73. Welche echten Websites dürfen im Ingame-Internet gehen? (keine / nur Wissen wie Wikipedia / eine Liste, die du festlegst)
+74. Am Ingame-PC wirklich programmieren lernen können (echtes Linux)? (ja / egal)
+75. Fotos und Videos aus dem Spiel auf die echte Festplatte speichern können? (ja / nein)
+76. Ingame-PC so langsam wie ein echter alter PC, wenn er alt ist? (ja / immer gleich)
+77. Ingame-Handy: Akku leer, Display kaputt, Updates? (ja / nur Akku)
+78. Ab wann kommt der Handy-Assistent (deine eigene KI)? (mit M7 / früher als einfache Version)
+
+### I. Feste, Natur, Kleinigkeiten
+79. Brauchtum wie Krampuslauf, Perchten, Maibaum? (ja / nein)
+80. Gelsen, Fliegen, Wespen, die nerven? (ja / nein)
+81. Gerüche über Gedanken („Riecht nach Gülle“)? (ja / nein)
+82. Wildtiere, die gefährlich werden können (z. B. Wildschwein)? (ja, selten / nein)
+83. Gewitter und Stromausfall, sodass Geräte und Licht ausgehen? (ja / nein)
+84. Schnee räumen, Streuen, Rasenmähen als echte Arbeiten? (ja / läuft nebenbei)
+
+### J. Anfang und Ende
+85. Erste Szene beim Start eines neuen Lebens: Geburt, Aufwachen im Bett, oder direkt im Alltag? (Geburt / Aufwachen / Alltag)
+86. Kindheit: ganz spielen oder schneller durchlaufen? (ganz / schneller)
+87. Was sieht man im Moment des Todes? (schwarz / langsames Ausblenden / kurzer Rückblick aufs Leben)
+88. Gibt es nach einem ganzen Leben eine Zusammenfassung (Lebenslauf, Fotos)? (ja / nein)
+89. Spielstände haben kein Zurück. Dürfen trotzdem Sicherheitskopien gemacht werden (Absturz)? (ja / nein)
+
+### K. Projekt und Veröffentlichung
+90. Was soll man in der allerersten spielbaren Version machen können? (Tag als Bauer / Schultag / einfach durch Mattighofen gehen / etwas anderes)
+91. Andere Orte: wenige, die so genau sind wie Mattighofen, oder viele aus dem Baukasten? (wenige genau / viele automatisch)
+92. Online später: Freunde kommen in deine Welt, oder eine gemeinsame Welt für alle? (deine Welt / gemeinsame Welt)
+93. Online später: Sprachchat mit Freunden im Spiel? (ja / nein)
+94. Wer darf testen? (nur du / Familie und Freunde / öffentliche Testversion)
+95. Falls verkauft: früh als „Early Access“ oder erst fertig? (früh / fertig)
+96. Wo veröffentlichen? (Steam / itch.io / beides)
+97. Code öffentlich (Open Source) oder privat? (öffentlich / privat)
+98. Entwicklungs-Tagebuch (Devlog, z. B. Videos), damit andere zusehen können? (ja / nein)
+99. Namensideen für das Spiel? (Echtleben behalten / Vorschläge sammeln)
+100. Wie soll das Logo bzw. der Stil der Menüs aussehen? (schlicht / österreichisch / wie ein Handy)
 
 ---
 
