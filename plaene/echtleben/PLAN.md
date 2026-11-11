@@ -547,11 +547,24 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 - ⚠️ Muss getestet werden: Das Ingame-Android hat **keine Google-Dienste**. Teile der App, die Google/Firebase brauchen (z. B. Konto, Community, Benachrichtigungen), funktionieren dort vielleicht nicht. Die Teile ohne Konto (Gewässer, Fangbuch, Fischlexikon, Schonzeiten) sollten gehen.
 - Im Spiel nützlich: Gewässer finden, Schonzeiten prüfen, Fänge ins Fangbuch eintragen.
 
-### Noch offen (später fragen)
-- Bleibende Folgen nach schweren Unfällen/Krankheiten (Rollstuhl, Brille …)?
-- Pension: echt oder vereinfacht?
-- Kann dir selbst etwas passieren (Diebstahl, Einbruch, Betrug)?
-- Fernsehen und Nachrichten im Spiel?
+---
+
+## 2h. Weitere Entscheidungen (Fragerunde 4, 11.11.2026)
+
+| Thema | Entscheidung |
+|---|---|
+| Bleibende Folgen | **Ja, mit Hilfen:** Schwere Unfälle oder Krankheiten können bleiben (Rollstuhl, Brille, Hörgerät). Das Leben geht weiter, mit Reha und Unterstützung |
+| Pension | **Echt:** Höhe hängt davon ab, wie lange und wie viel man gearbeitet hat. Pensionsantritt wie in Österreich |
+| Dir passiert etwas | **Selten, wie in echt:** Fahrrad gestohlen, Einbruch, Betrugs-Nachrichten am Ingame-Handy. Anzeige bei der Polizei, Versicherung |
+| Nachrichten | **Spiel-Nachrichten:** Lokalzeitung, Radio und TV berichten über Mattighofen im Spiel (Unfälle, Wahlen, Feste), auch über dich, wenn du etwas Großes machst |
+| Spiel lernen | **Von Menschen im Spiel:** Eltern, Lehrer, Kollegen, Fahrlehrer zeigen dir Dinge. Dazu ein kurzes Steuerungs-Training am Anfang |
+| Gefahren in der Natur | **Wie in echt:** Zecken (FSME), Wespen, Allergien, Glatteis, Sonnenbrand. Mit Vorbeugung: Zeckenimpfung, Sonnencreme, Winterreifen |
+| Schulden | **Komplett echt:** Kredite, Raten, Mahnungen, Inkasso, Gehaltspfändung, Privatkonkurs, Schuldnerberatung |
+| Erben | **Testament selbst schreiben** möglich. Ohne Testament gesetzliche Erbfolge. Erbstreit in der Familie möglich |
+| Urlaub | **Erst, wenn es echte Orte gibt**, die man bespielen kann |
+| Wohnung finden | **Echter Wohnungsmarkt:** Inserate, Besichtigung, Kaution, Makler, Mietvertrag, Genossenschaft mit Wartezeit, WG, bei den Eltern wohnen. Gute Wohnungen sind schnell weg |
+| Online bestellen | **Mit echten Paketen:** Spiel-Shopseiten, Bote bringt das Paket, manchmal nur ein Zettel und man muss zur Post. Rücksendungen möglich |
+| Lebensdauer | **Wie in echt:** Lebenserwartung wie in Österreich, abhängig von Lebensstil, Gesundheit und Glück |
 
 ---
 
