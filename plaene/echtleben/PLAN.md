@@ -392,7 +392,32 @@ Wir trainieren trotzdem ein **eigenes Modell von null** (dein „von 0 auf“).
 Dafür braucht die KI (Punkt 4) zusätzlich:
 - **Spracherkennung**, die auch Dialekt versteht.
 - **Sprachausgabe** mit vielen verschiedenen Stimmen (alt, jung, Mann, Frau, Dialekt).
-- ❓ Offen: Müssen auch Spracherkennung und Stimmen **von 0** selbst gebaut werden, oder dürfen dafür fertige freie Programme genommen werden? Von 0 wäre ein riesiges Extra-Projekt.
+- ✅ **Entschieden: auch Spracherkennung und Stimmen werden von 0 selbst gebaut.**
+
+### Teil C: Eigene Spracherkennung und eigene Stimmen (von 0)
+
+Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell.
+
+| Teil | Was es macht | Was es zum Lernen braucht |
+|---|---|---|
+| **Spracherkennung** | Hört dein Mikrofon und macht daraus Text | Viele Stunden Sprache **mit** dem passenden Text dazu, von vielen verschiedenen Menschen, auch im Dialekt |
+| **Sprachausgabe** | Macht aus der Antwort-Text eine Stimme | Pro Stimme mehrere Stunden saubere Aufnahmen einer Person, mit Text |
+
+**Woher die Aufnahmen kommen (Vorschlag):**
+- **Freie Sprach-Sammlungen**, die man ausdrücklich zum Trainieren verwenden darf (z. B. Mozilla Common Voice, Deutsch, gemeinfrei). Das Modell bleibt trotzdem **von 0 selbst trainiert**, nur die Aufnahmen kommen von dort.
+- **Eigene Aufnahmen** für Dialekt und für die Stimmen der Spielfiguren: du, Familie, Freunde. **Nur mit Erlaubnis** der Person, und es wird aufgeschrieben, wer zugestimmt hat.
+- Keine Stimmen von echten bekannten Personen nachmachen.
+
+**Ehrlich dazu:**
+- Am Anfang werden die eigenen Stimmen roboterhaft klingen und die Erkennung wird Fehler machen, vor allem beim Dialekt. Das wird mit mehr Aufnahmen und Training Schritt für Schritt besser.
+- Training dauert auf der 3060 Ti lange (Tage bis Wochen pro Modell). Das passt zur 1. Regel.
+- **Bis Teil C gut genug ist, funktioniert das Spiel mit Tippen und Untertiteln.** So blockiert Teil C den Rest nicht.
+
+**Fertig, wenn …**
+- [ ] Eigene Spracherkennung von 0, versteht Hochdeutsch und österreichisches Umgangsdeutsch zuverlässig, Innviertler Dialekt gut genug.
+- [ ] Eigene Sprachausgabe von 0 mit mindestens 10 verschiedenen Stimmen (alt, jung, Mann, Frau, Dialekt).
+- [ ] Antwort mit Stimme kommt so schnell, dass ein Gespräch flüssig wirkt.
+- [ ] Liste aller Aufnahmen und Zustimmungen liegt im Repo.
 
 ---
 
@@ -407,6 +432,7 @@ Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt ers
 | **M2** | Welt | Punkt 2 komplett (Mattighofen) |
 | **M3** | Andere Menschen | Punkt 3 komplett, inklusive Wirtschaft (Jobs, Geld, Geschäfte, Wohnungen) |
 | **M4** | KI | Punkt 4 komplett (eigenes Modell, Gespräche) |
+| **M4b** | Eigene Stimmen | Punkt 4 Teil C: Spracherkennung und Sprachausgabe von 0. Kann nebenher laufen, das Spiel geht bis dahin mit Tippen |
 | **M5** | Geräte | Punkt 5 komplett (PCs, Handys, echtes Betriebssystem) |
 | **M6** | Alles zusammen | Spielstart-Menü, Speichern, Einstellungen, langes Testspielen, Fehler beheben |
 | **M7** | Deine eigene KI (Nebenprojekt) | Punkt 4 Teil B: eigenständige KI mit Internetsuche und Wikipedia, getrennt vom Spiel. Erst wenn das Spiel einigermaßen fertig ist |
@@ -441,6 +467,7 @@ Dieser Plan wurde in einem eigenen Planungs-Chat gemacht. **Gebaut wird am PC.**
 | Engine | Unreal Engine 5 (kein Einspruch) |
 | Spielregeln | Siehe Abschnitt 2c: 1 Spieltag = 1 Stunde fest, Schlafen + Warten vorspulbar, nach dem Tod als neue fremde Person weiter, Startalter frei, automatisch speichern ohne Zurück, echte Preise, echter Führerschein, echte Schule |
 | Reden | Mikrofon + Tippen, Antworten mit Stimme, Dialekt gemischt wie in echt |
+| Spracherkennung + Stimmen | Auch von 0 selbst gebaut (Teil C, M4b); Aufnahmen aus freien Sammlungen und eigenen Aufnahmen mit Erlaubnis |
 | Handeln | Alles echt, keine „Drücke E“-Abkürzungen; Jobs ausprobieren, zuerst 3 Jobs komplett |
 | Arbeitsweise | Dieser Chat plant, gebaut wird am PC. Der Plan kommt als Artefakt zum PC |
 
