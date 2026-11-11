@@ -208,7 +208,7 @@ Wenn der Spieler in die Nähe kommt, wird aus der „fernen“ Person nahtlos ei
 - Arzt, Krankenhaus, Rettung
 - Polizei, Strafen, Gericht, Gefängnis
 - Versicherungen, Erbe, Begräbnis
-- Das Spiel wird damit **ab 16 oder 18** freigegeben.
+- Altersfreigabe: **einstellbar**, siehe Abschnitt 2d (voller Modus ab 18, Jugendmodus).
 
 **Fertig, wenn …**
 - [ ] 500 Menschen leben mit vollständigen Daten (wie Punkt 1).
@@ -421,6 +421,47 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 
 ---
 
+## 2d. Weitere Entscheidungen (Fragerunde 11.11.2026)
+
+### Spielen
+| Thema | Entscheidung |
+|---|---|
+| Steuerung | Erst einmal **Maus + Tastatur**. Controller/VR vielleicht später |
+| Anzeige am Bildschirm | **Fast nichts.** Uhrzeit auf Uhr oder Handy, Geld in Brieftasche oder Banking-App, Hunger merkt man an Bauchknurren und Figur |
+| Mitspieler | **Erst allein, später online.** Von Anfang an so bauen, dass Online später möglich ist |
+| Für wen | **Erst für dich, vielleicht später verkaufen.** Darum rechtlich von Anfang an sauber (Lizenzen, Marken, Musik) |
+| Leistung | **Flüssig vor schön.** Grafik-Einstellungen im Menü |
+| Name | Später entscheiden, bis dahin „Echtleben“ |
+
+### Altersfreigabe: einstellbar
+- **Voller Modus (ab 18):** Waffen für alle (nur mit echter Waffenbesitzkarte, Missbrauch hat schwere Folgen), echte Gewalt, Alkohol, Rauchen, **illegale Drogen** (mit Polizei, Strafen, Sucht, Gesundheitsfolgen).
+- **Jugendmodus:** schaltet Waffen, Blut und Drogen aus.
+- Die echte Freigabe vergibt am Ende eine Prüfstelle (z. B. PEGI), erst wenn verkauft wird.
+
+### Leben
+| Thema | Entscheidung |
+|---|---|
+| Liebe | Flirten, Beziehung, Heiraten, Trennung, Scheidung. **Intimes wird ausgeblendet** (Bildschirm schwarz) |
+| Kinder | **Komplett:** Schwangerschaft, Geburt, Baby versorgen, großziehen, Kindergeld, Karenz |
+| Gefängnis | **Wird gespielt:** Alltag, Arbeit, Kontakte. Lange Strafen laufen schneller, werden aber **nicht ganz übersprungen** |
+| Krankheit | **Echt:** echte Krankheiten, Arzt, Diagnose, Krankenstand, Medikamente; manche heilbar, manche nicht |
+| Körper | **Verändert sich sichtbar:** zunehmen, abnehmen, Muskeln, Haare, Bart, Falten, langsam wie in echt |
+| Gesicht | Nur über den **Editor**, keine Fotos |
+| Haustiere | **Mit echter Pflege:** kaufen oder Tierheim, füttern, Gassi, Tierarzt, werden alt und sterben |
+| Wohnen | **Alles, was geht:** einrichten, Möbel frei stellen, ausmalen, renovieren, umbauen, Grundstück kaufen, mit Baugenehmigung ein Haus bauen (selbst oder mit Firma) |
+
+### Welt
+| Thema | Entscheidung |
+|---|---|
+| Kalender | **Echt:** österreichische Feiertage, Ferien, Weihnachten, Ostern, Silvester, Fasching, Feste im Ort. Geschäfte an Feiertagen zu |
+| Naturereignisse | **Selten, wie in echt:** Unwetter, Hagel, Hochwasser an der Mattig, Stromausfall, mit Schäden und Versicherung |
+| Reisen | Zuerst nur Mattighofen und Umgebung, **später Nachbarorte**, weitere Orte (z. B. Salzburg) als Erweiterungen |
+| Social Media | **Erfundene Apps** auf dem Ingame-Handy (Messenger, Foto-App …). Die Menschen im Spiel posten, liken, schreiben dir |
+| Musik | Freie und selbst gemachte Musik, **dazu eigene MP3s** des Spielers im Ingame-Radio. Echte bekannte Lieder nicht eingebaut (Lizenz) |
+| Marken | **Leicht veränderte Namen**, die an echte erinnern. Keine echten Logos |
+
+---
+
 ## 3. Meilensteine (Reihenfolge)
 
 Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt erst, wenn die „Fertig, wenn …“-Liste vollständig abgehakt ist.
@@ -473,8 +514,6 @@ Dieser Plan wurde in einem eigenen Planungs-Chat gemacht. **Gebaut wird am PC.**
 
 ## 5. Noch offen (hat Zeit)
 
-- Allein oder später auch online mit Freunden?
 - Eigener Name für das Spiel?
-- Speicherplatz und Prozessor deines PCs
 
 **Nächster Schritt:** M0 (Fundament) im Detail ausarbeiten, Schritt für Schritt.
