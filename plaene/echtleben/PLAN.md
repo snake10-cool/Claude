@@ -443,7 +443,7 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 |---|---|
 | Liebe | Flirten, Beziehung, Heiraten, Trennung, Scheidung. **Intimes wird ausgeblendet** (Bildschirm schwarz) |
 | Kinder | **Komplett:** Schwangerschaft, Geburt, Baby versorgen, großziehen, Kindergeld, Karenz |
-| Gefängnis | **Wird gespielt:** Alltag, Arbeit, Kontakte. Lange Strafen laufen schneller, werden aber **nicht ganz übersprungen** |
+| Gefängnis | **Wird gespielt:** Alltag, Arbeit, Kontakte. Lange Strafen laufen schneller, werden aber **nicht ganz übersprungen**. **Ausbrechen ist möglich**, aber schwer und echt: planen, Lücken finden, Werkzeug besorgen, Helfer. Wer erwischt wird, bekommt eine längere Strafe; wer entkommt, wird gesucht (Fahndung, Polizei kontrolliert, Leben auf der Flucht) |
 | Krankheit | **Echt:** echte Krankheiten, Arzt, Diagnose, Krankenstand, Medikamente; manche heilbar, manche nicht |
 | Körper | **Verändert sich sichtbar:** zunehmen, abnehmen, Muskeln, Haare, Bart, Falten, langsam wie in echt |
 | Gesicht | Nur über den **Editor**, keine Fotos |
