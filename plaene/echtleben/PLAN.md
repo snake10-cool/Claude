@@ -435,7 +435,7 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 
 ### Altersfreigabe: einstellbar
 - **Voller Modus (ab 18):** Waffen für alle (nur mit echter Waffenbesitzkarte, Missbrauch hat schwere Folgen), echte Gewalt, Alkohol, Rauchen, **illegale Drogen** (mit Polizei, Strafen, Sucht, Gesundheitsfolgen).
-- **Jugendmodus:** schaltet Waffen, Blut und Drogen aus.
+- **Jugendmodus:** schaltet Waffen, Blut, Drogen und Glücksspiel aus.
 - Die echte Freigabe vergibt am Ende eine Prüfstelle (z. B. PEGI), erst wenn verkauft wird.
 
 ### Leben
@@ -496,6 +496,34 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 - [ ] Zustände wirken auf die Steuerung und die Hände (z. B. Zittern beim Entzug).
 - [ ] Die Gedanken passen zur Lage und wiederholen sich nicht dauernd.
 - [ ] Die Menschen im Spiel zeigen Gefühle sichtbar und reagieren auf deinen Zustand.
+
+---
+
+## 2f. Weitere Entscheidungen (Fragerunde 2, 11.11.2026)
+
+### Spielen
+| Thema | Entscheidung |
+|---|---|
+| Pause | **Normale Pause:** Menü öffnen, alles steht still |
+| Nichts tun (AFK) | Die Figur **steht einfach da**, bei Gefahr reagiert sie selbst (z. B. aus dem Weg gehen) |
+| Klo, Duschen, Zähneputzen | **Echt, aber diskret:** muss man machen, sonst Folgen (Geruch, Leute reagieren, Krankheit). Kamera dreht beim Klo und Duschen weg |
+| Erfolge | **Keine Erfolge.** Stattdessen ein **Tagebuch, das man selbst schreibt**, mit eigenen Fotos vom Ingame-Handy. Nichts passiert automatisch |
+
+### Leben in Österreich
+| Thema | Entscheidung |
+|---|---|
+| Bundesheer / Zivildienst | **Wie in echt:** Stellung, Tauglichkeit, dann Grundwehrdienst (6 Monate) oder Zivildienst (9 Monate), beides spielbar. Hinweis: Bei 1 Spieltag = 1 Stunde sind 6 Monate über 100 Spielstunden (mit Schlafen vorgespult) |
+| Ämter und Papierkram | **Komplett echt:** jedes Formular, jede Frist, jeder Termin (Meldezettel, Ausweis, AMS, Anmeldungen, Anträge), am Amt oder online, mit Wartezeiten. Verpasste Fristen haben Folgen |
+| Eigene Firma | **Ja:** Gewerbe anmelden, Kredit, Lokal mieten, Mitarbeiter einstellen, Steuern, Buchhaltung. Kann pleitegehen |
+| Politik | **Wahlen und selbst kandidieren:** Gemeinderatswahlen, einer erfundenen Partei beitreten, Bürgermeister werden. **Keine echten Parteien oder Politiker** |
+
+### Welt über die Jahre
+| Thema | Entscheidung |
+|---|---|
+| Zeit | Start **heute (2026)**, dann läuft die Zeit weiter: neue Handys, Autos, Mode usw. kommen mit den Spieljahren dazu |
+| Wirtschaft | **Inflation und Krisen:** Preise und Löhne steigen langsam, ab und zu Krisen mit Jobverlusten und Firmenpleiten |
+| Ruf | **Wie im echten Dorf:** Was du tust, spricht sich herum, auch falsch und übertrieben. Der Ruf beeinflusst Jobs, Freunde und Liebe |
+| Glücksspiel | **Ab 18, mit Spielsucht:** Lotto, Wettbüro, Casino, mit echten Gewinnchancen (meistens verliert man). **Nur Spielgeld, nie echtes Geld.** Im Jugendmodus aus |
 
 ---
 
