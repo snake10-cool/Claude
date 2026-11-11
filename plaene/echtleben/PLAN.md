@@ -568,6 +568,85 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 
 ---
 
+## 2i. Grundregel und Fragerunde 5 (11.11.2026)
+
+> **Grundregel: Im Zweifel immer die echte Variante.** Wenn etwas nicht ausdrücklich anders entschieden ist, wird es so gebaut, wie es im echten Leben in Österreich ist. Gefragt wird nur noch, wo es wirklich zwei gute Möglichkeiten gibt.
+
+### Jugend
+| Thema | Entscheidung |
+|---|---|
+| Ausbildung | **Alle echten Wege:** Lehre mit Berufsschule, Poly, HTL, HAK, Gymnasium, Matura, Studium (Uni erst mit anderen Orten) |
+| Geld für Jugendliche | Taschengeld von den Eltern, Ferialjob, Babysitten, Rasenmähen für Nachbarn |
+| Jugendschutz | **Wie in Oberösterreich:** Ausgehzeiten nach Alter, Kontrollen. Eltern können strengere Regeln haben |
+| Mobbing | Kann passieren (auch online), mit echten Gefühlen. Man kann sich wehren und Hilfe holen |
+
+### Freizeit
+| Thema | Entscheidung |
+|---|---|
+| Ausgehen | **Wie im Innviertel:** Wirtshaus, Café, Bar, Disco, Zeltfeste, Maifeste, Feuerwehrfeste. Türsteher, Ausweis, Heimfahrt-Problem |
+| Sport | **Selbst spielen:** Fußball, Laufen, Schwimmen, Radfahren, Fitnessstudio wirklich steuern |
+| Instrument | **Wirklich spielen** über die Tastatur, am Anfang klingt es schlecht. Musikschule, Musikkapelle |
+| Bücher | **Echte freie Bücher** (Urheberrecht abgelaufen) wirklich lesbar, dazu Sachbücher zum Lernen |
+
+### Auto
+| Thema | Entscheidung |
+|---|---|
+| Pflichten | Pickerl, Service, Winterreifen, Reparaturen. Vergessen hat Folgen |
+| Tanken | Tank wird leer, Spritpreise schwanken. Später auch E-Autos laden |
+| Strafen | Falschparken, Radar, Polizeikontrolle, Alkotest, Führerschein-Entzug, Vormerksystem |
+| Wildunfälle | Vor allem in der Dämmerung, mit Meldepflicht und Versicherung |
+
+### Haushalt
+| Thema | Entscheidung |
+|---|---|
+| Putzen und Müll | Wohnung wird dreckig. **Mülltrennung wie in Österreich**, Müllabfuhr-Tage |
+| Garten | Säen, gießen, jäten, ernten, Obstbäume, Hühner. Wetter und Schnecken |
+| Reparieren | Selbst, wenn man es kann, Schritt für Schritt. Sonst Handwerker |
+| Geräte gehen kaputt | Durch Alter, Pech oder Fallenlassen. Garantie, Reparatur, neu kaufen |
+
+### Spielgefühl
+| Thema | Entscheidung |
+|---|---|
+| Wie viel passiert | **Echt ruhig.** Viele Tage sind normal, große Ereignisse sind selten |
+| Schwierigkeit | **So hart wie in echt** |
+| Hintergrundmusik | **Keine.** Musik nur, wenn wirklich etwas spielt (Radio, Handy, Disco) |
+| Können anzeigen | **Nein, nur spüren:** man merkt es daran, dass es besser klappt, und an Noten, Chef, Zeugnissen |
+| Persönlichkeit | **Kommt von Genen, Eltern und Kindheit**, wie in echt. Wer nicht als Baby startet, kann zusätzlich ein paar Charakterzüge festlegen. Alles kann sich langsam durch das, was man tut, ändern |
+| Neue Person nach dem Tod | **Selbst aussuchen:** jemanden, der schon in der Welt lebt, oder eine neue Person, die zuzieht |
+| Startdatum | **Selbst wählen** beim Anlegen einer Welt (Datum und Jahreszeit) |
+| Welten | **Mehrere Welten**, die man parallel spielen kann, **und nicht nur Mattighofen** als Startort (siehe unten) |
+
+**Mehrere Welten, andere Orte, ehrlich:** Mattighofen wird von Hand sehr genau gebaut. Jeder weitere Ort so genau wäre jedes Mal ein riesiges Projekt. Vorschlag: Ein **Ort-Baukasten**, der aus Kartendaten (OpenStreetMap, Geländedaten) einen Ort **automatisch vorbaut**, danach wird von Hand verbessert. Automatisch gebaute Orte sehen zuerst weniger echt aus als Mattighofen. Kommt erst nach M6.
+
+### Ohne Vorliebe, nach Grundregel entschieden
+| Thema | Entscheidung |
+|---|---|
+| Mods | Spiel wird so gebaut, dass Mods **später** möglich sind |
+| Sprache | Deutsch, Menüs und Untertitel **später auch Englisch**. Die Menschen reden immer Deutsch/Dialekt |
+| Lügen | **Ja, wie in echt:** Leute verschweigen, lügen, übertreiben |
+| Berühmt werden | **Möglich, aber so selten wie in echt** |
+
+---
+
+## 2j. Offene Fragen (für den Sprach-Chat)
+
+Diese Fragen werden in einem eigenen Sprach-Chat beantwortet. Bei jeder gibt es wirklich zwei gute Möglichkeiten.
+
+1. **Wenn das Spiel aus ist:** Läuft die Welt weiter (z. B. eine Woche nicht gespielt = eine Woche ist vergangen), oder bleibt sie stehen?
+2. **Person wechseln, ohne zu sterben:** Darf man jederzeit in eine andere Person der Welt schlüpfen, oder bleibt man bis zum Tod dieselbe?
+3. **Nach dem Tod:** Startet die neue Person sofort, oder vergeht vorher Zeit (z. B. man sieht noch das eigene Begräbnis)?
+4. **Untertitel bei Dialekt:** Steht im Untertitel der Dialekt so, wie er gesprochen wird, oder auf Hochdeutsch übersetzt (oder umschaltbar)?
+5. **Sicherheitskopien:** Spielstände sollen kein Zurück haben. Darf man trotzdem eine Kopie machen (z. B. falls der PC abstürzt), auch wenn man damit schummeln könnte?
+6. **Online später:** Kommen Freunde in **deine** Welt, oder gibt es eine **gemeinsame** Welt, in der alle leben?
+7. **Andere Orte:** Lieber wenige Orte, die so genau sind wie Mattighofen, oder viele Orte aus dem Baukasten, die weniger genau sind?
+8. **Erste spielbare Version:** Was soll man als Allererstes wirklich spielen können? Zum Beispiel „ein Tag als Bauer in Mattighofen“, „ein Schultag“ oder „einfach durch Mattighofen gehen“.
+9. **Kinder spielen:** Wenn man als kleines Kind spielt, sind viele Dinge noch nicht erlaubt. Soll man die Kindheit wirklich ganz spielen, oder darf man sie schneller durchlaufen?
+10. **Kamera beim Tod:** Was sieht man in dem Moment, in dem die Figur stirbt? Schwarz, langsames Ausblenden, oder ein kurzer Rückblick aufs Leben?
+
+Antworten bitte als nummerierte Liste in den Planungs-Chat zurückbringen.
+
+---
+
 ## 3. Meilensteine (Reihenfolge)
 
 Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt erst, wenn die „Fertig, wenn …“-Liste vollständig abgehakt ist.
