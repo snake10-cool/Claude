@@ -512,7 +512,7 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 ### Leben in Österreich
 | Thema | Entscheidung |
 |---|---|
-| Bundesheer / Zivildienst | **Wie in echt:** Stellung, Tauglichkeit, dann Grundwehrdienst (6 Monate) oder Zivildienst (9 Monate), beides spielbar. Hinweis: Bei 1 Spieltag = 1 Stunde sind 6 Monate über 100 Spielstunden (mit Schlafen vorgespult) |
+| Bundesheer / Zivildienst | **Wie in echt:** Stellung, Tauglichkeit, dann Grundwehrdienst (6 Monate) oder Zivildienst (9 Monate). **Gespielt werden die ersten Wochen** (Grundausbildung bzw. Einschulung) und besondere Tage. **Der Rest läuft schneller** (wie beim Gefängnis), wird aber nicht ganz übersprungen |
 | Ämter und Papierkram | **Komplett echt:** jedes Formular, jede Frist, jeder Termin (Meldezettel, Ausweis, AMS, Anmeldungen, Anträge), am Amt oder online, mit Wartezeiten. Verpasste Fristen haben Folgen |
 | Eigene Firma | **Ja:** Gewerbe anmelden, Kredit, Lokal mieten, Mitarbeiter einstellen, Steuern, Buchhaltung. Kann pleitegehen |
 | Politik | **Wahlen und selbst kandidieren:** Gemeinderatswahlen, einer erfundenen Partei beitreten, Bürgermeister werden. **Keine echten Parteien oder Politiker** |
@@ -524,6 +524,34 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 | Wirtschaft | **Inflation und Krisen:** Preise und Löhne steigen langsam, ab und zu Krisen mit Jobverlusten und Firmenpleiten |
 | Ruf | **Wie im echten Dorf:** Was du tust, spricht sich herum, auch falsch und übertrieben. Der Ruf beeinflusst Jobs, Freunde und Liebe |
 | Glücksspiel | **Ab 18, mit Spielsucht:** Lotto, Wettbüro, Casino, mit echten Gewinnchancen (meistens verliert man). **Nur Spielgeld, nie echtes Geld.** Im Jugendmodus aus |
+
+---
+
+## 2g. Weitere Entscheidungen (Fragerunde 3, 11.11.2026)
+
+| Thema | Entscheidung |
+|---|---|
+| Kochen | **Echt:** Zutaten einkaufen, schneiden, kochen, würzen, echte Rezepte. Kann anbrennen, Essen verdirbt |
+| Kleidung | **Echt:** wird schmutzig, muss gewaschen werden, geht kaputt, passt nicht mehr nach Zunehmen. Mode ändert sich über die Jahre |
+| Verkehr | **Alles:** zu Fuß, Fahrrad (kann gestohlen werden, Platten), Moped/Motorrad mit Ausweis bzw. Führerschein, Bus und Zug mit echten Fahrplänen, Tickets und Verspätungen, Taxi, Mitfahren |
+| Vereine | **Ja:** Freiwillige Feuerwehr, Fußballverein, Musikkapelle, Sportvereine. Mitmachen, Übungen, Feste, Einsätze |
+| Angeln | **Mit echten Regeln:** Fischerkarte, Schonzeiten, Brittelmaß, echte Gewässer rund um Mattighofen. Wissen aus Austro Angler wird verwendet |
+| Jagen | **Mit echten Regeln:** Jagdprüfung, Jagdkarte, Schonzeiten. Nur im vollen Modus |
+| Zocken im Spiel | **Echte freie Spiele** auf dem Ingame-PC (echtes Linux, Open-Source-Spiele). Zu viel zocken hat Folgen (Schlaf, Noten, Job) |
+| Religion | **Freie Wahl:** Menschen haben verschiedene oder keine Religion. Kirche, Feste und Zeremonien gibt es, mitmachen muss man nicht |
+| Träume | **Manchmal:** kurze, verschwommene Traum-Szenen aus dem Erlebten, Albträume nach schlimmen Erlebnissen |
+
+### Austro Angler im Spiel 🎣
+**Die eigene App Austro Angler gibt es auch im Spiel**, auf dem Ingame-Handy. Weil sie dir gehört, ist das rechtlich kein Problem.
+- Idee: Weil auf dem Ingame-Handy ein **echtes Android** läuft, kann dort die **echte Austro-Angler-App** (die APK) installiert werden.
+- ⚠️ Muss getestet werden: Das Ingame-Android hat **keine Google-Dienste**. Teile der App, die Google/Firebase brauchen (z. B. Konto, Community, Benachrichtigungen), funktionieren dort vielleicht nicht. Die Teile ohne Konto (Gewässer, Fangbuch, Fischlexikon, Schonzeiten) sollten gehen.
+- Im Spiel nützlich: Gewässer finden, Schonzeiten prüfen, Fänge ins Fangbuch eintragen.
+
+### Noch offen (später fragen)
+- Bleibende Folgen nach schweren Unfällen/Krankheiten (Rollstuhl, Brille …)?
+- Pension: echt oder vereinfacht?
+- Kann dir selbst etwas passieren (Diebstahl, Einbruch, Betrug)?
+- Fernsehen und Nachrichten im Spiel?
 
 ---
 
