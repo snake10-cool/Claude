@@ -372,9 +372,9 @@ Wir trainieren trotzdem ein **eigenes Modell von null** (dein „von 0 auf“).
 
 | Thema | Regel |
 |---|---|
-| **Zeit** | Einstellbar. Standard: 1 Spieltag ≈ 1 echte Stunde (ein Arbeitstag ≈ 20 echte Minuten) |
+| **Zeit** | **Fest: 1 Spieltag = 1 echte Stunde** (ein Arbeitstag ≈ 20 echte Minuten). Nicht einstellbar |
 | **Überspringen** | Nur **Schlafen** und **Warten** (z. B. auf den Bus, eine Stunde fernsehen) dürfen vorgespult werden. Alles andere spielt man selbst |
-| **Tod der Spielfigur** | Man spielt als eigenes Kind oder Familienmitglied weiter, das Erbe geht mit. Ohne Familie: neue Person in derselben Welt. Die Welt läuft immer weiter |
+| **Tod der Spielfigur** | **Nicht** als Familienmitglied weiter. Man fängt als **neue, fremde Person in derselben Welt** an. Die alte Figur bleibt tot, ihre Familie trauert, das Erbe geht an die Familie (nicht an den Spieler). Die Welt läuft immer weiter |
 | **Startalter** | Frei wählbar, von der Geburt bis zum Erwachsenen |
 | **Speichern** | **Automatisch, kein Zurück.** Das Spiel speichert laufend, Fehler kann man nicht durch Neuladen rückgängig machen. Wie im echten Leben |
 | **Geld** | **Echte österreichische Preise:** Löhne nach echten Kollektivverträgen, echte Mieten, Lohnsteuer und Sozialversicherung, Supermarkt-Preise wie in echt. Die Preise brauchen eine Liste, die regelmäßig aktualisiert wird |
@@ -439,7 +439,7 @@ Dieser Plan wurde in einem eigenen Planungs-Chat gemacht. **Gebaut wird am PC.**
 | Wikipedia | Als Ingame-Lexikon erlaubt, die KI darf darin nachschlagen. Trainiert wird sie aber mit Gesprächen |
 | Harte Themen | Volles Programm: Krankheit, Tod, Verbrechen und Polizei, Unfälle (Freigabe ab 16/18) |
 | Engine | Unreal Engine 5 (kein Einspruch) |
-| Spielregeln | Siehe Abschnitt 2c: Zeit einstellbar, Schlafen + Warten vorspulbar, nach dem Tod als Familie weiter, Startalter frei, automatisch speichern ohne Zurück, echte Preise, echter Führerschein, echte Schule |
+| Spielregeln | Siehe Abschnitt 2c: 1 Spieltag = 1 Stunde fest, Schlafen + Warten vorspulbar, nach dem Tod als neue fremde Person weiter, Startalter frei, automatisch speichern ohne Zurück, echte Preise, echter Führerschein, echte Schule |
 | Reden | Mikrofon + Tippen, Antworten mit Stimme, Dialekt gemischt wie in echt |
 | Handeln | Alles echt, keine „Drücke E“-Abkürzungen; Jobs ausprobieren, zuerst 3 Jobs komplett |
 | Arbeitsweise | Dieser Chat plant, gebaut wird am PC. Der Plan kommt als Artefakt zum PC |
