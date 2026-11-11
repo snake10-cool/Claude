@@ -1,6 +1,6 @@
 # 🌍 Echtleben – Spielplan (Arbeitsname)
 
-> **Stand:** 10.11.2026 (2. Fassung, mit deinen Antworten) · **Status:** nur Planung, es wird noch nichts gebaut
+> **Stand:** 11.11.2026 (3. Fassung) · **Status:** nur Planung, es wird noch nichts gebaut
 > **1. Regel:** Beeile dich niemals. Mach gründlich.
 > **Grundsatz:** Ein Meilenstein soll dauern. Erst wenn einer wirklich fertig ist, kommt der nächste.
 
@@ -368,6 +368,34 @@ Wir trainieren trotzdem ein **eigenes Modell von null** (dein „von 0 auf“).
 
 ---
 
+## 2c. Spielregeln
+
+| Thema | Regel |
+|---|---|
+| **Zeit** | Einstellbar. Standard: 1 Spieltag ≈ 1 echte Stunde (ein Arbeitstag ≈ 20 echte Minuten) |
+| **Überspringen** | Nur **Schlafen** und **Warten** (z. B. auf den Bus, eine Stunde fernsehen) dürfen vorgespult werden. Alles andere spielt man selbst |
+| **Tod der Spielfigur** | Man spielt als eigenes Kind oder Familienmitglied weiter, das Erbe geht mit. Ohne Familie: neue Person in derselben Welt. Die Welt läuft immer weiter |
+| **Startalter** | Frei wählbar, von der Geburt bis zum Erwachsenen |
+| **Speichern** | **Automatisch, kein Zurück.** Das Spiel speichert laufend, Fehler kann man nicht durch Neuladen rückgängig machen. Wie im echten Leben |
+| **Geld** | **Echte österreichische Preise:** Löhne nach echten Kollektivverträgen, echte Mieten, Lohnsteuer und Sozialversicherung, Supermarkt-Preise wie in echt. Die Preise brauchen eine Liste, die regelmäßig aktualisiert wird |
+| **Auto** | **Echter Führerschein:** Fahrschule, Theorie- und Fahrprüfung im Spiel, L17 ab 17. Ohne Führerschein fahren geht, ist aber strafbar (Polizei, Strafe) |
+| **Schule** | **Echte Schule:** hingehen, Unterricht, Hausaufgaben, Noten, Zeugnis. Schwänzen hat Folgen |
+
+### Reden mit den Menschen
+
+| Thema | Regel |
+|---|---|
+| **Du redest** | Mit **Mikrofon** (Spracherkennung) oder durch **Tippen** |
+| **Sie antworten** | **Mit Stimme**: Jede Person hat ihre eigene Stimme, dazu Untertitel |
+| **Sprache** | **Gemischt wie in echt:** Ältere eher Innviertler Dialekt, Jüngere eher österreichisches Umgangsdeutsch, manche Hochdeutsch |
+
+Dafür braucht die KI (Punkt 4) zusätzlich:
+- **Spracherkennung**, die auch Dialekt versteht.
+- **Sprachausgabe** mit vielen verschiedenen Stimmen (alt, jung, Mann, Frau, Dialekt).
+- ❓ Offen: Müssen auch Spracherkennung und Stimmen **von 0** selbst gebaut werden, oder dürfen dafür fertige freie Programme genommen werden? Von 0 wäre ein riesiges Extra-Projekt.
+
+---
+
 ## 3. Meilensteine (Reihenfolge)
 
 Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt erst, wenn die „Fertig, wenn …“-Liste vollständig abgehakt ist.
@@ -411,6 +439,8 @@ Dieser Plan wurde in einem eigenen Planungs-Chat gemacht. **Gebaut wird am PC.**
 | Wikipedia | Als Ingame-Lexikon erlaubt, die KI darf darin nachschlagen. Trainiert wird sie aber mit Gesprächen |
 | Harte Themen | Volles Programm: Krankheit, Tod, Verbrechen und Polizei, Unfälle (Freigabe ab 16/18) |
 | Engine | Unreal Engine 5 (kein Einspruch) |
+| Spielregeln | Siehe Abschnitt 2c: Zeit einstellbar, Schlafen + Warten vorspulbar, nach dem Tod als Familie weiter, Startalter frei, automatisch speichern ohne Zurück, echte Preise, echter Führerschein, echte Schule |
+| Reden | Mikrofon + Tippen, Antworten mit Stimme, Dialekt gemischt wie in echt |
 | Handeln | Alles echt, keine „Drücke E“-Abkürzungen; Jobs ausprobieren, zuerst 3 Jobs komplett |
 | Arbeitsweise | Dieser Chat plant, gebaut wird am PC. Der Plan kommt als Artefakt zum PC |
 
