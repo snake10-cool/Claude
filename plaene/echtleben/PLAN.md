@@ -367,7 +367,7 @@ Der PC soll **nicht tagelang am Stück** trainieren. Darum wird jedes Training s
 8. Zu viel kaputt gemacht oder zu spät geerntet → weniger Geld.
 
 **Jobs, ehrlich:** Jeder Job, der wirklich echt sein soll, ist viel Arbeit. Darum:
-- **Zuerst 3 Jobs komplett echt**, passend zu Mattighofen (Vorschlag): **Bauer**, **Supermarkt (Regale, Kassa)**, **Kfz-Mechaniker**.
+- **Entschieden 12.11.: Alle Jobs, die es in Mattighofen gibt, sollen echt spielbar werden** (siehe Frage 41). Gebaut wird trotzdem der Reihe nach: zuerst **Bauer**, **Supermarkt (Regale, Kassa)**, **Kfz-Mechaniker**, dann Job für Job weiter.
 - Danach kommen Job für Job weitere dazu (Koch, Büro am echten Linux-PC, Polizist, Arzt, Lehrer, Handwerker …).
 - Die anderen Menschen arbeiten in allen Jobs, auch die, die der Spieler noch nicht selbst machen kann.
 
@@ -773,7 +773,7 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 |---|---|
 | Spiel aus | **Die Welt bleibt stehen**, solange nicht gespielt wird |
 | Person wechseln | **Jederzeit** in eine andere Person der Welt wechselbar. Die bisherige Person **lebt danach ganz normal weiter**, gesteuert wie alle anderen Menschen (nach Grundregel entschieden, passt zu Punkt 3) |
-| Nach dem Tod | **Kurze Cutscene**, auch wenn kein Begräbnis stattfindet. Danach wählt man eine **bestehende Person aus einer Liste** oder erstellt eine neue |
+| Nach dem Tod | **Kurze Cutscene**, auch wenn kein Begräbnis stattfindet. Danach bekommt man eine **zufällige bestehende Person** oder **erstellt eine neue** (geändert 12.11., siehe Frage 36: so kann man sich das Erbe nicht gezielt zuschieben) |
 
 ### Speichern
 | Thema | Entscheidung |
@@ -840,6 +840,54 @@ Beantwortet im Planungs-Chat. Nummern = Fragen aus 2j.
 | 26 | Häufigkeit | **Oft** |
 | 27 | Gedächtnis | **Vergessen langsam:** Unwichtiges geht, Wichtiges bleibt |
 | 89 | Sicherheitskopien | Keine, ein einziger Autosave (siehe 2k) |
+
+---
+
+## 2m. Antworten zu den 100 Fragen (Teil 2, 12.11.2026)
+
+| Nr. | Thema | Entscheidung |
+|---|---|---|
+| 28 | Groll | **Verblasst** mit der Zeit und mit Entschuldigungen |
+| 29 | Fremde sprechen dich an | **Selten, wie echt** |
+| 30 | Andere Sprachen | **Ja, und manche Menschen können kein oder kaum Deutsch.** Verständigung ist dann schwer (Hände, Füße, Übersetzer-App, jemand übersetzt). Die eigene KI und die Stimmen müssen dafür auch andere Sprachen können (später) |
+| 31 | Kleine Kinder | Reden **kindlich**, je nach Alter |
+| 32 | Nachrichten aufs Handy | **Selten** |
+| 33 | Adoption, Pflegekinder | **Ja**, mit echtem Ablauf über das Amt |
+| 34 | Vorgeschichte als Erwachsener | **Wählbar:** man legt die Vorgeschichte fest (Freunde, Ex, Schulden …) oder lässt sie würfeln |
+| 35 | Gericht | **Selbst erleben**, im Gerichtssaal, selbst reden |
+| 36 | Erbe nach dem Tod | **Ja, erlaubt**, wenn es im Testament steht. **Aber:** nach dem Tod bekommt man eine **zufällige** Person oder erstellt eine **neue**, man kann sich also nicht gezielt den Erben aussuchen |
+| 37 | Belästigung, Stalking | **Ja, selten**, mit Polizei, Anzeige, Hilfe |
+| 38 | Zu Hobbys eingeladen werden | **Ja** |
+| 39, 40 | Arbeitstag und Arbeitsweg | **Am Anfang selbst spielen.** Später **überspringt das Spiel zufällig einzelne Arbeitstage und Arbeitswege** automatisch, damit es nicht immer gleich ist. Neue und besondere Tage spielt man immer selbst |
+| 41 | Jobs | **Alle Jobs, die es in Mattighofen gibt**, echt spielbar (siehe Hinweis unten) |
+| 42 | Bewerbung | **Selbst schreiben**, die Spiel-KI liest und bewertet sie |
+| 43 | Vorstellungsgespräch | **Wirklich führen**, per Mikrofon oder Tippen |
+| 44 | Kleinanzeigen | **Ja**, Ingame-Plattform mit erfundenem Namen, mit Handeln und Betrügern |
+| 45 | Aktien, Krypto | **Ja**, erfundene Firmen und Coins, nur Spielgeld |
+| 46 | Lohnzettel | **Mit allen Abzügen** im Detail |
+| 47 | Preise | **Echte Updates:** Preise werden regelmäßig an die echten angepasst |
+
+**Ehrlicher Hinweis zu Frage 41:** Jeder Job, der Schritt für Schritt echt sein soll, ist viel Arbeit (Werkzeug, Abläufe, Fehler, Können). „Alle Jobs in Mattighofen“ sind sehr viele. Darum: Alle Jobs **existieren** von Anfang an (die Menschen arbeiten dort), und **spielbar** werden sie der Reihe nach. M3 ist fertig, sobald die ersten 3 komplett sind. Danach kommt Job für Job dazu, auch nach M6 noch.
+
+### Echte PC-Spiele im Spiel: „Bildschirm-Durchreiche“ (wird Teil von M5)
+- Im **Ingame-PC** (echtes Linux) laufen **freie Linux-Spiele**. Weil dieser PC keinen Zugriff auf die Grafikkarte hat, laufen vor allem **2D-Spiele** gut, 3D-Spiele eher langsam oder gar nicht.
+- **Steam und Epic werden nicht eingebaut** (Lizenz: darf man nicht mitliefern, auch nicht gratis an Freunde; Epic gibt es für Linux nicht offiziell; Spiele würden ohne Grafikkarte kaum laufen).
+- **Bildschirm-Durchreiche:** Man startet ein **echtes Spiel auf dem echten PC** (z. B. über Steam). Echtleben zeigt es auf dem **Ingame-Monitor**, die Figur sitzt davor, gesteuert wird mit Maus und Tastatur. So gehen alle eigenen Spiele, rechtlich sauber, weil nichts mitgeliefert wird.
+- Haken: zwei Spiele gleichzeitig sind für die 3060 Ti schwer. Echtleben schraubt währenddessen die eigene Grafik stark herunter. Leichte Spiele gehen gut, große eher ruckelig.
+
+**Freie Spiele für den Ingame-PC (Ideen, Lizenzen jeweils prüfen):**
+| Spiel | Art | Im Ingame-PC |
+|---|---|---|
+| SuperTux | Jump'n'Run | gut (2D) |
+| Battle for Wesnoth | Runden-Strategie | gut (2D) |
+| OpenTTD (mit freier Grafik OpenGFX) | Transport-Aufbau | gut (2D) |
+| Mindustry | Fabrik/Tower-Defense | gut (2D) |
+| Frozen Bubble | Puzzle | gut (2D) |
+| Pingus | Puzzle | gut (2D) |
+| Schach, Solitär, Minesweeper, Mahjongg (z. B. GNOME-Spiele) | Klassiker | gut |
+| SuperTuxKart | Kart-Rennen | langsam (3D) |
+| Luanti (früher Minetest) | Klötzchen-Bauen | langsam (3D) |
+| 0 A.D. | Echtzeit-Strategie | wahrscheinlich zu langsam (3D) |
 
 ---
 
