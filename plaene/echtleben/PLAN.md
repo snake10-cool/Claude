@@ -448,6 +448,29 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 - **Jugendmodus:** schaltet Waffen, Blut, Drogen und Glücksspiel aus.
 - Die echte Freigabe vergibt am Ende eine Prüfstelle (z. B. PEGI), erst wenn verkauft wird.
 
+### Inhalts-Einstellungen (12.11.2026)
+Heikle Inhalte lassen sich **einzeln** ein- und ausschalten, nicht nur über den Jugendmodus. Der **Jugendmodus ist nur eine Voreinstellung**, die alles Unten auf „aus“ stellt. Jeder Schalter einzeln:
+
+| Schalter | Wenn aus |
+|---|---|
+| Blut | Keine Blutspuren, Verletzungen nur angedeutet |
+| Waffen | Keine Waffen für den Spieler, nur bei Polizei/Jägern sichtbar |
+| Gewalt gegen Menschen | Streit nur mit Worten |
+| Illegale Drogen | Kommen nicht vor |
+| Alkohol und Rauchen | Kommen nicht vor |
+| Glücksspiel | Kein Casino, keine Wetten, kein Lotto |
+| Schlachten | Ausgeblendet |
+| Erbrechen, Ekel | Nur angedeutet |
+| Geburt | Ausgeblendet |
+| Sterben anderer Menschen | Nur erfahren, nicht dabei sein |
+| Psychische Krankheiten | Kommen nicht vor |
+| Suizid als Thema | Kommt nicht vor |
+| Liebe und Romantik | Nur Freundschaft |
+| Belästigung, Stalking | Kommt nicht vor |
+| Schmerz- und Rausch-Effekte (Wackeln usw.) | Schwächer (Stufen statt nur an/aus) |
+
+Hinweis: Was aus ist, passiert in der Welt auch den Menschen im Spiel nicht sichtbar, die Welt bleibt aber sonst gleich.
+
 ### Leben
 | Thema | Entscheidung |
 |---|---|
