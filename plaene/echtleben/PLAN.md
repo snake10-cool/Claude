@@ -38,6 +38,10 @@ Dafür bekommt jeder Meilenstein eine eigene Erklär-Seite im Repo (`plaene/echt
 | Größe | **In Stufen wachsen:** winzig (Test) → klein → so groß, wie die 3060 Ti schafft |
 | Oberfläche | **Eigenes Fenster** (Programm mit Chat am PC) |
 | Deine Daten | Die KI weiß nur, was du im Chat sagst, **außer du gibst einzelne Ordner oder Dateien frei** |
+| Konten | **Ein Haupt-Konto (deins)**, man kann aber **neue Konten erstellen**. Jedes Konto hat eigenes Gedächtnis und eigene Einstellungen. Nur das Haupt-Konto verwaltet die anderen |
+| Grenzen | **Feste Grenzen + pro Konto strenger:** Wirklich Gefährliches (Menschen schaden, Waffen oder Gift bauen) lehnt sie **immer** ab. Bei Sorgen verweist sie auf echte Hilfe (Telefonseelsorge 142, Rat auf Draht 147). Für Kinder-Konten zusätzlich strenger (keine Inhalte ab 18) |
+| Rechnen | Mit einem **selbstgemachten Rechenprogramm** als Werkzeug: Die KI gibt Rechnungen weiter, das Programm rechnet, dann stimmt es immer |
+| Antwortlänge | **Einstellbar** (kurz / ausführlich), pro Konto und pro Frage |
 
 **Ehrlich zu „keine Infos merken“:** Ganz verhindern lässt sich das nicht. Wer Texte liest, merkt sich immer ein bisschen. Darum:
 - Für Schritt 1 eher **Erzählungen und Alltagstexte** statt Lexikon-Texte nehmen.
