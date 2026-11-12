@@ -449,7 +449,7 @@ Das ist ein **eigenes großes Teilprojekt**, ähnlich groß wie das Sprachmodell
 - Die echte Freigabe vergibt am Ende eine Prüfstelle (z. B. PEGI), erst wenn verkauft wird.
 
 ### Inhalts-Einstellungen (12.11.2026)
-Heikle Inhalte lassen sich **einzeln** ein- und ausschalten, nicht nur über den Jugendmodus. Der **Jugendmodus ist nur eine Voreinstellung**, die alles Unten auf „aus“ stellt. Jeder Schalter einzeln:
+Heikle Inhalte lassen sich **einzeln** ein- und ausschalten, nicht nur über den Jugendmodus. Der **Jugendmodus ist nur eine Voreinstellung**, die alles unten auf „aus“ stellt. Jeder Schalter einzeln:
 
 | Schalter | Wenn aus |
 |---|---|
@@ -965,6 +965,23 @@ Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt ers
 - **Ehrlich:** Am Anfang wird die KI einfach und manchmal dumm antworten. Mit besseren Trainings-Gesprächen und mehr Training wird sie Schritt für Schritt besser. Der Einbau ins Spiel kommt erst, wenn es Figuren gibt (ab M1/M3).
 - Trainings-Regel (pausierbar, in Etappen, gedrosselt) gilt.
 - **Fertig, wenn …** die Listen von Teil A und Teil B oben abgehakt sind, mit Ausnahme von „läuft im Spiel“ (das kommt mit M3).
+
+### Nicht jeder weiß alles (12.11.2026)
+„Nachschlagen“ heißt bei der Spiel-KI **nicht**, dass jede Person das ganze Lexikon kennt. Jede Person hat **ihr eigenes Wissen**, und die KI darf nur darin nachschlagen:
+
+| Wissen | Beispiel |
+|---|---|
+| **Eigene Erinnerungen** | Was sie selbst erlebt, gesehen und gehört hat |
+| **Gerüchte** | Was ihr erzählt wurde, auch falsch oder übertrieben |
+| **Ausbildung und Beruf** | Der Mechaniker kennt sich mit Autos aus, die Ärztin mit Krankheiten, der Bauer mit Feldern |
+| **Alter** | Kleine Kinder wissen wenig, Ältere kennen die Geschichte des Ortes |
+| **Allgemeinwissen** | Unterschiedlich viel, je nach Person (Schule, Interessen) |
+| **Interessen und Hobbys** | Wer angelt, kennt Schonzeiten. Wer Fußball schaut, kennt die Tabelle |
+
+- Weiß jemand etwas nicht, sagt er „Keine Ahnung“, rät, oder liegt **falsch**, wie echte Menschen.
+- Menschen im Spiel können selbst **am Ingame-Handy nachschauen**. Das dauert dann sichtbar ein bisschen, wie in echt.
+- **Lernen:** Was eine Person neu erfährt (von dir, von anderen, aus den Nachrichten), kommt in ihr Wissen. Unwichtiges vergisst sie langsam (Frage 27).
+- **Deine KI-App** ist anders: Die darf alles nachschlagen, auch im Internet.
 
 Warum **M0** davor: Bei drei Dingen (Altern, echtes Betriebssystem im Spiel, eigene KI) ist nicht sicher, wie gut sie gehen. Das testen wir am Anfang klein, statt nach einem Jahr Arbeit draufzukommen.
 
