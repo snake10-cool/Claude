@@ -891,6 +891,30 @@ Beantwortet im Planungs-Chat. Nummern = Fragen aus 2j.
 
 ---
 
+## 2n. Antworten zu den 100 Fragen (Teil 3, 12.11.2026)
+
+| Nr. | Thema | Entscheidung |
+|---|---|---|
+| 48 | Schwarzarbeit | **Ja**, mit Risiko (Kontrollen, Strafen, keine Versicherung) |
+| 49 | Trinkgeld, Spenden, Betteln, Straßenmusik | **Ja** |
+| 50 | Lotto-Millionär | **Ja**, mit echten Gewinnchancen (fast nie) |
+| 51 | Startwohnung | **Teil der Vorgeschichte** (gewählt oder gewürfelt) |
+| 52 | Möbel | **Beides:** selbst aufbauen oder gegen Aufpreis aufbauen lassen |
+| 53 | Nachbarn | **Ja:** Lärm, Hausordnung, Streit, aber auch Hilfe |
+| 54 | Stehlen | **Alles, was man tragen kann**, mit Folgen |
+| 55 | Schlachten | **Nur im vollen Modus** zeigen, im Jugendmodus ausgeblendet |
+| 56, 57 | Haustechnik, Krankwerden | Nach Grundregel: **wie echt** |
+| 58 | Psychische Krankheiten | **Ja, vorsichtig** und respektvoll, mit Arzt, Therapie, Freunden |
+| 59 | Suizid als Thema | **Kommt vor, aber nur mit festen Regeln:** nie gezeigt, keine Methode, die Spielfigur kann es nicht als Handlung ausführen. Nur über Menschen im Spiel (Trauer, Hinterbliebene), Schwerpunkt auf Hilfe holen. Echte Hilfe-Nummern im Spiel: Telefonseelsorge 142, Rat auf Draht 147. Im Jugendmodus aus |
+| 60, 62, 66 | Schwangerschaft, Demenz, Narben | Nach Grundregel: **wie echt** |
+| 61 | Geburt | **Zeigen, nicht blutig** |
+| 63 | Andere sterben sehen | **Ja, ruhig**, man kann Abschied nehmen |
+| 64 | Erbrechen, Ekel | **Zeigen**, kurz und echt |
+| 65 | Blut (voller Modus) | **Realistisch** |
+| 67–69, 71, 72, 74, 76, 77, 79–84 | Polizei, Anwalt, Brauchtum, Natur usw. | Nach Grundregel: **wie echt** |
+
+---
+
 ## 3. Meilensteine (Reihenfolge)
 
 Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt erst, wenn die „Fertig, wenn …“-Liste vollständig abgehakt ist.
@@ -901,11 +925,23 @@ Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt ers
 | **M1** | Charakter | Punkt 1 komplett |
 | **M2** | Welt | Punkt 2 komplett (Mattighofen) |
 | **M3** | Andere Menschen | Punkt 3 komplett, inklusive Wirtschaft (Jobs, Geld, Geschäfte, Wohnungen) |
-| **M4** | KI | Punkt 4 komplett (eigenes Modell, Gespräche) |
+| **M4** | **Eine KI für alles** ⭐ kommt direkt nach M0 | **Spiel-KI und deine eigene KI werden gemeinsam gebaut** (12.11. entschieden): ein gemeinsamer KI-Kern von 0, der (a) im Spiel die Menschen sprechen lässt und (b) als eigenständige KI-App mit Internetsuche und Wikipedia läuft. Siehe „Eine KI für alles“ unten |
 | **M4b** | Eigene Stimmen | Punkt 4 Teil C: Spracherkennung und Sprachausgabe von 0. Kann nebenher laufen, das Spiel geht bis dahin mit Tippen |
 | **M5** | Geräte | Punkt 5 komplett (PCs, Handys, echtes Betriebssystem) |
 | **M6** | Alles zusammen | Spielstart-Menü, Speichern, Einstellungen, langes Testspielen, Fehler beheben |
-| **M7** | Deine eigene KI (Nebenprojekt) | Punkt 4 Teil B: eigenständige KI mit Internetsuche und Wikipedia, getrennt vom Spiel. Erst wenn das Spiel einigermaßen fertig ist |
+| ~~M7~~ | ~~Deine eigene KI~~ | **In M4 aufgegangen** (12.11.) |
+
+**Reihenfolge (geändert 12.11.):** M0 → **M4 (Eine KI für alles)** → M1 → M2 → M3 → M4b → M5 → M6
+
+### Eine KI für alles (M4)
+- **Ein gemeinsamer Kern:** Ein eigenes Sprachmodell von 0 lernt Deutsch reden (Gespräche, Frage → Antwort) und Wissen **nachschlagen** statt auswendig lernen.
+- **Zwei Anwendungen auf demselben Kern:**
+  - **Deine KI-App:** eigenständig, mit Internetsuche und Wikipedia, mit Quellen. Abgeschottet vom Spiel.
+  - **Spiel-KI:** dieselbe KI, aber jede Person im Spiel bekommt ihre eigene Rolle (wer bin ich, was ist heute passiert, wie stehe ich zum Spieler) und schlägt nur im Ingame-Lexikon und in der Spielwelt nach, **nicht** im echten Internet.
+- **Warum zuerst:** Die KI braucht **kein Unreal**. Sie wird mit Python auf dem PC trainiert und kann sofort losgehen. Die längste Rechenzeit (Training) läuft so früh, während später an der Welt gebaut wird.
+- **Ehrlich:** Am Anfang wird die KI einfach und manchmal dumm antworten. Mit besseren Trainings-Gesprächen und mehr Training wird sie Schritt für Schritt besser. Der Einbau ins Spiel kommt erst, wenn es Figuren gibt (ab M1/M3).
+- Trainings-Regel (pausierbar, in Etappen, gedrosselt) gilt.
+- **Fertig, wenn …** die Listen von Teil A und Teil B oben abgehakt sind, mit Ausnahme von „läuft im Spiel“ (das kommt mit M3).
 
 Warum **M0** davor: Bei drei Dingen (Altern, echtes Betriebssystem im Spiel, eigene KI) ist nicht sicher, wie gut sie gehen. Das testen wir am Anfang klein, statt nach einem Jahr Arbeit draufzukommen.
 
