@@ -31,6 +31,19 @@ Dafür bekommt jeder Meilenstein eine eigene Erklär-Seite im Repo (`plaene/echt
 
 **Erste spielbare Version:** Mit der KI reden (Frage 90).
 
+**KI-Entscheidungen (12.11.2026):**
+| Thema | Entscheidung |
+|---|---|
+| Sprache lernen | **Zwei Schritte:** (1) Deutsch lernen aus **freien Texten** (gemeinfreie Bücher, freie Alltagstexte, Wikipedia nur als Sprachquelle), (2) danach **Gespräche**, damit sie antworten lernt. **Wichtig: Sie soll aus den Texten nur Sprache lernen, keine Infos merken.** Wissen kommt nur durch Nachschlagen |
+| Größe | **In Stufen wachsen:** winzig (Test) → klein → so groß, wie die 3060 Ti schafft |
+| Oberfläche | **Eigenes Fenster** (Programm mit Chat am PC) |
+| Deine Daten | Die KI weiß nur, was du im Chat sagst, **außer du gibst einzelne Ordner oder Dateien frei** |
+
+**Ehrlich zu „keine Infos merken“:** Ganz verhindern lässt sich das nicht. Wer Texte liest, merkt sich immer ein bisschen. Darum:
+- Für Schritt 1 eher **Erzählungen und Alltagstexte** statt Lexikon-Texte nehmen.
+- In Schritt 2 lernt sie: **Fakten nur aus dem Nachgeschlagenen** nehmen, sonst „Weiß ich nicht, ich schau nach“.
+- **Fester Test:** Fragen ohne Nachschlagen. Wenn sie dabei Fakten erfindet oder abschweift, wird nachtrainiert.
+
 Offene KI-Fragen werden im Planungs-Chat geklärt und hier eingetragen.
 
 ---
