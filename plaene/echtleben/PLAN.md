@@ -981,6 +981,21 @@ Beantwortet im Planungs-Chat. Nummern = Fragen aus 2j.
 
 ---
 
+## 2q. KI und Geschichte (Fragerunde 12.11.2026)
+
+| Thema | Entscheidung |
+|---|---|
+| Trainings-Gespräche | **Gemischt:** Menschen (ihr, Freunde, Familie) schreiben Vorlagen und Dialekt, Claude am PC erzeugt daraus viele Varianten. Stichproben werden von Menschen geprüft. Das Modell selbst bleibt **von 0** |
+| Charakter deiner KI-App | **Einstellbar:** neutral-sachlich oder mit eigener Persönlichkeit (Name, Humor, Art zu reden) |
+| Gedächtnis deiner KI-App | **Ja**, merkt sich frühere Gespräche. Erinnerungen kann man ansehen und löschen |
+| Wo läuft sie | **Nur am PC** |
+| Internetsuche | **Gratis, selbst betrieben** (freie Suchmaschine wie SearXNG auf dem PC) |
+| Aktionen am PC | **Ja, mit Nachfrage:** Dateien öffnen, Programme starten, Ordner aufräumen nur nach Erlaubnis bei jeder Aktion. Nie ohne zu fragen löschen |
+| Besondere Figuren | **Keine.** Alle Menschen werden vom Spiel erzeugt, Geschichten entstehen von selbst |
+| Hintergrund-Geschichte | **Keine.** Nur das Leben |
+
+---
+
 ## 3. Meilensteine (Reihenfolge)
 
 Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt erst, wenn die „Fertig, wenn …“-Liste vollständig abgehakt ist.
