@@ -953,6 +953,34 @@ Beantwortet im Planungs-Chat. Nummern = Fragen aus 2j.
 
 ---
 
+## 2p. Antworten zu den 100 Fragen (Teil 5, 12.11.2026) – damit sind alle 100 erledigt
+
+| Nr. | Thema | Entscheidung |
+|---|---|---|
+| 91 | Andere Orte | **Beides:** automatisch aus Kartendaten vorbauen, wichtige Orte dann von Hand verbessern |
+| 92 | Online | **Beides:** Freunde in die eigene Welt holen oder auf einen gemeinsamen Server |
+| 93 | Sprachchat | **Ja, nur in der Nähe** der Figuren, sonst übers Ingame-Handy |
+| 94 | Tester | **Öffentliche Testversion** (zählt als Veröffentlichung, darum rechtlich sauber bleiben) |
+| 95 | Verkauf | **Früh als Early Access** |
+| 96 | Wo | **itch.io und eine eigene Website** |
+| 97 | Code | **Privat.** Später können einzelne Teile (z. B. die KI) öffentlich werden. Megascans/MetaHuman-Dateien dürfen nie öffentlich hochgeladen werden |
+| 98 | Devlog | **Ja**, siehe unten |
+| 99 | Name | **Vorschläge sammeln**, bis dahin „Echtleben“ |
+| 100 | Stil von Logo und Menüs | **Schlicht** |
+| übrige | | Nach Grundregel: **wie echt** |
+
+### Devlog-Videos
+- **Claude am PC macht die Videos** so weit wie möglich selbst:
+  - Kurze Clips werden **automatisch aus Unreal gerendert** (Movie Render Queue, Kamerafahrten durch Mattighofen, Vorher/Nachher).
+  - Bei der KI: Bildschirm-Aufnahmen vom Chat mit der KI.
+  - Zusammenschneiden mit Text-Einblendungen per Programm (z. B. ffmpeg).
+  - Texte für jedes Video (Titel, Beschreibung, was ist neu) schreibt Claude.
+  - Später kann die eigene Stimme aus M4b das Video vorlesen.
+- **Hochladen** (YouTube, itch.io, Website) macht ihr selbst mit eurem Konto. Bei YouTube und Co. gelten Altersregeln, bei Minderjährigen mit Erlaubnis der Eltern.
+- Keine echten Menschen, Gesichter oder Kennzeichen aus Mattighofen in den Videos.
+
+---
+
 ## 3. Meilensteine (Reihenfolge)
 
 Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt erst, wenn die „Fertig, wenn …“-Liste vollständig abgehakt ist.
