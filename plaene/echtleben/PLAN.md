@@ -806,6 +806,43 @@ Die übrigen Fragen aus 2j sind noch offen.
 
 ---
 
+## 2l. Antworten zu den 100 Fragen (Teil 1, 12.11.2026)
+
+Beantwortet im Planungs-Chat. Nummern = Fragen aus 2j.
+
+| Nr. | Thema | Entscheidung |
+|---|---|---|
+| 1 | Spiel aus | Welt bleibt stehen (siehe 2k) |
+| 2 | Person wechseln | Jederzeit (siehe 2k) |
+| 3 | Nach dem Tod | Cutscene, dann Liste (siehe 2k) |
+| 4 | Spieljahr | **Bleibt:** 1 Tag = 1 echte Stunde, ein Jahr = 365 Stunden |
+| 5 | Altern | **Echtes Tempo**, passend zur Spielzeit |
+| 6 | Bedürfnisse | **Echter Takt**, bezogen auf die Spielzeit |
+| 7 | Nacht | **Stockdunkel wie echt**, Licht nötig |
+| 8 | Wetter | **Zufall nach dem echten Klima** von Mattighofen |
+| 9 | Ort verändert sich | **Ja**, neue Häuser, Abriss, Geschäfte sperren zu und auf |
+| 10 | Adressen | **Echte Straßennamen und Hausnummern** (Bewohner sind erfunden) |
+| 11 | Innenräume | **Alle Häuser** betretbar, unwichtige einfacher gebaut |
+| 12 | Haustüren | **Wie echt:** manche sperren nicht ab |
+| 13 | Einwohner | **500 zum Start**, dann schrittweise bis zur echten Zahl |
+| 14 | Zuzug/Wegzug | **Ja** |
+| 15 | Hände | **Umschaltbar:** ganz frei oder halb-automatisch |
+| 16 | Eigener Körper | **Sichtbar** in der Ich-Sicht |
+| 17 | Kopfwackeln | **Echt** (Einstellung für Reisekrankheit siehe 2e) |
+| 18 | Menü | **Normales Menü** (nicht über das Handy) |
+| 19 | Karte | **Nur echte Karten:** Papier oder Karten-App |
+| 20 | Navi | **Navi-App** am Handy und im Auto |
+| 21 | Gespräche anderer | **Hören und mitlesen**, aber je weiter weg, desto **leiser und verschwommener** (Untertitel unscharf/unvollständig) |
+| 22 | Dialekt-Untertitel | Umschaltbar, Dialekt ganz abschaltbar (siehe 2k) |
+| 23 | Fotomodus | **Ja**, mit freier Kamera |
+| 24 | Laden | Kurze Ladezeiten erlaubt, **höchstens 5 Sekunden** |
+| 25 | Gedanken | **Ich-Form** („Mir ist kalt.“) |
+| 26 | Häufigkeit | **Oft** |
+| 27 | Gedächtnis | **Vergessen langsam:** Unwichtiges geht, Wichtiges bleibt |
+| 89 | Sicherheitskopien | Keine, ein einziger Autosave (siehe 2k) |
+
+---
+
 ## 3. Meilensteine (Reihenfolge)
 
 Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt erst, wenn die „Fertig, wenn …“-Liste vollständig abgehakt ist.
