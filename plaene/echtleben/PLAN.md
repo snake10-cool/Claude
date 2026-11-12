@@ -881,7 +881,7 @@ Beantwortet im Planungs-Chat. Nummern = Fragen aus 2j.
 | 36 | Erbe nach dem Tod | **Ja, erlaubt**, wenn es im Testament steht. **Aber:** nach dem Tod bekommt man eine **zufällige** Person oder erstellt eine **neue**, man kann sich also nicht gezielt den Erben aussuchen |
 | 37 | Belästigung, Stalking | **Ja, selten**, mit Polizei, Anzeige, Hilfe |
 | 38 | Zu Hobbys eingeladen werden | **Ja** |
-| 39, 40 | Arbeitstag und Arbeitsweg | **Am Anfang selbst spielen.** Später **überspringt das Spiel zufällig einzelne Arbeitstage und Arbeitswege** automatisch, damit es nicht immer gleich ist. Neue und besondere Tage spielt man immer selbst |
+| 39, 40 | Arbeitstag und Arbeitsweg | **Am Anfang selbst spielen.** Später **überspringt das Spiel Tage, an denen nichts Besonderes passiert** (das Spiel weiß das, weil es alle Menschen und Reaktionen selbst berechnet). Neue Aufgaben, besondere Ereignisse und Begegnungen spielt man immer selbst |
 | 41 | Jobs | **Alle Jobs, die es in Mattighofen gibt**, echt spielbar (siehe Hinweis unten) |
 | 42 | Bewerbung | **Selbst schreiben**, die Spiel-KI liest und bewertet sie |
 | 43 | Vorstellungsgespräch | **Wirklich führen**, per Mikrofon oder Tippen |
@@ -935,6 +935,21 @@ Beantwortet im Planungs-Chat. Nummern = Fragen aus 2j.
 | 64 | Erbrechen, Ekel | **Zeigen**, kurz und echt |
 | 65 | Blut (voller Modus) | **Realistisch** |
 | 67–69, 71, 72, 74, 76, 77, 79–84 | Polizei, Anwalt, Brauchtum, Natur usw. | Nach Grundregel: **wie echt** |
+
+---
+
+## 2o. Antworten zu den 100 Fragen (Teil 4, 12.11.2026)
+
+| Nr. | Thema | Entscheidung |
+|---|---|---|
+| 70 | Hacken | **Ja**, nur innerhalb der Spielwelt (Ingame-Bank, fremde Handys), mit Polizei und Strafen |
+| 73 | Echte Websites | **Keine.** Das Ingame-Internet hat **nur Spiel-Seiten** (ersetzt die frühere Entscheidung „ein paar echte Seiten“) |
+| 75 | Fotos/Videos | **Ja**, landen auch in einem echten Ordner auf dem PC |
+| 78 | Handy-Assistent im Spiel | **Sobald es Handys gibt** (M5), als Ingame-App mit nur Spielwissen |
+| 85 | Erste Szene | **Je nach Startalter:** Baby = Geburt, sonst Aufwachen im eigenen Bett |
+| 86 | Kindheit | **Wie Arbeitstage:** am Anfang ganz, später überspringt das Spiel **Tage, an denen nichts Besonderes passiert** |
+| 88 | Rückblick nach dem Tod | **Ja**, nach der Cutscene ein Rückblick mit dem eigenen Tagebuch und Fotos |
+| 90 | Erste spielbare Version | **Mit der KI reden** (passt zur Reihenfolge M0 → M4) |
 
 ---
 
