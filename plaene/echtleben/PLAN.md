@@ -1026,6 +1026,15 @@ Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt ers
 - **Lernen:** Was eine Person neu erfährt (von dir, von anderen, aus den Nachrichten), kommt in ihr Wissen. Unwichtiges vergisst sie langsam (Frage 27).
 - **Deine KI-App** ist anders: Die darf alles nachschlagen, auch im Internet.
 
+**Nicht jeder verrät alles:** Wissen heißt nicht, dass man es erzählt.
+- Jede Person hat **Geheimnisse** und **private Dinge** (Geld, Gesundheit, Liebe, Fehler, Familie).
+- Was sie erzählt, hängt ab von: **wie gut sie dich kennt und dir vertraut**, Laune, Situation (allein oder vor anderen), ob sie davon etwas hat, und ob sie betrunken ist.
+- Fremden erzählt man wenig, engen Freunden mehr, manches **niemandem**.
+- Leute **weichen aus**, wechseln das Thema, sagen „Geht dich nichts an“ oder lügen (Frage 30er-Block, Lügen).
+- **Vertrauen** wächst langsam und kann schnell kaputtgehen. Wer ein Geheimnis weitererzählt, verliert Vertrauen, und das spricht sich herum.
+- **Deine Geheimnisse:** Wenn du jemandem etwas anvertraust, behält er es für sich, oder auch nicht, je nach Person.
+- Geheimnisse können **herauskommen**: durch Gerede, Beobachten, Nachrichten am Handy, Polizei.
+
 Warum **M0** davor: Bei drei Dingen (Altern, echtes Betriebssystem im Spiel, eigene KI) ist nicht sicher, wie gut sie gehen. Das testen wir am Anfang klein, statt nach einem Jahr Arbeit draufzukommen.
 
 ---
