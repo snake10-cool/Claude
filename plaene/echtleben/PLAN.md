@@ -18,6 +18,23 @@ Dafür bekommt jeder Meilenstein eine eigene Erklär-Seite im Repo (`plaene/echt
 
 ---
 
+## ⭐ Jetzt zuerst: KI (Stand 12.11.2026)
+
+**Die KI wird als Allererstes gebaut**, noch vor Unreal (M0). Spiel-KI und deine eigene KI sind **eine gemeinsame KI** (Details: Punkt 4 und Meilenstein M4 „Eine KI für alles“, Abschnitt 2q).
+
+**KI-Fundament (statt M0 für die KI):**
+1. Python und die Trainings-Programme auf dem PC einrichten, prüfen, dass die 3060 Ti erkannt wird.
+2. Projektordner `C:\Projekte\Echtleben\ki\` mit klarer Ordnerstruktur (Daten, Training, Modelle, App, Tests, Erklär-Seiten).
+3. Ein **winziges Test-Modell** von 0 trainieren (Minuten bis wenige Stunden), um den ganzen Weg einmal durchzugehen: Text → Training → Antwort.
+4. Trainings-Regel von Anfang an einbauen: pausierbar, in Etappen, Grafikkarte gedrosselt, Fortschritt und Strom anzeigen.
+5. Feste Test-Fragen anlegen, z. B. „Was ist die Hauptstadt von Deutschland?“ → „Berlin“, kurz und ohne Abschweifen.
+
+**Erste spielbare Version:** Mit der KI reden (Frage 90).
+
+Offene KI-Fragen werden im Planungs-Chat geklärt und hier eingetragen.
+
+---
+
 ## 0. Worum geht es?
 
 Ein Lebens-Simulator, in dem **alles so ist wie im echten Leben**:
@@ -1012,7 +1029,9 @@ Jeder Meilenstein darf so lange dauern, wie er braucht. Der nächste beginnt ers
 | **M6** | Alles zusammen | Spielstart-Menü, Speichern, Einstellungen, langes Testspielen, Fehler beheben |
 | ~~M7~~ | ~~Deine eigene KI~~ | **In M4 aufgegangen** (12.11.) |
 
-**Reihenfolge (geändert 12.11.):** M0 → **M4 (Eine KI für alles)** → M1 → M2 → M3 → M4b → M5 → M6
+**Reihenfolge (geändert 12.11., zweimal):** **M4 (Eine KI für alles) ganz zuerst** → M0 (Unreal-Fundament) → M1 → M2 → M3 → M4b → M5 → M6
+
+Die KI braucht kein Unreal. Für sie gibt es ein eigenes kleines Fundament (siehe „Jetzt zuerst: KI“ ganz oben).
 
 ### Eine KI für alles (M4)
 - **Ein gemeinsamer Kern:** Ein eigenes Sprachmodell von 0 lernt Deutsch reden (Gespräche, Frage → Antwort) und Wissen **nachschlagen** statt auswendig lernen.
@@ -1058,7 +1077,7 @@ Warum **M0** davor: Bei drei Dingen (Altern, echtes Betriebssystem im Spiel, eig
 
 Dieser Plan wurde in einem eigenen Planungs-Chat gemacht. **Gebaut wird am PC.** Wer dort codet, hält sich an:
 1. **1. Regel: Beeile dich niemals. Mach gründlich.**
-2. Mit **M0** anfangen. Ein Meilenstein ist erst fertig, wenn seine „Fertig, wenn …“-Liste vollständig abgehakt ist.
+2. Mit der **KI (M4)** anfangen, siehe „Jetzt zuerst: KI“ ganz oben. Danach M0. Ein Meilenstein ist erst fertig, wenn seine „Fertig, wenn …“-Liste vollständig abgehakt ist.
 3. **„Zeig, wie, was, wo“:** zu jedem Schritt eine Erklär-Seite in `plaene/echtleben/erklaert/`.
 4. **Keine „Drücke E“-Abkürzungen** (Abschnitt 2b).
 5. Bei Unklarheit lieber nachfragen als raten. Größere Änderungen am Plan zuerst im Planungs-Chat besprechen.
