@@ -98,10 +98,6 @@ Offen (geht nur mit deinem Konto):
 4. Geschlossener Test mit 12 Testern für 14 Tage
 5. Abo in der Play Console anlegen, danach baut Claude Google Play Billing ein
 
-## Claude-Mod: Laub-Cockpit
+## Claude-Mods
 
-Im Ordner `plugins/laub-cockpit` liegt eine Mod für Claude Code (Herbst-Theme, Fortschritts-Panel, Schnellknöpfe). Installieren:
-
-```
-/plugin install laub-cockpit --marketplace snake10-cool/Claude
-```
+Im Ordner `plugins/` liegen Mods und Skills für Claude Code (Snake-Hub mit Themes und Schaltern, Snake-Skills). Details in `plugins/README.md`.
