@@ -227,7 +227,7 @@ h4 { font-size: 15px; margin: 16px 0 6px; }
 .ce-hl, .ce-ta { position: absolute; inset: 0; margin: 0; padding: 10px 12px 10px 0; font: 13.5px/1.6 var(--mono); white-space: pre; tab-size: 4; overflow: auto; }
 .ce-hl { color: #E6ECF6; pointer-events: none; }
 .ce-hl .ln .no { width: 3em; padding-right: 12px; }
-.ce-ta { padding-left: calc(3em + 12px); background: transparent; color: transparent; caret-color: #F28C28; border: 0; resize: none; outline: none; }
+.ce-ta { padding-left: 3em; background: transparent; color: transparent; caret-color: #F28C28; border: 0; resize: none; outline: none; }
 .ce:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .ce.ro .ce-ta { cursor: default; }
 .ce.ro { opacity: .92; }
