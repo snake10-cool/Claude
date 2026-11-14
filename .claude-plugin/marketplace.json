@@ -1,0 +1,5 @@
+{
+  "name": "snake10-mods",
+  "owner": { "name": "snake10-cool" },
+  "plugins": [{ "name": "laub-cockpit", "source": "./plugins/laub-cockpit" }]
+}
