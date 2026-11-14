@@ -42,6 +42,10 @@ Dafür bekommt jeder Meilenstein eine eigene Erklär-Seite im Repo (`plaene/echt
 | Grenzen | **Feste Grenzen + pro Konto strenger:** Wirklich Gefährliches (Menschen schaden, Waffen oder Gift bauen) lehnt sie **immer** ab. Bei Sorgen verweist sie auf echte Hilfe (Telefonseelsorge 142, Rat auf Draht 147). Für Kinder-Konten zusätzlich strenger (keine Inhalte ab 18) |
 | Rechnen | Mit einem **selbstgemachten Rechenprogramm** als Werkzeug: Die KI gibt Rechnungen weiter, das Programm rechnet, dann stimmt es immer |
 | Antwortlänge | **Einstellbar** (kurz / ausführlich), pro Konto und pro Frage |
+| Dazulernen | **Automatisch** aus den Gesprächen, mit Sicherheitsnetz: vor jedem Nachtraining wird das alte Modell gesichert; danach müssen die festen Tests bestanden werden, sonst wird automatisch zurückgesetzt. Die festen Grenzen dürfen dabei nie „weggelernt“ werden. Gespräche anderer Konten werden nur verwendet, wenn das Konto zustimmt (Schalter pro Konto) |
+| Englisch | **Später** dazu, zuerst nur Deutsch |
+| Bilder verstehen | **Später**, eigenes Teilprojekt nach Text |
+| Name | Vorschläge sammeln (siehe Planungs-Chat) |
 
 **Ehrlich zu „keine Infos merken“:** Ganz verhindern lässt sich das nicht. Wer Texte liest, merkt sich immer ein bisschen. Darum:
 - Für Schritt 1 eher **Erzählungen und Alltagstexte** statt Lexikon-Texte nehmen.
