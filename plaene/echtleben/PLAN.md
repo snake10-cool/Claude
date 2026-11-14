@@ -45,7 +45,7 @@ Dafür bekommt jeder Meilenstein eine eigene Erklär-Seite im Repo (`plaene/echt
 | Dazulernen | **Automatisch** aus den Gesprächen, mit Sicherheitsnetz: vor jedem Nachtraining wird das alte Modell gesichert; danach müssen die festen Tests bestanden werden, sonst wird automatisch zurückgesetzt. Die festen Grenzen dürfen dabei nie „weggelernt“ werden. Gespräche anderer Konten werden nur verwendet, wenn das Konto zustimmt (Schalter pro Konto) |
 | Englisch | **Später** dazu, zuerst nur Deutsch |
 | Bilder verstehen | **Später**, eigenes Teilprojekt nach Text |
-| Name | **Echo und Onyx** (Namens-Turnier 14.11.). Vorschlag: **Echo** im sachlichen Modus, **Onyx** mit eigener Persönlichkeit |
+| Name | **Noch offen.** Aus dem Turnier passt keiner (Echo, Onyx, Nexo verworfen) |
 
 **Ehrlich zu „keine Infos merken“:** Ganz verhindern lässt sich das nicht. Wer Texte liest, merkt sich immer ein bisschen. Darum:
 - Für Schritt 1 eher **Erzählungen und Alltagstexte** statt Lexikon-Texte nehmen.
@@ -1003,7 +1003,7 @@ Beantwortet im Planungs-Chat. Nummern = Fragen aus 2j.
 | 96 | Wo | **itch.io und eine eigene Website** |
 | 97 | Code | **Privat.** Später können einzelne Teile (z. B. die KI) öffentlich werden. Megascans/MetaHuman-Dateien dürfen nie öffentlich hochgeladen werden |
 | 98 | Devlog | **Ja**, siehe unten |
-| 99 | Name | Namens-Turnier 14.11.: **Favorit „Livin'“**. Vor der Veröffentlichung prüfen, ob der Name als Marke oder Spiel schon vergeben ist. Bis zur endgültigen Entscheidung bleibt „Echtleben“ der Arbeitsname |
+| 99 | Name | **Noch offen** („Livin'“ verworfen). Bis dahin bleibt „Echtleben“ der Arbeitsname. Vor einer Veröffentlichung prüfen, ob ein Name als Marke oder Spiel schon vergeben ist |
 | 100 | Stil von Logo und Menüs | **Schlicht** |
 | übrige | | Nach Grundregel: **wie echt** |
 
