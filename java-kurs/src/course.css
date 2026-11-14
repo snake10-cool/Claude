@@ -1,0 +1,94 @@
+/* Kursseite: obere Navigation, Sperr-Leiste, Startseite, Notenbuch, Challenges (baut auf player.css auf) */
+body { padding-block: 0 40px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.topnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; display: flex; align-items: center; gap: 14px; max-width: 1120px; margin: 0 auto 18px; padding: 10px 0; background: var(--bg); border-bottom: 1px solid var(--line); }
+.topnav .brand { font-weight: 800; color: var(--accent); text-decoration: none; white-space: nowrap; font-size: 17px; }
+.navlinks { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; min-width: 0; padding: 2px; }
+.navlinks::-webkit-scrollbar { display: none; }
+.navlinks a { text-decoration: none; color: var(--fg); font-weight: 600; font-size: 14px; padding: 7px 11px; border-radius: 9px; white-space: nowrap; border: 1px solid transparent; }
+.navlinks a:hover { background: var(--surface-2); }
+.navlinks a.on { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+.navlinks a:focus-visible, .lesson:focus-visible, .chal-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.navlinks .lpill { min-width: 34px; text-align: center; background: var(--surface-2); }
+.navlinks .lpill.done { color: var(--good); }
+.avgchip { font: 700 12px var(--mono); background: var(--surface-2); border-radius: 6px; padding: 1px 6px; margin-left: 4px; }
+.lockbar { max-width: 1120px; margin: 0 auto 16px; display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: var(--accent-soft); border: 1.5px solid var(--accent); border-radius: 12px; padding: 10px 14px; }
+.lhead { display: grid; gap: 8px; }
+.lhead h1 { font-size: clamp(30px, 6vw, 46px); font-weight: 800; letter-spacing: -.02em; }
+.lhead .lead { margin: 0; font-size: 18px; color: var(--muted); max-width: 70ch; }
+.lhead .meta { display: flex; gap: 8px 16px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+.lnav { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.small.btn, .btn.small { padding: 5px 10px; font-size: 13px; }
+
+/* Startseite */
+.hero.home { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; gap: 28px; display: grid; }
+.kick { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.hero.home h1 { font-size: clamp(34px, 6.5vw, 56px); font-weight: 800; letter-spacing: -.02em; margin: 6px 0 10px; }
+.hero.home .lead { margin: 0 0 16px; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stats.wide { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 2px; }
+.stat b { font: 800 28px var(--ui); font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 13px; }
+.stat.accent { background: var(--accent-soft); border-color: var(--accent); }
+.stat.accent b { color: var(--accent); }
+.path, .goal, .how { display: grid; gap: 12px; }
+.lesson { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 18px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; text-decoration: none; color: inherit; transition: border-color .2s, transform .2s; }
+a.lesson:hover { border-color: var(--accent); transform: translateY(-1px); }
+.lesson .num { width: 56px; height: 56px; border-radius: 14px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font: 800 24px var(--ui); }
+.lesson .num.ok { background: var(--good); color: #fff; }
+.lesson h3 { font-size: 19px; }
+.lesson p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+.lesson .go { font-weight: 700; color: var(--accent); white-space: nowrap; }
+.lesson.soon { opacity: .62; border-style: dashed; }
+.lesson.soon .num { background: var(--surface-2); color: var(--muted); }
+.lesson.chal { border-color: var(--accent); background: linear-gradient(120deg, var(--accent-soft), var(--surface) 60%); }
+.bar { height: 6px; background: var(--surface-2); border-radius: 4px; overflow: hidden; margin-top: 10px; max-width: 420px; }
+.bar i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag { font: 12px var(--mono); background: var(--surface-2); border-radius: 6px; padding: 2px 7px; color: var(--fg); border: 1px solid transparent; }
+.tag.g1, .gpill.g1 { border-color: var(--good); color: var(--good); } .tag.g2, .gpill.g2 { border-color: #4DA36E; color: #4DA36E; } .tag.g3, .gpill.g3 { border-color: var(--blue); color: var(--blue); } .tag.g4, .gpill.g4 { border-color: var(--accent); color: var(--accent); } .tag.g5, .gpill.g5 { border-color: var(--bad); color: var(--bad); }
+.goal > p { margin: 0; max-width: 72ch; }
+.goalgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.gcard { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 4px; align-content: start; }
+.gcard span { color: var(--muted); font-size: 14px; }
+.how ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.how li { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 4px; align-content: start; }
+.how li span:not(.step) { color: var(--muted); font-size: 14px; }
+.how .step { font: 700 12px var(--mono); color: var(--accent); }
+
+/* Notenbuch */
+.gbook { display: grid; gap: 8px; }
+.grow-row { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+.grow-row summary { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 12px; cursor: pointer; list-style: none; }
+.grow-row summary::-webkit-details-marker { display: none; }
+.grow-row[data-empty] summary { cursor: default; }
+.grow-row .gtitle { display: grid; min-width: 0; }
+.grow-row .gtitle .muted { font-size: 13px; }
+.gdetail { padding: 0 12px 12px; display: grid; gap: 8px; }
+.gdetail .vcode { font-size: 13px; background: #0D1220; }
+
+/* Challenges */
+.chal-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.chal-card { display: grid; gap: 6px; align-content: start; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; color: inherit; text-decoration: none; transition: border-color .2s, transform .2s; }
+.chal-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+.chal-card h3 { font-size: 19px; }
+.chal-card p { margin: 0; color: var(--muted); font-size: 15px; }
+.chal-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.lvl { font: 600 12px var(--mono); color: var(--accent); }
+.gpill { font: 700 12px var(--ui); border: 1.5px solid; border-radius: 999px; padding: 1px 8px; }
+.lookup { background: var(--surface-2); border-radius: 10px; padding: 8px 12px; margin-top: 12px; }
+.lookup summary { cursor: pointer; font-weight: 600; }
+.lookup ul { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 4px; }
+.page > .crumbs { margin-bottom: -6px; }
+.crumbs a { color: var(--accent); font-weight: 600; text-decoration: none; }
+
+@media (max-width: 760px) {
+  .hero.home { grid-template-columns: 1fr; }
+  .stats.wide { grid-template-columns: 1fr 1fr; }
+  .goalgrid, .how ol { grid-template-columns: 1fr 1fr; }
+  .lesson { grid-template-columns: 46px minmax(0, 1fr); }
+  .lesson .num { width: 46px; height: 46px; font-size: 20px; }
+  .lesson .go { grid-column: 2; }
+  .topnav { gap: 8px; }
+}
