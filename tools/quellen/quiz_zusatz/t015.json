@@ -1,0 +1,233 @@
+{
+"wd_Q1043792": {"s": "mittel", "q": [
+ ["Wer schrieb „Carmilla“?", "Sheridan Le Fanu", "Bram Stoker", "Mary Shelley", "Edgar Allan Poe"],
+ ["In welchem Jahr erschien die Novelle?", "1872", "1897", "1818", "1845"],
+ ["Was ist Carmilla?", "Ein weiblicher Vampir", "Eine Hexe", "Ein Geist", "Eine Werwölfin"],
+ ["Wo lebt Laura mit ihrem Vater?", "In der Steiermark", "In Transsilvanien", "In Schottland", "In Venedig"],
+ ["In welcher Zeitschrift erschien der Text zuerst?", "The Dark Blue", "The Strand", "Punch", "The Spectator"]
+]},
+"wd_Q828031": {"s": "mittel", "q": [
+ ["Wie lautet der Originaltitel von „Feuerkind“?", "Firestarter", "Carrie", "Christine", "Cujo"],
+ ["In welchem Jahr erschien der Roman?", "1980", "1974", "1990", "1986"],
+ ["Wie heißt die Hauptfigur?", "Charlie McGee", "Carrie White", "Danny Torrance", "Annie Wilkes"],
+ ["Welche Fähigkeit hat sie?", "Pyrokinese", "Unsichtbarkeit", "Gedankenlesen", "Fliegen"],
+ ["Woran nahmen ihre Eltern als Studenten teil?", "An einem Drogenexperiment", "An einem Marathon", "An einer Expedition", "An einem Gesangswettbewerb"]
+]},
+"wd_Q1212137": {"s": "mittel", "q": [
+ ["Wer schrieb „Die Eissphinx“?", "Jules Verne", "Edgar Allan Poe", "H. G. Wells", "Herman Melville"],
+ ["In welchem Jahr erschien die Originalausgabe?", "1897", "1870", "1838", "1905"],
+ ["Wessen Roman setzt das Buch fort?", "Edgar Allan Poes einzigen Roman", "Herman Melvilles Moby-Dick", "Daniel Defoes Robinson Crusoe", "Jonathan Swifts Gullivers Reisen"],
+ ["In welchem Jahr spielt die Handlung?", "1839", "1897", "1912", "1800"],
+ ["Auf welchen Inseln hat Jeorling Studien betrieben?", "Auf den Kerguelen", "Auf den Färöern", "Auf den Kanaren", "Auf den Azoren"]
+]},
+"wd_Q835341": {"s": "mittel", "q": [
+ ["Wer schrieb den Roman „2001: Odyssee im Weltraum“?", "Arthur C. Clarke", "Isaac Asimov", "Stanley Kubrick", "Robert A. Heinlein"],
+ ["In welchem Jahr erschien er?", "1968", "1957", "1977", "2001"],
+ ["Auf welcher Kurzgeschichte basiert er?", "The Sentinel", "Nightfall", "The Star", "Rescue Party"],
+ ["Was entdecken Menschenaffen in Afrika?", "Einen transparenten Monolithen", "Ein Raumschiff", "Eine Feuerstelle", "Einen Meteoriten"],
+ ["Wie viele Bände umfasst der Space-Odyssey-Zyklus?", "Vier", "Zwei", "Drei", "Sechs"]
+]},
+"wd_Q464220": {"s": "mittel", "q": [
+ ["Wer schrieb „Seelen“?", "Stephenie Meyer", "Suzanne Collins", "Veronica Roth", "Cassandra Clare"],
+ ["Wie lautet der Originaltitel?", "The Host", "Twilight", "The Giver", "Divergent"],
+ ["In welchem Jahr erschien der Roman?", "2008", "2005", "2012", "2001"],
+ ["Wie werden die Außerirdischen genannt?", "Seelen", "Geister", "Wächter", "Sucher"],
+ ["Aus wessen Sicht wird erzählt?", "Aus der Sicht der Seele Wanda", "Aus der Sicht eines Heilers", "Aus der Sicht eines Menschenkindes", "Aus der Sicht eines Präsidenten"]
+]},
+"wd_Q777574": {"s": "schwierig", "q": [
+ ["Wer schrieb den „Canzoniere“?", "Francesco Petrarca", "Dante Alighieri", "Giovanni Boccaccio", "Torquato Tasso"],
+ ["Wem gilt die Liebe in den Gedichten?", "Laura", "Beatrice", "Fiammetta", "Julia"],
+ ["Wann starb die Geliebte?", "1348", "1300", "1374", "1400"],
+ ["Aus wie vielen Gedichten besteht der Zyklus?", "366", "100", "154", "1000"],
+ ["Wie viele davon sind Sonette?", "317", "29", "154", "366"]
+]},
+"wd_Q1218731": {"s": "schwierig", "q": [
+ ["Wer schrieb „Die kahle Sängerin“?", "Eugène Ionesco", "Samuel Beckett", "Jean Genet", "Albert Camus"],
+ ["Wann war die Uraufführung?", "1950", "1930", "1968", "1945"],
+ ["Welchen Untertitel trägt das Stück?", "Anti-Stück", "Komödie in fünf Akten", "Ein Traumspiel", "Tragödie"],
+ ["In welchem Theater steht es seit 1957 täglich auf dem Spielplan?", "Théâtre de la Huchette", "Comédie-Française", "Odéon", "Théâtre du Châtelet"],
+ ["Wie heißt das britische Ehepaar am Kaminfeuer?", "Mr. und Mrs. Smith", "Mr. und Mrs. Martin", "Mr. und Mrs. Brown", "Mr. und Mrs. Jones"]
+]},
+"wd_Q1215393": {"s": "mittel", "q": [
+ ["Wer schrieb „Die Perle“?", "John Steinbeck", "Ernest Hemingway", "Jack London", "Mark Twain"],
+ ["In welchem Jahr erschien die Novelle?", "1947", "1939", "1952", "1925"],
+ ["Wie heißt der Sohn des Fischers?", "Coyotito", "Juanito", "Pedrito", "Carlito"],
+ ["Wovon wird der Sohn gestochen?", "Von einem Skorpion", "Von einer Biene", "Von einer Schlange", "Von einer Qualle"],
+ ["Nahe welcher Stadt lebt die Familie?", "La Paz", "Tijuana", "Acapulco", "Veracruz"]
+]},
+"wd_Q2279794": {"s": "mittel", "q": [
+ ["Wer schrieb „Wilde Schafsjagd“?", "Haruki Murakami", "Kazuo Ishiguro", "Banana Yoshimoto", "Yukio Mishima"],
+ ["In welchem Jahr erschien der Roman auf Japanisch?", "1982", "1995", "1970", "2002"],
+ ["Wie heißt der Schulfreund des Erzählers?", "Ratte", "Schaf", "Katze", "Fuchs"],
+ ["Was zeigt das Foto, das der Erzähler veröffentlicht?", "Eine Schafweide auf Hokkaido", "Einen Tempel in Kyōto", "Den Berg Fuji", "Eine Straße in Tokio"],
+ ["Welches Geschäft betreibt der Erzähler mit seinem Freund?", "Eine kleine Werbeagentur", "Eine Bar", "Einen Buchladen", "Eine Schafzucht"]
+]},
+"wd_Q1544119": {"s": "schwierig", "q": [
+ ["Wer schrieb „Als ich im Sterben lag“?", "William Faulkner", "John Steinbeck", "Ernest Hemingway", "Cormac McCarthy"],
+ ["In welchem Jahr erschien der Roman?", "1930", "1951", "1925", "1940"],
+ ["Wer stirbt zu Beginn?", "Addie Bundren", "Anse Bundren", "Cash Bundren", "Dewey Dell"],
+ ["In welcher Stadt soll sie beerdigt werden?", "Jefferson", "Memphis", "Atlanta", "Oxford"],
+ ["Wie viele Erzählstimmen wirken mit?", "Fünfzehn", "Drei", "Eine", "Fünfzig"]
+]},
+"wd_Q1570068": {"s": "mittel", "q": [
+ ["Wer schrieb „Sans famille“ (Heimatlos)?", "Hector Malot", "Jules Verne", "Victor Hugo", "Alphonse Daudet"],
+ ["In welchem Jahr erschien das Buch?", "1878", "1850", "1900", "1862"],
+ ["Wie heißt der Junge?", "Remi", "Oliver", "Pierre", "Gavroche"],
+ ["Wer findet ihn in Paris?", "Ein Steinhauer namens Barberin", "Ein Bäcker", "Ein Polizist", "Ein Graf"],
+ ["Mit welchem englischen Roman wird die Geschichte verglichen?", "Oliver Twist", "David Copperfield", "Robinson Crusoe", "Tom Jones"]
+]},
+"wd_Q2896920": {"s": "schwierig", "q": [
+ ["Wer schrieb „Fortschritt und Armut“?", "Henry George", "Karl Marx", "Adam Smith", "John Stuart Mill"],
+ ["In welchem Jahr erschien das Buch?", "1879", "1848", "1913", "1776"],
+ ["Wie lautet der englische Titel?", "Progress and Poverty", "The Wealth of Nations", "Das Kapital", "Utopia"],
+ ["In welchen Städten beobachtete George die Armut besonders drastisch?", "In San Francisco und New York City", "In London und Paris", "In Chicago und Boston", "In Berlin und Wien"],
+ ["Wie viele Seiten umfasst das Werk etwa?", "Über 500", "Etwa 50", "Über 5000", "Genau 100"]
+]},
+"wd_Q13882199": {"s": "mittel", "q": [
+ ["Unter welchem Pseudonym erschien „Der Ruf des Kuckucks“?", "Robert Galbraith", "Newt Scamander", "Kennilworthy Whisp", "Richard Bachman"],
+ ["Wer ist die Autorin?", "Joanne K. Rowling", "Agatha Christie", "Val McDermid", "P. D. James"],
+ ["Wie heißt der Privatdetektiv?", "Cormoran Strike", "Jackson Brodie", "Harry Hole", "Adam Dalgliesh"],
+ ["Was hat er im Afghanistankrieg verloren?", "Ein Bein", "Ein Auge", "Einen Arm", "Sein Gehör"],
+ ["Wessen Tod soll er untersuchen?", "Den des Supermodels Lula Landry", "Den eines Fußballstars", "Den eines Ministers", "Den einer Sängerin"]
+]},
+"wd_Q276722": {"s": "schwierig", "q": [
+ ["Wer schrieb „Die Falschmünzer“?", "André Gide", "Marcel Proust", "Albert Camus", "François Mauriac"],
+ ["In welchem Jahr erschien der Roman?", "1925", "1913", "1942", "1950"],
+ ["Wie heißt der Gymnasiast, der von zu Hause ausreißt?", "Bernard Profitendieu", "Olivier Molinier", "Édouard", "Lucien"],
+ ["Was entdeckt Bernard kurz vor dem Abitur?", "Dass sein vermeintlicher Vater nicht sein Vater ist", "Dass er reich erbt", "Dass er adoptiert wurde und Geschwister hat", "Dass sein Lehrer ein Fälscher ist"],
+ ["Bei wem schlüpft Bernard unter?", "Bei Olivier Molinier", "Bei seinem Onkel", "Bei seiner Mutter", "Bei einem Lehrer"]
+]},
+"wd_Q840584": {"s": "mittel", "q": [
+ ["Wer schrieb „Scouting for Boys“?", "Robert Baden-Powell", "Rudyard Kipling", "Ernest Thompson Seton", "Winston Churchill"],
+ ["In welchem Jahr wurde es veröffentlicht?", "1908", "1880", "1920", "1945"],
+ ["Welcher Bewegung liegt das Buch zugrunde?", "Der Pfadfinderbewegung", "Der Wandervogelbewegung", "Der Olympischen Bewegung", "Der Arbeiterbewegung"],
+ ["Wo fand 1907 das erste Probelager statt?", "Auf Brownsea Island", "Auf der Isle of Wight", "In den Highlands", "In Wales"],
+ ["Bei der Verteidigung welcher Stadt sammelte der Autor Erfahrungen?", "Mafeking", "Kapstadt", "Kairo", "Delhi"]
+]},
+"wd_Q132269": {"s": "mittel", "q": [
+ ["Wie lautet der Originaltitel von „Sophie im Schloss des Zauberers“?", "Howl’s Moving Castle", "Castle in the Air", "Spirited Away", "The Lives of Christopher Chant"],
+ ["Wer schrieb das Buch?", "Diana Wynne Jones", "J. K. Rowling", "Cornelia Funke", "Ursula K. Le Guin"],
+ ["Wie alt ist Sophie Hatter?", "18", "12", "25", "90"],
+ ["In welcher Stadt lebt Sophie?", "Market Chipping", "Kingsbury", "Porthaven", "Upper Folding"],
+ ["Wie heißt das magische Königreich?", "Ingary", "Narnia", "Fantásien", "Erdsee"]
+]},
+"wd_Q26541": {"s": "mittel", "q": [
+ ["Der wievielte James-Bond-Roman ist „Dr. No“?", "Der sechste", "Der erste", "Der zehnte", "Der dritte"],
+ ["In welchem Jahr erschien er?", "1958", "1953", "1965", "1962"],
+ ["Auf welcher Insel verschwinden zwei Agenten?", "Auf Jamaika", "Auf Kuba", "Auf den Bahamas", "Auf Barbados"],
+ ["Wie heißt der Leiter des Secret Service auf der Insel?", "John Strangways", "Felix Leiter", "Bill Tanner", "Quarrel"],
+ ["Wer schrieb die Bond-Romane?", "Ian Fleming", "John le Carré", "Graham Greene", "Frederick Forsyth"]
+]},
+"wd_Q1195308": {"s": "leicht", "q": [
+ ["Wen verschont der Löwe in der Fabel?", "Eine Maus", "Einen Hasen", "Einen Vogel", "Einen Fuchs"],
+ ["Was verspricht die Maus?", "Sich eines Tages erkenntlich zu zeigen", "Dem Löwen Käse zu bringen", "Nie wiederzukommen", "Den Löwen zu warnen"],
+ ["Worin wird der Löwe später gefangen?", "In einem Netz", "In einer Grube", "In einem Käfig", "In einer Höhle"],
+ ["Womit befreit die Maus den Löwen?", "Mit ihren Nagezähnen", "Mit einem Schlüssel", "Mit einem Messer", "Mit Hilfe anderer Löwen"],
+ ["In welchem Jahrhundert wurde die Fabel wohl verfasst?", "Im 6. Jahrhundert v. Chr.", "Im 1. Jahrhundert n. Chr.", "Im 12. Jahrhundert", "Im 18. Jahrhundert"]
+]},
+"wd_Q1050479": {"s": "schwierig", "q": [
+ ["Wer schrieb die „Persischen Briefe“?", "Montesquieu", "Voltaire", "Rousseau", "Diderot"],
+ ["In welchem Jahr erschienen sie?", "1721", "1748", "1762", "1789"],
+ ["Wie viele Briefe umfasst der Roman?", "161", "12", "50", "365"],
+ ["Wie heißen die zwei fiktiven Perser?", "Usbek und Rica", "Ali und Hassan", "Zadig und Candide", "Rustam und Sohrab"],
+ ["Aus welcher Stadt brechen sie auf?", "Isfahan", "Teheran", "Bagdad", "Schiras"]
+]},
+"wd_Q578895": {"s": "mittel", "q": [
+ ["Der wievielte Band der Anhalter-Serie ist „Das Restaurant am Ende des Universums“?", "Der zweite", "Der erste", "Der dritte", "Der fünfte"],
+ ["In welchem Jahr erschien er?", "1980", "1979", "1984", "1992"],
+ ["Wie heißt das Restaurant?", "Milliways", "Deep Thought", "Magrathea", "Vogsphere"],
+ ["Von wem werden die Helden kurz nach Magrathea angegriffen?", "Von den Vogonen", "Von den Dentrassi", "Von Marvin", "Von den Mäusen"],
+ ["Wer schrieb die Serie?", "Douglas Adams", "Terry Pratchett", "Neil Gaiman", "Eoin Colfer"]
+]},
+"wd_Q580929": {"s": "schwierig", "q": [
+ ["In welcher Sprache ist Heinrichs Livländische Chronik verfasst?", "Latein", "Deutsch", "Lettisch", "Russisch"],
+ ["Welchen Zeitraum zeichnet sie auf?", "1180 bis 1227", "1000 bis 1050", "1300 bis 1350", "1410 bis 1450"],
+ ["Welchen Beruf hatte der Autor?", "Priester", "Ritter", "Kaufmann", "König"],
+ ["Für welche Region ist sie die älteste bekannte Schriftquelle (abgesehen von Teilen der Kiewer Chronik)?", "Livland", "Preußen", "Finnland", "Böhmen"],
+ ["Für welche Phase ist sie der wichtigste Nachweis?", "Die Christianisierung des östlichen Baltikums", "Die Wikingerzeit in Schweden", "Die Gründung Moskaus", "Die Hanse in Lübeck"]
+]},
+"wd_Q752439": {"s": "mittel", "q": [
+ ["Wie lautet der Originaltitel von „Der Tod wartet“?", "Appointment with Death", "Death on the Nile", "Murder in Mesopotamia", "They Came to Baghdad"],
+ ["In welchem Jahr erschien der Roman?", "1938", "1928", "1948", "1958"],
+ ["Wo spielt die Handlung im Wesentlichen?", "In Transjordanien", "In Ägypten", "In Indien", "In der Türkei"],
+ ["Welche Familie wird vorgestellt?", "Die Familie Boynton", "Die Familie Lee", "Die Familie Abernethie", "Die Familie Crale"],
+ ["Aus wessen Sicht wird die Familie zuerst beobachtet?", "Aus der von Sarah King und Dr. Gerard", "Aus der von Hastings", "Aus der von Miss Marple", "Aus der von Japp"]
+]},
+"wd_Q469889": {"s": "mittel", "q": [
+ ["Wie lautet der Originaltitel von „Puls“?", "Cell", "Signal", "Phone", "Static"],
+ ["In welchem Jahr erschien der Roman?", "2006", "1996", "2016", "1986"],
+ ["Wodurch werden die Menschen ihres Verstandes beraubt?", "Durch ein Signal über das Mobilfunknetz", "Durch ein Virus im Trinkwasser", "Durch Außerirdische", "Durch einen Kometen"],
+ ["Wie werden die Veränderten genannt?", "Phoners", "Zombies", "Callers", "Ringers"],
+ ["Aus welcher Stadt retten sich die Überlebenden?", "Aus Boston", "Aus New York", "Aus Chicago", "Aus Portland"]
+]},
+"wd_Q467720": {"s": "mittel", "q": [
+ ["Wer schrieb „Planet der Habenichtse“?", "Ursula K. Le Guin", "Margaret Atwood", "Octavia E. Butler", "Joanna Russ"],
+ ["Wie lautet der Originaltitel?", "The Dispossessed", "The Left Hand of Darkness", "The Lathe of Heaven", "A Wizard of Earthsea"],
+ ["In welchem Jahr erschien der Roman?", "1974", "1969", "1985", "1962"],
+ ["Wie heißt der Mond, auf den die Aufständischen aussiedelten?", "Anarres", "Urras", "Gethen", "Hain"],
+ ["In welchem Sternsystem liegt der Schauplatz?", "Im Tau-Ceti-System", "Im Alpha-Centauri-System", "Im Sirius-System", "Im Sonnensystem"]
+]},
+"wd_Q791487": {"s": "mittel", "q": [
+ ["Wer schrieb „Baudolino“?", "Umberto Eco", "Italo Calvino", "Alessandro Baricco", "Dario Fo"],
+ ["In welchem Jahr erschien das italienische Original?", "2000", "1980", "1988", "2010"],
+ ["Welcher Kaiser adoptiert Baudolino?", "Friedrich I. Barbarossa", "Karl der Große", "Otto der Große", "Friedrich II."],
+ ["Aus welcher Gegend stammt Baudolino?", "Aus der Gegend von Alessandria", "Aus Sizilien", "Aus Venedig", "Aus Rom"],
+ ["Zu welchem Kreuzzug bricht er 1189 auf?", "Zum Dritten Kreuzzug", "Zum Ersten Kreuzzug", "Zum Kinderkreuzzug", "Zum Albigenserkreuzzug"]
+]},
+"wd_Q645906": {"s": "schwierig", "q": [
+ ["Wer schrieb „Der Schaum der Tage“?", "Boris Vian", "Raymond Queneau", "Jean-Paul Sartre", "Albert Camus"],
+ ["In welchem Jahr wurde der Roman publiziert?", "1947", "1936", "1955", "1968"],
+ ["Wie heißt Sartre als Figur im Roman?", "Jean-Sol Partre", "Paul-Jean Trasre", "Jean-Paul Sertar", "Sol Partner"],
+ ["Wie heißt der wohlhabende junge Pariser?", "Colin", "Chick", "Nicolas", "Alise"],
+ ["Wie alt ist er?", "22", "17", "35", "50"]
+]},
+"wd_Q370414": {"s": "schwierig", "q": [
+ ["Wer schrieb „De natura deorum“?", "Cicero", "Seneca", "Lukrez", "Marc Aurel"],
+ ["Was bedeutet der Titel?", "Vom Wesen der Götter", "Von der Natur der Dinge", "Vom Staat", "Von den Pflichten"],
+ ["Aus wie vielen Büchern besteht das Werk?", "Drei", "Eins", "Sechs", "Zwölf"],
+ ["Wem ist das Werk gewidmet?", "Brutus", "Caesar", "Atticus", "Pompeius"],
+ ["Welche Philosophenschule vertritt Velleius?", "Die epikureische", "Die stoische", "Die akademische", "Die kynische"]
+]},
+"wd_Q567884": {"s": "mittel", "q": [
+ ["Wer schrieb den Horrorroman „Another“?", "Yukito Ayatsuji", "Kōji Suzuki", "Haruki Murakami", "Junji Itō"],
+ ["Wie alt ist Kōichi Sakakibara?", "15", "12", "18", "21"],
+ ["Wohin muss sein Vater wegen der Arbeit?", "Nach Indien", "Nach Amerika", "Nach China", "Nach Deutschland"],
+ ["In welche Klasse kommt Kōichi?", "3-3", "1-A", "2-B", "4-1"],
+ ["Was trägt die Mitschülerin Mei Misaki?", "Eine Augenklappe", "Eine Maske", "Einen Gipsarm", "Eine Brille"]
+]},
+"wd_Q377710": {"s": "mittel", "q": [
+ ["Der wievielte Kriminalroman Christies ist „Hercule Poirots Weihnachten“?", "Der 24.", "Der 1.", "Der 50.", "Der 12."],
+ ["In welchem Jahr erschien er im Vereinigten Königreich?", "1938", "1928", "1948", "1958"],
+ ["Unter welchem Titel erschien er in den USA?", "Murder for Christmas", "A Holiday for Murder", "Christmas Pudding", "Poirot’s Holiday"],
+ ["Wer lädt die Familie zu Weihnachten ein?", "Simeon Lee", "Richard Abernethie", "Lord Edgware", "Mr. Shaitana"],
+ ["Wie heißt das Haus?", "Gorston Hall", "Enderby Hall", "Styles Court", "Chimneys"]
+]},
+"wd_Q978723": {"s": "mittel", "q": [
+ ["Wer schrieb „Robur der Eroberer“?", "Jules Verne", "H. G. Wells", "Alexandre Dumas", "Kurd Laßwitz"],
+ ["In welchem Jahr erschien das Buch?", "1886", "1870", "1900", "1865"],
+ ["In welcher Stadt beginnt die Geschichte?", "Philadelphia", "Paris", "London", "New York"],
+ ["Was plant das Weldon-Institut?", "Den Bau eines lenkbaren Luftschiffes", "Eine Reise zum Mond", "Eine U-Boot-Fahrt", "Eine Expedition zum Nordpol"],
+ ["Worüber sind sich die Mitglieder uneinig?", "Ob der Propeller vorne oder hinten sein soll", "Wie das Schiff heißen soll", "Wer der Kapitän wird", "Welche Farbe es bekommt"]
+]},
+"wd_Q924424": {"s": "schwierig", "q": [
+ ["Wer schrieb die „Discorsi“?", "Niccolò Machiavelli", "Francesco Guicciardini", "Dante Alighieri", "Thomas Hobbes"],
+ ["Über wessen erste zehn Bücher handeln sie?", "Über die des Titus Livius", "Über die des Tacitus", "Über die des Herodot", "Über die des Cicero"],
+ ["In wie viele Teile ist das Werk gegliedert?", "Drei", "Zwei", "Sieben", "Zehn"],
+ ["Wovon handelt das erste Kapitel?", "Vom Ursprung einer Stadt und besonders von Rom", "Vom Krieg gegen Karthago", "Von der Kirche", "Von der Seefahrt"],
+ ["Welche Wahl in Rom wird im ersten Buch erörtert?", "Die der Volkstribunen", "Die des Papstes", "Die der Konsuln von Karthago", "Die des Kaisers"]
+]},
+"wd_Q1165753": {"s": "mittel", "q": [
+ ["Wie lautet der Originaltitel von „Liebesgrüße aus Moskau“?", "From Russia with Love", "Goldfinger", "Moonraker", "Casino Royale"],
+ ["Der wievielte Bond-Roman ist es?", "Der fünfte", "Der erste", "Der achte", "Der zweite"],
+ ["In welche Stadt wird Bond gelockt?", "Nach Istanbul", "Nach Moskau", "Nach Berlin", "Nach Wien"],
+ ["Wie heißt der sowjetische Geheimdienst im Roman?", "SMERSCH", "SPECTRE", "KGB", "QUANTUM"],
+ ["Wer spielte Bond im Film von 1963?", "Sean Connery", "Roger Moore", "George Lazenby", "Daniel Craig"]
+]},
+"wd_Q662997": {"s": "mittel", "q": [
+ ["Welche Detektivin ermittelt in „Ruhe unsanft“?", "Miss Marple", "Ariadne Oliver", "Tuppence Beresford", "Jane Marple’s Nichte"],
+ ["Der wievielte Miss-Marple-Fall ist es in der Reihenfolge der Veröffentlichung?", "Der zwölfte und letzte", "Der erste", "Der fünfte", "Der zwanzigste"],
+ ["In welchem Jahr erschien der Roman?", "1976", "1956", "1966", "1946"],
+ ["Wo wuchs Gwenda Reed bei Verwandten auf?", "In Neuseeland", "In Indien", "In Kanada", "In Südafrika"],
+ ["In welchem Ort findet Gwenda ein Haus?", "In Dillmouth", "In St. Mary Mead", "In Chipping Cleghorn", "In Market Basing"]
+]}
+}
