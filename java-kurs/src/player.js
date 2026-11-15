@@ -5,17 +5,19 @@
 (function () {
   'use strict';
   const JK = window.JK;
-  const { $, $$, esc, clamp, fmtTime, md, hlJava, toast, GRADE_WORD } = JK.util;
+  const { $, $$, esc, clamp, fmtTime, md, hl: hlAny, toast, GRADE_WORD } = JK.util;
   const sfx = JK.audio.sfx, audio = JK.audio.state;
 
   JK.mountLesson = function (root, L, ctx) {
     const S = ctx.state, LS = ctx.ls(L.id);
+    const hlJava = (code, lang) => hlAny(code, lang || L.lang);
+    const LBL = L.label || 'Lektion ' + L.nr, HASH = L.hash || '#lektion-' + L.nr;
     const { steps, TOTAL, chapterStart, gates, CPS } = JK.buildTimeline(L);
     const nTasks = gates.filter(g => g.task).length, nQuiz = gates.filter(g => g.quiz).length;
 
     root.innerHTML = `
       <header class="lhead">
-        <div class="crumbs"><span>Lektion ${L.nr} von ${ctx.count}</span></div>
+        <div class="crumbs"><span>${esc(LBL)} von ${ctx.count}</span></div>
         <h1>${md(L.title)}</h1>
         <p class="lead">${md(L.sub)}</p>
         <div class="meta"><span>⏱ ${Math.round(TOTAL / 60)} Minuten Video</span><span>📝 ${nTasks === 1 ? '1 Aufgabe' : nTasks + ' Aufgaben'} mit Note</span><span>❓ ${nQuiz} Kurz-Checks</span><span>🔇 ohne Ton verständlich</span></div>
@@ -38,13 +40,13 @@
         <section class="card"><h2>Kapitel</h2><ol id="chapters" class="chapters"></ol></section>
         <section class="card"><h2>Noten dieser Lektion <span class="avg">Schnitt: <b id="grade-avg">–</b></span></h2><div id="grades" class="grades"></div><p class="small" style="margin:0"><a href="#noten">Alle Noten im Notenbuch →</a></p></section>
       </div>
-      <nav class="lnav">${ctx.prevHash ? `<a class="btn ghost" href="${ctx.prevHash}">← Lektion ${L.nr - 1}</a>` : '<span></span>'}${ctx.nextHash ? `<a class="btn ghost" href="${ctx.nextHash}">${esc(ctx.nextLabel || 'Lektion ' + (L.nr + 1))} →</a>` : '<span></span>'}</nav>`;
+      <nav class="lnav">${ctx.prevHash ? `<a class="btn ghost" href="${ctx.prevHash}">← ${esc(ctx.prevLabel || 'Lektion ' + (L.nr - 1))}</a>` : '<span></span>'}${ctx.nextHash ? `<a class="btn ghost" href="${ctx.nextHash}">${esc(ctx.nextLabel || 'Lektion ' + (L.nr + 1))} →</a>` : '<span></span>'}</nav>`;
 
     const stage = $('#stage', root);
     stage.innerHTML = `
       <div class="st-title"><div class="st-kicker"></div><div class="st-h"></div><div class="st-sub"></div></div>
       <div class="st-work">
-        <div class="st-editor"><div class="pane-head"><span class="dots"><i></i><i></i><i></i></span><span class="fname">Main.java</span></div><div class="ed-scroll"><pre class="ed-code"></pre></div></div>
+        <div class="st-editor"><div class="pane-head"><span class="dots"><i></i><i></i><i></i></span><span class="fname">${L.lang === 'js' ? 'main.js' : 'Main.java'}</span></div><div class="ed-scroll"><pre class="ed-code"></pre></div></div>
         <div class="st-side">
           <div class="st-visual"></div>
           <div class="st-console"><div class="pane-head"><span class="con-ico">▍</span>Konsole</div><pre class="con-out"></pre></div>
@@ -119,8 +121,8 @@
         case 'boxes': return `${v.title ? `<h4>${md(v.title)}</h4>` : ''}<div class="boxes">${v.vars.map((b, i) => `<div class="box" data-s="${b.s != null ? b.s : at(i, v.start, v.gap)}"><div class="box-type">${esc(b.type)}</div><div class="box-val ${b.cls || ''}">${esc(b.value)}</div><div class="box-name">${esc(b.name)}</div></div>`).join('')}</div>${v.note ? `<p class="vnote" data-s="${v.noteAt || 1.5}">${md(v.note)}</p>` : ''}`;
         case 'table': return `${v.title ? `<h4>${md(v.title)}</h4>` : ''}<table class="vt"><thead><tr>${v.head.map(h => `<th>${md(h)}</th>`).join('')}</tr></thead><tbody>${v.rows.map((r, i) => `<tr data-s="${at(i, v.start, v.gap || 0.5)}">${r.map(c => `<td>${md(String(c))}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
         case 'flow': return `${v.title ? `<h4>${md(v.title)}</h4>` : ''}<div class="flow${v.dir === 'row' ? ' row' : ''}">${v.items.map((it, i) => `${i ? `<div class="arrow" data-s="${at(i, v.start, v.gap) - 0.25}">${v.dir === 'row' ? '→' : '↓'}</div>` : ''}<div class="fstep ${it.cls || ''}" data-s="${at(i, v.start, v.gap)}"><b>${md(it.h)}</b>${it.p ? `<span>${md(it.p)}</span>` : ''}</div>`).join('')}</div>`;
-        case 'compare': return `<div class="cmp">${[v.left, v.right].map((c, i) => `<div class="cmp-col ${c.cls || ''}" data-s="${0.3 + i * 1.2}"><div class="cmp-h">${md(c.title)}</div><pre class="cmp-code">${hlJava(c.code)}</pre>${c.note ? `<div class="cmp-note">${md(c.note)}</div>` : ''}</div>`).join('')}</div>`;
-        case 'code': return `${v.title ? `<h4>${md(v.title)}</h4>` : ''}<pre class="vcode" data-s="0.2">${hlJava(v.code)}</pre>${v.note ? `<p class="vnote" data-s="${v.noteAt || 1}">${md(v.note)}</p>` : ''}`;
+        case 'compare': return `<div class="cmp">${[v.left, v.right].map((c, i) => `<div class="cmp-col ${c.cls || ''}" data-s="${0.3 + i * 1.2}"><div class="cmp-h">${md(c.title)}</div><pre class="cmp-code">${hlJava(c.code, c.lang)}</pre>${c.note ? `<div class="cmp-note">${md(c.note)}</div>` : ''}</div>`).join('')}</div>`;
+        case 'code': return `${v.title ? `<h4>${md(v.title)}</h4>` : ''}<pre class="vcode" data-s="0.2">${hlJava(v.code, v.lang)}</pre>${v.note ? `<p class="vnote" data-s="${v.noteAt || 1}">${md(v.note)}</p>` : ''}`;
         case 'html': return v.html;
       }
       return '';
@@ -240,7 +242,7 @@
     let panel = null;
     function openTask(task) {
       if (S.tasks[task.id]) return;
-      S.openTask = { lesson: L.id, id: task.id, title: task.title, nr: L.nr };
+      S.openTask = { lesson: L.id, id: task.id, title: task.title, nr: L.nr, label: LBL, hash: HASH };
       ctx.persist(); ctx.onChange();
       sfx.lock(); syncLock();
       setTimeout(() => alive && taskEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 350);
@@ -250,9 +252,9 @@
       if (panel) panel.destroy();
       taskEl.hidden = false;
       panel = JK.taskPanel(taskEl, task, ctx, {
-        kicker: `Jetzt bist du dran! · Lektion ${L.nr}, Aufgabe ${task.nr || ''}`,
+        kicker: `Jetzt bist du dran! · ${LBL}, Aufgabe ${task.nr || ''}`,
         note: 'Alle Videos im Kurs sind gesperrt, bis du abgibst. Ob alles stimmt, ist egal – du bekommst auf jeden Fall eine Note und Tipps. Teste vorher mit <b>▶ Ausführen</b>.',
-        where: `Lektion ${L.nr}: ${L.title}`,
+        where: `${LBL}: ${L.title}`,
         continueLabel: 'Video weiter ansehen ▶',
         onSubmitted: () => { S.openTask = null; ctx.persist(); syncLock(); renderGates(); renderGrades(); ctx.onChange(); },
         onContinue: () => { $('#player', root).scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(() => player.play(), 400); },
@@ -273,9 +275,9 @@
         E.lockBtn.onclick = () => taskEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         if (tk) mountTaskPanel(tk);
       } else {
-        E.lockTxt.textContent = `In Lektion ${ot.nr} ist die Aufgabe „${ot.title}“ offen. Solange sind alle Videos gesperrt – so kannst du nicht nachschauen.`;
-        E.lockBtn.textContent = `Zur Aufgabe in Lektion ${ot.nr} →`;
-        E.lockBtn.onclick = () => ctx.navigate('#lektion-' + ot.nr);
+        E.lockTxt.textContent = `In ${ot.label || 'Lektion ' + ot.nr} ist die Aufgabe „${ot.title}“ offen. Solange sind alle Videos gesperrt – so kannst du nicht nachschauen.`;
+        E.lockBtn.textContent = `Zur Aufgabe in ${ot.label || 'Lektion ' + ot.nr} →`;
+        E.lockBtn.onclick = () => ctx.navigate(ot.hash || '#lektion-' + ot.nr);
       }
     }
 
@@ -300,7 +302,7 @@
       LS.done = true; ctx.persist(); ctx.onChange();
       E.gate.hidden = false;
       const tasks = steps.filter(s => s.task).map(s => s.task);
-      E.gate.innerHTML = `<div class="quiz-card end"><div class="quiz-kick">Lektion ${L.nr} geschafft 🎉</div><h3>${md(L.title)}</h3><p>${md(L.outro || 'Super gemacht!')}</p>${tasks.length ? `<p class="muted">Deine Noten: ${tasks.map(t => S.tasks[t.id] ? S.tasks[t.id].result.note : '–').join(' · ')}</p>` : ''}<div class="row">${ctx.endExtra || ''}${ctx.nextHash ? `<a class="btn primary" href="${ctx.nextHash}">${esc(ctx.nextLabel || 'Lektion ' + (L.nr + 1))} →</a>` : ''}<button class="btn ghost" data-act="replay">Nochmal ansehen</button></div></div>`;
+      E.gate.innerHTML = `<div class="quiz-card end"><div class="quiz-kick">${esc(LBL)} geschafft 🎉</div><h3>${md(L.title)}</h3><p>${md(L.outro || 'Super gemacht!')}</p>${tasks.length ? `<p class="muted">Deine Noten: ${tasks.map(t => S.tasks[t.id] ? S.tasks[t.id].result.note : '–').join(' · ')}</p>` : ''}<div class="row">${ctx.endExtra || ''}${ctx.nextHash ? `<a class="btn primary" href="${ctx.nextHash}">${esc(ctx.nextLabel || 'Lektion ' + (L.nr + 1))} →</a>` : ''}<button class="btn ghost" data-act="replay">Nochmal ansehen</button></div></div>`;
       sfx.good();
       $('[data-act="replay"]', E.gate).onclick = () => { hideGate(); player.seek(0); player.play(); };
     }
