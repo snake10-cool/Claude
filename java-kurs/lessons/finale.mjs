@@ -72,7 +72,7 @@ const list = [
     text: ['Lies eine Zahl n ein. Solange n nicht 1 ist: Ist n gerade, halbiere sie, sonst rechne 3n + 1. Gib die ganze Folge in einer Zeile aus (mit Leerzeichen getrennt), danach „Schritte: …“ und „Höchster Wert: …“.'],
     example: '6\n6 3 10 5 16 8 4 2 1\nSchritte: 8\nHöchster Wert: 16',
     lookup: ['Lektion 4 · while mit Bedingung', 'Lektion 3 · gerade/ungerade mit % 2'],
-    starter: prog(scan('', 'int n = sc.nextInt();')),
+    starter: prog(scan('', 'int n = sc.nextInt();'), SC),
     solution: prog(R`
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -96,7 +96,7 @@ const list = [
     text: ['Lies eine Zahl ≥ 0 ein und gib sie im Binärsystem aus. Benutze **nicht** `Integer.toBinaryString`: Teile immer wieder durch 2 und sammle die Reste – von hinten nach vorne gelesen ergeben sie die Binärzahl.', 'Gib außerdem aus, wie viele Einsen die Zahl hat.'],
     example: '13\nBinär: 1101\nEinsen: 3',
     lookup: ['Lektion 4 · Quersumme-Muster: % und / in einer Schleife', 'Lektion 7 · StringBuilder `insert(0, …)` oder `reverse()`'],
-    starter: prog(scan('', 'int n = sc.nextInt();')),
+    starter: prog(scan('', 'int n = sc.nextInt();'), SC),
     solution: prog(R`
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -140,7 +140,7 @@ const list = [
     text: ['Lies eine Zahl von 1 bis 3999 ein und gib sie als römische Zahl aus. Tipp: Zwei parallele Arrays helfen – `{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}` und `{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}`.'],
     example: '2026\nMMXXVI',
     lookup: ['Lektion 5 · zwei Arrays mit gleichem Index', 'Lektion 4 · while: so lange abziehen, wie es passt'],
-    starter: prog(scan('', 'int n = sc.nextInt();')),
+    starter: prog(scan('', 'int n = sc.nextInt();'), SC),
     solution: prog(R`
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();

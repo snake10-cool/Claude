@@ -46,7 +46,7 @@ export default [
     uses: ['split', 'length()', 'Maximum', 'double'],
     text: ['Lies einen Satz ein (Wörter durch Leerzeichen getrennt). Gib aus: die Anzahl der Wörter, das **längste** Wort (bei Gleichstand das erste) und die durchschnittliche Wortlänge mit einer Nachkommastelle.'],
     req: ['Satz mit `split(" ")` zerlegen', 'Anzahl der Wörter', 'Längstes Wort (erstes bei Gleichstand)', 'Durchschnittliche Länge mit 1 Nachkommastelle'],
-    example: 'Satz: Mario springt über drei grüne Röhren\nWörter: 6\nLängstes: springt\nSchnitt: 5,3',
+    example: 'Satz: Mario springt über drei grüne Röhren\nWörter: 6\nLängstes: springt\nSchnitt: 5,2',
     lookup: ['Lektion 7 · `split` zerlegt Text in ein Array', 'Lektion 5 · Maximum in einem Array suchen', 'Lektion 2 · `printf("%.1f")` für eine Nachkommastelle'],
     starter: prog(R`
         Scanner sc = new Scanner(System.in);
@@ -69,7 +69,7 @@ export default [
         System.out.println("Längstes: " + laengstes);
         System.out.printf("Schnitt: %.1f%n", (double) summe / woerter.length);`, SC),
     tests: [
-      { name: 'Mario', input: ['Mario springt über drei grüne Röhren'], expect: [{ re: 'w(ö|oe)rter:?\\s*6', label: '6 Wörter' }, { re: 'springt', label: 'längstes: springt' }, { re: '5[.,]3', label: 'Schnitt 5,3' }] },
+      { name: 'Mario', input: ['Mario springt über drei grüne Röhren'], expect: [{ re: 'w(ö|oe)rter:?\\s*6', label: '6 Wörter' }, { re: 'springt', label: 'längstes: springt' }, { re: '5[.,]2', label: 'Schnitt 5,2' }] },
       { name: 'Gleichstand', input: ['ab cd ef'], expect: [{ re: 'l(ä|ae)ngstes:?\\s*ab', label: 'erstes bei Gleichstand: ab' }, { re: '2[.,]0', label: 'Schnitt 2,0' }] },
     ],
     rubric: [['Programm kompiliert und läuft', 15], ['Wörter richtig gezählt', 20], ['Längstes Wort richtig', 30], ['Durchschnitt richtig formatiert', 25], ['Lesbarer Code', 10]],
@@ -242,8 +242,8 @@ class Rakete extends Fahrzeug {
             System.out.println(sb);
         }`, SC),
     tests: [
-      { name: '3×4', input: ['3', '*...', '..*.', '....'], expect: [{ re: '^\\*211$', flags: 'm', label: 'Zeile 1: *211' }, { re: '^12\\*1$', flags: 'm', label: 'Zeile 2: 12*1' }, { re: '^0111$', flags: 'm', label: 'Zeile 3: 0111' }] },
-      { name: 'Ecken', input: ['2', '.*', '*.'], expect: [{ re: '^2\\*$', flags: 'm', label: 'Zeile 1: 2*' }, { re: '^\\*2$', flags: 'm', label: 'Zeile 2: *2' }] },
+      { name: '3×4', input: ['3', '*...', '..*.', '....'], expect: [{ re: '(^|: )\\*211$', flags: 'm', label: 'Zeile 1: *211' }, { re: '^12\\*1$', flags: 'm', label: 'Zeile 2: 12*1' }, { re: '^0111$', flags: 'm', label: 'Zeile 3: 0111' }] },
+      { name: 'Ecken', input: ['2', '.*', '*.'], expect: [{ re: '(^|: )2\\*$', flags: 'm', label: 'Zeile 1: 2*' }, { re: '^\\*2$', flags: 'm', label: 'Zeile 2: *2' }] },
     ],
     codeChecks: [{ label: '2D-Array', re: 'char\\s*\\[\\s*\\]\\s*\\[\\s*\\]' }],
     rubric: [['Programm kompiliert und läuft', 15], ['Feld richtig eingelesen', 15], ['Nachbarn richtig gezählt', 35], ['Ränder ohne Absturz', 20], ['Ausgabe im richtigen Format', 15]],

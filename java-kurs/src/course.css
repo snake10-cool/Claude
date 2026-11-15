@@ -83,6 +83,61 @@ a.lesson:hover { border-color: var(--accent); transform: translateY(-1px); }
 .page > .crumbs { margin-bottom: -6px; }
 .crumbs a { color: var(--accent); font-weight: 600; text-decoration: none; }
 
+
+/* Reiter, Abschnitte, Zwischen-Challenges, Finale, Game-Reiter */
+.navlinks a.tab { font-weight: 700; }
+.navlinks a.tab.game:not(.on) { color: var(--blue); }
+.navlinks a.tab.game.on { background: color-mix(in srgb, var(--blue) 14%, transparent); color: var(--blue); border-color: var(--blue); }
+.navsep { width: 1px; align-self: stretch; background: var(--line); margin: 4px 4px; flex: none; }
+.sec-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.sec-sub { margin: -4px 0 4px; max-width: 72ch; }
+.badge { font: 700 12px var(--mono); padding: 3px 8px; border-radius: 7px; background: var(--accent-soft); color: var(--accent); }
+.badge.js { background: color-mix(in srgb, #E0B100 18%, transparent); color: color-mix(in srgb, #B08800 70%, var(--fg)); }
+.badge.web, .badge.game { background: color-mix(in srgb, var(--blue) 15%, transparent); color: var(--blue); }
+.badge.node { background: color-mix(in srgb, var(--good) 15%, transparent); color: var(--good); }
+.soonchip { font: 600 12px var(--ui); color: var(--muted); border: 1px dashed var(--line); border-radius: 999px; padding: 2px 10px; }
+.checkpoint { margin-left: 28px; border-left: 3px solid var(--accent); padding: 4px 0 6px 18px; display: grid; gap: 8px; }
+.cp-head { display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline; justify-content: space-between; }
+.cp-kick { font: 700 13px var(--ui); color: var(--accent); letter-spacing: .02em; }
+.cp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+.cp-item { display: grid; gap: 2px; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 9px 12px; transition: border-color .2s; }
+.cp-item:hover, .cp-item:focus-visible { border-color: var(--accent); outline: none; }
+.cp-item span { font: 12px var(--mono); color: var(--muted); }
+.cp-item.g1, .cp-item.g2 { border-color: var(--good); } .cp-item.g3 { border-color: var(--blue); } .cp-item.g4 { border-color: var(--accent); } .cp-item.g5 { border-color: var(--bad); }
+.lesson.finale-card { border: 1.5px solid var(--accent); background: linear-gradient(120deg, var(--accent-soft), var(--surface) 70%); }
+.lesson.finale-card .num { background: var(--accent); color: #fff; }
+.lesson.finale-card.locked { border-style: dashed; background: var(--surface); }
+.lesson.finale-card.locked .num { background: var(--surface-2); color: var(--muted); }
+.plan { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
+.plan li { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 10px; align-items: start; background: var(--surface); border: 1px dashed var(--line); border-radius: 12px; padding: 10px 12px; }
+.plan li div { display: grid; gap: 2px; min-width: 0; }
+.plan li div span { color: var(--muted); font-size: 14px; }
+.pnum { width: 30px; height: 30px; border-radius: 8px; background: var(--surface-2); display: grid; place-items: center; font: 700 14px var(--mono); color: var(--muted); }
+.plan .lang { font: 600 11px var(--mono); color: var(--blue); white-space: nowrap; }
+.hero.game-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 24px; align-items: center; }
+.game-hero h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 800; letter-spacing: -.02em; margin: 6px 0 10px; }
+.game-hero .kick { color: var(--blue); }
+.gdemo { width: 100%; max-width: 100%; height: auto; aspect-ratio: 640 / 240; border-radius: 14px; border: 1px solid var(--line); background: var(--surface-2); image-rendering: pixelated; }
+.goalgrid.three { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.goalgrid.three .gcard span { color: var(--fg); }
+.tags.big .tag { font-size: 13px; padding: 5px 10px; }
+.gbook + .gbook { margin-top: 18px; }
+.gb-h { font-size: 20px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.chal-group { display: grid; gap: 10px; }
+.chal-group h2 { font-size: 20px; }
+.bar.wide { max-width: 560px; height: 8px; }
+.fin-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; counter-reset: none; }
+.fin-item { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; text-decoration: none; color: inherit; min-height: 64px; }
+a.fin-item:hover, a.fin-item:focus-visible { border-color: var(--accent); outline: none; }
+.fin-item.cur { border: 1.5px solid var(--accent); background: var(--accent-soft); }
+.fin-item.locked { opacity: .55; border-style: dashed; }
+.fin-item.done.g1, .fin-item.done.g2 { border-color: var(--good); } .fin-item.done.g3 { border-color: var(--blue); } .fin-item.done.g4 { border-color: var(--accent); } .fin-item.done.g5 { border-color: var(--bad); }
+.fnum { width: 40px; height: 40px; border-radius: 10px; background: var(--surface-2); display: grid; place-items: center; font: 800 17px var(--ui); }
+.fin-item.cur .fnum { background: var(--accent); color: #fff; }
+.ftxt { display: grid; gap: 1px; min-width: 0; }
+.ftxt span { font: 12px var(--mono); color: var(--muted); }
+.lockcard { display: grid; gap: 10px; justify-items: start; padding: 22px; }
+
 @media (max-width: 760px) {
   .hero.home { grid-template-columns: 1fr; }
   .stats.wide { grid-template-columns: 1fr 1fr; }
@@ -91,4 +146,8 @@ a.lesson:hover { border-color: var(--accent); transform: translateY(-1px); }
   .lesson .num { width: 46px; height: 46px; font-size: 20px; }
   .lesson .go { grid-column: 2; }
   .topnav { gap: 8px; }
+  .hero.game-hero { grid-template-columns: 1fr; }
+  .checkpoint { margin-left: 8px; padding-left: 12px; }
+  .plan li { grid-template-columns: 30px minmax(0, 1fr); }
+  .plan .lang { grid-column: 2; }
 }

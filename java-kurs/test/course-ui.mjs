@@ -23,7 +23,8 @@ async function open(vp, hash = '') {
 const p = await open({ width: 1280, height: 900 });
 await p.evaluate(() => localStorage.clear()); await p.reload(); await p.waitForTimeout(500);
 await p.screenshot({ path: path.join(out, 'home.png'), fullPage: true });
-ok('Startseite zeigt 5 Lektionen + Challenges + geplante', await p.evaluate(() => document.querySelectorAll('.path .lesson').length === 5 + 1 + 7));
+ok('Classics: 12 Lektionen + Finale-Karte + Zwischen-Challenges', await p.evaluate(() => document.querySelectorAll('.path .lesson').length === 13 && document.querySelectorAll('.checkpoint').length === 6 && document.querySelectorAll('.plan li').length === 16));
+ok('Finale ist am Anfang gesperrt', await p.evaluate(() => !!document.querySelector('.finale-card.locked')));
 // Lektion 1 -> Aufgabe öffnen
 await p.evaluate(() => { location.hash = '#lektion-1'; }); await p.waitForTimeout(500);
 const gate = await p.evaluate(() => { const A = window.JK.active; const st = A.steps.find(s => s.task); for (const s of A.steps) if (s.quiz && s.start < st.start) window.JK.course.S.quizzes[s.quiz.id] = { ok: true }; A.player.seek(st.start - 0.3, true); A.player.play(); return st.task.id; });
@@ -51,10 +52,24 @@ await p.waitForTimeout(12000);
 ok('Challenge benotet', await p.evaluate(() => !!document.querySelector('.gnum')));
 await p.evaluate(() => { location.hash = '#noten'; }); await p.waitForTimeout(500);
 const gb = await p.evaluate(() => ({ rows: document.querySelectorAll('.grow-row').length, graded: document.querySelectorAll('.grow-row:not([data-empty])').length, avg: document.querySelector('.stat.accent b').textContent }));
-ok(`Notenbuch: ${gb.rows} Zeilen, ${gb.graded} benotet, Schnitt ${gb.avg}`, gb.rows === 16 && gb.graded === 2);
+ok(`Notenbuch: ${gb.rows} Zeilen, ${gb.graded} benotet, Schnitt ${gb.avg}`, gb.rows === 56 && gb.graded === 2);
 await p.screenshot({ path: path.join(out, 'noten.png'), fullPage: true });
 await p.evaluate(() => { location.hash = '#challenges'; }); await p.waitForTimeout(400);
 await p.screenshot({ path: path.join(out, 'challenges.png'), fullPage: true });
+await p.evaluate(() => { location.hash = '#finale-1'; }); await p.waitForTimeout(400);
+ok('Finale 1 gesperrt ohne Abschlussprojekt', await p.evaluate(() => !!document.querySelector('.lockcard') && !document.querySelector('#task')));
+await p.evaluate(() => { const S = window.JK.course.S; S.tasks['l12-spiel'] = { code: 'x', at: Date.now(), result: { note: 2, punkte: 80 } }; location.hash = '#finale'; }); await p.waitForTimeout(400);
+ok('Nach Lektion 12 ist nur Finale 1 offen', await p.evaluate(() => document.querySelectorAll('a.fin-item').length === 1 && document.querySelectorAll('.fin-item.locked').length === 19));
+await p.screenshot({ path: path.join(out, 'finale.png'), fullPage: true });
+await p.evaluate(() => { location.hash = '#finale-1'; }); await p.waitForTimeout(500);
+ok('Finale 1 öffnet die Aufgabe', await p.evaluate(() => !!document.querySelector('#task .ce-ta')));
+await p.evaluate(() => { location.hash = '#finale-2'; }); await p.waitForTimeout(300);
+ok('Finale 2 noch gesperrt', await p.evaluate(() => !!document.querySelector('.lockcard')));
+await p.evaluate(() => { location.hash = '#game'; }); await p.waitForTimeout(1200);
+ok('Game-Reiter mit Vorschau und 12 Schritten', await p.evaluate(() => !!document.querySelector('#gdemo') && document.querySelectorAll('.plan li').length === 12));
+await p.screenshot({ path: path.join(out, 'game.png'), fullPage: true });
+await p.evaluate(() => { location.hash = '#lektion-12'; }); await p.waitForTimeout(500);
+ok('Lektion 12 lädt', await p.evaluate(() => /Pixel-Lauf/.test(document.querySelector('main').textContent)));
 await p.close();
 // Handy
 const m = await open({ width: 390, height: 844 }, '#start');
@@ -63,5 +78,8 @@ ok('Handy: kein waagrechtes Scrollen (Start)', await m.evaluate(() => document.d
 await m.evaluate(() => { location.hash = '#lektion-2'; }); await m.waitForTimeout(500);
 ok('Handy: kein waagrechtes Scrollen (Lektion)', await m.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
 await m.screenshot({ path: path.join(out, 'mobile-lesson.png') });
+await m.evaluate(() => { location.hash = '#game'; }); await m.waitForTimeout(500);
+ok('Handy: kein waagrechtes Scrollen (Game)', await m.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
+await m.screenshot({ path: path.join(out, 'mobile-game.png') });
 await browser.close();
 console.log(errors.length ? 'FEHLER:\n' + errors.join('\n') : 'Keine JS-Fehler');

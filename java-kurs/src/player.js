@@ -38,7 +38,7 @@
         <section class="card"><h2>Kapitel</h2><ol id="chapters" class="chapters"></ol></section>
         <section class="card"><h2>Noten dieser Lektion <span class="avg">Schnitt: <b id="grade-avg">–</b></span></h2><div id="grades" class="grades"></div><p class="small" style="margin:0"><a href="#noten">Alle Noten im Notenbuch →</a></p></section>
       </div>
-      <nav class="lnav">${ctx.prevHash ? `<a class="btn ghost" href="${ctx.prevHash}">← Lektion ${L.nr - 1}</a>` : '<span></span>'}${ctx.nextHash ? `<a class="btn ghost" href="${ctx.nextHash}">Lektion ${L.nr + 1} →</a>` : `<a class="btn ghost" href="#challenges">Zu den Challenges →</a>`}</nav>`;
+      <nav class="lnav">${ctx.prevHash ? `<a class="btn ghost" href="${ctx.prevHash}">← Lektion ${L.nr - 1}</a>` : '<span></span>'}${ctx.nextHash ? `<a class="btn ghost" href="${ctx.nextHash}">${esc(ctx.nextLabel || 'Lektion ' + (L.nr + 1))} →</a>` : '<span></span>'}</nav>`;
 
     const stage = $('#stage', root);
     stage.innerHTML = `
@@ -300,7 +300,7 @@
       LS.done = true; ctx.persist(); ctx.onChange();
       E.gate.hidden = false;
       const tasks = steps.filter(s => s.task).map(s => s.task);
-      E.gate.innerHTML = `<div class="quiz-card end"><div class="quiz-kick">Lektion ${L.nr} geschafft 🎉</div><h3>${md(L.title)}</h3><p>${md(L.outro || 'Super gemacht!')}</p>${tasks.length ? `<p class="muted">Deine Noten: ${tasks.map(t => S.tasks[t.id] ? S.tasks[t.id].result.note : '–').join(' · ')}</p>` : ''}<div class="row">${ctx.nextHash ? `<a class="btn primary" href="${ctx.nextHash}">Lektion ${L.nr + 1} →</a>` : `<a class="btn primary" href="#challenges">Zu den Challenges →</a>`}<button class="btn ghost" data-act="replay">Nochmal ansehen</button></div></div>`;
+      E.gate.innerHTML = `<div class="quiz-card end"><div class="quiz-kick">Lektion ${L.nr} geschafft 🎉</div><h3>${md(L.title)}</h3><p>${md(L.outro || 'Super gemacht!')}</p>${tasks.length ? `<p class="muted">Deine Noten: ${tasks.map(t => S.tasks[t.id] ? S.tasks[t.id].result.note : '–').join(' · ')}</p>` : ''}<div class="row">${ctx.endExtra || ''}${ctx.nextHash ? `<a class="btn primary" href="${ctx.nextHash}">${esc(ctx.nextLabel || 'Lektion ' + (L.nr + 1))} →</a>` : ''}<button class="btn ghost" data-act="replay">Nochmal ansehen</button></div></div>`;
       sfx.good();
       $('[data-act="replay"]', E.gate).onclick = () => { hideGate(); player.seek(0); player.play(); };
     }

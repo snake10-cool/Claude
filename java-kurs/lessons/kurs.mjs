@@ -1,4 +1,4 @@
-// Kursplan, Lernziel und Transfer-Challenges (Aufgaben, die so nie gezeigt wurden – lösbar mit Lektion 1–5)
+// Kursplan, Lernziel, Reiter und Transfer-Challenges (Aufgaben, die so nie gezeigt wurden)
 const R = String.raw;
 const prog = (body, imports = '') => `${imports}public class Main {\n    public static void main(String[] args) {\n${body.replace(/^\n/, '').replace(/\n$/, '')}\n    }\n}\n`;
 const SC = 'import java.util.Scanner;\n\n';
@@ -6,12 +6,12 @@ const RS = 'import java.util.Random;\nimport java.util.Scanner;\n\n';
 const lines = n => Array.from({ length: n }, (_, i) => String(i + 1));
 
 export default {
-  goal: 'Am Ende von **12 Lektionen** baust du ein eigenes **Abschlussprojekt** – zum Beispiel Tic-Tac-Toe gegen den Computer oder eine Fangbuch-App für deine Fische. Dafür lernst du alles, was ein Java-Programm im ersten Lernjahr (Schule, HTL, Uni-Einstieg) ausmacht: von Variablen über Schleifen bis zu eigenen Klassen und Objekten.',
+  goal: 'Das große Ziel: Du programmierst dein eigenes **Multiplayer-Jump’n’Run** – ein Rennen durch Level, das du mit Freunden live im Browser spielst. Dafür lernst du in den **Classics** die Grundlagen (Java, JavaScript, HTML & CSS, Node.js) und im Reiter **Unser Game** alles, was speziell für das Spiel nötig ist.',
   canDo: [
-    { h: '🎮 Konsolen-Spiele', p: 'Tic-Tac-Toe, Galgenmännchen, Schiffe versenken, Zahlenraten mit Highscore' },
-    { h: '📋 Verwaltungs-Programme', p: 'Fangbuch, Notenverwaltung, Einkaufsliste – mit eigenen Klassen und Listen' },
-    { h: '🧮 Rechner & Auswertungen', p: 'Statistiken, Tabellen, Umrechner, Prüfungen von Eingaben' },
-    { h: '🚀 Sprungbrett', p: 'Die Grundlage für Android-Apps, Minecraft-Plugins und den Informatik-Unterricht' },
+    { h: 'Classics: Java', p: 'Programmieren an sich: Variablen, Schleifen, Methoden, Klassen, Vererbung, Fehlerbehandlung – mit einem Konsolen-Jump’n’Run als Abschluss.' },
+    { h: 'Classics: JavaScript', p: 'Die Sprache des Browsers. Vieles kennst du aus Java, dazu kommen Funktionen als Werte, Objekte und asynchroner Code.' },
+    { h: 'Classics: HTML, CSS & Node.js', p: 'Seiten bauen und gestalten, Menüs für das Spiel – und ein eigener Server, der Spieler verbindet.' },
+    { h: 'Unser Game', p: 'Canvas, Game-Loop, Physik, Kollision, Level, Kamera, Sound und Multiplayer: Schritt für Schritt zu deinem Spiel.' },
   ],
   plan: [
     { nr: 1, title: 'Hallo Java!', what: 'erstes Programm, Ausgaben, Fehler lesen' },
@@ -19,14 +19,60 @@ export default {
     { nr: 3, title: 'Eingaben & Entscheidungen', what: 'Scanner, if/else, logische Operatoren' },
     { nr: 4, title: 'Schleifen', what: 'while, for, Zufall – dein erstes Spiel' },
     { nr: 5, title: 'Arrays', what: 'viele Werte, sortieren, suchen' },
-    { nr: 6, title: 'Methoden', what: 'Eigene Befehle schreiben: Parameter, Rückgabewerte, Code sinnvoll aufteilen.' },
-    { nr: 7, title: 'Strings im Detail', what: 'Text zerlegen und prüfen: charAt, substring, Palindrome, Passwort-Prüfer.' },
-    { nr: 8, title: 'Klassen & Objekte', what: 'Eigene Datentypen wie Fisch oder Spieler – mit Konstruktor und Methoden.' },
-    { nr: 9, title: 'ArrayList & Kapselung', what: 'Listen, die wachsen, und private Attribute mit Gettern – die Fangbuch-Verwaltung.' },
-    { nr: 10, title: 'Vererbung', what: 'Gemeinsames in Oberklassen: Tiere, Spielfiguren, überschriebene Methoden.' },
-    { nr: 11, title: 'Spielfelder & Fehlerbehandlung', what: '2D-Arrays für Spielbretter und try/catch für falsche Eingaben.' },
-    { nr: 12, title: 'Abschlussprojekt', what: 'Tic-Tac-Toe gegen den Computer oder eine Fangbuch-App – du entscheidest.' },
+    { nr: 6, title: 'Methoden', what: 'eigene Befehle, Parameter, Rückgabewerte' },
+    { nr: 7, title: 'Strings im Detail', what: 'Texte zerlegen, prüfen und verschlüsseln' },
+    { nr: 8, title: 'Klassen & Objekte', what: 'eigene Datentypen wie Held oder Würfel' },
+    { nr: 9, title: 'ArrayList & Kapselung', what: 'Listen von Objekten, private, Getter' },
+    { nr: 10, title: 'Vererbung', what: 'Gegner-Familien, Polymorphie, abstrakte Klassen' },
+    { nr: 11, title: 'Spielfelder & Fehlerbehandlung', what: '2D-Arrays, Kollision, try/catch' },
+    { nr: 12, title: 'Abschlussprojekt: Pixel-Lauf', what: 'ein Jump’n’Run in der Konsole' },
   ],
+  tracks: {
+    classics: [
+      { id: 'js', title: 'JavaScript', badge: 'JS', sub: 'Die Sprache, in der unser Spiel läuft. Du kennst schon viel aus Java – hier lernst du die Unterschiede und die Stärken.', plan: [
+        { title: 'Von Java zu JavaScript', what: 'let/const, Typen, Funktionen, die Konsole im Browser' },
+        { title: 'Arrays & Objekte', what: 'Listen, Objekte als Datensäcke, JSON' },
+        { title: 'Funktionen als Werte', what: 'Pfeilfunktionen, map/filter, Callbacks' },
+        { title: 'Klassen in JavaScript', what: 'class, constructor, extends – wie in Java, nur lockerer' },
+        { title: 'Asynchroner Code', what: 'Timer, Promises, async/await' },
+        { title: 'Module & Fehler', what: 'import/export, try/catch, Debuggen' },
+      ] },
+      { id: 'web', title: 'HTML & CSS', badge: 'HTML', sub: 'Die Bühne für das Spiel: Seiten aufbauen, gestalten und mit JavaScript lebendig machen.', plan: [
+        { title: 'Das HTML-Grundgerüst', what: 'Elemente, Attribute, Struktur einer Seite' },
+        { title: 'CSS: Selektoren & Box-Modell', what: 'Farben, Abstände, Schriften' },
+        { title: 'Layout mit Flexbox & Grid', what: 'Menüs, Leisten und Spielbildschirm anordnen' },
+        { title: 'Das DOM: JS trifft HTML', what: 'Elemente finden, ändern, auf Klicks reagieren' },
+        { title: 'Menüs & HUD fürs Spiel', what: 'Startbildschirm, Lobby, Punkteanzeige' },
+      ] },
+      { id: 'node', title: 'Node.js', badge: 'Node', sub: 'JavaScript auf dem Server: der Treffpunkt, über den sich die Spieler verbinden.', plan: [
+        { title: 'Was ist Node.js?', what: 'Server vs. Browser, npm, das erste Skript' },
+        { title: 'Module & Dateien', what: 'Level-Dateien lesen und speichern' },
+        { title: 'Ein eigener Web-Server', what: 'Anfragen beantworten, Dateien ausliefern' },
+        { title: 'WebSockets', what: 'Nachrichten in Echtzeit hin und her' },
+        { title: 'Räume & Spielstände', what: 'Lobbys, Spieler verwalten, Bestenlisten' },
+      ] },
+    ],
+    game: {
+      title: 'Multiplayer-Jump’n’Run',
+      sub: 'Ein Rennen durch Level gegen deine Freunde – live im Browser. Hier lernst du alles, was speziell für unser Spiel gebraucht wird.',
+      features: ['Flüssige Physik: laufen, springen, fallen', 'Level aus Text-Dateien mit Kamera, die mitscrollt', 'Münzen, Stacheln, Checkpoints und Ziel', 'Live-Rennen: alle Spieler gleichzeitig im Level', 'Lobby, Bestzeiten und Ghost-Replays'],
+      needs: ['Java-Lektionen 1–12 (Logik, Klassen, Spielschleife)', 'JavaScript', 'HTML & CSS', 'Node.js (für den Server)'],
+      plan: [
+        { title: 'Canvas: Zeichnen im Browser', what: 'Rechtecke, Farben, Bilder – die Leinwand des Spiels', langs: 'JS · HTML' },
+        { title: 'Die Game-Loop', what: '60 Bilder pro Sekunde mit requestAnimationFrame und Delta-Zeit', langs: 'JS' },
+        { title: 'Steuerung', what: 'Tastatur und Touch, gedrückte Tasten merken', langs: 'JS' },
+        { title: 'Schwerkraft & Springen', what: 'Geschwindigkeit, Beschleunigung, Sprunghöhe einstellen', langs: 'JS' },
+        { title: 'Kollision mit Kacheln', what: 'Rechteck gegen Rechteck, sauber landen und abprallen', langs: 'JS' },
+        { title: 'Level & Kamera', what: 'Level aus Text laden, die Kamera folgt dem Spieler', langs: 'JS' },
+        { title: 'Sprites, Animation & Sound', what: 'Figuren, die laufen und springen, mit Geräuschen', langs: 'JS · CSS' },
+        { title: 'Münzen, Gegner, Ziel', what: 'Spielregeln, Zeitmessung und Bestzeit', langs: 'JS' },
+        { title: 'Multiplayer-Grundlagen', what: 'Client und Server, Zustand teilen, Verzögerung', langs: 'JS · Node' },
+        { title: 'Live-Rennen', what: 'Mitspieler anzeigen, Interpolation, Ghosts', langs: 'JS · Node' },
+        { title: 'Lobby & Server', what: 'Räume, Start-Countdown, Ergebnisse, Fair Play', langs: 'Node · HTML' },
+        { title: 'Endprojekt', what: 'Dein eigenes Multiplayer-Jump’n’Run mit eigenen Leveln', langs: 'alles' },
+      ],
+    },
+  },
   playground: prog(R`
         // Probier hier alles aus, was du gelernt hast
         for (int i = 1; i <= 3; i++) {
