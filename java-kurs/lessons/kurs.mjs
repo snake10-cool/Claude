@@ -34,7 +34,7 @@ export default {
         }`),
   challenges: [
     {
-      id: 'c1', level: '★☆☆ leicht', title: 'FizzBuzz',
+      id: 'c1', after: 4, level: '★☆☆ leicht', title: 'FizzBuzz',
       teaser: 'Das berühmteste Einstellungs-Rätsel für Programmierer: Zahlen von 1 bis 100 – aber mit einem Dreh.',
       uses: ['for', '%', 'else if'],
       text: ['Gib die Zahlen von 1 bis 100 aus, jede in einer eigenen Zeile. Aber: Ist die Zahl durch 3 teilbar, gib stattdessen „Fizz“ aus. Ist sie durch 5 teilbar, „Buzz“. Ist sie durch 3 **und** 5 teilbar, „FizzBuzz“.', 'Das Spiel wird gern bei Bewerbungsgesprächen verwendet – viele stolpern über die Reihenfolge der Bedingungen.'],
@@ -65,7 +65,7 @@ export default {
       tip: 'Prüfe die strengste Bedingung (durch 3 und 5) zuerst – sonst landet 15 schon bei „Fizz“.',
     },
     {
-      id: 'c2', level: '★★☆ mittel', title: 'Primzahl-Detektor',
+      id: 'c2', after: 4, level: '★★☆ mittel', title: 'Primzahl-Detektor',
       teaser: 'Ist 91 eine Primzahl? Dein Programm findet es heraus – für jede Zahl.',
       uses: ['Scanner', 'Schleife', '%', 'boolean', 'break'],
       text: ['Eine **Primzahl** ist eine Zahl größer als 1, die nur durch 1 und sich selbst teilbar ist (2, 3, 5, 7, 11, …).', 'Lies eine ganze Zahl ein und gib aus, ob sie eine Primzahl ist. Achtung: 1 ist keine Primzahl, 2 schon.'],
@@ -106,7 +106,7 @@ export default {
       tip: 'Du musst nur Teiler von 2 bis n − 1 prüfen. Profis hören schon bei der Wurzel von n auf.',
     },
     {
-      id: 'c3', level: '★★☆ mittel', title: 'Quersumme',
+      id: 'c3', after: 4, level: '★★☆ mittel', title: 'Quersumme',
       teaser: 'Wie zerlegt man 4711 in seine Ziffern – ohne Text, nur mit Rechnen?',
       uses: ['while', '% 10', '/ 10'],
       text: ['Die **Quersumme** ist die Summe aller Ziffern einer Zahl: 4711 → 4 + 7 + 1 + 1 = 13.', 'Lies eine positive ganze Zahl ein und gib ihre Quersumme aus. Der Trick: Du brauchst nur `%` und `/` – keine Strings.'],
@@ -140,7 +140,7 @@ export default {
       tip: 'Spiel es auf Papier durch: 4711 → Rest 1, weiter mit 471 → Rest 1, weiter mit 47 → …',
     },
     {
-      id: 'c4', level: '★★☆ mittel', title: 'Würfel-Statistik',
+      id: 'c4', after: 5, level: '★★☆ mittel', title: 'Würfel-Statistik',
       teaser: 'Ist der Zufall fair? Würfle 6000-mal und zeichne ein Balkendiagramm aus Sternen.',
       uses: ['Random', 'Array als Zähler', 'verschachtelte Schleifen', 'printf'],
       text: ['Würfle 6000-mal mit `Random` und zähle, wie oft jede Augenzahl von 1 bis 6 kommt. Benutze dafür ein **Array als Zähler**: Fach 3 zählt zum Beispiel die Dreier.', 'Gib dann für jede Augenzahl die Anzahl aus und dahinter einen Balken: ein Stern pro 100 Würfe.'],
@@ -170,7 +170,7 @@ export default {
       tip: 'Mach das Array 7 Fächer groß und benutze nur die Fächer 1 bis 6 – dann passt die Augenzahl direkt als Index.',
     },
     {
-      id: 'c5', level: '★★★ knifflig', title: 'Schere, Stein, Papier',
+      id: 'c5', after: 5, level: '★★★ knifflig', title: 'Schere, Stein, Papier',
       teaser: 'Drei Runden gegen den Computer – mit Punktestand und Sieger.',
       uses: ['Scanner', 'String-Array', 'Random', 'equals', '&& ||'],
       text: ['Spiel drei Runden „Schere, Stein, Papier“ gegen den Computer. Der Spieler tippt `schere`, `stein` oder `papier`, der Computer wählt zufällig.', 'Schere schlägt Papier, Stein schlägt Schere, Papier schlägt Stein. Nach jeder Runde zeigt das Programm die Wahl des Computers und wer den Punkt bekommt. Am Ende: Endstand und Sieger.'],
@@ -220,7 +220,7 @@ export default {
       tip: 'Schreib dir zuerst die drei Fälle auf, in denen DU gewinnst. Alles andere ist entweder unentschieden oder ein Punkt für den Computer.',
     },
     {
-      id: 'c6', level: '★★★ knifflig', title: 'Sternen-Pyramide',
+      id: 'c6', after: 5, level: '★★★ knifflig', title: 'Sternen-Pyramide',
       teaser: 'Aus dem Dreieck aus Lektion 4 wird eine echte, mittige Pyramide – für jede Höhe.',
       uses: ['Scanner', 'verschachtelte Schleifen', 'Muster rechnen'],
       text: ['Lies eine Höhe ein und zeichne eine **mittige Pyramide** aus Sternen. Bei Höhe 4 sieht sie so aus:', '`   *` · `  ***` · ` *****` · `*******` – jede Zeile hat zwei Sterne mehr und ein Leerzeichen weniger davor.'],

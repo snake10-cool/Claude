@@ -17,6 +17,9 @@ const imp = async f => (await import(pathToFileURL(path.join(dir, f)).href + '?t
 const lessons = [];
 for (const f of readdirSync(path.join(dir, 'lessons')).filter(f => /^l\d+\.mjs$/.test(f)).sort()) lessons.push(await imp('lessons/' + f));
 const kurs = await imp('lessons/kurs.mjs');
+const checkpoints = await imp('lessons/checkpoints.mjs');
+const finale = await imp('lessons/finale.mjs');
+const challenges = kurs.challenges.concat(checkpoints);
 let problems = 0;
 const warn = msg => { problems++; console.log('  ⚠ ' + msg); };
 const hit = (c, out) => { const h = c.re ? new RegExp(c.re, c.flags || 'i').test(out) : out.toLowerCase().includes(String(c.has).toLowerCase()); return c.not ? !h : h; };
@@ -61,11 +64,11 @@ for (const L of lessons) {
     if (st.quiz && (st.quiz.correct == null || !st.quiz.options[st.quiz.correct])) warn(`Quiz ${st.quiz.id}: richtige Antwort fehlt`);
   }
 }
-console.log(`Challenges: ${kurs.challenges.length}`);
-for (const c of kurs.challenges) { if (ids.has(c.id)) warn(`ID ${c.id} doppelt`); ids.add(c.id); checkTask(c, `Challenge ${c.id}`); }
+console.log(`Challenges: ${challenges.length}, Finale: ${finale.length}`);
+for (const c of challenges.concat(finale)) { if (ids.has(c.id)) warn(`ID ${c.id} doppelt`); ids.add(c.id); checkTask(c, `Challenge ${c.id}`); }
 { const r = MJ.runSync(kurs.playground, []); if (r.error) warn('Spielplatz-Code: ' + r.error.text); }
 
-const course = { lessons, challenges: kurs.challenges, plan: kurs.plan, goal: kurs.goal, canDo: kurs.canDo, playground: kurs.playground };
+const course = { lessons, challenges, finale, plan: kurs.plan, goal: kurs.goal, canDo: kurs.canDo, playground: kurs.playground, tracks: kurs.tracks };
 const json = JSON.stringify(course).replace(/<\/script/gi, '<\\/script').split(String.fromCharCode(0x2028)).join('\\u2028').split(String.fromCharCode(0x2029)).join('\\u2029');
 const noScriptEnd = s => s.replace(/<\/script/gi, '<\\/script');
 const html = read('src/course.html')
@@ -77,6 +80,6 @@ const html = read('src/course.html')
   .replace('{{APP}}', () => noScriptEnd(read('src/course.js')));
 mkdirSync(path.join(dir, 'dist'), { recursive: true });
 writeFileSync(path.join(dir, 'dist', 'kurs.html'), html);
-console.log(`→ dist/kurs.html (${(html.length / 1024).toFixed(0)} KB, ${lessons.length} Lektionen, ${kurs.challenges.length} Challenges)`);
+console.log(`→ dist/kurs.html (${(html.length / 1024).toFixed(0)} KB, ${lessons.length} Lektionen, ${challenges.length} Challenges, ${finale.length} Finale)`);
 console.log(problems ? `\n${problems} Problem(e) gefunden` : '\nAlles geprüft ✓');
 process.exit(problems ? 1 : 0);
