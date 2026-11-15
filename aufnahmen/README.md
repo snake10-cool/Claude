@@ -11,7 +11,7 @@ Standbilder aus Bildschirmaufnahmen, damit eine andere Claude-Sitzung sie ansehe
 
 Ordner: `Find The Needle 2026-11-15 07-38-53/`
 
-Kurzfassung: Spielstand 2 (Sandbox-Modus, Spielversion EA V18.4) wird geladen, danach ein Rundgang
+Kurzfassung: Spielstand 2 (Sandbox-Modus, Spielversion Early Access V16.4) wird geladen, danach ein Rundgang
 durch die große Fabrik im Heuhof: Förderbänder, Roboterarme am Heuhaufen, Heupressen, Monteure,
 Verkaufsstand, Bau neuer Förderbänder, Flug nach oben zur Kran-Plattform auf dem Heuhaufen.
 Fast durchgehend sichtbar ist der gelbe Hinweis „Bänder voll bei 5000: erhöh das Limit unter
