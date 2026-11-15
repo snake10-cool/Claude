@@ -1,8 +1,0 @@
-{
-  "name": "snake10-mods",
-  "owner": { "name": "snake10-cool" },
-  "plugins": [
-    { "name": "snake-hub", "source": "./plugins/snake-hub", "description": "Schaltzentrale: 5 Themes, 6 Mods, Skills an/aus" },
-    { "name": "snake-skills", "source": "./plugins/snake-skills", "description": "5 Skills: Spiel bauen, Bug-Jagd, Flutter-Release, Einfach erklärt, Game-Guide" }
-  ]
-}

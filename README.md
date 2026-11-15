@@ -97,7 +97,3 @@ Offen (geht nur mit deinem Konto):
 3. GitHub-Secrets `ANDROID_KEYSTORE_BASE64` und `ANDROID_KEYSTORE_PASSWORT`
 4. Geschlossener Test mit 12 Testern für 14 Tage
 5. Abo in der Play Console anlegen, danach baut Claude Google Play Billing ein
-
-## Claude-Mods
-
-Im Ordner `plugins/` liegen Mods und Skills für Claude Code (Snake-Hub mit Themes und Schaltern, Snake-Skills). Details in `plugins/README.md`.
